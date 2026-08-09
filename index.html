@@ -59,9 +59,12 @@
         
         button.action-btn { 
             width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 8px; 
-            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; 
+            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
         button.action-btn:hover { background: #334155; }
+
+        /* ระบบแจ้งเตือนข้อผิดพลาดแบบสวยงาม */
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 5px; display: none; }
 
         /* หน้าคำนวณสูตร */
         #calculatorView { display: none; }
@@ -73,19 +76,31 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1rem; }
         .highlight { color: #fbbf24; font-weight: bold; }
         
-        /* ดีไซน์กล่องชุดเจาะแยกบรรทัด ปรับขนาดเล็กลง 50% และกำหนดสีเขียว/ฟ้า */
+        /* ดีไซน์กล่องชุดเจาะ: เพิ่มขนาดขึ้นอีกประมาณ 10% เป็น 0.85rem และเพิ่มเอฟเฟกต์คลิกเพื่อคัดลอก */
         .pierce-row { 
-            background: #1e293b; padding: 8px 12px; border: 1px solid #334155; border-radius: 8px; 
-            margin-top: 6px; display: flex; justify-content: space-between; align-items: center;
-            font-family: monospace;
+            background: #1e293b; padding: 10px 12px; border: 1px solid #334155; border-radius: 8px; 
+            margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
+            font-family: monospace; cursor: pointer; position: relative; transition: background 0.2s;
         }
-        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.75rem; }
+        .pierce-row:hover { background: #334155; border-color: #38bdf8; }
+        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.8rem; }
         
-        /* ตัวเจาะแถวที่ 1 สีเขียว (ขนาดลดลง 50% เหลือประมาณ 0.75rem) */
-        .pierce-nums-1 { color: #4ade80; font-weight: bold; font-size: 0.75rem; letter-spacing: 2px; }
+        /* ตัวเจาะแถวที่ 1 สีเขียว (เพิ่มขนาดอีก 10% เป็น 0.85rem) */
+        .pierce-nums-1 { color: #4ade80; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px; }
         
-        /* ตัวเจาะแถวที่ 2 สีฟ้า (ขนาดลดลง 50% เหลือประมาณ 0.75rem) */
-        .pierce-nums-2 { color: #38bdf8; font-weight: bold; font-size: 0.75rem; letter-spacing: 2px; }
+        /* ตัวเจาะแถวที่ 2 สีฟ้า (เพิ่มขนาดอีก 10% เป็น 0.85rem) */
+        .pierce-nums-2 { color: #38bdf8; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px; }
+
+        /* Toast แจ้งเตือนเมื่อคัดลอกสำเร็จ */
+        #toast {
+            visibility: hidden; min-width: 200px; background-color: #059669; color: #fff;
+            text-align: center; border-radius: 6px; padding: 10px; position: fixed;
+            z-index: 100; left: 50%; bottom: 30px; transform: translateX(-50%);
+            font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        #toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 1.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
         .announcement-bottom { 
             background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
@@ -146,6 +161,7 @@
             <div class="input-group">
                 <label>มีรหัสผ่านสมาชิกแล้ว?</label>
                 <input type="password" id="vipPassword" placeholder="กรอกรหัสผ่านสมาชิก">
+                <div id="loginError" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์</div>
             </div>
             <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
         </div>
@@ -165,9 +181,10 @@
         <div class="input-group">
             <label>เลข 2 ตัวล่าง:</label>
             <input type="text" id="bottomNum" placeholder="เช่น 26" maxlength="2">
+            <div id="calcError" class="error-msg">⚠️ กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน</div>
         </div>
         
-        <button class="action-btn" onclick="calculateLottery()" style="background: #059669; color: white; border: none;">✨ ประมวลผลสูตรคำนวณ</button>
+        <button id="calcBtn" class="action-btn" onclick="calculateLottery()" style="background: #059669; color: white; border: none;">✨ ประมวลผลสูตรคำนวณ</button>
 
         <div id="results"></div>
 
@@ -175,8 +192,8 @@
             <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
             <ul>
                 <li><strong>แนวทางการใช้งาน:</strong> ระบบวิเคราะห์จากสถิติย้อนหลัง เพื่อใช้เป็นแนวทางสนับสนุนการตัดสินใจ</li>
-                <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้เลือกสูตรที่มั่นใจเพียงชุดเดียว แล้วติดตามผลอย่างต่อเนื่องตามรอบอายุสมาชิก (ขั้นต่ำ 7-15 หรือ 30 วันขึ้นไป)</li>
-                <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การบริหารทุนและมีวินัยในการตามสูตรคือหัวใจสำคัญของมืออาชีพ</li>
+                <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้เลือกสูตรที่มั่นใจเพียงชุดเดียว แล้วติดตามผลอย่างต่อเนื่อง</li>
+                <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การบริหารทุนและมีวินัยคือหัวใจสำคัญ</li>
             </ul>
         </div>
 
@@ -184,6 +201,9 @@
     </div>
 
 </div>
+
+<!-- Toast Popup แจ้งเตือนการคัดลอก -->
+<div id="toast">📋 คัดลอกชุดตัวเลขสำเร็จ!</div>
 
 <script>
     const memberPasswords = [
@@ -195,13 +215,16 @@
 
     function checkLogin() {
         const passInput = document.getElementById('vipPassword');
+        const errorDiv = document.getElementById('loginError');
         const pass = passInput.value.trim();
+
         if (pass !== "" && memberPasswords.includes(pass)) {
+            errorDiv.style.display = 'none';
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
             passInput.value = '';
         } else {
-            alert("❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์เข้าใช้งานครับ");
+            errorDiv.style.display = 'block';
             passInput.value = '';
         }
     }
@@ -213,78 +236,99 @@
         document.getElementById('topNum').value = '';
         document.getElementById('bottomNum').value = '';
         document.getElementById('results').innerHTML = '';
+        document.getElementById('loginError').style.display = 'none';
+        document.getElementById('calcError').style.display = 'none';
     }
 
     function calculateLottery() {
         let top = document.getElementById('topNum').value.trim();
         let bottom = document.getElementById('bottomNum').value.trim();
+        let errorDiv = document.getElementById('calcError');
 
         if (top.length !== 3 || bottom.length !== 2) {
-            alert("กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน!");
+            errorDiv.style.display = 'block';
             return;
         }
+        errorDiv.style.display = 'none';
 
-        let r1 = parseInt(top[0]);
-        let r2 = parseInt(top[1]);
-        let r3 = parseInt(top[2]);
-        let b1 = parseInt(bottom[0]);
-        let b2 = parseInt(bottom[1]);
+        // เอฟเฟกต์กำลังโหลดจำลองเพื่อความสมจริง
+        let btn = document.getElementById('calcBtn');
+        btn.innerHTML = "⏳ กำลังวิเคราะห์สถิติสูตร...";
+        btn.disabled = true;
 
-        // ตรรกะคำนวณสูตรเลขเด่น
-        let f1_d1 = (r2 + b1) % 10;
-        let f1_d2 = (f1_d1 + 1) % 10;
+        setTimeout(() => {
+            let r1 = parseInt(top[0]);
+            let r2 = parseInt(top[1]);
+            let r3 = parseInt(top[2]);
+            let b1 = parseInt(bottom[0]);
+            let b2 = parseInt(bottom[1]);
 
-        let f2_d1 = (r1 + r2 + r3) % 10;
-        let f2_d2 = (f2_d1 + 1) % 10;
+            let f1_d1 = (r2 + b1) % 10;
+            let f1_d2 = (f1_d1 + 1) % 10;
 
-        let f3_d1 = (r1 + b1) % 10;
-        let f3_d2 = (f3_d1 + 1) % 10;
+            let f2_d1 = (r1 + r2 + r3) % 10;
+            let f2_d2 = (f2_d1 + 1) % 10;
 
-        let f4_d1 = (r3 + b2) % 10;
-        let f4_d2 = (f4_d1 + 1) % 10;
+            let f3_d1 = (r1 + b1) % 10;
+            let f3_d2 = (f3_d1 + 1) % 10;
 
-        let f5_d1 = (10 - b2) % 10;
-        let f5_d2 = (f5_d1 + 1) % 10;
+            let f4_d1 = (r3 + b2) % 10;
+            let f4_d2 = (f4_d1 + 1) % 10;
 
-        let formulas = [
-            { name: "สูตรที่ 1", d1: f1_d1, d2: f1_d2 },
-            { name: "สูตรที่ 2", d1: f2_d1, d2: f2_d2 },
-            { name: "สูตรที่ 3", d1: f3_d1, d2: f3_d2 },
-            { name: "สูตรที่ 4", d1: f4_d1, d2: f4_d2 },
-            { name: "สูตรที่ 5", d1: f5_d1, d2: f5_d2 }
-        ];
+            let f5_d1 = (10 - b2) % 10;
+            let f5_d2 = (f5_d1 + 1) % 10;
 
-        let html = '';
-        formulas.forEach(f => {
-            let de1 = f.d1;
-            let de2 = f.d2;
+            let formulas = [
+                { name: "สูตรที่ 1", d1: f1_d1, d2: f1_d2 },
+                { name: "สูตรที่ 2", d1: f2_d1, d2: f2_d2 },
+                { name: "สูตรที่ 3", d1: f3_d1, d2: f3_d2 },
+                { name: "สูตรที่ 4", d1: f4_d1, d2: f4_d2 },
+                { name: "สูตรที่ 5", d1: f5_d1, d2: f5_d2 }
+            ];
 
-            let pool = [];
-            for(let i=0; i<=9; i++) {
-                if(i !== de1 && i !== de2) pool.push(i);
-            }
-            let pierce5 = pool.slice(0, 5);
+            let html = '';
+            formulas.forEach(f => {
+                let de1 = f.d1;
+                let de2 = f.d2;
 
-            let row1 = pierce5.map(n => "" + de1 + n).join("  ");
-            let row2 = pierce5.map(n => "" + de2 + n).join("  ");
+                let pool = [];
+                for(let i=0; i<=9; i++) {
+                    if(i !== de1 && i !== de2) pool.push(i);
+                }
+                let pierce5 = pool.slice(0, 5);
 
-            html += `
-            <div class="formula-card">
-                <div class="formula-title">${f.name}</div>
-                <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
-                
-                <div class="pierce-row">
-                    <span class="pierce-label">ชุดเจาะ ${de1}</span>
-                    <span class="pierce-nums-1">${row1}</span>
-                </div>
-                <div class="pierce-row">
-                    <span class="pierce-label">ชุดเจาะ ${de2}</span>
-                    <span class="pierce-nums-2">${row2}</span>
-                </div>
-            </div>`;
+                let row1 = pierce5.map(n => "" + de1 + n).join("  ");
+                let row2 = pierce5.map(n => "" + de2 + n).join("  ");
+
+                html += `
+                <div class="formula-card">
+                    <div class="formula-title">${f.name}</div>
+                    <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
+                    
+                    <div class="pierce-row" onclick="copyToClipboard('${row1}')">
+                        <span class="pierce-label">ชุดเจาะ ${de1} (คลิกคัดลอก)</span>
+                        <span class="pierce-nums-1">${row1}</span>
+                    </div>
+                    <div class="pierce-row" onclick="copyToClipboard('${row2}')">
+                        <span class="pierce-label">ชุดเจาะ ${de2} (คลิกคัดลอก)</span>
+                        <span class="pierce-nums-2">${row2}</span>
+                    </div>
+                </div>`;
+            });
+
+            document.getElementById('results').innerHTML = html;
+            btn.innerHTML = "✨ ประมวลผลสูตรคำนวณ";
+            btn.disabled = false;
+        }, 400);
+    }
+
+    // ฟังก์ชันคัดลอกตัวเลขลงคลิปบอร์ด
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            let toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
         });
-
-        document.getElementById('results').innerHTML = html;
     }
 </script>
 
