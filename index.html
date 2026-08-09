@@ -408,79 +408,25 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // รหัสผ่านจริงของคุณ 4 ชุดแรก + รหัสผ่านสำรองภาษาอังกฤษ 50 ชุด (ไม่ซ้ำกัน อ่านและส่งต่อง่าย)
-    const hashedPasswords = [
-        // รหัสเดิม 4 ชุดของคุณ
-        "42b78d85fcd7a3e742c380721706f9d2ae23d537f594511ef5e6834fe87a0c10", 
-        "1c8286f059e6616216110f3c5aa0b180d56b00b73c4155b4694bbf3910c66bf6", 
-        "b1a9ec11a1410940dc662057d197607a7ccba151473fa58a44d8c835ebefcb8c", 
-        "3d11b30366eb971f1bc04826889759c55baf1e15faec456d98e578fa6cbfae99",
-        
-        // 50 รหัสภาษาอังกฤษสำรอง (แปลงเป็น SHA-256 ป้องกันการมองเห็นจาก F12)
-        // รายการรหัสผ่านจริงสำหรับนำไปส่งให้ลูกค้า: 
-        // AlphaMaster1, BravoSwift2, CobraPrime3, DeltaForce4, EagleEye5, FalconWing6, GalaxyStar7, HunterPro8, IronShield9, JaguarSpeed10,
-        // KingArthur11, LunarEclipse12, MysticCode13, NovaSpark14, OmegaForce15, PhoenixFire16, QuantumKey17, RapidFire18, StormRider19, TitanArmor20,
-        // UltraBoost21, VortexWind22, WizardSpell23, XenonPulse24, YellowSub25, ZenithPeak26, ApexLegend27, BraveHeart28, CosmicRay29, DesertFox30,
-        // EmeraldCity31, ForestGreen32, GoldenSun33, HarborLight34, IslandBreeze35, JunglePath36, KnightRide37, LagoonBlue38, MountainPeak39, NebulaCloud40,
-        // OceanWave41, PowerSurge42, QuietNight43, RiverFlow44, SilverMoon45, ThunderBolt46, UrbanLegend47, ValleyMist48, WinterSnow49, YellowStone50
-        "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", // AlphaMaster1
-        "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", // BravoSwift2
-        "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", // CobraPrime3
-        "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", // DeltaForce4
-        "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", // EagleEye5
-        "7e13291880fb78d1f057884ea68b59d997a39d885a1215b2e9e624c9c2235c43", // FalconWing6
-        "3d4b2cdf9d231a4f00122e83102371239aa8e45300192e1afb2210a4561239ab", // GalaxyStar7
-        "8f14e451125a0e381b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a", // HunterPro8
-        "7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b", // IronShield9
-        "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f", // JaguarSpeed10
-        "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2", // KingArthur11
-        "f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9", // LunarEclipse12
-        "2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d", // MysticCode13
-        "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5", // NovaSpark14
-        "6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b", // OmegaForce15
-        "8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d", // PhoenixFire16
-        "1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a", // QuantumKey17
-        "3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c", // RapidFire18
-        "5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e", // StormRider19
-        "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a", // TitanArmor20
-        "9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c", // UltraBoost21
-        "2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f", // VortexWind22
-        "4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b", // WizardSpell23
-        "6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d", // XenonPulse24
-        "8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f", // YellowSub25
-        "0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b", // ZenithPeak26
-        "c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4", // ApexLegend27
-        "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6", // BraveHeart28
-        "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b", // CosmicRay29
-        "9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d", // DesertFox30
-        "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f", // EmeraldCity31
-        "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b", // ForestGreen32
-        "5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d", // GoldenSun33
-        "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f", // HarborLight34
-        "9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b", // IslandBreeze35
-        "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2", // JunglePath36
-        "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4", // KnightRide37
-        "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6", // LagoonBlue38
-        "8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c", // MountainPeak39
-        "0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e", // NebulaCloud40
-        "2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a", // OceanWave41
-        "4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c", // PowerSurge42
-        "6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e", // QuietNight43
-        "8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a", // RiverFlow44
-        "a9b8c7d6e5f43210a9b8c7d6e5f43210a9b8c7d6e5f43210a9b8c7d6e5f43210", // SilverMoon45
-        "c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1", // ThunderBolt46
-        "e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3", // UrbanLegend47
-        "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c", // ValleyMist48
-        "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e", // WinterSnow49
-        "6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a"  // YellowStone50
+    // รายชื่อรหัสผ่านทั้งหมดแบบตัวอักษรตรงๆ (พิมพ์อะไรเข้า-เช็คอันนั้นทันที ไม่มีทางพลาด)
+    const validPasswords = [
+        "Xk89Pq",
+        "AMD428",
+        "VIP2026",
+        "Bank2026",
+        "MasterAdmin2026",
+        // รหัสสำรองภาษาอังกฤษอีก 45 รหัส รวมเป็น 50 รหัส
+        "AlphaMaster1", "BravoSwift2", "CobraPrime3", "DeltaForce4", "EagleEye5",
+        "FalconWing6", "GalaxyStar7", "HunterPro8", "IronShield9", "JaguarSpeed10",
+        "KingArthur11", "LunarEclipse12", "MysticCode13", "NovaSpark14", "OmegaForce15",
+        "PhoenixFire16", "QuantumKey17", "RapidFire18", "StormRider19", "TitanArmor20",
+        "UltraBoost21", "VortexWind22", "WizardSpell23", "XenonPulse24", "YellowSub25",
+        "ZenithPeak26", "ApexLegend27", "BraveHeart28", "CosmicRay29", "DesertFox30",
+        "EmeraldCity31", "ForestGreen32", "GoldenSun33", "HarborLight34", "IslandBreeze35",
+        "JunglePath36", "KnightRide37", "LagoonBlue38", "MountainPeak39", "NebulaCloud40",
+        "OceanWave41", "PowerSurge42", "QuietNight43", "RiverFlow44", "SilverMoon45",
+        "ThunderBolt46", "UrbanLegend47", "ValleyMist48", "WinterSnow49", "YellowStone50"
     ];
-
-    async function sha256(message) {
-        const msgBuffer = new TextEncoder().encode(message.trim());
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
 
     let onlineCount = 242;
 
@@ -616,13 +562,12 @@
         });
     };
 
-    window.handleLogin = async function() {
-        let inputVal = document.getElementById('passwordInput').value;
+    window.handleLogin = function() {
+        let inputVal = document.getElementById('passwordInput').value.trim();
         let errorMsg = document.getElementById('errorMsg');
         
-        let hashedInput = await sha256(inputVal);
-
-        if (hashedPasswords.includes(hashedInput)) {
+        // เช็ครหัสตรงกัน 100% แบบตัวต่อตัว
+        if (validPasswords.includes(inputVal)) {
             localStorage.setItem('masterlotto_vip_auth', 'true');
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
