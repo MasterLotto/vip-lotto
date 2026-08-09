@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterLotto - ระบบคำนวณและสมัครสมาชิก VIP</title>
+    <title>MasterLotto VIP - ระบบคำนวณสูตรหวย</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 15px; color: #333; }
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h2 { text-align: center; color: #1a2a6c; margin-bottom: 5px; font-size: 22px; }
         .subtitle { text-align: center; color: #7f8c8d; font-size: 14px; margin-bottom: 20px; }
 
-        /* ส่วนที่ 1: หน้าชำระเงินและรับรหัส (แสดงตอนแรก) */
         #payment-section { display: block; }
-        .card { background: #f8f9fa; border-left: 5px solid #27ae60; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .card h3 { margin-top: 0; color: #27ae60; font-size: 1.1em; margin-bottom: 15px; }
-        .bank-info { font-size: 1em; line-height: 1.8; }
+        
+        .price-box { display: flex; gap: 10px; margin-bottom: 20px; }
+        .price-card { flex: 1; background: #fff9e6; border: 2px solid #f1c40f; padding: 15px; border-radius: 10px; text-align: center; }
+        .price-card.vip-year { background: #e8f8f5; border-color: #27ae60; }
+        .price-card h4 { margin: 0 0 8px 0; color: #2c3e50; font-size: 16px; }
+        .price-card .price { font-size: 20px; font-weight: bold; color: #c0392b; margin-bottom: 5px; }
+        .price-card.vip-year .price { color: #27ae60; }
+        .price-card p { font-size: 12px; color: #666; margin: 0; }
+
+        .card { background: #f8f9fa; border-left: 5px solid #2980b9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .card h3 { margin-top: 0; color: #2980b9; font-size: 1.1em; margin-bottom: 12px; }
+        .bank-info { font-size: 0.95em; line-height: 1.7; }
         .highlight-acc { color: #c0392b; font-weight: bold; background: #ffeaa7; padding: 2px 6px; border-radius: 4px; }
-        .btn-line { display: block; width: 100%; background: #06c755; color: white; text-align: center; padding: 14px; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: bold; box-sizing: border-box; margin-bottom: 20px; transition: 0.2s; }
+        
+        .btn-line { display: block; width: 100%; background: #06c755; color: white; text-align: center; padding: 14px; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: bold; box-sizing: border-box; margin-bottom: 20px; }
         .btn-line:hover { background: #05b34c; }
 
         .login-box { background: #e8f4fd; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #bee5eb; }
@@ -24,7 +33,6 @@
         .login-box button { width: 80%; background: #2980b9; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; }
         .error-msg { color: #c0392b; font-size: 14px; margin-top: 8px; display: none; }
 
-        /* ส่วนที่ 2: หน้าโปรแกรมคำนวณ (ซ่อนไว้จนกว่าจะใส่รหัสถูก) */
         #app-screen { display: none; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: bold; margin-bottom: 5px; color: #34495e; font-size: 15px; }
@@ -41,34 +49,45 @@
 
 <div class="container">
     <h2>MasterLotto VIP</h2>
-    <div class="subtitle">ระบบชำระเงินและคำนวณสูตรอัตโนมัติ</div>
+    <div class="subtitle">พื้นที่พิเศษสำหรับสมาชิกผู้ติดตามสูตรคำนวณ</div>
 
-    <!-- ส่วนหน้าชำระเงินและช่องใส่รหัสผ่าน -->
     <div id="payment-section">
-        <div class="card">
-            <h3>ช่องทางชำระเงินค่าสมาชิก</h3>
-            <div class="bank-info">
-                <p>🏦 <strong>ธนาคาร:</strong> กสิกรไทย</p>
-                <p>🔢 <strong>เลขที่บัญชี:</strong> <span class="highlight-acc">0661291613</span></p>
-                <p>👤 <strong>ชื่อบัญชี:</strong> ณัฐพงษ์ ขำสำอางค์</p>
+        <div class="price-box">
+            <div class="price-card">
+                <h4>⭐ รายเดือน</h4>
+                <div class="price">299 บาท</div>
+                <p>ใช้งานได้ 30 วันเต็ม</p>
             </div>
-            <p style="font-size: 0.85em; color: #666; margin-top: 15px; margin-bottom: 0;">
-                * โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปรับรหัสผ่านกับแอดมินได้ทันทีครับ
+            <div class="price-card vip-year">
+                <h4>🔥 รายปี (คุ้มสุด)</h4>
+                <div class="price">1,890 บาท</div>
+                <p>ใช้งานยาวๆ ทั้งปี</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🏦 ช่องทางชำระเงินค่าสมาชิก</h3>
+            <div class="bank-info">
+                <p><strong>ธนาคาร:</strong> กสิกรไทย</p>
+                <p><strong>เลขที่บัญชี:</strong> <span class="highlight-acc">0661291613</span></p>
+                <p><strong>ชื่อบัญชี:</strong> ณัฐพงษ์ ขำสำอางค์</p>
+            </div>
+            <p style="font-size: 0.85em; color: #666; margin-top: 12px; margin-bottom: 0;">
+                * โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้เลยครับ
             </p>
         </div>
 
         <a href="https://line.me/ti/p/cWXNwvCmqc" class="btn-line" target="_blank">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-box">
-            <p style="font-weight: bold; color: #1d6fa5; margin-top: 0; margin-bottom: 10px;">มีรหัสสมาชิกแล้ว?</p>
+            <p style="font-weight: bold; color: #1d6fa5; margin-top: 0; margin-bottom: 10px;">มีรหัสผ่านสมาชิกแล้ว?</p>
             <input type="password" id="passcode" placeholder="กรอกรหัสผ่าน VIP ที่นี่">
             <br>
             <button onclick="checkPassword()">เข้าสู่ระบบคำนวณ</button>
-            <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง</div>
+            <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง หรือหมดอายุ</div>
         </div>
     </div>
 
-    <!-- ส่วนหน้าโปรแกรมคำนวณหลัก (จะแสดงต่อเมื่อใส่รหัสถูก) -->
     <div id="app-screen">
         <button class="back-btn" onclick="logout()">ออกจากระบบ</button>
         <div class="form-group">
@@ -87,12 +106,21 @@
 </div>
 
 <script>
-    // [ตั้งค่ารหัสผ่าน] อาจารย์สามารถเปลี่ยนรหัสตรงนี้ได้ตามต้องการครับ
-    const VALID_PASSCODE = "VIP1234";
+    // ==========================================
+    // รายชื่อรหัสผ่านที่ได้รับอนุญาตให้เข้าใช้งาน
+    // ==========================================
+    const ALLOWED_PASSCODES = [
+        "AJAN-MASTER-999", // <-- รหัสลับส่วนตัวของอาจารย์ (ใช้เข้าฟรีตลอดชีพ ห้ามบอกใคร)
+        "VIP88-A89X",     // <-- ตัวอย่างรหัสของลูกค้าคนที่ 1
+        "VIP99-B72Y"      // <-- ตัวอย่างรหัสของลูกค้าคนที่ 2
+        // เวลา會มีลูกค้าสมัครเพิ่ม อาจารย์ก็แค่เอาเครื่องหมาย "คอมมา" ต่อท้าย แล้วใส่รหัสใหม่เพิ่มเข้าไปตรงนี้ได้เลยครับ
+    ];
 
     function checkPassword() {
         let inputPass = document.getElementById('passcode').value.trim();
-        if (inputPass === VALID_PASSCODE) {
+        
+        // เช็คว่ารหัสที่พิมพ์มา ตรงกับรายการในระบบไหม
+        if (ALLOWED_PASSCODES.includes(inputPass)) {
             document.getElementById('payment-section').style.display = 'none';
             document.getElementById('app-screen').style.display = 'block';
             document.getElementById('errorMsg').style.display = 'none';
