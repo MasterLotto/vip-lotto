@@ -34,7 +34,7 @@
             animation: twinkle 3s infinite ease-in-out;
         }
 
-        .header-box { text-align: center; margin-bottom: 24px; }
+        .header-box { text-align: center; margin-bottom: 20px; }
         .header-box h2 { 
             color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
             text-shadow: 0 0 15px rgba(251,191,36,0.6), 0 0 30px rgba(251,191,36,0.3); 
@@ -42,28 +42,27 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
+        /* สไตล์แถว Online ขนาดเล็ก เป็นบรรทัดเดียว อยู่เฉพาะหน้าแรก */
         .online-status-bar {
-            background: #131c2e;
-            border: 1px solid rgba(56,189,248,0.35);
-            padding: 16px 20px;
-            border-radius: 18px;
+            background: rgba(19, 28, 46, 0.7);
+            border: 1px solid rgba(56,189,248,0.2);
+            padding: 8px 14px;
+            border-radius: 12px;
             text-align: center;
-            font-size: 1.15rem;
-            color: #38bdf8;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(56,189,248,0.15);
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            font-weight: 600;
+            gap: 8px;
         }
         .online-dot {
-            width: 12px;
-            height: 12px;
+            width: 7px;
+            height: 7px;
             background-color: #4ade80;
             border-radius: 50%;
-            box-shadow: 0 0 12px #4ade80;
+            box-shadow: 0 0 8px #4ade80;
             animation: twinkle 2s infinite ease-in-out;
         }
 
@@ -346,7 +345,6 @@
 
 <div class="vip-container">
     
-    <!-- หน้าเข้าสู่ระบบ -->
     <div id="loginView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
@@ -355,7 +353,7 @@
 
         <div class="online-status-bar">
             <div class="online-dot"></div>
-            <span>ขณะนี้มีผู้ใช้งานออนไลน์อยู่: <strong id="onlineCount" style="color: #4ade80; font-size: 1.3rem;">244</strong> คน</span>
+            <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
         </div>
 
         <div class="package-grid">
@@ -412,16 +410,10 @@
         </div>
     </div>
 
-    <!-- หน้าหลักระบบคำนวณ -->
     <div id="calculatorView">
-        <div class="header-box" style="margin-bottom: 16px;">
+        <div class="header-box" style="margin-bottom: 20px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
             <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
-        </div>
-
-        <div class="online-status-bar">
-            <div class="online-dot"></div>
-            <span>ขณะนี้มีผู้ใช้งานออนไลน์อยู่: <strong id="onlineCountCalc" style="color: #4ade80; font-size: 1.3rem;">244</strong> คน</span>
         </div>
 
         <div class="calc-box">
@@ -456,27 +448,24 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // ฟังก์ชันสุ่มปรับตัวเลข Online ขึ้นลงช้าๆ แบบเป็นธรรมชาติ ระหว่าง 240 - 250 คน
+    // สลับล้างค่าหน่วยความจำตามกฎตรรกะที่กำหนด
+    function clearSystemMemory() {
+        const container = document.getElementById('resultContainer');
+        if (container) container.innerHTML = '';
+    }
+
+    // ฟังก์ชันสุ่มตัวเลข Online ช้าๆ ระหว่าง 240-250 คน เฉพาะหน้าแรก
     let currentOnline = 244;
     function simulateOnlineCount() {
-        // สุ่มโอกาสเปลี่ยนค่า (เพื่อให้มันเปลี่ยนช้ามากๆ ประมาณทุกๆ 4-8 วินาที)
         const change = Math.random() < 0.5 ? 1 : -1;
         const nextVal = currentOnline + change;
         if (nextVal >= 240 && nextVal <= 250) {
             currentOnline = nextVal;
         }
-        
         const el1 = document.getElementById('onlineCount');
-        const el2 = document.getElementById('onlineCountCalc');
         if (el1) el1.innerText = currentOnline;
-        if (el2) el2.innerText = currentOnline;
     }
-    setInterval(simulateOnlineCount, 5000);
-
-    function clearSystemMemory() {
-        const container = document.getElementById('resultContainer');
-        if (container) container.innerHTML = '';
-    }
+    setInterval(simulateOnlineCount, 6000);
 
     function clearInputs() {
         clearSystemMemory();
@@ -502,6 +491,7 @@
         container.innerHTML = '';
         loadingOverlay.style.display = 'block';
 
+        // ปรับเวลาหน่วงโหลดให้เหมาะสม (1.2 วินาที) ผลลัพธ์แสดงค้างไว้เสถียร ไม่หายไปทันที
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
             calculateFormula(t3, b2);
@@ -615,7 +605,8 @@
             container.innerHTML += cardHTML;
         });
 
-        setTimeout(clearSystemMemory, 500);
+        // ล้างหน่วยความจำเบื้องหลังเมื่อแสดงผลเสร็จเรียบร้อยตามระบบป้องกันหน่วยความจำล้น
+        setTimeout(clearSystemMemory, 600);
     }
 
     function copyText(text) {
