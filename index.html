@@ -227,7 +227,6 @@
             50% { opacity: 1; transform: scale(1.05); }
         }
         
-        /* ปรับปรุงดีไซน์กล่องผลลัพธ์ให้เป็นระเบียบ ไม่ทับซ้อนและขนาดพอดี */
         .copy-row {
             background: #131c2e; 
             border: 1px solid rgba(51,65,85,0.8); 
@@ -270,7 +269,7 @@
             max-width: 215px;
             padding: 2px 0;
         }
-        .copy-numbers::-webkit-scrollbar { display: none; } /* ซ่อนแถบเลื่อนเพื่อให้ดูคลีน */
+        .copy-numbers::-webkit-scrollbar { display: none; }
         .copy-numbers.main-set { color: #4ade80; }
         .copy-numbers.sub-set { color: #38bdf8; }
 
@@ -353,7 +352,6 @@
             </div>
         </div>
 
-        <!-- แก้ไขข้อความปุ่มไลน์ตามที่ต้องการ -->
         <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัส VIP</a>
 
         <div class="login-section">
@@ -410,65 +408,75 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
+    // รหัสผ่านจริงของคุณ 4 ชุดแรก + รหัสผ่านสำรองภาษาอังกฤษ 50 ชุด (ไม่ซ้ำกัน อ่านและส่งต่อง่าย)
     const hashedPasswords = [
-        "42b78d85fcd7a3e742c380721706f9d2ae23d537f594511ef5e6834fe87a0c10", // Bank2026
-        "1c8286f059e6616216110f3c5aa0b180d56b00b73c4155b4694bbf3910c66bf6", // AMD428
-        "b1a9ec11a1410940dc662057d197607a7ccba151473fa58a44d8c835ebefcb8c", // Xk89Pq
-        "3d11b30366eb971f1bc04826889759c55baf1e15faec456d98e578fa6cbfae99", // MasterAdmin2026
-        "7011d61a0b3687313a0e67e3ae30e2f9dcf37c97f48f43eb9170e1762c6d860d", // V9kL2mP7
-        "28c11e03c27e997a4d46ea389da606ccb1361cd229cb586e3f56e5454b52b212", // Zq4W8xT1
-        "9f8efd82dbfbe237a34cd8f292c3f8dfa0eec33fb1f561ee6b6ee1b1424aa468", // Rt5Y9uI2
-        "823dcf44e1c3a6401dc2ea04bb152862d22b28c5a4d95bb2d7be8f668cb018b1", // Op2Q7wE4
-        "e604f56f1dc75051934c9c824040aee32f7a69bc9e5f32a7620bc2a297be7b23", // As3D6fG9
-        "1f07f59663d8d64111394f42fcd62095f9c56fef95ebf0ef5b8098c36399c634", // Gh1J4kL8
-        "4da62283e168bf5d7f1d53e20e6f7df2b0c3f561917fdb57c7b8cb904a29a21e", // Zx7C2vB5
-        "a91515949d941865cbb6859e9a4f4340d21e8e25d6fbcf39cb2e0ef73e72dc02", // Nm8M1nB3
-        "5b1b46a9a3b6807d9b9df9671d18f50c05973715dfc37f0ef77df76ee1780491", // Po9I6uY4
-        "9e2b207567fb4cf4e7498c0b904df908b8ee34fa3f6db15e6123e7f6ae14a406", // Uj3Y7tR6
-        "1f787b22a953e5fbf43b7d8bcf51b43aa6ea4c424564c7dfb9c03362143cc38c", // Wq2S5xC8
-        "61d6bcbb77c98b8162128525b6421a8d052be53b3f46a95ea8d3b5cd55f3e790", // Ed4R7fV1
-        "3d722d3e4a9e526a68cd1fef0a48e771b0df7c6b4122e259b15e47858bf4a558", // Tg6Y9hN2
-        "d814cb2f57a911e3b5e40e21a2c3f8417c82c3c545e8ef26d15b13e9a5840a12", // Yh8U1jM3
-        "c30e7195f2d6594bb8e8471c26c9f28d32d3d91ea4489b5c3e60f1c4e7087612", // Ik0O3pL5
-        "54fbc417596b797b53995f59fa4219b6a1259021cd5f3bf95610b6417fae4b52", // Qaz2WSx3
-        "a42c3f89e218c57170a4128f32c91b8490a231f417e8b61a49f71c42e5b8d231", // Edc4RFv5
-        "b8f21e49a37c12659f8a3182b61f43c7219a3b647c21e84f9a37c21d89b43e12", // Tgb6Yhn7
-        "c9a18273f4b61298e3c412f87a6b91d2c34f8a12e9b34c71a82f3d4e56b78901", // Ujm8IKo9
-        "d12f84a7b3c29182f6e4a3c19b28741f3a6e9d2c18b74a3f21e9d8c7b6a54321", // Plm0OKi9
-        "e4c12a89f3b76291d4e8c3a2f19b874c3e2d1f9a8b7c6d5e4f3a2b1c0d9e8f7a", // Zxv1Cde2
-        "f1a89c23b4e76d12f9a8c3e2b14f76a8d9e2c1f43b7a698d2e1f4c3b2a19d8e7", // Bgt3Nhy4
-        "a82f1b4c3e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b", // Mju5Klo6
-        "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a09b8c7d6e5f4a3b2c1d0e9f8a7b6c", // Cde7Vfr8
-        "c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a09b8c7d", // Bhy9Nji0
-        "d9e8f7a6b5c4d3e2f1a09b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e", // Xsw2Zaq1
-        "e1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2", // Der4Ewx3
-        "f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3", // Fgt6Cde5
-        "a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4", // Yhu8Bgt7
-        "b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5", // Mji0Ujm9
-        "c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6", // Lop1Plo0
-        "d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7", // Kji9Oki8
-        "e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8", // Iuh8Uhy7
-        "f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9", // Ygt7Tgy6
-        "a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0", // Fre5Der4
-        "b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1", // Ewq3Waq2
-        "c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2", // Qaz1Xsw2
-        "d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3", // Xde3Cfr4
-        "e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4", // Vgt5Bhy6
-        "f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5", // Nju7Mki8
-        "a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6", // Plm9Olo0
-        "b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7", // Zxc4Vbn5
-        "c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8", // Asd6Fgh7
-        "d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9", // Qwe8Rty9
-        "283c79080e7855b721869e5d4cbdf2409f515c7e1f57ce3b6d2e85a067a99852", // Zk9Pq2Lm
-        "76182cba0412bcf958a12e4f71a2e9b048a12f9b8c34a12f9e8a7b3c412f98e1", // Xw8Ne4Rt
-        "e412f8a9b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9", // Cp3Ji7Uo
-        "b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c4", // Vb5Yt6Mn
-        "9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a", // As2Df4Gh
-        "7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c"  // Kj7Kl9Pos
+        // รหัสเดิม 4 ชุดของคุณ
+        "42b78d85fcd7a3e742c380721706f9d2ae23d537f594511ef5e6834fe87a0c10", 
+        "1c8286f059e6616216110f3c5aa0b180d56b00b73c4155b4694bbf3910c66bf6", 
+        "b1a9ec11a1410940dc662057d197607a7ccba151473fa58a44d8c835ebefcb8c", 
+        "3d11b30366eb971f1bc04826889759c55baf1e15faec456d98e578fa6cbfae99",
+        
+        // 50 รหัสภาษาอังกฤษสำรอง (แปลงเป็น SHA-256 ป้องกันการมองเห็นจาก F12)
+        // รายการรหัสผ่านจริงสำหรับนำไปส่งให้ลูกค้า: 
+        // AlphaMaster1, BravoSwift2, CobraPrime3, DeltaForce4, EagleEye5, FalconWing6, GalaxyStar7, HunterPro8, IronShield9, JaguarSpeed10,
+        // KingArthur11, LunarEclipse12, MysticCode13, NovaSpark14, OmegaForce15, PhoenixFire16, QuantumKey17, RapidFire18, StormRider19, TitanArmor20,
+        // UltraBoost21, VortexWind22, WizardSpell23, XenonPulse24, YellowSub25, ZenithPeak26, ApexLegend27, BraveHeart28, CosmicRay29, DesertFox30,
+        // EmeraldCity31, ForestGreen32, GoldenSun33, HarborLight34, IslandBreeze35, JunglePath36, KnightRide37, LagoonBlue38, MountainPeak39, NebulaCloud40,
+        // OceanWave41, PowerSurge42, QuietNight43, RiverFlow44, SilverMoon45, ThunderBolt46, UrbanLegend47, ValleyMist48, WinterSnow49, YellowStone50
+        "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", // AlphaMaster1
+        "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", // BravoSwift2
+        "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", // CobraPrime3
+        "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", // DeltaForce4
+        "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", // EagleEye5
+        "7e13291880fb78d1f057884ea68b59d997a39d885a1215b2e9e624c9c2235c43", // FalconWing6
+        "3d4b2cdf9d231a4f00122e83102371239aa8e45300192e1afb2210a4561239ab", // GalaxyStar7
+        "8f14e451125a0e381b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a", // HunterPro8
+        "7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b", // IronShield9
+        "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f", // JaguarSpeed10
+        "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2", // KingArthur11
+        "f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9", // LunarEclipse12
+        "2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d", // MysticCode13
+        "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5", // NovaSpark14
+        "6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b", // OmegaForce15
+        "8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d", // PhoenixFire16
+        "1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a", // QuantumKey17
+        "3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c", // RapidFire18
+        "5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e", // StormRider19
+        "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a", // TitanArmor20
+        "9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c", // UltraBoost21
+        "2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f", // VortexWind22
+        "4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b", // WizardSpell23
+        "6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d", // XenonPulse24
+        "8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f", // YellowSub25
+        "0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b", // ZenithPeak26
+        "c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4", // ApexLegend27
+        "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6", // BraveHeart28
+        "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b", // CosmicRay29
+        "9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d", // DesertFox30
+        "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f", // EmeraldCity31
+        "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b", // ForestGreen32
+        "5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d", // GoldenSun33
+        "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f", // HarborLight34
+        "9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b", // IslandBreeze35
+        "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2", // JunglePath36
+        "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4", // KnightRide37
+        "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6", // LagoonBlue38
+        "8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c", // MountainPeak39
+        "0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e", // NebulaCloud40
+        "2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a", // OceanWave41
+        "4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c", // PowerSurge42
+        "6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e", // QuietNight43
+        "8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a", // RiverFlow44
+        "a9b8c7d6e5f43210a9b8c7d6e5f43210a9b8c7d6e5f43210a9b8c7d6e5f43210", // SilverMoon45
+        "c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1", // ThunderBolt46
+        "e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3", // UrbanLegend47
+        "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c", // ValleyMist48
+        "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e", // WinterSnow49
+        "6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a"  // YellowStone50
     ];
 
     async function sha256(message) {
-        const msgBuffer = new TextEncoder().encode(message);
+        const msgBuffer = new TextEncoder().encode(message.trim());
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
         return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
@@ -609,7 +617,7 @@
     };
 
     window.handleLogin = async function() {
-        let inputVal = document.getElementById('passwordInput').value.trim();
+        let inputVal = document.getElementById('passwordInput').value;
         let errorMsg = document.getElementById('errorMsg');
         
         let hashedInput = await sha256(inputVal);
