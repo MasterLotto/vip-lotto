@@ -42,6 +42,7 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
+        /* สไตล์แถว Online ขนาดเล็ก เป็นบรรทัดเดียว อยู่เฉพาะหน้าแรก */
         .online-status-bar {
             background: rgba(19, 28, 46, 0.7);
             border: 1px solid rgba(56,189,248,0.2);
@@ -124,12 +125,30 @@
             border-bottom: none;
             margin-bottom: 12px;
         }
-        .payment-label { color: #94a3b8; font-size: 0.85rem; }
-        .payment-value { color: #f8fafc; font-weight: 500; font-size: 0.9rem; text-align: right; }
-        .bank-highlight { color: #fbbf24; font-weight: bold; font-family: monospace; letter-spacing: 1px; font-size: 1rem; }
+        .payment-label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        .payment-value {
+            color: #f8fafc;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+        .bank-highlight { 
+            color: #fbbf24; 
+            font-weight: bold; 
+            font-family: monospace; 
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
         .payment-footer {
-            font-size: 0.75rem; color: #64748b; text-align: center; margin-top: 10px; 
-            border-top: 1px dashed rgba(51,65,85,0.6); padding-top: 8px;
+            font-size: 0.75rem; 
+            color: #64748b; 
+            text-align: center; 
+            margin-top: 10px; 
+            border-top: 1px dashed rgba(51,65,85,0.6);
+            padding-top: 8px;
         }
 
         @keyframes btnPulse {
@@ -163,7 +182,11 @@
         .calc-box { margin-bottom: 15px; text-align: left; }
         .calc-box label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 6px; }
         
-        .action-row { display: flex; gap: 10px; margin-bottom: 20px; }
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
         .btn-calculate {
             flex: 1; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white;
@@ -180,21 +203,33 @@
         .btn-clear:active { transform: scale(0.97); }
 
         #loadingOverlay {
-            display: none; background: rgba(15, 23, 42, 0.95); padding: 30px 20px;
-            border-radius: 16px; text-align: center; margin-bottom: 20px;
-            border: 1px solid rgba(56,189,248,0.4); box-shadow: 0 0 30px rgba(56,189,248,0.2);
+            display: none;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(56,189,248,0.4);
+            box-shadow: 0 0 30px rgba(56,189,248,0.2);
         }
         .spinner {
-            width: 45px; height: 45px; border: 4px solid rgba(56,189,248,0.2);
-            border-top: 4px solid #38bdf8; border-radius: 50%;
-            animation: spin 1s linear infinite; margin: 0 auto 15px auto;
+            width: 45px;
+            height: 45px;
+            border: 4px solid rgba(56,189,248,0.2);
+            border-top: 4px solid #38bdf8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         #loadingText {
-            color: #38bdf8; font-size: 0.95rem; font-weight: 500; min-height: 24px;
+            color: #38bdf8;
+            font-size: 0.95rem;
+            font-weight: 500;
+            min-height: 24px;
             animation: pulseText 1.5s infinite;
         }
         @keyframes pulseText {
@@ -204,10 +239,18 @@
 
         .formula-card { 
             background: #0b0f19; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
-            border: 1px solid rgba(56,189,248,0.25); box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            animation: borderGlow2 4s infinite; text-align: left; position: relative;
+            border: 1px solid rgba(56,189,248,0.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            animation: borderGlow2 4s infinite;
+            text-align: left;
+            position: relative;
         }
-        .formula-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .formula-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
         .formula-title { color: #38bdf8; font-weight: bold; font-size: 1.05rem; }
         
         @keyframes hotBlink {
@@ -215,9 +258,16 @@
             50% { opacity: 1; transform: scale(1.05); }
         }
         .hot-badge {
-            background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.6);
-            color: #f87171; padding: 2px 8px; border-radius: 8px; font-size: 0.75rem;
-            font-weight: bold; display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.6);
+            color: #f87171;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
             animation: hotBlink 1.5s infinite ease-in-out;
         }
 
@@ -228,19 +278,50 @@
             50% { opacity: 1; transform: scale(1.05); }
         }
         .copy-row {
-            background: #131c2e; border: 1px solid rgba(51,65,85,0.8); padding: 10px 14px; 
-            border-radius: 12px; margin-bottom: 8px; display: flex; align-items: center; 
-            justify-content: space-between; cursor: pointer; transition: 0.2s;
+            background: #131c2e; 
+            border: 1px solid rgba(51,65,85,0.8); 
+            padding: 10px 14px; 
+            border-radius: 12px; 
+            margin-bottom: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            cursor: pointer;
+            transition: 0.2s;
         }
-        .copy-row:hover { border-color: #38bdf8; background: #17223b; }
-        .copy-row:active { transform: scale(0.98); }
-        .copy-label { font-size: 0.9rem; color: #e2e8f0; font-weight: 500; letter-spacing: 0.3px; }
-        .copy-content-area { display: flex; align-items: center; gap: 12px; }
-        .copy-numbers { font-family: monospace; font-size: 0.95rem; letter-spacing: 1px; font-weight: bold; }
+        .copy-row:hover {
+            border-color: #38bdf8;
+            background: #17223b;
+        }
+        .copy-row:active {
+            transform: scale(0.98);
+        }
+        .copy-label {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .copy-content-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .copy-numbers {
+            font-family: monospace;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
         .copy-numbers.main-set { color: #4ade80; }
         .copy-numbers.sub-set { color: #38bdf8; }
 
-        .sparkle-clipboard { display: inline-block; font-size: 0.9rem; animation: gentleFade 3s infinite ease-in-out; opacity: 0.85; }
+        .sparkle-clipboard {
+            display: inline-block;
+            font-size: 0.9rem;
+            animation: gentleFade 3s infinite ease-in-out;
+            opacity: 0.85;
+        }
 
         #toast {
             visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
@@ -271,6 +352,7 @@
             <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง</p>
         </div>
 
+        <!-- แถวผู้ใช้งานออนไลน์ บรรทัดเดียว ตัวหนังสือเล็ก อยู่เฉพาะหน้าแรก -->
         <div class="online-status-bar">
             <div class="online-dot"></div>
             <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
@@ -330,11 +412,11 @@
         </div>
     </div>
 
-    <!-- หน้าหลักระบบคำนวณ -->
+    <!-- หน้าหลักระบบคำนวณ (ไม่มีแถว Online) -->
     <div id="calculatorView">
         <div class="header-box" style="margin-bottom: 20px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์อัจฉริยะ</p>
+            <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
         </div>
 
         <div class="calc-box">
@@ -349,7 +431,7 @@
 
         <div class="action-row">
             <button class="btn-calculate" onclick="startProcessing()">
-                <span>✨</span> ประมวลผล
+                <span>✨</span> ประมวลผลสูตรคำนวณ
             </button>
             <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
         </div>
@@ -369,11 +451,13 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
+    // ฟังก์ชันสำหรับเคลียร์พื้นที่แสดงผลเก่า เพื่อป้องกันความย้อนซ้อนหรือระบบช้าลง
     function clearSystemMemory() {
         const container = document.getElementById('resultContainer');
         if (container) container.innerHTML = '';
     }
 
+    // สร้างหรือดึง Device ID ประจำเครื่องนี้
     function getDeviceID() {
         let deviceId = localStorage.getItem('masterlotto_device_id');
         if (!deviceId) {
@@ -383,6 +467,7 @@
         return deviceId;
     }
 
+    // สุ่มจำนวน Online ระหว่าง 240-250 คน (เฉพาะหน้าแรก)
     let currentOnline = 244;
     function simulateOnlineCount() {
         const change = Math.random() < 0.5 ? 1 : -1;
@@ -429,35 +514,38 @@
         const dBot = parseInt(b2[0]);
         const uBot = parseInt(b2[1]);
 
-        const rawFormulasDef = [
-            { name: "สูตรที่ 1", sum: dTop + dBot },
-            { name: "สูตรที่ 2", sum: hTop + dTop + uTop },
-            { name: "สูตรที่ 3", sum: hTop + dBot },
-            { name: "สูตรที่ 4", sum: uTop + uBot },
-            { name: "สูตรที่ 5", sum: 10 - uBot },
-            { name: "สูตรที่ 6", sum: hTop + uTop + dTop },
-            { name: "สูตรที่ 7", sum: (hTop * 2) + uTop },
-            { name: "สูตรที่ 8", sum: dTop + (uTop * 2) },
-            { name: "สูตรที่ 9", sum: Math.abs(hTop - uTop) + dTop },
-            { name: "สูตรที่ 10", sum: (dTop * 3) + hTop },
-            { name: "สูตรที่ 11", sum: dBot + uBot + hTop },
-            { name: "สูตรที่ 12", sum: (dBot * 2) + uTop },
-            { name: "สูตรที่ 13", sum: dBot + uBot + uTop },
-            { name: "สูตรที่ 14", sum: hTop + dTop + dBot },
-            { name: "สูตรที่ 15", sum: (uTop + dBot) * 2 },
-            { name: "สูตรที่ 16", sum: Math.abs(hTop - uTop) + dBot },
-            { name: "สูตรที่ 17", sum: hTop + dTop + uTop + dBot },
-            { name: "สูตรที่ 18", sum: (uTop * 2) + uBot },
-            { name: "สูตรที่ 19", sum: (dTop + uBot) - hTop },
-            { name: "สูตรที่ 20", sum: hTop + dTop + uTop + dBot + uBot }
-        ];
+        let sum1 = dTop + dBot;
+        let d1_1 = sum1 % 10;
+        let d1_2 = (d1_1 + 1) % 10;
+        let set1 = [d1_1, d1_2];
 
-        let formulas = rawFormulasDef.map(f => {
-            let s = f.sum;
-            let d1 = Math.abs(s) % 10;
-            let d2 = (d1 + 1) % 10;
-            return { name: f.name, set: [d1, d2] };
-        });
+        let sum2 = hTop + dTop + uTop;
+        let d2_1 = sum2 % 10;
+        let d2_2 = (d2_1 + 1) % 10;
+        let set2 = [d2_1, d2_2];
+
+        let sum3 = hTop + dBot;
+        let d3_1 = sum3 % 10;
+        let d3_2 = (d3_1 + 1) % 10;
+        let set3 = [d3_1, d3_2];
+
+        let sum4 = uTop + uBot;
+        let d4_1 = sum4 % 10;
+        let d4_2 = (d4_1 + 1) % 10;
+        let set4 = [d4_1, d4_2];
+
+        let sum5 = 10 - uBot;
+        let d5_1 = sum5 % 10;
+        let d5_2 = (d5_1 + 1) % 10;
+        let set5 = [d5_1, d5_2];
+
+        const formulas = [
+            { name: "สูตรที่ 1", set: set1 },
+            { name: "สูตรที่ 2", set: set2 },
+            { name: "สูตรที่ 3", set: set3 },
+            { name: "สูตรที่ 4", set: set4 },
+            { name: "สูตรที่ 5", set: set5 }
+        ];
 
         let freqMap = {};
         formulas.forEach(f => {
@@ -473,7 +561,7 @@
         formulas.sort((a, b) => b.score - a.score);
 
         formulas.forEach((f, index) => {
-            f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 5));
+            f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
         });
 
         let coreVal = (7 - hTop) % 10;
@@ -482,8 +570,7 @@
         const container = document.getElementById('resultContainer');
         container.innerHTML = '';
 
-        formulas.slice(0, 5).forEach((f, idx) => {
-            let displayHeaderName = `สูตรที่ ${idx + 1}`;
+        formulas.forEach((f) => {
             let hasCollision = false;
             for(let offset = -2; offset <= 2; offset++) {
                 let val = (coreVal + offset) % 10;
@@ -508,17 +595,17 @@
             let cardHTML = `
                 <div class="formula-card">
                     <div class="formula-header-flex">
-                        <div class="formula-title">${displayHeaderName}</div>
-                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ</div>' : ''}
+                        <div class="formula-title">${f.name}</div>
+                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ (HOT)</div>' : ''}
                     </div>
                     <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
             `;
 
-            f.set.forEach((dNum, dIdx) => {
+            f.set.forEach((dNum, idx) => {
                 let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
                 let pairString = pairs.join(' ');
-                let colorClass = (dIdx === 0) ? "main-set" : "sub-set";
-                let labelText = (dIdx === 0) ? `เด่น ${dNum}` : `รอง ${dNum}`;
+                let colorClass = (idx === 0) ? "main-set" : "sub-set";
+                let labelText = (idx === 0) ? `เด่น ${dNum}` : `รอง ${dNum}`;
                 
                 cardHTML += `
                     <div class="copy-row" onclick="copyText('${pairString}')">
@@ -568,6 +655,7 @@
             const boundDevice = localStorage.getItem(boundDeviceKey);
 
             if (!boundDevice) {
+                // ล็อกอินครั้งแรก ผูกรหัสนี้กับเครื่องนี้ทันที
                 localStorage.setItem(boundDeviceKey, currentDevice);
                 localStorage.setItem('masterlotto_vip_logged', 'true');
                 localStorage.setItem('masterlotto_active_pass', pass);
@@ -575,12 +663,14 @@
                 document.getElementById('calculatorView').style.display = 'block';
                 errorMsg.style.display = 'none';
             } else if (boundDevice === currentDevice) {
+                // เครื่องเดิม เข้าใช้งานได้ปกติ
                 localStorage.setItem('masterlotto_vip_logged', 'true');
                 localStorage.setItem('masterlotto_active_pass', pass);
                 document.getElementById('loginView').style.display = 'none';
                 document.getElementById('calculatorView').style.display = 'block';
                 errorMsg.style.display = 'none';
             } else {
+                // เครื่องอื่นแอบเอามาใช้ (ล็อคไว้ 1 เครื่อง)
                 errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').focus();
