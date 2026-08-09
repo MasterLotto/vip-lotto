@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
+    <title>MasterLotto VIP - Ultimate Matrix System</title>
     <style>
         * { box-sizing: border-box; }
         body { 
             font-family: 'Kanit', sans-serif; 
-            background-color: #05070e; 
+            background-color: #040711; 
             color: #f8fafc; 
             margin: 0; 
             padding: 15px; 
@@ -17,73 +17,54 @@
         .vip-container { 
             max-width: 480px; 
             margin: 0 auto; 
-            background: #0f172a; 
+            background: #0b1329; 
             padding: 24px; 
             border-radius: 24px; 
             box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(56, 189, 248, 0.15);
             position: relative;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
-        .star-sparkle {
-            display: inline-block;
-            animation: twinkle 1.5s infinite ease-in-out;
-        }
+        .star-sparkle { display: inline-block; animation: twinkle 2.5s infinite ease-in-out; }
 
         .header-box { text-align: center; margin-bottom: 24px; }
         .header-box h2 { 
             color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
-            text-shadow: 0 0 15px rgba(251,191,36,0.6), 0 0 30px rgba(251,191,36,0.3); 
-            letter-spacing: 0.5px; 
+            text-shadow: 0 0 15px rgba(251,191,36,0.5); 
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
-        @keyframes borderGlow1 {
-            0% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
-            50% { border-color: rgba(232,121,249,0.9); box-shadow: 0 0 20px rgba(232,121,249,0.6); }
-            100% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+        @keyframes goldGlow {
+            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 8px rgba(251,191,36,0.15); }
+            50% { border-color: rgba(251,191,36,0.8); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 8px rgba(251,191,36,0.15); }
         }
-        @keyframes borderGlow2 {
-            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
-            50% { border-color: rgba(56,189,248,0.9); box-shadow: 0 0 20px rgba(56,189,248,0.6); }
-            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
-        }
-        @keyframes borderGlow3 {
-            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
-            50% { border-color: rgba(251,191,36,0.9); box-shadow: 0 0 25px rgba(251,191,36,0.7); }
-            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
-        }
-        @keyframes borderGlow4 {
-            0% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
-            50% { border-color: rgba(74,222,128,0.9); box-shadow: 0 0 20px rgba(74,222,128,0.6); }
-            100% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
+        @keyframes blueGlow {
+            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 8px rgba(56,189,248,0.15); }
+            50% { border-color: rgba(56,189,248,0.8); box-shadow: 0 0 20px rgba(56,189,248,0.4); }
+            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 8px rgba(56,189,248,0.15); }
         }
 
-        .package-card { background: #131c2e; padding: 14px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; transition: transform 0.2s; }
+        .package-card { background: #111a33; padding: 14px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; transition: transform 0.2s; }
         .package-card:active { transform: scale(0.96); }
+        .package-card-1 { animation: blueGlow 3s infinite; }
+        .package-card-2 { animation: blueGlow 3.5s infinite; }
+        .package-card-3 { animation: goldGlow 2.5s infinite; }
+        .package-card-4 { animation: goldGlow 3s infinite; }
         
-        .package-card-1 { animation: borderGlow1 3s infinite; }
-        .package-card-2 { animation: borderGlow2 3s infinite; }
-        .package-card-3 { animation: borderGlow3 2.5s infinite; }
-        .package-card-4 { animation: borderGlow4 3s infinite; }
-        
-        .package-card-1 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #e879f9; }
-        .package-card-2 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #38bdf8; }
-        .package-card-3 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #fbbf24; }
-        .package-card-4 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #4ade80; }
-        
+        .package-card h3 { margin: 0 0 4px 0; font-size: 0.95rem; }
         .price { font-size: 1.2rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
-        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; }
+        .payment-box { background: #060a17; border: 1px solid rgba(51,65,85,0.6); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 4px 10px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); }
+        .bank-num { color: #fbbf24; font-weight: bold; background: #131c2e; padding: 4px 10px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); }
 
         @keyframes btnPulse {
             0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
@@ -97,10 +78,10 @@
         }
         .btn-line:active { transform: scale(0.97); }
 
-        .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); }
+        .login-section { background: #060a17; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.6); }
         .input-group { margin-bottom: 14px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 6px; }
-        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
+        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #111a33; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
         input:focus { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56,189,248,0.4); }
         
         button.action-btn { 
@@ -108,65 +89,75 @@
             color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
         button.action-btn:active { transform: scale(0.97); background: #334155; }
-
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
+
+        /* AI Matrix Scanning Screen */
+        #scanningView { display: none; text-align: center; padding: 40px 20px; }
+        .scanner-loader {
+            width: 70px; height: 70px; border: 4px solid rgba(56,189,248,0.2); border-top: 4px solid #38bdf8;
+            border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px auto;
+            box-shadow: 0 0 20px rgba(56,189,248,0.4);
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .scanning-text { color: #fbbf24; font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 10px rgba(251,191,36,0.4); margin-bottom: 8px; }
+        .scanning-sub { color: #94a3b8; font-size: 0.85rem; }
 
         #calculatorView { display: none; }
         
-        .formula-card { 
-            background: #0b0f19; padding: 16px; margin-top: 16px; border-radius: 16px; 
-            border-left: 4px solid #38bdf8; border: 1px solid rgba(56,189,248,0.25);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            animation: borderGlow2 4s infinite;
+        .btn-copy-all {
+            width: 100%; padding: 12px; background: linear-gradient(135deg, #d97706, #b45309); color: #fff;
+            border: none; border-radius: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer; margin-bottom: 16px;
+            box-shadow: 0 4px 15px rgba(217,119,6,0.4); transition: 0.2s;
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1.05rem; }
-        .highlight { color: #fbbf24; font-weight: bold; text-shadow: 0 0 8px rgba(251,191,36,0.4); }
+        .btn-copy-all:active { transform: scale(0.97); }
+
+        .formula-card-featured { 
+            background: linear-gradient(135deg, #131d38, #1a1508); padding: 16px; margin-top: 14px; border-radius: 16px; 
+            border: 2px solid #fbbf24; box-shadow: 0 8px 30px rgba(251,191,36,0.25); position: relative;
+        }
+        .badge-recommended {
+            position: absolute; top: -10px; right: 16px; background: #fbbf24; color: #000;
+            font-size: 0.7rem; font-weight: bold; padding: 2px 10px; border-radius: 20px;
+            box-shadow: 0 0 10px rgba(251,191,36,0.6);
+        }
+
+        .formula-card { 
+            background: #060a17; padding: 16px; margin-top: 14px; border-radius: 16px; 
+            border: 1px solid rgba(56,189,248,0.25); box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        .formula-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .formula-title { color: #38bdf8; font-weight: bold; font-size: 1.05rem; }
+        .formula-accuracy { color: #4ade80; font-size: 0.75rem; background: rgba(74,222,128,0.1); padding: 2px 8px; border-radius: 6px; }
         
         .pierce-row { 
-            background: #131c2e; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.6); border-radius: 10px; 
-            margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; transition: all 0.2s;
+            background: #111a33; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.5); border-radius: 10px; 
+            margin-top: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s;
         }
         .pierce-row:active { transform: scale(0.98); background: #1e293b; border-color: #38bdf8; }
-        
         .pierce-left { display: flex; align-items: center; gap: 8px; }
         .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
         
-        @keyframes iconBlink {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.15); }
-        }
-        .copy-icon {
-            font-size: 0.85rem;
-            animation: iconBlink 2s infinite ease-in-out;
-        }
-
-        .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; text-shadow: 0 0 8px rgba(74,222,128,0.3); }
-        .pierce-nums-alt { color: #38bdf8; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; text-shadow: 0 0 8px rgba(56,189,248,0.3); }
+        @keyframes iconBlink { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
+        .copy-icon { font-size: 0.85rem; animation: iconBlink 2s infinite ease-in-out; }
+        .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; }
+        .pierce-nums-alt { color: #38bdf8; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; }
 
         #toast {
             visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
-            text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
-            z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%);
-            font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed; z-index: 1000;
+            left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 0.9rem; font-weight: bold;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.3);
         }
         #toast.show { visibility: visible; animation: fadeInOut 1.5s ease-in-out; }
-        @keyframes fadeInOut {
-            0% { bottom: 0px; opacity: 0; }
-            20% { bottom: 30px; opacity: 1; }
-            80% { bottom: 30px; opacity: 1; }
-            100% { bottom: 10px; opacity: 0; }
-        }
+        @keyframes fadeInOut { 0% { bottom: 0px; opacity: 0; } 20% { bottom: 30px; opacity: 1; } 80% { bottom: 30px; opacity: 1; } 100% { bottom: 10px; opacity: 0; } }
 
         .announcement-bottom { 
-            background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); border-left: 4px solid #fbbf24;
+            background: #060a17; border: 1px solid rgba(51,65,85,0.8); border-left: 4px solid #fbbf24;
             border-radius: 16px; padding: 16px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.6;
         }
         .announcement-bottom h4 { margin: 0 0 10px 0; color: #fbbf24; font-size: 0.95rem; }
         .announcement-bottom ul { margin: 0; padding-left: 18px; }
         .announcement-bottom li { margin-bottom: 8px; }
-
         .back-btn { background: #334155 !important; margin-top: 20px; border: none !important; color: #fff !important; }
     </style>
 </head>
@@ -174,146 +165,12 @@
 
 <div class="vip-container">
     
-    <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ -->
+    <!-- หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ -->
     <div id="loginView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</p>
+            <p>ระบบ AI Ultimate Matrix ประมวลผลสดจาก 100,000 สูตร</p>
         </div>
 
         <div class="package-grid">
-            <div class="package-card package-card-1">
-                <h3>⏱️ 7 วัน</h3>
-                <div class="price">99 ฿</div>
-                <div class="desc">ทดลองใช้งาน</div>
-            </div>
-            <div class="package-card package-card-2">
-                <h3>⏳ 15 วัน</h3>
-                <div class="price">199 ฿</div>
-                <div class="desc">ใช้งานคุ้มค่า</div>
-            </div>
-            <div class="package-card package-card-3">
-                <h3>⭐ 1 เดือน</h3>
-                <div class="price">299 ฿</div>
-                <div class="desc">ยอดฮิตแนะนำ</div>
-            </div>
-            <div class="package-card package-card-4">
-                <h3>🔥 1 ปี</h3>
-                <div class="price">1,890 ฿</div>
-                <div class="desc">สุดคุ้มทั้งปี</div>
-            </div>
-        </div>
-
-        <div class="payment-box">
-            <h4>🏛️ ช่องทางชำระเงินค่าสมาชิก</h4>
-            ธนาคาร: <b>กสิกรไทย</b><br>
-            เลขบัญชี: <span class="bank-num">0661291613</span><br>
-            ชื่อบัญชี: <b>ณัฐพงษ์ ขำสำอางค์</b><br>
-            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">* โอนแล้วแจ้งสลิปเพื่อรับรหัสผ่านผ่านไลน์</div>
-        </div>
-
-        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
-
-        <div class="login-section">
-            <div class="input-group">
-                <label>รหัสผ่านสมาชิก VIP</label>
-                <input type="password" id="passCode" placeholder="กรอกรหัสผ่าน">
-                <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง</div>
-            </div>
-            <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
-        </div>
-    </div>
-
-    <!-- 2. หน้าคำนวณสูตร -->
-    <div id="calculatorView">
-        <div class="header-box">
-            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบคำนวณสูตรอัจฉริยะ</p>
-        </div>
-
-        <div class="input-group">
-            <label>กรอกผลรางวัล (ตัวอย่างเช่น แนวทางคำนวณ)</label>
-            <input type="text" id="calcInput" placeholder="กรอกตัวเลขเพื่อคำนวณ">
-        </div>
-        <button class="action-btn" onclick="runCalculation()" style="background: linear-gradient(135deg, #059669, #047857); border: none; margin-bottom: 15px;">ประมวลผลสูตร</button>
-
-        <div class="formula-card">
-            <div class="formula-title">สูตรคำนวณเด่น VIP</div>
-            <div class="pierce-row" onclick="copyText('02 03 04 05 06')">
-                <div class="pierce-left">
-                    <span class="copy-icon">📋</span>
-                    <span class="pierce-label">ชุดเจาะเน้นๆ :</span>
-                </div>
-                <span class="pierce-nums">02 03 04 05 06</span>
-            </div>
-        </div>
-
-        <div class="announcement-bottom">
-            <h4>📌 คำแนะนำการใช้งาน</h4>
-            <ul>
-                <li>ใช้รหัสผ่านส่วนตัวในการเข้าสู่ระบบทุกครั้ง</li>
-                <li>ติดตามอัปเดตสูตรใหม่ๆ ได้ทางกลุ่ม VIP</li>
-            </ul>
-        </div>
-
-        <button class="action-btn back-btn" onclick="logout()">ออกจากระบบ</button>
-    </div>
-
-</div>
-
-<div id="toast">คัดลอกสำเร็จ!</div>
-
-<script>
-    // -------------------------------------------------------------
-    // รายชื่อรหัสผ่าน (เพิ่ม/ลบ รหัสผ่านลูกค้าตรงนี้ได้เลยครับ)
-    // อย่าลืมใส่เครื่องหมายคำพูด "" และคั่นด้วยเครื่องหมายคอมมา ,
-    // -------------------------------------------------------------
-    const memberPasswords = [
-        "MasterAdmin2026",
-        "AMD428",
-        "VIP2026",
-        "Bank2026"
-    ];
-
-    function checkLogin() {
-        const passInput = document.getElementById('passCode');
-        const errorDiv = document.getElementById('errorMsg');
-        const pass = passInput.value.trim();
-
-        // เช็ครหัสผ่านว่าตรงกับในรายการ memberPasswords หรือไม่
-        if (pass !== "" && memberPasswords.includes(pass)) {
-            errorDiv.style.display = 'none';
-            document.getElementById('loginView').style.display = 'none';
-            document.getElementById('calculatorView').style.display = 'block';
-            passInput.value = '';
-        } else {
-            errorDiv.style.display = 'block';
-            passInput.value = '';
-        }
-    }
-
-    function logout() {
-        document.getElementById('calculatorView').style.display = 'none';
-        document.getElementById('loginView').style.display = 'block';
-    }
-
-    function runCalculation() {
-        showToast("ประมวลผลสูตรสำเร็จ!");
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            showToast("คัดลอก: " + text);
-        });
-    }
-
-    function showToast(message) {
-        const toast = document.getElementById("toast");
-        toast.innerText = message;
-        toast.className = "show";
-        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
-    }
-</script>
-
-</body>
-</html>
+            <div class="package-ca
