@@ -216,12 +216,10 @@
         let b2 = parseInt(bottom[1]);
 
         // ซ่อนตรรกะการบวกเบื
-
     <script>
-    // === [ระบบสมาชิก VIP - ล็อกรหัสผ่าน] ===
-    // รหัสผ่านหลักของอาจารย์ (เข้าได้ตลอด) และรหัสสมาชิกท่านอื่น
+    // รายชื่อรหัสผ่านสมาชิกทั้งหมด (รวมรหัสอาจารย์)
     const memberPasswords = [
-        "MasterAdmin2026",  // รหัสผ่านของอาจารย์ (เข้าได้ตลอด)
+        "MasterAdmin2026", 
         "1234", 
         "VIP2026", 
         "สมชาย111"
@@ -230,7 +228,7 @@
     function checkLogin() {
         const pass = document.getElementById('vipPassword').value.trim();
         
-        // ตรวจสอบว่ารหัสที่กรอกอยู่ในลิสต์รายการหรือไม่
+        // เช็กว่ารหัสถูกต้องและตรงกับในรายชื่อไหม
         if (pass !== "" && memberPasswords.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
@@ -238,5 +236,9 @@
             alert("❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์เข้าใช้งานครับ");
             document.getElementById('vipPassword').value = '';
         }
+    }
+
+    function logout() {
+        location.reload();
     }
 </script>
