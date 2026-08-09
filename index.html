@@ -373,7 +373,7 @@
 
         <div class="online-counter">
             <div class="online-dot"></div>
-            <span>ขณะนี้มีผู้ใช้งานออนไลน์อยู่: <strong id="onlineCountNumber">242</strong> คน</span>
+            <span>ขณะนี้มีผู้ใช้งานออนไลน์อยู่: <strong id="onlineCountNumber">244</strong> คน</span>
         </div>
 
         <div class="calc-box">
@@ -408,14 +408,8 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // รายชื่อรหัสผ่านทั้งหมดแบบตัวอักษรตรงๆ (พิมพ์อะไรเข้า-เช็คอันนั้นทันที ไม่มีทางพลาด)
     const validPasswords = [
-        "Xk89Pq",
-        "AMD428",
-        "VIP2026",
-        "Bank2026",
-        "MasterAdmin2026",
-        // รหัสสำรองภาษาอังกฤษอีก 45 รหัส รวมเป็น 50 รหัส
+        "Xk89Pq", "AMD428", "VIP2026", "Bank2026", "MasterAdmin2026",
         "AlphaMaster1", "BravoSwift2", "CobraPrime3", "DeltaForce4", "EagleEye5",
         "FalconWing6", "GalaxyStar7", "HunterPro8", "IronShield9", "JaguarSpeed10",
         "KingArthur11", "LunarEclipse12", "MysticCode13", "NovaSpark14", "OmegaForce15",
@@ -428,7 +422,7 @@
         "ThunderBolt46", "UrbanLegend47", "ValleyMist48", "WinterSnow49", "YellowStone50"
     ];
 
-    let onlineCount = 242;
+    let onlineCount = 244;
 
     window.onload = function() {
         if(localStorage.getItem('masterlotto_vip_auth') === 'true') {
@@ -513,43 +507,62 @@
             { name: 'สูตรที่ 5', data: set5 }
         ];
 
-        let baseNum = (7 - d1) % 10;
-        if (baseNum < 0) baseNum += 10;
-
         let container = document.getElementById('resultContainer');
         container.innerHTML = '';
 
         formulas.forEach(form => {
-            let matchType = 5;
-            for (let i = -2; i <= 2; i++) {
-                let target = (baseNum + i) % 10;
-                if (target < 0) target += 10;
-                if (form.data.includes(target)) {
-                    matchType = 4;
-                    break;
+            let dMain = form.data[0]; // ตัวเด่นที่ 1
+            let dSub = form.data[1];  // ตัวเด่นที่ 2 (รอง)
+
+            // ฟังก์ชันสร้างเลขเจาะ 5 คู่ ตามเงื่อนไข:
+            // - ไม่เอาเลขเด่นมาวินกันเอง (ห้ามมีเลข dSub ในฝั่งเด่น และห้ามมีเลข dMain ในฝั่งรอง)
+            // - ไม่เอาเลขเบิ้ล (เลขหลักสิบกับหลักหน่วยห้ามซ้ำกัน)
+            // - ได้เลขเจาะอย่างละ 5 คู่ (รวมเป็น 10 คู่)
+            function generatePairs(excludeDigit) {
+                let pairs = [];
+                let current = (excludeDigit + 1) % 10;
+                while(pairs.length < 5) {
+                    // ป้องกันเลขเบิ้ล และป้องกันการเอาเลขเด่นอีกตัวมาไขว้กันเองในชุด
+                    if (current !== excludeDigit) {
+                        pairs.push(current);
+                    }
+                    current = (current + 1) % 10;
                 }
+                return pairs;
             }
-            let rangeSize = matchType === 4 ? 3 : 2;
-            let pool = [];
-            for (let i = -rangeSize; i <= rangeSize; i++) {
-                let target = (baseNum + i) % 10;
-                if (target < 0) target += 10;
-                pool.push(target);
-            }
-            let uniquePool = pool.filter((val, idx, self) => self.indexOf(val) === idx);
-            uniquePool.sort((a, b) => a - b);
 
-            let html = `<div class="formula-card"><div class="formula-title">${form.name}</div><div class="formula-sub">เลขเด่น: ${form.data[0]} - ${form.data[1]}</div>`;
+            // เด่น (dMain): สร้าง 5 ตัวที่ไม่ซ้ำกับ dSub และไม่มีเลขเบิ้ล
+            let poolMain = generatePairs(dSub);
+            // รอง (dSub): สร้าง 5 ตัวที่ไม่ซ้ำกับ dMain และไม่มีเลขเบิ้ล
+            let poolSub = generatePairs(dMain);
 
-            form.data.forEach((digit, idx) => {
-                let generated = uniquePool.map(p => `${digit}${p}`);
-                let fullString = generated.join(' ');
-                let badgeClass = idx === 0 ? 'main-set' : 'sub-set';
-                let labelText = idx === 0 ? `เด่น ${digit}` : `รอง ${digit}`;
+            let generatedMain = poolMain.map(p => `${dMain}${p}`);
+            let generatedSub = poolSub.map(p => `${dSub}${p}`);
 
-                html += `<div class="copy-row" onclick="copyToClipboard('${fullString}')"><div class="copy-label">${labelText}</div><div class="copy-content-area"><div class="copy-numbers ${badgeClass}">${fullString}</div><span class="sparkle-clipboard">📋</span></div></div>`;
-            });
-            html += `</div>`;
+            let fullStringMain = generatedMain.join(' ');
+            let fullStringSub = generatedSub.join(' ');
+
+            let html = `<div class="formula-card">
+                <div class="formula-title">${form.name}</div>
+                <div class="formula-sub">เลขเด่น: ${dMain} - ${dSub}</div>
+
+                <div class="copy-row" onclick="copyToClipboard('${fullStringMain}')">
+                    <div class="copy-label">เด่น ${dMain}</div>
+                    <div class="copy-content-area">
+                        <div class="copy-numbers main-set">${fullStringMain}</div>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+
+                <div class="copy-row" onclick="copyToClipboard('${fullStringSub}')">
+                    <div class="copy-label">รอง ${dSub}</div>
+                    <div class="copy-content-area">
+                        <div class="copy-numbers sub-set">${fullStringSub}</div>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+            </div>`;
+
             container.innerHTML += html;
         });
     }
@@ -566,7 +579,6 @@
         let inputVal = document.getElementById('passwordInput').value.trim();
         let errorMsg = document.getElementById('errorMsg');
         
-        // เช็ครหัสตรงกัน 100% แบบตัวต่อตัว
         if (validPasswords.includes(inputVal)) {
             localStorage.setItem('masterlotto_vip_auth', 'true');
             document.getElementById('loginView').style.display = 'none';
