@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* เอฟเฟกต์ดาวกระพริบวิบวับ */
+        /* เอฟเฟกต์ดาวกระพริบวิบวับเฉพาะหัวข้อหลัก */
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -115,7 +115,7 @@
 
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
 
-        /* หน้าคำนวณสูตร (หน้า 3) */
+        /* หน้าคำนวณสูตร (หน้า 3) - ปรับปรุงความสะอาดตา */
         #calculatorView { display: none; }
         
         .formula-card { 
@@ -127,7 +127,6 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1.05rem; }
         .highlight { color: #fbbf24; font-weight: bold; text-shadow: 0 0 8px rgba(251,191,36,0.4); }
         
-        /* จัดระเบียบแถวชุดเจาะใหม่ ไม่ให้ข้อความล้นบรรทัด สะอาดตาและหรูหรา */
         .pierce-row { 
             background: #131c2e; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.6); border-radius: 10px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
@@ -138,13 +137,13 @@
         .pierce-left { display: flex; align-items: center; gap: 8px; }
         .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
         
-        /* ไอคอนสมุด/คัดลอกพร้อมเอฟเฟกต์กระพริบเบาๆ ให้รู้ว่ากดได้ */
+        /* ไอคอนสมุดแบบคลีนๆ มีกระพริบเบาๆ สื่อถึงการกดคัดลอก */
         @keyframes iconBlink {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
+            0%, 100% { opacity: 0.4; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.15); }
         }
         .copy-icon {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             animation: iconBlink 2s infinite ease-in-out;
         }
 
@@ -372,14 +371,14 @@
                     <div class="pierce-row" onclick="copyToClipboard('${row1}')">
                         <div class="pierce-left">
                             <span class="pierce-label">ชุดเจาะ ${de1}</span>
-                            <span class="copy-icon">📋✨</span>
+                            <span class="copy-icon">📋</span>
                         </div>
                         <span class="pierce-nums">${row1}</span>
                     </div>
                     <div class="pierce-row" onclick="copyToClipboard('${row2}')">
                         <div class="pierce-left">
                             <span class="pierce-label">ชุดเจาะ ${de2}</span>
-                            <span class="copy-icon">📋✨</span>
+                            <span class="copy-icon">📋</span>
                         </div>
                         <span class="pierce-nums-alt">${row2}</span>
                     </div>
