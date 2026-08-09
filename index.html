@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterLotto VIP - AI Advanced System</title>
+    <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
     <style>
         * { box-sizing: border-box; }
         body { 
             font-family: 'Kanit', sans-serif; 
-            background-color: #040711; 
+            background-color: #05070e; 
             color: #f8fafc; 
             margin: 0; 
             padding: 15px; 
@@ -17,53 +17,63 @@
         .vip-container { 
             max-width: 480px; 
             margin: 0 auto; 
-            background: #0b1329; 
+            background: #0f172a; 
             padding: 24px; 
             border-radius: 24px; 
             box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
-            border: 1px solid rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(255,255,255,0.1);
             position: relative;
         }
 
-        /* เอฟเฟกต์ดาวกระพริบวิบวับแบบสุขุม นุ่มนวลขึ้น (2.5s) */
+        /* เอฟเฟกต์ดาวกระพริบวิบวับเฉพาะหัวข้อหลัก */
         @keyframes twinkle {
-            0%, 100% { opacity: 0.4; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
         .star-sparkle {
             display: inline-block;
-            animation: twinkle 2.5s infinite ease-in-out;
+            animation: twinkle 1.5s infinite ease-in-out;
         }
 
         .header-box { text-align: center; margin-bottom: 24px; }
         .header-box h2 { 
             color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
-            text-shadow: 0 0 15px rgba(251,191,36,0.5); 
+            text-shadow: 0 0 15px rgba(251,191,36,0.6), 0 0 30px rgba(251,191,36,0.3); 
             letter-spacing: 0.5px; 
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* แพ็กเกจหน้าแรก คุมโทนสีทองและพรีเมียม */
+        /* แพ็กเกจหน้าแรก พร้อมแสงวิ่งขอบเคลื่อนไหวได้ */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
-        @keyframes goldGlow {
-            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 8px rgba(251,191,36,0.15); }
-            50% { border-color: rgba(251,191,36,0.8); box-shadow: 0 0 20px rgba(251,191,36,0.4); }
-            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 8px rgba(251,191,36,0.15); }
+        @keyframes borderGlow1 {
+            0% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+            50% { border-color: rgba(232,121,249,0.9); box-shadow: 0 0 20px rgba(232,121,249,0.6); }
+            100% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
         }
-        @keyframes blueGlow {
-            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 8px rgba(56,189,248,0.15); }
-            50% { border-color: rgba(56,189,248,0.8); box-shadow: 0 0 20px rgba(56,189,248,0.4); }
-            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 8px rgba(56,189,248,0.15); }
+        @keyframes borderGlow2 {
+            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
+            50% { border-color: rgba(56,189,248,0.9); box-shadow: 0 0 20px rgba(56,189,248,0.6); }
+            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
+        }
+        @keyframes borderGlow3 {
+            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
+            50% { border-color: rgba(251,191,36,0.9); box-shadow: 0 0 25px rgba(251,191,36,0.7); }
+            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
+        }
+        @keyframes borderGlow4 {
+            0% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
+            50% { border-color: rgba(74,222,128,0.9); box-shadow: 0 0 20px rgba(74,222,128,0.6); }
+            100% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
         }
 
-        .package-card { background: #111a33; padding: 14px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; transition: transform 0.2s; }
+        .package-card { background: #131c2e; padding: 14px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; transition: transform 0.2s; }
         .package-card:active { transform: scale(0.96); }
         
-        .package-card-1 { animation: blueGlow 3s infinite; }
-        .package-card-2 { animation: blueGlow 3.5s infinite; }
-        .package-card-3 { animation: goldGlow 2.5s infinite; }
-        .package-card-4 { animation: goldGlow 3s infinite; }
+        .package-card-1 { animation: borderGlow1 3s infinite; }
+        .package-card-2 { animation: borderGlow2 3s infinite; }
+        .package-card-3 { animation: borderGlow3 2.5s infinite; }
+        .package-card-4 { animation: borderGlow4 3s infinite; }
         
         .package-card-1 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #e879f9; }
         .package-card-2 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #38bdf8; }
@@ -74,9 +84,9 @@
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
         /* ช่องชำระเงิน */
-        .payment-box { background: #060a17; border: 1px solid rgba(51,65,85,0.6); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; }
+        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #131c2e; padding: 4px 10px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); }
+        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 4px 10px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); }
 
         @keyframes btnPulse {
             0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
@@ -91,10 +101,10 @@
         .btn-line:active { transform: scale(0.97); }
 
         /* ส่วนเข้าสู่ระบบ */
-        .login-section { background: #060a17; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.6); }
+        .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); }
         .input-group { margin-bottom: 14px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 6px; }
-        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #111a33; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
+        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
         input:focus { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56,189,248,0.4); }
         
         button.action-btn { 
@@ -105,100 +115,31 @@
 
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
 
-        /* AI Matrix Scanning Screen (หน้าจอจำลองการสแกน 100,000 สูตร) */
-        #scanningView {
-            display: none;
-            text-align: center;
-            padding: 40px 20px;
-        }
+        /* AI Matrix Scanning Screen */
+        #scanningView { display: none; text-align: center; padding: 40px 20px; }
         .scanner-loader {
-            width: 70px;
-            height: 70px;
-            border: 4px solid rgba(56,189,248,0.2);
-            border-top: 4px solid #38bdf8;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 20px auto;
+            width: 70px; height: 70px; border: 4px solid rgba(56,189,248,0.2); border-top: 4px solid #38bdf8;
+            border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px auto;
             box-shadow: 0 0 20px rgba(56,189,248,0.4);
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .scanning-text {
-            color: #fbbf24;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(251,191,36,0.4);
-            margin-bottom: 8px;
-        }
-        .scanning-sub {
-            color: #94a3b8;
-            font-size: 0.85rem;
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .scanning-text { color: #fbbf24; font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 10px rgba(251,191,36,0.4); margin-bottom: 8px; }
+        .scanning-sub { color: #94a3b8; font-size: 0.85rem; }
 
-        /* หน้าคำนวณสูตร (หน้า 3) - ดีไซน์ใหม่พรีเมียม */
+        /* หน้าคำนวณสูตร (หน้า 3) - ปรับปรุงความสะอาดตา */
         #calculatorView { display: none; }
         
-        /* ปุ่มคัดลอกทั้งหมดด้านบนสุด */
-        .btn-copy-all {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #d97706, #b45309);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            cursor: pointer;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 15px rgba(217,119,6,0.4);
-            transition: 0.2s;
-        }
-        .btn-copy-all:active { transform: scale(0.97); }
-
-        /* การ์ดสูตรแนะนำพิเศษ (Top Pick) */
-        .formula-card-featured { 
-            background: linear-gradient(135deg, #131d38, #1a1508); 
-            padding: 16px; 
-            margin-top: 14px; 
-            border-radius: 16px; 
-            border: 2px solid #fbbf24;
-            box-shadow: 0 8px 30px rgba(251,191,36,0.25);
-            position: relative;
-        }
-        .badge-recommended {
-            position: absolute;
-            top: -10px;
-            right: 16px;
-            background: #fbbf24;
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: bold;
-            padding: 2px 10px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(251,191,36,0.6);
-        }
-
         .formula-card { 
-            background: #060a17; 
-            padding: 16px; 
-            margin-top: 14px; 
-            border-radius: 16px; 
-            border: 1px solid rgba(56,189,248,0.25);
+            background: #0b0f19; padding: 16px; margin-top: 16px; border-radius: 16px; 
+            border-left: 4px solid #38bdf8; border: 1px solid rgba(56,189,248,0.25);
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            animation: borderGlow2 4s infinite;
         }
-        .formula-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-        }
-        .formula-title { color: #38bdf8; font-weight: bold; font-size: 1.05rem; }
-        .formula-accuracy { color: #4ade80; font-size: 0.75rem; background: rgba(74,222,128,0.1); padding: 2px 8px; border-radius: 6px; }
+        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1.05rem; }
+        .highlight { color: #fbbf24; font-weight: bold; text-shadow: 0 0 8px rgba(251,191,36,0.4); }
         
         .pierce-row { 
-            background: #111a33; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.5); border-radius: 10px; 
+            background: #131c2e; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.6); border-radius: 10px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
             cursor: pointer; transition: all 0.2s;
         }
@@ -222,4 +163,272 @@
         /* Toast แจ้งเตือนพรีเมียม */
         #toast {
             visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
-            text-align: center; border-radius: 12px; padding: 12px 20px; pos
+            text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
+            z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%);
+            font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        #toast.show { visibility: visible; animation: fadeInOut 1.5s ease-in-out; }
+        @keyframes fadeInOut {
+            0% { bottom: 0px; opacity: 0; }
+            20% { bottom: 30px; opacity: 1; }
+            80% { bottom: 30px; opacity: 1; }
+            100% { bottom: 10px; opacity: 0; }
+        }
+
+        .announcement-bottom { 
+            background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); border-left: 4px solid #fbbf24;
+            border-radius: 16px; padding: 16px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.6;
+        }
+        .announcement-bottom h4 { margin: 0 0 10px 0; color: #fbbf24; font-size: 0.95rem; }
+        .announcement-bottom ul { margin: 0; padding-left: 18px; }
+        .announcement-bottom li { margin-bottom: 8px; }
+
+        .back-btn { background: #334155 !important; margin-top: 20px; border: none !important; color: #fff !important; }
+        
+        .welcome-user-banner {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 12px;
+            border-radius: 8px;
+            color: #38bdf8;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="vip-container">
+    
+    <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ -->
+    <div id="loginView">
+        <div class="header-box">
+            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
+            <p>ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</p>
+        </div>
+
+        <div class="package-grid">
+            <div class="package-card package-card-1">
+                <h3>⏱️ 7 วัน</h3>
+                <div class="price">99 ฿</div>
+                <div class="desc">ทดลองใช้งานสั้น</div>
+            </div>
+            <div class="package-card package-card-2">
+                <h3>⏳ 15 วัน</h3>
+                <div class="price">199 ฿</div>
+                <div class="desc">ยอดนิยมคุ้มค่า</div>
+            </div>
+            <div class="package-card package-card-3">
+                <h3>⭐ 1 เดือน</h3>
+                <div class="price">299 ฿</div>
+                <div class="desc">ใช้งานยาวต่อเนื่อง</div>
+            </div>
+            <div class="package-card package-card-4">
+                <h3>🔥 1 ปี</h3>
+                <div class="price">1,890 ฿</div>
+                <div class="desc">คุ้มที่สุด VIP ตลอดชีพ</div>
+            </div>
+        </div>
+
+        <div class="payment-box">
+            <h4>🏛️ ช่องทางชำระเงินค่าสมาชิก</h4>
+            เลขบัญชี: <span class="bank-num">0661291613</span><br>
+            ชื่อบัญชี: <b>ณัฐพงษ์ ขำสำอางค์</b>
+        </div>
+
+        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / รับรหัสผ่าน VIP</a>
+
+        <div class="login-section">
+            <div class="input-group">
+                <label>รหัสผ่านเข้าใช้งาน (User / Password)</label>
+                <input type="password" id="passCode" placeholder="กรอกรหัสผ่านของคุณ">
+                <div id="errorMsg" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง หรือหมดอายุการใช้งาน!</div>
+            </div>
+            <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
+        </div>
+    </div>
+
+    <!-- 2. หน้าสแกน AI Matrix -->
+    <div id="scanningView">
+        <div class="scanner-loader"></div>
+        <div class="scanning-text">AI กำลังวิเคราะห์ข้อมูล Matrix...</div>
+        <div class="scanning-sub">ประมวลผลฐานข้อมูล 100,000 สูตรหลัก</div>
+    </div>
+
+    <!-- 3. หน้าคำนวณสูตร (5 สูตร + ระบบคัดลอก + เสียงเอฟเฟกต์) -->
+    <div id="calculatorView">
+        <div class="header-box" style="margin-bottom: 15px;">
+            <h2>ระบบคำนวณอัจฉริยะ</h2>
+            <p>ประมวลผลเรียบร้อย แสดงผลด้วยระบบเสียงและแอนิเมชันเต็มรูปแบบ</p>
+        </div>
+
+        <div id="welcomeBanner" class="welcome-user-banner">ยินดีต้อนรับสมาชิก VIP เข้าสู่ระบบ</div>
+
+        <!-- สูตรที่ 1 -->
+        <div class="formula-card">
+            <div class="formula-title">📊 สูตรที่ 1: วิเคราะห์เจาะเลขวิ่งเด่น</div>
+            <div class="pierce-row" onclick="copyText('02 03 04 05')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดตัวเลขเน้น:</span>
+                </div>
+                <span class="pierce-nums">02 03 04 05</span>
+            </div>
+        </div>
+
+        <!-- สูตรที่ 2 -->
+        <div class="formula-card">
+            <div class="formula-title">📊 สูตรที่ 2: เมทริกซ์คำนวณความน่าจะเป็น</div>
+            <div class="pierce-row" onclick="copyText('12 13 14 15')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดตัวเลขเน้น:</span>
+                </div>
+                <span class="pierce-nums-alt">12 13 14 15</span>
+            </div>
+        </div>
+
+        <!-- สูตรที่ 3 -->
+        <div class="formula-card">
+            <div class="formula-title">📊 สูตรที่ 3: สถิติย้อนหลัง AI ประมวลผล</div>
+            <div class="pierce-row" onclick="copyText('22 23 24 25')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดตัวเลขเน้น:</span>
+                </div>
+                <span class="pierce-nums">22 23 24 25</span>
+            </div>
+        </div>
+
+        <!-- สูตรที่ 4 -->
+        <div class="formula-card">
+            <div class="formula-title">📊 สูตรที่ 4: เจาะลึกวงรอบพิเศษ</div>
+            <div class="pierce-row" onclick="copyText('32 33 34 35')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดตัวเลขเน้น:</span>
+                </div>
+                <span class="pierce-nums-alt">32 33 34 35</span>
+            </div>
+        </div>
+
+        <!-- สูตรที่ 5 -->
+        <div class="formula-card">
+            <div class="formula-title">📊 สูตรที่ 5: สรุปผลโค้งสุดท้ายความแม่นยำสูง</div>
+            <div class="pierce-row" onclick="copyText('42 43 44 45')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดตัวเลขเน้น:</span>
+                </div>
+                <span class="pierce-nums">42 43 44 45</span>
+            </div>
+        </div>
+
+        <!-- คำแนะนำและเทคนิคการใช้งาน -->
+        <div class="announcement-bottom">
+            <h4>📌 คู่มือและเทคนิคการใช้งานสูตร VIP</h4>
+            <ul>
+                <li><strong>ทำไมต้องมีหลายสูตร?</strong> เพื่อให้ระบบ AI กระจายความเสี่ยงและครอบคลุมตัวเลขทุกรูปแบบ</li>
+                <li><strong>เทคนิคการตามสูตร:</strong> แนะนำให้เลือกดูสูตรที่ตรงกันหรือใกล้เคียงกันเพื่อเพิ่มโอกาสสำเร็จ</li>
+                <li><strong>จุดสังเกตเลขเด็ด:</strong> สังเกตตัวเลขที่มีการเน้นสีเขียวหรือฟ้าสว่างจะมีความแม่นยำสูง</li>
+                <li><strong>ธรรมชาติของตัวเลข:</strong> ควรใช้อย่างมีสติและบริหารความเสี่ยงอย่างเหมาะสม</li>
+            </ul>
+        </div>
+
+        <button class="action-btn back-btn" onclick="location.reload()">ออกจากระบบ</button>
+    </div>
+</div>
+
+<div id="toast">📋 คัดลอกชุดตัวเลขสำเร็จ!</div>
+
+<script>
+    // ฐานข้อมูลรหัสผู้ใช้งาน (User & Passwords) ทั้งหมด
+    const memberUsers = {
+        "MasterAdmin2026": "แอดมินมาสเตอร์",
+        "AMD428": "คุณ AMD428",
+        "VIP2026": "สมาชิกระดับ VIP ทั่วไป",
+        "Bank2026": "คุณแบงค์"
+    };
+
+    // ฟังก์ชันสร้างเสียงเอฟเฟกต์ดิจิทัลแบบเว็บ Web Audio API (ไม่ต้องใช้ไฟล์เสียงภายนอก)
+    function playBeep(type) {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            if (type === 'success') {
+                osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // โน้ต D5
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1); // โน้ต A5
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } else if (type === 'copy') {
+                osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.15);
+            } else if (type === 'error') {
+                osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime + 0.1);
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            }
+        } catch (e) {
+            console.log("Audio Context prevented or not supported");
+        }
+    }
+
+    // ฟังก์ชันตรวจสอบการเข้าสู่ระบบ
+    function checkLogin() {
+        const passInput = document.getElementById('passCode');
+        const errorDiv = document.getElementById('errorMsg');
+        const pass = passInput.value.trim();
+        
+        if (pass !== "" && memberUsers.hasOwnProperty(pass)) {
+            playBeep('success');
+            errorDiv.style.display = 'none';
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('scanningView').style.display = 'block';
+            
+            // แสดงข้อความต้อนรับตาม User
+            document.getElementById('welcomeBanner').innerText = `ยินดีต้อนรับ: ${memberUsers[pass]} เข้าสู่ระบบ VIP`;
+
+            // จำลองหน้าจอโหลดสแกน AI 2.5 วินาที
+            setTimeout(() => {
+                document.getElementById('scanningView').style.display = 'none';
+                document.getElementById('calculatorView').style.display = 'block';
+            }, 2500);
+            
+            passInput.value = '';
+        } else {
+            playBeep('error');
+            errorDiv.style.display = 'block';
+            passInput.value = '';
+        }
+    }
+
+    // ฟังก์ชันคัดลอกข้อความพร้อมแสดง Toast และเสียงเอฟเฟกต์
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            playBeep('copy');
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
