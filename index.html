@@ -72,7 +72,7 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 8px; font-size: 0.95rem; }
         .highlight { color: #fbbf24; font-weight: bold; }
 
-        /* จัดวางเลขเจาะแบบ 2 บรรทัด สะอาดตา เป็นมาตรฐาน */
+        /* จัดวางเลขเจาะแบบสะอาดตา ไม่มีวงเล็บเกะกะ */
         .row-group { 
             display: flex; justify-content: space-between; align-items: center; 
             background: #1e293b; padding: 8px 12px; border-radius: 6px; margin-top: 6px;
@@ -81,7 +81,7 @@
         .row-label { color: #94a3b8; font-size: 0.85rem; }
         .row-nums { color: #f8fafc; font-weight: bold; letter-spacing: 2px; font-family: monospace; }
 
-        /* กล่องคำแนะนำด้านล่างสุด */
+        /* กล่องคำแนะนำด้านล่างสุด (ภาษาธรรมชาติ กระชับ) */
         .announcement-bottom { 
             background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
             border-radius: 10px; padding: 15px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
@@ -135,7 +135,6 @@
             <p style="margin: 8px 0 0 0; font-size: 0.8rem; color: #94a3b8;">* โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที</p>
         </div>
 
-        <!-- ลิงก์ไลน์ของอาจารย์ -->
         <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-section">
@@ -147,7 +146,7 @@
         </div>
     </div>
 
-    <!-- 2. หน้าคำนวณสูตร (ตรรกะ 5 สูตรครบถ้วน) -->
+    <!-- 2. หน้าคำนวณสูตร (ซ่อนสูตรเบื้องหลัง และจัดรูปแบบให้สะอาดตา) -->
     <div id="calculatorView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -168,13 +167,13 @@
         <!-- ผลลัพธ์การคำนวณ -->
         <div id="results"></div>
 
-        <!-- ข้อกำหนดและแนวทางสมาชิก (วางไว้ด้านล่างสุด) -->
+        <!-- ข้อกำหนดและแนวทางสมาชิก (ฉบับกระชับ เป็นมืออาชีพ) -->
         <div class="announcement-bottom">
-            <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
+            <h4>📌 ข้อแนะนำและแนวทางสำหรับสมาชิก</h4>
             <ul>
-                <li><strong>ระบบวิเคราะห์เฉพาะทาง:</strong> อัลกอริทึมสถิติไม่มีสูตรใดการันตีผล 100% โปรดใช้เป็นแนวทางสนับสนุนการตัดสินใจเท่านั้น</li>
-                <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้ท่านเลือกสูตรที่มั่นใจเพียงชุดเดียว แล้วติดตามผลอย่างต่อเนื่องตามรอบอายุสมาชิก</li>
-                <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การมีวินัยในการตามสูตรคือหัวใจสำคัญของมืออาชีพ</li>
+                <li><strong>แนวทางการใช้งาน:</strong> ผลลัพธ์อ้างอิงจากสถิติเพื่อเป็นแนวทางสนับสนุนการตัดสินใจ</li>
+                <li><strong>วินัยในการเล่น:</strong> แนะนำให้ติดตามผลต่อเนื่องอย่างน้อย 7-15 หรือ 30 วัน (ขั้นต่ำ 7 วันขึ้นไป) ตามรอบอายุสมาชิก</li>
+                <li><strong>สัจธรรมตัวเลข:</strong> การเดินเงินมีจังหวะเข้าและหลุดสลับกัน การมีวินัยและบริหารทุนคือหัวใจสำคัญของมืออาชีพ</li>
             </ul>
         </div>
 
@@ -210,13 +209,13 @@
             return;
         }
 
-        let r1 = parseInt(top[0]); // หลักร้อยบน
-        let r2 = parseInt(top[1]); // หลักสิบบน
-        let r3 = parseInt(top[2]); // หลักหน่วยบน
-        let b1 = parseInt(bottom[0]); // หลักสิบล่าง
-        let b2 = parseInt(bottom[1]); // หลักหน่วยล่าง
+        let r1 = parseInt(top[0]);
+        let r2 = parseInt(top[1]);
+        let r3 = parseInt(top[2]);
+        let b1 = parseInt(bottom[0]);
+        let b2 = parseInt(bottom[1]);
 
-        // ตรรกะคำนวณ 5 สูตร
+        // ซ่อนตรรกะคำนวณทั้งหมด ไม่ให้ลูกค้าเห็นสูตรเบื้องหลัง
         let f1_d1 = (r2 + b1) % 10;
         let f1_d2 = (f1_d1 + 1) % 10;
 
@@ -232,12 +231,13 @@
         let f5_d1 = (10 - b2) % 10;
         let f5_d2 = (f5_d1 + 1) % 10;
 
+        // แสดงชื่อสูตรแบบสากล ไม่มีบอกสูตรบวกเลขเบื้องหลัง
         let formulas = [
-            { name: "สูตรที่ 1 (ชุดมาตรฐาน A - หลักสิบ+หลักสิบล่าง)", d1: f1_d1, d2: f1_d2 },
-            { name: "สูตรที่ 2 (ชุดมาตรฐาน B - ร้อย+สิบ+หน่วยบน)", d1: f2_d1, d2: f2_d2 },
-            { name: "สูตรที่ 3 (ชุดมาตรฐาน C - ร้อยบน+สิบล่าง)", d1: f3_d1, d2: f3_d2 },
-            { name: "สูตรที่ 4 (ชุดมาตรฐาน D - หน่วยบน+หน่วยล่าง)", d1: f4_d1, d2: f4_d2 },
-            { name: "สูตรที่ 5 (ชุดมาตรฐาน E)", d1: f5_d1, d2: f5_d2 }
+            { name: "สูตรที่ 1", d1: f1_d1, d2: f1_d2 },
+            { name: "สูตรที่ 2", d1: f2_d1, d2: f2_d2 },
+            { name: "สูตรที่ 3", d1: f3_d1, d2: f3_d2 },
+            { name: "สูตรที่ 4", d1: f4_d1, d2: f4_d2 },
+            { name: "สูตรที่ 5", d1: f5_d1, d2: f5_d2 }
         ];
 
         let html = "";
@@ -260,11 +260,11 @@
                     <div style="font-size: 1rem; margin-bottom: 5px;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
                     
                     <div class="row-group">
-                        <span class="row-label">ชุดเจาะ (${de1}):</span>
+                        <span class="row-label">ชุดเจาะ ${de1}</span>
                         <span class="row-nums" style="color: #38bdf8;">${row1}</span>
                     </div>
                     <div class="row-group">
-                        <span class="row-label">ชุดเจาะ (${de2}):</span>
+                        <span class="row-label">ชุดเจาะ ${de2}</span>
                         <span class="row-nums" style="color: #4ade80;">${row2}</span>
                     </div>
                 </div>
@@ -277,3 +277,4 @@
 
 </body>
 </html>
+u
