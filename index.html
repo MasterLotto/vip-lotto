@@ -42,34 +42,6 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* ป้ายแสดงจำนวนผู้ใช้ออนไลน์ */
-        .online-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(74, 222, 128, 0.3);
-            padding: 8px 12px;
-            border-radius: 12px;
-            margin: 12px auto 16px auto;
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.1);
-        }
-        .online-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #4ade80;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #4ade80;
-            animation: pulseDot 2s infinite ease-in-out;
-        }
-        @keyframes pulseDot {
-            0%, 100% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1.2); opacity: 1; }
-        }
-
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
         @keyframes borderGlow1 {
@@ -100,8 +72,7 @@
         .package-card-4 { animation: borderGlow4 3s infinite; color: #4ade80; }
         
         .package-card h3 { margin: 0 0 6px 0; font-size: 0.95rem; }
-        /* เปลี่ยนสีตัวเลขราคาเป็นสีเหลืองทองอ่อน สดุดตา ไม่แสบตา และดูพรีเมียมขึ้น */
-        .price { font-size: 1.3rem; font-weight: bold; color: #fde047; text-shadow: 0 0 12px rgba(253,224,71,0.4); margin-bottom: 2px; }
+        .price { font-size: 1.3rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); margin-bottom: 2px; }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
         .payment-box { 
@@ -187,30 +158,11 @@
         .calc-box { margin-bottom: 15px; text-align: left; }
         .calc-box label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 6px; }
         
-        /* จัดวางปุ่มประมวลผลและปุ่มล้างค่าให้อยู่ในแถวเดียวกัน */
-        .action-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
         .btn-calculate {
-            flex: 1; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white;
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white;
             border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer;
-            box-shadow: 0 0 15px rgba(5,150,105,0.5); display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 0 15px rgba(5,150,105,0.5); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-
-        .btn-clear {
-            width: 100px; padding: 14px; background: #1e293b; color: #94a3b8;
-            border: 1px solid #334155; border-radius: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
-            transition: 0.2s;
-        }
-        .btn-clear:hover {
-            background: #334155;
-            color: #f8fafc;
-            border-color: #475569;
-        }
-        .btn-clear:active { transform: scale(0.97); }
 
         #loadingOverlay {
             display: none;
@@ -253,8 +205,32 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
             animation: borderGlow2 4s infinite;
             text-align: left;
+            position: relative;
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 4px; font-size: 1.05rem; }
+        .formula-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .formula-title { color: #38bdf8; font-weight: bold; font-size: 1.05rem; }
+        
+        /* ป้าย Hot แนะนำแบบกระพริบ */
+        @keyframes hotPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        .hot-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 20px;
+            animation: hotPulse 2s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(245,158,11,0.5);
+        }
+
         .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
 
         @keyframes gentleFade {
@@ -378,7 +354,7 @@
             </div>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านVIP</a>
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-section">
             <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
@@ -392,15 +368,9 @@
 
     <!-- หน้าหลักระบบคำนวณ -->
     <div id="calculatorView">
-        <div class="header-box" style="margin-bottom: 12px;">
+        <div class="header-box" style="margin-bottom: 16px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
             <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
-        </div>
-
-        <!-- ป้ายแสดงจำนวนผู้ใช้ออนไลน์ (เสถียร สมจริง ขยับช้าๆ บวกลบไม่เกินช่วงที่กำหนด) -->
-        <div class="online-badge">
-            <span class="online-dot"></span>
-            <span>ขณะนี้มีผู้ใช้งานออนไลน์อยู่: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
         </div>
 
         <div class="calc-box">
@@ -413,12 +383,9 @@
             <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2">
         </div>
 
-        <div class="action-row">
-            <button class="btn-calculate" onclick="startProcessing()">
-                <span>✨</span> ประมวลผลสูตรคำนวณ
-            </button>
-            <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
-        </div>
+        <button class="btn-calculate" onclick="startProcessing()">
+            <span>✨</span> ประมวลผลสูตรคำนวณ
+        </button>
 
         <div id="loadingOverlay">
             <div class="spinner"></div>
@@ -435,29 +402,14 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // ฟังก์ชันจำลองจำนวนผู้ใช้ออนไลน์ให้อัปเดตขึ้นลงช้าๆ เสถียร ไม่รีบร้อน (วนรอบทุกๆ 6 วินาที ขยับทีละ -1, 0 หรือ +1)
-    let currentOnlineCount = 244;
-    function updateOnlineCounter() {
-        const delta = Math.floor(Math.random() * 3) - 1; // -1, 0, หรือ 1
-        currentOnlineCount += delta;
-        // ควบคุมให้อยู่ในช่วงประมาณ 240 บวกลบ (เช่น 238 - 250)
-        if (currentOnlineCount < 238) currentOnlineCount = 238;
-        if (currentOnlineCount > 250) currentOnlineCount = 250;
-        
-        const onlineElem = document.getElementById('onlineCount');
-        if (onlineElem) {
-            onlineElem.textContent = currentOnlineCount;
+    // ตรวจสอบสถานะการล็อกอินค้างไว้เมื่อโหลดหน้าเว็บ
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLogin = localStorage.getItem('masterlotto_logged_in');
+        if (savedLogin === 'true') {
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
         }
-    }
-    setInterval(updateOnlineCounter, 6000);
-
-    // ฟังก์ชันล้างค่าช่องกรอกข้อมูลและผลลัพธ์
-    function clearInputs() {
-        document.getElementById('num3top').value = '';
-        document.getElementById('num2bottom').value = '';
-        document.getElementById('resultContainer').innerHTML = '';
-        document.getElementById('loadingOverlay').style.display = 'none';
-    }
+    });
 
     function startProcessing() {
         const t3 = document.getElementById('num3top').value.trim();
@@ -523,6 +475,21 @@
         let coreVal = (7 - hTop) % 10;
         if(coreVal < 0) coreVal += 10;
 
+        // ค้นหาเลขที่ชนกันบ่อย เพื่อเลือกสูตรติดป้าย Hot แนะนำ (เลือก 2 สูตรแรกที่มี Collision เด่นๆ)
+        let formulaScores = formulas.map(f => {
+            let score = 0;
+            for(let offset = -2; offset <= 2; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                if(f.set.includes(val)) score++;
+            }
+            return { name: f.name, score };
+        });
+
+        // จัดเรียงหาตัวที่คะแนนชนสูงสุด 2 อันดับแรกให้เป็น Hot
+        formulaScores.sort((a, b) => b.score - a.score);
+        let hotFormulas = [formulaScores[0].name, formulaScores[1].name];
+
         const container = document.getElementById('resultContainer');
         container.innerHTML = '';
 
@@ -548,9 +515,15 @@
             let filteredTargets = rawTargetNumbers.filter(num => !f.set.includes(num));
             filteredTargets.sort((a, b) => a - b);
 
+            let isHot = hotFormulas.includes(f.name);
+            let badgeHTML = isHot ? `<span class="hot-badge">🔥 แนะนำ (Hot)</span>` : '';
+
             let cardHTML = `
                 <div class="formula-card">
-                    <div class="formula-title">${f.name}</div>
+                    <div class="formula-header-row">
+                        <div class="formula-title">${f.name}</div>
+                        ${badgeHTML}
+                    </div>
                     <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
             `;
 
@@ -603,6 +576,7 @@
         const errorMsg = document.getElementById('errorMsg');
         
         if (VALID_VIP_USERS.includes(pass)) {
+            localStorage.setItem('masterlotto_logged_in', 'true');
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
             errorMsg.style.display = 'none';
@@ -613,10 +587,13 @@
     }
 
     function handleLogout() {
+        localStorage.removeItem('masterlotto_logged_in');
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
         document.getElementById('passwordInput').value = '';
-        clearInputs();
+        document.getElementById('resultContainer').innerHTML = '';
+        document.getElementById('num3top').value = '';
+        document.getElementById('num2bottom').value = '';
         document.getElementById('errorMsg').style.display = 'none';
     }
 </script>
