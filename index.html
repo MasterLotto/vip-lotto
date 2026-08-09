@@ -8,111 +8,160 @@
         * { box-sizing: border-box; }
         body { 
             font-family: 'Kanit', sans-serif; 
-            background-color: #0b0f19; 
+            background-color: #05070e; 
             color: #f8fafc; 
             margin: 0; 
             padding: 15px; 
+            overflow-x: hidden;
         }
         .vip-container { 
             max-width: 480px; 
             margin: 0 auto; 
-            background: #131c2e; 
+            background: #0f172a; 
             padding: 24px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
         }
+
+        /* เอฟเฟกต์ดาวกระพริบวิบวับ */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .star-sparkle {
+            display: inline-block;
+            animation: twinkle 1.5s infinite ease-in-out;
+        }
+
         .header-box { text-align: center; margin-bottom: 24px; }
-        .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; font-size: 1.5rem; text-shadow: 0 0 15px rgba(251,191,36,0.3); }
+        .header-box h2 { 
+            color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
+            text-shadow: 0 0 15px rgba(251,191,36,0.6), 0 0 30px rgba(251,191,36,0.3); 
+            letter-spacing: 0.5px; 
+        }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* แพ็กเกจหน้าแรก */
-        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .package-card-1 { background: #131c2e; border: 1.5px solid rgba(232,121,249,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(232,121,249,0.1); }
-        .package-card-2 { background: #131c2e; border: 1.5px solid rgba(56,189,248,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(56,189,248,0.1); }
-        .package-card-3 { background: #131c2e; border: 1.5px solid rgba(251,191,36,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(251,191,36,0.1); }
-        .package-card-4 { background: #131c2e; border: 1.5px solid rgba(74,222,128,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(74,222,128,0.1); }
+        /* แพ็กเกจหน้าแรก พร้อมแสงวิ่งขอบเคลื่อนไหวได้ */
+        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
-        .package-card-1 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #e879f9; }
-        .package-card-2 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #38bdf8; }
-        .package-card-3 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #fbbf24; }
-        .package-card-4 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #4ade80; }
+        @keyframes borderGlow1 {
+            0% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+            50% { border-color: rgba(232,121,249,0.9); box-shadow: 0 0 20px rgba(232,121,249,0.6); }
+            100% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+        }
+        @keyframes borderGlow2 {
+            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
+            50% { border-color: rgba(56,189,248,0.9); box-shadow: 0 0 20px rgba(56,189,248,0.6); }
+            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
+        }
+        @keyframes borderGlow3 {
+            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
+            50% { border-color: rgba(251,191,36,0.9); box-shadow: 0 0 25px rgba(251,191,36,0.7); }
+            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
+        }
+        @keyframes borderGlow4 {
+            0% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
+            50% { border-color: rgba(74,222,128,0.9); box-shadow: 0 0 20px rgba(74,222,128,0.6); }
+            100% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
+        }
+
+        .package-card { background: #131c2e; padding: 14px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; transition: transform 0.2s; }
+        .package-card:active { transform: scale(0.96); }
         
-        .price { font-size: 1.1rem; font-weight: bold; color: #f87171; }
+        .package-card-1 { animation: borderGlow1 3s infinite; }
+        .package-card-2 { animation: borderGlow2 3s infinite; }
+        .package-card-3 { animation: borderGlow3 2.5s infinite; }
+        .package-card-4 { animation: borderGlow4 3s infinite; }
+        
+        .package-card-1 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #e879f9; }
+        .package-card-2 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #38bdf8; }
+        .package-card-3 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #fbbf24; }
+        .package-card-4 h3 { margin: 0 0 4px 0; font-size: 0.95rem; color: #4ade80; }
+        
+        .price { font-size: 1.2rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
         /* ช่องชำระเงิน */
-        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.6); padding: 16px; border-radius: 14px; margin-bottom: 20px; font-size: 0.9rem; }
+        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 3px 8px; border-radius: 6px; display: inline-block; letter-spacing: 1px; }
+        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 4px 10px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); }
 
-        .btn-line { 
-            display: block; width: 100%; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white; 
-            text-align: center; text-decoration: none; border-radius: 10px; font-weight: bold; margin-bottom: 20px; 
-            box-shadow: 0 4px 15px rgba(5,150,105,0.4); transition: 0.2s;
+        @keyframes btnPulse {
+            0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
+            50% { box-shadow: 0 0 25px rgba(5,150,105,0.8); }
+            100% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
         }
-        .btn-line:hover { opacity: 0.9; }
+        .btn-line { 
+            display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #059669, #047857); color: white; 
+            text-align: center; text-decoration: none; border-radius: 14px; font-weight: bold; margin-bottom: 20px; 
+            animation: btnPulse 2s infinite; transition: 0.2s;
+        }
+        .btn-line:active { transform: scale(0.97); }
 
         /* ส่วนเข้าสู่ระบบ */
-        .login-section { background: #0b0f19; padding: 16px; border-radius: 14px; border: 1px solid rgba(51,65,85,0.6); }
-        .input-group { margin-bottom: 12px; }
-        .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 5px; }
-        input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.2s; }
-        input:focus { border-color: #38bdf8; box-shadow: 0 0 10px rgba(56,189,248,0.2); }
+        .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); }
+        .input-group { margin-bottom: 14px; }
+        .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 6px; }
+        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
+        input:focus { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56,189,248,0.4); }
         
         button.action-btn { 
-            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 10px; 
+            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 12px; 
             color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
-        button.action-btn:hover { background: #334155; }
+        button.action-btn:active { transform: scale(0.97); background: #334155; }
 
-        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 5px; display: none; }
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
 
         /* หน้าคำนวณสูตร */
         #calculatorView { display: none; }
         
         .formula-card { 
-            background: #0b0f19; padding: 16px; margin-top: 16px; border-radius: 12px; 
-            border-left: 4px solid #38bdf8; border-top: 1px solid rgba(255,255,255,0.03);
-            border-right: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: #0b0f19; padding: 16px; margin-top: 16px; border-radius: 16px; 
+            border-left: 4px solid #38bdf8; border: 1px solid rgba(56,189,248,0.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            animation: borderGlow2 4s infinite;
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1rem; }
-        .highlight { color: #fbbf24; font-weight: bold; }
+        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1.05rem; }
+        .highlight { color: #fbbf24; font-weight: bold; text-shadow: 0 0 8px rgba(251,191,36,0.4); }
         
-        /* ดีไซน์มินิมอลสะอาดตา: เอาข้อความยาวๆ ออก เหลือแค่ไอคอน 📋 เล็กๆ ด้านหลัง */
         .pierce-row { 
-            background: #131c2e; padding: 10px 14px; border: 1px solid rgba(51,65,85,0.5); border-radius: 8px; 
+            background: #131c2e; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.6); border-radius: 10px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
-            font-family: monospace; cursor: pointer; transition: all 0.2s;
+            cursor: pointer; transition: all 0.2s;
         }
-        .pierce-row:hover { background: #1e293b; border-color: #38bdf8; box-shadow: 0 0 10px rgba(56,189,248,0.15); }
-        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
-        .pierce-label span { font-size: 0.85rem; opacity: 0.6; }
-        
-        .pierce-nums-1 { color: #4ade80; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px; }
-        .pierce-nums-2 { color: #38bdf8; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px; }
+        .pierce-row:active { transform: scale(0.98); background: #1e293b; }
+        .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
+        .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.95rem; letter-spacing: 2.5px; font-family: monospace; text-shadow: 0 0 8px rgba(74,222,128,0.3); }
+        .pierce-nums-alt { color: #38bdf8; font-weight: bold; font-size: 0.95rem; letter-spacing: 2.5px; font-family: monospace; text-shadow: 0 0 8px rgba(56,189,248,0.3); }
 
-        /* Toast แจ้งเตือนมินิมอล */
+        /* Toast แจ้งเตือนพรีเมียม */
         #toast {
-            visibility: hidden; min-width: 180px; background-color: #059669; color: #fff;
-            text-align: center; border-radius: 8px; padding: 10px; position: fixed;
-            z-index: 100; left: 50%; bottom: 30px; transform: translateX(-50%);
-            font-size: 0.85rem; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
+            text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
+            z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%);
+            font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        #toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 1.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        #toast.show { visibility: visible; animation: fadeInOut 1.5s ease-in-out; }
+        @keyframes fadeInOut {
+            0% { bottom: 0px; opacity: 0; }
+            20% { bottom: 30px; opacity: 1; }
+            80% { bottom: 30px; opacity: 1; }
+            100% { bottom: 10px; opacity: 0; }
+        }
 
         .announcement-bottom { 
-            background: #0b0f19; border: 1px solid rgba(51,65,85,0.6); border-left: 4px solid #fbbf24;
-            border-radius: 12px; padding: 16px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
+            background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); border-left: 4px solid #fbbf24;
+            border-radius: 16px; padding: 16px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.6;
         }
         .announcement-bottom h4 { margin: 0 0 10px 0; color: #fbbf24; font-size: 0.95rem; }
         .announcement-bottom ul { margin: 0; padding-left: 18px; }
         .announcement-bottom li { margin-bottom: 8px; }
 
-        .back-btn { background: #475569 !important; margin-top: 20px; border: none !important; color: #fff !important; }
+        .back-btn { background: #334155 !important; margin-top: 20px; border: none !important; color: #fff !important; }
     </style>
 </head>
 <body>
@@ -122,27 +171,27 @@
     <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ -->
     <div id="loginView">
         <div class="header-box">
-            <h2>MasterLotto VIP</h2>
+            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
             <p>ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</p>
         </div>
 
         <div class="package-grid">
-            <div class="package-card-1">
+            <div class="package-card package-card-1">
                 <h3>⏱️ 7 วัน</h3>
                 <div class="price">99 ฿</div>
                 <div class="desc">ทดลองใช้งานสั้นๆ</div>
             </div>
-            <div class="package-card-2">
+            <div class="package-card package-card-2">
                 <h3>⌛ 15 วัน</h3>
                 <div class="price">199 ฿</div>
                 <div class="desc">ใช้งานกลางเดือน</div>
             </div>
-            <div class="package-card-3">
+            <div class="package-card package-card-3">
                 <h3>⭐ 1 เดือน</h3>
                 <div class="price">299 ฿</div>
                 <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
             </div>
-            <div class="package-card-4">
+            <div class="package-card package-card-4">
                 <h3>🔥 1 ปี</h3>
                 <div class="price">1,890 ฿</div>
                 <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
@@ -172,7 +221,7 @@
     <!-- 2. หน้าคำนวณสูตร -->
     <div id="calculatorView">
         <div class="header-box">
-            <h2>MasterLotto VIP</h2>
+            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
             <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
         </div>
 
@@ -186,7 +235,7 @@
             <div id="calcError" class="error-msg">⚠️ กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน</div>
         </div>
         
-        <button id="calcBtn" class="action-btn" onclick="calculateLottery()" style="background: linear-gradient(135deg, #059669, #047857); color: white; border: none; box-shadow: 0 4px 15px rgba(5,150,105,0.3);">✨ ประมวลผลสูตรคำนวณ</button>
+        <button id="calcBtn" class="action-btn" onclick="calculateLottery()" style="background: linear-gradient(135deg, #059669, #047857); color: white; border: none; box-shadow: 0 4px 15px rgba(5,150,105,0.4);">✨ ประมวลผลสูตรคำนวณ</button>
 
         <div id="results"></div>
 
@@ -204,8 +253,8 @@
 
 </div>
 
-<!-- Toast Popup แจ้งเตือนการคัดลอกมินิมอล -->
-<div id="toast">📋 คัดลอกชุดตัวเลขแล้ว</div>
+<!-- Toast Popup แจ้งเตือนพรีเมียม -->
+<div id="toast">✨ คัดลอกชุดตัวเลขสำเร็จ!</div>
 
 <script>
     const memberPasswords = [
@@ -307,12 +356,12 @@
                     <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
                     
                     <div class="pierce-row" onclick="copyToClipboard('${row1}')">
-                        <span class="pierce-label">ชุดเจาะ ${de1} <span>📋</span></span>
-                        <span class="pierce-nums-1">${row1}</span>
+                        <span class="pierce-label">ชุดเจาะ ${de1} (แตะเพื่อคัดลอก)</span>
+                        <span class="pierce-nums">${row1}</span>
                     </div>
                     <div class="pierce-row" onclick="copyToClipboard('${row2}')">
-                        <span class="pierce-label">ชุดเจาะ ${de2} <span>📋</span></span>
-                        <span class="pierce-nums-2">${row2}</span>
+                        <span class="pierce-label">ชุดเจาะ ${de2} (แตะเพื่อคัดลอก)</span>
+                        <span class="pierce-nums-alt">${row2}</span>
                     </div>
                 </div>`;
             });
@@ -323,11 +372,15 @@
         }, 400);
     }
 
+    let toastTimer;
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
             let toast = document.getElementById("toast");
+            clearTimeout(toastTimer);
             toast.className = "show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
+            toastTimer = setTimeout(() => { 
+                toast.className = ""; 
+            }, 1500);
         });
     }
 </script>
