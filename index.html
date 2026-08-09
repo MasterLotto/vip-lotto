@@ -183,13 +183,24 @@
 </div>
 
 <script>
+    // --- [รายชื่อรหัสผ่านสมาชิกทั้งหมด รวมรหัสอาจารย์] ---
+    const memberPasswords = [
+        "MasterAdmin2026", 
+        "1234", 
+        "VIP2026", 
+        "สมชาย111"
+    ];
+
     function checkLogin() {
-        const pass = document.getElementById('vipPassword').value;
-        if(pass.trim() !== "") {
+        const pass = document.getElementById('vipPassword').value.trim();
+        
+        // ตรวจสอบรหัสผ่านว่าถูกต้องและอยู่ในรายชื่อไหม
+        if (pass !== "" && memberPasswords.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
         } else {
-            alert("กรุณากรอกรหัสผ่านสมาชิกก่อนครับอาจารย์");
+            alert("❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์เข้าใช้งานครับ");
+            document.getElementById('vipPassword').value = '';
         }
     }
 
@@ -215,30 +226,22 @@
         let b1 = parseInt(bottom[0]);
         let b2 = parseInt(bottom[1]);
 
-        // ซ่อนตรรกะการบวกเบื
-    <script>
-    // รายชื่อรหัสผ่านสมาชิกทั้งหมด (รวมรหัสอาจารย์)
-    const memberPasswords = [
-        "MasterAdmin2026", 
-        "1234", 
-        "VIP2026", 
-        "สมชาย111"
-    ];
+        // ตรรกะการคำนวณและแสดงผล
+        let d1 = (r2 + b1) % 10;
+        let d2 = (d1 + 1) % 10;
 
-    function checkLogin() {
-        const pass = document.getElementById('vipPassword').value.trim();
-        
-        // เช็กว่ารหัสถูกต้องและตรงกับในรายชื่อไหม
-        if (pass !== "" && memberPasswords.includes(pass)) {
-            document.getElementById('loginView').style.display = 'none';
-            document.getElementById('calculatorView').style.display = 'block';
-        } else {
-            alert("❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์เข้าใช้งานครับ");
-            document.getElementById('vipPassword').value = '';
-        }
-    }
-
-    function logout() {
-        location.reload();
+        let html = `
+            <div class="formula-card">
+                <div class="formula-title">ผลการคำนวณสูตร</div>
+                <div class="row-group">
+                    <span class="row-label">เลขเด่นหลัก</span>
+                    <span class="row-nums">${d1} - ${d2}</span>
+                </div>
+            </div>
+        `;
+        document.getElementById('results').innerHTML = html;
     }
 </script>
+</body>
+</html>
+ต
