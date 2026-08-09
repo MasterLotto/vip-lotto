@@ -3,78 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterLotto VIP - ระบบคำนวณสูตรหวย</title>
+    <title>MasterLotto VIP - ระบบคำนวณสูตรพรีเมียม</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 15px; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #1a2a6c; margin-bottom: 5px; font-size: 22px; }
-        .subtitle { text-align: center; color: #7f8c8d; font-size: 14px; margin-bottom: 20px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; margin: 0; padding: 15px; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        h2 { text-align: center; color: #1e293b; margin-bottom: 5px; font-size: 24px; font-weight: 700; letter-spacing: 0.5px; }
+        .subtitle { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 25px; }
 
         #payment-section { display: block; }
         
-        /* ปรับให้เป็น 4 ช่องสวยๆ สไตล์เดิม */
-        .price-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .price-card { background: #fff; border: 2px solid #bdc3c7; padding: 12px; border-radius: 10px; text-align: center; }
-        .price-card.featured { background: #fff9e6; border-color: #f1c40f; }
-        .price-card.vip-year { background: #e8f8f5; border-color: #27ae60; }
-        .price-card h4 { margin: 0 0 5px 0; color: #2c3e50; font-size: 15px; }
-        .price-card .price { font-size: 18px; font-weight: bold; color: #c0392b; margin-bottom: 3px; }
-        .price-card.vip-year .price { color: #27ae60; }
-        .price-card p { font-size: 11px; color: #666; margin: 0; }
-
-        .card { background: #f8f9fa; border-left: 5px solid #2980b9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .card h3 { margin-top: 0; color: #2980b9; font-size: 1.1em; margin-bottom: 12px; }
-        .bank-info { font-size: 0.95em; line-height: 1.7; }
-        .highlight-acc { color: #c0392b; font-weight: bold; background: #ffeaa7; padding: 2px 6px; border-radius: 4px; }
+        /* 4 ช่องแพ็กเกจพรีเมียม สีสันสดใส ชัดเจนทุกช่อง */
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+        .price-card { background: #f8fafc; border: 2px solid #e2e8f0; padding: 15px 10px; border-radius: 12px; text-align: center; transition: all 0.3s ease; }
         
-        .btn-line { display: block; width: 100%; background: #06c755; color: white; text-align: center; padding: 14px; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: bold; box-sizing: border-box; margin-bottom: 20px; }
-        .btn-line:hover { background: #05b34c; }
+        /* สีแยกแต่ละแพ็กเกจให้ดูพรีเมียม */
+        .card-7d { background: #fdf4ff; border-color: #d946ef; }
+        .card-15d { background: #eff6ff; border-color: #3b82f6; }
+        .card-1m { background: #fefce8; border-color: #eab308; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15); }
+        .card-1y { background: #f0fdf4; border-color: #22c55e; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15); }
 
-        .login-box { background: #e8f4fd; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #bee5eb; }
-        .login-box input { width: 80%; padding: 12px; font-size: 16px; text-align: center; letter-spacing: 2px; border: 1px solid #bdc3c7; border-radius: 6px; margin-bottom: 10px; box-sizing: border-box; }
-        .login-box button { width: 80%; background: #2980b9; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-        .error-msg { color: #c0392b; font-size: 14px; margin-top: 8px; display: none; }
+        .price-card h4 { margin: 0 0 6px 0; color: #1e293b; font-size: 16px; font-weight: 600; }
+        .price-card .price { font-size: 20px; font-weight: 800; color: #ef4444; margin-bottom: 4px; }
+        .price-card.card-1y .price { color: #16a34a; }
+        .price-card p { font-size: 11px; color: #475569; margin: 0; font-weight: 500; }
 
+        .card { background: #f8fafc; border-left: 5px solid #3b82f6; padding: 16px; border-radius: 10px; margin-bottom: 20px; border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        .card h3 { margin-top: 0; color: #1e293b; font-size: 1.1em; margin-bottom: 12px; font-weight: 600; }
+        .bank-info { font-size: 0.95em; line-height: 1.8; color: #334155; }
+        .highlight-acc { color: #dc2626; font-weight: bold; background: #fef08a; padding: 2px 8px; border-radius: 6px; border: 1px dashed #facc15; }
+        
+        .btn-line { display: block; width: 100%; background: #00b900; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-size: 1.1em; font-weight: bold; box-sizing: border-box; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0, 185, 0, 0.3); }
+        .btn-line:hover { background: #009900; }
+
+        .login-box { background: #f1f5f9; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #cbd5e1; }
+        .login-box input { width: 85%; padding: 14px; font-size: 16px; text-align: center; letter-spacing: 2px; border: 1px solid #94a3b8; border-radius: 8px; margin-bottom: 12px; box-sizing: border-box; background: #fff; }
+        .login-box button { width: 85%; background: #1e293b; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(30, 41, 59, 0.2); }
+        .login-box button:hover { background: #0f172a; }
+        .error-msg { color: #dc2626; font-size: 14px; margin-top: 10px; display: none; font-weight: 600; }
+
+        /* ส่วนหน้าจอคำนวณด้านใน (พรีเมียมและตัวเลขชัดเจน) */
         #app-screen { display: none; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; color: #34495e; font-size: 15px; }
-        input[type="text"] { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #bdc3c7; border-radius: 6px; font-size: 18px; text-align: center; letter-spacing: 2px; }
-        .calc-btn { width: 100%; background: #27ae60; color: white; border: none; padding: 14px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-        .formula-card { background: #f8f9fa; border-left: 5px solid #3498db; padding: 12px; margin-top: 15px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .formula-card h3 { margin: 0 0 6px 0; color: #2980b9; font-size: 16px; }
-        .highlight { color: #c0392b; font-weight: bold; }
-        .pairs { background: #fff; padding: 8px; border: 1px dashed #bdc3c7; border-radius: 4px; margin-top: 6px; font-family: monospace; font-size: 14px; line-height: 1.6; }
-        .back-btn { background: #7f8c8d; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; margin-bottom: 15px; font-size: 14px; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: bold; margin-bottom: 6px; color: #1e293b; font-size: 15px; }
+        input[type="text"] { width: 100%; padding: 14px; box-sizing: border-box; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 20px; text-align: center; letter-spacing: 3px; font-weight: bold; color: #0f172a; background: #f8fafc; }
+        .calc-btn { width: 100%; background: #16a34a; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); }
+        .calc-btn:hover { background: #15803d; }
+        
+        .formula-card { background: #f8fafc; border-left: 6px solid #3b82f6; padding: 15px; margin-top: 18px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+        .formula-card h3 { margin: 0 0 8px 0; color: #1e293b; font-size: 17px; }
+        .highlight { color: #dc2626; font-weight: 800; font-size: 18px; }
+        .pairs { background: #ffffff; padding: 10px 12px; border: 1px dashed #94a3b8; border-radius: 6px; margin-top: 8px; font-family: monospace; font-size: 15px; line-height: 1.8; color: #0f172a; font-weight: bold; }
+        .back-btn { background: #64748b; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; margin-bottom: 20px; font-size: 14px; font-weight: 600; }
+        .back-btn:hover { background: #475569; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>MasterLotto VIP</h2>
-    <div class="subtitle">พื้นที่พิเศษสำหรับสมาชิกผู้ติดตามสูตรคำนวณ</div>
+    <div class="subtitle">ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</div>
 
     <div id="payment-section">
-        <!-- 4 ช่องแพ็กเกจราคา -->
-        <div class="price-box">
-            <div class="price-card">
+        <!-- 4 ช่องแพ็กเกจสีสันสวยงาม ชัดเจน -->
+        <div class="price-grid">
+            <div class="price-card card-7d">
                 <h4>⏱️ 7 วัน</h4>
-                <div class="price">99 บาท</div>
-                <p>ทดลองใช้งาน</p>
+                <div class="price">99 ฿</div>
+                <p>ทดลองใช้งานสั้นๆ</p>
             </div>
-            <div class="price-card">
+            <div class="price-card card-15d">
                 <h4>⏳ 15 วัน</h4>
-                <div class="price">199 บาท</div>
-                <p>ใช้งานกลางๆ</p>
+                <div class="price">199 ฿</div>
+                <p>ใช้งานกลางเดือน</p>
             </div>
-            <div class="price-card featured">
-                <h4>⭐ รายเดือน</h4>
-                <div class="price">299 บาท</div>
-                <p>30 วันเต็มคุ้มสุด</p>
+            <div class="price-card card-1m">
+                <h4>⭐ 1 เดือน</h4>
+                <div class="price">299 ฿</div>
+                <p>สุดฮิตคุ้มค่าที่สุด</p>
             </div>
-            <div class="price-card vip-year">
-                <h4>🔥 รายปี</h4>
-                <div class="price">1,890 บาท</div>
-                <p>ใช้งานยาวทั้งปี</p>
+            <div class="price-card card-1y">
+                <h4>🔥 1 ปี</h4>
+                <div class="price">1,890 ฿</div>
+                <p>ใช้ยาวๆ ทั้งปีสุดคุ้ม</p>
             </div>
         </div>
 
@@ -85,24 +95,25 @@
                 <p><strong>เลขที่บัญชี:</strong> <span class="highlight-acc">0661291613</span></p>
                 <p><strong>ชื่อบัญชี:</strong> ณัฐพงษ์ ขำสำอางค์</p>
             </div>
-            <p style="font-size: 0.85em; color: #666; margin-top: 12px; margin-bottom: 0;">
-                * โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้เลยครับ
+            <p style="font-size: 0.85em; color: #64748b; margin-top: 12px; margin-bottom: 0;">
+                * โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที
             </p>
         </div>
 
         <a href="https://line.me/ti/p/cWXNwvCmqc" class="btn-line" target="_blank">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-box">
-            <p style="font-weight: bold; color: #1d6fa5; margin-top: 0; margin-bottom: 10px;">มีรหัสผ่านสมาชิกแล้ว?</p>
+            <p style="font-weight: bold; color: #1e293b; margin-top: 0; margin-bottom: 10px;">มีรหัสผ่านสมาชิกแล้ว?</p>
             <input type="password" id="passcode" placeholder="กรอกรหัสผ่าน VIP ที่นี่">
             <br>
             <button onclick="checkPassword()">เข้าสู่ระบบคำนวณ</button>
-            <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง หรือหมดอายุ</div>
+            <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง หรือหมดอายุการใช้งาน</div>
         </div>
     </div>
 
+    <!-- หน้าจอคำนวณด้านใน -->
     <div id="app-screen">
-        <button class="back-btn" onclick="logout()">ออกจากระบบ</button>
+        <button class="back-btn" onclick="logout()">⬅ ออกจากระบบ</button>
         <div class="form-group">
             <label>เลข 3 ตัวบน:</label>
             <input type="text" id="topNum" placeholder="เช่น 701" maxlength="3">
@@ -112,7 +123,7 @@
             <input type="text" id="bottomNum" placeholder="เช่น 26" maxlength="2">
         </div>
 
-        <button class="calc-btn" onclick="calculateLottery()">ประมวลผลข้อมูลสูตร</button>
+        <button class="calc-btn" onclick="calculateLottery()">✨ ประมวลผลสูตรคำนวณ</button>
 
         <div id="results"></div>
     </div>
@@ -121,7 +132,7 @@
 <script>
     // รหัสผ่านของอาจารย์และสมาชิก
     const ALLOWED_PASSCODES = [
-        "AJAN-MASTER-999", // รหัสส่วนตัวของอาจารย์
+        "AJAN-MASTER-999", // รหัสส่วนตัวของอาจารย์ (เข้าฟรี)
         "VIP88-A89X"      // ตัวอย่างรหัสลูกค้า
     ];
 
