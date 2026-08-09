@@ -26,7 +26,7 @@
         .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; font-weight: 600; }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* แพ็กเกจหน้าแรก */
+        /* แพ็กเกจหน้าแรก (ล็อกแบบสมบูรณ์ตามต้นแบบที่อาจารย์ชอบ) */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .package-card-1 { background: #1e293b; border: 2px solid #e879f9; padding: 12px; border-radius: 12px; text-align: center; }
         .package-card-2 { background: #1e293b; border: 2px solid #38bdf8; padding: 12px; border-radius: 12px; text-align: center; }
@@ -64,7 +64,7 @@
         }
         button.action-btn:hover { background: #334155; }
 
-        /* หน้าคำนวณสูตร */
+        /* หน้าคำนวณสูตร (ด้านในปรับแต่งตามสเปกเป๊ะๆ ฟอนต์ตรงกัน ระยะห่างเป๊ะ และสีตามภาพตัวอย่างที่ชอบ) */
         #calculatorView { display: none; }
         
         .formula-card { 
@@ -74,27 +74,27 @@
         .formula-title { color: #fbbf24; font-weight: 500; margin-bottom: 6px; font-size: 1rem; }
         .highlight { color: #fbbf24; font-weight: bold; font-family: 'Share Tech Mono', monospace; }
         
-        /* ดีไซน์กล่องชุดเจาะ: จัดระเบียบด้วย Grid ให้ตัวเลขตรงกันเป๊ะในแนวดิ่ง */
+        /* ดีไซน์กล่องชุดเจาะ: จัดระเบียบด้วย Grid ให้ตัวเลขตรงกันเป๊ะในแนวดิ่ง ระยะห่างเท่ากัน */
         .pierce-row { 
             background: #1e293b; padding: 10px 14px; border: 1px solid #334155; border-radius: 8px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
         }
         .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.85rem; font-weight: 300; width: 65px; }
         
-        /* ใช้ Share Tech Mono จัดระยะและช่องไฟให้เท่ากันเป๊ะ */
+        /* ใช้ Share Tech Mono บังคับความกว้างตัวอักษรและช่องไฟให้เท่ากันเป๊ะ 100% */
         .pierce-nums-container { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 15px; 
+            gap: 12px; 
             text-align: right;
             flex-grow: 1;
             font-family: 'Share Tech Mono', monospace; 
             font-size: 1.15rem; 
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
         
-        /* เปลี่ยนสีใหม่: แถวบนสีส้มพาสเทล / แถวล่างสีเขียวมรกต ไม่เอาสีฟ้าแล้ว */
-        .pierce-nums-1 { color: #fb923c; font-weight: 600; text-shadow: 0 0 2px rgba(251, 146, 60, 0.2); }
+        /* สีตัวเลข: อ้างอิงตามโทนภาพตัวอย่างที่อาจารย์ชื่นชอบ (แถวบนฟ้าสว่างชัดเจน / แถวล่างเขียวมรกตพาสเทลสบายตา) */
+        .pierce-nums-1 { color: #38bdf8; font-weight: 600; text-shadow: 0 0 2px rgba(56, 189, 248, 0.2); }
         .pierce-nums-2 { color: #4ade80; font-weight: 600; text-shadow: 0 0 2px rgba(74, 222, 128, 0.2); }
 
         .announcement-bottom { 
@@ -112,7 +112,7 @@
 
 <div class="vip-container">
     
-    <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ -->
+    <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ (ล็อกรูปแบบสมบูรณ์ 100% ตามต้นแบบ) -->
     <div id="loginView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -161,7 +161,7 @@
         </div>
     </div>
 
-    <!-- 2. หน้าคำนวณสูตร -->
+    <!-- 2. หน้าคำนวณสูตร (ด้านในจัดระเบียบฟอนต์ ระยะห่าง และชุดสีตามสเปกต้นแบบเป๊ะๆ) -->
     <div id="calculatorView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
