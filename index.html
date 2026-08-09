@@ -26,12 +26,12 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
         .star-sparkle {
             display: inline-block;
-            animation: twinkle 1.5s infinite ease-in-out;
+            animation: twinkle 3s infinite ease-in-out;
         }
 
         .header-box { text-align: center; margin-bottom: 24px; }
@@ -75,9 +75,57 @@
         .price { font-size: 1.3rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); margin-bottom: 2px; }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
-        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; text-align: center; }
-        .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 6px 12px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); font-size: 1.1rem; margin: 4px 0; }
+        .payment-box { 
+            background: #0b0f19; 
+            border: 1px solid rgba(51,65,85,0.8); 
+            padding: 18px 16px; 
+            border-radius: 16px; 
+            margin-bottom: 20px; 
+            font-size: 0.9rem; 
+        }
+        .payment-title { 
+            text-align: center; 
+            color: #38bdf8; 
+            font-weight: bold; 
+            margin-bottom: 14px; 
+            font-size: 0.95rem;
+        }
+        .payment-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(30,41,59,0.6);
+        }
+        .payment-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 12px;
+        }
+        .payment-label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        .payment-value {
+            color: #f8fafc;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+        .bank-highlight { 
+            color: #fbbf24; 
+            font-weight: bold; 
+            font-family: monospace; 
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+        .payment-footer {
+            font-size: 0.75rem; 
+            color: #64748b; 
+            text-align: center; 
+            margin-top: 10px; 
+            border-top: 1px dashed rgba(51,65,85,0.6);
+            padding-top: 8px;
+        }
 
         @keyframes btnPulse {
             0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
@@ -161,9 +209,10 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 4px; font-size: 1.05rem; }
         .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
 
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-3px) scale(1.15); filter: drop-shadow(0 0 6px rgba(251,191,36,0.8)); }
+        /* ปรับลดแอนิเมชันไอคอนคัดลอกลง 50% และขนาดให้เล็กลง ดูสบายตาขึ้น */
+        @keyframes gentleFade {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
         }
         .copy-row {
             background: #131c2e; 
@@ -185,9 +234,10 @@
             transform: scale(0.98);
         }
         .copy-label {
-            font-size: 0.85rem;
-            color: #cbd5e1;
+            font-size: 0.9rem;
+            color: #e2e8f0;
             font-weight: 500;
+            letter-spacing: 0.3px;
         }
         .copy-content-area {
             display: flex;
@@ -205,8 +255,9 @@
 
         .sparkle-clipboard {
             display: inline-block;
-            font-size: 1.1rem;
-            animation: iconBounce 1.5s infinite ease-in-out;
+            font-size: 0.9rem;
+            animation: gentleFade 3s infinite ease-in-out;
+            opacity: 0.85;
         }
 
         #toast {
@@ -235,7 +286,7 @@
     <div id="loginView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</p>
+            <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง</p>
         </div>
 
         <div class="package-grid">
@@ -262,11 +313,22 @@
         </div>
 
         <div class="payment-box">
-            <h4>🏛️ ช่องทางชำระเงินค่าสมาชิก</h4>
-            ธนาคาร: กสิกรไทย<br>
-            เลขที่บัญชี: <span class="bank-num">0661291613</span><br>
-            ชื่อบัญชี: ณัฐพงษ์ ขำสำอางค์
-            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">*โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที</div>
+            <div class="payment-title">🏛️ ช่องทางชำระเงินค่าสมาชิก</div>
+            <div class="payment-row">
+                <span class="payment-label">ธนาคาร</span>
+                <span class="payment-value">กสิกรไทย</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">เลขที่บัญชี</span>
+                <span class="payment-value bank-highlight">0661291613</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">ชื่อบัญชี</span>
+                <span class="payment-value">ณัฐพงษ์ ขำสำอางค์</span>
+            </div>
+            <div class="payment-footer">
+                *โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที
+            </div>
         </div>
 
         <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
@@ -304,7 +366,7 @@
 
         <div id="loadingOverlay">
             <div class="spinner"></div>
-            <div id="loadingText">กำลังเชื่อมต่อฐานข้อมูลสถิติ...</div>
+            <div id="loadingText">กำลังประมวลผล...</div>
         </div>
 
         <div id="resultContainer"></div>
@@ -327,24 +389,15 @@
         }
 
         const loadingOverlay = document.getElementById('loadingOverlay');
-        const loadingText = document.getElementById('loadingText');
         const container = document.getElementById('resultContainer');
         
         container.innerHTML = '';
         loadingOverlay.style.display = 'block';
 
         setTimeout(() => {
-            loadingText.innerText = "กำลังประมวลผลจากแสนๆ สูตรทางสถิติ...";
-        }, 600);
-
-        setTimeout(() => {
-            loadingText.innerText = "คัดกรองและเฟ้นหา 5 สูตรแม่นยำที่ดีที่สุด...";
-        }, 1300);
-
-        setTimeout(() => {
             loadingOverlay.style.display = 'none';
             calculateFormula(t3, b2);
-        }, 2000);
+        }, 1200);
     }
 
     function calculateFormula(t3, b2) {
@@ -425,7 +478,8 @@
                 let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
                 let pairString = pairs.join(' ');
                 let colorClass = (idx === 0) ? "main-set" : "sub-set";
-                let labelText = (idx === 0) ? `ชุดเจาะ ${dNum}` : `ชุดรอง ${dNum}`;
+                // เปลี่ยนคำว่า ชุดเจาะ เป็น เด่น กับ รอง ตามต้องการ
+                let labelText = (idx === 0) ? `เด่น ${dNum}` : `รอง ${dNum}`;
                 
                 cardHTML += `
                     <div class="copy-row" onclick="copyText('${pairString}')">
@@ -451,18 +505,8 @@
         });
     }
 
-    // ==========================================
-    // ⚙️ ส่วนจัดการระบบสมาชิก / รายชื่อผู้ใช้งานทั้งหมด (ย้ายมาไว้ด้านล่างสุด)
-    // สามารถเพิ่ม หรือแก้ไขรายชื่อสมาชิกได้ที่อาร์เรย์ด้านล่างนี้ทันที
-    // ==========================================
     const VALID_VIP_USERS = [
-        // ยูสเซอร์หลักที่คุณกำหนด
-        "Bank2026",
-        "AMD428",
-        "Xk89Pq",
-        "MasterAdmin2026",
-
-        // ยูสเซอร์ที่สุ่มเพิ่มให้อีก 50 ยูสเซอร์ (ยากและไม่ซ้ำกัน)
+        "Bank2026", "AMD428", "Xk89Pq", "MasterAdmin2026",
         "V9kL2mP7", "Zq4W8xT1", "Rt5Y9uI2", "Op2Q7wE4", "As3D6fG9",
         "Gh1J4kL8", "Zx7C2vB5", "Nm8M1nB3", "Po9I6uY4", "Uj3Y7tR6",
         "Wq2S5xC8", "Ed4R7fV1", "Tg6Y9hN2", "Yh8U1jM3", "Ik0O3pL5",
@@ -479,7 +523,6 @@
         const pass = document.getElementById('passwordInput').value.trim();
         const errorMsg = document.getElementById('errorMsg');
         
-        // ตรวจสอบว่ารหัสผ่านตรงกับรายชื่อในระบบสมาชิกหรือไม่
         if (VALID_VIP_USERS.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
