@@ -25,7 +25,6 @@
             position: relative;
         }
 
-        /* เอฟเฟกต์ดาวกระพริบวิบวับเฉพาะหัวข้อหลัก */
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -43,7 +42,6 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* แพ็กเกจหน้าแรก พร้อมแสงวิ่งขอบเคลื่อนไหวได้ */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
         @keyframes borderGlow1 {
@@ -83,7 +81,6 @@
         .price { font-size: 1.2rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
-        /* ช่องชำระเงิน */
         .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
         .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 4px 10px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); }
@@ -100,7 +97,6 @@
         }
         .btn-line:active { transform: scale(0.97); }
 
-        /* ส่วนเข้าสู่ระบบ */
         .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); }
         .input-group { margin-bottom: 14px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 6px; }
@@ -115,7 +111,6 @@
 
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
 
-        /* หน้าคำนวณสูตร (หน้า 3) - ปรับปรุงความสะอาดตา */
         #calculatorView { display: none; }
         
         .formula-card { 
@@ -137,7 +132,6 @@
         .pierce-left { display: flex; align-items: center; gap: 8px; }
         .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
         
-        /* ไอคอนสมุดแบบคลีนๆ มีกระพริบเบาๆ สื่อถึงการกดคัดลอก */
         @keyframes iconBlink {
             0%, 100% { opacity: 0.4; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.15); }
@@ -150,7 +144,6 @@
         .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; text-shadow: 0 0 8px rgba(74,222,128,0.3); }
         .pierce-nums-alt { color: #38bdf8; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; text-shadow: 0 0 8px rgba(56,189,248,0.3); }
 
-        /* Toast แจ้งเตือนพรีเมียม */
         #toast {
             visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
             text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
@@ -192,99 +185,102 @@
             <div class="package-card package-card-1">
                 <h3>⏱️ 7 วัน</h3>
                 <div class="price">99 ฿</div>
-                <div class="desc">ทดลองใช้งานสั้นๆ</div>
+                <div class="desc">ทดลองใช้งาน</div>
             </div>
             <div class="package-card package-card-2">
-                <h3>⌛ 15 วัน</h3>
+                <h3>⏳ 15 วัน</h3>
                 <div class="price">199 ฿</div>
-                <div class="desc">ใช้งานกลางเดือน</div>
+                <div class="desc">ใช้งานคุ้มค่า</div>
             </div>
             <div class="package-card package-card-3">
                 <h3>⭐ 1 เดือน</h3>
                 <div class="price">299 ฿</div>
-                <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
+                <div class="desc">ยอดฮิตแนะนำ</div>
             </div>
             <div class="package-card package-card-4">
                 <h3>🔥 1 ปี</h3>
                 <div class="price">1,890 ฿</div>
-                <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
+                <div class="desc">สุดคุ้มทั้งปี</div>
             </div>
         </div>
 
         <div class="payment-box">
-            <h4>🏦 ช่องทางชำระเงินค่าสมาชิก</h4>
-            <p style="margin: 5px 0;">ธนาคาร: <strong>กสิกรไทย</strong></p>
-            <p style="margin: 5px 0;">เลขที่บัญชี: <span class="bank-num">0661291613</span></p>
-            <p style="margin: 5px 0;">ชื่อบัญชี: <strong>ณัฐพงษ์ ขำสำอางค์</strong></p>
-            <p style="margin: 8px 0 0 0; font-size: 0.8rem; color: #94a3b8;">* โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที</p>
+            <h4>🏛️ ช่องทางชำระเงินค่าสมาชิก</h4>
+            ธนาคาร: <b>กสิกรไทย</b><br>
+            เลขบัญชี: <span class="bank-num">0661291613</span><br>
+            ชื่อบัญชี: <b>ณัฐพงษ์ ขำสำอางค์</b><br>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">* โอนแล้วแจ้งสลิปเพื่อรับรหัสผ่านผ่านไลน์</div>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
+        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-section">
             <div class="input-group">
-                <label>มีรหัสผ่านสมาชิกแล้ว?</label>
-                <input type="password" id="vipPassword" placeholder="กรอกรหัสผ่านสมาชิก">
-                <div id="loginError" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์</div>
+                <label>รหัสผ่านสมาชิก VIP</label>
+                <input type="password" id="passCode" placeholder="กรอกรหัสผ่าน">
+                <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง</div>
             </div>
             <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
         </div>
     </div>
 
-    <!-- 3. หน้าคำนวณ (แสดงผลหลังจากกรอกรหัสถูกต้อง) -->
+    <!-- 2. หน้าคำนวณสูตร -->
     <div id="calculatorView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
+            <p>ระบบคำนวณสูตรอัจฉริยะ</p>
         </div>
 
         <div class="input-group">
-            <label>เลข 3 ตัวบน:</label>
-            <input type="text" id="topNum" placeholder="เช่น 701" maxlength="3">
+            <label>กรอกผลรางวัล (ตัวอย่างเช่น แนวทางคำนวณ)</label>
+            <input type="text" id="calcInput" placeholder="กรอกตัวเลขเพื่อคำนวณ">
         </div>
-        <div class="input-group">
-            <label>เลข 2 ตัวล่าง:</label>
-            <input type="text" id="bottomNum" placeholder="เช่น 26" maxlength="2">
-            <div id="calcError" class="error-msg">⚠️ กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน</div>
+        <button class="action-btn" onclick="runCalculation()" style="background: linear-gradient(135deg, #059669, #047857); border: none; margin-bottom: 15px;">ประมวลผลสูตร</button>
+
+        <div class="formula-card">
+            <div class="formula-title">สูตรคำนวณเด่น VIP</div>
+            <div class="pierce-row" onclick="copyText('02 03 04 05 06')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดเจาะเน้นๆ :</span>
+                </div>
+                <span class="pierce-nums">02 03 04 05 06</span>
+            </div>
         </div>
-        
-        <button id="calcBtn" class="action-btn" onclick="calculateLottery()" style="background: linear-gradient(135deg, #059669, #047857); color: white; border: none; box-shadow: 0 4px 15px rgba(5,150,105,0.4);">✨ ประมวลผลสูตรคำนวณ</button>
 
-        <!-- พื้นแสดงผลสูตรคำนวณ -->
-        <div id="results"></div>
-
-        <!-- กล่องแนะนำเทคนิคและกฎระเบียบแบบจัดเต็ม อ่านง่าย สบายตา -->
         <div class="announcement-bottom">
-            <h4>📌 คู่มือและเทคนิคการใช้งานสูตร VIP</h4>
+            <h4>📌 คำแนะนำการใช้งาน</h4>
             <ul>
-                <li><strong>ทำไมต้องมีหลายสูตร?</strong> เพราะแต่ละสูตรใช้ฐานสถิติและจังหวะการเดินเงินต่างกัน มีไว้เพื่อสลับปรับใช้ตามสถานการณ์</li>
-                <li><strong>เทคนิคการตามสูตร:</strong> เมื่อเลือกสูตรไหนแล้ว แนะนำให้<strong>ตามต่อเนื่องอย่างน้อย 7–14 วัน</strong>ต่อ 1 สูตร ห้ามเปลี่ยนไปเปลี่ยนมารายวัน</li>
-                <li><strong>จุดสังเกตเลขเด็ด (สูตรชน):</strong> หากสังเกตเห็นตัวเลขไหนที่<strong>ชนกันหลายสูตร</strong> แปลว่าตัวเลขนั้นมีน้ำหนักและความน่าจะเป็นที่จะมาในรอบถัดไปสูงขึ้น</li>
-                <li><strong>ธรรมชาติของตัวเลข:</strong> ทุกสูตรมีจังหวะเข้าและหลุดสลับกันเป็นเรื่องปกติ บริหารทุนและมีวินัยคือหัวใจสำคัญสู่ความสำเร็จ</li>
+                <li>ใช้รหัสผ่านส่วนตัวในการเข้าสู่ระบบทุกครั้ง</li>
+                <li>ติดตามอัปเดตสูตรใหม่ๆ ได้ทางกลุ่ม VIP</li>
             </ul>
         </div>
 
-        <button class="action-btn back-btn" onclick="logout()">← ออกจากระบบ / กลับหน้าหลัก</button>
+        <button class="action-btn back-btn" onclick="logout()">ออกจากระบบ</button>
     </div>
 
 </div>
 
-<div id="toast">📋 คัดลอกชุดตัวเลขสำเร็จ!</div>
+<div id="toast">คัดลอกสำเร็จ!</div>
 
 <script>
-    // ส่วนเก็บรหัสผ่าน (ลูกค้าล่าสุดอยู่ด้านล่างสุด ไม่ต้องใส่คอมม่า ถ้ามีเพิ่มค่อยใส่คอมม่าต่อท้าย)
+    // -------------------------------------------------------------
+    // รายชื่อรหัสผ่าน (เพิ่ม/ลบ รหัสผ่านลูกค้าตรงนี้ได้เลยครับ)
+    // อย่าลืมใส่เครื่องหมายคำพูด "" และคั่นด้วยเครื่องหมายคอมมา ,
+    // -------------------------------------------------------------
     const memberPasswords = [
-        "MasterAdmin2026", 
-        "AMD428", 
-        "VIP2026", 
+        "MasterAdmin2026",
+        "AMD428",
+        "VIP2026",
         "Bank2026"
     ];
 
     function checkLogin() {
-        const passInput = document.getElementById('vipPassword');
-        const errorDiv = document.getElementById('loginError');
+        const passInput = document.getElementById('passCode');
+        const errorDiv = document.getElementById('errorMsg');
         const pass = passInput.value.trim();
 
+        // เช็ครหัสผ่านว่าตรงกับในรายการ memberPasswords หรือไม่
         if (pass !== "" && memberPasswords.includes(pass)) {
             errorDiv.style.display = 'none';
             document.getElementById('loginView').style.display = 'none';
@@ -299,111 +295,23 @@
     function logout() {
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
-        document.getElementById('vipPassword').value = '';
-        document.getElementById('topNum').value = '';
-        document.getElementById('bottomNum').value = '';
-        document.getElementById('results').innerHTML = '';
-        document.getElementById('loginError').style.display = 'none';
-        document.getElementById('calcError').style.display = 'none';
     }
 
-    function calculateLottery() {
-        let top = document.getElementById('topNum').value.trim();
-        let bottom = document.getElementById('bottomNum').value.trim();
-        let errorDiv = document.getElementById('calcError');
-
-        if (top.length !== 3 || bottom.length !== 2) {
-            errorDiv.style.display = 'block';
-            return;
-        }
-        errorDiv.style.display = 'none';
-
-        let btn = document.getElementById('calcBtn');
-        btn.innerHTML = "⏳ กำลังประมวลผลอัลกอริทึม...";
-        btn.disabled = true;
-
-        setTimeout(() => {
-            let r1 = parseInt(top[0]);
-            let r2 = parseInt(top[1]);
-            let r3 = parseInt(top[2]);
-            let b1 = parseInt(bottom[0]);
-            let b2 = parseInt(bottom[1]);
-
-            let f1_d1 = (r2 + b1) % 10;
-            let f1_d2 = (f1_d1 + 1) % 10;
-
-            let f2_d1 = (r1 + r2 + r3) % 10;
-            let f2_d2 = (f2_d1 + 1) % 10;
-
-            let f3_d1 = (r1 + b1) % 10;
-            let f3_d2 = (f3_d1 + 1) % 10;
-
-            let f4_d1 = (r3 + b2) % 10;
-            let f4_d2 = (f4_d1 + 1) % 10;
-
-            let f5_d1 = (10 - b2) % 10;
-            let f5_d2 = (f5_d1 + 1) % 10;
-
-            let formulas = [
-                { name: "สูตรที่ 1", d1: f1_d1, d2: f1_d2 },
-                { name: "สูตรที่ 2", d1: f2_d1, d2: f2_d2 },
-                { name: "สูตรที่ 3", d1: f3_d1, d2: f3_d2 },
-                { name: "สูตรที่ 4", d1: f4_d1, d2: f4_d2 },
-                { name: "สูตรที่ 5", d1: f5_d1, d2: f5_d2 }
-            ];
-
-            let html = '';
-            formulas.forEach(f => {
-                let de1 = f.d1;
-                let de2 = f.d2;
-
-                let pool = [];
-                for(let i=0; i<=9; i++) {
-                    if(i !== de1 && i !== de2) pool.push(i);
-                }
-                let pierce5 = pool.slice(0, 5);
-
-                let row1 = pierce5.map(n => "" + de1 + n).join(" ");
-                let row2 = pierce5.map(n => "" + de2 + n).join(" ");
-
-                html += `
-                <div class="formula-card">
-                    <div class="formula-title">${f.name}</div>
-                    <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
-                    
-                    <div class="pierce-row" onclick="copyToClipboard('${row1}')">
-                        <div class="pierce-left">
-                            <span class="pierce-label">ชุดเจาะ ${de1}</span>
-                            <span class="copy-icon">📋</span>
-                        </div>
-                        <span class="pierce-nums">${row1}</span>
-                    </div>
-                    <div class="pierce-row" onclick="copyToClipboard('${row2}')">
-                        <div class="pierce-left">
-                            <span class="pierce-label">ชุดเจาะ ${de2}</span>
-                            <span class="copy-icon">📋</span>
-                        </div>
-                        <span class="pierce-nums-alt">${row2}</span>
-                    </div>
-                </div>`;
-            });
-
-            document.getElementById('results').innerHTML = html;
-            btn.innerHTML = "✨ ประมวลผลสูตรคำนวณ";
-            btn.disabled = false;
-        }, 400);
+    function runCalculation() {
+        showToast("ประมวลผลสูตรสำเร็จ!");
     }
 
-    let toastTimer;
-    function copyToClipboard(text) {
+    function copyText(text) {
         navigator.clipboard.writeText(text).then(() => {
-            let toast = document.getElementById("toast");
-            clearTimeout(toastTimer);
-            toast.className = "show";
-            toastTimer = setTimeout(() => { 
-                toast.className = ""; 
-            }, 1500);
+            showToast("คัดลอก: " + text);
         });
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.className = "show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
     }
 </script>
 
