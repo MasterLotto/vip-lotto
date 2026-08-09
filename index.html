@@ -113,9 +113,9 @@
         }
         button.action-btn:active { transform: scale(0.97); background: #334155; }
 
-        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; text-align: center; }
 
-        /* หน้าคำนวณสูตร (หน้า 3) - ปรับปรุงความสะอาดตา */
+        /* หน้าคำนวณสูตร (หน้า 2) */
         #calculatorView { display: none; }
         
         .formula-card { 
@@ -137,7 +137,6 @@
         .pierce-left { display: flex; align-items: center; gap: 8px; }
         .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
         
-        /* ไอคอนสมุดแบบคลีนๆ มีกระพริบเบาๆ สื่อถึงการกดคัดลอก */
         @keyframes iconBlink {
             0%, 100% { opacity: 0.4; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.15); }
@@ -190,4 +189,161 @@
 
         <div class="package-grid">
             <div class="package-card package-card-1">
-                <h3>⏱️ 7 วัน<
+                <h3>⏱️ 7 วัน</h3>
+                <div class="price">300 บ.</div>
+                <div class="desc">เหมาะสำหรับทดลองสูตร</div>
+            </div>
+            <div class="package-card package-card-2">
+                <h3>📅 15 วัน</h3>
+                <div class="price">500 บ.</div>
+                <div class="desc">คุ้มค่า ใช้งานต่อเนื่อง</div>
+            </div>
+            <div class="package-card package-card-3">
+                <h3>⭐ 30 วัน</h3>
+                <div class="price">900 บ.</div>
+                <div class="desc">ยอดนิยม สูตรเดินดี</div>
+            </div>
+            <div class="package-card package-card-4">
+                <h3>👑 ถาวร (VIP)</h3>
+                <div class="price">2,500 บ.</div>
+                <div class="desc">อัปเดตสูตรฟรีตลอดชีพ</div>
+            </div>
+        </div>
+
+        <div class="payment-box">
+            <h4>💳 ช่องทางชำระเงิน</h4>
+            <p style="margin: 0 0 8px 0; color: #94a3b8;">โอนผ่านบัญชีธนาคาร / PromptPay:</p>
+            <div class="bank-num">123-4-56789-0</div>
+            <p style="margin: 8px 0 0 0; font-size: 0.8rem; color: #cbd5e1;">(ชื่อบัญชี: บจก. มาสเตอร์ล็อตโต้)</p>
+        </div>
+
+        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / สมัครสมาชิกผ่าน LINE</a>
+
+        <div class="login-section">
+            <div class="input-group">
+                <label for="vipCode">🔑 ใส่รหัสผ่าน VIP ของท่าน</label>
+                <input type="password" id="vipCode" placeholder="กรอกรหัสผ่าน 6 หลัก">
+                <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้ง</div>
+            </div>
+            <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
+        </div>
+
+        <div class="announcement-bottom">
+            <h4>📢 ประกาศสำคัญจากระบบ</h4>
+            <ul>
+                <li>ระบบคำนวณอัปเดตสถิติเรียลไทม์ แม่นยำสูง</li>
+                <li>กรุณาใช้สูตรอย่างมีสติและบริหารความเสี่ยง</li>
+                <li>หากพบปัญหาการใช้งาน ติดต่อแอดมินทาง LINE ได้ตลอด 24 ชม.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. หน้าคำนวณสูตร (แสดงผลเมื่อรหัสผ่านถูกต้อง) -->
+    <div id="calculatorView">
+        <div class="header-box">
+            <h2><span class="star-sparkle">💎</span> ผลการวิเคราะห์ VIP <span class="star-sparkle">💎</span></h2>
+            <p>ระบบคำนวณอัจฉริยะแม่นยำสูงประจำงวดนี้</p>
+        </div>
+
+        <div class="formula-card">
+            <div class="formula-title">⚡ สูตรเจาะเลขเด่นหลักสิบ-หน่วย</div>
+            <p style="margin: 0 0 10px 0; font-size: 0.85rem; color: #94a3b8;">แตะที่แถวเพื่อคัดลอกชุดตัวเลขทันที</p>
+            
+            <div class="pierce-row" onclick="copyText('8, 3, 5, 1')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">วิ่ง/รูด ตัวเด่น:</span>
+                </div>
+                <span class="pierce-nums">8 - 3 - 5 - 1</span>
+            </div>
+
+            <div class="pierce-row" onclick="copyText('83, 85, 81, 35, 31, 51')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดเจาะ 2 ตัวตรง:</span>
+                </div>
+                <span class="pierce-nums-alt">83, 85, 81, 35, 31, 51</span>
+            </div>
+
+            <div class="pierce-row" onclick="copyText('383, 583, 135')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">ชุดเจาะ 3 ตัวเน้นๆ:</span>
+                </div>
+                <span class="pierce-nums">383, 583, 135</span>
+            </div>
+        </div>
+
+        <div class="formula-card" style="border-left-color: #fbbf24; animation-name: borderGlow3;">
+            <div class="formula-title" style="color: #fbbf24;">🔥 สูตรเจาะพิเศษ (พลังคำนวณเซียน)</div>
+            
+            <div class="pierce-row" onclick="copyText('2, 7, 9')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">เลขฟันธง:</span>
+                </div>
+                <span class="pierce-nums" style="color: #fbbf24;">2 - 7 - 9</span>
+            </div>
+
+            <div class="pierce-row" onclick="copyText('27, 29, 79, 72, 92, 97')">
+                <div class="pierce-left">
+                    <span class="copy-icon">📋</span>
+                    <span class="pierce-label">เจาะคู่ชุด:</span>
+                </div>
+                <span class="pierce-nums-alt" style="color: #fbbf24;">27, 29, 79, 72, 92, 97</span>
+            </div>
+        </div>
+
+        <button class="action-btn back-btn" onclick="logout()">ออกจากระบบ / เปลี่ยนรหัส</button>
+    </div>
+
+</div>
+
+<!-- Toast แจ้งเตือนเมื่อคัดลอกสำเร็จ -->
+<div id="toast">คัดลอกข้อความสำเร็จ! ✨</div>
+
+<script>
+    // รหัสผ่านสำหรับทดสอบเข้าสู่ระบบ (สามารถเปลี่ยนรหัสผ่านได้ที่นี่)
+    const validVIPCode = "123456"; 
+
+    function checkLogin() {
+        const inputCode = document.getElementById('vipCode').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+
+        if (inputCode === validVIPCode) {
+            errorMsg.style.display = 'none';
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            errorMsg.style.display = 'block';
+            document.getElementById('vipCode').value = '';
+        }
+    }
+
+    function logout() {
+        document.getElementById('calculatorView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('vipCode').value = '';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast();
+        }).catch(err => {
+            console.error('ไม่สามารถคัดลอกข้อความได้: ', err);
+        });
+    }
+
+    function showToast() {
+        const toast = document.getElementById('toast');
+        toast.className = 'show';
+        setTimeout(() => { 
+            toast.className = toast.className.replace('show', ''); 
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
