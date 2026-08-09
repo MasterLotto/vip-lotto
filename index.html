@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ 20 สูตร</title>
+    <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
     <style>
         * { box-sizing: border-box; }
         body { 
@@ -268,7 +268,7 @@
     <div id="loginView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง (20 สูตรอัจฉริยะ)</p>
+            <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง</p>
         </div>
 
         <div class="online-status-bar">
@@ -334,7 +334,7 @@
     <div id="calculatorView">
         <div class="header-box" style="margin-bottom: 20px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์สถิติ 20 สูตร (Max Weight Filtering)</p>
+            <p>ระบบวิเคราะห์อัจฉริยะ</p>
         </div>
 
         <div class="calc-box">
@@ -349,14 +349,14 @@
 
         <div class="action-row">
             <button class="btn-calculate" onclick="startProcessing()">
-                <span>✨</span> ประมวลผล 20 สูตรคำนวณ
+                <span>✨</span> ประมวลผล
             </button>
             <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
         </div>
 
         <div id="loadingOverlay">
             <div class="spinner"></div>
-            <div id="loadingText">กำลังประมวลผล 20 สูตรอัจฉริยะ...</div>
+            <div id="loadingText">กำลังประมวลผล...</div>
         </div>
 
         <div id="resultContainer"></div>
@@ -422,7 +422,6 @@
         }, 1200);
     }
 
-    // ฟังก์ชันคำนวณผ่าน 20 สูตรเบื้องหลัง (คณิตศาสตร์บริสุทธิ์ + สลับหลัก + บวก 1 แต้ม)
     function calculateFormula(t3, b2) {
         const hTop = parseInt(t3[0]);
         const dTop = parseInt(t3[1]);
@@ -430,7 +429,6 @@
         const dBot = parseInt(b2[0]);
         const uBot = parseInt(b2[1]);
 
-        // สร้างชุดตัวเลขจาก 20 สูตรเบื้องหลัง
         const rawFormulasDef = [
             { name: "สูตรที่ 1", sum: dTop + dBot },
             { name: "สูตรที่ 2", sum: hTop + dTop + uTop },
@@ -461,7 +459,6 @@
             return { name: f.name, set: [d1, d2] };
         });
 
-        // ระบบประมวลผลน้ำหนักความถี่ (Frequency Weight Mapping)
         let freqMap = {};
         formulas.forEach(f => {
             f.set.forEach(num => {
@@ -469,28 +466,24 @@
             });
         });
 
-        // ให้คะแนนน้ำหนักแต่ละสูตรตามเสียงโหวตความซ้ำ
         formulas.forEach(f => {
             f.score = f.set.reduce((acc, num) => acc + (freqMap[num] || 0), 0);
         });
 
-        // จัดเรียงสูตรที่ได้คะแนนโหวตสูงสุดขึ้นมาแสดงผลก่อน
         formulas.sort((a, b) => b.score - a.score);
 
         formulas.forEach((f, index) => {
             f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 5));
         });
 
-        // ตรรกะเลขเจาะชุดเดิมของคุณ
         let coreVal = (7 - hTop) % 10;
         if(coreVal < 0) coreVal += 10;
 
         const container = document.getElementById('resultContainer');
         container.innerHTML = '';
 
-        // แสดงผลลัพธ์หน้าบ้านแบบกระชับ (แสดงผลสูตรหลักที่ผ่านการกลั่นกรองน้ำหนักสูงสุด)
         formulas.slice(0, 5).forEach((f, idx) => {
-            let displayHeaderName = `สูตรเด่นอันดับที่ ${idx + 1} (ประมวลผลจาก 20 สูตร)`;
+            let displayHeaderName = `สูตรที่ ${idx + 1}`;
             let hasCollision = false;
             for(let offset = -2; offset <= 2; offset++) {
                 let val = (coreVal + offset) % 10;
@@ -516,9 +509,9 @@
                 <div class="formula-card">
                     <div class="formula-header-flex">
                         <div class="formula-title">${displayHeaderName}</div>
-                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ (MAX WEIGHT)</div>' : ''}
+                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ</div>' : ''}
                     </div>
-                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]} (คะแนนโหวต: ${f.score})</div>
+                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
             `;
 
             f.set.forEach((dNum, dIdx) => {
