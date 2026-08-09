@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบคำนวณหวย Master Logic</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 15px; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 5px; font-size: 20px; }
+        .subtitle { text-align: center; color: #7f8c8d; font-size: 13px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #34495e; font-size: 15px; }
+        input { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #bdc3c7; border-radius: 6px; font-size: 18px; text-align: center; letter-spacing: 2px; }
+        button { width: 100%; background: #27ae60; color: white; border: none; padding: 14px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .formula-card { background: #f8f9fa; border-left: 5px solid #3498db; padding: 12px; margin-top: 15px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .formula-card h3 { margin: 0 0 6px 0; color: #2980b9; font-size: 16px; }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .pairs { background: #fff; padding: 8px; border: 1px dashed #bdc3c7; border-radius: 4px; margin-top: 6px; font-family: monospace; font-size: 14px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>ระบบวิเคราะห์เลขเด่น</h2>
+    <div class="subtitle">พิมพ์ผลรางวัลเพื่อดูแนวทางเลขชุด</div>
+
+    <div class="form-group">
+        <label>เลข 3 ตัวบน:</label>
+        <input type="text" id="topNum" placeholder="เช่น 701" maxlength="3">
+    </div>
+    <div class="form-group">
+        <label>เลข 2 ตัวล่าง:</label>
+        <input type="text" id="bottomNum" placeholder="เช่น 26" maxlength="2">
+    </div>
+
+    <button onclick="calculateLottery()">ประมวลผลข้อมูล</button>
+
+    <div id="results"></div>
+</div>
+
+<script>
+function calculateLottery() {
+    let top = document.getElementById('topNum').value.trim();
+    let bottom = document.getElementById('bottomNum').value.trim();
+
+    if (top.length !== 3 || bottom.length !== 2) {
+        alert("กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน!");
+        return;
+    }
+
+    let r1 = parseInt(top[0]);
+    let r2 = parseInt(top[1]);
+    let r3 = parseInt(top[2]);
+    let b1 = parseInt(bottom[0]);
+    let b2 = parseInt(bottom[1]);
+
+    // ซ่อนตรรกะคำนวณเบื้องหลังทั้งหมด
+    let f1_d1 = (r2 + b1) % 10;
+    let f1_d2 = (f1_d1 + 1) % 10;
+
+    let f2_d1 = (r1 + r2 + r3) % 10;
+    let f2_d2 = (f2_d1 + 1) % 10;
+
+    let f3_d1 = (r1 + b1) % 10;
+    let f3_d2 = (f3_d1 + 1) % 10;
+
+    let f4_d1 = (r3 + b2) % 10;
+    let f4_d2 = (f4_d1 + 1) % 10;
+
+    let f5_d1 = (10 - b2) % 10;
+    let f5_d2 = (f5_d1 + 1) % 10;
+
+    let formulas = [
+        { name: "สูตรที่ 1 (ชุดมาตรฐาน A)", d1: f1_d1, d2: f1_d2 },
+        { name: "สูตรที่ 2 (ชุดมาตรฐาน B)", d1: f2_d1, d2: f2_d2 },
+        { name: "สูตรที่ 3 (ชุดมาตรฐาน C)", d1: f3_d1, d2: f3_d2 },
+        { name: "สูตรที่ 4 (ชุดมาตรฐาน D)", d1: f4_d1, d2: f4_d2 },
+        { name: "สูตรที่ 5 (ชุดมาตรฐาน E)", d1: f5_d1, d2: f5_d2 }
+    ];
+
+    let html = "";
+    formulas.forEach(f => {
+        let de1 = f.d1;
+        let de2 = f.d2;
+
+        let pool = [];
+        for(let i=0; i<=9; i++) {
+            if(i !== de1 && i !== de2) pool.push(i);
+        }
+        let pierce5 = pool.slice(0, 5);
+
+        let row1 = pierce5.map(n => "" + de1 + n).join("  ");
+        let row2 = pierce5.map(n => "" + de2 + n).join("  ");
+
+        html += `
+            <div class="formula-card">
+                <h3>${f.name}</h3>
+                <div>เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
+                <div class="pairs">
+                    <b>ชุดเจาะ 10 คู่:</b><br>
+                    ${de1}: ${row1}<br>
+                    ${de2}: ${row2}
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('results').innerHTML = html;
+}
+</script>
+
+</body>
+</html>
 
