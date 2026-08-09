@@ -8,7 +8,7 @@
         * { box-sizing: border-box; }
         body { 
             font-family: 'Kanit', sans-serif; 
-            background-color: #05070e; 
+            background-color: #030305; 
             color: #f8fafc; 
             margin: 0; 
             padding: 15px; 
@@ -17,88 +17,62 @@
         .vip-container { 
             max-width: 480px; 
             margin: 0 auto; 
-            background: #0f172a; 
+            background: #0a0d14; 
             padding: 24px; 
             border-radius: 24px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 1px 0 rgba(212,175,55,0.2);
+            border: 1px solid rgba(212,175,55,0.25);
             position: relative;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
         .star-sparkle {
             display: inline-block;
-            animation: twinkle 1.5s infinite ease-in-out;
+            color: #d4af37;
         }
 
         .header-box { text-align: center; margin-bottom: 24px; }
         .header-box h2 { 
-            color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
-            text-shadow: 0 0 15px rgba(251,191,36,0.6), 0 0 30px rgba(251,191,36,0.3); 
+            color: #d4af37; margin: 0 0 5px 0; font-size: 1.7rem; 
+            text-shadow: 0 0 20px rgba(212,175,55,0.4); 
             letter-spacing: 0.5px; 
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
-        @keyframes borderGlow1 {
-            0% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
-            50% { border-color: rgba(232,121,249,0.9); box-shadow: 0 0 20px rgba(232,121,249,0.6); }
-            100% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+        .package-card { background: #101522; padding: 16px 12px; border-radius: 16px; text-align: center; border: 1px solid rgba(51,65,85,0.8); }
+        .package-card-highlight { 
+            border: 1px solid #d4af37; 
+            box-shadow: 0 0 15px rgba(212,175,55,0.25);
+            background: linear-gradient(135deg, #101522, #181f30);
         }
-        @keyframes borderGlow2 {
-            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
-            50% { border-color: rgba(56,189,248,0.9); box-shadow: 0 0 20px rgba(56,189,248,0.6); }
-            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
-        }
-        @keyframes borderGlow3 {
-            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
-            50% { border-color: rgba(251,191,36,0.9); box-shadow: 0 0 25px rgba(251,191,36,0.7); }
-            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
-        }
-        @keyframes borderGlow4 {
-            0% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
-            50% { border-color: rgba(74,222,128,0.9); box-shadow: 0 0 20px rgba(74,222,128,0.6); }
-            100% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
-        }
-
-        .package-card { background: #131c2e; padding: 16px 12px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; }
-        .package-card-1 { animation: borderGlow1 3s infinite; color: #e879f9; }
-        .package-card-2 { animation: borderGlow2 3s infinite; color: #38bdf8; }
-        .package-card-3 { animation: borderGlow3 2.5s infinite; color: #fbbf24; }
-        .package-card-4 { animation: borderGlow4 3s infinite; color: #4ade80; }
         
-        .package-card h3 { margin: 0 0 6px 0; font-size: 0.95rem; }
-        .price { font-size: 1.3rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); margin-bottom: 2px; }
+        .package-card h3 { margin: 0 0 6px 0; font-size: 0.95rem; color: #cbd5e1; }
+        .package-card-highlight h3 { color: #d4af37; }
+        .price { font-size: 1.3rem; font-weight: bold; color: #f87171; margin-bottom: 2px; }
+        .package-card-highlight .price { color: #fbbf24; text-shadow: 0 0 10px rgba(251,191,36,0.3); }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
-        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; text-align: center; }
-        .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 6px 12px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); font-size: 1.1rem; margin: 4px 0; }
+        .payment-box { background: #06080f; border: 1px solid rgba(212,175,55,0.3); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; text-align: center; }
+        .payment-box h4 { margin: 0 0 10px 0; color: #d4af37; }
+        .bank-num { color: #fbbf24; font-weight: bold; background: #101522; padding: 6px 12px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; border: 1px solid rgba(212,175,55,0.3); font-size: 1.1rem; margin: 4px 0; }
 
-        @keyframes btnPulse {
-            0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
-            50% { box-shadow: 0 0 25px rgba(5,150,105,0.8); }
-            100% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
-        }
         .btn-line { 
             display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #059669, #047857); color: white; 
             text-align: center; text-decoration: none; border-radius: 14px; font-weight: bold; margin-bottom: 20px; 
-            animation: btnPulse 2s infinite; font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(5,150,105,0.4); font-size: 0.95rem; transition: 0.2s;
         }
+        .btn-line:active { transform: scale(0.98); }
 
-        .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); text-align: center; }
+        .login-section { background: #06080f; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); text-align: center; }
         .login-title { font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px; }
         .input-group { margin-bottom: 12px; }
-        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
-        input:focus { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56,189,248,0.4); }
+        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #101522; color: white; font-size: 1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
+        input:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212,175,55,0.3); }
         input::placeholder { color: #64748b; }
         
         button.action-btn { 
-            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 12px; 
+            width: 100%; padding: 14px; background: #182033; border: 1px solid #475569; border-radius: 12px; 
             color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
         button.action-btn:active { transform: scale(0.97); }
@@ -111,27 +85,28 @@
         .calc-box label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 6px; }
         
         .btn-calculate {
-            width: 100%; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white;
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #d4af37, #aa7c11); color: #0a0d14;
             border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer;
-            box-shadow: 0 0 15px rgba(5,150,105,0.5); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 4px 20px rgba(212,175,55,0.4); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: 0.2s;
         }
+        .btn-calculate:active { transform: scale(0.97); }
 
-        /* Loading Screen Styles */
         #loadingOverlay {
             display: none;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(10, 13, 20, 0.96);
             padding: 30px 20px;
             border-radius: 16px;
             text-align: center;
             margin-bottom: 20px;
-            border: 1px solid rgba(56,189,248,0.4);
-            box-shadow: 0 0 30px rgba(56,189,248,0.2);
+            border: 1px solid rgba(212,175,55,0.4);
+            box-shadow: 0 0 30px rgba(212,175,55,0.2);
         }
         .spinner {
             width: 45px;
             height: 45px;
-            border: 4px solid rgba(56,189,248,0.2);
-            border-top: 4px solid #38bdf8;
+            border: 4px solid rgba(212,175,55,0.2);
+            border-top: 4px solid #d4af37;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 15px auto;
@@ -141,34 +116,23 @@
             100% { transform: rotate(360deg); }
         }
         #loadingText {
-            color: #38bdf8;
-            font-size: 0.95srem;
+            color: #d4af37;
+            font-size: 0.95rem;
             font-weight: 500;
-            min-height: 24px;
-            animation: pulseText 1.5s infinite;
-        }
-        @keyframes pulseText {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
         }
 
         .formula-card { 
-            background: #0b0f19; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
-            border: 1px solid rgba(56,189,248,0.25);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            animation: borderGlow2 4s infinite;
+            background: #06080f; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
+            border: 1px solid rgba(212,175,55,0.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             text-align: left;
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 4px; font-size: 1.05rem; }
-        .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
+        .formula-title { color: #d4af37; font-weight: bold; margin-bottom: 4px; font-size: 1.05rem; }
+        .formula-sub { color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; }
 
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-3px) scale(1.15); filter: drop-shadow(0 0 6px rgba(251,191,36,0.8)); }
-        }
         .copy-row {
-            background: #131c2e; 
-            border: 1px solid rgba(51,65,85,0.8); 
+            background: #101522; 
+            border: 1px solid rgba(51,65,85,0.6); 
             padding: 10px 14px; 
             border-radius: 12px; 
             margin-bottom: 8px; 
@@ -179,8 +143,8 @@
             transition: 0.2s;
         }
         .copy-row:hover {
-            border-color: #38bdf8;
-            background: #17223b;
+            border-color: #d4af37;
+            background: #151c2e;
         }
         .copy-row:active {
             transform: scale(0.98);
@@ -202,18 +166,17 @@
             letter-spacing: 1px;
             font-weight: bold;
         }
-        .sparkle-clipboard {
-            display: inline-block;
-            font-size: 1.1rem;
-            animation: iconBounce 1.5s infinite ease-in-out;
+        .clipboard-icon {
+            font-size: 1rem;
+            opacity: 0.7;
         }
 
         #toast {
-            visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
+            visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #d4af37, #aa7c11); color: #0a0d14;
             text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
             z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%);
-            font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            border: 1px solid rgba(255,255,255,0.4);
         }
         #toast.show { visibility: visible; animation: fadeInOut 1.5s ease-in-out; }
         @keyframes fadeInOut {
@@ -223,39 +186,60 @@
             100% { bottom: 10px; opacity: 0; }
         }
 
-        .back-btn { background: #334155 !important; border: none !important; margin-top: 10px; }
+        .back-btn { background: #1e293b !important; border: 1px solid #475569 !important; margin-top: 10px; }
     </style>
 </head>
 <body>
 
+<!-- เสียงคลิกสั้นๆ ไฮเทค (สร้างด้วย AudioContext เพื่อให้ใช้งานได้ทันทีโดยไม่ต้องโหลดไฟล์เสียงภายนอก) -->
+<script>
+    function playClickSound() {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.05);
+        } catch(e) {}
+    }
+</script>
+
 <div class="vip-container">
     
+    <!-- หน้าแรก -->
     <div id="loginView">
         <div class="header-box">
-            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
+            <h2><span class="star-sparkle">✦</span> MasterLotto VIP <span class="star-sparkle">✦</span></h2>
             <p>ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</p>
         </div>
 
         <div class="package-grid">
-            <div class="package-card package-card-1">
-                <h3>⏱️ 7 วัน</h3>
+            <div class="package-card">
+                <h3>7 วัน</h3>
                 <div class="price">99 ฿</div>
                 <div class="desc">ทดลองใช้งานสั้นๆ</div>
             </div>
-            <div class="package-card package-card-2">
-                <h3>⏳ 15 วัน</h3>
+            <div class="package-card">
+                <h3>15 วัน</h3>
                 <div class="price">199 ฿</div>
                 <div class="desc">ใช้งานกลางเดือน</div>
             </div>
-            <div class="package-card package-card-3">
-                <h3>⭐ 1 เดือน</h3>
+            <div class="package-card package-card-highlight">
+                <h3>1 เดือน ⭐</h3>
                 <div class="price">299 ฿</div>
                 <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
             </div>
-            <div class="package-card package-card-4">
-                <h3>🔥 1 ปี</h3>
+            <div class="package-card">
+                <h3>1 ปี</h3>
                 <div class="price">1,890 ฿</div>
-                <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
+                <div class="desc">ใช้ยาวๆ ทั้งปี</div>
             </div>
         </div>
 
@@ -264,24 +248,25 @@
             ธนาคาร: กสิกรไทย<br>
             เลขที่บัญชี: <span class="bank-num">0661291613</span><br>
             ชื่อบัญชี: ณัฐพงษ์ ขำสำอางค์
-            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">*โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที</div>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">*โอนเงินแล้วกดปุ่มด้านล่างเพื่อแจ้งสลิปกับแอดมิน</div>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line" onclick="playClickSound()">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-section">
             <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
             <div class="input-group">
                 <input type="password" id="passwordInput" placeholder="กรอกรหัสผ่านสมาชิก">
             </div>
-            <button class="action-btn" onclick="handleLogin()">เข้าสู่ระบบคำนวณ</button>
+            <button class="action-btn" onclick="playClickSound(); handleLogin();">เข้าสู่ระบบคำนวณ</button>
             <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</div>
         </div>
     </div>
 
+    <!-- หน้าคำนวณสูตร -->
     <div id="calculatorView">
         <div class="header-box" style="margin-bottom: 16px;">
-            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
+            <h2><span class="star-sparkle">✦</span> MasterLotto VIP <span class="star-sparkle">✦</span></h2>
             <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
         </div>
 
@@ -295,10 +280,11 @@
             <input type="text" id="num2bottom" placeholder="เช่น 56" maxlength="2">
         </div>
 
-        <button class="btn-calculate" onclick="startProcessing()">
+        <button class="btn-calculate" onclick="playClickSound(); startProcessing();">
             <span>✨</span> ประมวลผลสูตรคำนวณ
         </button>
 
+        <!-- หน้าต่างแอนิเมชันกำลังประมวลผล -->
         <div id="loadingOverlay">
             <div class="spinner"></div>
             <div id="loadingText">กำลังเชื่อมต่อฐานข้อมูลสถิติ...</div>
@@ -306,7 +292,7 @@
 
         <div id="resultContainer"></div>
 
-        <button class="action-btn back-btn" onclick="handleLogout()">ออกจากระบบ / กลับหน้าแรก</button>
+        <button class="action-btn back-btn" onclick="playClickSound(); handleLogout();">ออกจากระบบ / กลับหน้าแรก</button>
     </div>
 
 </div>
@@ -352,7 +338,6 @@
         container.innerHTML = '';
         loadingOverlay.style.display = 'block';
 
-        // ข้อความจำลองขั้นตอนการวิเคราะห์ระบบอัจฉริยะ
         setTimeout(() => {
             loadingText.innerText = "กำลังประมวลผลจากแสนๆ สูตรทางสถิติ...";
         }, 600);
@@ -405,11 +390,11 @@
         let set5 = [d5_1, d5_2];
 
         const formulas = [
-            { name: "สูตรวิเคราะห์ชุดที่ 1", set: set1 },
-            { name: "สูตรวิเคราะห์ชุดที่ 2", set: set2 },
-            { name: "สูตรวิเคราะห์ชุดที่ 3", set: set3 },
-            { name: "สูตรวิเคราะห์ชุดที่ 4", set: set4 },
-            { name: "สูตรวิเคราะห์ชุดที่ 5", set: set5 }
+            { name: "สูตรที่ 1", set: set1 },
+            { name: "สูตรที่ 2", set: set2 },
+            { name: "สูตรที่ 3", set: set3 },
+            { name: "สูตรที่ 4", set: set4 },
+            { name: "สูตรที่ 5", set: set5 }
         ];
 
         let coreVal = (7 - hTop) % 10;
@@ -443,23 +428,33 @@
             let cardHTML = `
                 <div class="formula-card">
                     <div class="formula-title">${f.name}</div>
-                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
             `;
 
-            f.set.forEach(dNum => {
-                let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
-                let pairString = pairs.join(' ');
-                
-                cardHTML += `
-                    <div class="copy-row" onclick="copyText('${pairString}')">
-                        <span class="copy-label">ชุดเจาะ ${dNum}</span>
-                        <div class="copy-content-area">
-                            <span class="copy-numbers">${pairString}</span>
-                            <span class="sparkle-clipboard">📋</span>
-                        </div>
+            // บรรทัดแรก: เลขเด่น (ตัวแรกที่ยังไม่บวก) พร้อมป้ายกำกับ "เด่น"
+            let mainNum = f.set[0];
+            let mainPairs = filteredTargets.map(tNum => `${mainNum}${tNum}`).join(' ');
+            cardHTML += `
+                <div class="copy-row" onclick="playClickSound(); copyText('${mainPairs}')">
+                    <span class="copy-label">เด่น ${mainNum}</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">${mainPairs}</span>
+                        <span class="clipboard-icon">📋</span>
                     </div>
-                `;
-            });
+                </div>
+            `;
+
+            // บรรทัดที่สอง: เลขรอง (ตัวที่บวก 1 แต้ม) พร้อมป้ายกำกับ "รอง"
+            let subNum = f.set[1];
+            let subPairs = filteredTargets.map(tNum => `${subNum}${tNum}`).join(' ');
+            cardHTML += `
+                <div class="copy-row" onclick="playClickSound(); copyText('${subPairs}')">
+                    <span class="copy-label">รอง ${subNum}</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">${subPairs}</span>
+                        <span class="clipboard-icon">📋</span>
+                    </div>
+                </div>
+            `;
 
             cardHTML += `</div>`;
             container.innerHTML += cardHTML;
