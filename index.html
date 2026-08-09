@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { 
@@ -22,7 +23,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         .header-box { text-align: center; margin-bottom: 20px; }
-        .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; }
+        .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; font-weight: 600; }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
         /* แพ็กเกจหน้าแรก */
@@ -55,11 +56,11 @@
         .login-section { background: #0f172a; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
         .input-group { margin-bottom: 12px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 5px; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; font-family: 'Kanit', sans-serif; }
         
         button.action-btn { 
             width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 8px; 
-            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; 
+            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; font-family: 'Kanit', sans-serif;
         }
         button.action-btn:hover { background: #334155; }
 
@@ -70,17 +71,20 @@
             background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #38bdf8; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1rem; }
+        .formula-title { color: #38bdf8; font-weight: 500; margin-bottom: 6px; font-size: 1rem; }
         .highlight { color: #fbbf24; font-weight: bold; }
         
-        /* ดีไซน์กล่องชุดเจาะแยกบรรทัดตามแบบต้นฉบับ */
+        /* ดีไซน์กล่องชุดเจาะแยกบรรทัด พร้อมสีฟอนต์ที่แตกต่างและสบายตา */
         .pierce-row { 
             background: #1e293b; padding: 10px 12px; border: 1px solid #334155; border-radius: 8px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
-            font-family: monospace; font-size: 0.95rem;
+            font-family: 'Kanit', sans-serif; font-size: 0.95rem;
         }
-        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.85rem; }
-        .pierce-nums { color: #38bdf8; font-weight: bold; letter-spacing: 3px; }
+        .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 300; }
+        
+        /* สีแยกชัดเจน: แถวบนสีฟ้าสว่าง / แถวล่างสีเหลืองทองพาสเทล */
+        .pierce-nums-1 { color: #38bdf8; font-weight: 500; letter-spacing: 2px; }
+        .pierce-nums-2 { color: #fbbf24; font-weight: 500; letter-spacing: 2px; }
 
         .announcement-bottom { 
             background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
@@ -171,7 +175,6 @@
             <ul>
                 <li><strong>แนวทางการใช้งาน:</strong> ระบบวิเคราะห์จากสถิติย้อนหลัง เพื่อใช้เป็นแนวทางสนับสนุนการตัดสินใจ</li>
                 <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้เลือกสูตรที่มั่นใจเพียงชุดเดียว แล้วติดตามผลอย่างต่อเนื่องตามรอบอายุสมาชิก (ขั้นต่ำ 7-15 หรือ 30 วันขึ้นไป)</li>
-                <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การบริหารทุนและมีวินัยในการตามสูตรคือหัวใจสำคัญของมืออาชีพ</li>
             </ul>
         </div>
 
@@ -265,15 +268,15 @@
             html += `
                 <div class="formula-card">
                     <div class="formula-title">${f.name}</div>
-                    <div style="margin-bottom: 8px;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
+                    <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
                     
                     <div class="pierce-row">
                         <span class="pierce-label">ชุดเจาะ ${de1}</span>
-                        <span class="pierce-nums">${row1}</span>
+                        <span class="pierce-nums-1">${row1}</span>
                     </div>
                     <div class="pierce-row">
                         <span class="pierce-label">ชุดเจาะ ${de2}</span>
-                        <span class="pierce-nums">${row2}</span>
+                        <span class="pierce-nums-2">${row2}</span>
                     </div>
                 </div>
             `;
