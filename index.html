@@ -42,30 +42,6 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        .online-counter {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #34d399;
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            text-align: center;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-        .online-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #34d399;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #34d399;
-            animation: pulseText 1.5s infinite;
-        }
-
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         
         @keyframes borderGlow1 {
@@ -125,12 +101,30 @@
             border-bottom: none;
             margin-bottom: 12px;
         }
-        .payment-label { color: #94a3b8; font-size: 0.85rem; }
-        .payment-value { color: #f8fafc; font-weight: 500; font-size: 0.9rem; text-align: right; }
-        .bank-highlight { color: #fbbf24; font-weight: bold; font-family: monospace; letter-spacing: 1px; font-size: 1rem; }
+        .payment-label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        .payment-value {
+            color: #f8fafc;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+        .bank-highlight { 
+            color: #fbbf24; 
+            font-weight: bold; 
+            font-family: monospace; 
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
         .payment-footer {
-            font-size: 0.75rem; color: #64748b; text-align: center; margin-top: 10px; 
-            border-top: 1px dashed rgba(51,65,85,0.6); padding-top: 8px;
+            font-size: 0.75rem; 
+            color: #64748b; 
+            text-align: center; 
+            margin-top: 10px; 
+            border-top: 1px dashed rgba(51,65,85,0.6);
+            padding-top: 8px;
         }
 
         @keyframes btnPulse {
@@ -164,23 +158,11 @@
         .calc-box { margin-bottom: 15px; text-align: left; }
         .calc-box label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 6px; }
         
-        .btn-group-calc {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
         .btn-calculate {
             width: 100%; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white;
             border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer;
-            box-shadow: 0 0 15px rgba(5,150,105,0.5); display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 0 15px rgba(5,150,105,0.5); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .btn-clear {
-            width: 100%; padding: 14px; background: #334155; color: #cbd5e1;
-            border: 1px solid #475569; border-radius: 12px; font-weight: bold; font-size: 0.9rem; cursor: pointer;
-            transition: 0.2s;
-        }
-        .btn-clear:hover { background: #475569; color: white; }
 
         #loadingOverlay {
             display: none;
@@ -201,8 +183,10 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 15px auto;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         #loadingText {
             color: #38bdf8;
             font-size: 0.95rem;
@@ -210,75 +194,70 @@
             min-height: 24px;
             animation: pulseText 1.5s infinite;
         }
-        @keyframes pulseText { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
 
         .formula-card { 
-            background: #0b0f19; padding: 14px; margin-bottom: 16px; border-radius: 16px; 
+            background: #0b0f19; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
             border: 1px solid rgba(56,189,248,0.25);
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
             animation: borderGlow2 4s infinite;
             text-align: left;
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 2px; font-size: 1.05rem; }
-        .formula-sub { color: #fbbf24; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
+        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 4px; font-size: 1.05rem; }
+        .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
 
+        /* ปรับลดแอนิเมชันไอคอนคัดลอกลง 50% และขนาดให้เล็กลง ดูสบายตาขึ้น */
         @keyframes gentleFade {
             0%, 100% { opacity: 0.8; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.05); }
         }
-        
         .copy-row {
             background: #131c2e; 
             border: 1px solid rgba(51,65,85,0.8); 
-            padding: 8px 10px; 
-            border-radius: 10px; 
-            margin-bottom: 6px; 
+            padding: 10px 14px; 
+            border-radius: 12px; 
+            margin-bottom: 8px; 
             display: flex; 
             align-items: center; 
             justify-content: space-between;
             cursor: pointer;
             transition: 0.2s;
         }
-        .copy-row:hover { border-color: #38bdf8; background: #17223b; }
-        .copy-row:active { transform: scale(0.98); }
-        
-        .copy-label { 
-            font-size: 0.8rem; 
-            color: #cbd5e1; 
-            font-weight: 600; 
-            min-width: 52px;
-            flex-shrink: 0;
+        .copy-row:hover {
+            border-color: #38bdf8;
+            background: #17223b;
         }
-        
-        .copy-content-area { 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            overflow: hidden;
-            flex-grow: 1;
-            justify-content: flex-end;
+        .copy-row:active {
+            transform: scale(0.98);
         }
-        
-        .copy-numbers { 
-            font-family: monospace; 
-            font-size: 0.82rem; 
-            letter-spacing: 0.5px; 
+        .copy-label {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .copy-content-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .copy-numbers {
+            font-family: monospace;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
             font-weight: bold;
-            white-space: nowrap;
-            overflow-x: auto;
-            max-width: 215px;
-            padding: 2px 0;
         }
-        .copy-numbers::-webkit-scrollbar { display: none; }
         .copy-numbers.main-set { color: #4ade80; }
         .copy-numbers.sub-set { color: #38bdf8; }
 
         .sparkle-clipboard {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             animation: gentleFade 3s infinite ease-in-out;
             opacity: 0.85;
-            flex-shrink: 0;
         }
 
         #toast {
@@ -348,11 +327,11 @@
                 <span class="payment-value">ณัฐพงษ์ ขำสำอางค์</span>
             </div>
             <div class="payment-footer">
-                *โอนเงินแล้วกดปุ่มด้านล่างเพื่อแจ้งสลิปขอรับรหัส VIP กับแอดมินได้ทันที
+                *โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที
             </div>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัส VIP</a>
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
 
         <div class="login-section">
             <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
@@ -366,14 +345,9 @@
 
     <!-- หน้าหลักระบบคำนวณ -->
     <div id="calculatorView">
-        <div class="header-box" style="margin-bottom: 12px;">
+        <div class="header-box" style="margin-bottom: 16px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
             <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
-        </div>
-
-        <div class="online-counter">
-            <div class="online-dot"></div>
-            <span>ขณะนี้มีผู้ใช้งานออนไลน์อยู่: <strong id="onlineCountNumber">244</strong> คน</span>
         </div>
 
         <div class="calc-box">
@@ -386,12 +360,9 @@
             <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2">
         </div>
 
-        <div class="btn-group-calc">
-            <button class="btn-calculate" onclick="startProcessing()">
-                <span>✨</span> ประมวลผลสูตรคำนวณ
-            </button>
-            <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
-        </div>
+        <button class="btn-calculate" onclick="startProcessing()">
+            <span>✨</span> ประมวลผลสูตรคำนวณ
+        </button>
 
         <div id="loadingOverlay">
             <div class="spinner"></div>
@@ -408,199 +379,169 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    const validPasswords = [
-        "Xk89Pq", "AMD428", "VIP2026", "Bank2026", "MasterAdmin2026",
-        "AlphaMaster1", "BravoSwift2", "CobraPrime3", "DeltaForce4", "EagleEye5",
-        "FalconWing6", "GalaxyStar7", "HunterPro8", "IronShield9", "JaguarSpeed10",
-        "KingArthur11", "LunarEclipse12", "MysticCode13", "NovaSpark14", "OmegaForce15",
-        "PhoenixFire16", "QuantumKey17", "RapidFire18", "StormRider19", "TitanArmor20",
-        "UltraBoost21", "VortexWind22", "WizardSpell23", "XenonPulse24", "YellowSub25",
-        "ZenithPeak26", "ApexLegend27", "BraveHeart28", "CosmicRay29", "DesertFox30",
-        "EmeraldCity31", "ForestGreen32", "GoldenSun33", "HarborLight34", "IslandBreeze35",
-        "JunglePath36", "KnightRide37", "LagoonBlue38", "MountainPeak39", "NebulaCloud40",
-        "OceanWave41", "PowerSurge42", "QuietNight43", "RiverFlow44", "SilverMoon45",
-        "ThunderBolt46", "UrbanLegend47", "ValleyMist48", "WinterSnow49", "YellowStone50"
-    ];
-
-    let onlineCount = 244;
-
-    window.onload = function() {
-        if(localStorage.getItem('masterlotto_vip_auth') === 'true') {
-            document.getElementById('loginView').style.display = 'none';
-            document.getElementById('calculatorView').style.display = 'block';
-            startOnlineCounter();
-        }
-    };
-
-    function startOnlineCounter() {
-        const countEl = document.getElementById('onlineCountNumber');
-        setInterval(() => {
-            let diff = Math.floor(Math.random() * 5) - 2;
-            onlineCount += diff;
-            if(onlineCount > 300) onlineCount = 295;
-            if(onlineCount < 200) onlineCount = 205;
-            countEl.textContent = onlineCount;
-        }, 4000);
-    }
-
-    function clearInputs() {
-        document.getElementById('num3top').value = '';
-        document.getElementById('num2bottom').value = '';
-        document.getElementById('resultContainer').innerHTML = '';
-    }
-
     function startProcessing() {
-        let n3 = document.getElementById('num3top').value.trim();
-        let n2 = document.getElementById('num2bottom').value.trim();
-        
-        if (n3.length !== 3 || n2.length !== 2) {
+        const t3 = document.getElementById('num3top').value.trim();
+        const b2 = document.getElementById('num2bottom').value.trim();
+
+        if(t3.length !== 3 || b2.length !== 2) {
             alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
             return;
         }
 
-        let loading = document.getElementById('loadingOverlay');
-        let container = document.getElementById('resultContainer');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const container = document.getElementById('resultContainer');
+        
         container.innerHTML = '';
-        loading.style.display = 'block';
+        loadingOverlay.style.display = 'block';
 
         setTimeout(() => {
-            loading.style.display = 'none';
-            calculateFormulas(n3, n2);
+            loadingOverlay.style.display = 'none';
+            calculateFormula(t3, b2);
         }, 1200);
     }
 
-    function calculateFormulas(n3, n2) {
-        let d1 = parseInt(n3[0]), d2 = parseInt(n3[1]), d3 = parseInt(n3[2]);
-        let b1 = parseInt(n2[0]), b2 = parseInt(n2[1]);
+    function calculateFormula(t3, b2) {
+        const hTop = parseInt(t3[0]);
+        const dTop = parseInt(t3[1]);
+        const uTop = parseInt(t3[2]);
+        const dBot = parseInt(b2[0]);
+        const uBot = parseInt(b2[1]);
 
-        let sum1 = d2 + b1;
-        let r1 = sum1 % 10;
-        let r2 = (r1 + 1) % 10;
-        let set1 = [r1, r2];
+        let sum1 = dTop + dBot;
+        let d1_1 = sum1 % 10;
+        let d1_2 = (d1_1 + 1) % 10;
+        let set1 = [d1_1, d1_2];
 
-        let sum2Val = d1 + d2 + d3;
-        let s2_1 = sum2Val % 10;
-        let s2_2 = (s2_1 + 1) % 10;
-        let set2 = [s2_1, s2_2];
+        let sum2 = hTop + dTop + uTop;
+        let d2_1 = sum2 % 10;
+        let d2_2 = (d2_1 + 1) % 10;
+        let set2 = [d2_1, d2_2];
 
-        let sum3_1 = d1 + b1;
-        let s3_1 = (sum3_1 + 1) % 10;
-        let s3_2 = (s3_1 + 1) % 10;
-        let set3 = [s3_1, s3_2];
+        let sum3 = hTop + dBot;
+        let d3_1 = sum3 % 10;
+        let d3_2 = (d3_1 + 1) % 10;
+        let set3 = [d3_1, d3_2];
 
-        let sum4_1 = d3 + b2;
-        let s4_1 = (sum4_1 + 1) % 10;
-        let s4_2 = (s4_1 + 1) % 10;
-        let set4 = [s4_1, s4_2];
+        let sum4 = uTop + uBot;
+        let d4_1 = sum4 % 10;
+        let d4_2 = (d4_1 + 1) % 10;
+        let set4 = [d4_1, d4_2];
 
-        let subVal = sum4_1 - b2;
-        let s5_1 = subVal % 10;
-        if (s5_1 < 0) s5_1 += 10;
-        let s5_2 = (s5_1 + 1) % 10;
-        let set5 = [s5_1, s5_2];
+        let sum5 = 10 - uBot;
+        let d5_1 = sum5 % 10;
+        let d5_2 = (d5_1 + 1) % 10;
+        let set5 = [d5_1, d5_2];
 
-        let formulas = [
-            { name: 'สูตรที่ 1', data: set1 },
-            { name: 'สูตรที่ 2', data: set2 },
-            { name: 'สูตรที่ 3', data: set3 },
-            { name: 'สูตรที่ 4', data: set4 },
-            { name: 'สูตรที่ 5', data: set5 }
+        const formulas = [
+            { name: "สูตรที่ 1", set: set1 },
+            { name: "สูตรที่ 2", set: set2 },
+            { name: "สูตรที่ 3", set: set3 },
+            { name: "สูตรที่ 4", set: set4 },
+            { name: "สูตรที่ 5", set: set5 }
         ];
 
-        let container = document.getElementById('resultContainer');
+        let coreVal = (7 - hTop) % 10;
+        if(coreVal < 0) coreVal += 10;
+
+        const container = document.getElementById('resultContainer');
         container.innerHTML = '';
 
-        formulas.forEach(form => {
-            let dMain = form.data[0]; // ตัวเด่นที่ 1
-            let dSub = form.data[1];  // ตัวเด่นที่ 2 (รอง)
-
-            // ฟังก์ชันสร้างเลขเจาะ 5 คู่ ตามเงื่อนไข:
-            // - ไม่เอาเลขเด่นมาวินกันเอง (ห้ามมีเลข dSub ในฝั่งเด่น และห้ามมีเลข dMain ในฝั่งรอง)
-            // - ไม่เอาเลขเบิ้ล (เลขหลักสิบกับหลักหน่วยห้ามซ้ำกัน)
-            // - ได้เลขเจาะอย่างละ 5 คู่ (รวมเป็น 10 คู่)
-            function generatePairs(excludeDigit) {
-                let pairs = [];
-                let current = (excludeDigit + 1) % 10;
-                while(pairs.length < 5) {
-                    // ป้องกันเลขเบิ้ล และป้องกันการเอาเลขเด่นอีกตัวมาไขว้กันเองในชุด
-                    if (current !== excludeDigit) {
-                        pairs.push(current);
-                    }
-                    current = (current + 1) % 10;
+        formulas.forEach((f) => {
+            let hasCollision = false;
+            for(let offset = -2; offset <= 2; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                if(f.set.includes(val)) {
+                    hasCollision = true;
+                    break;
                 }
-                return pairs;
             }
 
-            // เด่น (dMain): สร้าง 5 ตัวที่ไม่ซ้ำกับ dSub และไม่มีเลขเบิ้ล
-            let poolMain = generatePairs(dSub);
-            // รอง (dSub): สร้าง 5 ตัวที่ไม่ซ้ำกับ dMain และไม่มีเลขเบิ้ล
-            let poolSub = generatePairs(dMain);
+            let range = hasCollision ? 3 : 2;
+            let rawTargetNumbers = [];
+            for(let offset = -range; offset <= range; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                rawTargetNumbers.push(val);
+            }
 
-            let generatedMain = poolMain.map(p => `${dMain}${p}`);
-            let generatedSub = poolSub.map(p => `${dSub}${p}`);
+            let filteredTargets = rawTargetNumbers.filter(num => !f.set.includes(num));
+            filteredTargets.sort((a, b) => a - b);
 
-            let fullStringMain = generatedMain.join(' ');
-            let fullStringSub = generatedSub.join(' ');
+            let cardHTML = `
+                <div class="formula-card">
+                    <div class="formula-title">${f.name}</div>
+                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
+            `;
 
-            let html = `<div class="formula-card">
-                <div class="formula-title">${form.name}</div>
-                <div class="formula-sub">เลขเด่น: ${dMain} - ${dSub}</div>
-
-                <div class="copy-row" onclick="copyToClipboard('${fullStringMain}')">
-                    <div class="copy-label">เด่น ${dMain}</div>
-                    <div class="copy-content-area">
-                        <div class="copy-numbers main-set">${fullStringMain}</div>
-                        <span class="sparkle-clipboard">📋</span>
+            f.set.forEach((dNum, idx) => {
+                let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
+                let pairString = pairs.join(' ');
+                let colorClass = (idx === 0) ? "main-set" : "sub-set";
+                // เปลี่ยนคำว่า ชุดเจาะ เป็น เด่น กับ รอง ตามต้องการ
+                let labelText = (idx === 0) ? `เด่น ${dNum}` : `รอง ${dNum}`;
+                
+                cardHTML += `
+                    <div class="copy-row" onclick="copyText('${pairString}')">
+                        <span class="copy-label">${labelText}</span>
+                        <div class="copy-content-area">
+                            <span class="copy-numbers ${colorClass}">${pairString}</span>
+                            <span class="sparkle-clipboard">📋</span>
+                        </div>
                     </div>
-                </div>
+                `;
+            });
 
-                <div class="copy-row" onclick="copyToClipboard('${fullStringSub}')">
-                    <div class="copy-label">รอง ${dSub}</div>
-                    <div class="copy-content-area">
-                        <div class="copy-numbers sub-set">${fullStringSub}</div>
-                        <span class="sparkle-clipboard">📋</span>
-                    </div>
-                </div>
-            </div>`;
-
-            container.innerHTML += html;
+            cardHTML += `</div>`;
+            container.innerHTML += cardHTML;
         });
     }
 
-    window.copyToClipboard = function(text) {
+    function copyText(text) {
         navigator.clipboard.writeText(text).then(() => {
-            let toast = document.getElementById('toast');
+            const toast = document.getElementById('toast');
             toast.className = "show";
             setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
         });
-    };
+    }
 
-    window.handleLogin = function() {
-        let inputVal = document.getElementById('passwordInput').value.trim();
-        let errorMsg = document.getElementById('errorMsg');
+    const VALID_VIP_USERS = [
+        "Bank2026", "AMD428", "Xk89Pq", "MasterAdmin2026",
+        "V9kL2mP7", "Zq4W8xT1", "Rt5Y9uI2", "Op2Q7wE4", "As3D6fG9",
+        "Gh1J4kL8", "Zx7C2vB5", "Nm8M1nB3", "Po9I6uY4", "Uj3Y7tR6",
+        "Wq2S5xC8", "Ed4R7fV1", "Tg6Y9hN2", "Yh8U1jM3", "Ik0O3pL5",
+        "Qaz2WSx3", "Edc4RFv5", "Tgb6Yhn7", "Ujm8IKo9", "Plm0OKi9",
+        "Zxv1Cde2", "Bgt3Nhy4", "Mju5Klo6", "Cde7Vfr8", "Bhy9Nji0",
+        "Xsw2Zaq1", "Der4Ewx3", "Fgt6Cde5", "Yhu8Bgt7", "Mji0Ujm9",
+        "Lop1Plo0", "Kji9Oki8", "Iuh8Uhy7", "Ygt7Tgy6", "Fre5Der4",
+        "Ewq3Waq2", "Qaz1Xsw2", "Xde3Cfr4", "Vgt5Bhy6", "Nju7Mki8",
+        "Plm9Olo0", "Zxc4Vbn5", "Asd6Fgh7", "Qwe8Rty9", "Zk9Pq2Lm",
+        "Xw8Ne4Rt", "Cp3Ji7Uo", "Vb5Yt6Mn", "As2Df4Gh", "Kj7Kl9Po"
+    ];
+
+    function handleLogin() {
+        const pass = document.getElementById('passwordInput').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
         
-        if (validPasswords.includes(inputVal)) {
-            localStorage.setItem('masterlotto_vip_auth', 'true');
+        if (VALID_VIP_USERS.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
             errorMsg.style.display = 'none';
-            startOnlineCounter();
         } else {
             errorMsg.style.display = 'block';
             document.getElementById('passwordInput').focus();
         }
-    };
+    }
 
-    window.handleLogout = function() {
-        localStorage.removeItem('masterlotto_vip_auth');
+    function handleLogout() {
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
         document.getElementById('passwordInput').value = '';
         document.getElementById('resultContainer').innerHTML = '';
         document.getElementById('num3top').value = '';
         document.getElementById('num2bottom').value = '';
-        errorMsg.style.display = 'none';
-    };
+        document.getElementById('errorMsg').style.display = 'none';
+    }
 </script>
 
 </body>
