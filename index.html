@@ -408,7 +408,7 @@
                 <input type="password" id="passwordInput" placeholder="กรอกรหัสผ่านสมาชิก">
             </div>
             <button class="action-btn" onclick="handleLogin()">เข้าสู่ระบบคำนวณ</button>
-            <div id="errorMsg" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน</div>
+            <div id="errorMsg" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง หรือถูกใช้งานในเครื่องอื่นแล้ว</div>
         </div>
     </div>
 
@@ -457,6 +457,16 @@
         if (container) container.innerHTML = '';
     }
 
+    // สร้างหรือดึง Device ID ประจำเครื่องนี้
+    function getDeviceID() {
+        let deviceId = localStorage.getItem('masterlotto_device_id');
+        if (!deviceId) {
+            deviceId = 'DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+            localStorage.setItem('masterlotto_device_id', deviceId);
+        }
+        return deviceId;
+    }
+
     // สุ่มจำนวน Online ระหว่าง 240-250 คน (เฉพาะหน้าแรก)
     let currentOnline = 244;
     function simulateOnlineCount() {
@@ -478,7 +488,6 @@
     }
 
     function startProcessing() {
-        // เคลียร์ผลลัพธ์เก่าก่อนประมวลผลครั้งใหม่
         clearSystemMemory();
 
         const t3 = document.getElementById('num3top').value.trim();
@@ -492,7 +501,6 @@
         const loadingOverlay = document.getElementById('loadingOverlay');
         loadingOverlay.style.display = 'block';
 
-        // หน่วงเวลาโหลดประมวลผล 1.2 วินาที แล้วแสดงผลลัพธ์ค้างไว้อย่างเสถียร
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
             calculateFormula(t3, b2);
@@ -539,7 +547,6 @@
             { name: "สูตรที่ 5", set: set5 }
         ];
 
-        // 1. คำนวณความถี่ของเลขเด่นทั้งหมด
         let freqMap = {};
         formulas.forEach(f => {
             f.set.forEach(num => {
@@ -547,15 +554,12 @@
             });
         });
 
-        // 2. ให้คะแนนความสำคัญแต่ละสูตร จากผลรวมความถี่ของเลขเด่นในสูตรนั้น
         formulas.forEach(f => {
             f.score = f.set.reduce((acc, num) => acc + (freqMap[num] || 0), 0);
         });
 
-        // 3. จัดเรียงลำดับสูตร (Sorting) เอาสูตรที่คะแนนความถี่สูงสุดขึ้นมาอยู่อันดับแรก
         formulas.sort((a, b) => b.score - a.score);
 
-        // 4. คัดเลือกเฉพาะ Top 3 สูตรแรกให้แสดงป้าย Hot Badge เพื่อไม่ให้ขึ้นทุกสูตร
         formulas.forEach((f, index) => {
             f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
         });
@@ -617,7 +621,6 @@
             cardHTML += `</div>`;
             container.innerHTML += cardHTML;
         });
-        // แสดงผลลัพธ์ค้างไว้ถาวร จนกว่าผู้ใช้จะกดประมวลผลใหม่ หรือกดล้างค่า
     }
 
     function copyText(text) {
@@ -647,11 +650,33 @@
         const errorMsg = document.getElementById('errorMsg');
         
         if (VALID_VIP_USERS.includes(pass)) {
-            localStorage.setItem('masterlotto_vip_logged', 'true');
-            document.getElementById('loginView').style.display = 'none';
-            document.getElementById('calculatorView').style.display = 'block';
-            errorMsg.style.display = 'none';
+            const currentDevice = getDeviceID();
+            const boundDeviceKey = 'masterlotto_bound_' + pass;
+            const boundDevice = localStorage.getItem(boundDeviceKey);
+
+            if (!boundDevice) {
+                // ล็อกอินครั้งแรก ผูกรหัสนี้กับเครื่องนี้ทันที
+                localStorage.setItem(boundDeviceKey, currentDevice);
+                localStorage.setItem('masterlotto_vip_logged', 'true');
+                localStorage.setItem('masterlotto_active_pass', pass);
+                document.getElementById('loginView').style.display = 'none';
+                document.getElementById('calculatorView').style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else if (boundDevice === currentDevice) {
+                // เครื่องเดิม เข้าใช้งานได้ปกติ
+                localStorage.setItem('masterlotto_vip_logged', 'true');
+                localStorage.setItem('masterlotto_active_pass', pass);
+                document.getElementById('loginView').style.display = 'none';
+                document.getElementById('calculatorView').style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else {
+                // เครื่องอื่นแอบเอามาใช้ (ล็อคไว้ 1 เครื่อง)
+                errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
+                errorMsg.style.display = 'block';
+                document.getElementById('passwordInput').focus();
+            }
         } else {
+            errorMsg.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
             errorMsg.style.display = 'block';
             document.getElementById('passwordInput').focus();
         }
@@ -660,6 +685,7 @@
     function handleLogout() {
         clearSystemMemory();
         localStorage.removeItem('masterlotto_vip_logged');
+        localStorage.removeItem('masterlotto_active_pass');
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
         document.getElementById('passwordInput').value = '';
