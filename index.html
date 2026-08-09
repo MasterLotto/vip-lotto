@@ -72,7 +72,6 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 8px; font-size: 0.95rem; }
         .highlight { color: #fbbf24; font-weight: bold; }
 
-        /* จัดวางเลขเจาะแบบสะอาดตา ไร้วงเล็บและโคลอนรกๆ */
         .row-group { 
             display: flex; justify-content: space-between; align-items: center; 
             background: #1e293b; padding: 8px 12px; border-radius: 6px; margin-top: 6px;
@@ -81,7 +80,6 @@
         .row-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
         .row-nums { color: #f8fafc; font-weight: bold; letter-spacing: 2px; font-family: monospace; }
 
-        /* กล่องคำแนะนำด้านล่างสุด (ปรับภาษาให้ดูเป็นมืออาชีพ เรียบร้อย) */
         .announcement-bottom { 
             background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
             border-radius: 10px; padding: 15px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
@@ -146,7 +144,7 @@
         </div>
     </div>
 
-    <!-- 2. หน้าคำนวณสูตร (ซ่อนสูตรเบื้องหลัง และจัดระเบียบเลขเด่น-เลขรอง) -->
+    <!-- 2. หน้าคำนวณสูตร -->
     <div id="calculatorView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -164,10 +162,8 @@
         
         <button class="action-btn" onclick="calculateLottery()" style="background: #059669; color: white; border: none;">✨ ประมวลผลสูตรคำนวณ</button>
 
-        <!-- ผลลัพธ์การคำนวณ -->
         <div id="results"></div>
 
-        <!-- ข้อแนะนำและแนวทางสำหรับสมาชิก (ปรับภาษาให้ดูดีและเป็นมืออาชีพ) -->
         <div class="announcement-bottom">
             <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
             <ul>
@@ -183,7 +179,6 @@
 </div>
 
 <script>
-    // --- [รายชื่อรหัสผ่านสมาชิกทั้งหมด รวมรหัสอาจารย์] ---
     const memberPasswords = [
         "MasterAdmin2026", 
         "1234", 
@@ -193,8 +188,6 @@
 
     function checkLogin() {
         const pass = document.getElementById('vipPassword').value.trim();
-        
-        // ตรวจสอบรหัสผ่านว่าถูกต้องและอยู่ในรายชื่อไหม
         if (pass !== "" && memberPasswords.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
@@ -220,13 +213,9 @@
             return;
         }
 
-        let r1 = parseInt(top[0]);
         let r2 = parseInt(top[1]);
-        let r3 = parseInt(top[2]);
         let b1 = parseInt(bottom[0]);
-        let b2 = parseInt(bottom[1]);
 
-        // ตรรกะการคำนวณและแสดงผล
         let d1 = (r2 + b1) % 10;
         let d2 = (d1 + 1) % 10;
 
@@ -244,4 +233,3 @@
 </script>
 </body>
 </html>
-ต
