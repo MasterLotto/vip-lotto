@@ -253,12 +253,12 @@
 
         <div class="calc-box">
             <label>เลข 3 ตัวบน:</label>
-            <input type="text" id="num3top" placeholder="เช่น 701" maxlength="3">
+            <input type="text" id="num3top" placeholder="เช่น 618" maxlength="3">
         </div>
 
         <div class="calc-box">
             <label>เลข 2 ตัวล่าง:</label>
-            <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2">
+            <input type="text" id="num2bottom" placeholder="เช่น 56" maxlength="2">
         </div>
 
         <button class="btn-calculate" onclick="calculateFormula()">
@@ -295,58 +295,120 @@
     }
 
     function calculateFormula() {
-        const t3 = document.getElementById('num3top').value;
-        const b2 = document.getElementById('num2bottom').value;
+        const t3 = document.getElementById('num3top').value.trim();
+        const b2 = document.getElementById('num2bottom').value.trim();
 
-        if(!t3 || !b2) {
-            alert('กรุณากรอกข้อมูลเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน');
+        if(t3.length !== 3 || b2.length !== 2) {
+            alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
             return;
         }
 
+        // ดึงค่าหลักต่างๆ
+        const hTop = parseInt(t3[0]); // หลักร้อยบน
+        const dTop = parseInt(t3[1]); // สิบบบน
+        const uTop = parseInt(t3[2]); // หน่วยบน
+        const dBot = parseInt(b2[0]);  // สิบล่าง
+        const uBot = parseInt(b2[1]);  // หน่วยล่าง
+
+        // คำนวณเลขเด่นทั้ง 5 สูตร
+        // สูตร 1: สิบบบน + สิบล่าง
+        let sum1 = dTop + dBot;
+        let d1_1 = sum1 % 10;
+        let d1_2 = (d1_1 + 1) % 10;
+        let set1 = [d1_1, d1_2];
+
+        // สูตร 2: ผลรวม 3 ตัวบน (หลักร้อย + สิบบบน + หน่วยบน)
+        let sum2 = hTop + dTop + uTop;
+        let d2_1 = sum2 % 10;
+        let d2_2 = (d2_1 + 1) % 10;
+        let set2 = [d2_1, d2_2];
+
+        // สูตร 3: หลักร้อยบน + สิบล่าง
+        let sum3 = hTop + dBot;
+        let d3_1 = sum3 % 10;
+        let d3_2 = (d3_1 + 1) % 10;
+        let set3 = [d3_1, d3_2];
+
+        // สูตร 4: หลักหน่วยบน + หลักหน่วยล่าง
+        let sum4 = uTop + uBot;
+        let d4_1 = sum4 % 10;
+        let d4_2 = (d4_1 + 1) % 10;
+        let set4 = [d4_1, d4_2];
+
+        // สูตร 5: ฐาน 10 คงที่ - หลักหน่วยล่าง
+        let sum5 = 10 - uBot;
+        let d5_1 = sum5 % 10;
+        let d5_2 = (d5_1 + 1) % 10;
+        let set5 = [d5_1, d5_2];
+
+        const formulas = [
+            { name: "สูตรที่ 1", desc: "สิบบบน + สิบล่าง", set: set1 },
+            { name: "สูตรที่ 2", desc: "ผลรวม 3 ตัวบน", set: set2 },
+            { name: "สูตรที่ 3", desc: "หลักร้อยบน + สิบล่าง", set: set3 },
+            { name: "สูตรที่ 4", desc: "หลักหน่วยบน + หลักหน่วยล่าง", set: set4 },
+            { name: "สูตรที่ 5", desc: "ฐาน 10 คงที่ - หลักหน่วยล่าง", set: set5 }
+        ];
+
+        // คำนวณหาแกนกลาง: 7 - หลักร้อยบน
+        let coreVal = (7 - hTop) % 10;
+        if(coreVal < 0) coreVal += 10;
+
         const container = document.getElementById('resultContainer');
-        container.innerHTML = `
-            <div class="formula-card">
-                <div class="formula-title">สูตรที่ 1</div>
-                <div class="formula-sub">เลขเด่น: 4 - 5</div>
-                
-                <div class="copy-row" onclick="copyText('40 41 42 43 46')">
-                    <span class="copy-label">ชุดเจาะ 4</span>
-                    <div class="copy-content-area">
-                        <span class="copy-numbers">40 41 42 43 46</span>
-                        <span class="sparkle-clipboard">📋</span>
-                    </div>
-                </div>
-                
-                <div class="copy-row" onclick="copyText('50 51 52 53 56')">
-                    <span class="copy-label">ชุดเจาะ 5</span>
-                    <div class="copy-content-area">
-                        <span class="copy-numbers">50 51 52 53 56</span>
-                        <span class="sparkle-clipboard">📋</span>
-                    </div>
-                </div>
-            </div>
+        container.innerHTML = '';
 
-            <div class="formula-card">
-                <div class="formula-title">สูตรที่ 2</div>
-                <div class="formula-sub">เลขเด่น: 3 - 4</div>
-                
-                <div class="copy-row" onclick="copyText('30 31 32 35 36')">
-                    <span class="copy-label">ชุดเจาะ 3</span>
-                    <div class="copy-content-area">
-                        <span class="copy-numbers">30 31 32 35 36</span>
-                        <span class="sparkle-clipboard">📋</span>
-                    </div>
-                </div>
+        formulas.forEach((f, idx) => {
+            // เช็คว่าเลขเด่นในสูตรนี้ ชนกับชุดแผ่แกน ±2 หรือไม่
+            // ชุด ±2 คือ [ (coreVal-2), (coreVal-1), coreVal, (coreVal+1), (coreVal+2) ] มอดุโล 10 แบบไม่ติดลบ
+            let hasCollision = false;
+            for(let offset = -2; offset <= 2; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                if(f.set.includes(val)) {
+                    hasCollision = true;
+                    break;
+                }
+            }
 
-                <div class="copy-row" onclick="copyText('40 41 42 45 46')">
-                    <span class="copy-label">ชุดเจาะ 4</span>
-                    <div class="copy-content-area">
-                        <span class="copy-numbers">40 41 42 45 46</span>
-                        <span class="sparkle-clipboard">📋</span>
+            // ถ้างชน ขยายเป็น ±3 ถ้าไม่ชนใช้ ±2
+            let range = hasCollision ? 3 : 2;
+            let rawTargetNumbers = [];
+            for(let offset = -range; offset <= range; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                rawTargetNumbers.push(val);
+            }
+
+            // ตัดเลขเด่นของสูตรนี้ออก
+            let filteredTargets = rawTargetNumbers.filter(num => !f.set.includes(num));
+            // เรียงจากน้อยไปหามาก
+            filteredTargets.sort((a, b) => a - b);
+
+            // สร้างการ์ดแสดงผลแต่ละสูตร
+            let cardHTML = `
+                <div class="formula-card">
+                    <div class="formula-title">${f.name} (${f.desc})</div>
+                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
+            `;
+
+            // จับคู่กับเลขเด่น 2 ตัว เป็นหลักสิบ และเลขเจาะ 5 ตัวเป็นหลักหน่วย (รวม 10 คู่)
+            f.set.forEach(dNum => {
+                let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
+                let pairString = pairs.join(' ');
+                
+                cardHTML += `
+                    <div class="copy-row" onclick="copyText('${pairString}')">
+                        <span class="copy-label">เด่น ${dNum} (ชุดเจาะ 5 คู่)</span>
+                        <div class="copy-content-area">
+                            <span class="copy-numbers">${pairString}</span>
+                            <span class="sparkle-clipboard">📋</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-        `;
+                `;
+            });
+
+            cardHTML += `</div>`;
+            container.innerHTML += cardHTML;
+        });
     }
 
     function copyText(text) {
