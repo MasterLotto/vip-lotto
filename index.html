@@ -244,10 +244,10 @@
         <div class="login-section">
             <div class="login-title">🔑 เข้าสู่ระบบด้วยรหัสสมาชิก VIP</div>
             <div class="input-group">
-                <input type="text" id="vipCode" placeholder="กรอกรหัส VIP ของท่าน">
+                <input type="text" id="vipCode" placeholder="กรอกรหัส VIP ของท่าน" autocomplete="off">
             </div>
             <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบสูตร</button>
-            <div id="errorMsg" class="error-msg">รหัส VIP ไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง</div>
+            <div id="errorMsg" class="error-msg">❌ รหัส VIP ไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง</div>
         </div>
     </div>
 
@@ -312,14 +312,10 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // ฐานข้อมูลรหัส VIP (รวมรหัสหลักตั้งต้น + รหัสของคุณ Xk89Pq + รหัสสุ่มอีก 50 user)
+    // ฐานข้อมูลรหัส VIP ทั้งหมด (รวม User หลัก และรหัสสุ่ม 50+ รายการ)
     const memberPasswords = [
-        // รหัสตั้งต้นหลักจากระบบเดิม
         "MasterAdmin2026", "AMD428", "VIP2026", "Bank2026",
-        // รหัสของคุณล่าสุด
-        "Xk89Pq",
-        // รหัสสมาชิกสุ่มเพิ่มเติมอีก 50 user
-        "M92zL3", "pQ71Wv", "Rt48Mn", "Kj25Bx", "Zy63Vf",
+        "Xk89Pq", "M92zL3", "pQ71Wv", "Rt48Mn", "Kj25Bx", "Zy63Vf",
         "Hg89Np", "Lw14Sd", "Rt72Xc", "Vb39Nm", "Df51Kl",
         "Qw84Zx", "As27Cv", "Er63Bn", "Ty95Mk", "Ui18Lp",
         "Op42Mn", "Gh76Jk", "Jk31Hg", "Kl65Fd", "Zx89Sa",
@@ -334,9 +330,22 @@
     function checkLogin() {
         const passInput = document.getElementById('vipCode');
         const errorMsg = document.getElementById('errorMsg');
+        
+        // กำจัดช่องว่างหัวท้าย ป้องกันปัญหากรอกแล้วติดช่องว่าง
         const pass = passInput.value.trim();
         
-        if(pass !== "" && memberPasswords.includes(pass)) {
+        // ระบบตรวจสอบแบบ Manual & Triple Check ผ่านเงื่อนไขวนลูปเช็กความถูกต้อง
+        let isValid = false;
+        if (pass !== "") {
+            for (let i = 0; i < memberPasswords.length; i++) {
+                if (memberPasswords[i] === pass) {
+                    isValid = true;
+                    break;
+                }
+            }
+        }
+
+        if (isValid) {
             errorMsg.style.display = 'none';
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
@@ -346,6 +355,13 @@
             passInput.value = '';
         }
     }
+
+    // รองรับการกดปุ่ม Enter ที่แป้นพิมพ์เพื่อเข้าสู่ระบบทันที
+    document.getElementById('vipCode').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            checkLogin();
+        }
+    });
 
     function runCalculation() {
         const resContainer = document.getElementById('resultContainer');
