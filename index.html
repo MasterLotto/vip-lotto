@@ -5,69 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
     <style>
-        /* (คง CSS เดิมของอาจารย์ไว้ทั้งหมดครับ) */
         * { box-sizing: border-box; }
         body { font-family: 'Kanit', sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 15px; }
         .vip-container { max-width: 480px; margin: 0 auto; background: #1e293b; padding: 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .header-box { text-align: center; margin-bottom: 20px; }
         .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
+        
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .package-card-1, .package-card-2, .package-card-3, .package-card-4 { background: #1e293b; border: 2px solid #334155; padding: 12px; border-radius: 12px; text-align: center; }
+        .package-card { background: #1e293b; border: 2px solid #334155; padding: 12px; border-radius: 12px; text-align: center; }
         .price { font-size: 1.1rem; font-weight: bold; color: #f87171; }
-        .desc { font-size: 0.75rem; color: #94a3b8; }
+        
         .payment-box { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.9rem; }
         .bank-num { color: #fbbf24; font-weight: bold; background: #334155; padding: 2px 6px; border-radius: 4px; }
+        
         .btn-line { display: block; width: 100%; padding: 14px; background: #059669; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 20px; }
+        
         .login-section { background: #0f172a; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1.1rem; text-align: center; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; text-align: center; font-size: 1.1rem; margin-top: 5px; }
+        
         button.action-btn { width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 8px; color: #f8fafc; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        
         #calculatorView { display: none; }
         .formula-card { background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #38bdf8; }
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 8px; }
         .highlight { color: #fbbf24; font-weight: bold; }
-        .row-group { display: flex; justify-content: space-between; background: #1e293b; padding: 8px 12px; border-radius: 6px; margin-top: 6px; border: 1px solid #334155; }
-        .announcement-bottom { background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24; padding: 15px; margin-top: 25px; border-radius: 10px; font-size: 0.85rem; }
-        .back-btn { background: #64748b !important; }
     </style>
 </head>
 <body>
 
 <div class="vip-container">
+    <!-- หน้าสมัครสมาชิกและหน้าหลัก -->
     <div id="loginView">
-        <div class="header-box"><h2>MasterLotto VIP</h2><p>ระบบวิเคราะห์แม่นยำพิเศษ</p></div>
+        <div class="header-box">
+            <h2>MasterLotto VIP</h2>
+            <p>ระบบวิเคราะห์สถิติแม่นยำพิเศษ</p>
+        </div>
+        
+        <div class="package-grid">
+            <div class="package-card"><h3>7 วัน</h3><div class="price">99 ฿</div></div>
+            <div class="package-card"><h3>1 เดือน</h3><div class="price">299 ฿</div></div>
+        </div>
+
         <div class="payment-box">
-            <h4>🏦 ช่องทางชำระเงิน</h4>
+            <h4>🏦 ชำระเงิน</h4>
             <p>กสิกรไทย: <span class="bank-num">0661291613</span></p>
         </div>
-        <a href="https://line.me/ti/p/cWXNwvCmqc" class="btn-line">💬 แจ้งสลิป / ขอรับรหัส</a>
+        <a href="https://line.me/ti/p/cWXNwvCmqc" class="btn-line">💬 สมัครสมาชิก / รับรหัส</a>
+        
         <div class="login-section">
-            <label>รหัสผ่านสมาชิก:</label>
+            <label>เข้าสู่ระบบสมาชิก:</label>
             <input type="password" id="vipPassword" placeholder="กรอกรหัสผ่าน">
-            <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบ</button>
+            <button class="action-btn" onclick="checkLogin()">เริ่มใช้งานระบบ</button>
         </div>
     </div>
 
+    <!-- หน้าคำนวณ -->
     <div id="calculatorView">
-        <div class="header-box"><h2>MasterLotto VIP</h2></div>
+        <div class="header-box"><h2>ระบบคำนวณ VIP</h2></div>
         <input type="text" id="topNum" placeholder="เลข 3 ตัวบน" maxlength="3">
         <input type="text" id="bottomNum" placeholder="เลข 2 ตัวล่าง" maxlength="2">
-        <button class="action-btn" onclick="calculateLottery()" style="background:#059669;">คำนวณ</button>
+        <button class="action-btn" onclick="calculateLottery()" style="background:#059669;">คำนวณผล</button>
         <div id="results"></div>
-        <button class="action-btn back-btn" onclick="logout()">← ออกจากระบบ</button>
+        <button class="action-btn" onclick="logout()" style="background:#64748b;">← ออกจากระบบ</button>
     </div>
 </div>
 
 <script>
-    // --- ฟังก์ชันการทำงาน ---
     function checkLogin() {
         const pass = document.getElementById('vipPassword').value.trim();
-        // เช็กว่ารหัสที่กรอก อยู่ในรายชื่อสมาชิกข้างล่างนี้ไหม
+        // เงื่อนไขต้องตรงกับรหัสในรายการเท่านั้น
         if (memberPasswords.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
         } else {
-            alert("รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์เข้าใช้งานครับ");
+            alert("รหัสผ่านไม่ถูกต้อง หรือคุณยังไม่ได้รับสิทธิ์เข้าใช้งาน");
             document.getElementById('vipPassword').value = '';
         }
     }
@@ -83,26 +95,20 @@
         
         let r1 = parseInt(top[0]), r2 = parseInt(top[1]), r3 = parseInt(top[2]);
         let b1 = parseInt(bottom[0]), b2 = parseInt(bottom[1]);
-        
-        let formulas = [
-            { name: "สูตร 1", d1: (r2 + b1) % 10 },
-            { name: "สูตร 2", d1: (r1 + r2 + r3) % 10 },
-            { name: "สูตร 3", d1: (r1 + b1) % 10 }
-        ];
 
-        let html = "";
-        formulas.forEach(f => {
-            let d1 = f.d1, d2 = (f.d1 + 1) % 10;
-            html += `<div class="formula-card"><div class="formula-title">${f.name}</div><div class="row-group">เลขเด่น: <span class="highlight">${d1} - ${d2}</span></div></div>`;
-        });
-        document.getElementById('results').innerHTML = html;
+        let resultsHtml = `
+            <div class="formula-card">
+                <div class="formula-title">ผลการคำนวณ</div>
+                <div>เลขเด่น: <span class="highlight">${(r2 + b1) % 10} - ${(r1 + r3) % 10}</span></div>
+            </div>`;
+        document.getElementById('results').innerHTML = resultsHtml;
     }
 
-    // === [ด้านล่างสุด] รายชื่อสมาชิก VIP (อัปเดตตรงนี้ได้เลย) ===
+    // --- [เพิ่มรายชื่อสมาชิก VIP ตรงนี้] ---
     const memberPasswords = [
         "1234", 
         "VIP2026", 
-        "somchai111"
+        "สมชาย111"
     ];
 </script>
 </body>
