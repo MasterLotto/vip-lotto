@@ -70,13 +70,17 @@
             background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #38bdf8; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 8px; font-size: 0.95rem; }
+        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1rem; }
         .highlight { color: #fbbf24; font-weight: bold; }
         
-        .pairs { 
-            background: #1e293b; padding: 10px; border: 1px dashed #475569; border-radius: 6px; 
-            margin-top: 8px; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: #f8fafc;
+        /* ดีไซน์กล่องชุดเจาะแยกบรรทัดตามแบบต้นฉบับ */
+        .pierce-row { 
+            background: #1e293b; padding: 10px 12px; border: 1px solid #334155; border-radius: 8px; 
+            margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
+            font-family: monospace; font-size: 0.95rem;
         }
+        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.85rem; }
+        .pierce-nums { color: #38bdf8; font-weight: bold; letter-spacing: 3px; }
 
         .announcement-bottom { 
             background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
@@ -185,13 +189,15 @@
     ];
 
     function checkLogin() {
-        const pass = document.getElementById('vipPassword').value.trim();
+        const passInput = document.getElementById('vipPassword');
+        const pass = passInput.value.trim();
         if (pass !== "" && memberPasswords.includes(pass)) {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
+            passInput.value = '';
         } else {
             alert("❌ รหัสผ่านไม่ถูกต้อง หรือยังไม่ได้รับสิทธิ์เข้าใช้งานครับ");
-            document.getElementById('vipPassword').value = '';
+            passInput.value = '';
         }
     }
 
@@ -199,6 +205,8 @@
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
         document.getElementById('vipPassword').value = '';
+        document.getElementById('topNum').value = '';
+        document.getElementById('bottomNum').value = '';
         document.getElementById('results').innerHTML = '';
     }
 
@@ -233,11 +241,11 @@
         let f5_d2 = (f5_d1 + 1) % 10;
 
         let formulas = [
-            { name: "สูตรที่ 1 (ชุดมาตรฐาน A)", d1: f1_d1, d2: f1_d2 },
-            { name: "สูตรที่ 2 (ชุดมาตรฐาน B)", d1: f2_d1, d2: f2_d2 },
-            { name: "สูตรที่ 3 (ชุดมาตรฐาน C)", d1: f3_d1, d2: f3_d2 },
-            { name: "สูตรที่ 4 (ชุดมาตรฐาน D)", d1: f4_d1, d2: f4_d2 },
-            { name: "สูตรที่ 5 (ชุดมาตรฐาน E)", d1: f5_d1, d2: f5_d2 }
+            { name: "สูตรที่ 1", d1: f1_d1, d2: f1_d2 },
+            { name: "สูตรที่ 2", d1: f2_d1, d2: f2_d2 },
+            { name: "สูตรที่ 3", d1: f3_d1, d2: f3_d2 },
+            { name: "สูตรที่ 4", d1: f4_d1, d2: f4_d2 },
+            { name: "สูตรที่ 5", d1: f5_d1, d2: f5_d2 }
         ];
 
         let html = "";
@@ -257,17 +265,27 @@
             html += `
                 <div class="formula-card">
                     <div class="formula-title">${f.name}</div>
-                    <div>เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
-                    <div class="pairs">
-                        <b>ชุดเจาะ 10 คู่:</b><br>
-                        ${de1}: ${row1}<br>
-                        ${de2}: ${row2}
+                    <div style="margin-bottom: 8px;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
+                    
+                    <div class="pierce-row">
+                        <span class="pierce-label">ชุดเจาะ ${de1}</span>
+                        <span class="pierce-nums">${row1}</span>
+                    </div>
+                    <div class="pierce-row">
+                        <span class="pierce-label">ชุดเจาะ ${de2}</span>
+                        <span class="pierce-nums">${row2}</span>
                     </div>
                 </div>
             `;
         });
 
         document.getElementById('results').innerHTML = html;
+
+        setTimeout(() => {
+            top = null;
+            bottom = null;
+            formulas = null;
+        }, 100);
     }
 </script>
 </body>
