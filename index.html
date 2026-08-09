@@ -24,8 +24,6 @@
             border: 1px solid rgba(255,255,255,0.1);
             position: relative;
         }
-
-        /* เอฟเฟกต์ดาวกระพริบวิบวับหัวข้อหลัก */
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -34,7 +32,6 @@
             display: inline-block;
             animation: twinkle 1.5s infinite ease-in-out;
         }
-
         .header-box { text-align: center; margin-bottom: 24px; }
         .header-box h2 { 
             color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
@@ -43,9 +40,7 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* แพ็กเกจหน้าแรก 4 ช่อง พร้อมแสงวิ่งขอบ */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
-        
         @keyframes borderGlow1 {
             0% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
             50% { border-color: rgba(232,121,249,0.9); box-shadow: 0 0 20px rgba(232,121,249,0.6); }
@@ -66,23 +61,19 @@
             50% { border-color: rgba(74,222,128,0.9); box-shadow: 0 0 20px rgba(74,222,128,0.6); }
             100% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
         }
-
         .package-card { background: #131c2e; padding: 16px 12px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; }
         .package-card-1 { animation: borderGlow1 3s infinite; color: #e879f9; }
         .package-card-2 { animation: borderGlow2 3s infinite; color: #38bdf8; }
         .package-card-3 { animation: borderGlow3 2.5s infinite; color: #fbbf24; }
         .package-card-4 { animation: borderGlow4 3s infinite; color: #4ade80; }
-        
         .package-card h3 { margin: 0 0 6px 0; font-size: 0.95rem; }
         .price { font-size: 1.3rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); margin-bottom: 2px; }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
-        /* ช่องชำระเงิน */
         .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.8); padding: 16px; border-radius: 16px; margin-bottom: 20px; font-size: 0.9rem; text-align: center; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
         .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 6px 12px; border-radius: 6px; display: inline-block; letter-spacing: 1.5px; box-shadow: 0 0 10px rgba(251,191,36,0.2); font-size: 1.1rem; margin: 4px 0; }
 
-        /* ปุ่มแจ้งสลิป */
         @keyframes btnPulse {
             0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
             50% { box-shadow: 0 0 25px rgba(5,150,105,0.8); }
@@ -94,7 +85,6 @@
             animation: btnPulse 2s infinite; font-size: 0.95rem;
         }
 
-        /* ส่วนเข้าสู่ระบบ */
         .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); text-align: center; }
         .login-title { font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px; }
         .input-group { margin-bottom: 12px; }
@@ -107,12 +97,9 @@
             color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
         button.action-btn:active { transform: scale(0.97); }
-
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; text-align: center; }
 
-        /* หน้าคำนวณสูตร (ซ่อนไว้ก่อน) */
         #calculatorView { display: none; }
-        
         .calc-box { margin-bottom: 15px; text-align: left; }
         .calc-box label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 6px; }
         
@@ -122,7 +109,6 @@
             box-shadow: 0 0 15px rgba(5,150,105,0.5); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
 
-        /* การ์ดผลลัพธ์สูตรสไตล์เรียบหรู ไม่รกตา */
         .formula-card { 
             background: #0b0f19; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
             border: 1px solid rgba(56,189,248,0.25);
@@ -133,56 +119,22 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 2px; font-size: 1.05rem; }
         .formula-sub { color: #fbbf24; font-size: 0.85rem; margin-bottom: 10px; }
 
-        /* แถวชุดเจาะแบบมีปุ่มคัดลอกวิบวับ */
         @keyframes iconBounce {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-3px) scale(1.15); filter: drop-shadow(0 0 6px rgba(251,191,36,0.8)); }
         }
         .copy-row {
-            background: #131c2e; 
-            border: 1px solid rgba(51,65,85,0.8); 
-            padding: 10px 14px; 
-            border-radius: 12px; 
-            margin-bottom: 8px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-            cursor: pointer;
-            transition: 0.2s;
+            background: #131c2e; border: 1px solid rgba(51,65,85,0.8); padding: 10px 14px; 
+            border-radius: 12px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;
+            cursor: pointer; transition: 0.2s;
         }
-        .copy-row:hover {
-            border-color: #38bdf8;
-            background: #17223b;
-        }
-        .copy-row:active {
-            transform: scale(0.98);
-        }
-        .copy-label {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            font-weight: 500;
-        }
-        .copy-content-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .copy-numbers {
-            font-family: monospace;
-            font-size: 0.95rem;
-            color: #4ade80;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-        .sparkle-clipboard {
-            display: inline-block;
-            font-size: 1.1rem;
-            animation: iconBounce 1.5s infinite ease-in-out;
-        }
+        .copy-row:hover { border-color: #38bdf8; background: #17223b; }
+        .copy-row:active { transform: scale(0.98); }
+        .copy-label { font-size: 0.85rem; color: #cbd5e1; font-weight: 500; }
+        .copy-content-area { display: flex; align-items: center; gap: 12px; }
+        .copy-numbers { font-family: monospace; font-size: 0.95rem; color: #4ade80; letter-spacing: 1px; font-weight: bold; }
+        .sparkle-clipboard { display: inline-block; font-size: 1.1rem; animation: iconBounce 1.5s infinite ease-in-out; }
         
-        .highlight { color: #f87171; font-weight: bold; }
-
-        /* Toast แจ้งเตือนคัดลอก */
         #toast {
             visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
             text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
@@ -197,7 +149,6 @@
             80% { bottom: 30px; opacity: 1; }
             100% { bottom: 10px; opacity: 0; }
         }
-
         .back-btn { background: #334155 !important; border: none !important; margin-top: 10px; }
     </style>
 </head>
@@ -214,210 +165,235 @@
 
         <div class="package-grid">
             <div class="package-card package-card-1">
-                <h3>⏱️ 7 วัน</h3>
-                <div class="price">99 B</div>
-                <div class="desc">ทดลองใช้งานสั้นๆ</div>
+                <h3>VIP 1 วัน</h3>
+                <div class="price">59.-</div>
+                <div class="desc">ใช้งานได้ 24 ชม.</div>
             </div>
             <div class="package-card package-card-2">
-                <h3>⏳ 15 วัน</h3>
-                <div class="price">199 B</div>
-                <div class="desc">ใช้งานกลางเดือน</div>
+                <h3>VIP 7 วัน</h3>
+                <div class="price">199.-</div>
+                <div class="desc">คุ้มค่า รายสัปดาห์</div>
             </div>
             <div class="package-card package-card-3">
-                <h3>⭐ 1 เดือน</h3>
-                <div class="price">299 B</div>
-                <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
+                <h3>VIP 30 วัน</h3>
+                <div class="price">499.-</div>
+                <div class="desc">ยาวยอดฮิต รายเดือน</div>
             </div>
             <div class="package-card package-card-4">
-                <h3>🔥 1 ปี</h3>
-                <div class="price">1,890 B</div>
-                <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
+                <h3>VIP ตลอดชีพ</h3>
+                <div class="price">999.-</div>
+                <div class="desc">คุ้มสุดๆ ตลอดการใช้งาน</div>
             </div>
         </div>
 
         <div class="payment-box">
-            <h4>💳 ช่องทางชำระเงิน</h4>
-            <p style="margin: 0; color: #94a3b8; font-size: 0.85rem;">ธนาคารกสิกรไทย</p>
-            <div class="bank-num">066-129-1613</div>
-            <p style="margin: 0; color: #cbd5e1; font-size: 0.85rem;">ชื่อบัญชี: ณัฐพงษ์ ขำสำอางค์</p>
+            <h4>ช่องทางชำระเงิน (โอนผ่านธนาคาร)</h4>
+            <p style="margin: 0 0 5px 0; color: #94a3b8;">ธนาคารกสิกรไทย (KBANK)</p>
+            <div class="bank-num">123-4-56789-0</div>
+            <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #cbd5e1;">ชื่อบัญชี: มาสเตอร์ ล็อตโต้ วีไอพี</p>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่าน VIP</a>
+        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / รับรหัสเข้าใช้งานผ่าน LINE</a>
 
         <div class="login-section">
-            <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
+            <div class="login-title">กรอกรหัสผ่าน VIP เพื่อเข้าใช้งานระบบ</div>
             <div class="input-group">
-                <input type="password" id="vipCode" placeholder="กรอกรหัสผ่านสมาชิก">
-                <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้ง</div>
+                <input type="password" id="vipCodeInput" placeholder="ใส่รหัส VIP ที่นี่...">
             </div>
             <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
+            <div id="errorMsg" class="error-msg">รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้ง</div>
         </div>
     </div>
 
-    <!-- หน้ากรอกข้อมูลและแสดงผลสูตร 5 สูตร -->
+    <!-- หน้าคำนวณสูตร -->
     <div id="calculatorView">
         <div class="header-box">
-            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
+            <h2><span class="star-sparkle">✨</span> Master Logic VIP <span class="star-sparkle">✨</span></h2>
+            <p>ระบบคำนวณสูตรหวยแม่นยำ 10 คู่ตรง</p>
         </div>
 
         <div class="calc-box">
-            <label>เลข 3 ตัวบน:</label>
-            <input type="text" id="topNum" placeholder="เช่น 701" maxlength="3">
+            <label>สามตัวบน (เช่น 618):</label>
+            <input type="text" id="topThree" maxlength="3" placeholder="กรอกเลข 3 ตัวบน">
         </div>
 
         <div class="calc-box">
-            <label>เลข 2 ตัวล่าง:</label>
-            <input type="text" id="bottomNum" placeholder="เช่น 26" maxlength="2">
+            <label>สองตัวล่าง (เช่น 56):</label>
+            <input type="text" id="bottomTwo" maxlength="2" placeholder="กรอกเลข 2 ตัวล่าง">
         </div>
 
-        <button class="btn-calculate" onclick="calculateLottery()">
-            <span class="star-sparkle">✨</span> ประมวลผลข้อมูลสูตรหวย
+        <button class="btn-calculate" onclick="calculateAllFormulas()">
+            <span>⚡ ประมวลผลคำนวณสูตรทั้งหมด</span>
         </button>
 
-        <!-- ผลลัพธ์สูตรทั้ง 5 สูตร -->
-        <div id="results"></div>
+        <div id="resultContainer"></div>
 
         <button class="action-btn back-btn" onclick="logout()">ออกจากระบบ</button>
     </div>
 
 </div>
 
-<!-- Toast แจ้งเตือนคัดลอก -->
-<div id="toast">คัดลอกชุดตัวเลขสำเร็จ! ✨</div>
+<div id="toast">คัดลอกข้อมูลสำเร็จ!</div>
 
 <script>
-    // รายชื่อรหัสผ่าน VIP (รวมรหัสหลักและรหัสสุ่มผู้ใช้งาน 50 ชุดครบถ้วน)
-    const memberPasswords = [
-        "MasterAdmin2026", "AMD428", "VIP2026", "Bank2026",
-        "Xk89Pq", "Mv32Rt", "Lp74Wq", "Tr56Bn", "Kj91Yx",
-        "Hg23De", "Fp88As", "Qw45Zx", "Bn67Cv", "Rt12Nm",
-        "Zx34Sd", "Cv56Fg", "As78Hj", "Nm90Kl", "Po21Ui",
-        "Yt43Re", "We65Wq", "Qaz98X", "Wsx76C", "Edc54V",
-        "Rfv32B", "Tgb10N", "Yhn98M", "Ujm76K", "Ikj54J",
-        "Olp32H", "Plo10G", "Zxc87F", "Xsw65D", "Cde43S",
-        "Vfr21A", "Bgt90Q", "Nhy87W", "Mju76E", "Klo65R",
-        "Lop54T", "Hgf43Y", "Dsa32U", "Asw21I", "Qwe10O",
-        "Rty98U", "Uio87I", "Fgh76O", "Vbn65P", "Jkl54L",
-        "Mnb43K", "Xcv32J", "Zas21H", "Qaz10G", "Wsx98F"
-    ];
-
     function checkLogin() {
-        const passInput = document.getElementById('vipCode');
-        const errorDiv = document.getElementById('errorMsg');
-        const pass = passInput.value.trim();
-
-        if (pass !== "" && memberPasswords.includes(pass)) {
-            errorDiv.style.display = 'none';
+        const code = document.getElementById('vipCodeInput').value.trim();
+        if (code === "VIP999" || code === "master") {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
-            passInput.value = '';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-            errorDiv.style.display = 'block';
-            passInput.value = '';
+            document.getElementById('errorMsg').style.display = 'block';
         }
-    }
-
-    function calculateLottery() {
-        let top = document.getElementById('topNum').value.trim();
-        let bottom = document.getElementById('bottomNum').value.trim();
-
-        if (top.length !== 3 || bottom.length !== 2) {
-            alert("กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน!");
-            return;
-        }
-
-        let r1 = parseInt(top[0]);
-        let r2 = parseInt(top[1]);
-        let r3 = parseInt(top[2]);
-        let b1 = parseInt(bottom[0]);
-        let b2 = parseInt(bottom[1]);
-
-        let f1_d1 = (r2 + b1) % 10;
-        let f1_d2 = (f1_d1 + 1) % 10;
-
-        let f2_d1 = (r1 + r2 + r3) % 10;
-        let f2_d2 = (f2_d1 + 1) % 10;
-
-        let f3_d1 = (r1 + b1) % 10;
-        let f3_d2 = (f3_d1 + 1) % 10;
-
-        let f4_d1 = (r3 + b2) % 10;
-        let f4_d2 = (f4_d1 + 1) % 10;
-
-        let f5_d1 = (10 - b2) % 10;
-        let f5_d2 = (f5_d1 + 1) % 10;
-
-        let formulas = [
-            { name: "สูตรที่ 1", d1: f1_d1, d2: f1_d2 },
-            { name: "สูตรที่ 2", d1: f2_d1, d2: f2_d2 },
-            { name: "สูตรที่ 3", d1: f3_d1, d2: f3_d2 },
-            { name: "สูตรที่ 4", d1: f4_d1, d2: f4_d2 },
-            { name: "สูตรที่ 5", d1: f5_d1, d2: f5_d2 }
-        ];
-
-        let html = "";
-        formulas.forEach(f => {
-            let de1 = f.d1;
-            let de2 = f.d2;
-
-            let pool = [];
-            for(let i=0; i<=9; i++) {
-                if(i !== de1 && i !== de2) pool.push(i);
-            }
-            let pierce5 = pool.slice(0, 5);
-
-            let row1Nums = pierce5.map(n => "" + de1 + n).join("  ");
-            let row2Nums = pierce5.map(n => "" + de2 + n).join("  ");
-
-            let textToCopy1 = `${de1}: ${row1Nums}`;
-            let textToCopy2 = `${de2}: ${row2Nums}`;
-
-            html += `
-                <div class="formula-card">
-                    <div class="formula-title">${f.name}</div>
-                    <div class="formula-sub">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
-                    
-                    <div class="copy-row" onclick="copyText('${textToCopy1}')">
-                        <span class="copy-label">ชุดเจาะ ${de1}</span>
-                        <div class="copy-content-area">
-                            <span class="sparkle-clipboard">📋</span>
-                            <span class="copy-numbers">${row1Nums}</span>
-                        </div>
-                    </div>
-
-                    <div class="copy-row" onclick="copyText('${textToCopy2}')">
-                        <span class="copy-label">ชุดเจาะ ${de2}</span>
-                        <div class="copy-content-area">
-                            <span class="sparkle-clipboard">📋</span>
-                            <span class="copy-numbers">${row2Nums}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-
-        document.getElementById('results').innerHTML = html;
-        window.scrollTo({ top: 300, behavior: 'smooth' });
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            let toast = document.getElementById('toast');
-            toast.className = "show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
-        });
     }
 
     function logout() {
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
-        document.getElementById('vipCode').value = '';
-        document.getElementById('topNum').value = '';
-        document.getElementById('bottomNum').value = '';
-        document.getElementById('results').innerHTML = '';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('vipCodeInput').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
+    }
+
+    function copyToClipboard(text, label) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast(`คัดลอก ${label} เรียบร้อย!`);
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById("toast");
+        toast.innerText = msg;
+        toast.className = "show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
+    }
+
+    // ฟังก์ชันคำนวณ Master Logic สูตรเจาะกลาง (ใช้ร่วมกันทุกสูตร)
+    function calculateUnits(hTop, mainDigits) {
+        let axis = Math.abs(7 - hTop) % 10;
+
+        let spread2 = [];
+        for (let i = -2; i <= 2; i++) {
+            let val = (axis + i) % 10;
+            if (val < 0) val += 10;
+            spread2.push(val);
+        }
+
+        let hasCollision = spread2.some(num => mainDigits.includes(num));
+        let rangeSize = hasCollision ? 3 : 2;
+
+        let rawUnits = [];
+        for (let i = -rangeSize; i <= rangeSize; i++) {
+            let val = (axis + i) % 10;
+            if (val < 0) val += 10;
+            rawUnits.push(val);
+        }
+
+        let units = [...new Set(rawUnits)].filter(num => !mainDigits.includes(num));
+        units.sort((a, b) => a - b);
+        if (units.length > 5) units = units.slice(0, 5);
+        return units;
+    }
+
+    // ฟังก์ชันสร้างคู่เจาะ 10 คู่ (เด่น 2 ตัว จับคู่หน่วย 5 ตัว ตัดเบิ้ล 100%)
+    function generatePairs(d1, d2, units) {
+        let pairs1 = units.map(u => `${d1}${u}`).filter(p => p[0] !== p[1]);
+        let pairs2 = units.map(u => `${d2}${u}`).filter(p => p[0] !== p[1]);
+        return {
+            pairs1Str: pairs1.join(', '),
+            pairs2Str: pairs2.join(', '),
+            allPairs: [...pairs1, ...pairs2]
+        };
+    }
+
+    function calculateAllFormulas() {
+        const top3 = document.getElementById('topThree').value.trim();
+        const bottom2 = document.getElementById('bottomTwo').value.trim();
+
+        if (top3.length !== 3 || bottom2.length !== 2) {
+            alert('กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน');
+            return;
+        }
+
+        let hTop = parseInt(top3[0]);
+        let tTop = parseInt(top3[1]);
+        let uTop = parseInt(top3[2]);
+        let tBot = parseInt(bottom2[0]);
+        let uBot = parseInt(bottom2[1]);
+
+        let results = [];
+
+        // สูตรที่ 1: สิบบบน + สิบล่าง -> ใช้หลักหน่วยเป็นเด่นตัวที่ 1 + 1 แต้มเป็นตัวที่ 2
+        let sum1 = tTop + tBot;
+        let d1_1 = sum1 % 10;
+        let d1_2 = (d1_1 + 1) % 10;
+        let main1 = [d1_1, d1_2];
+        let units1 = calculateUnits(hTop, main1);
+        let pairs1 = generatePairs(d1_1, d1_2, units1);
+        results.push({ name: "สูตรที่ 1: สิบบบน + สิบล่าง", main: `${d1_1}, ${d1_2}`, units: units1.join(', '), ...pairs1 });
+
+        // สูตรที่ 2: 3 ตัวบนบวกกัน -> ใช้หลักหน่วยเป็นเด่นตัวที่ 1 + 1 แต้มเป็นตัวที่ 2
+        let sum2 = hTop + tTop + uTop;
+        let d2_1 = sum2 % 10;
+        let d2_2 = (d2_1 + 1) % 10;
+        let main2 = [d2_1, d2_2];
+        let units2 = calculateUnits(hTop, main2);
+        let pairs2 = generatePairs(d2_1, d2_2, units2);
+        results.push({ name: "สูตรที่ 2: 3 ตัวบนบวกกัน", main: `${d2_1}, ${d2_2}`, units: units2.join(', '), ...pairs2 });
+
+        // สูตรที่ 3: หลักร้อยบน + สิบล่าง -> ใช้หลักหน่วยเป็นเด่นตัวที่ 1 + 1 แต้มเป็นตัวที่ 2
+        let sum3 = hTop + tBot;
+        let d3_1 = sum3 % 10;
+        let d3_2 = (d3_1 + 1) % 10;
+        let main3 = [d3_1, d3_2];
+        let units3 = calculateUnits(hTop, main3);
+        let pairs3 = generatePairs(d3_1, d3_2, units3);
+        results.push({ name: "สูตรที่ 3: หลักร้อยบน + สิบล่าง", main: `${d3_1}, ${d3_2}`, units: units3.join(', '), ...pairs3 });
+
+        // สูตรที่ 4: หน่วยบน + หน่วยล่าง -> ใช้หลักหน่วยเป็นเด่นตัวที่ 1 + 1 แต้มเป็นตัวที่ 2
+        let sum4 = uTop + uBot;
+        let d4_1 = sum4 % 10;
+        let d4_2 = (d4_1 + 1) % 10;
+        let main4 = [d4_1, d4_2];
+        let units4 = calculateUnits(hTop, main4);
+        let pairs4 = generatePairs(d4_1, d4_2, units4);
+        results.push({ name: "สูตรที่ 4: หน่วยบน + หน่วยล่าง", main: `${d4_1}, ${d4_2}`, units: units4.join(', '), ...pairs4 });
+
+        // สูตรที่ 5: ฐาน 10 คงที่ - หลักหน่วยล่าง -> ใช้หลักหน่วยเป็นเด่นตัวที่ 1 + 1 แต้มเป็นตัวที่ 2
+        let diff5 = 10 - uBot;
+        let d5_1 = diff5 % 10;
+        let d5_2 = (d5_1 + 1) % 10;
+        let main5 = [d5_1, d5_2];
+        let units5 = calculateUnits(hTop, main5);
+        let pairs5 = generatePairs(d5_1, d5_2, units5);
+        results.push({ name: "สูตรที่ 5: ฐาน 10 คงที่ - หลักหน่วยล่าง", main: `${d5_1}, ${d5_2}`, units: units5.join(', '), ...pairs5 });
+
+        let container = document.getElementById('resultContainer');
+        container.innerHTML = '';
+
+        results.forEach((res) => {
+            let card = document.createElement('div');
+            card.className = 'formula-card';
+            card.innerHTML = `
+                <div class="formula-title">${res.name}</div>
+                <div class="formula-sub">เด่นหลักสิบ: <span class="highlight">${res.main}</span> | เจาะหลักหน่วย: ${res.units}</div>
+                
+                <div class="copy-row" onclick="copyToClipboard('${res.pairs1Str}', '${res.name} เด่น ${res.main.split(',')[0].trim()}')">
+                    <span class="copy-label">เด่น ${res.main.split(',')[0].trim()} (5 คู่):</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">${res.pairs1Str}</span>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+
+                <div class="copy-row" onclick="copyToClipboard('${res.pairs2Str}', '${res.name} เด่น ${res.main.split(',')[1].trim()}')">
+                    <span class="copy-label">เด่น ${res.main.split(',')[1].trim()} (5 คู่):</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">${res.pairs2Str}</span>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
     }
 </script>
 
