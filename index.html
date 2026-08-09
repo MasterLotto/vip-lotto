@@ -539,11 +539,25 @@
             { name: "สูตรที่ 5", set: set5 }
         ];
 
+        // 1. คำนวณความถี่ของเลขเด่นทั้งหมด
         let freqMap = {};
         formulas.forEach(f => {
             f.set.forEach(num => {
                 freqMap[num] = (freqMap[num] || 0) + 1;
             });
+        });
+
+        // 2. ให้คะแนนความสำคัญแต่ละสูตร จากผลรวมความถี่ของเลขเด่นในสูตรนั้น
+        formulas.forEach(f => {
+            f.score = f.set.reduce((acc, num) => acc + (freqMap[num] || 0), 0);
+        });
+
+        // 3. จัดเรียงลำดับสูตร (Sorting) เอาสูตรที่คะแนนความถี่สูงสุดขึ้นมาอยู่อันดับแรก
+        formulas.sort((a, b) => b.score - a.score);
+
+        // 4. คัดเลือกเฉพาะ Top 3 สูตรแรกให้แสดงป้าย Hot Badge เพื่อไม่ให้ขึ้นทุกสูตร
+        formulas.forEach((f, index) => {
+            f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
         });
 
         let coreVal = (7 - hTop) % 10;
@@ -574,13 +588,11 @@
             let filteredTargets = rawTargetNumbers.filter(num => !f.set.includes(num));
             filteredTargets.sort((a, b) => a - b);
 
-            let isHotFormula = f.set.some(num => freqMap[num] >= 2);
-
             let cardHTML = `
                 <div class="formula-card">
                     <div class="formula-header-flex">
                         <div class="formula-title">${f.name}</div>
-                        ${isHotFormula ? '<div class="hot-badge">🔥 แนะนำ (HOT)</div>' : ''}
+                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ (HOT)</div>' : ''}
                     </div>
                     <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
             `;
