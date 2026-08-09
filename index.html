@@ -200,7 +200,6 @@
             letter-spacing: 1px;
             font-weight: bold;
         }
-        /* กำหนดสีแยกตามประเภทชุดเจาะ เด่น (เขียว) และ รอง (ฟ้า) ตามต้องการ */
         .copy-numbers.main-set { color: #4ade80; }
         .copy-numbers.sub-set { color: #38bdf8; }
 
@@ -318,34 +317,6 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // กำหนดรหัสผ่านที่ถูกต้องสำหรับสมาชิก VIP (สามารถเปลี่ยนรหัสผ่านได้ที่นี่)
-    const VALID_VIP_PASSWORD = "VIP999";
-
-    function handleLogin() {
-        const pass = document.getElementById('passwordInput').value.trim();
-        const errorMsg = document.getElementById('errorMsg');
-        
-        // ตรวจสอบรหัสผ่านอย่างเข้มงวด
-        if (pass === VALID_VIP_PASSWORD) {
-            document.getElementById('loginView').style.display = 'none';
-            document.getElementById('calculatorView').style.display = 'block';
-            errorMsg.style.display = 'none';
-        } else {
-            errorMsg.style.display = 'block';
-            document.getElementById('passwordInput').focus();
-        }
-    }
-
-    function handleLogout() {
-        document.getElementById('calculatorView').style.display = 'none';
-        document.getElementById('loginView').style.display = 'block';
-        document.getElementById('passwordInput').value = '';
-        document.getElementById('resultContainer').innerHTML = '';
-        document.getElementById('num3top').value = '';
-        document.getElementById('num2bottom').value = '';
-        document.getElementById('errorMsg').style.display = 'none';
-    }
-
     function startProcessing() {
         const t3 = document.getElementById('num3top').value.trim();
         const b2 = document.getElementById('num2bottom').value.trim();
@@ -383,7 +354,6 @@
         const dBot = parseInt(b2[0]);
         const uBot = parseInt(b2[1]);
 
-        // สูตรการคำนวณตามตรรกะเดิมที่คุณตั้งไว้
         let sum1 = dTop + dBot;
         let d1_1 = sum1 % 10;
         let d1_2 = (d1_1 + 1) % 10;
@@ -451,7 +421,6 @@
                     <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
             `;
 
-            // กำหนดแยกประเภท: ตัวแรกเป็นชุดเด่น (สีเขียว), ตัวที่สองเป็นชุดรอง (สีฟ้า) ตามที่คุณต้องการ
             f.set.forEach((dNum, idx) => {
                 let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
                 let pairString = pairs.join(' ');
@@ -480,6 +449,55 @@
             toast.className = "show";
             setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
         });
+    }
+
+    // ==========================================
+    // ⚙️ ส่วนจัดการระบบสมาชิก / รายชื่อผู้ใช้งานทั้งหมด (ย้ายมาไว้ด้านล่างสุด)
+    // สามารถเพิ่ม หรือแก้ไขรายชื่อสมาชิกได้ที่อาร์เรย์ด้านล่างนี้ทันที
+    // ==========================================
+    const VALID_VIP_USERS = [
+        // ยูสเซอร์หลักที่คุณกำหนด
+        "Bank2026",
+        "AMD428",
+        "Xk89Pq",
+        "MasterAdmin2026",
+
+        // ยูสเซอร์ที่สุ่มเพิ่มให้อีก 50 ยูสเซอร์ (ยากและไม่ซ้ำกัน)
+        "V9kL2mP7", "Zq4W8xT1", "Rt5Y9uI2", "Op2Q7wE4", "As3D6fG9",
+        "Gh1J4kL8", "Zx7C2vB5", "Nm8M1nB3", "Po9I6uY4", "Uj3Y7tR6",
+        "Wq2S5xC8", "Ed4R7fV1", "Tg6Y9hN2", "Yh8U1jM3", "Ik0O3pL5",
+        "Qaz2WSx3", "Edc4RFv5", "Tgb6Yhn7", "Ujm8IKo9", "Plm0OKi9",
+        "Zxv1Cde2", "Bgt3Nhy4", "Mju5Klo6", "Cde7Vfr8", "Bhy9Nji0",
+        "Xsw2Zaq1", "Der4Ewx3", "Fgt6Cde5", "Yhu8Bgt7", "Mji0Ujm9",
+        "Lop1Plo0", "Kji9Oki8", "Iuh8Uhy7", "Ygt7Tgy6", "Fre5Der4",
+        "Ewq3Waq2", "Qaz1Xsw2", "Xde3Cfr4", "Vgt5Bhy6", "Nju7Mki8",
+        "Plm9Olo0", "Zxc4Vbn5", "Asd6Fgh7", "Qwe8Rty9", "Zk9Pq2Lm",
+        "Xw8Ne4Rt", "Cp3Ji7Uo", "Vb5Yt6Mn", "As2Df4Gh", "Kj7Kl9Po"
+    ];
+
+    function handleLogin() {
+        const pass = document.getElementById('passwordInput').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+        
+        // ตรวจสอบว่ารหัสผ่านตรงกับรายชื่อในระบบสมาชิกหรือไม่
+        if (VALID_VIP_USERS.includes(pass)) {
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
+            errorMsg.style.display = 'none';
+        } else {
+            errorMsg.style.display = 'block';
+            document.getElementById('passwordInput').focus();
+        }
+    }
+
+    function handleLogout() {
+        document.getElementById('calculatorView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('resultContainer').innerHTML = '';
+        document.getElementById('num3top').value = '';
+        document.getElementById('num2bottom').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
     }
 </script>
 
