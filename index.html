@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
-    <!-- ใช้ฟอนต์ระบบดิจิทัลแท้ (Share Tech Mono) สำหรับตัวเลขและเลขบัญชีทั้งหมด -->
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- เปลี่ยนมาใช้ฟอนต์ Prompt สวยๆ ทันสมัย ตัวเลขเรียบเนียน ระยะห่างพอดี ไม่กว้างและไม่แข็งกระด้าง -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { 
-            font-family: 'Kanit', sans-serif; 
+            font-family: 'Prompt', sans-serif; 
             background-color: #0f172a; 
             color: #f8fafc; 
             margin: 0; 
@@ -27,7 +27,7 @@
         .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; font-weight: 600; }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* แพ็กเกจหน้าแรก (ล็อกแบบสมบูรณ์ตามต้นแบบที่อาจารย์ชอบ) */
+        /* แพ็กเกจหน้าแรก */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .package-card-1 { background: #1e293b; border: 2px solid #e879f9; padding: 12px; border-radius: 12px; text-align: center; }
         .package-card-2 { background: #1e293b; border: 2px solid #38bdf8; padding: 12px; border-radius: 12px; text-align: center; }
@@ -42,10 +42,10 @@
         .price { font-size: 1.1rem; font-weight: bold; color: #f87171; }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
-        /* ช่องชำระเงิน (ปรับฟอนต์เลขบัญชีให้เป็น Share Tech Mono ตามต้นแบบ) */
+        /* ช่องชำระเงิน */
         .payment-box { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.9rem; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #334155; padding: 3px 8px; border-radius: 4px; display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 1.1rem; letter-spacing: 1.5px; }
+        .bank-num { color: #fbbf24; font-weight: 600; background: #334155; padding: 2px 6px; border-radius: 4px; display: inline-block; font-family: 'Prompt', sans-serif; letter-spacing: 0.5px; }
 
         .btn-line { 
             display: block; width: 100%; padding: 14px; background: #059669; color: white; 
@@ -57,44 +57,42 @@
         .login-section { background: #0f172a; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
         .input-group { margin-bottom: 12px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 5px; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; font-family: 'Kanit', sans-serif; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1.1rem; text-align: center; font-family: 'Prompt', sans-serif; }
         
         button.action-btn { 
             width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 8px; 
-            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; font-family: 'Kanit', sans-serif;
+            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; font-family: 'Prompt', sans-serif;
         }
         button.action-btn:hover { background: #334155; }
 
-        /* หน้าคำนวณสูตร (ปรับฟอนต์และระยะห่างชุดตัวเลขให้ตรงเป๊ะกับภาพต้นแบบ 100%) */
+        /* หน้าคำนวณสูตร (ปรับขนาดฟอนต์ให้เล็กลงพอดีตา และจัดระยะห่างตัวเลขให้สวยงามเป็นระเบียบ) */
         #calculatorView { display: none; }
         
         .formula-card { 
-            background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #fbbf24; 
+            background: #0f172a; padding: 14px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #fbbf24; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .formula-title { color: #fbbf24; font-weight: 500; margin-bottom: 6px; font-size: 1rem; }
-        .highlight { color: #fbbf24; font-weight: bold; font-family: 'Share Tech Mono', monospace; }
+        .formula-title { color: #fbbf24; font-weight: 500; margin-bottom: 6px; font-size: 0.95rem; }
+        .highlight { color: #fbbf24; font-weight: bold; font-family: 'Prompt', sans-serif; }
         
-        /* กล่องชุดเจาะ: จัดวางระยะห่างและตำแหน่งให้ตรงกับภาพต้นแบบ */
+        /* กล่องชุดเจาะ: ใช้ฟอนต์ Prompt ขนาดกำลังดี ระยะห่างพอเหมาะ ไม่ใหญ่เทอะทะ */
         .pierce-row { 
-            background: #1e293b; padding: 10px 14px; border: 1px solid #334155; border-radius: 8px; 
-            margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
+            background: #1e293b; padding: 8px 12px; border: 1px solid #334155; border-radius: 8px; 
+            margin-top: 6px; display: flex; justify-content: space-between; align-items: center;
         }
-        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.85rem; font-weight: 300; width: 65px; }
+        .pierce-label { color: #94a3b8; font-family: 'Prompt', sans-serif; font-size: 0.82rem; font-weight: 300; width: 60px; }
         
-        /* ใช้ Share Tech Mono ช่องไฟและการจัดวางตัวเลขตรงเป๊ะ */
         .pierce-nums-container { 
             display: flex;
             justify-content: space-between;
             flex-grow: 1;
-            padding-left: 10px;
-            font-family: 'Share Tech Mono', monospace; 
-            font-size: 1.25rem; 
-            font-weight: bold;
-            letter-spacing: 2px;
+            padding-left: 15px;
+            font-family: 'Prompt', sans-serif; 
+            font-size: 1.05rem; 
+            font-weight: 500;
+            letter-spacing: 1px;
         }
         
-        /* สีตัวเลข: แถวบนฟ้าสว่าง / แถวล่างเขียวมรกต ตามภาพต้นแบบ */
         .pierce-nums-1 { color: #38bdf8; } 
         .pierce-nums-2 { color: #4ade80; } 
 
@@ -113,7 +111,7 @@
 
 <div class="vip-container">
     
-    <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ (ล็อกรูปแบบสมบูรณ์ + ปรับเลขบัญชีเป็นฟอนต์ดิจิทัล) -->
+    <!-- 1. หน้าแรก -->
     <div id="loginView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -162,7 +160,7 @@
         </div>
     </div>
 
-    <!-- 2. หน้าคำนวณสูตร (ปรับฟอนต์และระยะห่างชุดตัวเลขตรงเป๊ะตามภาพต้นแบบ) -->
+    <!-- 2. หน้าคำนวณสูตร -->
     <div id="calculatorView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -281,7 +279,7 @@
             html += `
                 <div class="formula-card">
                     <div class="formula-title">${f.name}</div>
-                    <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
+                    <div style="margin-bottom: 6px; font-size: 0.88rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
                     
                     <div class="pierce-row">
                         <span class="pierce-label">ชุดเจาะ ${de1}</span>
