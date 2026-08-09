@@ -179,10 +179,7 @@
             font-size: 1.1rem;
             animation: iconBounce 1.5s infinite ease-in-out;
         }
-        
-        .highlight { color: #f87171; font-weight: bold; }
 
-        /* Toast แจ้งเตือนคัดลอก */
         #toast {
             visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
             text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
@@ -213,4 +210,169 @@
         </div>
 
         <div class="package-grid">
-            
+            <div class="package-card package-card-1">
+                <h3>VIP รายวัน</h3>
+                <div class="price">150 ฿</div>
+                <div class="desc">ใช้งานได้ 1 วันเต็ม</div>
+            </div>
+            <div class="package-card package-card-2">
+                <h3>VIP 7 วัน</h3>
+                <div class="price">300 ฿</div>
+                <div class="desc">คุ้มค่า ยอดนิยม</div>
+            </div>
+            <div class="package-card package-card-3">
+                <h3>VIP 15 วัน</h3>
+                <div class="price">500 ฿</div>
+                <div class="desc">สูตรเดินดีต่อเนื่อง</div>
+            </div>
+            <div class="package-card package-card-4">
+                <h3>VIP 30 วัน</h3>
+                <div class="price">800 ฿</div>
+                <div class="desc">คุ้มที่สุด ตลอดเดือน</div>
+            </div>
+        </div>
+
+        <div class="payment-box">
+            <h4>ช่องทางชำระเงิน</h4>
+            <div>ธนาคารกสิกรไทย (KBank)</div>
+            <div class="bank-num">123-4-56789-0</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">ชื่อบัญชี: บจก. มาสเตอร์ล็อตโต้ วีไอพี</div>
+        </div>
+
+        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / สมัครสมาชิกทาง LINE</a>
+
+        <div class="login-section">
+            <div class="login-title">🔑 เข้าสู่ระบบด้วยรหัสสมาชิก VIP</div>
+            <div class="input-group">
+                <input type="text" id="vipCode" placeholder="กรอกรหัส VIP ของท่าน">
+            </div>
+            <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบสูตร</button>
+            <div id="errorMsg" class="error-msg">รหัส VIP ไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง</div>
+        </div>
+    </div>
+
+    <!-- หน้าคำนวณสูตร (ซ่อนไว้ก่อน) -->
+    <div id="calculatorView">
+        <div class="header-box">
+            <h2><span class="star-sparkle">✨</span> คำนวณสูตร VIP <span class="star-sparkle">✨</span></h2>
+            <p>เลือกสูตรและกดประมวลผลเพื่อรับชุดตัวเลขแม่นยำ</p>
+        </div>
+
+        <div class="calc-box">
+            <label>เลือกสูตรคำนวณ</label>
+            <input type="text" value="สูตรเดินดีพิเศษ (Master Engine)" readonly style="color: #38bdf8; background: #131c2e;">
+        </div>
+
+        <button class="btn-calculate" onclick="runCalculation()">
+            <span>🚀 ประมวลผลสูตรอัจฉริยะ</span>
+        </button>
+
+        <div id="resultContainer" style="display:none;">
+            <!-- ผลลัพธ์สูตรที่ 1 -->
+            <div class="formula-card">
+                <div class="formula-title">🔥 สูตรเจาะเน้นบน-ล่าง</div>
+                <div class="formula-sub">วิเคราะห์จากสถิติย้อนหลัง</div>
+                
+                <div class="copy-row" onclick="copyText('24 - 42 - 29 - 92')">
+                    <span class="copy-label">ชุด 2 ตัวตรง</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">24, 42, 29, 92</span>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+                <div class="copy-row" onclick="copyText('524 - 592')">
+                    <span class="copy-label">ชุด 3 ตัวตรง</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">524, 592</span>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ผลลัพธ์สูตรที่ 2 -->
+            <div class="formula-card">
+                <div class="formula-title">⚡ สูตรวิ่ง/รูด ตัวเดียว</div>
+                <div class="formula-sub">ความน่าจะเป็นสูงสุด</div>
+                
+                <div class="copy-row" onclick="copyText('2 ตัววิ่งเน้นๆ: 4 (รอง 2)')">
+                    <span class="copy-label">ฟันธงตัววิ่ง</span>
+                    <div class="copy-content-area">
+                        <span class="copy-numbers">4 (รอง 2)</span>
+                        <span class="sparkle-clipboard">📋</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="action-btn back-btn" onclick="logout()">ออกจากระบบ</button>
+    </div>
+
+</div>
+
+<div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
+
+<script>
+    // ฐานข้อมูลรหัส VIP (รวมรหัสหลักตั้งต้น + รหัสของคุณ Xk89Pq + รหัสสุ่มอีก 50 user)
+    const memberPasswords = [
+        // รหัสตั้งต้นหลักจากระบบเดิม
+        "MasterAdmin2026", "AMD428", "VIP2026", "Bank2026",
+        // รหัสของคุณล่าสุด
+        "Xk89Pq",
+        // รหัสสมาชิกสุ่มเพิ่มเติมอีก 50 user
+        "M92zL3", "pQ71Wv", "Rt48Mn", "Kj25Bx", "Zy63Vf",
+        "Hg89Np", "Lw14Sd", "Rt72Xc", "Vb39Nm", "Df51Kl",
+        "Qw84Zx", "As27Cv", "Er63Bn", "Ty95Mk", "Ui18Lp",
+        "Op42Mn", "Gh76Jk", "Jk31Hg", "Kl65Fd", "Zx89Sa",
+        "Cv14Qw", "Bn72Er", "Nm35Ty", "Pl68Ui", "Aq24Op",
+        "Sw57Gh", "De81Jk", "Fr93Kl", "Gt26Zx", "Hy49Cv",
+        "Ju72Bn", "Ki15Nm", "Lo38Pl", "Pr61Aq", "Tr84Sw",
+        "Ee37De", "Wq59Fr", "As72Gt", "Sd95Hy", "Df18Ju",
+        "Fg41Ki", "Gh64Lo", "Hj87Pr", "Jk10Tr", "Kl33Ee",
+        "Lp56Wq", "Zxc91", "Vbn42", "Mki78", "Lop33"
+    ];
+
+    function checkLogin() {
+        const passInput = document.getElementById('vipCode');
+        const errorMsg = document.getElementById('errorMsg');
+        const pass = passInput.value.trim();
+        
+        if(pass !== "" && memberPasswords.includes(pass)) {
+            errorMsg.style.display = 'none';
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
+            passInput.value = '';
+        } else {
+            errorMsg.style.display = 'block';
+            passInput.value = '';
+        }
+    }
+
+    function runCalculation() {
+        const resContainer = document.getElementById('resultContainer');
+        resContainer.style.display = 'block';
+    }
+
+    function logout() {
+        document.getElementById('calculatorView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('vipCode').value = '';
+        document.getElementById('resultContainer').style.display = 'none';
+    }
+
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast();
+        }).catch(err => {
+            console.error('ไม่สามารถคัดลอกได้', err);
+        });
+    }
+
+    function showToast() {
+        const toast = document.getElementById('toast');
+        toast.className = 'show';
+        setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 1500);
+    }
+</script>
+
+</body>
+</html>
