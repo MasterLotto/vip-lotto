@@ -8,7 +8,7 @@
         * { box-sizing: border-box; }
         body { 
             font-family: 'Kanit', sans-serif; 
-            background-color: #0f172a; 
+            background-color: #0b0f19; 
             color: #f8fafc; 
             margin: 0; 
             padding: 15px; 
@@ -16,101 +16,103 @@
         .vip-container { 
             max-width: 480px; 
             margin: 0 auto; 
-            background: #1e293b; 
-            padding: 20px; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background: #131c2e; 
+            padding: 24px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .header-box { text-align: center; margin-bottom: 20px; }
-        .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; }
+        .header-box { text-align: center; margin-bottom: 24px; }
+        .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; font-size: 1.5rem; text-shadow: 0 0 15px rgba(251,191,36,0.3); }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
         /* แพ็กเกจหน้าแรก */
-        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .package-card-1 { background: #1e293b; border: 2px solid #e879f9; padding: 12px; border-radius: 12px; text-align: center; }
-        .package-card-2 { background: #1e293b; border: 2px solid #38bdf8; padding: 12px; border-radius: 12px; text-align: center; }
-        .package-card-3 { background: #1e293b; border: 2px solid #fbbf24; padding: 12px; border-radius: 12px; text-align: center; }
-        .package-card-4 { background: #1e293b; border: 2px solid #4ade80; padding: 12px; border-radius: 12px; text-align: center; }
+        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .package-card-1 { background: #131c2e; border: 1.5px solid rgba(232,121,249,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(232,121,249,0.1); }
+        .package-card-2 { background: #131c2e; border: 1.5px solid rgba(56,189,248,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(56,189,248,0.1); }
+        .package-card-3 { background: #131c2e; border: 1.5px solid rgba(251,191,36,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(251,191,36,0.1); }
+        .package-card-4 { background: #131c2e; border: 1.5px solid rgba(74,222,128,0.4); padding: 12px; border-radius: 14px; text-align: center; box-shadow: 0 0 10px rgba(74,222,128,0.1); }
         
-        .package-card-1 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #e879f9; }
-        .package-card-2 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #38bdf8; }
-        .package-card-3 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #fbbf24; }
-        .package-card-4 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #4ade80; }
+        .package-card-1 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #e879f9; }
+        .package-card-2 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #38bdf8; }
+        .package-card-3 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #fbbf24; }
+        .package-card-4 h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: #4ade80; }
         
         .price { font-size: 1.1rem; font-weight: bold; color: #f87171; }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
         /* ช่องชำระเงิน */
-        .payment-box { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.9rem; }
+        .payment-box { background: #0b0f19; border: 1px solid rgba(51,65,85,0.6); padding: 16px; border-radius: 14px; margin-bottom: 20px; font-size: 0.9rem; }
         .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
-        .bank-num { color: #fbbf24; font-weight: bold; background: #334155; padding: 2px 6px; border-radius: 4px; display: inline-block; }
+        .bank-num { color: #fbbf24; font-weight: bold; background: #1e293b; padding: 3px 8px; border-radius: 6px; display: inline-block; letter-spacing: 1px; }
 
         .btn-line { 
-            display: block; width: 100%; padding: 14px; background: #059669; color: white; 
-            text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 20px; 
+            display: block; width: 100%; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white; 
+            text-align: center; text-decoration: none; border-radius: 10px; font-weight: bold; margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(5,150,105,0.4); transition: 0.2s;
         }
-        .btn-line:hover { background: #047857; }
+        .btn-line:hover { opacity: 0.9; }
 
         /* ส่วนเข้าสู่ระบบ */
-        .login-section { background: #0f172a; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
+        .login-section { background: #0b0f19; padding: 16px; border-radius: 14px; border: 1px solid rgba(51,65,85,0.6); }
         .input-group { margin-bottom: 12px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 5px; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; }
+        input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1.1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.2s; }
+        input:focus { border-color: #38bdf8; box-shadow: 0 0 10px rgba(56,189,248,0.2); }
         
         button.action-btn { 
-            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 8px; 
+            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 10px; 
             color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
         button.action-btn:hover { background: #334155; }
 
-        /* ระบบแจ้งเตือนข้อผิดพลาดแบบสวยงาม */
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 5px; display: none; }
 
         /* หน้าคำนวณสูตร */
         #calculatorView { display: none; }
         
         .formula-card { 
-            background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #38bdf8; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: #0b0f19; padding: 16px; margin-top: 16px; border-radius: 12px; 
+            border-left: 4px solid #38bdf8; border-top: 1px solid rgba(255,255,255,0.03);
+            border-right: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1rem; }
         .highlight { color: #fbbf24; font-weight: bold; }
         
-        /* ดีไซน์กล่องชุดเจาะ: เพิ่มขนาดขึ้นอีกประมาณ 10% เป็น 0.85rem และเพิ่มเอฟเฟกต์คลิกเพื่อคัดลอก */
+        /* ดีไซน์มินิมอลสะอาดตา: เอาข้อความยาวๆ ออก เหลือแค่ไอคอน 📋 เล็กๆ ด้านหลัง */
         .pierce-row { 
-            background: #1e293b; padding: 10px 12px; border: 1px solid #334155; border-radius: 8px; 
+            background: #131c2e; padding: 10px 14px; border: 1px solid rgba(51,65,85,0.5); border-radius: 8px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
-            font-family: monospace; cursor: pointer; position: relative; transition: background 0.2s;
+            font-family: monospace; cursor: pointer; transition: all 0.2s;
         }
-        .pierce-row:hover { background: #334155; border-color: #38bdf8; }
-        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.8rem; }
+        .pierce-row:hover { background: #1e293b; border-color: #38bdf8; box-shadow: 0 0 10px rgba(56,189,248,0.15); }
+        .pierce-label { color: #94a3b8; font-family: 'Kanit', sans-serif; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+        .pierce-label span { font-size: 0.85rem; opacity: 0.6; }
         
-        /* ตัวเจาะแถวที่ 1 สีเขียว (เพิ่มขนาดอีก 10% เป็น 0.85rem) */
         .pierce-nums-1 { color: #4ade80; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px; }
-        
-        /* ตัวเจาะแถวที่ 2 สีฟ้า (เพิ่มขนาดอีก 10% เป็น 0.85rem) */
         .pierce-nums-2 { color: #38bdf8; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px; }
 
-        /* Toast แจ้งเตือนเมื่อคัดลอกสำเร็จ */
+        /* Toast แจ้งเตือนมินิมอล */
         #toast {
-            visibility: hidden; min-width: 200px; background-color: #059669; color: #fff;
-            text-align: center; border-radius: 6px; padding: 10px; position: fixed;
+            visibility: hidden; min-width: 180px; background-color: #059669; color: #fff;
+            text-align: center; border-radius: 8px; padding: 10px; position: fixed;
             z-index: 100; left: 50%; bottom: 30px; transform: translateX(-50%);
-            font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 0.85rem; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
         #toast.show { visibility: visible; animation: fadein 0.3s, fadeout 0.3s 1.5s; }
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
         .announcement-bottom { 
-            background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
-            border-radius: 10px; padding: 15px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
+            background: #0b0f19; border: 1px solid rgba(51,65,85,0.6); border-left: 4px solid #fbbf24;
+            border-radius: 12px; padding: 16px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
         }
         .announcement-bottom h4 { margin: 0 0 10px 0; color: #fbbf24; font-size: 0.95rem; }
         .announcement-bottom ul { margin: 0; padding-left: 18px; }
         .announcement-bottom li { margin-bottom: 8px; }
 
-        .back-btn { background: #64748b !important; margin-top: 15px; border: none !important; }
+        .back-btn { background: #475569 !important; margin-top: 20px; border: none !important; color: #fff !important; }
     </style>
 </head>
 <body>
@@ -184,7 +186,7 @@
             <div id="calcError" class="error-msg">⚠️ กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน</div>
         </div>
         
-        <button id="calcBtn" class="action-btn" onclick="calculateLottery()" style="background: #059669; color: white; border: none;">✨ ประมวลผลสูตรคำนวณ</button>
+        <button id="calcBtn" class="action-btn" onclick="calculateLottery()" style="background: linear-gradient(135deg, #059669, #047857); color: white; border: none; box-shadow: 0 4px 15px rgba(5,150,105,0.3);">✨ ประมวลผลสูตรคำนวณ</button>
 
         <div id="results"></div>
 
@@ -192,7 +194,7 @@
             <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
             <ul>
                 <li><strong>แนวทางการใช้งาน:</strong> ระบบวิเคราะห์จากสถิติย้อนหลัง เพื่อใช้เป็นแนวทางสนับสนุนการตัดสินใจ</li>
-                <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้เลือกสูตรที่มั่นใจเพียงชุดเดียว แล้วติดตามผลอย่างต่อเนื่อง</li>
+                <li><strong>วินัยในการเล่น:</strong> แนะนำให้เลือกสูตรที่มั่นใจเพียงชุดเดียว แล้วติดตามผลอย่างต่อเนื่อง</li>
                 <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การบริหารทุนและมีวินัยคือหัวใจสำคัญ</li>
             </ul>
         </div>
@@ -202,8 +204,8 @@
 
 </div>
 
-<!-- Toast Popup แจ้งเตือนการคัดลอก -->
-<div id="toast">📋 คัดลอกชุดตัวเลขสำเร็จ!</div>
+<!-- Toast Popup แจ้งเตือนการคัดลอกมินิมอล -->
+<div id="toast">📋 คัดลอกชุดตัวเลขแล้ว</div>
 
 <script>
     const memberPasswords = [
@@ -251,9 +253,8 @@
         }
         errorDiv.style.display = 'none';
 
-        // เอฟเฟกต์กำลังโหลดจำลองเพื่อความสมจริง
         let btn = document.getElementById('calcBtn');
-        btn.innerHTML = "⏳ กำลังวิเคราะห์สถิติสูตร...";
+        btn.innerHTML = "⏳ กำลังประมวลผลอัลกอริทึม...";
         btn.disabled = true;
 
         setTimeout(() => {
@@ -306,11 +307,11 @@
                     <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
                     
                     <div class="pierce-row" onclick="copyToClipboard('${row1}')">
-                        <span class="pierce-label">ชุดเจาะ ${de1} (คลิกคัดลอก)</span>
+                        <span class="pierce-label">ชุดเจาะ ${de1} <span>📋</span></span>
                         <span class="pierce-nums-1">${row1}</span>
                     </div>
                     <div class="pierce-row" onclick="copyToClipboard('${row2}')">
-                        <span class="pierce-label">ชุดเจาะ ${de2} (คลิกคัดลอก)</span>
+                        <span class="pierce-label">ชุดเจาะ ${de2} <span>📋</span></span>
                         <span class="pierce-nums-2">${row2}</span>
                     </div>
                 </div>`;
@@ -322,7 +323,6 @@
         }, 400);
     }
 
-    // ฟังก์ชันคัดลอกตัวเลขลงคลิปบอร์ด
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
             let toast = document.getElementById("toast");
