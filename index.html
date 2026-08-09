@@ -115,7 +115,7 @@
 
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none; }
 
-        /* หน้าคำนวณสูตร */
+        /* หน้าคำนวณสูตร (หน้า 3) */
         #calculatorView { display: none; }
         
         .formula-card { 
@@ -127,15 +127,29 @@
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 6px; font-size: 1.05rem; }
         .highlight { color: #fbbf24; font-weight: bold; text-shadow: 0 0 8px rgba(251,191,36,0.4); }
         
+        /* จัดระเบียบแถวชุดเจาะใหม่ ไม่ให้ข้อความล้นบรรทัด สะอาดตาและหรูหรา */
         .pierce-row { 
             background: #131c2e; padding: 12px 14px; border: 1px solid rgba(51,65,85,0.6); border-radius: 10px; 
             margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
             cursor: pointer; transition: all 0.2s;
         }
-        .pierce-row:active { transform: scale(0.98); background: #1e293b; }
+        .pierce-row:active { transform: scale(0.98); background: #1e293b; border-color: #38bdf8; }
+        
+        .pierce-left { display: flex; align-items: center; gap: 8px; }
         .pierce-label { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
-        .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.95rem; letter-spacing: 2.5px; font-family: monospace; text-shadow: 0 0 8px rgba(74,222,128,0.3); }
-        .pierce-nums-alt { color: #38bdf8; font-weight: bold; font-size: 0.95rem; letter-spacing: 2.5px; font-family: monospace; text-shadow: 0 0 8px rgba(56,189,248,0.3); }
+        
+        /* ไอคอนสมุด/คัดลอกพร้อมเอฟเฟกต์กระพริบเบาๆ ให้รู้ว่ากดได้ */
+        @keyframes iconBlink {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+        .copy-icon {
+            font-size: 0.9rem;
+            animation: iconBlink 2s infinite ease-in-out;
+        }
+
+        .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; text-shadow: 0 0 8px rgba(74,222,128,0.3); }
+        .pierce-nums-alt { color: #38bdf8; font-weight: bold; font-size: 0.9rem; letter-spacing: 1.5px; font-family: monospace; text-shadow: 0 0 8px rgba(56,189,248,0.3); }
 
         /* Toast แจ้งเตือนพรีเมียม */
         #toast {
@@ -218,7 +232,7 @@
         </div>
     </div>
 
-    <!-- 2. หน้าคำนวณสูตร -->
+    <!-- 2 & 3. หน้าคำนวณสูตรและผลลัพธ์ -->
     <div id="calculatorView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
@@ -254,7 +268,7 @@
 </div>
 
 <!-- Toast Popup แจ้งเตือนพรีเมียม -->
-<div id="toast">✨ คัดลอกชุดตัวเลขสำเร็จ!</div>
+<div id="toast">📋 คัดลอกชุดตัวเลขสำเร็จ!</div>
 
 <script>
     const memberPasswords = [
@@ -347,8 +361,8 @@
                 }
                 let pierce5 = pool.slice(0, 5);
 
-                let row1 = pierce5.map(n => "" + de1 + n).join("  ");
-                let row2 = pierce5.map(n => "" + de2 + n).join("  ");
+                let row1 = pierce5.map(n => "" + de1 + n).join(" ");
+                let row2 = pierce5.map(n => "" + de2 + n).join(" ");
 
                 html += `
                 <div class="formula-card">
@@ -356,11 +370,17 @@
                     <div style="margin-bottom: 8px; font-size: 0.9rem;">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
                     
                     <div class="pierce-row" onclick="copyToClipboard('${row1}')">
-                        <span class="pierce-label">ชุดเจาะ ${de1} (แตะเพื่อคัดลอก)</span>
+                        <div class="pierce-left">
+                            <span class="pierce-label">ชุดเจาะ ${de1}</span>
+                            <span class="copy-icon">📋✨</span>
+                        </div>
                         <span class="pierce-nums">${row1}</span>
                     </div>
                     <div class="pierce-row" onclick="copyToClipboard('${row2}')">
-                        <span class="pierce-label">ชุดเจาะ ${de2} (แตะเพื่อคัดลอก)</span>
+                        <div class="pierce-left">
+                            <span class="pierce-label">ชุดเจาะ ${de2}</span>
+                            <span class="copy-icon">📋✨</span>
+                        </div>
                         <span class="pierce-nums-alt">${row2}</span>
                     </div>
                 </div>`;
