@@ -3,46 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterLotto - ระบบสมัครสมาชิก</title>
+    <title>MasterLotto VIP Member</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #2c3e50; }
-        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 20px; }
-        .section-box { background: #f8f9fa; border-left: 5px solid #27ae60; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
-        .section-box h3 { margin-top: 0; color: #27ae60; }
-        .bank-info { font-size: 16px; line-height: 1.6; }
-        .highlight { color: #c0392b; font-weight: bold; background: #fff3cd; padding: 2px 6px; border-radius: 4px; }
-        .btn { display: block; width: 100%; background: #27ae60; color: white; text-align: center; padding: 12px; border-radius: 6px; text-decoration: none; font-size: 16px; font-weight: bold; margin-top: 15px; }
+        body { font-family: 'Prompt', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 500px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #1a2a6c; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 25px; font-size: 0.9em; }
+        .card { background: #fff; border: 1px solid #e1e4e8; padding: 20px; border-radius: 15px; margin-bottom: 20px; }
+        .card-header { font-weight: bold; color: #1a2a6c; margin-bottom: 15px; border-bottom: 2px solid #f0f2f5; padding-bottom: 10px; }
+        .bank-box { background: #f8f9fa; padding: 15px; border-radius: 10px; border: 1px dashed #ced4da; }
+        .bank-item { margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .bank-name { font-weight: bold; color: #007bff; }
+        .copy-text { color: #d9534f; font-weight: bold; font-size: 1.1em; }
+        .btn-line { display: block; width: 100%; background: #06c755; color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-size: 1.1em; font-weight: bold; transition: 0.3s; }
+        .btn-line:hover { background: #05a646; }
+        .member-id-box { text-align: center; background: #fff3cd; padding: 10px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ffeeba; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>MasterLotto VIP</h2>
-    <div class="subtitle">ระบบคำนวณสูตรและแนวทางแม่นยำ</div>
+    <div class="subtitle">ระบบสมัครสมาชิกและวิเคราะห์เลขเด็ด</div>
 
-    <div class="section-box" style="border-left-color: #2980b9;">
-        <h3 style="color: #2980b9;">โปรแกรมคำนวณสูตร</h3>
-        <p>ระบบพร้อมประมวลผลและคำนวณตัวเลขสถิติให้สมาชิกใช้งาน</p>
+    <div class="member-id-box">
+        <small>รหัสอ้างอิงสมาชิกของคุณ (ใช้แจ้งแอดมิน):</small><br>
+        <strong id="memberId">รอสร้าง ID...</strong>
     </div>
 
-    <div class="section-box">
-        <h3>ช่องทางชำระเงินค่าสมาชิก</h3>
-        <p>โอนเงินสนับสนุนค่าบริการได้ที่บัญชีด้านล่างนี้:</p>
-        <div class="bank-info">
-            <p>🏦 <strong>กสิกร:</strong>พิมพ์ชื่อธนาคารตรงนี้</p>
-            <p>🔢 <strong>0661291613:</strong> <span class="highlight">พิมพ์เลขบัญชีตรงนี้</span></p>
-            <p>👤 <strong>ณัฐพษ์ ขำสำอางค์:</strong> พิมพ์ชื่อ-นามสกุลตรงนี้</p>
-            <p>📱 <strong>พร้อมเพย์:</strong> พิมพ์เบอร์พร้อมเพย์ตรงนี้</p>
+    <div class="card">
+        <div class="card-header">🏦 ข้อมูลบัญชีสำหรับโอนเงิน</div>
+        <div class="bank-box">
+            <div class="bank-item"><span>ธนาคาร:</span> <span class="bank-name">กสิกรไทย</span></div>
+            <div class="bank-item"><span>ชื่อบัญชี:</span> <span>ณัฐพงษ์ ขำสำอางค์</span></div>
+            <div class="bank-item"><span>เลขบัญชี:</span> <span class="copy-text">0661291613</span></div>
         </div>
-        <p style="font-size: 14px; color: #555; margin-top: 10px;">
-            * เมื่อโอนเงินแล้ว ส่งสลิปเพื่อยืนยันรับสิทธิ์ได้เลยครับ
-        </p>
     </div>
 
-    <a href="https://line.me" class="btn" target="_blank">แจ้งสลิป / ติดต่อสมัครสมาชิก (Line)</a>
+    <a href="https://line.me/ti/p/cWXNwvCmqc" class="btn-line">✅ คลิกแอดไลน์ ส่งสลิปสมัครสมาชิก</a>
 </div>
+
+<script>
+    // สร้าง ID สมาชิกอัตโนมัติเมื่อเข้าหน้าเว็บ
+    const randomId = "VIP-" + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById("memberId").innerText = randomId;
+</script>
 
 </body>
 </html>
