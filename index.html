@@ -345,12 +345,14 @@
 
 <div class="vip-container">
     
+    <!-- หน้าเข้าสู่ระบบ (หน้าแรก) -->
     <div id="loginView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
             <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง</p>
         </div>
 
+        <!-- แถวผู้ใช้งานออนไลน์ บรรทัดเดียว ตัวหนังสือเล็ก อยู่เฉพาะหน้าแรก -->
         <div class="online-status-bar">
             <div class="online-dot"></div>
             <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
@@ -410,6 +412,7 @@
         </div>
     </div>
 
+    <!-- หน้าหลักระบบคำนวณ (ไม่มีแถว Online) -->
     <div id="calculatorView">
         <div class="header-box" style="margin-bottom: 20px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
@@ -448,13 +451,13 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // สลับล้างค่าหน่วยความจำตามกฎตรรกะที่กำหนด
+    // ฟังก์ชันสำหรับเคลียร์พื้นที่แสดงผลเก่า เพื่อป้องกันความย้อนซ้อนหรือระบบช้าลง
     function clearSystemMemory() {
         const container = document.getElementById('resultContainer');
         if (container) container.innerHTML = '';
     }
 
-    // ฟังก์ชันสุ่มตัวเลข Online ช้าๆ ระหว่าง 240-250 คน เฉพาะหน้าแรก
+    // สุ่มจำนวน Online ระหว่าง 240-250 คน (เฉพาะหน้าแรก)
     let currentOnline = 244;
     function simulateOnlineCount() {
         const change = Math.random() < 0.5 ? 1 : -1;
@@ -475,6 +478,7 @@
     }
 
     function startProcessing() {
+        // เคลียร์ผลลัพธ์เก่าก่อนประมวลผลครั้งใหม่
         clearSystemMemory();
 
         const t3 = document.getElementById('num3top').value.trim();
@@ -486,12 +490,9 @@
         }
 
         const loadingOverlay = document.getElementById('loadingOverlay');
-        const container = document.getElementById('resultContainer');
-        
-        container.innerHTML = '';
         loadingOverlay.style.display = 'block';
 
-        // ปรับเวลาหน่วงโหลดให้เหมาะสม (1.2 วินาที) ผลลัพธ์แสดงค้างไว้เสถียร ไม่หายไปทันที
+        // หน่วงเวลาโหลดประมวลผล 1.2 วินาที แล้วแสดงผลลัพธ์ค้างไว้อย่างเสถียร
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
             calculateFormula(t3, b2);
@@ -604,9 +605,7 @@
             cardHTML += `</div>`;
             container.innerHTML += cardHTML;
         });
-
-        // ล้างหน่วยความจำเบื้องหลังเมื่อแสดงผลเสร็จเรียบร้อยตามระบบป้องกันหน่วยความจำล้น
-        setTimeout(clearSystemMemory, 600);
+        // แสดงผลลัพธ์ค้างไว้ถาวร จนกว่าผู้ใช้จะกดประมวลผลใหม่ หรือกดล้างค่า
     }
 
     function copyText(text) {
