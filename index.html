@@ -25,18 +25,18 @@
         .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* กล่องแพ็กเกจสีสันสดใสตามภาพเดิม */
+        /* แพ็กเกจหน้าแรกตามต้นฉบับ */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .package-card-1 { background: #1e293b; border: 2px solid #e879f9; padding: 12px; border-radius: 12px; text-align: center; }
         .package-card-2 { background: #1e293b; border: 2px solid #38bdf8; padding: 12px; border-radius: 12px; text-align: center; }
         .package-card-3 { background: #1e293b; border: 2px solid #fbbf24; padding: 12px; border-radius: 12px; text-align: center; }
         .package-card-4 { background: #1e293b; border: 2px solid #4ade80; padding: 12px; border-radius: 12px; text-align: center; }
         
-        .package-card-1 h3, .package-card-2 h3, .package-card-3 h3, .package-card-4 h3 { margin: 0 0 5px 0; font-size: 1rem; }
-        .p-7d { color: #e879f9; }
-        .p-15d { color: #38bdf8; }
-        .p-1m { color: #fbbf24; }
-        .p-1y { color: #4ade80; }
+        .package-card-1 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #e879f9; }
+        .package-card-2 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #38bdf8; }
+        .package-card-3 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #fbbf24; }
+        .package-card-4 h3 { margin: 0 0 5px 0; font-size: 1rem; color: #4ade80; }
+        
         .price { font-size: 1.1rem; font-weight: bold; color: #f87171; }
         .desc { font-size: 0.75rem; color: #94a3b8; }
 
@@ -50,7 +50,7 @@
             text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 20px; 
         }
 
-        /* ส่วนเข้าสู่ระบบ / ฟอร์มคำนวณ */
+        /* ส่วนเข้าสู่ระบบ */
         .login-section { background: #0f172a; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
         .input-group { margin-bottom: 12px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 5px; }
@@ -62,7 +62,7 @@
         }
         button.action-btn:hover { background: #334155; }
 
-        /* หน้าคำนวณสูตร (ซ่อนไว้ก่อน) */
+        /* หน้าคำนวณสูตร (ซ่อนไว้ก่อนจนกว่าจะล็อกอิน) */
         #calculatorView { display: none; }
         
         .signal-card { 
@@ -70,7 +70,7 @@
         }
         .signal-title { color: #38bdf8; font-weight: bold; margin-bottom: 5px; font-size: 0.95rem; }
         
-        /* กล่องคำแนะนำวางไว้ล่างสุดของหน้าคำนวณ */
+        /* กล่องคำแนะนำ วางไว้ด้านล่างสุดของหน้าคำนวณ */
         .announcement-bottom { 
             background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
             border-radius: 10px; padding: 15px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
@@ -86,7 +86,7 @@
 
 <div class="vip-container">
     
-    <!-- หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ (ตามภาพต้นฉบับ) -->
+    <!-- 1. หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ (แสดงผลเป็นค่าเริ่มต้น) -->
     <div id="loginView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -95,22 +95,22 @@
 
         <div class="package-grid">
             <div class="package-card-1">
-                <h3 class="p-7d">⏱️ 7 วัน</h3>
+                <h3>⏱️ 7 วัน</h3>
                 <div class="price">99 ฿</div>
                 <div class="desc">ทดลองใช้งานสั้นๆ</div>
             </div>
             <div class="package-card-2">
-                <h3 class="p-15d">⌛ 15 วัน</h3>
+                <h3>⌛ 15 วัน</h3>
                 <div class="price">199 ฿</div>
                 <div class="desc">ใช้งานกลางเดือน</div>
             </div>
             <div class="package-card-3">
-                <h3 class="p-1m">⭐ 1 เดือน</h3>
+                <h3>⭐ 1 เดือน</h3>
                 <div class="price">299 ฿</div>
                 <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
             </div>
             <div class="package-card-4">
-                <h3 class="p-1y">🔥 1 ปี</h3>
+                <h3>🔥 1 ปี</h3>
                 <div class="price">1,890 ฿</div>
                 <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
             </div>
@@ -135,7 +135,7 @@
         </div>
     </div>
 
-    <!-- หน้าคำนวณสูตร (แสดงผลลัพธ์ และมีข้อความคำแนะนำอยู่ล่างสุด) -->
+    <!-- 2. หน้าคำนวณสูตร (จะแสดงต่อเมื่อกรอกรหัสผ่านถูกต้อง) -->
     <div id="calculatorView">
         <div class="header-box">
             <h2>MasterLotto VIP</h2>
@@ -156,7 +156,7 @@
         <!-- ผลลัพธ์การคำนวณ -->
         <div id="results"></div>
 
-        <!-- ข้อกำหนดและคำแนะนำ วางไว้ด้านล่างสุดของหน้าคำนวณ -->
+        <!-- ข้อกำหนดและแนวทางสมาชิก (วางไว้ด้านล่างสุดของหน้าคำนวณ) -->
         <div class="announcement-bottom">
             <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
             <ul>
