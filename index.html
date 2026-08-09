@@ -24,115 +24,180 @@
         .header-box { text-align: center; margin-bottom: 20px; }
         .header-box h2 { color: #fbbf24; margin: 0 0 5px 0; }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
+
+        /* กล่องแพ็กเกจสีสันสดใสตามภาพเดิม */
+        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .package-card-1 { background: #1e293b; border: 2px solid #e879f9; padding: 12px; border-radius: 12px; text-align: center; }
+        .package-card-2 { background: #1e293b; border: 2px solid #38bdf8; padding: 12px; border-radius: 12px; text-align: center; }
+        .package-card-3 { background: #1e293b; border: 2px solid #fbbf24; padding: 12px; border-radius: 12px; text-align: center; }
+        .package-card-4 { background: #1e293b; border: 2px solid #4ade80; padding: 12px; border-radius: 12px; text-align: center; }
         
-        /* กล่องประกาศและคำแนะนำแบบอ่านง่าย เลื่อนขึ้นลง */
-        .announcement-box { 
-            background: #0f172a; 
-            border: 1px solid #334155; 
-            border-left: 5px solid #fbbf24;
-            border-radius: 10px; 
-            padding: 15px; 
-            color: #cbd5e1; 
-            font-size: 0.85rem; 
-            margin-bottom: 20px; 
-            line-height: 1.5;
-            word-wrap: break-word;
+        .package-card-1 h3, .package-card-2 h3, .package-card-3 h3, .package-card-4 h3 { margin: 0 0 5px 0; font-size: 1rem; }
+        .p-7d { color: #e879f9; }
+        .p-15d { color: #38bdf8; }
+        .p-1m { color: #fbbf24; }
+        .p-1y { color: #4ade80; }
+        .price { font-size: 1.1rem; font-weight: bold; color: #f87171; }
+        .desc { font-size: 0.75rem; color: #94a3b8; }
+
+        /* ช่องชำระเงิน */
+        .payment-box { background: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.9rem; }
+        .payment-box h4 { margin: 0 0 10px 0; color: #38bdf8; }
+        .bank-num { color: #fbbf24; font-weight: bold; background: #334155; padding: 2px 6px; border-radius: 4px; display: inline-block; }
+
+        .btn-line { 
+            display: block; width: 100%; padding: 14px; background: #059669; color: white; 
+            text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 20px; 
         }
-        .announcement-box h4 { 
-            margin: 0 0 10px 0; 
-            color: #fbbf24; 
-            font-size: 0.95rem; 
-            display: flex;
-            align-items: center;
-        }
-        .announcement-box ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-        .announcement-box li {
-            margin-bottom: 8px;
-        }
-        
-        /* ฟอร์มกรอกข้อมูล */
-        .input-group { margin-bottom: 15px; }
+
+        /* ส่วนเข้าสู่ระบบ / ฟอร์มคำนวณ */
+        .login-section { background: #0f172a; padding: 15px; border-radius: 12px; border: 1px solid #334155; }
+        .input-group { margin-bottom: 12px; }
         .input-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 5px; }
-        input { 
-            width: 100%; 
-            padding: 12px; 
-            border-radius: 8px; 
-            border: 1px solid #475569; 
-            background: #0f172a; 
-            color: white; 
-            font-size: 1rem;
-        }
-        button { 
-            width: 100%; 
-            padding: 14px; 
-            background: #059669; 
-            border: none; 
-            border-radius: 8px; 
-            color: white; 
-            font-weight: bold; 
-            font-size: 1rem;
-            cursor: pointer; 
-            transition: background 0.2s;
-        }
-        button:hover { background: #047857; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; font-size: 1rem; }
         
-        /* ผลลัพธ์ */
+        button.action-btn { 
+            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 8px; 
+            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; 
+        }
+        button.action-btn:hover { background: #334155; }
+
+        /* หน้าคำนวณสูตร (ซ่อนไว้ก่อน) */
+        #calculatorView { display: none; }
+        
         .signal-card { 
-            background: #0f172a; 
-            padding: 15px; 
-            margin-top: 15px; 
-            border-radius: 10px; 
-            border-left: 5px solid #38bdf8; 
+            background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 10px; border-left: 5px solid #38bdf8; 
         }
         .signal-title { color: #38bdf8; font-weight: bold; margin-bottom: 5px; font-size: 0.95rem; }
+        
+        /* กล่องคำแนะนำวางไว้ล่างสุดของหน้าคำนวณ */
+        .announcement-bottom { 
+            background: #0f172a; border: 1px solid #334155; border-left: 5px solid #fbbf24;
+            border-radius: 10px; padding: 15px; color: #cbd5e1; font-size: 0.85rem; margin-top: 25px; line-height: 1.5;
+        }
+        .announcement-bottom h4 { margin: 0 0 10px 0; color: #fbbf24; font-size: 0.95rem; }
+        .announcement-bottom ul { margin: 0; padding-left: 18px; }
+        .announcement-bottom li { margin-bottom: 8px; }
+
+        .back-btn { background: #64748b !important; margin-top: 15px; border: none !important; }
     </style>
 </head>
 <body>
 
 <div class="vip-container">
-    <div class="header-box">
-        <h2>MasterLotto VIP</h2>
-        <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
-    </div>
-
-    <!-- ส่วนคำแนะนำและกฎการใช้งานแบบจัดระเบียบ -->
-    <div class="announcement-box">
-        <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
-        <ul>
-            <li><strong>ระบบวิเคราะห์เฉพาะทาง:</strong> อัลกอริทึมสถิติไม่มีสูตรใดการันตีผล 100% โปรดใช้เป็นแนวทางสนับสนุนการตัดสินใจเท่านั้น</li>
-            <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้ท่านเลือก "Signal" ที่มั่นใจเพียง 1 ชุด แล้วติดตามผลอย่างต่อเนื่อง (ขั้นต่ำ 7-30 วัน) ตามรอบอายุสมาชิก</li>
-            <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การมีวินัยในการตามสูตรคือหัวใจสำคัญของมืออาชีพ</li>
-        </ul>
-    </div>
-
-    <div class="input-group">
-        <label>เลข 3 ตัวบน:</label>
-        <input type="text" id="topInput" placeholder="เช่น 667">
-    </div>
-    <div class="input-group">
-        <label>เลข 2 ตัวล่าง:</label>
-        <input type="text" id="bottomInput" placeholder="เช่น 77">
-    </div>
     
-    <button onclick="calculateLottery()">✨ ประมวลผลสูตรคำนวณ</button>
+    <!-- หน้าแรก: สมัครสมาชิกและเลือกแพ็กเกจ (ตามภาพต้นฉบับ) -->
+    <div id="loginView">
+        <div class="header-box">
+            <h2>MasterLotto VIP</h2>
+            <p>ระบบวิเคราะห์สูตรคำนวณแม่นยำพิเศษ สำหรับสมาชิก VIP</p>
+        </div>
 
-    <div id="results"></div>
+        <div class="package-grid">
+            <div class="package-card-1">
+                <h3 class="p-7d">⏱️ 7 วัน</h3>
+                <div class="price">99 ฿</div>
+                <div class="desc">ทดลองใช้งานสั้นๆ</div>
+            </div>
+            <div class="package-card-2">
+                <h3 class="p-15d">⌛ 15 วัน</h3>
+                <div class="price">199 ฿</div>
+                <div class="desc">ใช้งานกลางเดือน</div>
+            </div>
+            <div class="package-card-3">
+                <h3 class="p-1m">⭐ 1 เดือน</h3>
+                <div class="price">299 ฿</div>
+                <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
+            </div>
+            <div class="package-card-4">
+                <h3 class="p-1y">🔥 1 ปี</h3>
+                <div class="price">1,890 ฿</div>
+                <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
+            </div>
+        </div>
+
+        <div class="payment-box">
+            <h4>🏦 ช่องทางชำระเงินค่าสมาชิก</h4>
+            <p style="margin: 5px 0;">ธนาคาร: <strong>กสิกรไทย</strong></p>
+            <p style="margin: 5px 0;">เลขที่บัญชี: <span class="bank-num">0661291613</span></p>
+            <p style="margin: 5px 0;">ชื่อบัญชี: <strong>ณัฐพงษ์ ขำสำอางค์</strong></p>
+            <p style="margin: 8px 0 0 0; font-size: 0.8rem; color: #94a3b8;">* โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที</p>
+        </div>
+
+        <a href="https://line.me" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
+
+        <div class="login-section">
+            <div class="input-group">
+                <label>มีรหัสผ่านสมาชิกแล้ว?</label>
+                <input type="password" id="vipPassword" placeholder="..................">
+            </div>
+            <button class="action-btn" onclick="checkLogin()">เข้าสู่ระบบคำนวณ</button>
+        </div>
+    </div>
+
+    <!-- หน้าคำนวณสูตร (แสดงผลลัพธ์ และมีข้อความคำแนะนำอยู่ล่างสุด) -->
+    <div id="calculatorView">
+        <div class="header-box">
+            <h2>MasterLotto VIP</h2>
+            <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
+        </div>
+
+        <div class="input-group">
+            <label>เลข 3 ตัวบน:</label>
+            <input type="text" id="topInput" placeholder="เช่น 667">
+        </div>
+        <div class="input-group">
+            <label>เลข 2 ตัวล่าง:</label>
+            <input type="text" id="bottomInput" placeholder="เช่น 77">
+        </div>
+        
+        <button class="action-btn" onclick="calculateLottery()" style="background: #059669; color: white; border: none;">✨ ประมวลผลสูตรคำนวณ</button>
+
+        <!-- ผลลัพธ์การคำนวณ -->
+        <div id="results"></div>
+
+        <!-- ข้อกำหนดและคำแนะนำ วางไว้ด้านล่างสุดของหน้าคำนวณ -->
+        <div class="announcement-bottom">
+            <h4>📌 ข้อกำหนดและแนวทางสมาชิก VIP</h4>
+            <ul>
+                <li><strong>ระบบวิเคราะห์เฉพาะทาง:</strong> อัลกอริทึมสถิติไม่มีสูตรใดการันตีผล 100% โปรดใช้เป็นแนวทางสนับสนุนการตัดสินใจเท่านั้น</li>
+                <li><strong>วินัยในการเล่น:</strong> เพื่อผลลัพธ์ที่ดีที่สุด แนะนำให้ท่านเลือก "Signal" ที่มั่นใจเพียง 1 ชุด แล้วติดตามผลอย่างต่อเนื่อง (ขั้นต่ำ 7-30 วัน) ตามรอบอายุสมาชิก</li>
+                <li><strong>ธรรมชาติของตัวเลข:</strong> การคำนวณมีจังหวะเข้าและหลุดสลับกัน การมีวินัยในการตามสูตรคือหัวใจสำคัญของมืออาชีพ</li>
+            </ul>
+        </div>
+
+        <button class="action-btn back-btn" onclick="logout()">← ออกจากระบบ / กลับหน้าหลัก</button>
+    </div>
+
 </div>
 
 <script>
+    function checkLogin() {
+        const pass = document.getElementById('vipPassword').value;
+        if(pass.trim() !== "") {
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
+        } else {
+            alert("กรุณากรอกรหัสผ่านสมาชิกก่อนครับอาจารย์");
+        }
+    }
+
+    function logout() {
+        document.getElementById('calculatorView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('vipPassword').value = '';
+        document.getElementById('results').innerHTML = '';
+    }
+
     function calculateLottery() {
         const top = document.getElementById('topInput').value;
         const bottom = document.getElementById('bottomInput').value;
 
         if (!top || !bottom) { 
-            alert("กรุณากรอกข้อมูลเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วนครับอาจารย์"); 
+            alert("กรุณากรอกข้อมูลเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วนครับ"); 
             return; 
         }
 
-        // กลไกแสดงผลสูตร (ซ่อนวิธีคิดแบบปลอดภัย)
         const signals = [
             { name: "Signal A: Master Trend (สูตรหลัก)", d: "3 - 4", pairs: "30 31 32 35 36 / 40 41 42 45 46" },
             { name: "Signal B: Harmonic Power", d: "9 - 0", pairs: "91 92 93 94 95 / 01 02 03 04 05" },
