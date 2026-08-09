@@ -122,7 +122,7 @@
             box-shadow: 0 0 15px rgba(5,150,105,0.5); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
 
-        /* การ์ดผลลัพธ์สูตร */
+        /* การ์ดผลลัพธ์สูตร 5 สูตร */
         .formula-card { 
             background: #0b0f19; padding: 16px; margin-bottom: 16px; border-radius: 16px; 
             border: 1px solid rgba(56,189,248,0.25);
@@ -131,17 +131,14 @@
             text-align: left;
         }
         .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 4px; font-size: 1.1rem; }
-        .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 12px; }
-
-        .pierce-row { 
-            background: #131c2e; padding: 10px 14px; border: 1px solid rgba(51,65,85,0.6); border-radius: 10px; 
-            margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; transition: all 0.2s;
-        }
-        .pierce-row:active { transform: scale(0.98); background: #1e293b; border-color: #38bdf8; }
+        .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 8px; }
         
-        .pierce-left { display: flex; align-items: center; gap: 8px; color: #94a3b8; font-size: 0.85rem; }
-        .pierce-nums { color: #4ade80; font-weight: bold; font-size: 0.95rem; letter-spacing: 2px; font-family: monospace; }
+        .pairs { 
+            background: #131c2e; padding: 12px; border: 1px dashed rgba(51,65,85,0.8); border-radius: 10px; 
+            margin-top: 8px; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: #4ade80; 
+        }
+        .pairs b { color: #cbd5e1; }
+        .highlight { color: #f87171; font-weight: bold; }
 
         /* Toast แจ้งเตือนคัดลอก */
         #toast {
@@ -203,7 +200,7 @@
             <p style="margin: 0; color: #cbd5e1; font-size: 0.85rem;">ชื่อบัญชี: ณัฐพงษ์ ขำสำอางค์</p>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่าน VIP</a>
 
         <div class="login-section">
             <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
@@ -215,7 +212,7 @@
         </div>
     </div>
 
-    <!-- หน้ากรอกข้อมูลและแสดงผลสูตร -->
+    <!-- หน้ากรอกข้อมูลและแสดงผลสูตร 5 สูตร -->
     <div id="calculatorView">
         <div class="header-box">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
@@ -232,50 +229,12 @@
             <input type="text" id="bottomNum" placeholder="เช่น 26" maxlength="2">
         </div>
 
-        <button class="btn-calculate" onclick="calculateResult()">
-            <span class="star-sparkle">✨</span> ประมวลผลสูตรคำนวณ
+        <button class="btn-calculate" onclick="calculateLottery()">
+            <span class="star-sparkle">✨</span> ประมวลผลข้อมูลสูตรหวย
         </button>
 
-        <!-- ผลลัพธ์สูตร (ซ่อนไว้ก่อนกดคำนวณ) -->
-        <div id="resultContainer" style="display: none;">
-            <div class="formula-card">
-                <div class="formula-title">สูตรที่ 1</div>
-                <div class="formula-sub">เลขเด่น: <span id="s1-main">4 - 5</span></div>
-                
-                <div class="pierce-row" onclick="copyText('40, 41, 42, 43, 46')">
-                    <div class="pierce-left">
-                        <span>ชุดเจาะ 4</span> 📋
-                    </div>
-                    <span class="pierce-nums">40 41 42 43 46</span>
-                </div>
-
-                <div class="pierce-row" onclick="copyText('50, 51, 52, 53, 56')">
-                    <div class="pierce-left">
-                        <span>ชุดเจาะ 5</span> 📋
-                    </div>
-                    <span class="pierce-nums">50 51 52 53 56</span>
-                </div>
-            </div>
-
-            <div class="formula-card" style="border-left: 4px solid #38bdf8;">
-                <div class="formula-title">สูตรที่ 2</div>
-                <div class="formula-sub">เลขเด่น: <span id="s2-main">3 - 4</span></div>
-                
-                <div class="pierce-row" onclick="copyText('30, 31, 32, 35, 36')">
-                    <div class="pierce-left">
-                        <span>ชุดเจาะ 3</span> 📋
-                    </div>
-                    <span class="pierce-nums">30 31 32 35 36</span>
-                </div>
-
-                <div class="pierce-row" onclick="copyText('40, 41, 42, 45, 46')">
-                    <div class="pierce-left">
-                        <span>ชุดเจาะ 4</span> 📋
-                    </div>
-                    <span class="pierce-nums">40 41 42 45 46</span>
-                </div>
-            </div>
-        </div>
+        <!-- ผลลัพธ์สูตรทั้ง 5 สูตร -->
+        <div id="results"></div>
 
         <button class="action-btn back-btn" onclick="logout()">ออกจากระบบ</button>
     </div>
@@ -286,7 +245,7 @@
 <div id="toast">คัดลอกชุดตัวเลขสำเร็จ! ✨</div>
 
 <script>
-    // รายชื่อรหัสผ่าน VIP ทั้ง 4 ชุดตามที่กำหนด
+    // รายชื่อรหัสผ่าน VIP ทั้ง 4 ชุด
     const memberPasswords = [
         "MasterAdmin2026",
         "AMD428",
@@ -311,17 +270,73 @@
         }
     }
 
-    function calculateResult() {
-        const top = document.getElementById('topNum').value.trim();
-        const bottom = document.getElementById('bottomNum').value.trim();
+    function calculateLottery() {
+        let top = document.getElementById('topNum').value.trim();
+        let bottom = document.getElementById('bottomNum').value.trim();
 
-        if(!top || !bottom) {
-            alert('กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน');
+        if (top.length !== 3 || bottom.length !== 2) {
+            alert("กรุณากรอกเลข 3 ตัวบน และ 2 ตัวล่างให้ครบถ้วน!");
             return;
         }
 
-        // แสดงผลลัพธ์สูตรเมื่อกดประมวลผล
-        document.getElementById('resultContainer').style.display = 'block';
+        let r1 = parseInt(top[0]);
+        let r2 = parseInt(top[1]);
+        let r3 = parseInt(top[2]);
+        let b1 = parseInt(bottom[0]);
+        let b2 = parseInt(bottom[1]);
+
+        let f1_d1 = (r2 + b1) % 10;
+        let f1_d2 = (f1_d1 + 1) % 10;
+
+        let f2_d1 = (r1 + r2 + r3) % 10;
+        let f2_d2 = (f2_d1 + 1) % 10;
+
+        let f3_d1 = (r1 + b1) % 10;
+        let f3_d2 = (f3_d1 + 1) % 10;
+
+        let f4_d1 = (r3 + b2) % 10;
+        let f4_d2 = (f4_d1 + 1) % 10;
+
+        let f5_d1 = (10 - b2) % 10;
+        let f5_d2 = (f5_d1 + 1) % 10;
+
+        let formulas = [
+            { name: "สูตรที่ 1 (ชุดมาตรฐาน A)", d1: f1_d1, d2: f1_d2 },
+            { name: "สูตรที่ 2 (ชุดมาตรฐาน B)", d1: f2_d1, d2: f2_d2 },
+            { name: "สูตรที่ 3 (ชุดมาตรฐาน C)", d1: f3_d1, d2: f3_d2 },
+            { name: "สูตรที่ 4 (ชุดมาตรฐาน D)", d1: f4_d1, d2: f4_d2 },
+            { name: "สูตรที่ 5 (ชุดมาตรฐาน E)", d1: f5_d1, d2: f5_d2 }
+        ];
+
+        let html = "";
+        formulas.forEach(f => {
+            let de1 = f.d1;
+            let de2 = f.d2;
+
+            let pool = [];
+            for(let i=0; i<=9; i++) {
+                if(i !== de1 && i !== de2) pool.push(i);
+            }
+            let pierce5 = pool.slice(0, 5);
+
+            let row1 = pierce5.map(n => "" + de1 + n).join("  ");
+            let row2 = pierce5.map(n => "" + de2 + n).join("  ");
+
+            html += `
+                <div class="formula-card">
+                    <div class="formula-title">${f.name}</div>
+                    <div class="formula-sub">เลขเด่น: <span class="highlight">${de1} - ${de2}</span></div>
+                    <div class="pairs">
+                        <b>ชุดเจาะ 10 คู่:</b><br>
+                        ${de1}: ${row1}<br>
+                        ${de2}: ${row2}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('results').innerHTML = html;
+        window.scrollTo({ top: 300, behavior: 'smooth' });
     }
 
     function logout() {
@@ -330,22 +345,8 @@
         document.getElementById('vipCode').value = '';
         document.getElementById('topNum').value = '';
         document.getElementById('bottomNum').value = '';
-        document.getElementById('resultContainer').style.display = 'none';
+        document.getElementById('results').innerHTML = '';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            showToast();
-        });
-    }
-
-    function showToast() {
-        const toast = document.getElementById('toast');
-        toast.className = 'show';
-        setTimeout(() => { 
-            toast.className = toast.className.replace('show', ''); 
-        }, 1500);
     }
 </script>
 
