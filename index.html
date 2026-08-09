@@ -213,25 +213,27 @@
         @keyframes pulseText { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
         .formula-card { 
-            background: #0b0f19; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
+            background: #0b0f19; padding: 14px; margin-bottom: 16px; border-radius: 16px; 
             border: 1px solid rgba(56,189,248,0.25);
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
             animation: borderGlow2 4s infinite;
             text-align: left;
         }
-        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 4px; font-size: 1.05rem; }
-        .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
+        .formula-title { color: #38bdf8; font-weight: bold; margin-bottom: 2px; font-size: 1.05rem; }
+        .formula-sub { color: #fbbf24; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
 
         @keyframes gentleFade {
             0%, 100% { opacity: 0.8; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.05); }
         }
+        
+        /* ปรับปรุงดีไซน์กล่องผลลัพธ์ให้เป็นระเบียบ ไม่ทับซ้อนและขนาดพอดี */
         .copy-row {
             background: #131c2e; 
             border: 1px solid rgba(51,65,85,0.8); 
-            padding: 10px 14px; 
-            border-radius: 12px; 
-            margin-bottom: 8px; 
+            padding: 8px 10px; 
+            border-radius: 10px; 
+            margin-bottom: 6px; 
             display: flex; 
             align-items: center; 
             justify-content: space-between;
@@ -240,17 +242,44 @@
         }
         .copy-row:hover { border-color: #38bdf8; background: #17223b; }
         .copy-row:active { transform: scale(0.98); }
-        .copy-label { font-size: 0.9rem; color: #e2e8f0; font-weight: 500; letter-spacing: 0.3px; }
-        .copy-content-area { display: flex; align-items: center; gap: 12px; }
-        .copy-numbers { font-family: monospace; font-size: 0.95rem; letter-spacing: 1px; font-weight: bold; }
+        
+        .copy-label { 
+            font-size: 0.8rem; 
+            color: #cbd5e1; 
+            font-weight: 600; 
+            min-width: 52px;
+            flex-shrink: 0;
+        }
+        
+        .copy-content-area { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            overflow: hidden;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+        
+        .copy-numbers { 
+            font-family: monospace; 
+            font-size: 0.82rem; 
+            letter-spacing: 0.5px; 
+            font-weight: bold;
+            white-space: nowrap;
+            overflow-x: auto;
+            max-width: 215px;
+            padding: 2px 0;
+        }
+        .copy-numbers::-webkit-scrollbar { display: none; } /* ซ่อนแถบเลื่อนเพื่อให้ดูคลีน */
         .copy-numbers.main-set { color: #4ade80; }
         .copy-numbers.sub-set { color: #38bdf8; }
 
         .sparkle-clipboard {
             display: inline-block;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             animation: gentleFade 3s infinite ease-in-out;
             opacity: 0.85;
+            flex-shrink: 0;
         }
 
         #toast {
@@ -320,11 +349,12 @@
                 <span class="payment-value">ณัฐพงษ์ ขำสำอางค์</span>
             </div>
             <div class="payment-footer">
-                *โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที
+                *โอนเงินแล้วกดปุ่มด้านล่างเพื่อแจ้งสลิปขอรับรหัส VIP กับแอดมินได้ทันที
             </div>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านผ่านไลน์</a>
+        <!-- แก้ไขข้อความปุ่มไลน์ตามที่ต้องการ -->
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัส VIP</a>
 
         <div class="login-section">
             <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
@@ -380,7 +410,6 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // รายชื่อรหัสผ่านทั้ง 50 ตัวถูกเข้ารหัสแบบ SHA-256 (ต่อให้เปิด F12 ดูก็จะเห็นเป็นรหัสลับแบบนี้ ไม่มีใครรู้รหัสตรงๆ แน่นอน แต่ใช้งานได้จริง 100%)
     const hashedPasswords = [
         "42b78d85fcd7a3e742c380721706f9d2ae23d537f594511ef5e6834fe87a0c10", // Bank2026
         "1c8286f059e6616216110f3c5aa0b180d56b00b73c4155b4694bbf3910c66bf6", // AMD428
@@ -438,7 +467,6 @@
         "7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c412f9e8a7b3c"  // Kj7Kl9Pos
     ];
 
-    // ฟังก์ชันแปลงรหัสผ่านเป็น Hash (SHA-256) แบบปลอดภัยสูง
     async function sha256(message) {
         const msgBuffer = new TextEncoder().encode(message);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
