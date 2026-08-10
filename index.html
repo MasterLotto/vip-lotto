@@ -1,1 +1,700 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterLotto VIP - ระบบคำนวณอัจฉริยะ</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background-color: #05070e; 
+            color: #f8fafc; 
+            margin: 0; 
+            padding: 15px; 
+            overflow-x: hidden;
+        }
+        .vip-container { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            background: #0f172a; 
+            padding: 24px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .star-sparkle {
+            display: inline-block;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        .header-box { text-align: center; margin-bottom: 20px; }
+        .header-box h2 { 
+            color: #fbbf24; margin: 0 0 5px 0; font-size: 1.7rem; 
+            text-shadow: 0 0 15px rgba(251,191,36,0.6), 0 0 30px rgba(251,191,36,0.3); 
+            letter-spacing: 0.5px; 
+        }
+        .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
+
+        .online-status-bar {
+            background: rgba(19, 28, 46, 0.7);
+            border: 1px solid rgba(56,189,248,0.2);
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #4ade80;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+        
+        @keyframes borderGlow1 {
+            0% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+            50% { border-color: rgba(232,121,249,0.9); box-shadow: 0 0 20px rgba(232,121,249,0.6); }
+            100% { border-color: rgba(232,121,249,0.3); box-shadow: 0 0 5px rgba(232,121,249,0.2); }
+        }
+        @keyframes borderGlow2 {
+            0% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
+            50% { border-color: rgba(56,189,248,0.9); box-shadow: 0 0 20px rgba(56,189,248,0.6); }
+            100% { border-color: rgba(56,189,248,0.3); box-shadow: 0 0 5px rgba(56,189,248,0.2); }
+        }
+        @keyframes borderGlow3 {
+            0% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
+            50% { border-color: rgba(251,191,36,0.9); box-shadow: 0 0 25px rgba(251,191,36,0.7); }
+            100% { border-color: rgba(251,191,36,0.3); box-shadow: 0 0 5px rgba(251,191,36,0.2); }
+        }
+        @keyframes borderGlow4 {
+            0% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
+            50% { border-color: rgba(74,222,128,0.9); box-shadow: 0 0 20px rgba(74,222,128,0.6); }
+            100% { border-color: rgba(74,222,128,0.3); box-shadow: 0 0 5px rgba(74,222,128,0.2); }
+        }
+
+        .package-card { background: #131c2e; padding: 16px 12px; border-radius: 16px; text-align: center; border-width: 2px; border-style: solid; }
+        .package-card-1 { animation: borderGlow1 3s infinite; color: #e879f9; }
+        .package-card-2 { animation: borderGlow2 3s infinite; color: #38bdf8; }
+        .package-card-3 { animation: borderGlow3 2.5s infinite; color: #fbbf24; }
+        .package-card-4 { animation: borderGlow4 3s infinite; color: #4ade80; }
+        
+        .package-card h3 { margin: 0 0 6px 0; font-size: 0.95rem; }
+        .price { font-size: 1.3rem; font-weight: bold; color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.3); margin-bottom: 2px; }
+        .desc { font-size: 0.75rem; color: #94a3b8; }
+
+        .payment-box { 
+            background: #0b0f19; 
+            border: 1px solid rgba(51,65,85,0.8); 
+            padding: 18px 16px; 
+            border-radius: 16px; 
+            margin-bottom: 20px; 
+            font-size: 0.9rem; 
+        }
+        .payment-title { 
+            text-align: center; 
+            color: #38bdf8; 
+            font-weight: bold; 
+            margin-bottom: 14px; 
+            font-size: 0.95rem;
+        }
+        .payment-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(30,41,59,0.6);
+        }
+        .payment-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 12px;
+        }
+        .payment-label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        .payment-value {
+            color: #f8fafc;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+        .bank-highlight { 
+            color: #fbbf24; 
+            font-weight: bold; 
+            font-family: monospace; 
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+        .payment-footer {
+            font-size: 0.75rem; 
+            color: #64748b; 
+            text-align: center; 
+            margin-top: 10px; 
+            border-top: 1px dashed rgba(51,65,85,0.6);
+            padding-top: 8px;
+        }
+
+        @keyframes btnPulse {
+            0% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
+            50% { box-shadow: 0 0 25px rgba(5,150,105,0.8); }
+            100% { box-shadow: 0 0 10px rgba(5,150,105,0.4); }
+        }
+        .btn-line { 
+            display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #059669, #047857); color: white; 
+            text-align: center; text-decoration: none; border-radius: 14px; font-weight: bold; margin-bottom: 20px; 
+            animation: btnPulse 2s infinite; font-size: 0.95rem;
+        }
+
+        .login-section { background: #0b0f19; padding: 18px; border-radius: 16px; border: 1px solid rgba(51,65,85,0.8); text-align: center; }
+        .login-title { font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px; }
+        .input-group { margin-bottom: 12px; }
+        input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #334155; background: #131c2e; color: white; font-size: 1rem; text-align: center; letter-spacing: 1px; outline: none; transition: 0.3s; }
+        input:focus { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56,189,248,0.4); }
+        input::placeholder { color: #64748b; }
+        
+        button.action-btn { 
+            width: 100%; padding: 14px; background: #1e293b; border: 1px solid #475569; border-radius: 12px; 
+            color: #f8fafc; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s;
+        }
+        button.action-btn:active { transform: scale(0.97); }
+
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 8px; display: none; text-align: center; font-weight: 500; }
+
+        #calculatorView { display: none; }
+        
+        .calc-box { margin-bottom: 15px; text-align: left; }
+        .calc-box label { display: block; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 6px; }
+        
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-calculate {
+            flex: 1; padding: 14px; background: linear-gradient(135deg, #059669, #047857); color: white;
+            border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer;
+            box-shadow: 0 0 15px rgba(5,150,105,0.5); display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .btn-clear {
+            width: 100px; padding: 14px; background: #1e293b; color: #94a3b8;
+            border: 1px solid #334155; border-radius: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-clear:hover { background: #334155; color: #fff; }
+        .btn-clear:active { transform: scale(0.97); }
+
+        #loadingOverlay {
+            display: none;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(56,189,248,0.4);
+            box-shadow: 0 0 30px rgba(56,189,248,0.2);
+        }
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 4px solid rgba(56,189,248,0.2);
+            border-top: 4px solid #38bdf8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #loadingText {
+            color: #38bdf8;
+            font-size: 0.95rem;
+            font-weight: 500;
+            min-height: 24px;
+            animation: pulseText 1.5s infinite;
+        }
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .formula-card { 
+            background: #0b0f19; padding: 14px 16px; margin-bottom: 16px; border-radius: 16px; 
+            border: 1px solid rgba(56,189,248,0.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            animation: borderGlow2 4s infinite;
+            text-align: left;
+            position: relative;
+        }
+        .formula-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .formula-title { color: #38bdf8; font-weight: bold; font-size: 1.05rem; }
+        
+        @keyframes hotBlink {
+            0%, 100% { opacity: 0.4; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .hot-badge {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.6);
+            color: #f87171;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            animation: hotBlink 1.5s infinite ease-in-out;
+        }
+
+        .formula-sub { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; font-family: monospace; letter-spacing: 0.5px; }
+
+        @keyframes gentleFade {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .copy-row {
+            background: #131c2e; 
+            border: 1px solid rgba(51,65,85,0.8); 
+            padding: 10px 14px; 
+            border-radius: 12px; 
+            margin-bottom: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .copy-row:hover {
+            border-color: #38bdf8;
+            background: #17223b;
+        }
+        .copy-row:active {
+            transform: scale(0.98);
+        }
+        .copy-label {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .copy-content-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .copy-numbers {
+            font-family: monospace;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .copy-numbers.main-set { color: #4ade80; }
+        .copy-numbers.sub-set { color: #38bdf8; }
+
+        .sparkle-clipboard {
+            display: inline-block;
+            font-size: 0.9rem;
+            animation: gentleFade 3s infinite ease-in-out;
+            opacity: 0.85;
+        }
+
+        #toast {
+            visibility: hidden; min-width: 200px; background: linear-gradient(135deg, #059669, #047857); color: #fff;
+            text-align: center; border-radius: 12px; padding: 12px 20px; position: fixed;
+            z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%);
+            font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        #toast.show { visibility: visible; animation: fadeInOut 1.5s ease-in-out; }
+        @keyframes fadeInOut {
+            0% { bottom: 0px; opacity: 0; }
+            20% { bottom: 30px; opacity: 1; }
+            80% { bottom: 30px; opacity: 1; }
+            100% { bottom: 10px; opacity: 0; }
+        }
+
+        .back-btn { background: #334155 !important; border: none !important; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="vip-container">
+    
+    <!-- หน้าเข้าสู่ระบบ (หน้าแรก) -->
+    <div id="loginView">
+        <div class="header-box">
+            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
+            <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง</p>
+        </div>
+
+        <div class="online-status-bar">
+            <div class="online-dot"></div>
+            <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
+        </div>
+
+        <div class="package-grid">
+            <div class="package-card package-card-1">
+                <h3>⏱️ 7 วัน</h3>
+                <div class="price">99 ฿</div>
+                <div class="desc">ทดลองใช้งานสั้นๆ</div>
+            </div>
+            <div class="package-card package-card-2">
+                <h3>⏳ 15 วัน</h3>
+                <div class="price">199 ฿</div>
+                <div class="desc">ใช้งานกลางเดือน</div>
+            </div>
+            <div class="package-card package-card-3">
+                <h3>⭐ 1 เดือน</h3>
+                <div class="price">299 ฿</div>
+                <div class="desc">สุดฮิตคุ้มค่าที่สุด</div>
+            </div>
+            <div class="package-card package-card-4">
+                <h3>🔥 1 ปี</h3>
+                <div class="price">1,890 ฿</div>
+                <div class="desc">ใช้ยาวๆ ทั้งปีสุดคุ้ม</div>
+            </div>
+        </div>
+
+        <div class="payment-box">
+            <div class="payment-title">🏛️ ช่องทางชำระเงินค่าสมาชิก</div>
+            <div class="payment-row">
+                <span class="payment-label">ธนาคาร</span>
+                <span class="payment-value">กสิกรไทย</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">เลขที่บัญชี</span>
+                <span class="payment-value bank-highlight">0661291613</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">ชื่อบัญชี</span>
+                <span class="payment-value">ณัฐพงษ์ ขำสำอางค์</span>
+            </div>
+            <div class="payment-footer">
+                *โอนเงินแล้วกดปุ่มด้านล่างเพื่อส่งสลิปแจ้งรับรหัสผ่านกับแอดมินได้ทันที
+            </div>
+        </div>
+
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line">💬 แจ้งสลิป / ขอรับรหัสผ่านVIP</a>
+
+        <div class="login-section">
+            <div class="login-title">มีรหัสผ่านสมาชิกแล้ว?</div>
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="กรอกรหัสผ่านสมาชิก">
+            </div>
+            <button class="action-btn" onclick="handleLogin()">เข้าสู่ระบบคำนวณ</button>
+            <div id="errorMsg" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง หรือถูกใช้งานในเครื่องอื่นแล้ว</div>
+        </div>
+    </div>
+
+    <!-- หน้าหลักระบบคำนวณ -->
+    <div id="calculatorView">
+        <div class="header-box" style="margin-bottom: 20px;">
+            <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
+            <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
+        </div>
+
+        <div class="calc-box">
+            <label>เลข 3 ตัวบน:</label>
+            <input type="text" id="num3top" placeholder="เช่น 701" maxlength="3">
+        </div>
+
+        <div class="calc-box">
+            <label>เลข 2 ตัวล่าง:</label>
+            <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2">
+        </div>
+
+        <div class="action-row">
+            <button class="btn-calculate" onclick="startProcessing()">
+                <span>✨</span> ประมวลผลสูตรคำนวณ
+            </button>
+            <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
+        </div>
+
+        <div id="loadingOverlay">
+            <div class="spinner"></div>
+            <div id="loadingText">กำลังประมวลผล...</div>
+        </div>
+
+        <div id="resultContainer"></div>
+
+        <button class="action-btn back-btn" onclick="handleLogout()">ออกจากระบบ / กลับหน้าแรก</button>
+    </div>
+
+</div>
+
+<div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
+
+<script>
+    function clearSystemMemory() {
+        const container = document.getElementById('resultContainer');
+        if (container) container.innerHTML = '';
+    }
+
+    function getDeviceID() {
+        let deviceId = localStorage.getItem('masterlotto_device_id');
+        if (!deviceId) {
+            deviceId = 'DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+            localStorage.setItem('masterlotto_device_id', deviceId);
+        }
+        return deviceId;
+    }
+
+    let currentOnline = 244;
+    function simulateOnlineCount() {
+        const change = Math.random() < 0.5 ? 1 : -1;
+        const nextVal = currentOnline + change;
+        if (nextVal >= 240 && nextVal <= 250) {
+            currentOnline = nextVal;
+        }
+        const el1 = document.getElementById('onlineCount');
+        if (el1) el1.innerText = currentOnline;
+    }
+    setInterval(simulateOnlineCount, 6000);
+
+    function clearInputs() {
+        clearSystemMemory();
+        document.getElementById('num3top').value = '';
+        document.getElementById('num2bottom').value = '';
+        document.getElementById('num3top').focus();
+    }
+
+    function startProcessing() {
+        clearSystemMemory();
+
+        const t3 = document.getElementById('num3top').value.trim();
+        const b2 = document.getElementById('num2bottom').value.trim();
+
+        if(t3.length !== 3 || b2.length !== 2) {
+            alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
+            return;
+        }
+
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'block';
+
+        setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+            calculateFormula(t3, b2);
+        }, 1200);
+    }
+
+    function calculateFormula(t3, b2) {
+        const hTop = parseInt(t3[0]);
+        const dTop = parseInt(t3[1]);
+        const uTop = parseInt(t3[2]);
+        const dBot = parseInt(b2[0]);
+        const uBot = parseInt(b2[1]);
+
+        let sum1 = dTop + dBot;
+        let d1_1 = sum1 % 10;
+        let d1_2 = (d1_1 + 1) % 10;
+        let set1 = [d1_1, d1_2];
+
+        let sum2 = hTop + dTop + uTop;
+        let d2_1 = sum2 % 10;
+        let d2_2 = (d2_1 + 1) % 10;
+        let set2 = [d2_1, d2_2];
+
+        let sum3 = hTop + dBot;
+        let d3_1 = sum3 % 10;
+        let d3_2 = (d3_1 + 1) % 10;
+        let set3 = [d3_1, d3_2];
+
+        let sum4 = uTop + uBot;
+        let d4_1 = sum4 % 10;
+        let d4_2 = (d4_1 + 1) % 10;
+        let set4 = [d4_1, d4_2];
+
+        let sum5 = 10 - uBot;
+        let d5_1 = sum5 % 10;
+        let d5_2 = (d5_1 + 1) % 10;
+        let set5 = [d5_1, d5_2];
+
+        const formulas = [
+            { name: "สูตรที่ 1", set: set1 },
+            { name: "สูตรที่ 2", set: set2 },
+            { name: "สูตรที่ 3", set: set3 },
+            { name: "สูตรที่ 4", set: set4 },
+            { name: "สูตรที่ 5", set: set5 }
+        ];
+
+        let freqMap = {};
+        formulas.forEach(f => {
+            f.set.forEach(num => {
+                freqMap[num] = (freqMap[num] || 0) + 1;
+            });
+        });
+
+        formulas.forEach(f => {
+            f.score = f.set.reduce((acc, num) => acc + (freqMap[num] || 0), 0);
+        });
+
+        formulas.sort((a, b) => b.score - a.score);
+
+        formulas.forEach((f, index) => {
+            f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
+        });
+
+        // ใช้ Math.abs เพื่อดึงเฉพาะค่าตัวเลขหลังเครื่องหมายลบมาเป็นแกนหลักทันที (เช่น 7-8 ได้ -1 ให้ใช้ 1, 7-9 ได้ -2 ให้ใช้ 2)
+        let rawDiff = 7 - hTop;
+        let coreVal = Math.abs(rawDiff) % 10;
+
+        const container = document.getElementById('resultContainer');
+        container.innerHTML = '';
+
+        formulas.forEach((f) => {
+            let hasCollision = false;
+            for(let offset = -2; offset <= 2; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                if(f.set.includes(val)) {
+                    hasCollision = true;
+                    break;
+                }
+            }
+
+            let range = hasCollision ? 3 : 2;
+            let rawTargetNumbers = [];
+            for(let offset = -range; offset <= range; offset++) {
+                let val = (coreVal + offset) % 10;
+                if(val < 0) val += 10;
+                rawTargetNumbers.push(val);
+            }
+
+            let filteredTargets = rawTargetNumbers.filter(num => !f.set.includes(num));
+            filteredTargets.sort((a, b) => a - b);
+
+            let cardHTML = `
+                <div class="formula-card">
+                    <div class="formula-header-flex">
+                        <div class="formula-title">${f.name}</div>
+                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ (HOT)</div>' : ''}
+                    </div>
+                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
+            `;
+
+            f.set.forEach((dNum, idx) => {
+                let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
+                let pairString = pairs.join(' ');
+                let colorClass = (idx === 0) ? "main-set" : "sub-set";
+                let labelText = (idx === 0) ? `เด่น ${dNum}` : `รอง ${dNum}`;
+                
+                cardHTML += `
+                    <div class="copy-row" onclick="copyText('${pairString}')">
+                        <span class="copy-label">${labelText}</span>
+                        <div class="copy-content-area">
+                            <span class="copy-numbers ${colorClass}">${pairString}</span>
+                            <span class="sparkle-clipboard">📋</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cardHTML += `</div>`;
+            container.innerHTML += cardHTML;
+        });
+    }
+
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('toast');
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
+        });
+    }
+
+    const VALID_VIP_USERS = [
+        "Bank2026", "AMD428", "Xk89Pq", "MasterAdmin2026",
+        "V9kL2mP7", "Zq4W8xT1", "Rt5Y9uI2", "Op2Q7wE4", "As3D6fG9",
+        "Gh1J4kL8", "Zx7C2vB5", "Nm8M1nB3", "Po9I6uY4", "Uj3Y7tR6",
+        "Wq2S5xC8", "Ed4R7fV1", "Tg6Y9hN2", "Yh8U1jM3", "Ik0O3pL5",
+        "Qaz2WSx3", "Edc4RFv5", "Tgb6Yhn7", "Ujm8IKo9", "Plm0OKi9",
+        "Zxv1Cde2", "Bgt3Nhy4", "Mju5Klo6", "Cde7Vfr8", "Bhy9Nji0",
+        "Xsw2Zaq1", "Der4Ewx3", "Fgt6Cde5", "Yhu8Bgt7", "Mji0Ujm9",
+        "Lop1Plo0", "Kji9Oki8", "Iuh8Uhy7", "Ygt7Tgy6", "Fre5Der4",
+        "Ewq3Waq2", "Qaz1Xsw2", "Xde3Cfr4", "Vgt5Bhy6", "Nju7Mki8",
+        "Plm9Olo0", "Zxc4Vbn5", "Asd6Fgh7", "Qwe8Rty9", "Zk9Pq2Lm",
+        "Xw8Ne4Rt", "Cp3Ji7Uo", "Vb5Yt6Mn", "As2Df4Gh", "Kj7Kl9Po"
+    ];
+
+    function handleLogin() {
+        const pass = document.getElementById('passwordInput').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+        
+        if (VALID_VIP_USERS.includes(pass)) {
+            const currentDevice = getDeviceID();
+            const boundDeviceKey = 'masterlotto_bound_' + pass;
+            const boundDevice = localStorage.getItem(boundDeviceKey);
+
+            if (!boundDevice) {
+                localStorage.setItem(boundDeviceKey, currentDevice);
+                localStorage.setItem('masterlotto_vip_logged', 'true');
+                localStorage.setItem('masterlotto_active_pass', pass);
+                document.getElementById('loginView').style.display = 'none';
+                document.getElementById('calculatorView').style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else if (boundDevice === currentDevice) {
+                localStorage.setItem('masterlotto_vip_logged', 'true');
+                localStorage.setItem('masterlotto_active_pass', pass);
+                document.getElementById('loginView').style.display = 'none';
+                document.getElementById('calculatorView').style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else {
+                errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
+                errorMsg.style.display = 'block';
+                document.getElementById('passwordInput').focus();
+            }
+        } else {
+            errorMsg.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
+            errorMsg.style.display = 'block';
+            document.getElementById('passwordInput').focus();
+        }
+    }
+
+    function handleLogout() {
+        clearSystemMemory();
+        localStorage.removeItem('masterlotto_vip_logged');
+        localStorage.removeItem('masterlotto_active_pass');
+        document.getElementById('calculatorView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('num3top').value = '';
+        document.getElementById('num2bottom').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('masterlotto_vip_logged') === 'true') {
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>
 
