@@ -498,14 +498,10 @@
 
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
-            // ดึงสูตรที่เข้ารหัส Base64 มารันประมวลผลแบบซ่อนเร้น
-            const _execFormula = atob("ZnVuY3Rpb24gY2FsY3VsYXRlRm9ybXVsYSh0MywgYjIpIHsKICAgIGNvbnN0IGhUb3AgPSBwYXJzZUludCh0M1swXSk7CiAgICBjb25zdCBkVG9wID0gcGFyc2VJbnQodDNbMV0pOwogICAgY29uc3QgdVRvcCA9IHBhcnNlSW50KHQzWzJdKTsKICAgIGNvbnN0IGRCb3AgPSBwYXJzZUludChiMlswXSk7CiAgICBjb25zdCB1Qm90ID0gcGFyc2VJbnQoYjJbMV0pOwogICAgbGV0IHN1bTEgPSBkVG9wICsgZEJvcDsKICAgIGxldCBkMV8xID0gc3VtMSAlIDEwOwogICAgbGV0IGQxXzIgPSAoZDFfMSArIDEpICUgMTA7CiAgICBsZXQgc2V0MSA9IFtkMV8xLCBkMV8yXTsKICAgIGxldCBzdW0yID0gaFRvcCArIGRUb3AgKyB1VG9wOwogICAgbGV0IGQyXzEgPSBzdW0yICUgMTA7CiAgICBsZXQgZDJfMiA9IChkMl8xICsgMSkgJSAxMDsKICAgIGxldCBzZXQyID0gW2QyXzEsIGQyXzJdOwogICAgbGV0IHN1bTMgPSBoVG9wICsgZEJvcDsKICAgIGxldCBkM18xID0gc3VtMyAlIDEwOwogICAgbGV0IGQzXzIgPSAoZDNfMSArIDEpICUgMTA7CiAgICBsZXQgc2V0MyA9IFtkM18xLCBkM18yXTsKICAgIGxldCBzdW00ID0gdVRvcCArIHVCb3Q7CiAgICBsZXQgZDRfMSA9IHN1bTQgJSAxMDsKICAgIGxldCBkNF8yID0gKGQ0XzEgKyAxKSAlIDEwOwogICAgbGV0IHNldDQgPSBbZDRfMSwgZDRfMl07CiAgICBsZXQgc3VtNSA9IDEwIC0gdUJvdDsKICAgIGxldCBkNV8xID0gc3VtNSAlIDEwOwogICAgbGV0IGQ1XzIgPSAoZDVfMSArIDEpICUgMTA7CiAgICBsZXQgc2V0NSA9IFtkNV8xLCBkNV8yXTsKICAgIGNvbnN0IGZvcm11bGFzID0gWwogICAgICAgIHtuYW1lOiAiLi4uLi4gMSIsIHNldDogc2V0MX0sCiAgICAgICAge25hbWU6ICIuLi4uLiAyIiwgc2V0OiBzZXQyfSwKICAgICAgICB7bmFtZTogIi4uLi4uIDMiLCBzZXQ6IHNldDN9LAogICAgICAgIHtuYW1lOiAiLi4uLi4gNCIsIHNldDogc2V0NH0sCiAgICAgICAge25hbWU6ICIuLi4uLiA1Iiwgc2V0OiBzZXQ1fQog   ];"); // โค้ดสูตรคำนวณที่ถูกเข้ารหัส Base64 ไว้ป้องกันตาเปล่า
-            // รันฟังก์ชันคำนวณจริง
             runEncryptedLogic(t3, b2);
         }, 1200);
     }
 
-    // ฟังก์ชันถอดรหัสและประมวลผลสูตรที่ซ่อนไว้
     function runEncryptedLogic(t3, b2) {
         const hTop = parseInt(t3[0]);
         const dTop = parseInt(t3[1]);
