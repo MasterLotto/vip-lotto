@@ -455,10 +455,10 @@
     }
 
     function getDeviceID() {
-        let deviceId = localStorage.getItem('masterlotto_device_id');
+        let deviceId = sessionStorage.getItem('masterlotto_device_session');
         if (!deviceId) {
             deviceId = 'DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
-            localStorage.setItem('masterlotto_device_id', deviceId);
+            sessionStorage.setItem('masterlotto_device_session', deviceId);
         }
         return deviceId;
     }
@@ -647,20 +647,14 @@
         if (VALID_VIP_USERS.includes(pass)) {
             const currentDevice = getDeviceID();
             const activeDeviceKey = 'masterlotto_active_device_' + pass;
-            const activeDevice = localStorage.getItem(activeDeviceKey);
+            
+            localStorage.setItem(activeDeviceKey, currentDevice);
+            localStorage.setItem('masterlotto_vip_logged', 'true');
+            localStorage.setItem('masterlotto_active_pass', pass);
 
-            if (!activeDevice || activeDevice === currentDevice) {
-                localStorage.setItem(activeDeviceKey, currentDevice);
-                localStorage.setItem('masterlotto_vip_logged', 'true');
-                localStorage.setItem('masterlotto_active_pass', pass);
-                document.getElementById('loginView').style.display = 'none';
-                document.getElementById('calculatorView').style.display = 'block';
-                errorMsg.style.display = 'none';
-            } else {
-                errorMsg.innerText = '❌ รหัสผ่านนี้กำลังถูกใช้งานอยู่ 1 รหัสสามารถใช้งานได้เพียง 1 เครื่องเท่านั้น';
-                errorMsg.style.display = 'block';
-                document.getElementById('passwordInput').focus();
-            }
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('calculatorView').style.display = 'block';
+            errorMsg.style.display = 'none';
         } else {
             errorMsg.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
             errorMsg.style.display = 'block';
@@ -670,8 +664,13 @@
 
     function handleLogout() {
         clearSystemMemory();
+        const activePass = localStorage.getItem('masterlotto_active_pass');
+        if (activePass) {
+            localStorage.removeItem('masterlotto_active_device_' + activePass);
+        }
         localStorage.removeItem('masterlotto_vip_logged');
         localStorage.removeItem('masterlotto_active_pass');
+        
         document.getElementById('calculatorView').style.display = 'none';
         document.getElementById('loginView').style.display = 'block';
         document.getElementById('passwordInput').value = '';
@@ -680,8 +679,34 @@
         document.getElementById('errorMsg').style.display = 'none';
     }
 
+    // ตรวจสอบสถานะอุปกรณ์แบบเรียลไทม์ (ป้องกันการใช้งานซ้อนทับเครื่องอื่น)
+    setInterval(() => {
+        if (localStorage.getItem('masterlotto_vip_logged') === 'true') {
+            const activePass = localStorage.getItem('masterlotto_active_pass');
+            const currentDevice = getDeviceID();
+            if (activePass) {
+                const activeDeviceKey = 'masterlotto_active_device_' + activePass;
+                const registeredDevice = localStorage.getItem(activeDeviceKey);
+                if (registeredDevice && registeredDevice !== currentDevice) {
+                    alert('⚠️ มีการเข้าสู่ระบบรหัสผ่านนี้จากอุปกรณ์เครื่องอื่น ระบบจึงจำเป็นต้องออกจากระบบในเครื่องนี้');
+                    handleLogout();
+                }
+            }
+        }
+    }, 2000);
+
     window.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('masterlotto_vip_logged') === 'true') {
+            const activePass = localStorage.getItem('masterlotto_active_pass');
+            const currentDevice = getDeviceID();
+            if (activePass) {
+                const activeDeviceKey = 'masterlotto_active_device_' + activePass;
+                const registeredDevice = localStorage.getItem(activeDeviceKey);
+                if (registeredDevice && registeredDevice !== currentDevice) {
+                    handleLogout();
+                    return;
+                }
+            }
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
         }
