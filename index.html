@@ -559,7 +559,6 @@
             f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
         });
 
-        // ใช้ Math.abs เพื่อดึงเฉพาะค่าตัวเลขหลังเครื่องหมายลบมาเป็นแกนหลักทันที (เช่น 7-8 ได้ -1 ให้ใช้ 1, 7-9 ได้ -2 ให้ใช้ 2)
         let rawDiff = 7 - hTop;
         let coreVal = Math.abs(rawDiff) % 10;
 
@@ -647,24 +646,18 @@
         
         if (VALID_VIP_USERS.includes(pass)) {
             const currentDevice = getDeviceID();
-            const boundDeviceKey = 'masterlotto_bound_' + pass;
-            const boundDevice = localStorage.getItem(boundDeviceKey);
+            const activeDeviceKey = 'masterlotto_active_device_' + pass;
+            const activeDevice = localStorage.getItem(activeDeviceKey);
 
-            if (!boundDevice) {
-                localStorage.setItem(boundDeviceKey, currentDevice);
-                localStorage.setItem('masterlotto_vip_logged', 'true');
-                localStorage.setItem('masterlotto_active_pass', pass);
-                document.getElementById('loginView').style.display = 'none';
-                document.getElementById('calculatorView').style.display = 'block';
-                errorMsg.style.display = 'none';
-            } else if (boundDevice === currentDevice) {
+            if (!activeDevice || activeDevice === currentDevice) {
+                localStorage.setItem(activeDeviceKey, currentDevice);
                 localStorage.setItem('masterlotto_vip_logged', 'true');
                 localStorage.setItem('masterlotto_active_pass', pass);
                 document.getElementById('loginView').style.display = 'none';
                 document.getElementById('calculatorView').style.display = 'block';
                 errorMsg.style.display = 'none';
             } else {
-                errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
+                errorMsg.innerText = '❌ รหัสผ่านนี้กำลังถูกใช้งานอยู่ 1 รหัสสามารถใช้งานได้เพียง 1 เครื่องเท่านั้น';
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').focus();
             }
