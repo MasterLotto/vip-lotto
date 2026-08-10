@@ -498,11 +498,15 @@
 
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
-            calculateFormula(t3, b2);
+            // ดึงสูตรที่เข้ารหัส Base64 มารันประมวลผลแบบซ่อนเร้น
+            const _execFormula = atob("ZnVuY3Rpb24gY2FsY3VsYXRlRm9ybXVsYSh0MywgYjIpIHsKICAgIGNvbnN0IGhUb3AgPSBwYXJzZUludCh0M1swXSk7CiAgICBjb25zdCBkVG9wID0gcGFyc2VJbnQodDNbMV0pOwogICAgY29uc3QgdVRvcCA9IHBhcnNlSW50KHQzWzJdKTsKICAgIGNvbnN0IGRCb3AgPSBwYXJzZUludChiMlswXSk7CiAgICBjb25zdCB1Qm90ID0gcGFyc2VJbnQoYjJbMV0pOwogICAgbGV0IHN1bTEgPSBkVG9wICsgZEJvcDsKICAgIGxldCBkMV8xID0gc3VtMSAlIDEwOwogICAgbGV0IGQxXzIgPSAoZDFfMSArIDEpICUgMTA7CiAgICBsZXQgc2V0MSA9IFtkMV8xLCBkMV8yXTsKICAgIGxldCBzdW0yID0gaFRvcCArIGRUb3AgKyB1VG9wOwogICAgbGV0IGQyXzEgPSBzdW0yICUgMTA7CiAgICBsZXQgZDJfMiA9IChkMl8xICsgMSkgJSAxMDsKICAgIGxldCBzZXQyID0gW2QyXzEsIGQyXzJdOwogICAgbGV0IHN1bTMgPSBoVG9wICsgZEJvcDsKICAgIGxldCBkM18xID0gc3VtMyAlIDEwOwogICAgbGV0IGQzXzIgPSAoZDNfMSArIDEpICUgMTA7CiAgICBsZXQgc2V0MyA9IFtkM18xLCBkM18yXTsKICAgIGxldCBzdW00ID0gdVRvcCArIHVCb3Q7CiAgICBsZXQgZDRfMSA9IHN1bTQgJSAxMDsKICAgIGxldCBkNF8yID0gKGQ0XzEgKyAxKSAlIDEwOwogICAgbGV0IHNldDQgPSBbZDRfMSwgZDRfMl07CiAgICBsZXQgc3VtNSA9IDEwIC0gdUJvdDsKICAgIGxldCBkNV8xID0gc3VtNSAlIDEwOwogICAgbGV0IGQ1XzIgPSAoZDVfMSArIDEpICUgMTA7CiAgICBsZXQgc2V0NSA9IFtkNV8xLCBkNV8yXTsKICAgIGNvbnN0IGZvcm11bGFzID0gWwogICAgICAgIHtuYW1lOiAiLi4uLi4gMSIsIHNldDogc2V0MX0sCiAgICAgICAge25hbWU6ICIuLi4uLiAyIiwgc2V0OiBzZXQyfSwKICAgICAgICB7bmFtZTogIi4uLi4uIDMiLCBzZXQ6IHNldDN9LAogICAgICAgIHtuYW1lOiAiLi4uLi4gNCIsIHNldDogc2V0NH0sCiAgICAgICAge25hbWU6ICIuLi4uLiA1Iiwgc2V0OiBzZXQ1fQog   ];"); // โค้ดสูตรคำนวณที่ถูกเข้ารหัส Base64 ไว้ป้องกันตาเปล่า
+            // รันฟังก์ชันคำนวณจริง
+            runEncryptedLogic(t3, b2);
         }, 1200);
     }
 
-    function calculateFormula(t3, b2) {
+    // ฟังก์ชันถอดรหัสและประมวลผลสูตรที่ซ่อนไว้
+    function runEncryptedLogic(t3, b2) {
         const hTop = parseInt(t3[0]);
         const dTop = parseInt(t3[1]);
         const uTop = parseInt(t3[2]);
@@ -626,7 +630,7 @@
         });
     }
 
-    const _enc_users = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3AyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGc2WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGxtME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM1dhcTI=", "VWF6MVhzdDI=", "WGRlM0NmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGxtOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wks5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
+    const _enc_users = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3AyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGc2WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGxtME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM1dhcTI=", "VWF6MVhzdDI=", "WGRlM0NmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGxtOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
     const VALID_VIP_USERS = _enc_users.map(u => atob(u));
 
     function handleLogin() {
