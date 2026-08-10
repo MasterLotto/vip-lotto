@@ -42,7 +42,6 @@
         }
         .header-box p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-        /* สไตล์แถว Online ขนาดเล็ก เป็นบรรทัดเดียว อยู่เฉพาะหน้าแรก */
         .online-status-bar {
             background: rgba(19, 28, 46, 0.7);
             border: 1px solid rgba(56,189,248,0.2);
@@ -352,7 +351,6 @@
             <p>ระบบวิเคราะห์ตัวเลข ความแม่นยำสูง</p>
         </div>
 
-        <!-- แถวผู้ใช้งานออนไลน์ บรรทัดเดียว ตัวหนังสือเล็ก อยู่เฉพาะหน้าแรก -->
         <div class="online-status-bar">
             <div class="online-dot"></div>
             <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
@@ -412,11 +410,11 @@
         </div>
     </div>
 
-    <!-- หน้าหลักระบบคำนวณ (ไม่มีแถว Online) -->
+    <!-- หน้าหลักระบบคำนวณ -->
     <div id="calculatorView">
         <div class="header-box" style="margin-bottom: 20px;">
             <h2><span class="star-sparkle">✨</span> MasterLotto VIP <span class="star-sparkle">✨</span></h2>
-            <p>ระบบวิเคราะห์สถิติความเเม่นยำสูง</p>
+            <p>ระบบวิเคราะห์สถิติเลขเด่นแม่นยำพิเศษ</p>
         </div>
 
         <div class="calc-box">
@@ -431,7 +429,7 @@
 
         <div class="action-row">
             <button class="btn-calculate" onclick="startProcessing()">
-                <span>✨</span> คำนวณ
+                <span>✨</span> ประมวลผลสูตรคำนวณ
             </button>
             <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
         </div>
@@ -451,13 +449,11 @@
 <div id="toast">คัดลอกตัวเลขสำเร็จ!</div>
 
 <script>
-    // ฟังก์ชันสำหรับเคลียร์พื้นที่แสดงผลเก่า เพื่อป้องกันความย้อนซ้อนหรือระบบช้าลง
     function clearSystemMemory() {
         const container = document.getElementById('resultContainer');
         if (container) container.innerHTML = '';
     }
 
-    // สร้างหรือดึง Device ID ประจำเครื่องนี้
     function getDeviceID() {
         let deviceId = localStorage.getItem('masterlotto_device_id');
         if (!deviceId) {
@@ -467,7 +463,6 @@
         return deviceId;
     }
 
-    // สุ่มจำนวน Online ระหว่าง 240-250 คน (เฉพาะหน้าแรก)
     let currentOnline = 244;
     function simulateOnlineCount() {
         const change = Math.random() < 0.5 ? 1 : -1;
@@ -564,8 +559,9 @@
             f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
         });
 
-        let coreVal = (7 - hTop) % 10;
-        if(coreVal < 0) coreVal += 10;
+        // ใช้ Math.abs เพื่อดึงเฉพาะค่าตัวเลขหลังเครื่องหมายลบมาเป็นแกนหลักทันที (เช่น 7-8 ได้ -1 ให้ใช้ 1, 7-9 ได้ -2 ให้ใช้ 2)
+        let rawDiff = 7 - hTop;
+        let coreVal = Math.abs(rawDiff) % 10;
 
         const container = document.getElementById('resultContainer');
         container.innerHTML = '';
@@ -655,7 +651,6 @@
             const boundDevice = localStorage.getItem(boundDeviceKey);
 
             if (!boundDevice) {
-                // ล็อกอินครั้งแรก ผูกรหัสนี้กับเครื่องนี้ทันที
                 localStorage.setItem(boundDeviceKey, currentDevice);
                 localStorage.setItem('masterlotto_vip_logged', 'true');
                 localStorage.setItem('masterlotto_active_pass', pass);
@@ -663,14 +658,12 @@
                 document.getElementById('calculatorView').style.display = 'block';
                 errorMsg.style.display = 'none';
             } else if (boundDevice === currentDevice) {
-                // เครื่องเดิม เข้าใช้งานได้ปกติ
                 localStorage.setItem('masterlotto_vip_logged', 'true');
                 localStorage.setItem('masterlotto_active_pass', pass);
                 document.getElementById('loginView').style.display = 'none';
                 document.getElementById('calculatorView').style.display = 'block';
                 errorMsg.style.display = 'none';
             } else {
-                // เครื่องอื่นแอบเอามาใช้ (ล็อคไว้ 1 เครื่อง)
                 errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').focus();
