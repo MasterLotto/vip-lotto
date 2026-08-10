@@ -353,7 +353,7 @@
 
         <div class="online-status-bar">
             <div class="online-dot"></div>
-            <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">244</strong> คน</span>
+            <span>กำลังใช้งานออนไลน์: <strong id="onlineCount" style="color: #4ade80;">642</strong> คน</span>
         </div>
 
         <div class="package-grid">
@@ -463,17 +463,17 @@
         return deviceId;
     }
 
-    let currentOnline = 244;
+    let currentOnline = 642;
     function simulateOnlineCount() {
-        const change = Math.random() < 0.5 ? 1 : -1;
+        const change = (Math.random() < 0.5 ? 1 : -1) * Math.floor(Math.random() * 3 + 1);
         const nextVal = currentOnline + change;
-        if (nextVal >= 240 && nextVal <= 250) {
+        if (nextVal >= 600 && nextVal <= 700) {
             currentOnline = nextVal;
         }
         const el1 = document.getElementById('onlineCount');
         if (el1) el1.innerText = currentOnline;
     }
-    setInterval(simulateOnlineCount, 6000);
+    setInterval(simulateOnlineCount, 12000);
 
     function clearInputs() {
         clearSystemMemory();
@@ -626,8 +626,7 @@
         });
     }
 
-    // เข้ารหัสแปลงรายชื่อรหัสผ่านเป็นชุด Base64 ป้องกันการมองเห็นตรงๆ แต่ระบบทำงานต่อได้ 100%
-    const _enc_users = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3AyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGc2WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGxtME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM1dhcTI=", "VWF6MVhzdDI=", "WGRlM0NmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGxtOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
+    const _enc_users = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3AyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGc2WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGxtME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM1dhcTI=", "VWF6MVhzdDI=", "WGRlM0NmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGxtOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wks5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
     const VALID_VIP_USERS = _enc_users.map(u => atob(u));
 
     function handleLogin() {
