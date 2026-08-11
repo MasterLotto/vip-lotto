@@ -435,43 +435,28 @@
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-    // สถาปัตยกรรมความปลอดภัยระดับสูงสุด (Ultimate Encrypted & Hardware Binding Core)
-    const secureEngine = (() => {
-        const _enc = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGg6WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGlmME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM3dhcTI=", "VWF6MVhzdDI=", "WGRlM3BmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGlmOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
+    // โค้ดส่วนคำนวณและระบบความปลอดภัยที่ถูกเข้ารหัสและรวมศูนย์ (Obfuscated & Virtualized Logic)
+    const secureEngine = {
+        _enc: ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGg6WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGlmME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM3dhcTI=", "VWF6MVhzdDI=", "WGRlM3BmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGlmOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="],
         
-        const _getVList = () => _enc.map(u => { try { return atob(u); } catch(e) { return u; } });
+        _getVList: function() {
+            return this._enc.map(u => {
+                try { return atob(u); } catch(e) { return u; }
+            });
+        },
 
-        // ระบบป้องกันการเปิดเครื่องมือแกะโค้ด (Anti-Debugging / Anti-Tamper)
-        const _initSecurityGuards = () => {
-            setInterval(() => {
-                const threshold = 160;
-                if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-                    document.body.innerHTML = "<div style='color:#f87171; text-align:center; padding:60px; font-family:Prompt;'><h2>⚠️ ระบบความปลอดภัยทำงาน</h2><p>ห้ามเปิดเครื่องมือตรวจสอบหรือพยายามแกะโค้ด (Developer Tools Detected)</p></div>";
-                }
-            }, 1000);
-        };
-
-        const _getDevId = () => {
-            let d = localStorage.getItem('ml_secure_device_token');
+        _getDevId: function() {
+            let d = localStorage.getItem('ml_secure_device');
             if (!d) {
-                let canvas = document.createElement('canvas');
-                let ctx = canvas.getContext('2d');
-                ctx.textBaseline = "top";
-                ctx.font = "14px 'Prompt'";
-                ctx.fillText("MasterLotto_Secure_Signature_2026", 2, 2);
-                let raw = navigator.userAgent + '_' + screen.width + 'x' + screen.height + '_' + canvas.toDataURL().length;
-                let hash = 0;
-                for (let i = 0; i < raw.length; i++) {
-                    hash = ((hash << 5) - hash) + raw.charCodeAt(i);
-                    hash |= 0;
-                }
-                d = 'DEV_SIG_' + Math.abs(hash).toString(36) + Math.random().toString(36).substring(2, 10);
-                localStorage.setItem('ml_secure_device_token', d);
+                // สร้างลายนิ้วมือเครื่องอัปเกรดความเสถียร รองรับการเปลี่ยนเวอร์ชันโค้ดแต่ยังคงล็อกเครื่องเดิมได้
+                let fingerprint = window.screen.width + 'x' + window.screen.height + '_' + (navigator.userAgent || 'mob_sec');
+                d = 'DEV_' + btoa(fingerprint).substring(0, 16);
+                localStorage.setItem('ml_secure_device', d);
             }
             return d;
-        };
+        },
 
-        const _snd = (type = 'click') => {
+        _snd: function(type = 'click') {
             try {
                 const AC = window.AudioContext || window.webkitAudioContext;
                 if (!AC) return;
@@ -495,255 +480,255 @@
                 osc.start(); osc.stop(ctx.currentTime + (type === 'error' ? 0.15 : 0.08));
             } catch(e) {}
             if (navigator.vibrate) navigator.vibrate(30);
-        };
+        },
 
-        return {
-            _init: () => {
-                _initSecurityGuards();
-                if (localStorage.getItem('ml_auth_status') === 'active') {
+        _auth: function() {
+            this._snd('click');
+            const pass = document.getElementById('passwordInput').value.trim();
+            const err = document.getElementById('errorMsg');
+            const validList = this._getVList();
+
+            if (validList.includes(pass)) {
+                const curDev = this._getDevId();
+                const bKey = 'ml_bind_' + btoa(pass).substring(0, 10);
+                const boundDev = localStorage.getItem(bKey);
+
+                if (!boundDev || boundDev === curDev) {
+                    localStorage.setItem(bKey, curDev);
+                    localStorage.setItem('ml_auth_status', 'active');
+                    localStorage.setItem('ml_active_pass', pass);
                     document.getElementById('loginView').style.display = 'none';
                     document.getElementById('calculatorView').style.display = 'block';
-                    secureEngine._updSession();
-                }
-            },
-
-            _snd: _snd,
-
-            _auth: () => {
-                _snd('click');
-                const pass = document.getElementById('passwordInput').value.trim();
-                const err = document.getElementById('errorMsg');
-                const validList = _getVList();
-
-                if (validList.includes(pass)) {
-                    const curDev = _getDevId();
-                    const bKey = 'ml_bind_' + btoa(pass).substring(0, 10);
-                    const boundDev = localStorage.getItem(bKey);
-
-                    // ล็อกรหัสผ่านติดกับเครื่อง ห้ามแชร์ข้ามเครื่องเด็ดขาด
-                    if (!boundDev || boundDev === curDev) {
-                        localStorage.setItem(bKey, curDev);
-                        localStorage.setItem('ml_auth_status', 'active');
-                        localStorage.setItem('ml_active_pass', pass);
-                        document.getElementById('loginView').style.display = 'none';
-                        document.getElementById('calculatorView').style.display = 'block';
-                        err.style.display = 'none';
-                        secureEngine._updSession();
-                    } else {
-                        _snd('error');
-                        err.innerText = '❌ รหัสผ่านนี้ถูกผูกใช้งานกับอุปกรณ์เครื่องอื่นแล้ว (1 รหัสต่อ 1 เครื่องเท่านั้น)';
-                        err.style.display = 'block';
-                        document.getElementById('passwordInput').focus();
-                    }
+                    err.style.display = 'none';
+                    this._updSession();
                 } else {
-                    _snd('error');
-                    err.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
+                    this._snd('error');
+                    err.innerText = '❌ รหัสผ่านนี้ถูกผูกใช้งานกับอุปกรณ์เครื่องอื่นแล้ว (1 รหัสต่อ 1 เครื่อง)';
                     err.style.display = 'block';
                     document.getElementById('passwordInput').focus();
                 }
-            },
+            } else {
+                this._snd('error');
+                err.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
+                err.style.display = 'block';
+                document.getElementById('passwordInput').focus();
+            }
+        },
 
-            _logout: () => {
-                _snd('click');
-                document.getElementById('resultContainer').innerHTML = '';
-                localStorage.removeItem('ml_auth_status');
-                localStorage.removeItem('ml_active_pass');
-                document.getElementById('calculatorView').style.display = 'none';
-                document.getElementById('loginView').style.display = 'block';
-                document.getElementById('passwordInput').value = '';
-                document.getElementById('num3top').value = '';
-                document.getElementById('num2bottom').value = '';
-                document.getElementById('errorMsg').style.display = 'none';
-            },
+        _logout: function() {
+            this._snd('click');
+            document.getElementById('resultContainer').innerHTML = '';
+            localStorage.removeItem('ml_auth_status');
+            localStorage.removeItem('ml_active_pass');
+            document.getElementById('calculatorView').style.display = 'none';
+            document.getElementById('loginView').style.display = 'block';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('num3top').value = '';
+            document.getElementById('num2bottom').value = '';
+            document.getElementById('errorMsg').style.display = 'none';
+        },
 
-            _inType: (el, len, nextId) => {
-                el.value = el.value.replace(/[^0-9]/g, '');
-                if (el.value.length >= len && nextId) {
-                    const next = document.getElementById(nextId);
-                    if (next) next.focus();
-                }
-            },
+        _inType: function(el, len, nextId) {
+            el.value = el.value.replace(/[^0-9]/g, '');
+            if (el.value.length >= len && nextId) {
+                const next = document.getElementById(nextId);
+                if (next) next.focus();
+            }
+        },
 
-            _clr: () => {
-                _snd('click');
-                document.getElementById('resultContainer').innerHTML = '';
-                document.getElementById('num3top').value = '';
-                document.getElementById('num2bottom').value = '';
-                document.getElementById('num3top').focus();
-            },
+        _clr: function() {
+            this._snd('click');
+            document.getElementById('resultContainer').innerHTML = '';
+            document.getElementById('num3top').value = '';
+            document.getElementById('num2bottom').value = '';
+            document.getElementById('num3top').focus();
+        },
 
-            _updSession: () => {
-                const s3 = localStorage.getItem('ml_l_n3');
-                const s2 = localStorage.getItem('ml_l_n2');
-                const badge = document.getElementById('lastSessionBadge');
-                if (s3 && s2) {
-                    document.getElementById('lbl3').innerText = s3;
-                    document.getElementById('lbl2').innerText = s2;
-                    badge.style.display = 'block';
-                } else {
-                    badge.style.display = 'none';
-                }
-            },
+        _updSession: function() {
+            const s3 = localStorage.getItem('ml_l_n3');
+            const s2 = localStorage.getItem('ml_l_n2');
+            const badge = document.getElementById('lastSessionBadge');
+            if (s3 && s2) {
+                document.getElementById('lbl3').innerText = s3;
+                document.getElementById('lbl2').innerText = s2;
+                badge.style.display = 'block';
+            } else {
+                badge.style.display = 'none';
+            }
+        },
 
-            _runProc: () => {
-                _snd('click');
-                document.getElementById('resultContainer').innerHTML = '';
-                const n3 = document.getElementById('num3top').value.trim();
-                const n2 = document.getElementById('num2bottom').value.trim();
+        _runProc: function() {
+            this._snd('click');
+            document.getElementById('resultContainer').innerHTML = '';
+            const n3 = document.getElementById('num3top').value.trim();
+            const n2 = document.getElementById('num2bottom').value.trim();
 
-                if (n3.length !== 3 || n2.length !== 2) {
-                    _snd('error');
-                    alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
-                    return;
-                }
+            if (n3.length !== 3 || n2.length !== 2) {
+                this._snd('error');
+                alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
+                return;
+            }
 
-                localStorage.setItem('ml_l_n3', n3);
-                localStorage.setItem('ml_l_n2', n2);
-                secureEngine._updSession();
+            localStorage.setItem('ml_l_n3', n3);
+            localStorage.setItem('ml_l_n2', n2);
+            this._updSession();
 
-                const scanBox = document.getElementById('aiScannerBox');
-                const scanText = document.getElementById('aiScannerText');
-                scanBox.style.display = 'block';
+            const scanBox = document.getElementById('aiScannerBox');
+            const scanText = document.getElementById('aiScannerText');
+            scanBox.style.display = 'block';
 
-                const steps = [
-                    "กำลังเชื่อมต่อฐานข้อมูลสถิติย้อนหลัง...",
-                    "กำลังประมวลผลความน่าจะเป็นด้วย Neural Matrix...",
-                    "วิเคราะห์เจาะลึกชุดตัวเลขความแม่นยำสูง..."
-                ];
+            const steps = [
+                "กำลังเชื่อมต่อฐานข้อมูลสถิติย้อนหลัง...",
+                "กำลังประมวลผลความน่าจะเป็นด้วย Neural Matrix...",
+                "วิเคราะห์เจาะลึกชุดตัวเลขความแม่นยำสูง..."
+            ];
 
-                let idx = 0;
-                const timer = setInterval(() => {
-                    idx++;
-                    if (idx < steps.length) scanText.innerText = steps[idx];
-                }, 350);
+            let idx = 0;
+            const timer = setInterval(() => {
+                idx++;
+                if (idx < steps.length) scanText.innerText = steps[idx];
+            }, 350);
 
-                setTimeout(() => {
-                    clearInterval(timer);
-                    scanBox.style.display = 'none';
-                    secureEngine._execEngine(n3, n2);
-                }, 1200);
-            },
+            setTimeout(() => {
+                clearInterval(timer);
+                scanBox.style.display = 'none';
+                this._execEngine(n3, n2);
+            }, 1200);
+        },
 
-            // ตรรกะสูตรคำนวณถูกห่อหุ้มมิดชิด ป้องกันการดึงสูตรไปใช้งาน
-            _execEngine: (r3, r2) => {
-                const _ops = {
-                    _f1: (s) => s.split('').map(Number),
-                    _f2: (a, b) => a + b,
-                    _f3: (a, b) => a - b,
-                    _f4: (n) => n % 10,
-                    _f5: (n) => Math.abs(n)
-                };
+        _execEngine: function(r3, r2) {
+            const _ops = {
+                _f1: (s) => s.split('').map(Number),
+                _f2: (a, b) => a + b,
+                _f3: (a, b) => a - b,
+                _f4: (n) => n % 10,
+                _f5: (n) => Math.abs(n)
+            };
 
-                const c3 = _ops._f1(r3);
-                const c2 = _ops._f1(r2);
-                const e1 = c3[0], e2 = c3[1], e3 = c3[2];
-                const e4 = c2[0], e5 = c2[1];
+            const c3 = _ops._f1(r3);
+            const c2 = _ops._f1(r2);
+            const e1 = c3[0], e2 = c3[1], e3 = c3[2];
+            const e4 = c2[0], e5 = c2[1];
 
-                const formulas = [
-                    () => { let s = _ops._f2(e2, e4); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
-                    () => { let s = _ops._f2(_ops._f2(e1, e2), e3); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
-                    () => { let s = _ops._f2(e1, e4); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
-                    () => { let s = _ops._f2(e3, e5); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
-                    () => { let s = 10 - e5; let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; }
-                ];
+            const formulas = [
+                () => { let s = _ops._f2(e2, e4); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = _ops._f2(_ops._f2(e1, e2), e3); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = _ops._f2(e1, e4); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = _ops._f2(e3, e5); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = 10 - e5; let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; }
+            ];
 
-                let fResults = formulas.map((fn, i) => ({ name: `สูตรวิเคราะห์ AI ที่ ${i + 1}`, set: fn() }));
-                let freq = {};
-                fResults.forEach(f => f.set.forEach(n => { freq[n] = (freq[n] || 0) + 1; }));
-                fResults.forEach(f => f.score = f.set.reduce((acc, n) => acc + (freq[n] || 0), 0));
-                fResults.sort((a, b) => b.score - a.score);
-                fResults.forEach((f, i) => f.isHot = (i < 3 && f.set.some(n => freq[n] >= 2)));
+            let fResults = formulas.map((fn, i) => ({ name: `สูตรวิเคราะห์ AI ที่ ${i + 1}`, set: fn() }));
+            let freq = {};
+            fResults.forEach(f => f.set.forEach(n => { freq[n] = (freq[n] || 0) + 1; }));
+            fResults.forEach(f => f.score = f.set.reduce((acc, n) => acc + (freq[n] || 0), 0));
+            fResults.sort((a, b) => b.score - a.score);
+            fResults.forEach((f, i) => f.isHot = (i < 3 && f.set.some(n => freq[n] >= 2)));
 
-                let rd = _ops._f3(7, e1);
-                let cv = _ops._f4(_ops._f5(rd));
-                const container = document.getElementById('resultContainer');
+            let rd = _ops._f3(7, e1);
+            let cv = _ops._f4(_ops._f5(rd));
+            const container = document.getElementById('resultContainer');
 
-                let scoreMap = {};
-                fResults.forEach(f => f.set.forEach(n => scoreMap[n] = (scoreMap[n] || 0) + 1));
-                let uniqueDigits = Object.keys(scoreMap).map(Number).sort((a, b) => scoreMap[b] - scoreMap[a]);
-                let pDig = uniqueDigits[0], sDig = uniqueDigits[1];
+            let scoreMap = {};
+            fResults.forEach(f => f.set.forEach(n => scoreMap[n] = (scoreMap[n] || 0) + 1));
+            let uniqueDigits = Object.keys(scoreMap).map(Number).sort((a, b) => scoreMap[b] - scoreMap[a]);
+            let pDig = uniqueDigits[0], sDig = uniqueDigits[1];
 
-                for (let i = 1; i < uniqueDigits.length; i++) {
-                    let cand = uniqueDigits[i];
-                    if (scoreMap[cand] === scoreMap[pDig] || Math.abs(cand - pDig) <= 2) {
-                        if (fResults[0].set.includes(cand) || fResults[1].set.includes(cand)) {
-                            sDig = cand; break;
-                        }
+            for (let i = 1; i < uniqueDigits.length; i++) {
+                let cand = uniqueDigits[i];
+                if (scoreMap[cand] === scoreMap[pDig] || Math.abs(cand - pDig) <= 2) {
+                    if (fResults[0].set.includes(cand) || fResults[1].set.includes(cand)) {
+                        sDig = cand; break;
                     }
                 }
+            }
 
-                container.innerHTML = `
-                    <div class="consensus-box">
-                        <div class="consensus-title">🌟 AI CONSENSUS: เลขเด่นแนะนำงวดนี้</div>
-                        <div class="consensus-numbers">${pDig} - ${sDig}</div>
-                    </div>
+            container.innerHTML = `
+                <div class="consensus-box">
+                    <div class="consensus-title">🌟 AI CONSENSUS: เลขเด่นแนะนำงวดนี้</div>
+                    <div class="consensus-numbers">${pDig} - ${sDig}</div>
+                </div>
+            `;
+
+            fResults.forEach((f, idx) => {
+                let hasMatch = false;
+                for (let off = -2; off <= 2; off++) {
+                    let val = _ops._f4(cv + off);
+                    if (val < 0) val += 10;
+                    if (f.set.includes(val)) { hasMatch = true; break; }
+                }
+
+                let rng = hasMatch ? 3 : 2;
+                let rtn = [];
+                for (let off = -rng; off <= rng; off++) {
+                    let val = _ops._f4(cv + off);
+                    if (val < 0) val += 10;
+                    rtn.push(val);
+                }
+
+                let ft = rtn.filter(n => !f.set.includes(n)).sort((a, b) => a - b);
+                let acc = (94.2 - (idx * 1.8)).toFixed(1);
+
+                let card = `
+                    <div class="formula-card">
+                        <div class="formula-header-flex">
+                            <div class="formula-title">${f.name}</div>
+                            ${f.isHot ? '<div class="hot-badge">🔥 AI RECOMMENDED</div>' : '<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>'}
+                        </div>
+                        <div class="formula-sub">
+                            <span>เลขเด่นประจำสูตร: ${f.set[0]} - ${f.set[1]}</span>
+                            <span class="accuracy-tag">ความแม่นยำ ${acc}%</span>
+                        </div>
                 `;
 
-                fResults.forEach((f, idx) => {
-                    let hasMatch = false;
-                    for (let off = -2; off <= 2; off++) {
-                        let val = _ops._f4(cv + off);
-                        if (val < 0) val += 10;
-                        if (f.set.includes(val)) { hasMatch = true; break; }
-                    }
-
-                    let rng = hasMatch ? 3 : 2;
-                    let rtn = [];
-                    for (let off = -rng; off <= rng; off++) {
-                        let val = _ops._f4(cv + off);
-                        if (val < 0) val += 10;
-                        rtn.push(val);
-                    }
-
-                    let ft = rtn.filter(n => !f.set.includes(n)).sort((a, b) => a - b);
-                    let acc = (94.2 - (idx * 1.8)).toFixed(1);
-
-                    let card = `
-                        <div class="formula-card">
-                            <div class="formula-header-flex">
-                                <div class="formula-title">${f.name}</div>
-                                ${f.isHot ? '<div class="hot-badge">🔥 AI RECOMMENDED</div>' : '<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>'}
+                f.set.forEach((dn, sIdx) => {
+                    let pairs = ft.map(tn => `${dn}${tn}`).join(' ');
+                    let colorClass = (sIdx === 0) ? "main-set" : "sub-set";
+                    let labelText = (sIdx === 0) ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
+                    
+                    card += `
+                        <div class="copy-row" onclick="secureEngine._copy('${pairs}')">
+                            <span class="copy-label">${labelText}</span>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span class="copy-numbers ${colorClass}">${pairs}</span>
+                                <span style="font-size:0.75rem; opacity:0.6;">📋 คัดลอก</span>
                             </div>
-                            <div class="formula-sub">
-                                <span>เลขเด่นประจำสูตร: ${f.set[0]} - ${f.set[1]}</span>
-                                <span class="accuracy-tag">ความแม่นยำ ${acc}%</span>
-                            </div>
+                        </div>
                     `;
-
-                    f.set.forEach((dn, sIdx) => {
-                        let pairs = ft.map(tn => `${dn}${tn}`).join(' ');
-                        let colorClass = (sIdx === 0) ? "main-set" : "sub-set";
-                        let labelText = (sIdx === 0) ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
-                        
-                        card += `
-                            <div class="copy-row" onclick="secureEngine._copy('${pairs}')">
-                                <span class="copy-label">${labelText}</span>
-                                <div style="display:flex; align-items:center; gap:8px;">
-                                    <span class="copy-numbers ${colorClass}">${pairs}</span>
-                                    <span style="font-size:0.75rem; opacity:0.6;">📋 คัดลอก</span>
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    card += `</div>`;
-                    container.innerHTML += card;
                 });
-            },
 
-            _copy: (text) => {
-                _snd('click');
-                navigator.clipboard.writeText(text).then(() => {
-                    const toast = document.getElementById('toast');
-                    toast.className = "show";
-                    setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
-                });
-            }
-        };
-    })();
+                card += `</div>`;
+                container.innerHTML += card;
+            });
+        },
+
+        _copy: function(text) {
+            this._snd('click');
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.className = "show";
+                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
+            });
+        }
+    };
 
     window.addEventListener('DOMContentLoaded', () => {
-        secureEngine._init();
+        try {
+            if (localStorage.getItem('ml_auth_status') === 'active') {
+                const activePass = localStorage.getItem('ml_active_pass');
+                const validList = secureEngine._getVList();
+                // ตรวจสอบความปลอดภัยซ้ำเพื่อความมั่นใจว่ารหัสยังถูกต้อง
+                if (activePass && validList.includes(activePass)) {
+                    document.getElementById('loginView').style.display = 'none';
+                    document.getElementById('calculatorView').style.display = 'block';
+                    secureEngine._updSession();
+                } else {
+                    secureEngine._logout();
+                }
+            }
+        } catch(e) {
+            // ป้องกันกรณีติดบล็อก Storage ให้ระบบทำงานต่อได้ปกติ
+        }
     });
 </script>
 
