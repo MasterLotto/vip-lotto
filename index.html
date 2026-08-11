@@ -35,7 +35,6 @@
             position: relative;
         }
 
-        /* Ambient Neural Glow Background */
         .ai-orb-1 {
             position: fixed; top: -120px; left: -120px; width: 350px; height: 350px;
             background: radial-gradient(circle, rgba(168,85,247,0.22) 0%, rgba(0,0,0,0) 70%);
@@ -61,7 +60,6 @@
             z-index: 10;
         }
 
-        /* Header ดีไซน์ AI หรูหรา พร้อมเอฟเฟกต์แสงวิ่งผ่านแบบช้าๆ หรูหรา */
         .header-box { text-align: center; margin-bottom: 20px; }
         .ai-badge {
             display: inline-flex;
@@ -113,7 +111,6 @@
 
         .header-box p { color: var(--text-sub); font-size: 0.84rem; font-weight: 300; }
 
-        /* แถบสถานะระบบ AI ออนไลน์พร้อมจำนวนผู้ใช้งานรวม */
         .ai-status-bar {
             background: rgba(8, 14, 26, 0.75);
             border: 1px solid rgba(16,185,129,0.3);
@@ -141,7 +138,6 @@
             50% { transform: scale(1.35); opacity: 0.6; }
         }
 
-        /* ตารางแพ็กเกจ VIP */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .package-card { 
             background: linear-gradient(145deg, rgba(16,24,40,0.85), rgba(10,15,26,0.95)); 
@@ -180,7 +176,6 @@
         .package-card .price { font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
         .package-card .desc { font-size: 0.7rem; color: var(--text-sub); }
 
-        /* ปุ่ม LINE */
         .btn-line { 
             display: flex;
             align-items: center;
@@ -200,7 +195,6 @@
         }
         .btn-line:active { transform: scale(0.98); }
 
-        /* ส่วนกรอกรหัสผ่าน */
         .login-section { 
             background: rgba(8,13,24,0.6); 
             padding: 18px; 
@@ -248,7 +242,6 @@
 
         .error-msg { color: #f87171; font-size: 0.78rem; margin-top: 8px; display: none; text-align: center; font-weight: 500; }
 
-        /* หน้าคำนวณสูตร AI View */
         #calculatorView { display: none; }
         
         .input-label { font-size: 0.83rem; color: #cbd5e1; margin-bottom: 6px; display: block; font-weight: 500; }
@@ -296,7 +289,6 @@
         }
         .btn-clear:hover { background: #334155; color: #fff; }
 
-        /* AI Neural Scanner Loader */
         #aiScannerBox {
             display: none;
             background: linear-gradient(135deg, rgba(8,14,26,0.95), rgba(15,23,42,0.9));
@@ -318,7 +310,6 @@
         @keyframes spinRadar { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         #aiScannerText { color: #38bdf8; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; }
 
-        /* AI Consensus Summary Box */
         .consensus-box {
             background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.08));
             border: 1px solid rgba(16,185,129,0.4);
@@ -331,7 +322,6 @@
         .consensus-title { font-size: 0.82rem; color: #34d399; font-weight: 600; margin-bottom: 6px; }
         .consensus-numbers { font-size: 1.25rem; font-weight: 700; color: #ffffff; font-family: monospace; letter-spacing: 1px; }
 
-        /* การ์ดผลลัพธ์สูตร (Formula Result Card) ปรับขอบสลับสีขาว-ฟ้าแบบสโลว์ VIP นุ่มนวล และเอาแถบฟ้าด้านซ้ายออกแล้ว */
         .formula-card { 
             background: linear-gradient(145deg, rgba(12,19,33,0.92), rgba(18,27,45,0.85)); 
             padding: 16px; margin-bottom: 14px; border-radius: 20px; 
@@ -387,7 +377,6 @@
         
         .copy-label { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; }
         
-        /* สไตล์เลขเด่น: สีโทนเดียวพร้อมแสงวูบวาบเบาๆ และปรับขนาดให้สมดุลกับเลขเจาะ */
         .highlight-digit {
             display: inline-block;
             font-weight: 600;
@@ -401,7 +390,6 @@
             50% { text-shadow: 0 0 6px rgba(56,189,248,0.7); opacity: 1; }
         }
 
-        /* ปรับขนาดตัวเลขเจาะ (copy-numbers) ให้สมดุลเท่ากันกับเลขเด่น */
         .copy-numbers { font-family: monospace; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.8px; }
         .main-set { color: #34d399; }
         .sub-set { color: #38bdf8; }
@@ -433,7 +421,6 @@
 </head>
 <body>
 
-<!-- Ambient Lights -->
 <div class="ai-orb-1"></div>
 <div class="ai-orb-2"></div>
 
@@ -495,7 +482,6 @@
             <p>ประมวลผลเจาะเลขเด็ดด้วยอัลกอริทึมขั้นสูง</p>
         </div>
 
-        <!-- แถบแสดงเลขงวดล่าสุดที่ระบบบันทึกไว้ -->
         <div id="lastSessionBadge" class="last-session-badge">
             <span class="glow-icon">🔮</span> อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> | 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
         </div>
@@ -517,7 +503,6 @@
             <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
         </div>
 
-        <!-- AI Neural Scanner Loader -->
         <div id="aiScannerBox">
             <div class="neural-radar"></div>
             <div id="aiScannerText">กำลังสแกนสถิติเชิงลึกด้วยระบบ Neural AI...</div>
@@ -597,7 +582,7 @@
     function getDeviceID() {
         let devId = localStorage.getItem('masterlotto_device_id');
         if (!devId) {
-            devId = 'DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+            devId = 'SECURE_DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
             localStorage.setItem('masterlotto_device_id', devId);
         }
         return devId;
@@ -878,9 +863,6 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-        (async () => {
-            // Check memory persistence
-        })();
         if (localStorage.getItem('masterlotto_vip_logged') === 'true') {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
