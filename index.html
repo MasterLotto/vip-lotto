@@ -91,7 +91,6 @@
             margin-bottom: 4px;
         }
         
-        /* เอฟเฟกต์แสงวิ่งผ่านตัวหนังสือแบบช้าๆ (Luxury Slow Shimmer) */
         .header-box h2::after {
             content: attr(data-text);
             position: absolute;
@@ -391,21 +390,22 @@
         
         .copy-label { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; }
         
-        /* สไตล์เลขเด่นหลังคำว่า ชุดเด่น / ชุดรอง พร้อมเอฟเฟกต์สีสันกระพริบสลับโทนช้าๆ หรูหรา */
+        /* สไตล์เลขเด่น: สีโทนเดียวพร้อมแสงวูบวาบเบาๆ และปรับขนาดให้สมดุลกับเลขเจาะ */
         .highlight-digit {
             display: inline-block;
-            font-weight: 700;
-            padding: 0 4px;
-            animation: digitColorShift 6s infinite ease-in-out;
+            font-weight: 600;
+            padding: 0 3px;
+            color: #38bdf8;
+            font-size: 0.95rem;
+            animation: softDigitGlow 3s infinite ease-in-out;
         }
-        @keyframes digitColorShift {
-            0% { color: #38bdf8; text-shadow: 0 0 8px rgba(56,189,248,0.6); }
-            33% { color: #f472b6; text-shadow: 0 0 8px rgba(244,114,182,0.6); }
-            66% { color: #34d399; text-shadow: 0 0 8px rgba(52,211,153,0.6); }
-            100% { color: #38bdf8; text-shadow: 0 0 8px rgba(56,189,248,0.6); }
+        @keyframes softDigitGlow {
+            0%, 100% { text-shadow: 0 0 2px rgba(56,189,248,0.2); opacity: 0.9; }
+            50% { text-shadow: 0 0 6px rgba(56,189,248,0.7); opacity: 1; }
         }
 
-        .copy-numbers { font-family: monospace; font-size: 0.98rem; font-weight: 700; letter-spacing: 0.8px; }
+        /* ปรับขนาดตัวเลขเจาะ (copy-numbers) ให้สมดุลเท่ากันกับเลขเด่น */
+        .copy-numbers { font-family: monospace; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.8px; }
         .main-set { color: #34d399; }
         .sub-set { color: #38bdf8; }
 
@@ -803,7 +803,6 @@
             f.set.forEach((dn, sIdx) => {
                 let pairs = ft.map(tn => `${dn}${tn}`).join(' ');
                 let colorClass = (sIdx === 0) ? "main-set" : "sub-set";
-                // ถอดวงเล็บออก และใส่ span พร้อมเอฟเฟกต์สีสันกระพริบสลับโทนช้าๆ
                 let labelText = (sIdx === 0) ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
                 
                 cardHtml += `
