@@ -118,7 +118,7 @@
             50% { transform: scale(1.35); opacity: 0.6; }
         }
 
-        /* ตารางแพ็กเกจ VIP พร้อมแถบแสงวิ่งไล่ระดับสมูทนุ่มนวล */
+        /* ตารางแพ็กเกจ VIP พร้อมแถบแสงวิ่งวนลูปต่อเนื่องอย่างไร้รอยต่อ (Seamless Infinite Flow) */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .package-card { 
             background: linear-gradient(145deg, rgba(16,24,40,0.85), rgba(10,15,26,0.95)); 
@@ -135,19 +135,21 @@
             content: ''; 
             position: absolute; 
             top: 0; 
-            left: -150%; 
+            left: -100%; 
             width: 300%; 
             height: 3px; 
-            animation: smoothShimmer 5s infinite ease-in-out;
+            animation: infiniteSeamlessFlow 6s linear infinite;
         }
-        .p-1::before { background: linear-gradient(90deg, transparent, rgba(168,85,247,0.2), #a855f7, #ec4899, rgba(236,72,153,0.2), transparent); }
-        .p-2::before { background: linear-gradient(90deg, transparent, rgba(6,182,212,0.2), #06b6d4, #3b82f6, rgba(59,130,246,0.2), transparent); }
-        .p-3::before { background: linear-gradient(90deg, transparent, rgba(245,158,11,0.2), #f59e0b, #eab308, rgba(234,179,8,0.2), transparent); }
-        .p-4::before { background: linear-gradient(90deg, transparent, rgba(16,185,129,0.2), #10b981, #059669, rgba(5,150,105,0.2), transparent); }
+        
+        /* ปรับเฉดสีและจังหวะให้ไหลต่อเนื่องสมูทตลอดเวลา */
+        .p-1::before { background: linear-gradient(90deg, transparent, #a855f7, #ec4899, #38bdf8, #a855f7, transparent); }
+        .p-2::before { background: linear-gradient(90deg, transparent, #06b6d4, #3b82f6, #10b981, #06b6d4, transparent); }
+        .p-3::before { background: linear-gradient(90deg, transparent, #f59e0b, #eab308, #f97316, #f59e0b, transparent); }
+        .p-4::before { background: linear-gradient(90deg, transparent, #10b981, #34d399, #06b6d4, #10b981, transparent); }
 
-        @keyframes smoothShimmer {
+        @keyframes infiniteSeamlessFlow {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(66.66%); }
+            100% { transform: translateX(50%); }
         }
 
         .package-card h3 { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; margin-bottom: 4px; }
