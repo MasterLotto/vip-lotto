@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>MasterLotto VIP - AI Predictive Analytics 10.0</title>
+    <title>MasterLotto VIP - AI Predictive Analytics 10.4</title>
     <!-- Google Font: Prompt -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -61,7 +61,7 @@
             z-index: 10;
         }
 
-        /* Header ดีไซน์ AI หรูหรา */
+        /* Header ดีไซน์ AI หรูหรา พร้อมเอฟเฟกต์แสงวิ่งผ่านแบบช้าๆ หรูหรา */
         .header-box { text-align: center; margin-bottom: 20px; }
         .ai-badge {
             display: inline-flex;
@@ -82,12 +82,36 @@
         .header-box h2 { 
             font-size: 1.9rem; 
             font-weight: 700;
+            position: relative;
+            display: inline-block;
             background: linear-gradient(135deg, #FFFFFF 0%, #38bdf8 50%, #0284c7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
         }
+        
+        /* เอฟเฟกต์แสงวิ่งผ่านตัวหนังสือแบบช้าๆ (Luxury Slow Shimmer) */
+        .header-box h2::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: luxuryShimmerSlow 7s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes luxuryShimmerSlow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
         .header-box p { color: var(--text-sub); font-size: 0.84rem; font-weight: 300; }
 
         /* แถบสถานะระบบ AI ออนไลน์พร้อมจำนวนผู้ใช้งานรวม */
@@ -118,7 +142,7 @@
             50% { transform: scale(1.35); opacity: 0.6; }
         }
 
-        /* ตารางแพ็กเกจ VIP แก้ไขแถบแสงด้านบนให้วูบวาบเปลี่ยนสีสมูทต่อเนื่อง 100% ไม่มีวันจบ */
+        /* ตารางแพ็กเกจ VIP */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .package-card { 
             background: linear-gradient(145deg, rgba(16,24,40,0.85), rgba(10,15,26,0.95)); 
@@ -142,7 +166,6 @@
             animation: smoothColorMorph 5s infinite ease-in-out;
         }
 
-        /* เทคนิค Color Morphing & Opacity Breathing (วูบวาบ ไล่สีกลายพันธุ์ สมูทไร้รอยต่อ ไม่มีสะดุด) */
         @keyframes smoothColorMorph {
             0% { opacity: 0.3; filter: brightness(0.8); }
             50% { opacity: 1; filter: brightness(1.6); box-shadow: 0 0 12px currentColor; }
@@ -157,46 +180,6 @@
         .package-card h3 { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; margin-bottom: 4px; }
         .package-card .price { font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
         .package-card .desc { font-size: 0.7rem; color: var(--text-sub); }
-
-        /* การ์ดชำระเงินดิจิทัล */
-        .payment-box { 
-            background: linear-gradient(135deg, rgba(12,19,33,0.95), rgba(20,30,48,0.7)); 
-            border: 1px solid rgba(245,158,11,0.35); 
-            padding: 18px; 
-            border-radius: 22px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .payment-title { 
-            color: #fbbf24; 
-            font-weight: 600; 
-            font-size: 0.86rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .payment-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 7px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            font-size: 0.83rem;
-        }
-        .payment-row:last-of-type { border-bottom: none; }
-        .payment-label { color: var(--text-sub); }
-        .payment-value { color: #ffffff; font-weight: 500; }
-        .bank-num { 
-            color: #fbbf24; 
-            font-weight: 700; 
-            font-family: monospace; 
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            background: rgba(245,158,11,0.12);
-            padding: 2px 8px;
-            border-radius: 8px;
-        }
 
         /* ปุ่ม LINE */
         .btn-line { 
@@ -282,6 +265,15 @@
             margin-bottom: 15px;
             text-align: center;
             display: none;
+        }
+
+        .glow-icon {
+            display: inline-block;
+            animation: softIconGlow 2.5s infinite ease-in-out;
+        }
+        @keyframes softIconGlow {
+            0%, 100% { filter: drop-shadow(0 0 2px rgba(6,182,212,0.4)); opacity: 0.85; }
+            50% { filter: drop-shadow(0 0 8px rgba(6,182,212,0.9)); opacity: 1; }
         }
 
         .action-row { display: flex; gap: 10px; margin-bottom: 20px; }
@@ -429,14 +421,14 @@
     <!-- LOGIN VIEW -->
     <div id="loginView">
         <div class="header-box">
-            <div class="ai-badge">⚡ NEURAL AI SYSTEM 10.0</div>
-            <h2>MasterLotto VIP</h2>
+            <div class="ai-badge">⚡ NEURAL AI SYSTEM 10.4</div>
+            <h2 data-text="MasterLotto VIP">MasterLotto VIP</h2>
             <p>ระบบวิเคราะห์สถิติและประมวลผลตัวเลขด้วยปัญญาประดิษฐ์</p>
         </div>
 
         <div class="ai-status-bar">
             <div class="pulse-dot"></div>
-            <span>ผู้ใช้งานรวม: <strong style="color: #38bdf8;">1,428 คน</strong> | สถานะระบบ: <strong style="color: #34d399;">พร้อมใช้งาน (Online)</strong></span>
+            <span>ผู้ใช้งานรวม: <strong style="color: #38bdf8;">1,428 คน</strong> | สถานะระบบ: <strong style="color: #34d399;">พร้อมใช้งาน</strong></span>
         </div>
 
         <div class="package-grid">
@@ -462,24 +454,8 @@
             </div>
         </div>
 
-        <div class="payment-box">
-            <div class="payment-title">💳 ช่องทางชำระเงินค่าสมาชิก VIP</div>
-            <div class="payment-row">
-                <span class="payment-label">ธนาคาร</span>
-                <span class="payment-value">กสิกรไทย (KBANK)</span>
-            </div>
-            <div class="payment-row">
-                <span class="payment-label">เลขที่บัญชี</span>
-                <span class="bank-num">0661291613</span>
-            </div>
-            <div class="payment-row">
-                <span class="payment-label">ชื่อบัญชี</span>
-                <span class="payment-value">ณัฐพงษ์ ขำสำอางค์</span>
-            </div>
-        </div>
-
         <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line" onclick="playClickSound()">
-            💬 แจ้งสลิป / ขอรับรหัสผ่าน VIP
+            💬 ติดต่อแอดมิน / สมัครสมาชิก VIP
         </a>
 
         <div class="login-section">
@@ -494,23 +470,23 @@
     <div id="calculatorView">
         <div class="header-box">
             <div class="ai-badge">⚡ AI PREDICTIVE ENGINE</div>
-            <h2>MasterLotto VIP</h2>
+            <h2 data-text="MasterLotto VIP">MasterLotto VIP</h2>
             <p>ประมวลผลเจาะเลขเด็ดด้วยอัลกอริทึมขั้นสูง</p>
         </div>
 
-        <!-- แถบแสดงเลขงวดล่าสุดที่ระบบบันทึกไว้ -->
+        <!-- แถบแสดงเลขงวดล่าสุดที่ระบบบันทึกไว้ (ถอดวงเล็บออกตามต้องการ) -->
         <div id="lastSessionBadge" class="last-session-badge">
-            📌 อ้างอิงจากงวดล่าสุด: 3 ตัวบน [<strong id="lbl3" style="color:#fff;"></strong>] | 2 ตัวล่าง [<strong id="lbl2" style="color:#fff;"></strong>]
+            <span class="glow-icon">🔮</span> อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> | 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
         </div>
 
         <div class="input-group-calc">
-            <label class="input-label">เลข 3 ตัวบน (งวดล่าสุด):</label>
-            <input type="text" id="num3top" placeholder="เช่น 701" maxlength="3" oninput="checkAutoJump(this, 3, 'num2bottom')">
+            <label class="input-label">เลข 3 ตัวบน:</label>
+            <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" oninput="handleNumericInput(this, 3, 'num2bottom')">
         </div>
 
         <div class="input-group-calc">
-            <label class="input-label">เลข 2 ตัวล่าง (งวดล่าสุด):</label>
-            <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2" oninput="checkAutoJump(this, 2, null)">
+            <label class="input-label">เลข 2 ตัวล่าง:</label>
+            <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num2bottom" placeholder="เช่น 26" maxlength="2" oninput="handleNumericInput(this, 2, null)">
         </div>
 
         <div class="action-row">
@@ -536,7 +512,6 @@
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-    // ระบบสังเคราะห์เสียงคลิกปุ่มอัตโนมัติ (Web Audio API) พร้อมแยกเสียงเตือนผิดพลาด
     function playClickSound(type = 'click') {
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -587,7 +562,10 @@
         if (resContainer) resContainer.innerHTML = '';
     }
 
-    function checkAutoJump(element, targetLength, nextFieldId) {
+    function handleNumericInput(element, targetLength, nextFieldId) {
+        // กรองเอาเฉพาะตัวเลข 0-9 เท่านั้น ป้องกันตัวอักษรมั่วซั่ว
+        element.value = element.value.replace(/[^0-9]/g, '');
+        
         if (element.value.length >= targetLength) {
             if (nextFieldId) {
                 const nextField = document.getElementById(nextFieldId);
@@ -761,7 +739,7 @@
         let consensusHtml = `
             <div class="consensus-box">
                 <div class="consensus-title">🌟 AI CONSENSUS: เลขเด่นแนะนำงวดนี้</div>
-                <div class="consensus-numbers">[ ${consensusDigitsStr} ]</div>
+                <div class="consensus-numbers">${consensusDigitsStr}</div>
             </div>
         `;
         container.innerHTML += consensusHtml;
