@@ -331,31 +331,28 @@
         .consensus-title { font-size: 0.82rem; color: #34d399; font-weight: 600; margin-bottom: 6px; }
         .consensus-numbers { font-size: 1.25rem; font-weight: 700; color: #ffffff; font-family: monospace; letter-spacing: 1px; }
 
-        /* การ์ดผลลัพธ์สูตร (Formula Result Card) พร้อมกรอบเปลี่ยนสีหลายโทนช้าๆ ละมุนตา */
+        /* การ์ดผลลัพธ์สูตร (Formula Result Card) ปรับขอบสลับสีขาว-ฟ้าแบบสโลว์ VIP นุ่มนวล และเอาแถบฟ้าด้านซ้ายออกแล้ว */
         .formula-card { 
             background: linear-gradient(145deg, rgba(12,19,33,0.92), rgba(18,27,45,0.85)); 
             padding: 16px; margin-bottom: 14px; border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             text-align: left; position: relative; overflow: hidden;
-            animation: borderMultiColorGlow 12s infinite ease-in-out;
+            animation: vipWhiteCyanGlow 8s infinite ease-in-out;
         }
-        @keyframes borderMultiColorGlow {
-            0% { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6, 182, 212, 0.1); }
-            25% { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(168, 85, 247, 0.1); }
-            50% { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(245, 158, 11, 0.1); }
-            75% { border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(16, 185, 129, 0.1); }
-            100% { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6, 182, 212, 0.1); }
-        }
-
-        .formula-card::before {
-            content: ''; position: absolute; top:0; left:0; width:4px; height:100%;
-            background: linear-gradient(180deg, #06b6d4, #3b82f6);
-            animation: softPulseGlow 3s infinite ease-in-out;
-        }
-        @keyframes softPulseGlow {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+        @keyframes vipWhiteCyanGlow {
+            0% { 
+                border-color: rgba(255, 255, 255, 0.25); 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.05); 
+            }
+            50% { 
+                border-color: rgba(56, 189, 248, 0.65); 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(56, 189, 248, 0.18); 
+            }
+            100% { 
+                border-color: rgba(255, 255, 255, 0.25); 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.05); 
+            }
         }
 
         .formula-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
@@ -881,6 +878,9 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+        (async () => {
+            // Check memory persistence
+        })();
         if (localStorage.getItem('masterlotto_vip_logged') === 'true') {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
