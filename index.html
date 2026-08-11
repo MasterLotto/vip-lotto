@@ -332,14 +332,23 @@
         .consensus-title { font-size: 0.82rem; color: #34d399; font-weight: 600; margin-bottom: 6px; }
         .consensus-numbers { font-size: 1.25rem; font-weight: 700; color: #ffffff; font-family: monospace; letter-spacing: 1px; }
 
-        /* การ์ดผลลัพธ์สูตร (Formula Result Card) พร้อมแถบซ้ายละมุนตา */
+        /* การ์ดผลลัพธ์สูตร (Formula Result Card) พร้อมกรอบเปลี่ยนสีหลายโทนช้าๆ ละมุนตา */
         .formula-card { 
             background: linear-gradient(145deg, rgba(12,19,33,0.92), rgba(18,27,45,0.85)); 
             padding: 16px; margin-bottom: 14px; border-radius: 20px; 
             border: 1px solid rgba(255,255,255,0.08);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             text-align: left; position: relative; overflow: hidden;
+            animation: borderMultiColorGlow 12s infinite ease-in-out;
         }
+        @keyframes borderMultiColorGlow {
+            0% { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6, 182, 212, 0.1); }
+            25% { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(168, 85, 247, 0.1); }
+            50% { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(245, 158, 11, 0.1); }
+            75% { border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(16, 185, 129, 0.1); }
+            100% { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(6, 182, 212, 0.1); }
+        }
+
         .formula-card::before {
             content: ''; position: absolute; top:0; left:0; width:4px; height:100%;
             background: linear-gradient(180deg, #06b6d4, #3b82f6);
@@ -381,6 +390,21 @@
         .copy-row:active { transform: scale(0.98); }
         
         .copy-label { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; }
+        
+        /* สไตล์เลขเด่นหลังคำว่า ชุดเด่น / ชุดรอง พร้อมเอฟเฟกต์สีสันกระพริบสลับโทนช้าๆ หรูหรา */
+        .highlight-digit {
+            display: inline-block;
+            font-weight: 700;
+            padding: 0 4px;
+            animation: digitColorShift 6s infinite ease-in-out;
+        }
+        @keyframes digitColorShift {
+            0% { color: #38bdf8; text-shadow: 0 0 8px rgba(56,189,248,0.6); }
+            33% { color: #f472b6; text-shadow: 0 0 8px rgba(244,114,182,0.6); }
+            66% { color: #34d399; text-shadow: 0 0 8px rgba(52,211,153,0.6); }
+            100% { color: #38bdf8; text-shadow: 0 0 8px rgba(56,189,248,0.6); }
+        }
+
         .copy-numbers { font-family: monospace; font-size: 0.98rem; font-weight: 700; letter-spacing: 0.8px; }
         .main-set { color: #34d399; }
         .sub-set { color: #38bdf8; }
@@ -474,7 +498,7 @@
             <p>ประมวลผลเจาะเลขเด็ดด้วยอัลกอริทึมขั้นสูง</p>
         </div>
 
-        <!-- แถบแสดงเลขงวดล่าสุดที่ระบบบันทึกไว้ (ถอดวงเล็บออกตามต้องการ) -->
+        <!-- แถบแสดงเลขงวดล่าสุดที่ระบบบันทึกไว้ -->
         <div id="lastSessionBadge" class="last-session-badge">
             <span class="glow-icon">🔮</span> อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> | 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
         </div>
@@ -563,7 +587,6 @@
     }
 
     function handleNumericInput(element, targetLength, nextFieldId) {
-        // กรองเอาเฉพาะตัวเลข 0-9 เท่านั้น ป้องกันตัวอักษรมั่วซั่ว
         element.value = element.value.replace(/[^0-9]/g, '');
         
         if (element.value.length >= targetLength) {
@@ -780,7 +803,8 @@
             f.set.forEach((dn, sIdx) => {
                 let pairs = ft.map(tn => `${dn}${tn}`).join(' ');
                 let colorClass = (sIdx === 0) ? "main-set" : "sub-set";
-                let labelText = (sIdx === 0) ? `ชุดเด่น [${dn}]` : `ชุดรอง [${dn}]`;
+                // ถอดวงเล็บออก และใส่ span พร้อมเอฟเฟกต์สีสันกระพริบสลับโทนช้าๆ
+                let labelText = (sIdx === 0) ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
                 
                 cardHtml += `
                     <div class="copy-row" onclick="copyText('${pairs}')">
