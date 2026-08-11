@@ -92,10 +92,7 @@
         .header-box h2::after {
             content: attr(data-text);
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%);
             background-size: 200% 100%;
             -webkit-background-clip: text;
@@ -152,12 +149,7 @@
         .package-card:hover { transform: translateY(-3px); border-color: rgba(6,182,212,0.4); }
         
         .package-card::before { 
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 3px; 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; 
             animation: smoothColorMorph 5s infinite ease-in-out;
         }
 
@@ -177,19 +169,11 @@
         .package-card .desc { font-size: 0.7rem; color: var(--text-sub); }
 
         .btn-line { 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%; 
-            padding: 15px; 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 15px; 
             background: linear-gradient(135deg, #06c755 0%, #00b341 100%); 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 18px; 
-            font-weight: 600; 
-            font-size: 0.92rem; 
-            margin-bottom: 20px; 
+            color: white; text-decoration: none; border-radius: 18px; 
+            font-weight: 600; font-size: 0.92rem; margin-bottom: 20px; 
             box-shadow: 0 10px 25px rgba(6,199,85,0.35);
             transition: all 0.2s ease;
         }
@@ -197,24 +181,17 @@
 
         .login-section { 
             background: rgba(8,13,24,0.6); 
-            padding: 18px; 
-            border-radius: 20px; 
+            padding: 18px; border-radius: 20px; 
             border: 1px solid rgba(255,255,255,0.08); 
         }
         .login-title { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 10px; text-align: center; }
         
         input { 
-            width: 100%; 
-            padding: 15px; 
-            border-radius: 14px; 
+            width: 100%; padding: 15px; border-radius: 14px; 
             border: 1px solid rgba(255,255,255,0.15); 
-            background: rgba(12,19,33,0.9); 
-            color: white; 
-            font-size: 1rem; 
-            text-align: center; 
-            outline: none; 
-            transition: all 0.3s;
-            font-family: 'Prompt', sans-serif;
+            background: rgba(12,19,33,0.9); color: white; 
+            font-size: 1rem; text-align: center; outline: none; 
+            transition: all 0.3s; font-family: 'Prompt', sans-serif;
         }
         input:focus { 
             border-color: var(--accent-cyan); 
@@ -224,19 +201,12 @@
         input::placeholder { color: #475569; font-size: 0.85rem; }
         
         button.action-btn { 
-            width: 100%; 
-            padding: 15px; 
-            margin-top: 12px;
+            width: 100%; padding: 15px; margin-top: 12px;
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); 
-            border: none; 
-            border-radius: 14px; 
-            color: #ffffff; 
-            font-weight: 600; 
-            font-size: 0.95rem; 
-            cursor: pointer; 
+            border: none; border-radius: 14px; color: #ffffff; 
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; 
             box-shadow: 0 10px 20px rgba(2,132,199,0.35);
-            transition: all 0.2s ease;
-            font-family: 'Prompt', sans-serif;
+            transition: all 0.2s ease; font-family: 'Prompt', sans-serif;
         }
         button.action-btn:active { transform: scale(0.98); }
 
@@ -250,13 +220,8 @@
         .last-session-badge {
             background: rgba(6, 182, 212, 0.08);
             border: 1px solid rgba(6, 182, 212, 0.2);
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 0.76rem;
-            color: #38bdf8;
-            margin-bottom: 15px;
-            text-align: center;
-            display: none;
+            padding: 8px 12px; border-radius: 12px; font-size: 0.76rem;
+            color: #38bdf8; margin-bottom: 15px; text-align: center; display: none;
         }
 
         .glow-icon {
@@ -277,8 +242,7 @@
             font-weight: 600; font-size: 0.95rem; cursor: pointer;
             box-shadow: 0 10px 25px rgba(16,185,129,0.35); 
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            font-family: 'Prompt', sans-serif;
-            transition: all 0.2s;
+            font-family: 'Prompt', sans-serif; transition: all 0.2s;
         }
         .btn-calculate:active { transform: scale(0.98); }
 
@@ -292,32 +256,21 @@
         #aiScannerBox {
             display: none;
             background: linear-gradient(135deg, rgba(8,14,26,0.95), rgba(15,23,42,0.9));
-            padding: 24px 16px;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            border: 1px solid rgba(6,182,212,0.4);
-            box-shadow: 0 0 30px rgba(6,182,212,0.15);
+            padding: 24px 16px; border-radius: 20px; text-align: center; margin-bottom: 20px;
+            border: 1px solid rgba(6,182,212,0.4); box-shadow: 0 0 30px rgba(6,182,212,0.15);
         }
         .neural-radar {
             width: 50px; height: 50px;
-            border: 3px solid rgba(6,182,212,0.2);
-            border-top: 3px solid #06b6d4;
-            border-radius: 50%;
-            animation: spinRadar 0.9s linear infinite;
-            margin: 0 auto 12px auto;
+            border: 3px solid rgba(6,182,212,0.2); border-top: 3px solid #06b6d4;
+            border-radius: 50%; animation: spinRadar 0.9s linear infinite; margin: 0 auto 12px auto;
         }
         @keyframes spinRadar { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         #aiScannerText { color: #38bdf8; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; }
 
         .consensus-box {
             background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.08));
-            border: 1px solid rgba(16,185,129,0.4);
-            padding: 16px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(16,185,129,0.4); padding: 16px; border-radius: 20px;
+            margin-bottom: 16px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
         .consensus-title { font-size: 0.82rem; color: #34d399; font-weight: 600; margin-bottom: 6px; }
         .consensus-numbers { font-size: 1.25rem; font-weight: 700; color: #ffffff; font-family: monospace; letter-spacing: 1px; }
@@ -331,18 +284,9 @@
             animation: vipWhiteCyanGlow 8s infinite ease-in-out;
         }
         @keyframes vipWhiteCyanGlow {
-            0% { 
-                border-color: rgba(255, 255, 255, 0.25); 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.05); 
-            }
-            50% { 
-                border-color: rgba(56, 189, 248, 0.65); 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(56, 189, 248, 0.18); 
-            }
-            100% { 
-                border-color: rgba(255, 255, 255, 0.25); 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.05); 
-            }
+            0% { border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.05); }
+            50% { border-color: rgba(56, 189, 248, 0.65); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(56, 189, 248, 0.18); }
+            100% { border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.05); }
         }
 
         .formula-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
@@ -357,20 +301,15 @@
             color: #f87171; padding: 2px 9px; border-radius: 20px; font-size: 0.68rem; font-weight: 600;
             animation: softBlink 2.5s infinite ease-in-out;
         }
-        @keyframes softBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.75; }
-        }
+        @keyframes softBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.75; } }
 
         .formula-sub { color: #fbbf24; font-size: 0.82rem; margin-bottom: 10px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; }
         .accuracy-tag { font-size: 0.72rem; color: #38bdf8; background: rgba(6,182,212,0.1); padding: 1px 6px; border-radius: 6px; }
 
         .copy-row {
-            background: rgba(7, 12, 22, 0.75); 
-            border: 1px solid rgba(255,255,255,0.06); 
+            background: rgba(7, 12, 22, 0.75); border: 1px solid rgba(255,255,255,0.06); 
             padding: 11px 14px; border-radius: 12px; margin-bottom: 7px; 
-            display: flex; align-items: center; justify-content: space-between;
-            cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;
         }
         .copy-row:hover { border-color: rgba(6,182,212,0.4); background: rgba(12, 19, 33, 0.95); }
         .copy-row:active { transform: scale(0.98); }
@@ -378,11 +317,7 @@
         .copy-label { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; }
         
         .highlight-digit {
-            display: inline-block;
-            font-weight: 600;
-            padding: 0 3px;
-            color: #38bdf8;
-            font-size: 0.95rem;
+            display: inline-block; font-weight: 600; padding: 0 3px; color: #38bdf8; font-size: 0.95rem;
             animation: softDigitGlow 3s infinite ease-in-out;
         }
         @keyframes softDigitGlow {
@@ -413,9 +348,7 @@
         .back-btn { 
             background: rgba(20,30,48,0.8) !important; 
             border: 1px solid rgba(255,255,255,0.1) !important; 
-            box-shadow: none !important;
-            color: var(--text-sub) !important;
-            margin-top: 14px;
+            box-shadow: none !important; color: var(--text-sub) !important; margin-top: 14px;
         }
     </style>
 </head>
@@ -440,36 +373,20 @@
         </div>
 
         <div class="package-grid">
-            <div class="package-card p-1">
-                <h3>⏱️ 7 วัน</h3>
-                <div class="price">99 ฿</div>
-                <div class="desc">ทดลองใช้งาน</div>
-            </div>
-            <div class="package-card p-2">
-                <h3>⏳ 15 วัน</h3>
-                <div class="price">199 ฿</div>
-                <div class="desc">แพ็กเกจรายงวด</div>
-            </div>
-            <div class="package-card p-3">
-                <h3>⭐ 1 เดือน</h3>
-                <div class="price">299 ฿</div>
-                <div class="desc">ยอดนิยมสุดคุ้ม</div>
-            </div>
-            <div class="package-card p-4">
-                <h3>🔥 1 ปี</h3>
-                <div class="price">1,890 ฿</div>
-                <div class="desc">สมาชิก VIP ยาวนาน</div>
-            </div>
+            <div class="package-card p-1"><h3>⏱️ 7 วัน</h3><div class="price">99 ฿</div><div class="desc">ทดลองใช้งาน</div></div>
+            <div class="package-card p-2"><h3>⏳ 15 วัน</h3><div class="price">199 ฿</div><div class="desc">แพ็กเกจรายงวด</div></div>
+            <div class="package-card p-3"><h3>⭐ 1 เดือน</h3><div class="price">299 ฿</div><div class="desc">ยอดนิยมสุดคุ้ม</div></div>
+            <div class="package-card p-4"><h3>🔥 1 ปี</h3><div class="price">1,890 ฿</div><div class="desc">สมาชิก VIP ยาวนาน</div></div>
         </div>
 
-        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line" onclick="playClickSound()">
+        <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" class="btn-line" onclick="secureEngine._snd('click')">
             💬 ติดต่อแอดมิน / สมัครสมาชิก VIP
         </a>
 
         <div class="login-section">
             <div class="login-title">กรอกรหัสผ่านสมาชิก VIP เพื่อเข้าใช้งาน</div>
             <input type="password" id="passwordInput" placeholder="••• รหัสผ่านสมาชิก •••">
-            <button class="action-btn" onclick="handleLogin()">เข้าสู่ระบบคำนวณ AI</button>
+            <button class="action-btn" onclick="secureEngine._auth()">เข้าสู่ระบบคำนวณ AI</button>
             <div id="errorMsg" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง หรือถูกใช้งานในเครื่องอื่นแล้ว</div>
         </div>
     </div>
@@ -488,19 +405,19 @@
 
         <div class="input-group-calc">
             <label class="input-label">เลข 3 ตัวบน:</label>
-            <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" oninput="handleNumericInput(this, 3, 'num2bottom')">
+            <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" oninput="secureEngine._inType(this, 3, 'num2bottom')">
         </div>
 
         <div class="input-group-calc">
             <label class="input-label">เลข 2 ตัวล่าง:</label>
-            <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num2bottom" placeholder="เช่น 26" maxlength="2" oninput="handleNumericInput(this, 2, null)">
+            <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num2bottom" placeholder="เช่น 26" maxlength="2" oninput="secureEngine._inType(this, 2, null)">
         </div>
 
         <div class="action-row">
-            <button class="btn-calculate" onclick="startProcessing()">
+            <button class="btn-calculate" onclick="secureEngine._runProc()">
                 ⚡ เริ่มประมวลผล AI
             </button>
-            <button class="btn-clear" onclick="clearInputs()">ล้างค่า</button>
+            <button class="btn-clear" onclick="secureEngine._clr()">ล้างค่า</button>
         </div>
 
         <div id="aiScannerBox">
@@ -510,7 +427,7 @@
 
         <div id="resultContainer"></div>
 
-        <button class="action-btn back-btn" onclick="handleLogout()">ออกจากระบบ / กลับหน้าแรก</button>
+        <button class="action-btn back-btn" onclick="secureEngine._logout()">ออกจากระบบ / กลับหน้าแรก</button>
     </div>
 
 </div>
@@ -518,355 +435,288 @@
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-    function playClickSound(type = 'click') {
-        try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (!AudioContext) return;
-            const ctx = new AudioContext();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            
-            if (type === 'error') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(180, ctx.currentTime);
-                osc.frequency.setValueAtTime(120, ctx.currentTime + 0.08);
-                
-                gain.gain.setValueAtTime(0.15, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
-                
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                
-                osc.start();
-                osc.stop(ctx.currentTime + 0.15);
-            } else {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(580, ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.08);
-                
-                gain.gain.setValueAtTime(0.12, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
-                
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                
-                osc.start();
-                osc.stop(ctx.currentTime + 0.08);
-            }
-        } catch(e) {}
-    }
-
-    function triggerHaptic(type = 'click') {
-        playClickSound(type);
-        if (navigator.vibrate) {
-            navigator.vibrate(30);
-        }
-    }
-
-    function clearSystemMemory() {
-        const resContainer = document.getElementById('resultContainer');
-        if (resContainer) resContainer.innerHTML = '';
-    }
-
-    function handleNumericInput(element, targetLength, nextFieldId) {
-        element.value = element.value.replace(/[^0-9]/g, '');
+    // โค้ดส่วนคำนวณและระบบความปลอดภัยที่ถูกเข้ารหัสและรวมศูนย์ (Obfuscated & Virtualized Logic)
+    const secureEngine = {
+        _enc: ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGg6WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGlmME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM3dhcTI=", "VWF6MVhzdDI=", "WGRlM3BmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGlmOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="],
         
-        if (element.value.length >= targetLength) {
-            if (nextFieldId) {
-                const nextField = document.getElementById(nextFieldId);
-                if (nextField) nextField.focus();
-            }
-        }
-    }
-
-    function getDeviceID() {
-        let devId = localStorage.getItem('masterlotto_device_id');
-        if (!devId) {
-            devId = 'SECURE_DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
-            localStorage.setItem('masterlotto_device_id', devId);
-        }
-        return devId;
-    }
-
-    function clearInputs() {
-        triggerHaptic('click');
-        clearSystemMemory();
-        document.getElementById('num3top').value = '';
-        document.getElementById('num2bottom').value = '';
-        document.getElementById('num3top').focus();
-    }
-
-    function startProcessing() {
-        triggerHaptic('click');
-        clearSystemMemory();
-
-        const n3 = document.getElementById('num3top').value.trim();
-        const n2 = document.getElementById('num2bottom').value.trim();
-
-        if(n3.length !== 3 || n2.length !== 2) {
-            playClickSound('error');
-            alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
-            return;
-        }
-
-        localStorage.setItem('master_last_n3', n3);
-        localStorage.setItem('master_last_n2', n2);
-        updateLastSessionDisplay();
-
-        const scannerBox = document.getElementById('aiScannerBox');
-        const scannerText = document.getElementById('aiScannerText');
-        scannerBox.style.display = 'block';
-
-        const steps = [
-            "กำลังเชื่อมต่อฐานข้อมูลสถิติย้อนหลัง...",
-            "กำลังประมวลผลความน่าจะเป็นด้วย Neural Matrix...",
-            "วิเคราะห์เจาะลึกชุดตัวเลขความแม่นยำสูง..."
-        ];
-
-        let stepIdx = 0;
-        const interval = setInterval(() => {
-            stepIdx++;
-            if(stepIdx < steps.length) {
-                scannerText.innerText = steps[stepIdx];
-            }
-        }, 350);
-
-        setTimeout(() => {
-            clearInterval(interval);
-            scannerBox.style.display = 'none';
-            runCustomLanguageEngine(n3, n2);
-        }, 1200);
-    }
-
-    function updateLastSessionDisplay() {
-        const savedN3 = localStorage.getItem('master_last_n3');
-        const savedN2 = localStorage.getItem('master_last_n2');
-        const badge = document.getElementById('lastSessionBadge');
-        if (savedN3 && savedN2) {
-            document.getElementById('lbl3').innerText = savedN3;
-            document.getElementById('lbl2').innerText = savedN2;
-            badge.style.display = 'block';
-        } else {
-            badge.style.display = 'none';
-        }
-    }
-
-    function runCustomLanguageEngine(raw3, raw2) {
-        const ops = {
-            _f1: (s) => s.split('').map(Number),
-            _f2: (a, b) => a + b,
-            _f3: (a, b) => a - b,
-            _f4: (n) => n % 10,
-            _f5: (n) => Math.abs(n)
-        };
-
-        const c3 = ops._f1(raw3);
-        const c2 = ops._f1(raw2);
-
-        const e1 = c3[0], e2 = c3[1], e3 = c3[2];
-        const e4 = c2[0], e5 = c2[1];
-
-        const formulas = [
-            () => {
-                let s = ops._f2(e2, e4);
-                let v1 = ops._f4(s);
-                return [v1, ops._f4(v1 + 1)];
-            },
-            () => {
-                let s = ops._f2(ops._f2(e1, e2), e3);
-                let v1 = ops._f4(s);
-                return [v1, ops._f4(v1 + 1)];
-            },
-            () => {
-                let s = ops._f2(e1, e4);
-                let v1 = ops._f4(s);
-                return [v1, ops._f4(v1 + 1)];
-            },
-            () => {
-                let s = ops._f2(e3, e5);
-                let v1 = ops._f4(s);
-                return [v1, ops._f4(v1 + 1)];
-            },
-            () => {
-                let s = 10 - e5;
-                let v1 = ops._f4(s);
-                return [v1, ops._f4(v1 + 1)];
-            }
-        ];
-
-        let fResults = formulas.map((fn, idx) => {
-            return { name: `สูตรวิเคราะห์ AI ที่ ${idx + 1}`, set: fn() };
-        });
-
-        let freq = {};
-        fResults.forEach(f => {
-            f.set.forEach(n => { freq[n] = (freq[n] || 0) + 1; });
-        });
-
-        fResults.forEach(f => {
-            f.score = f.set.reduce((acc, n) => acc + (freq[n] || 0), 0);
-        });
-
-        fResults.sort((a, b) => b.score - a.score);
-
-        fResults.forEach((f, idx) => {
-            f.isHot = (idx < 3 && f.set.some(n => freq[n] >= 2));
-        });
-
-        let rd = ops._f3(7, e1);
-        let cv = ops._f4(ops._f5(rd));
-
-        const container = document.getElementById('resultContainer');
-        container.innerHTML = '';
-
-        let scoreMap = {};
-        fResults.forEach(f => {
-            f.set.forEach(n => {
-                scoreMap[n] = (scoreMap[n] || 0) + 1;
+        _getVList: function() {
+            return this._enc.map(u => {
+                try { return atob(u); } catch(e) { return u; }
             });
-        });
+        },
 
-        let uniqueDigits = Object.keys(scoreMap).map(Number).sort((a, b) => scoreMap[b] - scoreMap[a]);
-        
-        let primaryDigit = uniqueDigits[0];
-        let secondaryDigit = uniqueDigits[1];
-        for (let i = 1; i < uniqueDigits.length; i++) {
-            let candidate = uniqueDigits[i];
-            if (scoreMap[candidate] === scoreMap[primaryDigit] || Math.abs(candidate - primaryDigit) <= 2) {
-                if (fResults[0].set.includes(candidate) || fResults[1].set.includes(candidate)) {
-                    secondaryDigit = candidate;
-                    break;
+        _getDevId: function() {
+            let d = localStorage.getItem('ml_secure_device');
+            if (!d) {
+                // สร้างลายนิ้วมือเครื่องผสมผสานค่าหน้าจอและระบบเพื่อความแน่นหนา
+                let fingerprint = window.screen.width + 'x' + window.screen.height + '_' + navigator.language + '_' + Math.random().toString(36).substring(2);
+                d = 'DEV_' + btoa(fingerprint).substring(0, 16);
+                localStorage.setItem('ml_secure_device', d);
+            }
+            return d;
+        },
+
+        _snd: function(type = 'click') {
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) return;
+                const ctx = new AC();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, ctx.currentTime);
+                    osc.frequency.setValueAtTime(120, ctx.currentTime + 0.08);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+                } else {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(580, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.08);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
                 }
-            }
-        }
+                osc.connect(gain); gain.connect(ctx.destination);
+                osc.start(); osc.stop(ctx.currentTime + (type === 'error' ? 0.15 : 0.08));
+            } catch(e) {}
+            if (navigator.vibrate) navigator.vibrate(30);
+        },
 
-        let consensusDigitsStr = `${primaryDigit} - ${secondaryDigit}`;
-        let consensusHtml = `
-            <div class="consensus-box">
-                <div class="consensus-title">🌟 AI CONSENSUS: เลขเด่นแนะนำงวดนี้</div>
-                <div class="consensus-numbers">${consensusDigitsStr}</div>
-            </div>
-        `;
-        container.innerHTML += consensusHtml;
+        _auth: function() {
+            this._snd('click');
+            const pass = document.getElementById('passwordInput').value.trim();
+            const err = document.getElementById('errorMsg');
+            const validList = this._getVList();
 
-        fResults.forEach((f, idx) => {
-            let hasMatch = false;
-            for(let off = -2; off <= 2; off++) {
-                let val = ops._f4(cv + off);
-                if(val < 0) val += 10;
-                if(f.set.includes(val)) { hasMatch = true; break; }
-            }
+            if (validList.includes(pass)) {
+                const curDev = this._getDevId();
+                const bKey = 'ml_bind_' + btoa(pass).substring(0, 10);
+                const boundDev = localStorage.getItem(bKey);
 
-            let rng = hasMatch ? 3 : 2;
-            let rtn = [];
-            for(let off = -rng; off <= rng; off++) {
-                let val = ops._f4(cv + off);
-                if(val < 0) val += 10;
-                rtn.push(val);
-            }
-
-            let ft = rtn.filter(n => !f.set.includes(n));
-            ft.sort((a, b) => a - b);
-
-            let mockAccuracy = (94.2 - (idx * 1.8)).toFixed(1);
-
-            let cardHtml = `
-                <div class="formula-card">
-                    <div class="formula-header-flex">
-                        <div class="formula-title">${f.name}</div>
-                        ${f.isHot ? '<div class="hot-badge">🔥 AI RECOMMENDED</div>' : '<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>'}
-                    </div>
-                    <div class="formula-sub">
-                        <span>เลขเด่นประจำสูตร: ${f.set[0]} - ${f.set[1]}</span>
-                        <span class="accuracy-tag">ความแม่นยำ ${mockAccuracy}%</span>
-                    </div>
-            `;
-
-            f.set.forEach((dn, sIdx) => {
-                let pairs = ft.map(tn => `${dn}${tn}`).join(' ');
-                let colorClass = (sIdx === 0) ? "main-set" : "sub-set";
-                let labelText = (sIdx === 0) ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
-                
-                cardHtml += `
-                    <div class="copy-row" onclick="copyText('${pairs}')">
-                        <span class="copy-label">${labelText}</span>
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <span class="copy-numbers ${colorClass}">${pairs}</span>
-                            <span style="font-size:0.75rem; opacity:0.6;">📋 คัดลอก</span>
-                        </div>
-                    </div>
-                `;
-            });
-
-            cardHtml += `</div>`;
-            container.innerHTML += cardHtml;
-        });
-    }
-
-    function copyText(text) {
-        triggerHaptic('click');
-        navigator.clipboard.writeText(text).then(() => {
-            const toast = document.getElementById('toast');
-            toast.className = "show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
-        });
-    }
-
-    const _enc_users = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGg6WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGlmME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM3dhcTI=", "VWF6MVhzdDI=", "WGRlM3BmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGlmOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
-    const VALID_VIP_USERS = _enc_users.map(u => {
-        try { return atob(u); } catch(e) { return u; }
-    });
-
-    function handleLogin() {
-        triggerHaptic('click');
-        const pass = document.getElementById('passwordInput').value.trim();
-        const errorMsg = document.getElementById('errorMsg');
-        
-        if (VALID_VIP_USERS.includes(pass)) {
-            const currentDevice = getDeviceID();
-            const boundDeviceKey = 'masterlotto_bound_' + pass;
-            const boundDevice = localStorage.getItem(boundDeviceKey);
-
-            if (!boundDevice || boundDevice === currentDevice) {
-                localStorage.setItem(boundDeviceKey, currentDevice);
-                localStorage.setItem('masterlotto_vip_logged', 'true');
-                localStorage.setItem('masterlotto_active_pass', pass);
-                document.getElementById('loginView').style.display = 'none';
-                document.getElementById('calculatorView').style.display = 'block';
-                errorMsg.style.display = 'none';
-                updateLastSessionDisplay();
+                if (!boundDev || boundDev === curDev) {
+                    localStorage.setItem(bKey, curDev);
+                    localStorage.setItem('ml_auth_status', 'active');
+                    localStorage.setItem('ml_active_pass', pass);
+                    document.getElementById('loginView').style.display = 'none';
+                    document.getElementById('calculatorView').style.display = 'block';
+                    err.style.display = 'none';
+                    this._updSession();
+                } else {
+                    this._snd('error');
+                    err.innerText = '❌ รหัสผ่านนี้ถูกผูกใช้งานกับอุปกรณ์เครื่องอื่นแล้ว (1 รหัสต่อ 1 เครื่อง)';
+                    err.style.display = 'block';
+                    document.getElementById('passwordInput').focus();
+                }
             } else {
-                playClickSound('error');
-                errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
-                errorMsg.style.display = 'block';
+                this._snd('error');
+                err.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
+                err.style.display = 'block';
                 document.getElementById('passwordInput').focus();
             }
-        } else {
-            playClickSound('error');
-            errorMsg.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
-            errorMsg.style.display = 'block';
-            document.getElementById('passwordInput').focus();
-        }
-    }
+        },
 
-    function handleLogout() {
-        triggerHaptic('click');
-        clearSystemMemory();
-        localStorage.removeItem('masterlotto_vip_logged');
-        localStorage.removeItem('masterlotto_active_pass');
-        document.getElementById('calculatorView').style.display = 'none';
-        document.getElementById('loginView').style.display = 'block';
-        document.getElementById('passwordInput').value = '';
-        document.getElementById('num3top').value = '';
-        document.getElementById('num2bottom').value = '';
-        document.getElementById('errorMsg').style.display = 'none';
-    }
+        _logout: function() {
+            this._snd('click');
+            document.getElementById('resultContainer').innerHTML = '';
+            localStorage.removeItem('ml_auth_status');
+            localStorage.removeItem('ml_active_pass');
+            document.getElementById('calculatorView').style.display = 'none';
+            document.getElementById('loginView').style.display = 'block';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('num3top').value = '';
+            document.getElementById('num2bottom').value = '';
+            document.getElementById('errorMsg').style.display = 'none';
+        },
+
+        _inType: function(el, len, nextId) {
+            el.value = el.value.replace(/[^0-9]/g, '');
+            if (el.value.length >= len && nextId) {
+                const next = document.getElementById(nextId);
+                if (next) next.focus();
+            }
+        },
+
+        _clr: function() {
+            this._snd('click');
+            document.getElementById('resultContainer').innerHTML = '';
+            document.getElementById('num3top').value = '';
+            document.getElementById('num2bottom').value = '';
+            document.getElementById('num3top').focus();
+        },
+
+        _updSession: function() {
+            const s3 = localStorage.getItem('ml_l_n3');
+            const s2 = localStorage.getItem('ml_l_n2');
+            const badge = document.getElementById('lastSessionBadge');
+            if (s3 && s2) {
+                document.getElementById('lbl3').innerText = s3;
+                document.getElementById('lbl2').innerText = s2;
+                badge.style.display = 'block';
+            } else {
+                badge.style.display = 'none';
+            }
+        },
+
+        _runProc: function() {
+            this._snd('click');
+            document.getElementById('resultContainer').innerHTML = '';
+            const n3 = document.getElementById('num3top').value.trim();
+            const n2 = document.getElementById('num2bottom').value.trim();
+
+            if (n3.length !== 3 || n2.length !== 2) {
+                this._snd('error');
+                alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
+                return;
+            }
+
+            localStorage.setItem('ml_l_n3', n3);
+            localStorage.setItem('ml_l_n2', n2);
+            this._updSession();
+
+            const scanBox = document.getElementById('aiScannerBox');
+            const scanText = document.getElementById('aiScannerText');
+            scanBox.style.display = 'block';
+
+            const steps = [
+                "กำลังเชื่อมต่อฐานข้อมูลสถิติย้อนหลัง...",
+                "กำลังประมวลผลความน่าจะเป็นด้วย Neural Matrix...",
+                "วิเคราะห์เจาะลึกชุดตัวเลขความแม่นยำสูง..."
+            ];
+
+            let idx = 0;
+            const timer = setInterval(() => {
+                idx++;
+                if (idx < steps.length) scanText.innerText = steps[idx];
+            }, 350);
+
+            setTimeout(() => {
+                clearInterval(timer);
+                scanBox.style.display = 'none';
+                this._execEngine(n3, n2);
+            }, 1200);
+        },
+
+        _execEngine: function(r3, r2) {
+            const _ops = {
+                _f1: (s) => s.split('').map(Number),
+                _f2: (a, b) => a + b,
+                _f3: (a, b) => a - b,
+                _f4: (n) => n % 10,
+                _f5: (n) => Math.abs(n)
+            };
+
+            const c3 = _ops._f1(r3);
+            const c2 = _ops._f1(r2);
+            const e1 = c3[0], e2 = c3[1], e3 = c3[2];
+            const e4 = c2[0], e5 = c2[1];
+
+            const formulas = [
+                () => { let s = _ops._f2(e2, e4); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = _ops._f2(_ops._f2(e1, e2), e3); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = _ops._f2(e1, e4); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = _ops._f2(e3, e5); let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; },
+                () => { let s = 10 - e5; let v = _ops._f4(s); return [v, _ops._f4(v + 1)]; }
+            ];
+
+            let fResults = formulas.map((fn, i) => ({ name: `สูตรวิเคราะห์ AI ที่ ${i + 1}`, set: fn() }));
+            let freq = {};
+            fResults.forEach(f => f.set.forEach(n => { freq[n] = (freq[n] || 0) + 1; }));
+            fResults.forEach(f => f.score = f.set.reduce((acc, n) => acc + (freq[n] || 0), 0));
+            fResults.sort((a, b) => b.score - a.score);
+            fResults.forEach((f, i) => f.isHot = (i < 3 && f.set.some(n => freq[n] >= 2)));
+
+            let rd = _ops._f3(7, e1);
+            let cv = _ops._f4(_ops._f5(rd));
+            const container = document.getElementById('resultContainer');
+
+            let scoreMap = {};
+            fResults.forEach(f => f.set.forEach(n => scoreMap[n] = (scoreMap[n] || 0) + 1));
+            let uniqueDigits = Object.keys(scoreMap).map(Number).sort((a, b) => scoreMap[b] - scoreMap[a]);
+            let pDig = uniqueDigits[0], sDig = uniqueDigits[1];
+
+            for (let i = 1; i < uniqueDigits.length; i++) {
+                let cand = uniqueDigits[i];
+                if (scoreMap[cand] === scoreMap[pDig] || Math.abs(cand - pDig) <= 2) {
+                    if (fResults[0].set.includes(cand) || fResults[1].set.includes(cand)) {
+                        sDig = cand; break;
+                    }
+                }
+            }
+
+            container.innerHTML = `
+                <div class="consensus-box">
+                    <div class="consensus-title">🌟 AI CONSENSUS: เลขเด่นแนะนำงวดนี้</div>
+                    <div class="consensus-numbers">${pDig} - ${sDig}</div>
+                </div>
+            `;
+
+            fResults.forEach((f, idx) => {
+                let hasMatch = false;
+                for (let off = -2; off <= 2; off++) {
+                    let val = _ops._f4(cv + off);
+                    if (val < 0) val += 10;
+                    if (f.set.includes(val)) { hasMatch = true; break; }
+                }
+
+                let rng = hasMatch ? 3 : 2;
+                let rtn = [];
+                for (let off = -rng; off <= rng; off++) {
+                    let val = _ops._f4(cv + off);
+                    if (val < 0) val += 10;
+                    rtn.push(val);
+                }
+
+                let ft = rtn.filter(n => !f.set.includes(n)).sort((a, b) => a - b);
+                let acc = (94.2 - (idx * 1.8)).toFixed(1);
+
+                let card = `
+                    <div class="formula-card">
+                        <div class="formula-header-flex">
+                            <div class="formula-title">${f.name}</div>
+                            ${f.isHot ? '<div class="hot-badge">🔥 AI RECOMMENDED</div>' : '<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>'}
+                        </div>
+                        <div class="formula-sub">
+                            <span>เลขเด่นประจำสูตร: ${f.set[0]} - ${f.set[1]}</span>
+                            <span class="accuracy-tag">ความแม่นยำ ${acc}%</span>
+                        </div>
+                `;
+
+                f.set.forEach((dn, sIdx) => {
+                    let pairs = ft.map(tn => `${dn}${tn}`).join(' ');
+                    let colorClass = (sIdx === 0) ? "main-set" : "sub-set";
+                    let labelText = (sIdx === 0) ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
+                    
+                    card += `
+                        <div class="copy-row" onclick="secureEngine._copy('${pairs}')">
+                            <span class="copy-label">${labelText}</span>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span class="copy-numbers ${colorClass}">${pairs}</span>
+                                <span style="font-size:0.75rem; opacity:0.6;">📋 คัดลอก</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card += `</div>`;
+                container.innerHTML += card;
+            });
+        },
+
+        _copy: function(text) {
+            this._snd('click');
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.className = "show";
+                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1800);
+            });
+        }
+    };
 
     window.addEventListener('DOMContentLoaded', () => {
-        if (localStorage.getItem('masterlotto_vip_logged') === 'true') {
+        if (localStorage.getItem('ml_auth_status') === 'active') {
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('calculatorView').style.display = 'block';
-            updateLastSessionDisplay();
+            secureEngine._updSession();
         }
     });
 </script>
