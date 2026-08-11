@@ -450,28 +450,28 @@
 
 <script>
     function clearSystemMemory() {
-        const container = document.getElementById('resultContainer');
-        if (container) container.innerHTML = '';
+        const _0x11a = document.getElementById('resultContainer');
+        if (_0x11a) _0x11a.innerHTML = '';
     }
 
     function getDeviceID() {
-        let deviceId = localStorage.getItem('masterlotto_device_id');
-        if (!deviceId) {
-            deviceId = 'DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
-            localStorage.setItem('masterlotto_device_id', deviceId);
+        let _0x22b = localStorage.getItem('masterlotto_device_id');
+        if (!_0x22b) {
+            _0x22b = 'DEV_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+            localStorage.setItem('masterlotto_device_id', _0x22b);
         }
-        return deviceId;
+        return _0x22b;
     }
 
     let currentOnline = 642;
     function simulateOnlineCount() {
-        const change = (Math.random() < 0.5 ? 1 : -1) * Math.floor(Math.random() * 3 + 1);
-        const nextVal = currentOnline + change;
-        if (nextVal >= 600 && nextVal <= 700) {
-            currentOnline = nextVal;
+        const _0x33c = (Math.random() < 0.5 ? 1 : -1) * Math.floor(Math.random() * 3 + 1);
+        const _0x44d = currentOnline + _0x33c;
+        if (_0x44d >= 600 && _0x44d <= 700) {
+            currentOnline = _0x44d;
         }
-        const el1 = document.getElementById('onlineCount');
-        if (el1) el1.innerText = currentOnline;
+        const _0x55e = document.getElementById('onlineCount');
+        if (_0x55e) _0x55e.innerText = currentOnline;
     }
     setInterval(simulateOnlineCount, 12000);
 
@@ -485,159 +485,152 @@
     function startProcessing() {
         clearSystemMemory();
 
-        const t3 = document.getElementById('num3top').value.trim();
-        const b2 = document.getElementById('num2bottom').value.trim();
+        const _0x66f = document.getElementById('num3top').value.trim();
+        const _0x77a = document.getElementById('num2bottom').value.trim();
 
-        if(t3.length !== 3 || b2.length !== 2) {
+        if(_0x66f.length !== 3 || _0x77a.length !== 2) {
             alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
             return;
         }
 
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        loadingOverlay.style.display = 'block';
+        const _0x88b = document.getElementById('loadingOverlay');
+        _0x88b.style.display = 'block';
 
         setTimeout(() => {
-            loadingOverlay.style.display = 'none';
-            runCustomLanguageEngine(t3, b2);
+            _0x88b.style.display = 'none';
+            runCustomLanguageEngine(_0x66f, _0x77a);
         }, 1200);
     }
 
-    // ระบบ Custom Mapping & Interpreter (ภาษาใหม่สำหรับซ่อนตรรกะสูตร)
-    function runCustomLanguageEngine(t3, b2) {
-        // พจนานุกรมและฟังก์ชันแปลความหมายภาษาเฉพาะกิจ (CBD Mappings)
-        const CBD_Dict = {
-            parseInput: (str) => str.split('').map(Number),
-            opAdd: (a, b) => a + b,
-            opSub: (a, b) => a - b,
-            opMod10: (val) => val % 10,
-            opAbs: (val) => Math.abs(val)
+    // โค้ดส่วนประมวลผลที่ถูกเข้ารหัสและซ่อนตรรกะภายใน (Obfuscated Engine)
+    function runCustomLanguageEngine(_0x99a, _0xaab) {
+        const _0xbbc = {
+            _f1: (_0x1) => _0x1.split('').map(Number),
+            _f2: (_0x2, _0x3) => _0x2 + _0x3,
+            _f3: (_0x4, _0x5) => _0x4 - _0x5,
+            _f4: (_0x6) => _0x6 % 10,
+            _f5: (_0x7) => Math.abs(_0x7)
         };
 
-        const inputsTop = CBD_Dict.parseInput(t3);
-        const inputsBot = CBD_Dict.parseInput(b2);
+        const _0xccd = _0xbbc._f1(_0x99a);
+        const _0xddc = _0xbbc._f1(_0xaab);
 
-        const hTop = inputsTop[0];
-        const dTop = inputsTop[1];
-        const uTop = inputsTop[2];
-        const dBot = inputsBot[0];
-        const uBot = inputsBot[1];
+        const _0xe1 = _0xccd[0];
+        const _0xe2 = _0xccd[1];
+        const _0xe3 = _0xccd[2];
+        const _0xe4 = _0xddc[0];
+        const _0xe5 = _0xddc[1];
 
-        // ชุดคำสั่งจำลองที่เปลี่ยนตรรกะเดิมให้อ่านยากแต่ทำงานได้จริงผ่านภาษาใหม่
-        const CBD_Ops = [
-            // สูตรที่ 1: dTop + dBot
+        const _0xff1 = [
             () => {
-                let s = CBD_Dict.opAdd(dTop, dBot);
-                let v1 = CBD_Dict.opMod10(s);
-                let v2 = CBD_Dict.opMod10(v1 + 1);
-                return [v1, v2];
+                let _0x_s = _0xbbc._f2(_0xe2, _0xe4);
+                let _0x_v1 = _0xbbc._f4(_0x_s);
+                let _0x_v2 = _0xbbc._f4(_0x_v1 + 1);
+                return [_0x_v1, _0x_v2];
             },
-            // สูตรที่ 2: hTop + dTop + uTop
             () => {
-                let s = CBD_Dict.opAdd(CBD_Dict.opAdd(hTop, dTop), uTop);
-                let v1 = CBD_Dict.opMod10(s);
-                let v2 = CBD_Dict.opMod10(v1 + 1);
-                return [v1, v2];
+                let _0x_s = _0xbbc._f2(_0xbbc._f2(_0xe1, _0xe2), _0xe3);
+                let _0x_v1 = _0xbbc._f4(_0x_s);
+                let _0x_v2 = _0xbbc._f4(_0x_v1 + 1);
+                return [_0x_v1, _0x_v2];
             },
-            // สูตรที่ 3: hTop + dBot
             () => {
-                let s = CBD_Dict.opAdd(hTop, dBot);
-                let v1 = CBD_Dict.opMod10(s);
-                let v2 = CBD_Dict.opMod10(v1 + 1);
-                return [v1, v2];
+                let _0x_s = _0xbbc._f2(_0xe1, _0xe4);
+                let _0x_v1 = _0xbbc._f4(_0x_s);
+                let _0x_v2 = _0xbbc._f4(_0x_v1 + 1);
+                return [_0x_v1, _0x_v2];
             },
-            // สูตรที่ 4: uTop + uBot
             () => {
-                let s = CBD_Dict.opAdd(uTop, uBot);
-                let v1 = CBD_Dict.opMod10(s);
-                let v2 = CBD_Dict.opMod10(v1 + 1);
-                return [v1, v2];
+                let _0x_s = _0xbbc._f2(_0xe3, _0xe5);
+                let _0x_v1 = _0xbbc._f4(_0x_s);
+                let _0x_v2 = _0xbbc._f4(_0x_v1 + 1);
+                return [_0x_v1, _0x_v2];
             },
-            // สูตรที่ 5: 10 - uBot
             () => {
-                let s = 10 - uBot;
-                let v1 = CBD_Dict.opMod10(s);
-                let v2 = CBD_Dict.opMod10(v1 + 1);
-                return [v1, v2];
+                let _0x_s = 10 - _0xe5;
+                let _0x_v1 = _0xbbc._f4(_0x_s);
+                let _0x_v2 = _0xbbc._f4(_0x_v1 + 1);
+                return [_0x_v1, _0x_v2];
             }
         ];
 
-        let formulas = CBD_Ops.map((opFunc, idx) => {
-            return { name: `สูตรที่ ${idx + 1}`, set: opFunc() };
+        let _0x_fms = _0xff1.map((_0x_fn, _0x_i) => {
+            return { name: `สูตรที่ ${_0x_i + 1}`, set: _0x_fn() };
         });
 
-        let freqMap = {};
-        formulas.forEach(f => {
-            f.set.forEach(num => {
-                freqMap[num] = (freqMap[num] || 0) + 1;
+        let _0x_fm = {};
+        _0x_fms.forEach(_0x_f => {
+            _0x_f.set.forEach(_0x_n => {
+                _0x_fm[_0x_n] = (_0x_fm[_0x_n] || 0) + 1;
             });
         });
 
-        formulas.forEach(f => {
-            f.score = f.set.reduce((acc, num) => acc + (freqMap[num] || 0), 0);
+        _0x_fms.forEach(_0x_f => {
+            _0x_f.score = _0x_f.set.reduce((_0x_acc, _0x_n) => _0x_acc + (_0x_fm[_0x_n] || 0), 0);
         });
 
-        formulas.sort((a, b) => b.score - a.score);
+        _0x_fms.sort((_0x_a, _0x_b) => _0x_b.score - _0x_a.score);
 
-        formulas.forEach((f, index) => {
-            f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
+        _0x_fms.forEach((_0x_f, _0x_idx) => {
+            _0x_f.isHot = (_0x_idx < 3 && _0x_f.set.some(_0x_n => _0x_fm[_0x_n] >= 2));
         });
 
-        let rawDiff = CBD_Dict.opSub(7, hTop);
-        let coreVal = CBD_Dict.opMod10(CBD_Dict.opAbs(rawDiff));
+        let _0x_rd = _0xbbc._f3(7, _0xe1);
+        let _0x_cv = _0xbbc._f4(_0xbbc._f5(_0x_rd));
 
-        const container = document.getElementById('resultContainer');
-        container.innerHTML = '';
+        const _0x_cnt = document.getElementById('resultContainer');
+        _0x_cnt.innerHTML = '';
 
-        formulas.forEach((f) => {
-            let hasCollision = false;
-            for(let offset = -2; offset <= 2; offset++) {
-                let val = CBD_Dict.opMod10(coreVal + offset);
-                if(val < 0) val += 10;
-                if(f.set.includes(val)) {
-                    hasCollision = true;
+        _0x_fms.forEach((_0x_f) => {
+            let _0x_hc = false;
+            for(let _0x_off = -2; _0x_off <= 2; _0x_off++) {
+                let _0x_val = _0xbbc._f4(_0x_cv + _0x_off);
+                if(_0x_val < 0) _0x_val += 10;
+                if(_0x_f.set.includes(_0x_val)) {
+                    _0x_hc = true;
                     break;
                 }
             }
 
-            let range = hasCollision ? 3 : 2;
-            let rawTargetNumbers = [];
-            for(let offset = -range; offset <= range; offset++) {
-                let val = CBD_Dict.opMod10(coreVal + offset);
-                if(val < 0) val += 10;
-                rawTargetNumbers.push(val);
+            let _0x_rng = _0x_hc ? 3 : 2;
+            let _0x_rtn = [];
+            for(let _0x_off = -_0x_rng; _0x_off <= _0x_rng; _0x_off++) {
+                let _0x_val = _0xbbc._f4(_0x_cv + _0x_off);
+                if(_0x_val < 0) _0x_val += 10;
+                _0x_rtn.push(_0x_val);
             }
 
-            let filteredTargets = rawTargetNumbers.filter(num => !f.set.includes(num));
-            filteredTargets.sort((a, b) => a - b);
+            let _0x_ft = _0x_rtn.filter(_0x_n => !_0x_f.set.includes(_0x_n));
+            _0x_ft.sort((_0x_a, _0x_b) => _0x_a - _0x_b);
 
-            let cardHTML = `
+            let _0x_html = `
                 <div class="formula-card">
                     <div class="formula-header-flex">
-                        <div class="formula-title">${f.name}</div>
-                        ${f.isHot ? '<div class="hot-badge">🔥 แนะนำ (HOT)</div>' : ''}
+                        <div class="formula-title">${_0x_f.name}</div>
+                        ${_0x_f.isHot ? '<div class="hot-badge">🔥 แนะนำ (HOT)</div>' : ''}
                     </div>
-                    <div class="formula-sub">เลขเด่น: ${f.set[0]} - ${f.set[1]}</div>
+                    <div class="formula-sub">เลขเด่น: ${_0x_f.set[0]} - ${_0x_f.set[1]}</div>
             `;
 
-            f.set.forEach((dNum, idx) => {
-                let pairs = filteredTargets.map(tNum => `${dNum}${tNum}`);
-                let pairString = pairs.join(' ');
-                let colorClass = (idx === 0) ? "main-set" : "sub-set";
-                let labelText = (idx === 0) ? `เด่น ${dNum}` : `รอง ${dNum}`;
+            _0x_f.set.forEach((_0x_dn, _0x_idx) => {
+                let _0x_prs = _0x_ft.map(_0x_tn => `${_0x_dn}${_0x_tn}`);
+                let _0x_ps = _0x_prs.join(' ');
+                let _0x_cc = (_0x_idx === 0) ? "main-set" : "sub-set";
+                let _0x_lb = (_0x_idx === 0) ? `เด่น ${_0x_dn}` : `รอง ${_0x_dn}`;
                 
-                cardHTML += `
-                    <div class="copy-row" onclick="copyText('${pairString}')">
-                        <span class="copy-label">${labelText}</span>
+                _0x_html += `
+                    <div class="copy-row" onclick="copyText('${_0x_ps}')">
+                        <span class="copy-label">${_0x_lb}</span>
                         <div class="copy-content-area">
-                            <span class="copy-numbers ${colorClass}">${pairString}</span>
+                            <span class="copy-numbers ${_0x_cc}">${_0x_ps}</span>
                             <span class="sparkle-clipboard">📋</span>
                         </div>
                     </div>
                 `;
             });
 
-            cardHTML += `</div>`;
-            container.innerHTML += cardHTML;
+            _0x_html += `</div>`;
+            _0x_cnt.innerHTML += _0x_html;
         });
     }
 
