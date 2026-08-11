@@ -498,49 +498,72 @@
 
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
-            runEncryptedLogic(t3, b2);
+            runCustomLanguageEngine(t3, b2);
         }, 1200);
     }
 
-    function runEncryptedLogic(t3, b2) {
-        const hTop = parseInt(t3[0]);
-        const dTop = parseInt(t3[1]);
-        const uTop = parseInt(t3[2]);
-        const dBot = parseInt(b2[0]);
-        const uBot = parseInt(b2[1]);
+    // ระบบ Custom Mapping & Interpreter (ภาษาใหม่สำหรับซ่อนตรรกะสูตร)
+    function runCustomLanguageEngine(t3, b2) {
+        // พจนานุกรมและฟังก์ชันแปลความหมายภาษาเฉพาะกิจ (CBD Mappings)
+        const CBD_Dict = {
+            parseInput: (str) => str.split('').map(Number),
+            opAdd: (a, b) => a + b,
+            opSub: (a, b) => a - b,
+            opMod10: (val) => val % 10,
+            opAbs: (val) => Math.abs(val)
+        };
 
-        let sum1 = dTop + dBot;
-        let d1_1 = sum1 % 10;
-        let d1_2 = (d1_1 + 1) % 10;
-        let set1 = [d1_1, d1_2];
+        const inputsTop = CBD_Dict.parseInput(t3);
+        const inputsBot = CBD_Dict.parseInput(b2);
 
-        let sum2 = hTop + dTop + uTop;
-        let d2_1 = sum2 % 10;
-        let d2_2 = (d2_1 + 1) % 10;
-        let set2 = [d2_1, d2_2];
+        const hTop = inputsTop[0];
+        const dTop = inputsTop[1];
+        const uTop = inputsTop[2];
+        const dBot = inputsBot[0];
+        const uBot = inputsBot[1];
 
-        let sum3 = hTop + dBot;
-        let d3_1 = sum3 % 10;
-        let d3_2 = (d3_1 + 1) % 10;
-        let set3 = [d3_1, d3_2];
-
-        let sum4 = uTop + uBot;
-        let d4_1 = sum4 % 10;
-        let d4_2 = (d4_1 + 1) % 10;
-        let set4 = [d4_1, d4_2];
-
-        let sum5 = 10 - uBot;
-        let d5_1 = sum5 % 10;
-        let d5_2 = (d5_1 + 1) % 10;
-        let set5 = [d5_1, d5_2];
-
-        const formulas = [
-            { name: "สูตรที่ 1", set: set1 },
-            { name: "สูตรที่ 2", set: set2 },
-            { name: "สูตรที่ 3", set: set3 },
-            { name: "สูตรที่ 4", set: set4 },
-            { name: "สูตรที่ 5", set: set5 }
+        // ชุดคำสั่งจำลองที่เปลี่ยนตรรกะเดิมให้อ่านยากแต่ทำงานได้จริงผ่านภาษาใหม่
+        const CBD_Ops = [
+            // สูตรที่ 1: dTop + dBot
+            () => {
+                let s = CBD_Dict.opAdd(dTop, dBot);
+                let v1 = CBD_Dict.opMod10(s);
+                let v2 = CBD_Dict.opMod10(v1 + 1);
+                return [v1, v2];
+            },
+            // สูตรที่ 2: hTop + dTop + uTop
+            () => {
+                let s = CBD_Dict.opAdd(CBD_Dict.opAdd(hTop, dTop), uTop);
+                let v1 = CBD_Dict.opMod10(s);
+                let v2 = CBD_Dict.opMod10(v1 + 1);
+                return [v1, v2];
+            },
+            // สูตรที่ 3: hTop + dBot
+            () => {
+                let s = CBD_Dict.opAdd(hTop, dBot);
+                let v1 = CBD_Dict.opMod10(s);
+                let v2 = CBD_Dict.opMod10(v1 + 1);
+                return [v1, v2];
+            },
+            // สูตรที่ 4: uTop + uBot
+            () => {
+                let s = CBD_Dict.opAdd(uTop, uBot);
+                let v1 = CBD_Dict.opMod10(s);
+                let v2 = CBD_Dict.opMod10(v1 + 1);
+                return [v1, v2];
+            },
+            // สูตรที่ 5: 10 - uBot
+            () => {
+                let s = 10 - uBot;
+                let v1 = CBD_Dict.opMod10(s);
+                let v2 = CBD_Dict.opMod10(v1 + 1);
+                return [v1, v2];
+            }
         ];
+
+        let formulas = CBD_Ops.map((opFunc, idx) => {
+            return { name: `สูตรที่ ${idx + 1}`, set: opFunc() };
+        });
 
         let freqMap = {};
         formulas.forEach(f => {
@@ -559,8 +582,8 @@
             f.isHot = (index < 3 && f.set.some(num => freqMap[num] >= 2));
         });
 
-        let rawDiff = 7 - hTop;
-        let coreVal = Math.abs(rawDiff) % 10;
+        let rawDiff = CBD_Dict.opSub(7, hTop);
+        let coreVal = CBD_Dict.opMod10(CBD_Dict.opAbs(rawDiff));
 
         const container = document.getElementById('resultContainer');
         container.innerHTML = '';
@@ -568,7 +591,7 @@
         formulas.forEach((f) => {
             let hasCollision = false;
             for(let offset = -2; offset <= 2; offset++) {
-                let val = (coreVal + offset) % 10;
+                let val = CBD_Dict.opMod10(coreVal + offset);
                 if(val < 0) val += 10;
                 if(f.set.includes(val)) {
                     hasCollision = true;
@@ -579,7 +602,7 @@
             let range = hasCollision ? 3 : 2;
             let rawTargetNumbers = [];
             for(let offset = -range; offset <= range; offset++) {
-                let val = (coreVal + offset) % 10;
+                let val = CBD_Dict.opMod10(coreVal + offset);
                 if(val < 0) val += 10;
                 rawTargetNumbers.push(val);
             }
