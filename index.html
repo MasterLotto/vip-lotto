@@ -90,7 +90,7 @@
         }
         .header-box p { color: var(--text-sub); font-size: 0.84rem; font-weight: 300; }
 
-        /* แถบสถานะระบบ AI ออนไลน์ */
+        /* แถบสถานะระบบ AI ออนไลน์พร้อมจำนวนผู้ใช้งานรวม */
         .ai-status-bar {
             background: rgba(8, 14, 26, 0.75);
             border: 1px solid rgba(16,185,129,0.3);
@@ -118,7 +118,7 @@
             50% { transform: scale(1.35); opacity: 0.6; }
         }
 
-        /* ตารางแพ็กเกจ VIP */
+        /* ตารางแพ็กเกจ VIP พร้อมแถบแสงวิ่งไล่ระดับสมูทนุ่มนวล */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .package-card { 
             background: linear-gradient(145deg, rgba(16,24,40,0.85), rgba(10,15,26,0.95)); 
@@ -131,11 +131,24 @@
             transition: all 0.3s ease;
         }
         .package-card:hover { transform: translateY(-3px); border-color: rgba(6,182,212,0.4); }
-        .package-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-        .p-1::before { background: linear-gradient(90deg, #a855f7, #ec4899); }
-        .p-2::before { background: linear-gradient(90deg, #06b6d4, #3b82f6); }
-        .p-3::before { background: linear-gradient(90deg, #f59e0b, #eab308); }
-        .p-4::before { background: linear-gradient(90deg, #10b981, #059669); }
+        .package-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: -150%; 
+            width: 300%; 
+            height: 3px; 
+            animation: smoothShimmer 5s infinite ease-in-out;
+        }
+        .p-1::before { background: linear-gradient(90deg, transparent, rgba(168,85,247,0.2), #a855f7, #ec4899, rgba(236,72,153,0.2), transparent); }
+        .p-2::before { background: linear-gradient(90deg, transparent, rgba(6,182,212,0.2), #06b6d4, #3b82f6, rgba(59,130,246,0.2), transparent); }
+        .p-3::before { background: linear-gradient(90deg, transparent, rgba(245,158,11,0.2), #f59e0b, #eab308, rgba(234,179,8,0.2), transparent); }
+        .p-4::before { background: linear-gradient(90deg, transparent, rgba(16,185,129,0.2), #10b981, #059669, rgba(5,150,105,0.2), transparent); }
+
+        @keyframes smoothShimmer {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(66.66%); }
+        }
 
         .package-card h3 { font-size: 0.82rem; color: #cbd5e1; font-weight: 500; margin-bottom: 4px; }
         .package-card .price { font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
@@ -323,7 +336,7 @@
         .consensus-title { font-size: 0.82rem; color: #34d399; font-weight: 600; margin-bottom: 6px; }
         .consensus-numbers { font-size: 1.25rem; font-weight: 700; color: #ffffff; font-family: monospace; letter-spacing: 1px; }
 
-        /* การ์ดผลลัพธ์สูตร (Formula Result Card) */
+        /* การ์ดผลลัพธ์สูตร (Formula Result Card) พร้อมแถบซ้ายละมุนตา */
         .formula-card { 
             background: linear-gradient(145deg, rgba(12,19,33,0.92), rgba(18,27,45,0.85)); 
             padding: 16px; margin-bottom: 14px; border-radius: 20px; 
@@ -334,7 +347,13 @@
         .formula-card::before {
             content: ''; position: absolute; top:0; left:0; width:4px; height:100%;
             background: linear-gradient(180deg, #06b6d4, #3b82f6);
+            animation: softPulseGlow 3s infinite ease-in-out;
         }
+        @keyframes softPulseGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
         .formula-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
         .formula-title { color: #ffffff; font-weight: 600; font-size: 0.95rem; }
         
@@ -345,6 +364,11 @@
         .hot-badge {
             background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4);
             color: #f87171; padding: 2px 9px; border-radius: 20px; font-size: 0.68rem; font-weight: 600;
+            animation: softBlink 2.5s infinite ease-in-out;
+        }
+        @keyframes softBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.75; }
         }
 
         .formula-sub { color: #fbbf24; font-size: 0.82rem; margin-bottom: 10px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; }
@@ -408,7 +432,7 @@
 
         <div class="ai-status-bar">
             <div class="pulse-dot"></div>
-            <span>สถานะระบบ AI อัจฉริยะ: <strong style="color: #34d399;">พร้อมใช้งาน (Online)</strong></span>
+            <span>ผู้ใช้งานรวม: <strong style="color: #38bdf8;">1,428 คน</strong> | สถานะระบบ: <strong style="color: #34d399;">พร้อมใช้งาน (Online)</strong></span>
         </div>
 
         <div class="package-grid">
@@ -477,12 +501,12 @@
 
         <div class="input-group-calc">
             <label class="input-label">เลข 3 ตัวบน (งวดล่าสุด):</label>
-            <input type="text" id="num3top" placeholder="เช่น 701" maxlength="3">
+            <input type="text" id="num3top" placeholder="เช่น 701" maxlength="3" oninput="checkAutoJump(this, 3, 'num2bottom')">
         </div>
 
         <div class="input-group-calc">
             <label class="input-label">เลข 2 ตัวล่าง (งวดล่าสุด):</label>
-            <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2">
+            <input type="text" id="num2bottom" placeholder="เช่น 26" maxlength="2" oninput="checkAutoJump(this, 2, null)">
         </div>
 
         <div class="action-row">
@@ -508,8 +532,8 @@
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-    // ระบบสังเคราะห์เสียงคลิกปุ่มอัตโนมัติ (Web Audio API) เพื่อให้มีเสียงทุกปุ่มกดทันที
-    function playClickSound() {
+    // ระบบสังเคราะห์เสียงคลิกปุ่มอัตโนมัติ (Web Audio API) พร้อมแยกเสียงเตือนผิดพลาด
+    function playClickSound(type = 'click') {
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (!AudioContext) return;
@@ -517,26 +541,43 @@
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(580, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.08);
-            
-            gain.gain.setValueAtTime(0.12, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
-            
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            
-            osc.start();
-            osc.stop(ctx.currentTime + 0.08);
+            if (type === 'error') {
+                // เสียงโทนสั้นกระชับแบบปฏิเสธ (ตื๊ด)
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, ctx.currentTime);
+                osc.frequency.setValueAtTime(120, ctx.currentTime + 0.08);
+                
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.15);
+            } else {
+                // เสียงคลิกปกติ
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(580, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.08);
+                
+                gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+            }
         } catch(e) {
             // สำรองหากเบราว์เซอร์บล็อก AudioContext อัตโนมัติก่อนมีการ Interact
         }
     }
 
     // ฟังก์ชันกระตุ้นการสั่นเบาๆ (Haptic Feedback) ร่วมกับเสียง
-    function triggerHaptic() {
-        playClickSound();
+    function triggerHaptic(type = 'click') {
+        playClickSound(type);
         if (navigator.vibrate) {
             navigator.vibrate(30);
         }
@@ -546,6 +587,16 @@
     function clearSystemMemory() {
         const resContainer = document.getElementById('resultContainer');
         if (resContainer) resContainer.innerHTML = '';
+    }
+
+    // ฟังก์ชันกระโดดช่องกรอกอัตโนมัติเมื่อพิมพ์ครบหลัก
+    function checkAutoJump(element, targetLength, nextFieldId) {
+        if (element.value.length >= targetLength) {
+            if (nextFieldId) {
+                const nextField = document.getElementById(nextFieldId);
+                if (nextField) nextField.focus();
+            }
+        }
     }
 
     // ล็อกรหัสผ่าน 1 เครื่องต่อ 1 รหัส
@@ -559,7 +610,7 @@
     }
 
     function clearInputs() {
-        triggerHaptic();
+        triggerHaptic('click');
         clearSystemMemory();
         document.getElementById('num3top').value = '';
         document.getElementById('num2bottom').value = '';
@@ -567,13 +618,14 @@
     }
 
     function startProcessing() {
-        triggerHaptic();
+        triggerHaptic('click');
         clearSystemMemory();
 
         const n3 = document.getElementById('num3top').value.trim();
         const n2 = document.getElementById('num2bottom').value.trim();
 
         if(n3.length !== 3 || n2.length !== 2) {
+            playClickSound('error');
             alert('กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และ 2 ตัวล่างให้ครบ 2 หลัก');
             return;
         }
@@ -621,7 +673,7 @@
         }
     }
 
-    // ตรรกะสูตรคำนวณดั้งเดิม 100% พร้อมปรับปรุง AI Consensus (แก้ปัญหาเลขโดดข้ามฟากโดยใช้ระบบ Cluster Proximity และความถี่ร่วม)
+    // ตรรกะสูตรคำนวณดั้งเดิม 100% พร้อมปรับปรุง AI Consensus และระบบจดจำสถานะ
     function runCustomLanguageEngine(raw3, raw2) {
         const ops = {
             _f1: (s) => s.split('').map(Number),
@@ -690,14 +742,6 @@
         const container = document.getElementById('resultContainer');
         container.innerHTML = '';
 
-        // --- ปรับปรุงตรรกะ AI Consensus (เลือกเลขที่เกาะกลุ่มกัน ป้องกันเลขกระโดดข้ามฟาก) ---
-        // รวบรวมตัวเลขเด่นทั้งหมดจากทุกสูตรมาจัดอันดับความถี่แท้จริง
-        let allMainCandidates = [];
-        fResults.forEach(f => {
-            allMainCandidates.push({ digit: f.set[0], formulaScore: f.score });
-        });
-
-        // จัดกลุ่มตัวเลขตามความถี่สูงสุด
         let scoreMap = {};
         fResults.forEach(f => {
             f.set.forEach(n => {
@@ -707,16 +751,11 @@
 
         let uniqueDigits = Object.keys(scoreMap).map(Number).sort((a, b) => scoreMap[b] - scoreMap[a]);
         
-        // เลือกตัวเลขหลักที่มีคะแนนสูงสุดอันดับแรก (เช่น เลข 6 ซ้ำมากที่สุด)
         let primaryDigit = uniqueDigits[0];
-        
-        // เลือกตัวเลขรองที่มีคะแนนเท่ากันหรือใกล้เคียง โดยพิจารณาตัวเลขที่ปรากฏในสูตรบนๆ หรือมีค่าใกล้เคียงกัน (Cluster Proximity)
         let secondaryDigit = uniqueDigits[1];
         for (let i = 1; i < uniqueDigits.length; i++) {
             let candidate = uniqueDigits[i];
-            // ถ้าคะแนนเท่ากับตัวแรก หรือมีความใกล้เคียงกันในกลุ่มสูตรบน ให้จัดคู่ร่วมกันเพื่อให้ดูสอดคล้อง ไม่กระโดด
             if (scoreMap[candidate] === scoreMap[primaryDigit] || Math.abs(candidate - primaryDigit) <= 2) {
-                // หากเจอตัวที่อยู่ในสูตรบนๆ ให้เลือกตัวนั้นก่อน
                 if (fResults[0].set.includes(candidate) || fResults[1].set.includes(candidate)) {
                     secondaryDigit = candidate;
                     break;
@@ -788,7 +827,7 @@
     }
 
     function copyText(text) {
-        triggerHaptic();
+        triggerHaptic('click');
         navigator.clipboard.writeText(text).then(() => {
             const toast = document.getElementById('toast');
             toast.className = "show";
@@ -796,14 +835,13 @@
         });
     }
 
-    // รหัสผ่าน Base64 เดิมถูกต้อง 100%
     const _enc_users = ["QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=", "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=", "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=", "RWQ0UjdmVjE=", "VGg6WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=", "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGlmME9LaTk=", "Wnh2MUNkZTI=", "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==", "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=", "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM3dhcTI=", "VWF6MVhzdDI=", "WGRlM3BmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGlmOU9sbzA=", "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=", "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="];
     const VALID_VIP_USERS = _enc_users.map(u => {
         try { return atob(u); } catch(e) { return u; }
     });
 
     function handleLogin() {
-        triggerHaptic();
+        triggerHaptic('click');
         const pass = document.getElementById('passwordInput').value.trim();
         const errorMsg = document.getElementById('errorMsg');
         
@@ -821,11 +859,13 @@
                 errorMsg.style.display = 'none';
                 updateLastSessionDisplay();
             } else {
+                playClickSound('error');
                 errorMsg.innerText = '❌ รหัสผ่านนี้ถูกใช้งานในเครื่องอื่นแล้ว (1 รหัสใช้ได้ 1 เครื่อง)';
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').focus();
             }
         } else {
+            playClickSound('error');
             errorMsg.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบหรือติดต่อแอดมิน';
             errorMsg.style.display = 'block';
             document.getElementById('passwordInput').focus();
@@ -833,7 +873,7 @@
     }
 
     function handleLogout() {
-        triggerHaptic();
+        triggerHaptic('click');
         clearSystemMemory();
         localStorage.removeItem('masterlotto_vip_logged');
         localStorage.removeItem('masterlotto_active_pass');
