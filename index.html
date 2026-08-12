@@ -484,12 +484,31 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .consensus-divider{ color:#94a3b8; font-size:1.3rem; }
 
 .consensus-pair-panel{
-    padding:12px 12px;
-    margin-top:10px;
-    border-radius:16px;
-    background:rgba(3,8,18,.85);
-    border:1px solid rgba(255,255,255,.12);
+    padding:14px;
+    margin-top:12px;
+    border-radius:18px;
+    background:linear-gradient(145deg, rgba(8,16,32,.9), rgba(3,8,18,.95));
+    border:1px solid rgba(56,189,248,.25);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.07), 0 8px 20px rgba(0,0,0,.3);
     text-align:left;
+    position: relative;
+    overflow: hidden;
+}
+
+.consensus-pair-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(56,189,248,.04), transparent);
+    animation: panelGleam 6s ease-in-out infinite;
+}
+
+@keyframes panelGleam {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
 }
 
 .consensus-pair-header{
@@ -534,16 +553,25 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     color:#fff;
     background:linear-gradient(135deg, rgba(52,211,153,.3), rgba(6,182,212,.15));
     border:1px solid rgba(52,211,153,.55);
+    box-shadow: 0 4px 12px rgba(52,211,153,.15), inset 0 1px 0 rgba(255,255,255,.2);
     cursor:pointer;
     transition:.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .consensus-pair.second{
     background:linear-gradient(135deg, rgba(56,189,248,.28), rgba(168,85,247,.15));
     border-color:rgba(56,189,248,.55);
+    box-shadow: 0 4px 12px rgba(56,189,248,.15), inset 0 1px 0 rgba(255,255,255,.2);
 }
 
-.consensus-pair:hover{ transform:translateY(-2px); border-color:rgba(253,224,71,.95); }
+.consensus-pair:hover{ 
+    transform:translateY(-2px); 
+    border-color:rgba(253,224,71,.95); 
+    box-shadow: 0 6px 16px rgba(253,224,71,.25), inset 0 1px 0 rgba(255,255,255,.3);
+    filter: brightness(1.1);
+}
 
 .formula-toggle-container{ margin-bottom:14px; }
 
@@ -1151,7 +1179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     _0x4d.addEventListener("input", () => { _0x4d.value = _0x4d.value.replace(/\D/g,"").substring(0,2); });
     _0x4d.addEventListener("keydown", _0x8b => { if(_0x8b.key === "Enter") _0x5a2d._0x99bb(); });
 
-    _0x5e.addEventListener("click", () => _0x5a2d._0x99bb());
+    _0x5e.appendEventListener ? _0x5e.appendEventListener("click", () => _0x5a2d._0x99bb()) : _0x5e.addEventListener("click", () => _0x5a2d._0x99bb());
     _0x6f.addEventListener("click", () => _0x5a2d._0x88aa());
     _0x7a.addEventListener("click", () => _0x5a2d._0x77ff());
 
