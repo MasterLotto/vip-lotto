@@ -14,15 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   MASTERLOTTO VIP — REFINED PREMIUM VIBRANT AI SYSTEM
-   AUDITED & UPGRADED:
-   - Simplified Master AI Consensus labels: "ชุดเด่น X" and "ชุดรอง X" (removed formula source reference)
-   - Re-aligned & balanced layout for consensus pairs grid (clean, organized, responsive wrapping)
-   - Retained core calculation logic, 5 formulas, and secure authentication mechanism fully intact
-========================================================= */
-
 :root{
     --bg:#030712;
     --bg2:#0a1120;
@@ -41,16 +32,8 @@
     --border:rgba(255,255,255,.08);
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
 body{
     font-family:'Prompt',sans-serif;
     min-height:100vh;
@@ -427,7 +410,22 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     box-shadow:0 25px 55px rgba(0,0,0,.75), 0 0 50px rgba(245,158,11,.15);
 }
 
-.consensus-title{ color:#fef08a; font-size:1.02rem; font-weight:700; letter-spacing:1px; }
+.consensus-title{
+    font-size:1.02rem;
+    font-weight:700;
+    letter-spacing:1px;
+    display:inline-block;
+    background: linear-gradient(90deg, #fef08a 0%, #fff 50%, #fef08a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleLightSweep 3s linear infinite;
+}
+
+@keyframes titleLightSweep {
+    to { background-position: 200% center; }
+}
+
 .consensus-subtitle{ margin-top:4px; margin-bottom:16px; color:#e2e8f0; font-size:.74rem; font-weight:500; }
 
 .consensus-main-digits{
@@ -701,7 +699,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
         </div>
     </div>
 
-    <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" rel="noopener noreferrer" class="btn-line" onclick="secureEngine._snd('click')">
+    <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" rel="noopener noreferrer" class="btn-line" onclick="_0x5a2d._0x9f1e('click')">
         💬 ติดต่อแอดมิน / สมัครสมาชิก VIP
     </a>
 
@@ -754,8 +752,8 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-const secureEngine = {
-    _enc: [
+const _0x5a2d = {
+    _0x3b8a: [
         "QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=",
         "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=",
         "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=",
@@ -768,100 +766,92 @@ const secureEngine = {
         "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=",
         "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="
     ],
-
-    _getVList(){
-        return this._enc.map(v => { try { return atob(v); } catch(e){ return v; } });
+    _0x7c2f(){
+        return this._0x3b8a.map(_0x4e1a => { try { return atob(_0x4e1a); } catch(_0x11ff){ return _0x4e1a; } });
     },
-
-    _getDevId(){
-        let device = localStorage.getItem("ml_secure_device");
-        if(!device){
-            const fingerprint = [screen.width, screen.height, screen.colorDepth, navigator.language, navigator.userAgent].join("_");
-            device = "DEV_" + btoa(fingerprint).replace(/[^a-zA-Z0-9]/g,"").substring(0,20);
-            localStorage.setItem("ml_secure_device", device);
+    _0x8b3d(){
+        let _0x29cc = localStorage.getItem("ml_secure_device_v2");
+        if(!_0x29cc){
+            const _0x51ab = [screen.width, screen.height, screen.colorDepth, navigator.language, navigator.userAgent, Math.random()].join("||");
+            _0x29cc = "DEV_SECURE_" + btoa(_0x51ab).replace(/[^a-zA-Z0-9]/g,"").substring(0,28);
+            localStorage.setItem("ml_secure_device_v2", _0x29cc);
         }
-        return device;
+        return _0x29cc;
     },
-
-    _snd(type="click"){
+    _0x9f1e(_0x68cc="click"){
         try {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            if(!AudioCtx) return;
-            const ctx = new AudioCtx();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            if(type === "error"){
-                osc.type = "sawtooth";
-                osc.frequency.setValueAtTime(180, ctx.currentTime);
-                gain.gain.setValueAtTime(.1, ctx.currentTime);
+            const _0x1a8f = window.AudioContext || window.webkitAudioContext;
+            if(!_0x1a8f) return;
+            const _0x30fb = new _0x1a8f();
+            const _0x41ab = _0x30fb.createOscillator();
+            const _0x52bc = _0x30fb.createGain();
+            if(_0x68cc === "error"){
+                _0x41ab.type = "sawtooth";
+                _0x41ab.frequency.setValueAtTime(180, _0x30fb.currentTime);
+                _0x52bc.gain.setValueAtTime(.1, _0x30fb.currentTime);
             } else {
-                osc.type = "sine";
-                osc.frequency.setValueAtTime(580, ctx.currentTime);
-                gain.gain.setValueAtTime(.08, ctx.currentTime);
+                _0x41ab.type = "sine";
+                _0x41ab.frequency.setValueAtTime(580, _0x30fb.currentTime);
+                _0x52bc.gain.setValueAtTime(.08, _0x30fb.currentTime);
             }
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start();
-            osc.stop(ctx.currentTime + (type === "error" ? .12 : .06));
-        } catch(e){}
+            _0x41ab.connect(_0x52bc);
+            _0x52bc.connect(_0x30fb.destination);
+            _0x41ab.start();
+            _0x41ab.stop(_0x30fb.currentTime + (_0x68cc === "error" ? .12 : .06));
+        } catch(_0x12ff){}
     },
-
-    _escapeHTML(value){
-        return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+    _0x12bc(_0x77aa){
+        return String(_0x77aa).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
     },
-
-    _clamp(val, min, max){
-        return Math.min(max, Math.max(min, val));
+    _0x33aa(_0x88bb, _0x99cc, _0xaa55){
+        return Math.min(_0xaa55, Math.max(_0x99cc, _0x88bb));
     },
-
-    _formulaConfidence(score, maxScore){
-        if(maxScore <= 0) return 88.0;
-        const ratio = this._clamp(score / maxScore, 0, 1);
-        const confidence = 82.0 + (ratio * 14.9);
-        return Number(this._clamp(confidence, 82.0, 96.9).toFixed(1));
+    _0x44bb(_0x11bb, _0x22cc){
+        if(_0x22cc <= 0) return 88.0;
+        const _0x33dd = this._0x33aa(_0x11bb / _0x22cc, 0, 1);
+        const _0x44ee = 82.0 + (_0x33dd * 14.9);
+        return Number(this._0x33aa(_0x44ee, 82.0, 96.9).toFixed(1));
     },
+    _0x66ff(){
+        this._0x9f1e("click");
+        const _0x11aa = document.getElementById("passwordInput");
+        const _0x22bb = document.getElementById("errorMsg");
+        const _0x33cc = _0x11aa.value.trim();
+        const _0x44dd = this._0x7c2f();
 
-    _auth(){
-        this._snd("click");
-        const input = document.getElementById("passwordInput");
-        const err = document.getElementById("errorMsg");
-        const pass = input.value.trim();
-        const validList = this._getVList();
-
-        if(!pass || !validList.includes(pass)){
-            this._snd("error");
-            err.innerText = "❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ";
-            err.style.display = "block";
-            input.focus();
+        if(!_0x33cc || !_0x44dd.includes(_0x33cc)){
+            this._0x9f1e("error");
+            _0x22bb.innerText = "❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ";
+            _0x22bb.style.display = "block";
+            _0x11aa.focus();
             return;
         }
 
-        const device = this._getDevId();
-        const bindKey = "ml_bind_" + btoa(pass).substring(0,12);
-        const boundDevice = localStorage.getItem(bindKey);
+        const _0x55ee = this._0x8b3d();
+        const _0x66ff = "ml_bind_lock_" + btoa(_0x33cc).substring(0,14);
+        const _0x77aa = localStorage.getItem(_0x66ff);
 
-        if(boundDevice && boundDevice !== device){
-            this._snd("error");
-            err.innerText = "❌ รหัสนี้ถูกผูกใช้งานกับอุปกรณ์อื่นแล้ว";
-            err.style.display = "block";
+        if(_0x77aa && _0x77aa !== _0x55ee){
+            this._0x9f1e("error");
+            _0x22bb.innerText = "❌ รหัสนี้ถูกผูกใช้งานกับอุปกรณ์เครื่องอื่นแล้ว (1 รหัสต่อ 1 เครื่อง)";
+            _0x22bb.style.display = "block";
             return;
         }
 
-        localStorage.setItem(bindKey, device);
-        localStorage.setItem("ml_auth_status", "active");
-        localStorage.setItem("ml_active_pass", pass);
+        localStorage.setItem(_0x66ff, _0x55ee);
+        localStorage.setItem("ml_auth_status_v2", "active");
+        localStorage.setItem("ml_active_pass_v2", _0x33cc);
 
-        err.style.display = "none";
+        _0x22bb.style.display = "none";
         document.getElementById("loginView").style.display = "none";
         document.getElementById("calculatorView").style.display = "block";
-        this._updSession();
+        this._0x77bb();
         document.getElementById("num3top").focus();
     },
-
-    _logout(){
-        this._snd("click");
-        localStorage.removeItem("ml_auth_status");
-        localStorage.removeItem("ml_active_pass");
+    _0x77ff(){
+        this._0x9f1e("click");
+        localStorage.removeItem("ml_auth_status_v2");
+        localStorage.removeItem("ml_active_pass_v2");
         document.getElementById("calculatorView").style.display = "none";
         document.getElementById("loginView").style.display = "block";
         document.getElementById("passwordInput").value = "";
@@ -871,176 +861,169 @@ const secureEngine = {
         document.getElementById("errorMsg").style.display = "none";
         document.getElementById("aiScannerBox").style.display = "none";
     },
-
-    _clr(){
-        this._snd("click");
+    _0x88aa(){
+        this._0x9f1e("click");
         document.getElementById("resultContainer").innerHTML = "";
         document.getElementById("num3top").value = "";
         document.getElementById("num2bottom").value = "";
         document.getElementById("num3top").focus();
     },
-
-    _updSession(){
-        const n3 = localStorage.getItem("ml_l_n3");
-        const n2 = localStorage.getItem("ml_l_n2");
-        const badge = document.getElementById("lastSessionBadge");
-        if(n3 && n2){
-            document.getElementById("lbl3").innerText = n3;
-            document.getElementById("lbl2").innerText = n2;
-            badge.style.display = "block";
+    _0x77bb(){
+        const _0x11 = localStorage.getItem("ml_l_n3_v2");
+        const _0x22 = localStorage.getItem("ml_l_n2_v2");
+        const _0x33 = document.getElementById("lastSessionBadge");
+        if(_0x11 && _0x22){
+            document.getElementById("lbl3").innerText = _0x11;
+            document.getElementById("lbl2").innerText = _0x22;
+            _0x33.style.display = "block";
         } else {
-            badge.style.display = "none";
+            _0x33.style.display = "none";
         }
     },
+    _0x99bb(){
+        this._0x9f1e("click");
+        const _0x1a = document.getElementById("num3top").value.trim();
+        const _0x2b = document.getElementById("num2bottom").value.trim();
 
-    _runProc(){
-        this._snd("click");
-        const n3 = document.getElementById("num3top").value.trim();
-        const n2 = document.getElementById("num2bottom").value.trim();
-
-        if(!/^\d{3}$/.test(n3) || !/^\d{2}$/.test(n2)){
-            this._snd("error");
+        if(!/^\d{3}$/.test(_0x1a) || !/^\d{2}$/.test(_0x2b)){
+            this._0x9f1e("error");
             alert("กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และเลข 2 ตัวล่างให้ครบ 2 หลัก");
             return;
         }
 
-        localStorage.setItem("ml_l_n3", n3);
-        localStorage.setItem("ml_l_n2", n2);
-        this._updSession();
+        localStorage.setItem("ml_l_n3_v2", _0x1a);
+        localStorage.setItem("ml_l_n2_v2", _0x2b);
+        this._0x77bb();
 
-        const scanner = document.getElementById("aiScannerBox");
-        const calculateBtn = document.getElementById("calculateButton");
-        calculateBtn.disabled = true;
-        calculateBtn.style.opacity = ".55";
-        scanner.style.display = "block";
+        const _0x3c = document.getElementById("aiScannerBox");
+        const _0x4d = document.getElementById("calculateButton");
+        _0x4d.disabled = true;
+        _0x4d.style.opacity = ".55";
+        _0x3c.style.display = "block";
 
         setTimeout(() => {
-            scanner.style.display = "none";
-            calculateBtn.disabled = false;
-            calculateBtn.style.opacity = "1";
-            this._execEngine(n3, n2);
+            _0x3c.style.display = "none";
+            _0x4d.disabled = false;
+            _0x4d.style.opacity = "1";
+            this._0x00cc(_0x1a, _0x2b);
             document.getElementById("resultContainer").scrollIntoView({ behavior: "smooth", block: "start" });
         }, 1000);
     },
-
-    _execEngine(r3, r2){
-        const ops = {
-            digits: s => s.split("").map(Number),
-            add: (a,b) => a+b,
-            subtract: (a,b) => a-b,
-            mod10: n => ((n % 10) + 10) % 10,
-            abs: n => Math.abs(n)
+    _0x00cc(_0x55, _0x66){
+        const _0x77 = {
+            _0x1: _0x99 => _0x99.split("").map(Number),
+            _0x2: (_0xa, _0xb) => _0xa + _0xb,
+            _0x3: (_0xa, _0xb) => _0xa - _0xb,
+            _0x4: _0x99 => ((_0x99 % 10) + 10) % 10,
+            _0x5: _0x99 => Math.abs(_0x99)
         };
 
-        const c3 = ops.digits(r3);
-        const c2 = ops.digits(r2);
-        const e1 = c3[0], e2 = c3[1], e3 = c3[2];
-        const e4 = c2[0], e5 = c2[1];
+        const _0x88 = _0x77._0x1(_0x55);
+        const _0x99 = _0x77._0x1(_0x66);
+        const _0xa1 = _0x88[0], _0xa2 = _0x88[1], _0xa3 = _0x88[2];
+        const _0xa4 = _0x99[0], _0xa5 = _0x99[1];
 
-        const coreFormulas = [
-            () => { const s = ops.add(e2, e4); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
-            () => { const s = ops.add(ops.add(e1, e2), e3); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
-            () => { const s = ops.add(e1, e4); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
-            () => { const s = ops.add(e3, e5); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
-            () => { const s = 10 - e5; const v = ops.mod10(s); return [v, ops.mod10(v+1)]; }
+        const _0xbb = [
+            () => { const _0x1 = _0x77._0x2(_0xa2, _0xa4); const _0x2 = _0x77._0x4(_0x1); return [_0x2, _0x77._0x4(_0x2+1)]; },
+            () => { const _0x1 = _0x77._0x2(_0x77._0x2(_0xa1, _0xa2), _0xa3); const _0x2 = _0x77._0x4(_0x1); return [_0x2, _0x77._0x4(_0x2+1)]; },
+            () => { const _0x1 = _0x77._0x2(_0xa1, _0xa4); const _0x2 = _0x77._0x4(_0x1); return [_0x2, _0x77._0x4(_0x2+1)]; },
+            () => { const _0x1 = _0x77._0x2(_0xa3, _0xa5); const _0x2 = _0x77._0x4(_0x1); return [_0x2, _0x77._0x4(_0x2+1)]; },
+            () => { const _0x1 = 10 - _0xa5; const _0x2 = _0x77._0x4(_0x1); return [_0x2, _0x77._0x4(_0x2+1)]; }
         ];
 
-        let fResults = coreFormulas.map((fn, i) => ({ name: `สูตรวิเคราะห์ AI ที่ ${i+1}`, set: fn() }));
+        let _0xcc = _0xbb.map((_0x1, _0x2) => ({ name: `สูตรวิเคราะห์ AI ที่ ${_0x2+1}`, set: _0x1() }));
 
-        const supportVotes = {};
-        for(let i=1; i<=250; i++){
-            const modVal = ops.mod10((e1*i) + (e2*(i%7)) + (e3*(i%3)) + (e4*(i%5)) + e5);
-            supportVotes[modVal] = (supportVotes[modVal] || 0) + 1;
+        const _0xdd = {};
+        for(let _0x1=1; _0x1<=250; _0x1++){
+            const _0x2 = _0x77._0x4((_0xa1*_0x1) + (_0xa2*(_0x1%7)) + (_0xa3*(_0x1%3)) + (_0xa4*(_0x1%5)) + _0xa5);
+            _0xdd[_0x2] = (_0xdd[_0x2] || 0) + 1;
         }
 
-        fResults.forEach(f => {
-            f.score = f.set.reduce((acc, n) => acc + (supportVotes[n] || 0) + 5, 0);
+        _0xcc.forEach(_0x1 => {
+            _0x1.score = _0x1.set.reduce((_0x2, _0x3) => _0x2 + (_0xdd[_0x3] || 0) + 5, 0);
         });
 
-        fResults.sort((a,b) => b.score - a.score);
-        fResults.forEach((f, index) => { f.isHot = index < 3 && f.set.some(n => (supportVotes[n] || 0) > 25); });
+        _0xcc.sort((_0x1,_0x2) => _0x2.score - _0x1.score);
+        _0xcc.forEach((_0x1, _0x2) => { _0x1.isHot = _0x2 < 3 && _0x1.set.some(_0x3 => (_0xdd[_0x3] || 0) > 25); });
 
-        const rd = ops.subtract(7, e1);
-        const cv = ops.mod10(ops.abs(rd));
-        const maxScore = Math.max(...fResults.map(x => x.score));
+        const _0xee = _0x77._0x3(7, _0xa1);
+        const _0xff = _0x77._0x4(_0x77._0x5(_0xee));
+        const _0x10 = Math.max(..._0xcc.map(_0x1 => _0x1.score));
 
-        // Generate full formula details with safe target pairs for each formula
-        const processedFormulas = fResults.map(f => {
-            let hasMatch = false;
-            for(let off=-2; off<=2; off++){
-                if(f.set.includes(ops.mod10(cv + off))){ hasMatch = true; break; }
+        const _0x20 = _0xcc.map(_0x1 => {
+            let _0x2 = false;
+            for(let _0x3=-2; _0x3<=2; _0x3++){
+                if(_0x1.set.includes(_0x77._0x4(_0xff + _0x3))){ _0x2 = true; break; }
             }
-            const range = hasMatch ? 3 : 2;
-            const returned = [];
-            for(let off=-range; off<=range; off++){ returned.push(ops.mod10(cv + off)); }
-            const safeTargets = returned.filter(n => !f.set.includes(n)).filter((n,i,a)=>a.indexOf(n)===i).sort((a,b)=>a-b);
-            const aiScore = this._formulaConfidence(f.score, maxScore);
+            const _0x3 = _0x2 ? 3 : 2;
+            const _0x4 = [];
+            for(let _0x5=-_0x3; _0x5<=_0x3; _0x5++){ _0x4.push(_0x77._0x4(_0xff + _0x5)); }
+            const _0x6 = _0x4.filter(_0x5 => !_0x1.set.includes(_0x5)).filter((_0x5,_0x7,_0x8)=>_0x8.indexOf(_0x5)===_0x7).sort((_0x5,_0x7)=>_0x5-_0x7);
+            const _0x7 = this._0x44bb(_0x1.score, _0x10);
 
-            // Build pairs for main and sub digits of this formula
-            const pairsMap = {};
-            f.set.forEach((dn) => {
-                const targets = safeTargets.filter(tn => tn !== dn);
-                pairsMap[dn] = targets.map(tn => `${dn}${tn}`);
+            const _0x8 = {};
+            _0x1.set.forEach((_0x9) => {
+                const _0xa = _0x6.filter(_0xb => _0xb !== _0x9);
+                _0x8[_0x9] = _0xa.map(_0xb => `${_0x9}${_0xb}`);
             });
 
             return {
-                name: f.name,
-                isHot: f.isHot,
-                score: f.score,
-                aiScore: aiScore,
-                set: f.set,
-                pairsMap: pairsMap
+                name: _0x1.name,
+                isHot: _0x1.isHot,
+                score: _0x1.score,
+                aiScore: _0x7,
+                set: _0x1.set,
+                pairsMap: _0x8
             };
         });
 
-        // STRICT CONSENSUS LOGIC: Pull directly from the top 2 formulas
-        const topFormula1 = processedFormulas[0];
-        const topFormula2 = processedFormulas[1] || processedFormulas[0];
+        const _0x30 = _0x20[0];
+        const _0x40 = _0x20[1] || _0x20[0];
 
-        const pDig = topFormula1.set[0];
-        const sDig = topFormula2.set[0];
+        const _0x50 = _0x30.set[0];
+        const _0x60 = _0x40.set[0];
 
-        const pairsA = topFormula1.pairsMap[pDig] || [];
-        const pairsB = topFormula2.pairsMap[sDig] || [];
+        const _0x70 = _0x30.pairsMap[_0x50] || [];
+        const _0x80 = _0x40.pairsMap[_0x60] || [];
 
-        const primaryConfidence = topFormula1.aiScore;
-        const secondaryConfidence = topFormula2.aiScore;
+        const _0x90 = _0x30.aiScore;
+        const _0xa0 = _0x40.aiScore;
 
-        const container = document.getElementById("resultContainer");
+        const _0xb0 = document.getElementById("resultContainer");
 
-        const pairsAHTML = pairsA.length > 0 ? pairsA.map(pair => `<div class="consensus-pair" data-copy="${pair}">${pair}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
-        const pairsBHTML = pairsB.length > 0 ? pairsB.map(pair => `<div class="consensus-pair second" data-copy="${pair}">${pair}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
+        const _0xc0 = _0x70.length > 0 ? _0x70.map(_0x1 => `<div class="consensus-pair" data-copy="${_0x1}">${_0x1}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
+        const _0xd0 = _0x80.length > 0 ? _0x80.map(_0x1 => `<div class="consensus-pair second" data-copy="${_0x1}">${_0x1}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
 
-        let containerHTML = `
+        let _0xe0 = `
             <div class="consensus-box">
-                <div class="consensus-title">🌟 MASTER AI CONSENSUS</div>
-                <div class="consensus-subtitle">ระบบประมวลผลอัจฉริยะขั้นสูง</div>
+                <div class="consensus-title">⚡ AI SMART SYNTHESIS</div>
+                <div class="consensus-subtitle">ระบบประมวลผลสังเคราะห์อัจฉริยะขั้นสูง</div>
                 
                 <div class="consensus-main-digits">
-                    <div class="consensus-digit">${pDig}</div>
+                    <div class="consensus-digit">${_0x50}</div>
                     <div class="consensus-divider">—</div>
-                    <div class="consensus-digit">${sDig}</div>
+                    <div class="consensus-digit">${_0x60}</div>
                 </div>
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${pDig}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${primaryConfidence}%</div>
+                        <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${_0x50}</strong></div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${_0x90}%</div>
                     </div>
-                    <div class="consensus-pairs">${pairsAHTML}</div>
+                    <div class="consensus-pairs">${_0xc0}</div>
                 </div>
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${sDig}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${secondaryConfidence}%</div>
+                        <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${_0x60}</strong></div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${_0xa0}%</div>
                     </div>
-                    <div class="consensus-pairs">${pairsBHTML}</div>
+                    <div class="consensus-pairs">${_0xd0}</div>
                 </div>
             </div>
 
             <div class="formula-toggle-container">
-                <button class="btn-toggle-formulas" id="toggleFormulasBtn" onclick="secureEngine._toggleFormulas()">
+                <button class="btn-toggle-formulas" id="toggleFormulasBtn" onclick="_0x5a2d._0x11cc()">
                     📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม
                 </button>
             </div>
@@ -1048,132 +1031,128 @@ const secureEngine = {
             <div id="formulasWrapper">
         `;
 
-        processedFormulas.forEach(f => {
-            let card = `
+        _0x20.forEach(_0x1 => {
+            let _0x2 = `
                 <div class="formula-card">
                     <div class="formula-header-flex">
-                        <div class="formula-title">${this._escapeHTML(f.name)}</div>
-                        ${f.isHot ? `<div class="hot-badge">🔥 AI RECOMMENDED</div>` : `<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>`}
+                        <div class="formula-title">${this._0x12bc(_0x1.name)}</div>
+                        ${_0x1.isHot ? `<div class="hot-badge">🔥 AI RECOMMENDED</div>` : `<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>`}
                     </div>
                     <div class="formula-sub">
-                        <span>เลขเด่น: <strong>${f.set[0]}</strong> - <strong>${f.set[1]}</strong></span>
-                        <span class="accuracy-tag">AI CONFIDENCE ${f.aiScore}%</span>
+                        <span>เลขเด่น: <strong>${_0x1.set[0]}</strong> - <strong>${_0x1.set[1]}</strong></span>
+                        <span class="accuracy-tag">AI CONFIDENCE ${_0x1.aiScore}%</span>
                     </div>
             `;
 
-            f.set.forEach((dn, index) => {
-                const pairsArr = f.pairsMap[dn] || [];
-                const pairsStr = pairsArr.join(" ");
-                const colorClass = index === 0 ? "main-set" : "sub-set";
-                const label = index === 0 ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
+            _0x1.set.forEach((_0x3, _0x4) => {
+                const _0x5 = _0x1.pairsMap[_0x3] || [];
+                const _0x6 = _0x5.join(" ");
+                const _0x7 = _0x4 === 0 ? "main-set" : "sub-set";
+                const _0x8 = _0x4 === 0 ? `ชุดเด่น <span class="highlight-digit">${_0x3}</span>` : `ชุดรอง <span class="highlight-digit">${_0x3}</span>`;
 
-                card += `
-                    <div class="copy-row" data-copy="${pairsStr}">
-                        <span class="copy-label">${label}</span>
+                _0x2 += `
+                    <div class="copy-row" data-copy="${_0x6}">
+                        <span class="copy-label">${_0x8}</span>
                         <div style="display:flex; align-items:center; gap:8px; min-width:0;">
-                            <span class="copy-numbers ${colorClass}">${pairsStr}</span>
+                            <span class="copy-numbers ${_0x7}">${_0x6}</span>
                             <span style="font-size:.72rem; opacity:.55;">📋</span>
                         </div>
                     </div>
                 `;
             });
-            card += `</div>`;
-            containerHTML += card;
+            _0x2 += `</div>`;
+            _0xe0 += _0x2;
         });
 
-        containerHTML += `</div>`;
-        container.innerHTML = containerHTML;
-        this._bindCopyButtons();
+        _0xe0 += `</div>`;
+        _0xb0.innerHTML = _0xe0;
+        this._0x22cc();
     },
-
-    _toggleFormulas(){
-        this._snd("click");
-        const wrap = document.getElementById("formulasWrapper");
-        const btn = document.getElementById("toggleFormulasBtn");
-        if(wrap.style.display === "block"){
-            wrap.style.display = "none";
-            btn.innerHTML = "📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";
+    _0x11cc(){
+        this._0x9f1e("click");
+        const _0x1 = document.getElementById("formulasWrapper");
+        const _0x2 = document.getElementById("toggleFormulasBtn");
+        if(_0x1.style.display === "block"){
+            _0x1.style.display = "none";
+            _0x2.innerHTML = "📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";
         } else {
-            wrap.style.display = "block";
-            btn.innerHTML = "📊 ซ่อน 5 สูตรวิเคราะห์ AI";
-            wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            _0x1.style.display = "block";
+            _0x2.innerHTML = "📊 ซ่อน 5 สูตรวิเคราะห์ AI";
+            _0x1.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
     },
-
-    _bindCopyButtons(){
-        document.querySelectorAll("[data-copy]").forEach(el => {
-            el.addEventListener("click", () => { this._copy(el.dataset.copy); });
+    _0x22cc(){
+        document.querySelectorAll("[data-copy]").forEach(_0x1 => {
+            _0x1.addEventListener("click", () => { this._0x33cc(_0x1.dataset.copy); });
         });
     },
-
-    _copy(text){
-        this._snd("click");
-        const showToast = () => {
-            const toast = document.getElementById("toast");
-            toast.classList.remove("show");
-            void toast.offsetWidth;
-            toast.classList.add("show");
+    _0x33cc(_0x1){
+        this._0x9f1e("click");
+        const _0x2 = () => {
+            const _0x3 = document.getElementById("toast");
+            _0x3.classList.remove("show");
+            void _0x3.offsetWidth;
+            _0x3.classList.add("show");
         };
         if(navigator.clipboard && window.isSecureContext){
-            navigator.clipboard.writeText(text).then(showToast).catch(() => this._fallbackCopy(text, showToast));
+            navigator.clipboard.writeText(_0x1).then(_0x2).catch(() => this._0x44cc(_0x1, _0x2));
         } else {
-            this._fallbackCopy(text, showToast);
+            this._0x44cc(_0x1, _0x2);
         }
     },
-
-    _fallbackCopy(text, callback){
+    _0x44cc(_0x1, _0x2){
         try {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            textarea.style.position = "fixed";
-            textarea.style.left = "-9999px";
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            const success = document.execCommand("copy");
-            textarea.remove();
-            if(success && callback) callback();
-        } catch(e){}
+            const _0x3 = document.createElement("textarea");
+            _0x3.value = _0x1;
+            _0x3.style.position = "fixed";
+            _0x3.style.left = "-9999px";
+            document.body.appendChild(_0x3);
+            _0x3.focus();
+            _0x3.select();
+            const _0x4 = document.execCommand("copy");
+            _0x3.remove();
+            if(_0x4 && _0x2) _0x2();
+        } catch(_0x5){}
     }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    const password = document.getElementById("passwordInput");
-    const loginButton = document.getElementById("loginButton");
-    const num3 = document.getElementById("num3top");
-    const num2 = document.getElementById("num2bottom");
-    const calculateButton = document.getElementById("calculateButton");
-    const clearButton = document.getElementById("clearButton");
-    const logoutButton = document.getElementById("logoutButton");
+    const _0x1a = document.getElementById("passwordInput");
+    const _0x2b = document.getElementById("loginButton");
+    const _0x3c = document.getElementById("num3top");
+    const _0x4d = document.getElementById("num2bottom");
+    const _0x5e = document.getElementById("calculateButton");
+    const _0x6f = document.getElementById("clearButton");
+    const _0x7a = document.getElementById("logoutButton");
 
-    loginButton.addEventListener("click", () => secureEngine._auth());
-    password.addEventListener("keydown", e => { if(e.key === "Enter") secureEngine._auth(); });
+    _0x2b.addEventListener("click", () => _0x5a2d._0x66ff());
+    _0x1a.addEventListener("keydown", _0x8b => { if(_0x8b.key === "Enter") _0x5a2d._0x66ff(); });
 
-    num3.addEventListener("input", () => {
-        num3.value = num3.value.replace(/\D/g,"").substring(0,3);
-        if(num3.value.length === 3) num2.focus();
+    _0x3c.addEventListener("input", () => {
+        _0x3c.value = _0x3c.value.replace(/\D/g,"").substring(0,3);
+        if(_0x3c.value.length === 3) _0x4d.focus();
     });
 
-    num2.addEventListener("input", () => { num2.value = num2.value.replace(/\D/g,"").substring(0,2); });
-    num2.addEventListener("keydown", e => { if(e.key === "Enter") secureEngine._runProc(); });
+    _0x4d.addEventListener("input", () => { _0x4d.value = _0x4d.value.replace(/\D/g,"").substring(0,2); });
+    _0x4d.addEventListener("keydown", _0x8b => { if(_0x8b.key === "Enter") _0x5a2d._0x99bb(); });
 
-    calculateButton.addEventListener("click", () => secureEngine._runProc());
-    clearButton.addEventListener("click", () => secureEngine._clr());
-    logoutButton.addEventListener("click", () => secureEngine._logout());
+    _0x5e.addEventListener("click", () => _0x5a2d._0x99bb());
+    _0x6f.addEventListener("click", () => _0x5a2d._0x88aa());
+    _0x7a.addEventListener("click", () => _0x5a2d._0x77ff());
 
     try {
-        if(localStorage.getItem("ml_auth_status") === "active"){
-            const activePass = localStorage.getItem("ml_active_pass");
-            const validList = secureEngine._getVList();
-            if(activePass && validList.includes(activePass)){
+        if(localStorage.getItem("ml_auth_status_v2") === "active"){
+            const _0x8b = localStorage.getItem("ml_active_pass_v2");
+            const _0x9c = _0x5a2d._0x7c2f();
+            if(_0x8b && _0x9c.includes(_0x8b)){
                 document.getElementById("loginView").style.display = "none";
                 document.getElementById("calculatorView").style.display = "block";
-                secureEngine._updSession();
+                _0x5a2d._0x77bb();
             } else {
-                secureEngine._logout();
+                _0x5a2d._0x77ff();
             }
         }
-    } catch(e){}
+    } catch(_0x8b){}
 });
 </script>
 
