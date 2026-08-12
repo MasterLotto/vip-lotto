@@ -977,8 +977,23 @@ const _0x5a2d = {
             };
         });
 
-        const _0x30 = _0x20[0];
-        const _0x40 = _0x20[1] || _0x20[0];
+        // =========================================================================
+        // อัปเกรดตรรกะการคัดเลือกเลขเด่นหลัก (Smart Diversity Selection)
+        // ป้องกันปัญหาเลขเด่นจากสูตรที่ดีที่สุด 2 อันดับแรกชนกัน (เช่น 0 และ 0)
+        // โดยทำการค้นหาสูตรถัดไปที่มีเลขเด่น (set[0]) แตกต่างกัน เพื่อความคุ้มค่าสูงสุด
+        // =========================================================================
+        let _0x30 = _0x20[0];
+        let _0x40 = null;
+
+        for(let _0ix = 1; _0ix < _0x20.length; _0ix++){
+            if(_0x20[_0ix].set[0] !== _0x30.set[0]){
+                _0x40 = _0x20[_0ix];
+                break;
+            }
+        }
+        if(!_0x40){
+            _0x40 = _0x20[1] || _0x20[0];
+        }
 
         const _0x50 = _0x30.set[0];
         const _0x60 = _0x40.set[0];
@@ -997,7 +1012,7 @@ const _0x5a2d = {
         let _0xe0 = `
             <div class="consensus-box">
                 <div class="consensus-title">⚡ AI SMART SYNTHESIS</div>
-                <div class="consensus-subtitle">ระบบประมวลผลสังเคราะห์อัจฉริยะขั้นสูง</div>
+                <div class="consensus-subtitle">ระบบประมวลผลสังเคราะห์อัจฉริยะขั้นสูง (Divergent Optimized)</div>
                 
                 <div class="consensus-main-digits">
                     <div class="consensus-digit">${_0x50}</div>
