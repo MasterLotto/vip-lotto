@@ -18,9 +18,9 @@
 /* =========================================================
    MASTERLOTTO VIP — REFINED PREMIUM VIBRANT AI SYSTEM
    AUDITED & UPGRADED:
-   - Optimized performance & restored fluid shimmering/pulsing effects
-   - Refined Master AI Consensus subheader text & compact labels (ชุดเด่น / ชุดรอง)
-   - Updated formula toggle button to match dark/neutral style (like logout button)
+   - Simplified Master AI Consensus labels: "ชุดเด่น X" and "ชุดรอง X" (removed formula source reference)
+   - Re-aligned & balanced layout for consensus pairs grid (clean, organized, responsive wrapping)
+   - Retained core calculation logic, 5 formulas, and secure authentication mechanism fully intact
 ========================================================= */
 
 :root{
@@ -124,7 +124,6 @@ body::before{
 
 .header-box{ text-align:center; margin-bottom:22px; }
 
-/* Restored & enhanced fluid shimmering pulse for AI badges / titles */
 .ai-badge{
     display:inline-flex;
     align-items:center;
@@ -414,7 +413,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 #aiScannerText{ color:#67e8f9; font-size:.85rem; font-weight:500; }
 
-/* MASTER AI CONSENSUS & SUBTLE PULSING CONFIDENCE */
 .consensus-box{
     position:relative;
     overflow:hidden;
@@ -472,7 +470,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .consensus-divider{ color:#94a3b8; font-size:1.3rem; }
 
 .consensus-pair-panel{
-    padding:12px 10px;
+    padding:12px 12px;
     margin-top:10px;
     border-radius:16px;
     background:rgba(3,8,18,.85);
@@ -484,10 +482,10 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:9px;
+    margin-bottom:10px;
 }
 
-.consensus-pair-title{ color:#f8fafc; font-size:.78rem; font-weight:600; }
+.consensus-pair-title{ color:#f8fafc; font-size:.8rem; font-weight:600; }
 
 .consensus-pair-count{
     padding:3px 9px;
@@ -507,16 +505,17 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .consensus-pairs{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
     gap:6px;
+    justify-content: center;
 }
 
 .consensus-pair{
-    padding:8px 3px;
+    padding:8px 4px;
     text-align:center;
     border-radius:10px;
     font-family:monospace;
-    font-size:.9rem;
+    font-size:.86rem;
     font-weight:700;
     color:#fff;
     background:linear-gradient(135deg, rgba(52,211,153,.3), rgba(6,182,212,.15));
@@ -534,7 +533,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .formula-toggle-container{ margin-bottom:14px; }
 
-/* Updated Formula Toggle Button: Matches dark/neutral style of logout button to keep focus on Master AI Consensus */
 .btn-toggle-formulas{
     width:100%;
     display:flex;
@@ -823,24 +821,6 @@ const secureEngine = {
         return Number(this._clamp(confidence, 82.0, 96.9).toFixed(1));
     },
 
-    _consensusConfidence(primaryScore, secondaryScore, maxScore){
-        if(maxScore <= 0) return { primary: 98.5, secondary: 97.8 };
-        const pRatio = this._clamp(primaryScore / maxScore, 0, 1);
-        const sRatio = this._clamp(secondaryScore / maxScore, 0, 1);
-
-        let primary = 90.0 + (pRatio * 9.9);
-        primary = this._clamp(primary, 90.0, 99.9);
-
-        let secondary = 97.0 + (sRatio * 1.9);
-        secondary = this._clamp(secondary, 97.0, 98.9);
-        secondary = Math.min(secondary, primary - 0.5);
-
-        return {
-            primary: Number(primary.toFixed(1)),
-            secondary: Number(secondary.toFixed(1))
-        };
-    },
-
     _auth(){
         this._snd("click");
         const input = document.getElementById("passwordInput");
@@ -982,60 +962,54 @@ const secureEngine = {
 
         const rd = ops.subtract(7, e1);
         const cv = ops.mod10(ops.abs(rd));
+        const maxScore = Math.max(...fResults.map(x => x.score));
 
-        const scoreMap = {};
-        for(let d=0; d<=9; d++){ scoreMap[d] = supportVotes[d] || 0; }
-
-        fResults.forEach((f, index) => {
-            const weight = 20 - (index * 2);
-            f.set.forEach(n => { scoreMap[n] += weight; });
-        });
-
-        const formulaPresence = {};
-        for(let d=0; d<=9; d++){
-            formulaPresence[d] = 0;
-            fResults.forEach(f => { if(f.set.includes(d)) formulaPresence[d]++; });
-        }
-
-        const rankedDigits = Array.from({length:10}, (_,d)=>d).sort((a,b) => {
-            if(scoreMap[b] !== scoreMap[a]) return scoreMap[b] - scoreMap[a];
-            if(formulaPresence[b] !== formulaPresence[a]) return formulaPresence[b] - formulaPresence[a];
-            return a - b;
-        });
-
-        const pDig = rankedDigits[0];
-        const secondCandidates = rankedDigits.filter(d => d !== pDig);
-        let sDig = secondCandidates[0] !== undefined ? secondCandidates[0] : 1;
-
-        const buildTargets = (mainDigit, avoidDigit) => {
-            return rankedDigits.filter(d => d !== mainDigit && d !== avoidDigit).slice(0, 5).sort((a,b)=>a-b);
-        };
-
-        let targetA = buildTargets(pDig, sDig);
-        let targetB = buildTargets(sDig, pDig);
-
-        const fillTargets = (arr, main, other) => {
-            for(let d=0; d<=9 && arr.length<5; d++){
-                if(d !== main && d !== other && !arr.includes(d)) arr.push(d);
+        // Generate full formula details with safe target pairs for each formula
+        const processedFormulas = fResults.map(f => {
+            let hasMatch = false;
+            for(let off=-2; off<=2; off++){
+                if(f.set.includes(ops.mod10(cv + off))){ hasMatch = true; break; }
             }
-            return arr.slice(0,5).sort((a,b)=>a-b);
-        };
+            const range = hasMatch ? 3 : 2;
+            const returned = [];
+            for(let off=-range; off<=range; off++){ returned.push(ops.mod10(cv + off)); }
+            const safeTargets = returned.filter(n => !f.set.includes(n)).filter((n,i,a)=>a.indexOf(n)===i).sort((a,b)=>a-b);
+            const aiScore = this._formulaConfidence(f.score, maxScore);
 
-        targetA = fillTargets(targetA, pDig, sDig);
-        targetB = fillTargets(targetB, sDig, pDig);
+            // Build pairs for main and sub digits of this formula
+            const pairsMap = {};
+            f.set.forEach((dn) => {
+                const targets = safeTargets.filter(tn => tn !== dn);
+                pairsMap[dn] = targets.map(tn => `${dn}${tn}`);
+            });
 
-        const pairsA = targetA.map(d => `${pDig}${d}`);
-        const pairsB = targetB.map(d => `${sDig}${d}`);
+            return {
+                name: f.name,
+                isHot: f.isHot,
+                score: f.score,
+                aiScore: aiScore,
+                set: f.set,
+                pairsMap: pairsMap
+            };
+        });
 
-        const primaryScore = scoreMap[pDig] || 0;
-        const secondaryScore = scoreMap[sDig] || 0;
-        const maxConsensusScore = Math.max(...Object.values(scoreMap));
+        // STRICT CONSENSUS LOGIC: Pull directly from the top 2 formulas
+        const topFormula1 = processedFormulas[0];
+        const topFormula2 = processedFormulas[1] || processedFormulas[0];
 
-        const consensusConfidence = this._consensusConfidence(primaryScore, secondaryScore, maxConsensusScore);
+        const pDig = topFormula1.set[0];
+        const sDig = topFormula2.set[0];
+
+        const pairsA = topFormula1.pairsMap[pDig] || [];
+        const pairsB = topFormula2.pairsMap[sDig] || [];
+
+        const primaryConfidence = topFormula1.aiScore;
+        const secondaryConfidence = topFormula2.aiScore;
+
         const container = document.getElementById("resultContainer");
 
-        const pairsAHTML = pairsA.map(pair => `<div class="consensus-pair" data-copy="${pair}">${pair}</div>`).join("");
-        const pairsBHTML = pairsB.map(pair => `<div class="consensus-pair second" data-copy="${pair}">${pair}</div>`).join("");
+        const pairsAHTML = pairsA.length > 0 ? pairsA.map(pair => `<div class="consensus-pair" data-copy="${pair}">${pair}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
+        const pairsBHTML = pairsB.length > 0 ? pairsB.map(pair => `<div class="consensus-pair second" data-copy="${pair}">${pair}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
 
         let containerHTML = `
             <div class="consensus-box">
@@ -1051,7 +1025,7 @@ const secureEngine = {
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
                         <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${pDig}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${consensusConfidence.primary}%</div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${primaryConfidence}%</div>
                     </div>
                     <div class="consensus-pairs">${pairsAHTML}</div>
                 </div>
@@ -1059,7 +1033,7 @@ const secureEngine = {
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
                         <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${sDig}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${consensusConfidence.secondary}%</div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${secondaryConfidence}%</div>
                     </div>
                     <div class="consensus-pairs">${pairsBHTML}</div>
                 </div>
@@ -1074,19 +1048,7 @@ const secureEngine = {
             <div id="formulasWrapper">
         `;
 
-        const maxScore = Math.max(...fResults.map(x => x.score));
-
-        fResults.forEach(f => {
-            let hasMatch = false;
-            for(let off=-2; off<=2; off++){
-                if(f.set.includes(ops.mod10(cv + off))){ hasMatch = true; break; }
-            }
-            const range = hasMatch ? 3 : 2;
-            const returned = [];
-            for(let off=-range; off<=range; off++){ returned.push(ops.mod10(cv + off)); }
-            const safeTargets = returned.filter(n => !f.set.includes(n)).filter((n,i,a)=>a.indexOf(n)===i).sort((a,b)=>a-b);
-            const aiScore = this._formulaConfidence(f.score, maxScore);
-
+        processedFormulas.forEach(f => {
             let card = `
                 <div class="formula-card">
                     <div class="formula-header-flex">
@@ -1095,21 +1057,21 @@ const secureEngine = {
                     </div>
                     <div class="formula-sub">
                         <span>เลขเด่น: <strong>${f.set[0]}</strong> - <strong>${f.set[1]}</strong></span>
-                        <span class="accuracy-tag">AI CONFIDENCE ${aiScore}%</span>
+                        <span class="accuracy-tag">AI CONFIDENCE ${f.aiScore}%</span>
                     </div>
             `;
 
             f.set.forEach((dn, index) => {
-                const targets = safeTargets.filter(tn => tn !== dn);
-                const pairs = targets.map(tn => `${dn}${tn}`).join(" ");
+                const pairsArr = f.pairsMap[dn] || [];
+                const pairsStr = pairsArr.join(" ");
                 const colorClass = index === 0 ? "main-set" : "sub-set";
                 const label = index === 0 ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
 
                 card += `
-                    <div class="copy-row" data-copy="${pairs}">
+                    <div class="copy-row" data-copy="${pairsStr}">
                         <span class="copy-label">${label}</span>
                         <div style="display:flex; align-items:center; gap:8px; min-width:0;">
-                            <span class="copy-numbers ${colorClass}">${pairs}</span>
+                            <span class="copy-numbers ${colorClass}">${pairsStr}</span>
                             <span style="font-size:.72rem; opacity:.55;">📋</span>
                         </div>
                     </div>
