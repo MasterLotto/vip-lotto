@@ -18,10 +18,9 @@
 /* =========================================================
    MASTERLOTTO VIP — REFINED PREMIUM VIBRANT AI SYSTEM
    AUDITED & UPGRADED:
-   - Optimized performance to eliminate lagging
-   - Enhanced package cards with soft ambient breathing glows
-   - Master AI Consensus confidence subtle pulsing effect added
-   - Strict hierarchical confidence clamps maintained
+   - Optimized performance & restored fluid shimmering/pulsing effects
+   - Refined Master AI Consensus subheader text & compact labels (ชุดเด่น / ชุดรอง)
+   - Distinctive futuristic formula toggle button design (preventing visual blending)
 ========================================================= */
 
 :root{
@@ -125,6 +124,7 @@ body::before{
 
 .header-box{ text-align:center; margin-bottom:22px; }
 
+/* Restored & enhanced fluid shimmering pulse for AI badges / titles */
 .ai-badge{
     display:inline-flex;
     align-items:center;
@@ -139,6 +139,12 @@ body::before{
     border:1px solid rgba(34,211,238,.35);
     background:linear-gradient(135deg, rgba(6,182,212,.18), rgba(59,130,246,.06));
     box-shadow:0 0 20px rgba(6,182,212,.15);
+    animation: badgeShimmer 3s ease-in-out infinite;
+}
+
+@keyframes badgeShimmer{
+    0%,100%{ border-color: rgba(34,211,238,.35); box-shadow: 0 0 15px rgba(6,182,212,.15); }
+    50%{ border-color: rgba(34,211,238,.8); box-shadow: 0 0 25px rgba(6,182,212,.35); }
 }
 
 .header-box h1,
@@ -200,7 +206,6 @@ body::before{
     100%{ box-shadow:0 0 0 0 rgba(16,185,129,0); }
 }
 
-/* Package Grid with Vibrant Ambient Glow */
 .package-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -449,12 +454,19 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(245,158,11,.25);
+    animation: digitPulse 4s ease-in-out infinite;
 }
 
 .consensus-digit:first-child{
     border-color:rgba(52,211,153,.9);
     background:linear-gradient(145deg, rgba(52,211,153,.38), rgba(6,182,212,.18));
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(52,211,153,.25);
+    animation-delay: 2s;
+}
+
+@keyframes digitPulse{
+    0%,100%{ transform: scale(1); filter: brightness(1); }
+    50%{ transform: scale(1.03); filter: brightness(1.12); }
 }
 
 .consensus-divider{ color:#94a3b8; font-size:1.3rem; }
@@ -477,7 +489,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .consensus-pair-title{ color:#f8fafc; font-size:.78rem; font-weight:600; }
 
-/* Subtle pulsing confidence badge matching formula cards without annoyance */
 .consensus-pair-count{
     padding:3px 9px;
     border-radius:10px;
@@ -523,25 +534,33 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .formula-toggle-container{ margin-bottom:14px; }
 
+/* Distinct futuristic toggle button with animated gradient border & pulse to avoid visual blending */
 .btn-toggle-formulas{
     width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
     gap:8px;
-    padding:12px;
+    padding:14px;
     border-radius:16px;
-    border:1px solid rgba(168,85,247,.45);
-    color:#f3e8ff;
-    background:linear-gradient(135deg, rgba(168,85,247,.22), rgba(6,182,212,.12));
+    border:1px solid rgba(236,72,153,.5);
+    color:#fbcfe8;
+    background:linear-gradient(135deg, rgba(219,39,119,.22), rgba(147,51,234,.18));
     font-family:'Prompt',sans-serif;
     font-size:.85rem;
     font-weight:600;
     cursor:pointer;
-    transition:.2s ease;
+    box-shadow: 0 4px 20px rgba(219,39,119,.18);
+    transition:.25s ease;
+    animation: togglePulse 5s ease-in-out infinite;
 }
 
-.btn-toggle-formulas:hover{ border-color:rgba(192,132,252,.8); transform:translateY(-1px); }
+@keyframes togglePulse{
+    0%,100%{ border-color: rgba(236,72,153,.5); box-shadow: 0 4px 20px rgba(219,39,119,.18); }
+    50%{ border-color: rgba(244,114,182,.9); box-shadow: 0 6px 28px rgba(236,72,153,.35); }
+}
+
+.btn-toggle-formulas:hover{ filter:brightness(1.12); transform:translateY(-1px); border-color:#f472b6; }
 
 #formulasWrapper{
     display:none;
@@ -1028,7 +1047,7 @@ const secureEngine = {
         let containerHTML = `
             <div class="consensus-box">
                 <div class="consensus-title">🌟 MASTER AI CONSENSUS</div>
-                <div class="consensus-subtitle">ระบบ AI คัดกรองเลขเด่นดีที่สุดความแม่นยำสูง</div>
+                <div class="consensus-subtitle">ระบบประมวลผลอัจฉริยะขั้นสูง</div>
                 
                 <div class="consensus-main-digits">
                     <div class="consensus-digit">${pDig}</div>
@@ -1038,7 +1057,7 @@ const secureEngine = {
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">🎯 เลขเด่นแนะนำ <strong style="color:#34d399;">${pDig}</strong></div>
+                        <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${pDig}</strong></div>
                         <div class="consensus-pair-count">AI CONFIDENCE ${consensusConfidence.primary}%</div>
                     </div>
                     <div class="consensus-pairs">${pairsAHTML}</div>
@@ -1046,7 +1065,7 @@ const secureEngine = {
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">🎯 เลขเจาะสำรอง <strong style="color:#38bdf8;">${sDig}</strong></div>
+                        <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${sDig}</strong></div>
                         <div class="consensus-pair-count">AI CONFIDENCE ${consensusConfidence.secondary}%</div>
                     </div>
                     <div class="consensus-pairs">${pairsBHTML}</div>
