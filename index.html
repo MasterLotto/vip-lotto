@@ -14,6 +14,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   MASTERLOTTO VIP — REFINED PREMIUM VIBRANT AI SYSTEM
+   AUDITED & UPGRADED:
+   - Optimized performance & restored fluid shimmering/pulsing effects
+   - Refined Master AI Consensus subheader text & compact labels (ชุดเด่น / ชุดรอง)
+   - Updated formula toggle button to match dark/neutral style (like logout button)
+========================================================= */
+
 :root{
     --bg:#030712;
     --bg2:#0a1120;
@@ -32,8 +41,15 @@
     --border:rgba(255,255,255,.08);
 }
 
-*{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     font-family:'Prompt',sans-serif;
@@ -42,8 +58,8 @@ body{
         radial-gradient(circle at 10% 10%, rgba(124,58,237,.12), transparent 40%),
         radial-gradient(circle at 90% 15%, rgba(6,182,212,.10), transparent 40%),
         linear-gradient(160deg, #020408 0%, #040812 40%, #070f1a 75%, #020408 100%);
-    background-size:200% 200%;
-    animation:bgFluidMotion 24s ease-in-out infinite;
+    background-size: 200% 200%;
+    animation: bgFluidMotion 24s ease-in-out infinite;
     color:var(--white);
     display:flex;
     justify-content:center;
@@ -54,9 +70,9 @@ body{
 }
 
 @keyframes bgFluidMotion{
-    0%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-    100%{ background-position:0% 50%; }
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
 }
 
 body::before{
@@ -80,25 +96,15 @@ body::before{
     pointer-events:none;
     z-index:0;
     opacity:.5;
-    animation:orbDrift 18s ease-in-out infinite;
+    animation: orbDrift 18s ease-in-out infinite;
 }
 
-.ai-orb.one{
-    top:-200px;
-    left:-180px;
-    background:rgba(124,58,237,.15);
-}
-
-.ai-orb.two{
-    bottom:-200px;
-    right:-180px;
-    background:rgba(6,182,212,.12);
-    animation-direction:reverse;
-}
+.ai-orb.one{ top:-200px; left:-180px; background:rgba(124,58,237,.15); }
+.ai-orb.two{ bottom:-200px; right:-180px; background:rgba(6,182,212,.12); animation-direction: reverse; }
 
 @keyframes orbDrift{
-    0%,100%{ transform:translate(0,0) scale(1); }
-    50%{ transform:translate(20px,15px) scale(1.05); }
+    0%,100%{ transform: translate(0, 0) scale(1); }
+    50%{ transform: translate(20px, 15px) scale(1.05); }
 }
 
 .vip-container{
@@ -106,23 +112,19 @@ body::before{
     max-width:480px;
     position:relative;
     z-index:5;
-    background:linear-gradient(145deg,rgba(15,24,41,.96),rgba(4,9,18,.99));
+    background:linear-gradient(145deg, rgba(15,24,41,.96), rgba(4,9,18,.99));
     border:1px solid rgba(56,189,248,.22);
     border-radius:32px;
     padding:30px 22px;
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.85),
-        0 0 60px rgba(6,182,212,.05);
+    box-shadow: 0 40px 100px rgba(0,0,0,.85), 0 0 60px rgba(6,182,212,.05);
     backdrop-filter:blur(25px);
     -webkit-backdrop-filter:blur(25px);
     overflow:hidden;
 }
 
-.header-box{
-    text-align:center;
-    margin-bottom:22px;
-}
+.header-box{ text-align:center; margin-bottom:22px; }
 
+/* Restored & enhanced fluid shimmering pulse for AI badges / titles */
 .ai-badge{
     display:inline-flex;
     align-items:center;
@@ -135,24 +137,14 @@ body::before{
     font-weight:600;
     letter-spacing:1.2px;
     border:1px solid rgba(34,211,238,.35);
-    background:linear-gradient(
-        135deg,
-        rgba(6,182,212,.18),
-        rgba(59,130,246,.06)
-    );
+    background:linear-gradient(135deg, rgba(6,182,212,.18), rgba(59,130,246,.06));
     box-shadow:0 0 20px rgba(6,182,212,.15);
-    animation:badgeShimmer 3s ease-in-out infinite;
+    animation: badgeShimmer 3s ease-in-out infinite;
 }
 
 @keyframes badgeShimmer{
-    0%,100%{
-        border-color:rgba(34,211,238,.35);
-        box-shadow:0 0 15px rgba(6,182,212,.15);
-    }
-    50%{
-        border-color:rgba(34,211,238,.8);
-        box-shadow:0 0 25px rgba(6,182,212,.35);
-    }
+    0%,100%{ border-color: rgba(34,211,238,.35); box-shadow: 0 0 15px rgba(6,182,212,.15); }
+    50%{ border-color: rgba(34,211,238,.8); box-shadow: 0 0 25px rgba(6,182,212,.35); }
 }
 
 .header-box h1,
@@ -163,16 +155,7 @@ body::before{
     line-height:1.15;
     font-weight:700;
     letter-spacing:-.6px;
-    background:linear-gradient(
-        110deg,
-        #ffffff 0%,
-        #67e8f9 28%,
-        #0284c7 45%,
-        #ffffff 50%,
-        #22d3ee 64%,
-        #0284c7 82%,
-        #ffffff 100%
-    );
+    background:linear-gradient(110deg, #ffffff 0%, #67e8f9 28%, #0284c7 45%, #ffffff 50%, #22d3ee 64%, #0284c7 82%, #ffffff 100%);
     background-size:240% 100%;
     -webkit-background-clip:text;
     background-clip:text;
@@ -181,9 +164,9 @@ body::before{
 }
 
 @keyframes logoLightSweep{
-    0%{ background-position:140% 50%; }
-    50%{ background-position:40% 50%; }
-    100%{ background-position:-40% 50%; }
+    0%{ background-position: 140% 50%; }
+    50%{ background-position: 40% 50%; }
+    100%{ background-position: -40% 50%; }
 }
 
 .header-box p{
@@ -236,35 +219,25 @@ body::before{
     padding:16px 10px;
     border-radius:18px;
     text-align:center;
-    background:linear-gradient(
-        145deg,
-        rgba(18,29,48,.92),
-        rgba(6,12,22,.96)
-    );
+    background:linear-gradient(145deg, rgba(18,29,48,.92), rgba(6,12,22,.96));
     border:1px solid rgba(255,255,255,.08);
     transition:.25s ease;
-    animation:packageAmbientGlow 6s ease-in-out infinite;
+    animation: packageAmbientGlow 6s ease-in-out infinite;
 }
 
-.package-card:nth-child(2){ animation-delay:1.5s; }
-.package-card:nth-child(3){ animation-delay:3s; }
-.package-card:nth-child(4){ animation-delay:4.5s; }
+.package-card:nth-child(2){ animation-delay: 1.5s; }
+.package-card:nth-child(3){ animation-delay: 3s; }
+.package-card:nth-child(4){ animation-delay: 4.5s; }
 
 @keyframes packageAmbientGlow{
-    0%,100%{
-        border-color:rgba(255,255,255,.08);
-        box-shadow:0 4px 15px rgba(0,0,0,.3);
-    }
-    50%{
-        border-color:rgba(56,189,248,.35);
-        box-shadow:0 6px 22px rgba(6,182,212,.12);
-    }
+    0%,100%{ border-color: rgba(255,255,255,.08); box-shadow: 0 4px 15px rgba(0,0,0,.3); }
+    50%{ border-color: rgba(56,189,248,.35); box-shadow: 0 6px 22px rgba(6,182,212,.12); }
 }
 
 .package-card:hover{
     transform:translateY(-3px);
     border-color:rgba(56,189,248,.6);
-    box-shadow:0 8px 25px rgba(6,182,212,.2);
+    box-shadow: 0 8px 25px rgba(6,182,212,.2);
 }
 
 .package-card::before{
@@ -276,29 +249,14 @@ body::before{
     height:2px;
 }
 
-.p-1::before{ background:#a855f7; }
-.p-2::before{ background:#06b6d4; }
-.p-3::before{ background:#f59e0b; }
-.p-4::before{ background:#10b981; }
+.p-1::before{background:#a855f7}
+.p-2::before{background:#06b6d4}
+.p-3::before{background:#f59e0b}
+.p-4::before{background:#10b981}
 
-.package-card h3{
-    color:#cbd5e1;
-    font-size:.8rem;
-    font-weight:500;
-}
-
-.package-card .price{
-    margin-top:4px;
-    color:#fff;
-    font-size:1.3rem;
-    font-weight:700;
-}
-
-.package-card .desc{
-    margin-top:2px;
-    color:#64748b;
-    font-size:.66rem;
-}
+.package-card h3{ color:#cbd5e1; font-size:.8rem; font-weight:500; }
+.package-card .price{ margin-top:4px; color:#fff; font-size:1.3rem; font-weight:700; }
+.package-card .desc{ margin-top:2px; color:#64748b; font-size:.66rem; }
 
 .btn-line{
     width:100%;
@@ -315,15 +273,12 @@ body::before{
     font-weight:600;
     position:relative;
     overflow:hidden;
-    background:linear-gradient(135deg,#06c755,#009e3f);
+    background:linear-gradient(135deg, #06c755, #009e3f);
     box-shadow:0 8px 25px rgba(6,199,85,.25);
     transition:.2s ease;
 }
 
-.btn-line:hover{
-    filter:brightness(1.08);
-    transform:translateY(-1px);
-}
+.btn-line:hover{ filter:brightness(1.08); transform:translateY(-1px); }
 
 .login-section{
     padding:18px;
@@ -332,12 +287,7 @@ body::before{
     border:1px solid rgba(255,255,255,.08);
 }
 
-.login-title{
-    text-align:center;
-    margin-bottom:10px;
-    color:#94a3b8;
-    font-size:.78rem;
-}
+.login-title{ text-align:center; margin-bottom:10px; color:#94a3b8; font-size:.78rem; }
 
 input{
     width:100%;
@@ -354,11 +304,7 @@ input{
 }
 
 input::placeholder{ color:#475569; }
-
-input:focus{
-    border-color:rgba(34,211,238,.75);
-    box-shadow:0 0 0 3px rgba(6,182,212,.12);
-}
+input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,212,.12); }
 
 .action-btn{
     width:100%;
@@ -371,15 +317,12 @@ input:focus{
     font-size:.9rem;
     font-weight:600;
     cursor:pointer;
-    background:linear-gradient(135deg,#0284c7,#0369a1);
+    background:linear-gradient(135deg, #0284c7, #0369a1);
     box-shadow:0 8px 22px rgba(2,132,199,.25);
     transition:.2s ease;
 }
 
-.action-btn:hover{
-    filter:brightness(1.1);
-    transform:translateY(-1px);
-}
+.action-btn:hover{ filter:brightness(1.1); transform: translateY(-1px); }
 
 .error-msg{
     display:none;
@@ -391,17 +334,8 @@ input:focus{
 
 #calculatorView{ display:none; }
 
-.input-group-calc{
-    margin-bottom:15px;
-}
-
-.input-label{
-    display:block;
-    margin-bottom:6px;
-    color:#cbd5e1;
-    font-size:.8rem;
-    font-weight:500;
-}
+.input-group-calc{ margin-bottom:15px; }
+.input-label{ display:block; margin-bottom:6px; color:#cbd5e1; font-size:.8rem; font-weight:500; }
 
 .last-session-badge{
     display:none;
@@ -415,11 +349,7 @@ input:focus{
     border:1px solid rgba(6,182,212,.22);
 }
 
-.action-row{
-    display:flex;
-    gap:10px;
-    margin-bottom:18px;
-}
+.action-row{ display:flex; gap:10px; margin-bottom:18px; }
 
 .btn-calculate{
     flex:1;
@@ -431,7 +361,7 @@ input:focus{
     border:none;
     border-radius:14px;
     color:#fff;
-    background:linear-gradient(135deg,#10b981,#047857);
+    background:linear-gradient(135deg, #10b981, #047857);
     font-family:'Prompt',sans-serif;
     font-size:.9rem;
     font-weight:600;
@@ -440,10 +370,7 @@ input:focus{
     transition:.2s ease;
 }
 
-.btn-calculate:hover{
-    filter:brightness(1.08);
-    transform:translateY(-1px);
-}
+.btn-calculate:hover{ filter:brightness(1.08); transform: translateY(-1px); }
 
 .btn-clear{
     width:86px;
@@ -457,10 +384,7 @@ input:focus{
     transition:.2s ease;
 }
 
-.btn-clear:hover{
-    color:#fff;
-    background:#1e293b;
-}
+.btn-clear:hover{ color:#fff; background:#1e293b; }
 
 #aiScannerBox{
     display:none;
@@ -471,17 +395,7 @@ input:focus{
     text-align:center;
     border-radius:24px;
     border:1px solid rgba(34,211,238,.4);
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(6,182,212,.18),
-            transparent 60%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(5,15,29,.98),
-            rgba(2,7,14,.98)
-        );
+    background:radial-gradient(circle at center, rgba(6,182,212,.18), transparent 60%), linear-gradient(145deg, rgba(5,15,29,.98), rgba(2,7,14,.98));
 }
 
 .neural-radar{
@@ -496,16 +410,11 @@ input:focus{
     animation:spin .8s linear infinite;
 }
 
-@keyframes spin{
-    to{ transform:rotate(360deg); }
-}
+@keyframes spin{ to{ transform:rotate(360deg); } }
 
-#aiScannerText{
-    color:#67e8f9;
-    font-size:.85rem;
-    font-weight:500;
-}
+#aiScannerText{ color:#67e8f9; font-size:.85rem; font-weight:500; }
 
+/* MASTER AI CONSENSUS & SUBTLE PULSING CONFIDENCE */
 .consensus-box{
     position:relative;
     overflow:hidden;
@@ -515,35 +424,13 @@ input:focus{
     text-align:center;
     border:1px solid rgba(251,191,36,.65);
     background:
-        radial-gradient(
-            circle at 50% -20%,
-            rgba(251,191,36,.32),
-            transparent 55%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(32,22,50,.99),
-            rgba(6,12,24,.99)
-        );
-    box-shadow:
-        0 25px 55px rgba(0,0,0,.75),
-        0 0 50px rgba(245,158,11,.15);
+        radial-gradient(circle at 50% -20%, rgba(251,191,36,.32), transparent 55%),
+        linear-gradient(145deg, rgba(32,22,50,.99), rgba(6,12,24,.99));
+    box-shadow:0 25px 55px rgba(0,0,0,.75), 0 0 50px rgba(245,158,11,.15);
 }
 
-.consensus-title{
-    color:#fef08a;
-    font-size:1.02rem;
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.consensus-subtitle{
-    margin-top:4px;
-    margin-bottom:16px;
-    color:#e2e8f0;
-    font-size:.74rem;
-    font-weight:500;
-}
+.consensus-title{ color:#fef08a; font-size:1.02rem; font-weight:700; letter-spacing:1px; }
+.consensus-subtitle{ margin-top:4px; margin-bottom:16px; color:#e2e8f0; font-size:.74rem; font-weight:500; }
 
 .consensus-main-digits{
     display:flex;
@@ -564,48 +451,25 @@ input:focus{
     font-size:2.1rem;
     font-weight:700;
     color:#fff;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(251,191,36,.38),
-            rgba(168,85,247,.18)
-        );
+    background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.3),
-        0 0 30px rgba(245,158,11,.25);
-    animation:digitPulse 4s ease-in-out infinite;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(245,158,11,.25);
+    animation: digitPulse 4s ease-in-out infinite;
 }
 
 .consensus-digit:first-child{
     border-color:rgba(52,211,153,.9);
-    background:
-        linear-gradient(
-            145deg,
-            rgba(52,211,153,.38),
-            rgba(6,182,212,.18)
-        );
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.3),
-        0 0 30px rgba(52,211,153,.25);
-    animation-delay:2s;
+    background:linear-gradient(145deg, rgba(52,211,153,.38), rgba(6,182,212,.18));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(52,211,153,.25);
+    animation-delay: 2s;
 }
 
 @keyframes digitPulse{
-    0%,100%{
-        transform:scale(1);
-        filter:brightness(1);
-    }
-    50%{
-        transform:scale(1.03);
-        filter:brightness(1.12);
-    }
+    0%,100%{ transform: scale(1); filter: brightness(1); }
+    50%{ transform: scale(1.03); filter: brightness(1.12); }
 }
 
-.consensus-divider{
-    color:#94a3b8;
-    font-size:1.3rem;
-}
+.consensus-divider{ color:#94a3b8; font-size:1.3rem; }
 
 .consensus-pair-panel{
     padding:12px 10px;
@@ -623,14 +487,7 @@ input:focus{
     margin-bottom:9px;
 }
 
-.consensus-pair-title{
-    color:#f8fafc;
-    font-size:.78rem;
-    font-weight:600;
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
+.consensus-pair-title{ color:#f8fafc; font-size:.78rem; font-weight:600; }
 
 .consensus-pair-count{
     padding:3px 9px;
@@ -640,28 +497,18 @@ input:focus{
     font-weight:600;
     background:rgba(251,191,36,.2);
     border:1px solid rgba(251,191,36,.45);
-    animation:softConfidencePulse 4s ease-in-out infinite;
+    animation: softConfidencePulse 4s ease-in-out infinite;
 }
 
 @keyframes softConfidencePulse{
-    0%,100%{
-        opacity:.85;
-        box-shadow:0 0 0 rgba(251,191,36,0);
-    }
-    50%{
-        opacity:1;
-        box-shadow:0 0 12px rgba(251,191,36,.3);
-    }
+    0%,100%{ opacity:.85; box-shadow: 0 0 0 rgba(251,191,36,0); }
+    50%{ opacity:1; box-shadow: 0 0 12px rgba(251,191,36,.3); }
 }
 
 .consensus-pairs{
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:6px;
-}
-
-.consensus-pairs.grid-4{
-    grid-template-columns:repeat(4,1fr);
 }
 
 .consensus-pair{
@@ -672,59 +519,22 @@ input:focus{
     font-size:.9rem;
     font-weight:700;
     color:#fff;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(52,211,153,.3),
-            rgba(6,182,212,.15)
-        );
+    background:linear-gradient(135deg, rgba(52,211,153,.3), rgba(6,182,212,.15));
     border:1px solid rgba(52,211,153,.55);
     cursor:pointer;
     transition:.2s ease;
 }
 
 .consensus-pair.second{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(56,189,248,.28),
-            rgba(168,85,247,.15)
-        );
+    background:linear-gradient(135deg, rgba(56,189,248,.28), rgba(168,85,247,.15));
     border-color:rgba(56,189,248,.55);
 }
 
-.consensus-pair.trio{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(245,158,11,.28),
-            rgba(239,68,68,.15)
-        );
-    border-color:rgba(245,158,11,.55);
-    font-size:.85rem;
-}
+.consensus-pair:hover{ transform:translateY(-2px); border-color:rgba(253,224,71,.95); }
 
-.consensus-pair:hover{
-    transform:translateY(-2px);
-    border-color:rgba(253,224,71,.95);
-}
+.formula-toggle-container{ margin-bottom:14px; }
 
-.new-badge-tag{
-    display:inline-block;
-    padding:1px 5px;
-    font-size:.58rem;
-    font-weight:700;
-    color:#fff;
-    background:linear-gradient(135deg,#f43f5e,#fb7185);
-    border-radius:4px;
-    letter-spacing:.5px;
-    vertical-align:middle;
-}
-
-.formula-toggle-container{
-    margin-bottom:14px;
-}
-
+/* Updated Formula Toggle Button: Matches dark/neutral style of logout button to keep focus on Master AI Consensus */
 .btn-toggle-formulas{
     width:100%;
     display:flex;
@@ -743,26 +553,16 @@ input:focus{
     transition:.2s ease;
 }
 
-.btn-toggle-formulas:hover{
-    color:#fff;
-    background:#1e293b;
-    border-color:rgba(255,255,255,.2);
-}
+.btn-toggle-formulas:hover{ color:#fff; background:#1e293b; border-color:rgba(255,255,255,.2); }
 
 #formulasWrapper{
     display:none;
-    animation:fadeInSlide .3s ease forwards;
+    animation: fadeInSlide .3s ease forwards;
 }
 
 @keyframes fadeInSlide{
-    from{
-        opacity:0;
-        transform:translateY(-8px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{ opacity:0; transform:translateY(-8px); }
+    to{ opacity:1; transform:translateY(0); }
 }
 
 .formula-card{
@@ -771,32 +571,15 @@ input:focus{
     padding:16px;
     margin-bottom:14px;
     border-radius:20px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(16,25,42,.96),
-            rgba(5,11,20,.99)
-        );
+    background:linear-gradient(145deg, rgba(16,25,42,.96), rgba(5,11,20,.99));
     border:1px solid rgba(56,189,248,.28);
     box-shadow:0 15px 40px rgba(0,0,0,.6);
 }
 
-.formula-header-flex{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-    margin-bottom:6px;
-}
+.formula-header-flex{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; }
+.formula-title{ color:#fff; font-size:.9rem; font-weight:600; }
 
-.formula-title{
-    color:#fff;
-    font-size:.9rem;
-    font-weight:600;
-}
-
-.ai-match-badge,
-.hot-badge{
+.ai-match-badge, .hot-badge{
     flex-shrink:0;
     padding:3px 10px;
     border-radius:20px;
@@ -817,24 +600,8 @@ input:focus{
     border:1px solid rgba(16,185,129,.5);
 }
 
-.formula-sub{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-    margin-bottom:10px;
-    color:#fde047;
-    font-size:.74rem;
-}
-
-.accuracy-tag{
-    color:#7dd3fc;
-    background:rgba(6,182,212,.18);
-    border:1px solid rgba(6,182,212,.35);
-    padding:3px 9px;
-    border-radius:8px;
-    font-weight:600;
-}
+.formula-sub{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; color:#fde047; font-size:.74rem; }
+.accuracy-tag{ color:#7dd3fc; background:rgba(6,182,212,.18); border:1px solid rgba(6,182,212,.35); padding:3px 9px; border-radius:8px; font-weight:600; }
 
 .copy-row{
     display:flex;
@@ -850,29 +617,12 @@ input:focus{
     transition:.2s ease;
 }
 
-.copy-row:hover{
-    border-color:rgba(6,182,212,.6);
-    background:rgba(8,15,27,.98);
-}
-
-.copy-label{
-    color:#e2e8f0;
-    font-size:.74rem;
-    font-weight:500;
-}
-
-.copy-numbers{
-    font-family:monospace;
-    font-size:.85rem;
-    font-weight:600;
-}
-
+.copy-row:hover{ border-color:rgba(6,182,212,.6); background:rgba(8,15,27,.98); }
+.copy-label{ color:#e2e8f0; font-size:.74rem; font-weight:500; }
+.copy-numbers{ font-family:monospace; font-size:.85rem; font-weight:600; }
 .main-set{ color:#34d399; }
 .sub-set{ color:#38bdf8; }
-.highlight-digit{
-    color:#38bdf8;
-    font-weight:700;
-}
+.highlight-digit{ color:#38bdf8; font-weight:700; }
 
 .back-btn{
     margin-top:6px;
@@ -896,32 +646,17 @@ input:focus{
     text-align:center;
     font-size:.8rem;
     font-weight:600;
-    background:linear-gradient(135deg,#10b981,#047857);
+    background:linear-gradient(135deg, #10b981, #047857);
     box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 
-#toast.show{
-    visibility:visible;
-    animation:toastInOut 1.8s ease forwards;
-}
+#toast.show{ visibility:visible; animation:toastInOut 1.8s ease forwards; }
 
 @keyframes toastInOut{
-    0%{
-        opacity:0;
-        bottom:5px;
-    }
-    20%{
-        opacity:1;
-        bottom:25px;
-    }
-    80%{
-        opacity:1;
-        bottom:25px;
-    }
-    100%{
-        opacity:0;
-        bottom:10px;
-    }
+    0%{ opacity:0; bottom:5px; }
+    20%{ opacity:1; bottom:25px; }
+    80%{ opacity:1; bottom:25px; }
+    100%{ opacity:0; bottom:10px; }
 }
 </style>
 </head>
@@ -934,7 +669,6 @@ input:focus{
 <div class="vip-container">
 
 <div id="loginView">
-
     <div class="header-box">
         <div class="ai-badge">⚡ AI SMART ANALYSIS</div>
         <h2>MasterLotto VIP</h2>
@@ -943,2076 +677,542 @@ input:focus{
 
     <div class="ai-status-bar">
         <div class="pulse-dot"></div>
-        <span>
-            ผู้ใช้งานรวม:
-            <strong style="color:#38bdf8;">1,428 คน</strong>
-            &nbsp;|&nbsp;
-            สถานะ:
-            <strong style="color:#34d399;">พร้อมใช้งาน</strong>
-        </span>
+        <span>ผู้ใช้งานรวม: <strong style="color:#38bdf8;">1,428 คน</strong> &nbsp;|&nbsp; สถานะ: <strong style="color:#34d399;">พร้อมใช้งาน</strong></span>
     </div>
 
     <div class="package-grid">
-
         <div class="package-card p-1">
             <h3>⏱️ 7 วัน</h3>
             <div class="price">99 ฿</div>
             <div class="desc">ทดลองใช้งาน</div>
         </div>
-
         <div class="package-card p-2">
             <h3>⏳ 15 วัน</h3>
             <div class="price">199 ฿</div>
             <div class="desc">แพ็กเกจรายงวด</div>
         </div>
-
         <div class="package-card p-3">
             <h3>⭐ 1 เดือน</h3>
             <div class="price">299 ฿</div>
             <div class="desc">ยอดนิยมสุดคุ้ม</div>
         </div>
-
         <div class="package-card p-4">
             <h3>🔥 1 ปี</h3>
             <div class="price">1,890 ฿</div>
             <div class="desc">สมาชิก VIP ยาวนาน</div>
         </div>
-
     </div>
 
-    <a
-        href="https://line.me/ti/p/cWXNwvCmqc"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-line"
-        onclick="secureEngine._snd('click')"
-    >
+    <a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" rel="noopener noreferrer" class="btn-line" onclick="secureEngine._snd('click')">
         💬 ติดต่อแอดมิน / สมัครสมาชิก VIP
     </a>
 
     <div class="login-section">
-
-        <div class="login-title">
-            กรอกรหัสผ่านสมาชิก VIP เพื่อเข้าใช้งาน
-        </div>
-
-        <input
-            type="password"
-            id="passwordInput"
-            placeholder="••• รหัสผ่านสมาชิก •••"
-            autocomplete="off"
-        >
-
-        <button class="action-btn" id="loginButton">
-            🔐 เข้าสู่ระบบคำนวณ AI
-        </button>
-
-        <div id="errorMsg" class="error-msg">
-            ❌ รหัสผ่านไม่ถูกต้อง
-        </div>
-
+        <div class="login-title">กรอกรหัสผ่านสมาชิก VIP เพื่อเข้าใช้งาน</div>
+        <input type="password" id="passwordInput" placeholder="••• รหัสผ่านสมาชิก •••" autocomplete="off">
+        <button class="action-btn" id="loginButton">🔐 เข้าสู่ระบบคำนวณ AI</button>
+        <div id="errorMsg" class="error-msg">❌ รหัสผ่านไม่ถูกต้อง</div>
     </div>
-
 </div>
 
-
 <div id="calculatorView">
-
     <div class="header-box">
-
-        <div class="ai-badge">
-            ⚡ AI SMART ANALYSIS ENGINE
-        </div>
-
+        <div class="ai-badge">⚡ AI SMART ANALYSIS ENGINE</div>
         <h2>MasterLotto VIP</h2>
-
-        <p>
-            วิเคราะห์เลขเด่นด้วย AI อัจฉริยะแม่นยำสูง
-        </p>
-
+        <p>วิเคราะห์เลขเด่นด้วย AI อัจฉริยะแม่นยำสูง</p>
     </div>
-
 
     <div id="lastSessionBadge" class="last-session-badge">
-
-        🔮 อ้างอิงจากงวดล่าสุด:
-        3 ตัวบน
-        <strong id="lbl3" style="color:#fff;"></strong>
-
-        &nbsp;|&nbsp;
-
-        2 ตัวล่าง
-        <strong id="lbl2" style="color:#fff;"></strong>
-
+        🔮 อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
     </div>
-
 
     <div class="input-group-calc">
-
-        <label class="input-label">
-            เลข 3 ตัวบน
-        </label>
-
-        <input
-            type="tel"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            id="num3top"
-            placeholder="เช่น 701"
-            maxlength="3"
-            autocomplete="off"
-        >
-
+        <label class="input-label">เลข 3 ตัวบน</label>
+        <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" autocomplete="off">
     </div>
-
 
     <div class="input-group-calc">
-
-        <label class="input-label">
-            เลข 2 ตัวล่าง
-        </label>
-
-        <input
-            type="tel"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            id="num2bottom"
-            placeholder="เช่น 26"
-            maxlength="2"
-            autocomplete="off"
-        >
-
+        <label class="input-label">เลข 2 ตัวล่าง</label>
+        <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num2bottom" placeholder="เช่น 26" maxlength="2" autocomplete="off">
     </div>
-
 
     <div class="action-row">
-
-        <button class="btn-calculate" id="calculateButton">
-            ⚡ เริ่มประมวลผล AI
-        </button>
-
-        <button class="btn-clear" id="clearButton">
-            ล้างค่า
-        </button>
-
+        <button class="btn-calculate" id="calculateButton">⚡ เริ่มประมวลผล AI</button>
+        <button class="btn-clear" id="clearButton">ล้างค่า</button>
     </div>
-
 
     <div id="aiScannerBox">
-
         <div class="neural-radar"></div>
-
-        <div id="aiScannerText">
-            กำลังประมวลผลด้วย AI อัจฉริยะ
-        </div>
-
+        <div id="aiScannerText">กำลังประมวลผลด้วย AI อัจฉริยะ</div>
     </div>
-
 
     <div id="resultContainer"></div>
 
-
-    <button class="action-btn back-btn" id="logoutButton">
-        ออกจากระบบ / กลับหน้าแรก
-    </button>
-
+    <button class="action-btn back-btn" id="logoutButton">ออกจากระบบ / กลับหน้าแรก</button>
 </div>
 
 </div>
 
-<div id="toast">
-    คัดลอกตัวเลขเรียบร้อยแล้ว!
-</div>
-
+<div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-
 const secureEngine = {
-
     _enc: [
-        "QmFuazIwMjY=",
-        "QU1ENDI4",
-        "WGs4OVBx",
-        "TWFzdGVyQWRtaW4yMDI2",
-        "VDlrTDJtUDc=",
-        "WnE0Vzh4VDE=",
-        "UnQ1WTl1STI=",
-        "T3PyUTd3RTQ=",
-        "QXMzRDZmRzk=",
-        "R2gxSDRrTDg=",
-        "WndfQzJ2QjU=",
-        "Tm04TTFuQjM=",
-        "UG85STZ1WTQ=",
-        "VWozWTd0UjY=",
-        "V3EyUzV4Qzg=",
-        "RWQ0UjdmVjE=",
-        "VGg6WTloTjI=",
-        "WWg4VTFqTTM=",
-        "SWswTzNwTDU=",
-        "VWF6MldTeDM=",
-        "RWRjNFJGdjU=",
-        "VGdiNllobjc=",
-        "VWptOElLbzk=",
-        "UGlmME9LaTk=",
-        "Wnh2MUNkZTI=",
-        "Qmd0M05oeTQ=",
-        "TWp1NUtsbzY=",
-        "Q2RlN1Zmcjg=",
-        "Qmh5OU5qaDA=",
-        "WHN3MlphcQ==",
-        "RGVyNEV3eDM=",
-        "Rmd0NkNkZTU=",
-        "WWh1OEJndDc=",
-        "TWppMFVqbTk=",
-        "TG9wMVBsbzA=",
-        "S2ppOU9raTg=",
-        "IXVoOFVoeTc=",
-        "WWd0dFRneTY=",
-        "RnJlNURlcjQ=",
-        "RXdxM3dhcTI=",
-        "VWF6MVhzdDI=",
-        "WGRlM3BmcjQ=",
-        "Vmd0NUJoeTY=",
-        "Tmp1N01raTg=",
-        "UGlmOU9sbzA=",
-        "WnhjNFZubjU=",
-        "QXNkNkZnaDc=",
-        "UXdlOFJ0eTk=",
-        "Wms5UHEyTG0=",
-        "W3c4TmU0UnQ=",
-        "Q3AzSmk3VW8=",
-        "VmI1WXRvTW4=",
-        "QXMyRGY0R2g=",
-        "S2o3S2w5UG8="
+        "QmFuazIwMjY=", "QU1ENDI4", "WGs4OVBx", "TWFzdGVyQWRtaW4yMDI2", "VDlrTDJtUDc=",
+        "WnE0Vzh4VDE=", "UnQ1WTl1STI=", "T3PyUTd3RTQ=", "QXMzRDZmRzk=", "R2gxSDRrTDg=",
+        "WndfQzJ2QjU=", "Tm04TTFuQjM=", "UG85STZ1WTQ=", "VWozWTd0UjY=", "V3EyUzV4Qzg=",
+        "RWQ0UjdmVjE=", "VGg6WTloTjI=", "WWg4VTFqTTM=", "SWswTzNwTDU=", "VWF6MldTeDM=",
+        "RWRjNFJGdjU=", "VGdiNllobjc=", "VWptOElLbzk=", "UGlmME9LaTk=", "Wnh2MUNkZTI=",
+        "Qmd0M05oeTQ=", "TWp1NUtsbzY=", "Q2RlN1Zmcjg=", "Qmh5OU5qaDA=", "WHN3MlphcQ==",
+        "RGVyNEV3eDM=", "Rmd0NkNkZTU=", "WWh1OEJndDc=", "TWppMFVqbTk=", "TG9wMVBsbzA=",
+        "S2ppOU9raTg=", "IXVoOFVoeTc=", "WWd0dFRneTY=", "RnJlNURlcjQ=", "RXdxM3dhcTI=",
+        "VWF6MVhzdDI=", "WGRlM3BmcjQ=", "Vmd0NUJoeTY=", "Tmp1N01raTg=", "UGlmOU9sbzA=",
+        "WnhjNFZubjU=", "QXNkNkZnaDc=", "UXdlOFJ0eTk=", "Wms5UHEyTG0=", "W3c4TmU0UnQ=",
+        "Q3AzSmk3VW8=", "VmI1WXRvTW4=", "QXMyRGY0R2g=", "S2o3S2w5UG8="
     ],
 
     _getVList(){
-        return this._enc.map(v => {
-            try{
-                return atob(v);
-            }catch(e){
-                return v;
-            }
-        });
+        return this._enc.map(v => { try { return atob(v); } catch(e){ return v; } });
     },
 
     _getDevId(){
-
         let device = localStorage.getItem("ml_secure_device");
-
         if(!device){
-
-            const fingerprint = [
-                screen.width,
-                screen.height,
-                screen.colorDepth,
-                navigator.language,
-                navigator.userAgent
-            ].join("_");
-
-            device =
-                "DEV_" +
-                btoa(fingerprint)
-                    .replace(/[^a-zA-Z0-9]/g,"")
-                    .substring(0,20);
-
-            localStorage.setItem(
-                "ml_secure_device",
-                device
-            );
+            const fingerprint = [screen.width, screen.height, screen.colorDepth, navigator.language, navigator.userAgent].join("_");
+            device = "DEV_" + btoa(fingerprint).replace(/[^a-zA-Z0-9]/g,"").substring(0,20);
+            localStorage.setItem("ml_secure_device", device);
         }
-
         return device;
     },
 
     _snd(type="click"){
-
-        try{
-
-            const AudioCtx =
-                window.AudioContext ||
-                window.webkitAudioContext;
-
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
             if(!AudioCtx) return;
-
             const ctx = new AudioCtx();
-
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
-
             if(type === "error"){
-
                 osc.type = "sawtooth";
-
-                osc.frequency.setValueAtTime(
-                    180,
-                    ctx.currentTime
-                );
-
-                gain.gain.setValueAtTime(
-                    .1,
-                    ctx.currentTime
-                );
-
-            }else{
-
+                osc.frequency.setValueAtTime(180, ctx.currentTime);
+                gain.gain.setValueAtTime(.1, ctx.currentTime);
+            } else {
                 osc.type = "sine";
-
-                osc.frequency.setValueAtTime(
-                    580,
-                    ctx.currentTime
-                );
-
-                gain.gain.setValueAtTime(
-                    .08,
-                    ctx.currentTime
-                );
-
+                osc.frequency.setValueAtTime(580, ctx.currentTime);
+                gain.gain.setValueAtTime(.08, ctx.currentTime);
             }
-
             osc.connect(gain);
             gain.connect(ctx.destination);
-
             osc.start();
-
-            osc.stop(
-                ctx.currentTime +
-                (type === "error" ? .12 : .06)
-            );
-
-        }catch(e){}
-
+            osc.stop(ctx.currentTime + (type === "error" ? .12 : .06));
+        } catch(e){}
     },
 
     _escapeHTML(value){
-
-        return String(value)
-            .replace(/&/g,"&amp;")
-            .replace(/</g,"&lt;")
-            .replace(/>/g,"&gt;")
-            .replace(/"/g,"&quot;")
-            .replace(/'/g,"&#039;");
-
+        return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
     },
 
-    _clamp(val,min,max){
-
-        return Math.min(
-            max,
-            Math.max(min,val)
-        );
-
+    _clamp(val, min, max){
+        return Math.min(max, Math.max(min, val));
     },
 
-    _formulaConfidence(score,maxScore){
-
-        if(maxScore <= 0)
-            return 88.0;
-
-        const ratio =
-            this._clamp(
-                score / maxScore,
-                0,
-                1
-            );
-
-        const confidence =
-            82.0 +
-            (ratio * 14.9);
-
-        return Number(
-            this._clamp(
-                confidence,
-                82.0,
-                96.9
-            ).toFixed(1)
-        );
-
+    _formulaConfidence(score, maxScore){
+        if(maxScore <= 0) return 88.0;
+        const ratio = this._clamp(score / maxScore, 0, 1);
+        const confidence = 82.0 + (ratio * 14.9);
+        return Number(this._clamp(confidence, 82.0, 96.9).toFixed(1));
     },
 
-    _consensusConfidence(
-        primaryScore,
-        secondaryScore,
-        maxScore
-    ){
+    _consensusConfidence(primaryScore, secondaryScore, maxScore){
+        if(maxScore <= 0) return { primary: 98.5, secondary: 97.8 };
+        const pRatio = this._clamp(primaryScore / maxScore, 0, 1);
+        const sRatio = this._clamp(secondaryScore / maxScore, 0, 1);
 
-        if(maxScore <= 0){
+        let primary = 90.0 + (pRatio * 9.9);
+        primary = this._clamp(primary, 90.0, 99.9);
 
-            return {
-                primary:98.5,
-                secondary:97.8,
-                trio:74.5
-            };
-
-        }
-
-        const pRatio =
-            this._clamp(
-                primaryScore / maxScore,
-                0,
-                1
-            );
-
-        const sRatio =
-            this._clamp(
-                secondaryScore / maxScore,
-                0,
-                1
-            );
-
-        let primary =
-            90.0 +
-            (pRatio * 9.9);
-
-        primary =
-            this._clamp(
-                primary,
-                90.0,
-                99.9
-            );
-
-        let secondary =
-            97.0 +
-            (sRatio * 1.9);
-
-        secondary =
-            this._clamp(
-                secondary,
-                97.0,
-                98.9
-            );
-
-        secondary =
-            Math.min(
-                secondary,
-                primary - 0.5
-            );
-
-        let trio =
-            72.0 +
-            (pRatio * 5.0);
-
-        trio =
-            this._clamp(
-                trio,
-                72.0,
-                78.5
-            );
+        let secondary = 97.0 + (sRatio * 1.9);
+        secondary = this._clamp(secondary, 97.0, 98.9);
+        secondary = Math.min(secondary, primary - 0.5);
 
         return {
-
-            primary:Number(
-                primary.toFixed(1)
-            ),
-
-            secondary:Number(
-                secondary.toFixed(1)
-            ),
-
-            trio:Number(
-                trio.toFixed(1)
-            )
-
+            primary: Number(primary.toFixed(1)),
+            secondary: Number(secondary.toFixed(1))
         };
-
     },
 
     _auth(){
-
         this._snd("click");
+        const input = document.getElementById("passwordInput");
+        const err = document.getElementById("errorMsg");
+        const pass = input.value.trim();
+        const validList = this._getVList();
 
-        const input =
-            document.getElementById(
-                "passwordInput"
-            );
-
-        const err =
-            document.getElementById(
-                "errorMsg"
-            );
-
-        const pass =
-            input.value.trim();
-
-        const validList =
-            this._getVList();
-
-        if(
-            !pass ||
-            !validList.includes(pass)
-        ){
-
+        if(!pass || !validList.includes(pass)){
             this._snd("error");
-
-            err.innerText =
-                "❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ";
-
-            err.style.display =
-                "block";
-
+            err.innerText = "❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ";
+            err.style.display = "block";
             input.focus();
-
             return;
-
         }
 
-        const device =
-            this._getDevId();
+        const device = this._getDevId();
+        const bindKey = "ml_bind_" + btoa(pass).substring(0,12);
+        const boundDevice = localStorage.getItem(bindKey);
 
-        const bindKey =
-            "ml_bind_" +
-            btoa(pass).substring(0,12);
-
-        const boundDevice =
-            localStorage.getItem(bindKey);
-
-        if(
-            boundDevice &&
-            boundDevice !== device
-        ){
-
+        if(boundDevice && boundDevice !== device){
             this._snd("error");
-
-            err.innerText =
-                "❌ รหัสนี้ถูกผูกใช้งานกับอุปกรณ์อื่นแล้ว";
-
-            err.style.display =
-                "block";
-
+            err.innerText = "❌ รหัสนี้ถูกผูกใช้งานกับอุปกรณ์อื่นแล้ว";
+            err.style.display = "block";
             return;
-
         }
 
-        localStorage.setItem(
-            bindKey,
-            device
-        );
+        localStorage.setItem(bindKey, device);
+        localStorage.setItem("ml_auth_status", "active");
+        localStorage.setItem("ml_active_pass", pass);
 
-        localStorage.setItem(
-            "ml_auth_status",
-            "active"
-        );
-
-        localStorage.setItem(
-            "ml_active_pass",
-            pass
-        );
-
-        err.style.display =
-            "none";
-
-        document.getElementById(
-            "loginView"
-        ).style.display = "none";
-
-        document.getElementById(
-            "calculatorView"
-        ).style.display = "block";
-
+        err.style.display = "none";
+        document.getElementById("loginView").style.display = "none";
+        document.getElementById("calculatorView").style.display = "block";
         this._updSession();
-
-        document.getElementById(
-            "num3top"
-        ).focus();
-
+        document.getElementById("num3top").focus();
     },
 
     _logout(){
-
         this._snd("click");
-
-        localStorage.removeItem(
-            "ml_auth_status"
-        );
-
-        localStorage.removeItem(
-            "ml_active_pass"
-        );
-
-        document.getElementById(
-            "calculatorView"
-        ).style.display = "none";
-
-        document.getElementById(
-            "loginView"
-        ).style.display = "block";
-
-        document.getElementById(
-            "passwordInput"
-        ).value = "";
-
-        document.getElementById(
-            "num3top"
-        ).value = "";
-
-        document.getElementById(
-            "num2bottom"
-        ).value = "";
-
-        document.getElementById(
-            "resultContainer"
-        ).innerHTML = "";
-
-        document.getElementById(
-            "errorMsg"
-        ).style.display = "none";
-
-        document.getElementById(
-            "aiScannerBox"
-        ).style.display = "none";
-
+        localStorage.removeItem("ml_auth_status");
+        localStorage.removeItem("ml_active_pass");
+        document.getElementById("calculatorView").style.display = "none";
+        document.getElementById("loginView").style.display = "block";
+        document.getElementById("passwordInput").value = "";
+        document.getElementById("num3top").value = "";
+        document.getElementById("num2bottom").value = "";
+        document.getElementById("resultContainer").innerHTML = "";
+        document.getElementById("errorMsg").style.display = "none";
+        document.getElementById("aiScannerBox").style.display = "none";
     },
 
     _clr(){
-
         this._snd("click");
-
-        document.getElementById(
-            "resultContainer"
-        ).innerHTML = "";
-
-        document.getElementById(
-            "num3top"
-        ).value = "";
-
-        document.getElementById(
-            "num2bottom"
-        ).value = "";
-
-        document.getElementById(
-            "num3top"
-        ).focus();
-
+        document.getElementById("resultContainer").innerHTML = "";
+        document.getElementById("num3top").value = "";
+        document.getElementById("num2bottom").value = "";
+        document.getElementById("num3top").focus();
     },
 
     _updSession(){
-
-        const n3 =
-            localStorage.getItem(
-                "ml_l_n3"
-            );
-
-        const n2 =
-            localStorage.getItem(
-                "ml_l_n2"
-            );
-
-        const badge =
-            document.getElementById(
-                "lastSessionBadge"
-            );
-
+        const n3 = localStorage.getItem("ml_l_n3");
+        const n2 = localStorage.getItem("ml_l_n2");
+        const badge = document.getElementById("lastSessionBadge");
         if(n3 && n2){
-
-            document.getElementById(
-                "lbl3"
-            ).innerText = n3;
-
-            document.getElementById(
-                "lbl2"
-            ).innerText = n2;
-
-            badge.style.display =
-                "block";
-
-        }else{
-
-            badge.style.display =
-                "none";
-
+            document.getElementById("lbl3").innerText = n3;
+            document.getElementById("lbl2").innerText = n2;
+            badge.style.display = "block";
+        } else {
+            badge.style.display = "none";
         }
-
     },
 
     _runProc(){
-
         this._snd("click");
+        const n3 = document.getElementById("num3top").value.trim();
+        const n2 = document.getElementById("num2bottom").value.trim();
 
-        const n3 =
-            document.getElementById(
-                "num3top"
-            ).value.trim();
-
-        const n2 =
-            document.getElementById(
-                "num2bottom"
-            ).value.trim();
-
-        if(
-            !/^\d{3}$/.test(n3) ||
-            !/^\d{2}$/.test(n2)
-        ){
-
+        if(!/^\d{3}$/.test(n3) || !/^\d{2}$/.test(n2)){
             this._snd("error");
-
-            alert(
-                "กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และเลข 2 ตัวล่างให้ครบ 2 หลัก"
-            );
-
+            alert("กรุณากรอกเลข 3 ตัวบนให้ครบ 3 หลัก และเลข 2 ตัวล่างให้ครบ 2 หลัก");
             return;
-
         }
 
-        localStorage.setItem(
-            "ml_l_n3",
-            n3
-        );
-
-        localStorage.setItem(
-            "ml_l_n2",
-            n2
-        );
-
+        localStorage.setItem("ml_l_n3", n3);
+        localStorage.setItem("ml_l_n2", n2);
         this._updSession();
 
-        const scanner =
-            document.getElementById(
-                "aiScannerBox"
-            );
-
-        const calculateBtn =
-            document.getElementById(
-                "calculateButton"
-            );
-
-        calculateBtn.disabled =
-            true;
-
-        calculateBtn.style.opacity =
-            ".55";
-
-        scanner.style.display =
-            "block";
+        const scanner = document.getElementById("aiScannerBox");
+        const calculateBtn = document.getElementById("calculateButton");
+        calculateBtn.disabled = true;
+        calculateBtn.style.opacity = ".55";
+        scanner.style.display = "block";
 
         setTimeout(() => {
-
-            scanner.style.display =
-                "none";
-
-            calculateBtn.disabled =
-                false;
-
-            calculateBtn.style.opacity =
-                "1";
-
-            this._execEngine(
-                n3,
-                n2
-            );
-
-            document.getElementById(
-                "resultContainer"
-            ).scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
-
-        },1000);
-
+            scanner.style.display = "none";
+            calculateBtn.disabled = false;
+            calculateBtn.style.opacity = "1";
+            this._execEngine(n3, n2);
+            document.getElementById("resultContainer").scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 1000);
     },
 
-
-    _execEngine(r3,r2){
-
+    _execEngine(r3, r2){
         const ops = {
-
-            digits:s =>
-                s.split("").map(Number),
-
-            add:(a,b) =>
-                a+b,
-
-            subtract:(a,b) =>
-                a-b,
-
-            mod10:n =>
-                ((n % 10) + 10) % 10,
-
-            abs:n =>
-                Math.abs(n)
-
+            digits: s => s.split("").map(Number),
+            add: (a,b) => a+b,
+            subtract: (a,b) => a-b,
+            mod10: n => ((n % 10) + 10) % 10,
+            abs: n => Math.abs(n)
         };
 
-
-        const c3 =
-            ops.digits(r3);
-
-        const c2 =
-            ops.digits(r2);
-
-        const e1 =
-            c3[0];
-
-        const e2 =
-            c3[1];
-
-        const e3 =
-            c3[2];
-
-        const e4 =
-            c2[0];
-
-        const e5 =
-            c2[1];
-
-
-        /*
-         * =========================================================
-         * 5 สูตรหลัก
-         * =========================================================
-         */
+        const c3 = ops.digits(r3);
+        const c2 = ops.digits(r2);
+        const e1 = c3[0], e2 = c3[1], e3 = c3[2];
+        const e4 = c2[0], e5 = c2[1];
 
         const coreFormulas = [
-
-            () => {
-
-                const s =
-                    ops.add(e2,e4);
-
-                const v =
-                    ops.mod10(s);
-
-                return [
-                    v,
-                    ops.mod10(v+1)
-                ];
-
-            },
-
-            () => {
-
-                const s =
-                    ops.add(
-                        ops.add(e1,e2),
-                        e3
-                    );
-
-                const v =
-                    ops.mod10(s);
-
-                return [
-                    v,
-                    ops.mod10(v+1)
-                ];
-
-            },
-
-            () => {
-
-                const s =
-                    ops.add(e1,e4);
-
-                const v =
-                    ops.mod10(s);
-
-                return [
-                    v,
-                    ops.mod10(v+1)
-                ];
-
-            },
-
-            () => {
-
-                const s =
-                    ops.add(e3,e5);
-
-                const v =
-                    ops.mod10(s);
-
-                return [
-                    v,
-                    ops.mod10(v+1)
-                ];
-
-            },
-
-            () => {
-
-                const s =
-                    10 - e5;
-
-                const v =
-                    ops.mod10(s);
-
-                return [
-                    v,
-                    ops.mod10(v+1)
-                ];
-
-            }
-
+            () => { const s = ops.add(e2, e4); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
+            () => { const s = ops.add(ops.add(e1, e2), e3); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
+            () => { const s = ops.add(e1, e4); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
+            () => { const s = ops.add(e3, e5); const v = ops.mod10(s); return [v, ops.mod10(v+1)]; },
+            () => { const s = 10 - e5; const v = ops.mod10(s); return [v, ops.mod10(v+1)]; }
         ];
 
-
-        let fResults =
-            coreFormulas.map(
-                (fn,i) => ({
-                    name:
-                        `สูตรวิเคราะห์ AI ที่ ${i+1}`,
-                    set:fn()
-                })
-            );
-
-
-        /*
-         * =========================================================
-         * SUPPORT VOTES
-         * =========================================================
-         */
+        let fResults = coreFormulas.map((fn, i) => ({ name: `สูตรวิเคราะห์ AI ที่ ${i+1}`, set: fn() }));
 
         const supportVotes = {};
-
-        for(let i=1;i<=250;i++){
-
-            const modVal =
-                ops.mod10(
-                    (e1*i) +
-                    (e2*(i%7)) +
-                    (e3*(i%3)) +
-                    (e4*(i%5)) +
-                    e5
-                );
-
-            supportVotes[modVal] =
-                (supportVotes[modVal] || 0) + 1;
-
+        for(let i=1; i<=250; i++){
+            const modVal = ops.mod10((e1*i) + (e2*(i%7)) + (e3*(i%3)) + (e4*(i%5)) + e5);
+            supportVotes[modVal] = (supportVotes[modVal] || 0) + 1;
         }
 
-
-        /*
-         * =========================================================
-         * SCORE 5 สูตร
-         * =========================================================
-         */
-
         fResults.forEach(f => {
-
-            f.score =
-                f.set.reduce(
-                    (acc,n) =>
-                        acc +
-                        (supportVotes[n] || 0) +
-                        5,
-                    0
-                );
-
+            f.score = f.set.reduce((acc, n) => acc + (supportVotes[n] || 0) + 5, 0);
         });
 
+        fResults.sort((a,b) => b.score - a.score);
+        fResults.forEach((f, index) => { f.isHot = index < 3 && f.set.some(n => (supportVotes[n] || 0) > 25); });
 
-        fResults.sort(
-            (a,b) =>
-                b.score - a.score
-        );
-
-
-        fResults.forEach(
-            (f,index) => {
-
-                f.isHot =
-                    index < 3 &&
-                    f.set.some(
-                        n =>
-                            (supportVotes[n] || 0) > 25
-                    );
-
-            }
-        );
-
-
-        const rd =
-            ops.subtract(7,e1);
-
-        const cv =
-            ops.mod10(
-                ops.abs(rd)
-            );
-
-
-        /*
-         * =========================================================
-         * SCORE MAP
-         * =========================================================
-         */
+        const rd = ops.subtract(7, e1);
+        const cv = ops.mod10(ops.abs(rd));
 
         const scoreMap = {};
-
-        for(let d=0;d<=9;d++){
-
-            scoreMap[d] =
-                supportVotes[d] || 0;
-
-        }
-
-
-        fResults.forEach(
-            (f,index) => {
-
-                const weight =
-                    20 - (index * 2);
-
-                f.set.forEach(n => {
-
-                    scoreMap[n] += weight;
-
-                });
-
-            }
-        );
-
-
-        /*
-         * =========================================================
-         * MASTER DIGITS
-         * =========================================================
-         */
-
-        const validFormulaDigits =
-            [
-                ...new Set(
-                    fResults.flatMap(
-                        f => f.set
-                    )
-                )
-            ]
-            .filter(
-                d =>
-                    Number.isInteger(d) &&
-                    d >= 0 &&
-                    d <= 9
-            );
-
-
-        const validPrimaryCandidates =
-            validFormulaDigits
-                .filter(
-                    d =>
-                        scoreMap[d] !== undefined
-                )
-                .sort(
-                    (a,b) => {
-
-                        const scoreDiff =
-                            scoreMap[b] -
-                            scoreMap[a];
-
-                        if(scoreDiff !== 0)
-                            return scoreDiff;
-
-                        return a-b;
-
-                    }
-                );
-
-
-        let realPDig =
-            validPrimaryCandidates[0] !== undefined
-                ? validPrimaryCandidates[0]
-                : fResults[0].set[0];
-
-
-        let realSDig =
-            validPrimaryCandidates.find(
-                d => d !== realPDig
-            ) !== undefined
-                ? validPrimaryCandidates.find(
-                    d => d !== realPDig
-                )
-                : fResults[0].set[1];
-
-
-        /*
-         * =========================================================
-         * MASTER AI CONSENSUS — STRICT POOL ENGINE (EXACTLY 5 TARGETS)
-         * =========================================================
-         *
-         * กฎ:
-         * 1. ชุดเด่น/ชุดรอง ต้องมีเลขเจาะอย่างละ 5 ตัวพอดี
-         * 2. ทั้ง 5 ตัวต้องมาจากเลขที่ปรากฏในชุดของ 5 สูตรหลักเท่านั้น (ห้ามออกนอกเหนือจากนี้)
-         * 3. เรียงลำดับจากคะแนนดีที่สุด และจัดเรียงจากน้อยไปมาก
-         */
-
-        const consensusPool =
-            [
-                ...new Set(
-                    validFormulaDigits
-                )
-            ]
-            .sort(
-                (a,b) => a-b
-            );
-
-        const getStrictTargets = (
-            leadDigit,
-            forbiddenDigit
-        ) => {
-            let candidates =
-                consensusPool
-                    .filter(
-                        target =>
-                            target !== leadDigit &&
-                            target !== forbiddenDigit
-                    )
-                    .sort(
-                        (a,b) => {
-                            const scoreDiff =
-                                (scoreMap[b] || 0) -
-                                (scoreMap[a] || 0);
-                            if(scoreDiff !== 0)
-                                return scoreDiff;
-                            return a - b;
-                        }
-                    );
-
-            if(candidates.length < 5){
-                const fallbackPool =
-                    consensusPool
-                        .filter(target => target !== leadDigit)
-                        .sort(
-                            (a,b) => {
-                                const scoreDiff =
-                                    (scoreMap[b] || 0) -
-                                    (scoreMap[a] || 0);
-                                if(scoreDiff !== 0)
-                                    return scoreDiff;
-                                return a - b;
-                            }
-                        );
-                
-                for(let fNum of fallbackPool){
-                    if(!candidates.includes(fNum)){
-                        candidates.push(fNum);
-                    }
-                    if(candidates.length >= 5) break;
-                }
-            }
-
-            return candidates
-                .slice(0, 5)
-                .sort((a, b) => a - b);
-        };
-
-        const targetsA =
-            getStrictTargets(
-                realPDig,
-                realSDig
-            );
-
-        const targetsB =
-            getStrictTargets(
-                realSDig,
-                realPDig
-            );
-
-        const pairsA =
-            targetsA.map(
-                target =>
-                    `${realPDig}${target}`
-            );
-
-        const pairsB =
-            targetsB.map(
-                target =>
-                    `${realSDig}${target}`
-            );
-
-        const finalPairsA = pairsA;
-        const finalPairsB = pairsB;
-
-
-        /*
-         * =========================================================
-         * TRIO ENGINE — NO DUPLICATES & STRICT REVERSE PREVENTION
-         * =========================================================
-         *
-         * กฎ:
-         * 1. ชุด 3 ตัวดึงจากคู่เจาะทั้งหมด
-         * 2. ป้องกันเลขกลับกัน เช่น มี 601 แล้ว ห้ามมี 106 หรือเลขซ้ำกลับกันใน 4 ชุด
-         * 3. เลือกหลักร้อยจากคะแนนดีที่สุดใน 5 สูตรหลัก
-         */
-
-        const allConsensusPairs = [
-            ...finalPairsA,
-            ...finalPairsB
-        ];
-
-        const uniqueConsensusPairs =
-            [
-                ...new Set(
-                    allConsensusPairs
-                )
-            ];
-
-        const getBestHundredForPair = (
-            pair,
-            excludedDigits = []
-        ) => {
-
-            const tens =
-                Number(pair.charAt(0));
-
-            const units =
-                Number(pair.charAt(1));
-
-            return consensusPool
-                .filter(
-                    digit =>
-                        digit !== tens &&
-                        digit !== units &&
-                        !excludedDigits.includes(digit)
-                )
-                .sort(
-                    (a,b) => {
-                        const scoreDiff =
-                            (scoreMap[b] || 0) -
-                            (scoreMap[a] || 0);
-                        if(scoreDiff !== 0)
-                            return scoreDiff;
-                        return a - b;
-                    }
-                )[0];
-
-        };
-
-        const rankedConsensusPairs =
-            uniqueConsensusPairs
-                .sort(
-                    (a,b) => {
-                        const aTarget = Number(a.charAt(1));
-                        const bTarget = Number(b.charAt(1));
-                        const scoreDiff =
-                            (scoreMap[bTarget] || 0) -
-                            (scoreMap[aTarget] || 0);
-                        if(scoreDiff !== 0)
-                            return scoreDiff;
-                        return Number(a) - Number(b);
-                    }
-                );
-
-        const trioPairs = [];
-        const usedTrios = new Set();
-        const usedSignatures = new Set();
-
-        for(
-            let i=0;
-            i<rankedConsensusPairs.length &&
-            trioPairs.length<4;
-            i++
-        ){
-
-            const pairStr = rankedConsensusPairs[i];
-            
-            const hDigit = getBestHundredForPair(pairStr);
-
-            if(hDigit === undefined)
-                continue;
-
-            const trio = `${hDigit}${pairStr}`;
-
-            if(!/^\d{3}$/.test(trio))
-                continue;
-
-            const trioDigits = trio.split("").map(Number);
-
-            if(new Set(trioDigits).size !== 3)
-                continue;
-
-            const signature = [...trioDigits].sort((a,b) => a - b).join("");
-
-            if(usedSignatures.has(signature) || usedTrios.has(trio))
-                continue;
-
-            usedSignatures.add(signature);
-            usedTrios.add(trio);
-            trioPairs.push(trio);
-
-        }
-
-
-        /*
-         * =========================================================
-         * CONFIDENCE
-         * =========================================================
-         */
-
-        const primaryScore =
-            scoreMap[realPDig] || 0;
-
-        const secondaryScore =
-            scoreMap[realSDig] || 0;
-
-        const maxConsensusScore =
-            Math.max(
-                ...Object.values(scoreMap)
-            );
-
-
-        const consensusConfidence =
-            this._consensusConfidence(
-                primaryScore,
-                secondaryScore,
-                maxConsensusScore
-            );
-
-
-        const container =
-            document.getElementById(
-                "resultContainer"
-            );
-
-
-        /*
-         * =========================================================
-         * HTML — AI CONSENSUS
-         * =========================================================
-         */
-
-        const pairsAHTML =
-            finalPairsA
-                .map(
-                    pair =>
-                        `<div class="consensus-pair" data-copy="${pair}">${pair}</div>`
-                )
-                .join("");
-
-
-        const pairsBHTML =
-            finalPairsB
-                .map(
-                    pair =>
-                        `<div class="consensus-pair second" data-copy="${pair}">${pair}</div>`
-                )
-                .join("");
-
-
-        const trioPairsHTML =
-            trioPairs
-                .map(
-                    trio =>
-                        `<div class="consensus-pair trio" data-copy="${trio}">${trio}</div>`
-                )
-                .join("");
-
-
-        let containerHTML = `
-
-            <div class="consensus-box">
-
-                <div class="consensus-title">
-                    🌟 MASTER AI CONSENSUS
-                </div>
-
-                <div class="consensus-subtitle">
-                    ระบบประมวลผลอัจฉริยะขั้นสูง
-                </div>
-
-
-                <div class="consensus-main-digits">
-
-                    <div class="consensus-digit">
-                        ${realPDig}
-                    </div>
-
-                    <div class="consensus-divider">
-                        —
-                    </div>
-
-                    <div class="consensus-digit">
-                        ${realSDig}
-                    </div>
-
-                </div>
-
-
-                <div class="consensus-pair-panel">
-
-                    <div class="consensus-pair-header">
-
-                        <div class="consensus-pair-title">
-
-                            🎯 ชุดเด่น
-
-                            <strong style="color:#34d399;">
-                                ${realPDig}
-                            </strong>
-
-                        </div>
-
-                        <div class="consensus-pair-count">
-                            AI CONFIDENCE
-                            ${consensusConfidence.primary}%
-                        </div>
-
-                    </div>
-
-                    <div class="consensus-pairs">
-                        ${pairsAHTML}
-                    </div>
-
-                </div>
-
-
-                <div class="consensus-pair-panel">
-
-                    <div class="consensus-pair-header">
-
-                        <div class="consensus-pair-title">
-
-                            🎯 ชุดรอง
-
-                            <strong style="color:#38bdf8;">
-                                ${realSDig}
-                            </strong>
-
-                        </div>
-
-                        <div class="consensus-pair-count">
-                            AI CONFIDENCE
-                            ${consensusConfidence.secondary}%
-                        </div>
-
-                    </div>
-
-                    <div class="consensus-pairs">
-                        ${pairsBHTML}
-                    </div>
-
-                </div>
-
-
-                <div class="consensus-pair-panel">
-
-                    <div class="consensus-pair-header">
-
-                        <div class="consensus-pair-title">
-
-                            🔥 ชุด 3 ตัวตรง
-
-                            <span class="new-badge-tag">
-                                NEW
-                            </span>
-
-                        </div>
-
-                        <div class="consensus-pair-count">
-                            AI CONFIDENCE
-                            ${consensusConfidence.trio}%
-                        </div>
-
-                    </div>
-
-                    <div class="consensus-pairs grid-4">
-                        ${trioPairsHTML}
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="formula-toggle-container">
-
-                <button
-                    class="btn-toggle-formulas"
-                    id="toggleFormulasBtn"
-                    onclick="secureEngine._toggleFormulas()"
-                >
-                    📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม
-                </button>
-
-            </div>
-
-
-            <div id="formulasWrapper">
-
-        `;
-
-
-        /*
-         * =========================================================
-         * 5 FORMULA DISPLAY
-         * =========================================================
-         */
-
-        const maxScore =
-            Math.max(
-                ...fResults.map(
-                    x => x.score
-                )
-            );
-
-
-        fResults.forEach(f => {
-
-            let hasMatch = false;
-
-            for(
-                let off=-2;
-                off<=2;
-                off++
-            ){
-
-                if(
-                    f.set.includes(
-                        ops.mod10(cv + off)
-                    )
-                ){
-
-                    hasMatch = true;
-                    break;
-
-                }
-
-            }
-
-
-            const range =
-                hasMatch ? 3 : 2;
-
-
-            const returned = [];
-
-            for(
-                let off=-range;
-                off<=range;
-                off++
-            ){
-
-                returned.push(
-                    ops.mod10(cv + off)
-                );
-
-            }
-
-
-            const safeTargets =
-                returned
-                    .filter(
-                        n =>
-                            !f.set.includes(n)
-                    )
-                    .filter(
-                        (n,i,a) =>
-                            a.indexOf(n) === i
-                    )
-                    .sort(
-                        (a,b) => a-b
-                    );
-
-
-            const aiScore =
-                this._formulaConfidence(
-                    f.score,
-                    maxScore
-                );
-
-
-            let card = `
-
-                <div class="formula-card">
-
-                    <div class="formula-header-flex">
-
-                        <div class="formula-title">
-                            ${this._escapeHTML(f.name)}
-                        </div>
-
-                        ${
-                            f.isHot
-                            ?
-                            `<div class="hot-badge">
-                                🔥 AI RECOMMENDED
-                            </div>`
-                            :
-                            `<div class="ai-match-badge">
-                                ✨ HIGH CONFIDENCE
-                            </div>`
-                        }
-
-                    </div>
-
-
-                    <div class="formula-sub">
-
-                        <span>
-                            เลขเด่น:
-                            <strong>${f.set[0]}</strong>
-                            -
-                            <strong>${f.set[1]}</strong>
-                        </span>
-
-                        <span class="accuracy-tag">
-                            AI CONFIDENCE
-                            ${aiScore}%
-                        </span>
-
-                    </div>
-
-            `;
-
-
-            f.set.forEach(
-                (dn,index) => {
-
-                    const targets =
-                        safeTargets
-                            .filter(
-                                tn =>
-                                    tn !== dn
-                            )
-                            .sort(
-                                (a,b) => a-b
-                            );
-
-
-                    const pairs =
-                        targets
-                            .map(
-                                tn =>
-                                    `${dn}${tn}`
-                            )
-                            .join(" ");
-
-
-                    const colorClass =
-                        index === 0
-                        ? "main-set"
-                        : "sub-set";
-
-
-                    const label =
-                        index === 0
-                        ?
-                        `ชุดเด่น <span class="highlight-digit">${dn}</span>`
-                        :
-                        `ชุดรอง <span class="highlight-digit">${dn}</span>`;
-
-
-                    card += `
-
-                        <div
-                            class="copy-row"
-                            data-copy="${pairs}"
-                        >
-
-                            <span class="copy-label">
-                                ${label}
-                            </span>
-
-                            <div
-                                style="
-                                    display:flex;
-                                    align-items:center;
-                                    gap:8px;
-                                    min-width:0;
-                                "
-                            >
-
-                                <span
-                                    class="copy-numbers ${colorClass}"
-                                >
-                                    ${pairs}
-                                </span>
-
-                                <span
-                                    style="
-                                        font-size:.72rem;
-                                        opacity:.55;
-                                    "
-                                >
-                                    📋
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }
-            );
-
-
-            card += `</div>`;
-
-            containerHTML += card;
-
+        for(let d=0; d<=9; d++){ scoreMap[d] = supportVotes[d] || 0; }
+
+        fResults.forEach((f, index) => {
+            const weight = 20 - (index * 2);
+            f.set.forEach(n => { scoreMap[n] += weight; });
         });
 
-
-        containerHTML += `
-            </div>
-        `;
-
-
-        container.innerHTML =
-            containerHTML;
-
-
-        this._bindCopyButtons();
-
-    },
-
-
-    _toggleFormulas(){
-
-        this._snd("click");
-
-        const wrap =
-            document.getElementById(
-                "formulasWrapper"
-            );
-
-        const btn =
-            document.getElementById(
-                "toggleFormulasBtn"
-            );
-
-
-        if(
-            wrap.style.display ===
-            "block"
-        ){
-
-            wrap.style.display =
-                "none";
-
-            btn.innerHTML =
-                "📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";
-
-        }else{
-
-            wrap.style.display =
-                "block";
-
-            btn.innerHTML =
-                "📊 ซ่อน 5 สูตรวิเคราะห์ AI";
-
-            wrap.scrollIntoView({
-                behavior:"smooth",
-                block:"nearest"
-            });
-
+        const formulaPresence = {};
+        for(let d=0; d<=9; d++){
+            formulaPresence[d] = 0;
+            fResults.forEach(f => { if(f.set.includes(d)) formulaPresence[d]++; });
         }
 
-    },
+        const rankedDigits = Array.from({length:10}, (_,d)=>d).sort((a,b) => {
+            if(scoreMap[b] !== scoreMap[a]) return scoreMap[b] - scoreMap[a];
+            if(formulaPresence[b] !== formulaPresence[a]) return formulaPresence[b] - formulaPresence[a];
+            return a - b;
+        });
 
+        const pDig = rankedDigits[0];
+        const secondCandidates = rankedDigits.filter(d => d !== pDig);
+        let sDig = secondCandidates[0] !== undefined ? secondCandidates[0] : 1;
 
-    _bindCopyButtons(){
-
-        document
-            .querySelectorAll("[data-copy]")
-            .forEach(el => {
-
-                el.addEventListener(
-                    "click",
-                    () => {
-
-                        this._copy(
-                            el.dataset.copy
-                        );
-
-                    }
-                );
-
-            });
-
-    },
-
-
-    _copy(text){
-
-        this._snd("click");
-
-        const showToast = () => {
-
-            const toast =
-                document.getElementById(
-                    "toast"
-                );
-
-            toast.classList.remove(
-                "show"
-            );
-
-            void toast.offsetWidth;
-
-            toast.classList.add(
-                "show"
-            );
-
+        const buildTargets = (mainDigit, avoidDigit) => {
+            return rankedDigits.filter(d => d !== mainDigit && d !== avoidDigit).slice(0, 5).sort((a,b)=>a-b);
         };
 
+        let targetA = buildTargets(pDig, sDig);
+        let targetB = buildTargets(sDig, pDig);
 
-        if(
-            navigator.clipboard &&
-            window.isSecureContext
-        ){
+        const fillTargets = (arr, main, other) => {
+            for(let d=0; d<=9 && arr.length<5; d++){
+                if(d !== main && d !== other && !arr.includes(d)) arr.push(d);
+            }
+            return arr.slice(0,5).sort((a,b)=>a-b);
+        };
 
-            navigator.clipboard
-                .writeText(text)
-                .then(showToast)
-                .catch(
-                    () =>
-                        this._fallbackCopy(
-                            text,
-                            showToast
-                        )
-                );
+        targetA = fillTargets(targetA, pDig, sDig);
+        targetB = fillTargets(targetB, sDig, pDig);
 
-        }else{
+        const pairsA = targetA.map(d => `${pDig}${d}`);
+        const pairsB = targetB.map(d => `${sDig}${d}`);
 
-            this._fallbackCopy(
-                text,
-                showToast
-            );
+        const primaryScore = scoreMap[pDig] || 0;
+        const secondaryScore = scoreMap[sDig] || 0;
+        const maxConsensusScore = Math.max(...Object.values(scoreMap));
 
-        }
+        const consensusConfidence = this._consensusConfidence(primaryScore, secondaryScore, maxConsensusScore);
+        const container = document.getElementById("resultContainer");
 
+        const pairsAHTML = pairsA.map(pair => `<div class="consensus-pair" data-copy="${pair}">${pair}</div>`).join("");
+        const pairsBHTML = pairsB.map(pair => `<div class="consensus-pair second" data-copy="${pair}">${pair}</div>`).join("");
+
+        let containerHTML = `
+            <div class="consensus-box">
+                <div class="consensus-title">🌟 MASTER AI CONSENSUS</div>
+                <div class="consensus-subtitle">ระบบประมวลผลอัจฉริยะขั้นสูง</div>
+                
+                <div class="consensus-main-digits">
+                    <div class="consensus-digit">${pDig}</div>
+                    <div class="consensus-divider">—</div>
+                    <div class="consensus-digit">${sDig}</div>
+                </div>
+
+                <div class="consensus-pair-panel">
+                    <div class="consensus-pair-header">
+                        <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${pDig}</strong></div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${consensusConfidence.primary}%</div>
+                    </div>
+                    <div class="consensus-pairs">${pairsAHTML}</div>
+                </div>
+
+                <div class="consensus-pair-panel">
+                    <div class="consensus-pair-header">
+                        <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${sDig}</strong></div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${consensusConfidence.secondary}%</div>
+                    </div>
+                    <div class="consensus-pairs">${pairsBHTML}</div>
+                </div>
+            </div>
+
+            <div class="formula-toggle-container">
+                <button class="btn-toggle-formulas" id="toggleFormulasBtn" onclick="secureEngine._toggleFormulas()">
+                    📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม
+                </button>
+            </div>
+
+            <div id="formulasWrapper">
+        `;
+
+        const maxScore = Math.max(...fResults.map(x => x.score));
+
+        fResults.forEach(f => {
+            let hasMatch = false;
+            for(let off=-2; off<=2; off++){
+                if(f.set.includes(ops.mod10(cv + off))){ hasMatch = true; break; }
+            }
+            const range = hasMatch ? 3 : 2;
+            const returned = [];
+            for(let off=-range; off<=range; off++){ returned.push(ops.mod10(cv + off)); }
+            const safeTargets = returned.filter(n => !f.set.includes(n)).filter((n,i,a)=>a.indexOf(n)===i).sort((a,b)=>a-b);
+            const aiScore = this._formulaConfidence(f.score, maxScore);
+
+            let card = `
+                <div class="formula-card">
+                    <div class="formula-header-flex">
+                        <div class="formula-title">${this._escapeHTML(f.name)}</div>
+                        ${f.isHot ? `<div class="hot-badge">🔥 AI RECOMMENDED</div>` : `<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>`}
+                    </div>
+                    <div class="formula-sub">
+                        <span>เลขเด่น: <strong>${f.set[0]}</strong> - <strong>${f.set[1]}</strong></span>
+                        <span class="accuracy-tag">AI CONFIDENCE ${aiScore}%</span>
+                    </div>
+            `;
+
+            f.set.forEach((dn, index) => {
+                const targets = safeTargets.filter(tn => tn !== dn);
+                const pairs = targets.map(tn => `${dn}${tn}`).join(" ");
+                const colorClass = index === 0 ? "main-set" : "sub-set";
+                const label = index === 0 ? `ชุดเด่น <span class="highlight-digit">${dn}</span>` : `ชุดรอง <span class="highlight-digit">${dn}</span>`;
+
+                card += `
+                    <div class="copy-row" data-copy="${pairs}">
+                        <span class="copy-label">${label}</span>
+                        <div style="display:flex; align-items:center; gap:8px; min-width:0;">
+                            <span class="copy-numbers ${colorClass}">${pairs}</span>
+                            <span style="font-size:.72rem; opacity:.55;">📋</span>
+                        </div>
+                    </div>
+                `;
+            });
+            card += `</div>`;
+            containerHTML += card;
+        });
+
+        containerHTML += `</div>`;
+        container.innerHTML = containerHTML;
+        this._bindCopyButtons();
     },
 
+    _toggleFormulas(){
+        this._snd("click");
+        const wrap = document.getElementById("formulasWrapper");
+        const btn = document.getElementById("toggleFormulasBtn");
+        if(wrap.style.display === "block"){
+            wrap.style.display = "none";
+            btn.innerHTML = "📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";
+        } else {
+            wrap.style.display = "block";
+            btn.innerHTML = "📊 ซ่อน 5 สูตรวิเคราะห์ AI";
+            wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    },
 
-    _fallbackCopy(
-        text,
-        callback
-    ){
+    _bindCopyButtons(){
+        document.querySelectorAll("[data-copy]").forEach(el => {
+            el.addEventListener("click", () => { this._copy(el.dataset.copy); });
+        });
+    },
 
-        try{
+    _copy(text){
+        this._snd("click");
+        const showToast = () => {
+            const toast = document.getElementById("toast");
+            toast.classList.remove("show");
+            void toast.offsetWidth;
+            toast.classList.add("show");
+        };
+        if(navigator.clipboard && window.isSecureContext){
+            navigator.clipboard.writeText(text).then(showToast).catch(() => this._fallbackCopy(text, showToast));
+        } else {
+            this._fallbackCopy(text, showToast);
+        }
+    },
 
-            const textarea =
-                document.createElement(
-                    "textarea"
-                );
-
-            textarea.value =
-                text;
-
-            textarea.style.position =
-                "fixed";
-
-            textarea.style.left =
-                "-9999px";
-
-            document.body.appendChild(
-                textarea
-            );
-
+    _fallbackCopy(text, callback){
+        try {
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.style.position = "fixed";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
             textarea.focus();
-
             textarea.select();
-
-            const success =
-                document.execCommand(
-                    "copy"
-                );
-
+            const success = document.execCommand("copy");
             textarea.remove();
-
-            if(
-                success &&
-                callback
-            ){
-
-                callback();
-
-            }
-
-        }catch(e){}
-
+            if(success && callback) callback();
+        } catch(e){}
     }
-
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+    const password = document.getElementById("passwordInput");
+    const loginButton = document.getElementById("loginButton");
+    const num3 = document.getElementById("num3top");
+    const num2 = document.getElementById("num2bottom");
+    const calculateButton = document.getElementById("calculateButton");
+    const clearButton = document.getElementById("clearButton");
+    const logoutButton = document.getElementById("logoutButton");
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+    loginButton.addEventListener("click", () => secureEngine._auth());
+    password.addEventListener("keydown", e => { if(e.key === "Enter") secureEngine._auth(); });
 
-        const password =
-            document.getElementById(
-                "passwordInput"
-            );
+    num3.addEventListener("input", () => {
+        num3.value = num3.value.replace(/\D/g,"").substring(0,3);
+        if(num3.value.length === 3) num2.focus();
+    });
 
-        const loginButton =
-            document.getElementById(
-                "loginButton"
-            );
+    num2.addEventListener("input", () => { num2.value = num2.value.replace(/\D/g,"").substring(0,2); });
+    num2.addEventListener("keydown", e => { if(e.key === "Enter") secureEngine._runProc(); });
 
-        const num3 =
-            document.getElementById(
-                "num3top"
-            );
+    calculateButton.addEventListener("click", () => secureEngine._runProc());
+    clearButton.addEventListener("click", () => secureEngine._clr());
+    logoutButton.addEventListener("click", () => secureEngine._logout());
 
-        const num2 =
-            document.getElementById(
-                "num2bottom"
-            );
-
-        const calculateButton =
-            document.getElementById(
-                "calculateButton"
-            );
-
-        const clearButton =
-            document.getElementById(
-                "clearButton"
-            );
-
-        const logoutButton =
-            document.getElementById(
-                "logoutButton"
-            );
-
-
-        loginButton.addEventListener(
-            "click",
-            () =>
-                secureEngine._auth()
-        );
-
-
-        password.addEventListener(
-            "keydown",
-            e => {
-
-                if(
-                    e.key === "Enter"
-                ){
-
-                    secureEngine._auth();
-
-                }
-
+    try {
+        if(localStorage.getItem("ml_auth_status") === "active"){
+            const activePass = localStorage.getItem("ml_active_pass");
+            const validList = secureEngine._getVList();
+            if(activePass && validList.includes(activePass)){
+                document.getElementById("loginView").style.display = "none";
+                document.getElementById("calculatorView").style.display = "block";
+                secureEngine._updSession();
+            } else {
+                secureEngine._logout();
             }
-        );
-
-
-        num3.addEventListener(
-            "input",
-            () => {
-
-                num3.value =
-                    num3.value
-                        .replace(/\D/g,"")
-                        .substring(0,3);
-
-                if(
-                    num3.value.length === 3
-                ){
-
-                    num2.focus();
-
-                }
-
-            }
-        );
-
-
-        num2.addEventListener(
-            "input",
-            () => {
-
-                num2.value =
-                    num2.value
-                        .replace(/\D/g,"")
-                        .substring(0,2);
-
-            }
-        );
-
-
-        num2.addEventListener(
-            "keydown",
-            e => {
-
-                if(
-                    e.key === "Enter"
-                ){
-
-                    secureEngine._runProc();
-
-                }
-
-            }
-        );
-
-
-        calculateButton.addEventListener(
-            "click",
-            () =>
-                secureEngine._runProc()
-        );
-
-
-        clearButton.addEventListener(
-            "click",
-            () =>
-                secr1ee_clr = () => secureEngine._clr() // Fixed closure scope references smoothly
-        );
-
-
-        clearButton.addEventListener(
-            "click",
-            () =>
-                secureEngine._clr()
-        );
-
-
-        logoutButton.addEventListener(
-            "click",
-            () =>
-                secureEngine._logout()
-        );
-
-
-        try{
-
-            if(
-                localStorage.getItem(
-                    "ml_auth_status"
-                ) === "active"
-            ){
-
-                const activePass =
-                    localStorage.getItem(
-                        "ml_active_pass"
-                    );
-
-                const validList =
-                    secureEngine._getVList();
-
-                if(
-                    activePass &&
-                    validList.includes(
-                        activePass
-                    )
-                ){
-
-                    document.getElementById(
-                        "loginView"
-                    ).style.display =
-                        "none";
-
-                    document.getElementById(
-                        "calculatorView"
-                    ).style.display =
-                        "block";
-
-                    secureEngine._updSession();
-
-                }else{
-
-                    secureEngine._logout();
-
-                }
-
-            }
-
-        }catch(e){}
-
-    }
-);
-
+        }
+    } catch(e){}
+});
 </script>
 
 </body>
