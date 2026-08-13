@@ -1012,7 +1012,6 @@ const _0x9a2b = {
             return [_0xf, _0xaa(_0xf + 1)];
         };
 
-        // อัปเกรดครอบคลุมครบถ้วน 10 สูตรวิเคราะห์ AI อัจฉริยะ (รองรับทุกสภาวะสถานการณ์ฉุกเฉิน)
         const _0xbc = [
             { name: "สูตรวิเคราะห์ AI ที่ 1", set: _0xab(_0x66 + _0x88) },
             { name: "สูตรวิเคราะห์ AI ที่ 2", set: _0xab(_0x55 + _0x66 + _0x77) },
@@ -1026,7 +1025,6 @@ const _0x9a2b = {
             { name: "สูตรวิเคราะห์ AI ที่ 10", set: _0xab(_0x88 * 3 + _0x99) }
         ];
 
-        // 1. ระบบนับคะแนนโหวต (Vote Count / Frequency) จากทั้ง 10 สูตรหลัก
         const _0xef = {};
         _0xbc.forEach(_0xitem => {
             _0xitem.set.forEach(_0xd => {
@@ -1034,12 +1032,10 @@ const _0x9a2b = {
             });
         });
 
-        // 2. ให้คะแนนน้ำหนักแต่ละสูตรตามผลโหวตความถี่
         _0xbc.forEach(_0xitem => {
-            _0xitem.score = _0xitem.set.reduce((_0xacc, _0xdg) => _0xacc + ((_0xef[_0xdg] || 1) * 20), 0);
+            _0xitem.score = _0xitem.set.reduce((_0xacc, _0xdg) => _0xacc + (($D = _0xef[_0xdg]) !== undefined ? $D : 1) * 20, 0);
         });
 
-        // จัดลำดับสูตรหลักตามคะแนนโหวตสูงสุด
         _0xbc.sort((_0xa, _0xb) => _0xb.score - _0xa.score);
         _0xbc.forEach((_0xitem, _0xidx) => {
             _0xitem.isHot = _0xidx < 3;
@@ -1076,7 +1072,6 @@ const _0x9a2b = {
             };
         });
 
-        // 3. ระบบกรองพิเศษเพื่อรองรับกรณีฉุกเฉินและน้ำหนักคะแนนสะสมสูงสุดจาก 10 สูตร
         const _0xdigScores = {};
         _0xdf.forEach(_0xfItem => {
             _0xfItem.set.forEach((_0dg, _0idx) => {
