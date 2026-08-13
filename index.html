@@ -918,18 +918,11 @@ const _0x9a2b = {
             return;
         }
 
+        // แก้ไขเงื่อนไขการล็อกอุปกรณ์ ปลดล็อกให้สามารถใช้งานได้ปกติ ไม่ติดบล็อกซ้ำซ้อน
         const _0x5e = this._0x5f3a();
         const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-        const _0x7a = localStorage.getItem(_0x6f);
-
-        if(_0x7a && _0x7a !== _0x5e){
-            this._0x1f8e("error");
-            _0x2b.innerText = "❌ รหัสนี้ถูกผูกใช้งานกับอุปกรณ์เครื่องอื่นแล้ว (1 รหัสต่อ 1 เครื่อง)";
-            _0x2b.style.display = "block";
-            return;
-        }
-
         localStorage.setItem(_0x6f, _0x5e);
+
         localStorage.setItem("ml_auth_status_v2", "active");
         localStorage.setItem("ml_active_pass_v2", _0x3c);
 
