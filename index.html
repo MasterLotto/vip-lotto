@@ -121,12 +121,12 @@ body::before{
     border:1px solid rgba(34,211,238,.35);
     background:linear-gradient(135deg, rgba(6,182,212,.18), rgba(59,130,246,.06));
     box-shadow:0 0 20px rgba(6,182,212,.15);
-    animation: badgeShimmer 3s ease-in-out infinite;
+    animation: badgeShimmer 4s ease-in-out infinite;
 }
 
 @keyframes badgeShimmer{
     0%,100%{ border-color: rgba(34,211,238,.35); box-shadow: 0 0 15px rgba(6,182,212,.15); }
-    50%{ border-color: rgba(34,211,238,.8); box-shadow: 0 0 25px rgba(6,182,212,.35); }
+    50%{ border-color: rgba(34,211,238,.7); box-shadow: 0 0 20px rgba(6,182,212,.25); }
 }
 
 .header-box h1,
@@ -142,7 +142,7 @@ body::before{
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
-    animation:logoLightSweep 12s ease-in-out infinite;
+    animation:logoLightSweep 14s ease-in-out infinite;
 }
 
 @keyframes logoLightSweep{
@@ -179,12 +179,12 @@ body::before{
     border-radius:50%;
     background:#10b981;
     box-shadow:0 0 0 0 rgba(16,185,129,.8);
-    animation:statusPulse 2s infinite;
+    animation:statusPulse 3s infinite;
 }
 
 @keyframes statusPulse{
     0%{ box-shadow:0 0 0 0 rgba(16,185,129,.7); }
-    70%{ box-shadow:0 0 0 9px rgba(16,185,129,0); }
+    70%{ box-shadow:0 0 0 8px rgba(16,185,129,0); }
     100%{ box-shadow:0 0 0 0 rgba(16,185,129,0); }
 }
 
@@ -204,16 +204,16 @@ body::before{
     background:linear-gradient(145deg, rgba(18,29,48,.92), rgba(6,12,22,.96));
     border:1px solid rgba(255,255,255,.08);
     transition:.25s ease;
-    animation: packageAmbientGlow 6s ease-in-out infinite;
+    animation: packageAmbientGlow 8s ease-in-out infinite;
 }
 
-.package-card:nth-child(2){ animation-delay: 1.5s; }
-.package-card:nth-child(3){ animation-delay: 3s; }
-.package-card:nth-child(4){ animation-delay: 4.5s; }
+.package-card:nth-child(2){ animation-delay: 2s; }
+.package-card:nth-child(3){ animation-delay: 4s; }
+.package-card:nth-child(4){ animation-delay: 6s; }
 
 @keyframes packageAmbientGlow{
     0%,100%{ border-color: rgba(255,255,255,.08); box-shadow: 0 4px 15px rgba(0,0,0,.3); }
-    50%{ border-color: rgba(56,189,248,.35); box-shadow: 0 6px 22px rgba(6,182,212,.12); }
+    50%{ border-color: rgba(56,189,248,.25); box-shadow: 0 6px 20px rgba(6,182,212,.08); }
 }
 
 .package-card:hover{
@@ -389,7 +389,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     border:2px solid rgba(56,189,248,.15);
     border-top-color:#22d3ee;
     border-right-color:rgba(6,182,212,.8);
-    animation:spin .8s linear infinite;
+    animation:spin 1s linear infinite;
 }
 
 @keyframes spin{ to{ transform:rotate(360deg); } }
@@ -419,7 +419,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: titleLightSweep 3s linear infinite;
+    animation: titleLightSweep 5s linear infinite;
 }
 
 @keyframes titleLightSweep {
@@ -437,7 +437,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background-size: 250% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: subtitleShimmer 4s linear infinite;
+    animation: subtitleShimmer 6s linear infinite;
 }
 
 @keyframes subtitleShimmer {
@@ -466,19 +466,19 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(245,158,11,.25);
-    animation: digitPulse 4s ease-in-out infinite;
+    animation: digitPulse 5s ease-in-out infinite;
 }
 
 .consensus-digit:first-child{
     border-color:rgba(52,211,153,.9);
     background:linear-gradient(145deg, rgba(52,211,153,.38), rgba(6,182,212,.18));
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(52,211,153,.25);
-    animation-delay: 2s;
+    animation-delay: 2.5s;
 }
 
 @keyframes digitPulse{
     0%,100%{ transform: scale(1); filter: brightness(1); }
-    50%{ transform: scale(1.03); filter: brightness(1.12); }
+    50%{ transform: scale(1.02); filter: brightness(1.08); }
 }
 
 .consensus-divider{ color:#94a3b8; font-size:1.1rem; }
@@ -502,8 +502,8 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(56,189,248,.04), transparent);
-    animation: panelGleam 6s ease-in-out infinite;
+    background: linear-gradient(90deg, transparent, rgba(56,189,248,.03), transparent);
+    animation: panelGleam 8s ease-in-out infinite;
 }
 
 @keyframes panelGleam {
@@ -520,22 +520,22 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .consensus-pair-title{ color:#f8fafc; font-size:.76rem; font-weight:600; display:flex; align-items:center; gap:6px; }
 
-/* ปรับปรุงป้าย New ตามรีเควส: ลดความฟุ้งของแสง และลดความเร็วกระพริบให้นุ่มนวลพรีเมียมขึ้น */
+/* ปรับปรุงป้าย New ให้นุ่มนวล ไม่กระพริบถี่รบกวนสายตา */
 .new-badge-glow {
     font-size:.54rem;
     font-weight:700;
     color:#fff;
     background:linear-gradient(135deg, #ef4444, #dc2626);
-    padding:1px 5px;
+    padding:1px 6px;
     border-radius:5px;
     border:1px solid rgba(255,255,255,.3);
-    box-shadow:0 0 5px rgba(239,68,68,.4);
-    animation: newBadgeBlink 3s ease-in-out infinite;
+    box-shadow:0 0 4px rgba(239,68,68,.3);
+    animation: newBadgeBlink 4s ease-in-out infinite;
 }
 
 @keyframes newBadgeBlink {
-    0%, 100% { opacity: 0.65; transform: scale(1); box-shadow:0 0 4px rgba(239,68,68,.3); }
-    50% { opacity: 1; transform: scale(1.04); box-shadow:0 0 8px rgba(239,68,68,.6); }
+    0%, 100% { opacity: 0.75; transform: scale(1); box-shadow:0 0 3px rgba(239,68,68,.2); }
+    50% { opacity: 1; transform: scale(1.02); box-shadow:0 0 6px rgba(239,68,68,.4); }
 }
 
 .consensus-pair-count{
@@ -546,15 +546,14 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-weight:600;
     background:rgba(251,191,36,.2);
     border:1px solid rgba(251,191,36,.45);
-    animation: softConfidencePulse 4s ease-in-out infinite;
+    animation: softConfidencePulse 5s ease-in-out infinite;
 }
 
 @keyframes softConfidencePulse{
     0%,100%{ opacity:.85; box-shadow: 0 0 0 rgba(251,191,36,0); }
-    50%{ opacity:1; box-shadow: 0 0 10px rgba(251,191,36,.25); }
+    50%{ opacity:1; box-shadow: 0 0 8px rgba(251,191,36,.2); }
 }
 
-/* ปรับปรุง Grid ชุดตัวเลขให้ขนาดเล็กลง จัดเรียงแถวในแนวนอนพอดีกับหน้าจอ ไม่ให้ล้น */
 .consensus-pairs{
     display: flex;
     flex-wrap: nowrap;
@@ -663,7 +662,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     color:#fca5a5;
     background:rgba(239,68,68,.22);
     border:1px solid rgba(239,68,68,.5);
-    animation:softConfidencePulse 3.8s ease-in-out infinite;
+    animation:softConfidencePulse 4.5s ease-in-out infinite;
 }
 
 .ai-match-badge{
@@ -887,6 +886,11 @@ const _0x9a2b = {
         const _0x88 = this._0x4e8b(_0x66 / _0x77, 0, 1);
         const _0x99 = 82.0 + (_0x88 * 14.9);
         return Number(this._0x4e8b(_0x99, 82.0, 96.9).toFixed(1));
+    },
+    // ฟังก์ชันใหม่สำหรับสุ่มเปอร์เซ็นต์ชุด 3 ตัว ให้อยู่ในช่วงไม่เกิน 50% - 60%
+    _0xrandom3dScore(){
+        const randomVal = 50.0 + (Math.random() * 10.0); // 50.0 ถึง 60.0
+        return Number(randomVal.toFixed(1));
     },
     _0x7b32(){
         this._0x1f8e("click");
@@ -1146,6 +1150,8 @@ const _0x9a2b = {
         const _0xarr1 = _0xwinner.pairsMap[_0xd1] || [];
         const _0xarr2 = _0xwinner.pairsMap[_0xd2] || [];
         const _0xcScore = _0xwinner.aiScore;
+        // กำหนดค่าเปอร์เซ็นต์สำหรับชุด 3 ตัวให้อยู่ในช่วงสุ่มไม่เกิน 50% - 60% ตามรีเควส
+        const _0x3dScore = this._0xrandom3dScore();
 
         const _0xcontainer = document.getElementById("resultContainer");
 
@@ -1183,7 +1189,7 @@ const _0x9a2b = {
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
                         <div class="consensus-pair-title">💎 ชุด 3 ตัว <span class="new-badge-glow">NEW</span></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0xcScore}%</div>
+                        <div class="consensus-pair-count">AI CONFIDENCE ${_0x3dScore}%</div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml3}</div>
                 </div>
