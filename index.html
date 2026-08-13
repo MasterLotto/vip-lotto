@@ -466,19 +466,24 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(245,158,11,.25);
-    animation: digitPulse 5s ease-in-out infinite;
+    animation: digitGlowLux 6s ease-in-out infinite, digitFloat 4s ease-in-out infinite;
 }
 
 .consensus-digit:first-child{
     border-color:rgba(52,211,153,.9);
     background:linear-gradient(145deg, rgba(52,211,153,.38), rgba(6,182,212,.18));
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(52,211,153,.25);
-    animation-delay: 2.5s;
+    animation-delay: 3s, 0s;
 }
 
-@keyframes digitPulse{
-    0%,100%{ transform: scale(1); filter: brightness(1); }
-    50%{ transform: scale(1.02); filter: brightness(1.08); }
+@keyframes digitGlowLux{
+    0%,100%{ border-color: rgba(253,224,71,.6); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 15px rgba(245,158,11,.15); }
+    50%{ border-color: rgba(253,224,71,1); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 0 30px rgba(245,158,11,.35); }
+}
+
+@keyframes digitFloat{
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
 }
 
 .consensus-divider{ color:#94a3b8; font-size:1.1rem; }
@@ -520,22 +525,17 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .consensus-pair-title{ color:#f8fafc; font-size:.76rem; font-weight:600; display:flex; align-items:center; gap:6px; }
 
-/* ปรับปรุงป้าย New ให้นุ่มนวล ไม่กระพริบถี่รบกวนสายตา */
+/* ป้าย NEW แบบนิ่ง เรียบหรู ไม่มีแสงวิ่งกวนตา */
 .new-badge-glow {
-    font-size:.54rem;
-    font-weight:700;
-    color:#fff;
-    background:linear-gradient(135deg, #ef4444, #dc2626);
-    padding:1px 6px;
-    border-radius:5px;
-    border:1px solid rgba(255,255,255,.3);
-    box-shadow:0 0 4px rgba(239,68,68,.3);
-    animation: newBadgeBlink 4s ease-in-out infinite;
-}
-
-@keyframes newBadgeBlink {
-    0%, 100% { opacity: 0.75; transform: scale(1); box-shadow:0 0 3px rgba(239,68,68,.2); }
-    50% { opacity: 1; transform: scale(1.02); box-shadow:0 0 6px rgba(239,68,68,.4); }
+    position: relative;
+    font-size: .54rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
 }
 
 .consensus-pair-count{
@@ -579,10 +579,15 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     border: 1px solid rgba(52,211,153,.55);
     box-shadow: 0 2px 8px rgba(52,211,153,.12), inset 0 1px 0 rgba(255,255,255,.2);
     cursor: pointer;
-    transition: .2s ease;
+    transition: transform .2s ease, filter .2s ease, border-color .2s ease;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
+    animation: itemFloatSubtle 5s ease-in-out infinite;
+}
+
+.consensus-pair:nth-child(even){
+    animation-delay: 2.5s;
 }
 
 .consensus-pair.second{
@@ -597,11 +602,16 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     box-shadow: 0 2px 8px rgba(168,85,247,.15), inset 0 1px 0 rgba(255,255,255,.2);
 }
 
+@keyframes itemFloatSubtle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+}
+
 .consensus-pair:hover{ 
-    transform:translateY(-1px); 
+    transform:translateY(-3px); 
     border-color:rgba(253,224,71,.95); 
-    box-shadow: 0 4px 12px rgba(253,224,71,.2), inset 0 1px 0 rgba(255,255,255,.3);
-    filter: brightness(1.1);
+    box-shadow: 0 6px 15px rgba(253,224,71,.25), inset 0 1px 0 rgba(255,255,255,.3);
+    filter: brightness(1.15);
 }
 
 .formula-toggle-container{ margin-bottom:12px; }
@@ -685,10 +695,10 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background:rgba(3,8,16,.85);
     border:1px solid rgba(255,255,255,.1);
     cursor:pointer;
-    transition:.2s ease;
+    transition:all .2s ease;
 }
 
-.copy-row:hover{ border-color:rgba(6,182,212,.6); background:rgba(8,15,27,.98); }
+.copy-row:hover{ border-color:rgba(6,182,212,.6); background:rgba(8,15,27,.98); transform: translateX(2px); }
 .copy-label{ color:#e2e8f0; font-size:.72rem; font-weight:500; }
 .copy-numbers{ font-family:monospace; font-size:.82rem; font-weight:600; }
 .main-set{ color:#34d399; }
@@ -887,9 +897,8 @@ const _0x9a2b = {
         const _0x99 = 82.0 + (_0x88 * 14.9);
         return Number(this._0x4e8b(_0x99, 82.0, 96.9).toFixed(1));
     },
-    // ฟังก์ชันใหม่สำหรับสุ่มเปอร์เซ็นต์ชุด 3 ตัว ให้อยู่ในช่วงไม่เกิน 50% - 60%
     _0xrandom3dScore(){
-        const randomVal = 50.0 + (Math.random() * 10.0); // 50.0 ถึง 60.0
+        const randomVal = 50.0 + (Math.random() * 10.0);
         return Number(randomVal.toFixed(1));
     },
     _0x7b32(){
@@ -1150,7 +1159,6 @@ const _0x9a2b = {
         const _0xarr1 = _0xwinner.pairsMap[_0xd1] || [];
         const _0xarr2 = _0xwinner.pairsMap[_0xd2] || [];
         const _0xcScore = _0xwinner.aiScore;
-        // กำหนดค่าเปอร์เซ็นต์สำหรับชุด 3 ตัวให้อยู่ในช่วงสุ่มไม่เกิน 50% - 60% ตามรีเควส
         const _0x3dScore = this._0xrandom3dScore();
 
         const _0xcontainer = document.getElementById("resultContainer");
