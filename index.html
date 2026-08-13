@@ -1020,83 +1020,20 @@ const _0x9a2b = {
             { name: "สูตรวิเคราะห์ AI ที่ 5", set: _0xab(10 - _0x99) }
         ];
 
-        const _0xcd = [
-            (_a,_b,_c,_d,_e) => _0xab(_a + _b + _d + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _c + _d + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_b + _c + _d + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _b + _c + _d),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _d + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_b + _d + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_c + _d + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _c + _d),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _c + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _b + _e),
-
-            (_a,_b,_c,_d,_e) => _0xab(_a + (_d * 2)),
-            (_a,_b,_c,_d,_e) => _0xab(_b + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_c + _d),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _b + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _c + _d),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _c + _e + _d),
-            (_a,_b,_c,_d,_e) => _0xab((_a * 2) + _d),
-            (_a,_b,_c,_d,_e) => _0xab(_a + (_e * 2)),
-            (_a,_b,_c,_d,_e) => _0xab(_b + (_e * 2)),
-            (_a,_b,_c,_d,_e) => _0xab(_c + (_d * 2)),
-
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_a - _e)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_b - _d)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_c - _e)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_a - _d)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_b - _e)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_c - _d)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_a + _b) - _d)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_b + _c) - _e)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_a + _c) - _d)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(_a - (_d + _e))),
-
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(7 - (_a + _b))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(7 - (_b + _c))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(7 - (_d + _e))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(7 - (_a + _e))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(10 - (_a + _b))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(10 - (_b + _c))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(10 - (_a + _e))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(10 - (_b + _e))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(5 - (_c + _e))),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs(5 - _d)),
-
-            (_a,_b,_c,_d,_e) => _0xab((_a * 2) + _b + _c),
-            (_a,_b,_c,_d,_e) => _0xab(_a + (_b * 2) + _c),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _b + (_c * 2)),
-            (_a,_b,_c,_d,_e) => _0xab((_d * 2) + _e),
-            (_a,_b,_c,_d,_e) => _0xab(_d + (_e * 2)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_a + _b) - _c)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_a + _c) - _b)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_b + _c) - _a)),
-            (_a,_b,_c,_d,_e) => _0xab(Math.abs((_a + _d) - _e)),
-            (_a,_b,_c,_d,_e) => _0xab(_a + _b + _c + _d + _e)
-        ];
-
         const _0xef = {};
-        for(let _0x1 = 1; _0x1 <= 250; _0x1++){
-            const _0x2 = _0xaa((_0x55 * _0x1) + (_0x66 * (_0x1 % 7)) + (_0x77 * (_0x1 % 3)) + (_0x88 * (_0x1 % 5)) + _0x99);
-            _0xef[_0x2] = (_0xef[_0x2] || 0) + 1;
-        }
-
-        _0xcd.forEach(_0xfn => {
-            const _0xresSet = _0xfn(_0x55, _0x66, _0x77, _0x88, _0x99);
-            _0xresSet.forEach(_0xd => {
-                _0xef[_0xd] = (_0xef[_0xd] || 0) + 2;
+        _0xbc.forEach(_0xitem => {
+            _0xitem.set.forEach(_0xd => {
+                _0xef[_0xd] = (_0xef[_0xd] || 0) + 1;
             });
         });
 
         _0xbc.forEach(_0xitem => {
-            _0xitem.score = _0xitem.set.reduce((_0xacc, _0xdg) => _0xacc + (_0xef[_0xdg] || 0) + 10, 0);
+            _0xitem.score = _0xitem.set.reduce((_0xacc, _0xdg) => _0xacc + ((_0xef[_0xdg] || 1) * 20), 0);
         });
 
         _0xbc.sort((_0xa, _0xb) => _0xb.score - _0xa.score);
         _0xbc.forEach((_0xitem, _0xidx) => {
-            _0xitem.isHot = _0xidx < 3 && _0xitem.set.some(_0xdg => (_0xef[_0xdg] || 0) > 35);
+            _0xitem.isHot = _0xidx < 3;
         });
 
         const _0xdc = 7 - _0x55;
@@ -1139,10 +1076,8 @@ const _0x9a2b = {
         const _0xcScore = _0xwinner.aiScore;
         const _0x3dScore = this._0xrandom3dScore();
 
-        // [Manual Audit & Triple Check Fix]: ปรับปรุงตรรกะชุด 3 ตัวใหม่ให้ดึงเลขเด่นคู่ (d1, d2) เป็นแกนหลัก 
-        // และนำเลขท้าย (หลักหน่วย) ของชุดเจาะแต่ละตัวมาวางเป็น "หลักร้อย" ด้านหน้าตามรีเควส
         const _0xfinal3dSets = _0xarr1.map(pair => {
-            const lastDigit = pair.slice(-1); // ดึงเลขตัวท้ายของชุดเด่น/ชุดเจาะ
+            const lastDigit = pair.slice(-1);
             return `${lastDigit}${_0xd1}${_0xd2}`;
         });
 
