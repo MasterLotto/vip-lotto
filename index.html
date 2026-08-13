@@ -854,6 +854,31 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     position: relative;
 }
 
+/* เพิ่มแสงแฟลชวิ่งเบาๆ ดูพรีเมี่ยมและไม่เร็วเกินไปสำหรับธงชาติ */
+.flag-icon::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.28) 50%,
+        transparent 60%
+    );
+    transform: rotate(30deg) translateX(-100%);
+    animation: flagSoftFlash 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes flagSoftFlash {
+    0% { transform: rotate(30deg) translateX(-100%); }
+    20% { transform: rotate(30deg) translateX(100%); }
+    100% { transform: rotate(30deg) translateX(100%); }
+}
+
 .flag-icon img,
 .flag-icon span {
     width: 100%;
@@ -1701,11 +1726,15 @@ const _0x9a2b = {
         let catData = lottoDatabase[categoryKey];
         let html = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
 
+        // ดึงวันที่ปัจจุบันตามเวลาเครื่อง/ประเทศไทย (รูปแบบ YYYY-MM-DD)
+        const todayStr = new Date().toLocaleDateString('en-CA');
+
         catData.items.forEach(itemName => {
             let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
             let parts = savedData.split("|");
             let numbersPart = parts[0] || "";
-            let datePart = parts[1] || new Date().toISOString().split('T')[0];
+            // ถ้ายังไม่มีการบันทึก ให้ดึงวันที่ปัจจุบันของเครื่องมาแสดงทันที
+            let datePart = parts[1] || todayStr;
             
             let numSubParts = numbersPart.split("-");
             let top3 = numSubParts[0] || "";
@@ -1715,8 +1744,8 @@ const _0x9a2b = {
                 <div class="admin-lotto-item">
                     <span class="admin-lotto-name">${itemName}</span>
                     <div class="admin-inputs">
-                        <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}">
-                        <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}">
+                        <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'bot_${itemName}', 3)">
+                        <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'date_${itemName}', 2)">
                         <input type="date" id="date_${itemName}" value="${datePart}">
                     </div>
                     <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}')">บันทึก</button>
@@ -1728,11 +1757,26 @@ const _0x9a2b = {
         container.innerHTML = html;
     },
 
+    // ฟังก์ชันจัดการกระโดดข้ามช่องอัตโนมัติเมื่อพิมพ์ครบจำนวนหลักที่กำหนด
+    handleAdminInputAutoJump(currentElement, nextElementId, maxLength) {
+        currentElement.value = currentElement.value.replace(/\D/g, "");
+        if (currentElement.value.length >= maxLength) {
+            const nextElement = document.getElementById(nextElementId);
+            if (nextElement) {
+                nextElement.focus();
+                if (nextElement.select) {
+                    nextElement.select();
+                }
+            }
+        }
+    },
+
     saveLottoResult(itemName) {
         this._0x1f8e("click");
         const topVal = document.getElementById(`top_${itemName}`).value.trim();
         const botVal = document.getElementById(`bot_${itemName}`).value.trim();
-        const dateVal = document.getElementById(`date_${itemName}`).value || new Date().toISOString().split('T')[0];
+        const todayStr = new Date().toLocaleDateString('en-CA');
+        const dateVal = document.getElementById(`date_${itemName}`).value || todayStr;
         
         if(!topVal && !botVal) {
             alert("กรุณากรอกข้อมูลตัวเลขอย่างน้อยหนึ่งช่อง");
