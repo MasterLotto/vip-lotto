@@ -1013,65 +1013,18 @@ const _0x9a2b = {
             { name: "สูตรวิเคราะห์ AI ที่ 5", set: _0xab(10 - _0x99) }
         ];
 
-        // 2. คณะกรรมการหลังบ้าน 40 สูตร (ไม่มีตัวคูณ เพื่อความแม่นยำและเสถียรภาพตามระบบตรรกะที่กำหนด)
-        const supportFormulasLibrary = [
-            { id: 1, calc: (n3, n2) => (n3[0] + n3[1] + n2[0] + n2[1]) },
-            { id: 2, calc: (n3, n2) => (n3[0] + n3[2] + n2[0] + n2[1]) },
-            { id: 3, calc: (n3, n2) => (n3[1] + n3[2] + n2[0] + n2[1]) },
-            { id: 4, calc: (n3, n2) => (n3[0] + n3[1] + n3[2] + n2[0]) },
-            { id: 5, calc: (n3, n2) => (n3[0] + n2[0] + n2[1]) },
-            { id: 6, calc: (n3, n2) => (n3[1] + n2[0] + n2[1]) },
-            { id: 7, calc: (n3, n2) => (n3[2] + n2[0] + n2[1]) },
-            { id: 8, calc: (n3, n2) => (n3[0] + n3[2] + n2[0]) },
-            { id: 9, calc: (n3, n2) => (n3[0] + n3[2] + n2[1]) },
-            { id: 10, calc: (n3, n2) => (n3[0] + n3[1] + n2[1]) },
-            { id: 12, calc: (n3, n2) => (n3[1] + n2[1]) },
-            { id: 13, calc: (n3, n2) => (n3[2] + n2[0]) },
-            { id: 14, calc: (n3, n2) => (n3[0] + n3[1] + n2[1]) },
-            { id: 15, calc: (n3, n2) => (n3[0] + n3[2] + n2[0]) },
-            { id: 16, calc: (n3, n2) => (n3[0] + n3[2] + n2[1] + n2[0]) },
-            { id: 21, calc: (n3, n2) => Math.abs(n3[0] - n2[1]) },
-            { id: 22, calc: (n3, n2) => Math.abs(n3[1] - n2[0]) },
-            { id: 23, calc: (n3, n2) => Math.abs(n3[2] - n2[1]) },
-            { id: 24, calc: (n3, n2) => Math.abs(n3[0] - n2[0]) },
-            { id: 25, calc: (n3, n2) => Math.abs(n3[1] - n2[1]) },
-            { id: 26, calc: (n3, n2) => Math.abs(n3[2] - n2[0]) },
-            { id: 27, calc: (n3, n2) => Math.abs((n3[0] + n3[1]) - n2[0]) },
-            { id: 28, calc: (n3, n2) => Math.abs((n3[1] + n3[2]) - n2[1]) },
-            { id: 29, calc: (n3, n2) => Math.abs((n3[0] + n3[2]) - n2[0]) },
-            { id: 30, calc: (n3, n2) => Math.abs(n3[0] - (n2[0] + n2[1])) },
-            { id: 31, calc: (n3, n2) => Math.abs(7 - (n3[0] + n3[1])) },
-            { id: 32, calc: (n3, n2) => Math.abs(7 - (n3[1] + n3[2])) },
-            { id: 33, calc: (n3, n2) => Math.abs(7 - (n2[0] + n2[1])) },
-            { id: 34, calc: (n3, n2) => Math.abs(7 - (n3[0] + n2[1])) },
-            { id: 35, calc: (n3, n2) => Math.abs(10 - (n3[0] + n3[1])) },
-            { id: 36, calc: (n3, n2) => Math.abs(10 - (n3[1] + n3[2])) },
-            { id: 37, calc: (n3, n2) => Math.abs(10 - (n3[0] + n2[1])) },
-            { id: 38, calc: (n3, n2) => Math.abs(10 - (n3[1] + n2[1])) },
-            { id: 39, calc: (n3, n2) => Math.abs(5 - (n3[2] + n2[1])) },
-            { id: 40, calc: (n3, n2) => Math.abs(5 - n2[0]) },
-            { id: 46, calc: (n3, n2) => Math.abs((n3[0] + n3[1]) - n3[2]) },
-            { id: 47, calc: (n3, n2) => Math.abs((n3[0] + n3[2]) - n3[1]) },
-            { id: 48, calc: (n3, n2) => Math.abs((n3[1] + n3[2]) - n3[0]) },
-            { id: 49, calc: (n3, n2) => Math.abs((n3[0] + n2[0]) - n2[1]) },
-            { id: 50, calc: (n3, n2) => (n3[0] + n3[1] + n3[2] + n2[0] + n2[1]) }
-        ];
-
-        // 3. ประมวลผลคะแนนสนับสนุนจาก 40 สูตรหลังบ้านเพื่อเสริมความน่าเชื่อถือ
-        const supportCommitteeVotes = {};
-        supportFormulasLibrary.forEach(sf => {
-            const raw = sf.calc(_0x33, _0x44);
-            const d1 = _0xaa(raw);
-            const d2 = _0xaa(d1 + 1);
-            [d1, d2].forEach(digit => {
-                supportCommitteeVotes[digit] = (supportCommitteeVotes[digit] || 0) + 1;
+        // 2. ระบบโหวตคะแนนเสียงและความถี่ซ้ำกันโดยตรงจาก 5 สูตรหลัก (Consensus Voting Engine)
+        const primaryCommitteeVotes = {};
+        _0xbc.forEach(item => {
+            item.set.forEach(digit => {
+                primaryCommitteeVotes[digit] = (primaryCommitteeVotes[digit] || 0) + 1;
             });
         });
 
-        // 4. ผสานคะแนนโหวตจากหลังบ้านเข้ากับ 5 สูตรหลัก
+        // ให้คะแนนน้ำหนักแต่ละสูตรตามเสียงโหวตซ้ำกัน (Majority & Frequency Weighting)
         _0xbc.forEach(_0xitem => {
-            const baseScore = _0xitem.set.reduce((acc, dg) => acc + ((supportCommitteeVotes[dg] || 1) * 3), 100);
-            _0xitem.score = baseScore;
+            const frequencyScore = _0xitem.set.reduce((acc, dg) => acc + ((primaryCommitteeVotes[dg] || 1) * 25), 100);
+            _0xitem.score = frequencyScore;
         });
 
         _0xbc.sort((_0xa, _0xb) => _0xb.score - _0xa.score);
