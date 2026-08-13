@@ -1184,7 +1184,9 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
         <p>ระบบจัดการฐานข้อมูล ผลหวย และระบุวันที่ออกรางวัล</p>
     </div>
 
-    <div class="admin-scroll-area" id="adminLottoList"></div>
+    <div class="public-cat-filter" id="adminCatFilter"></div>
+
+    <div class="admin-scroll-area" id="adminLottoList" style="max-height: 320px;"></div>
 
     <button class="action-btn" id="backToUserBtn" style="background:linear-gradient(135deg, #64748b, #475569);">⬅️ กลับสู่หน้าหลัก</button>
 </div>
@@ -1684,40 +1686,45 @@ const _0x9a2b = {
         } catch(_0xe){}
     },
 
-    renderAdminPanel() {
+    renderAdminPanel(categoryKey = "laos") {
+        const filterContainer = document.getElementById("adminCatFilter");
         const container = document.getElementById("adminLottoList");
-        let html = "";
-        
+
+        let filterHtml = "";
         for (let key in lottoDatabase) {
             let cat = lottoDatabase[key];
-            html += `<div class="admin-lotto-group">`;
-            html += `<div class="admin-lotto-title"><span class="flag-icon"><span>${cat.flag}</span></span> ${cat.name}</div>`;
-            
-            cat.items.forEach(itemName => {
-                let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
-                let parts = savedData.split("|");
-                let numbersPart = parts[0] || "";
-                let datePart = parts[1] || new Date().toISOString().split('T')[0];
-                
-                let numSubParts = numbersPart.split("-");
-                let top3 = numSubParts[0] || "";
-                let bot2 = numSubParts[1] || "";
-                
-                html += `
-                    <div class="admin-lotto-item">
-                        <span class="admin-lotto-name">${itemName}</span>
-                        <div class="admin-inputs">
-                            <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}">
-                            <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}">
-                            <input type="date" id="date_${itemName}" value="${datePart}">
-                        </div>
-                        <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}')">บันทึก</button>
-                        <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}')" title="ล้างสถิติและวันที่ในคลิกเดียว">ล้าง</button>
-                    </div>
-                `;
-            });
-            html += `</div>`;
+            let activeClass = (key === categoryKey) ? "active" : "";
+            filterHtml += `<button class="cat-tab ${activeClass}" onclick="_0x9a2b.renderAdminPanel('${key}')"><span class="flag-icon"><span>${cat.flag}</span></span> ${cat.name}</button>`;
         }
+        filterContainer.innerHTML = filterHtml;
+
+        let catData = lottoDatabase[categoryKey];
+        let html = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
+
+        catData.items.forEach(itemName => {
+            let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
+            let parts = savedData.split("|");
+            let numbersPart = parts[0] || "";
+            let datePart = parts[1] || new Date().toISOString().split('T')[0];
+            
+            let numSubParts = numbersPart.split("-");
+            let top3 = numSubParts[0] || "";
+            let bot2 = numSubParts[1] || "";
+            
+            html += `
+                <div class="admin-lotto-item">
+                    <span class="admin-lotto-name">${itemName}</span>
+                    <div class="admin-inputs">
+                        <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}">
+                        <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}">
+                        <input type="date" id="date_${itemName}" value="${datePart}">
+                    </div>
+                    <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}')">บันทึก</button>
+                    <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}', '${categoryKey}')" title="ล้างสถิติและวันที่ในคลิกเดียว">ล้าง</button>
+                </div>
+            `;
+        });
+        html += `</div>`;
         container.innerHTML = html;
     },
 
@@ -1750,20 +1757,12 @@ const _0x9a2b = {
         alert(`บันทึกผลของ "${itemName}" (วันที่ ${formatThaiDate(dateVal)}) เรียบร้อยแล้ว!`);
     },
 
-    clearLottoResult(itemName) {
+    clearLottoResult(itemName, categoryKey) {
         this._0x1f8e("click");
         if(confirm(`คุณต้องการล้างสถิติและวันที่ของ "${itemName}" ใช่หรือไม่?`)) {
             localStorage.removeItem("lotto_res_" + itemName);
             localStorage.removeItem("lotto_hist_v3_" + itemName);
-            
-            let topInput = document.getElementById(`top_${itemName}`);
-            let botInput = document.getElementById(`bot_${itemName}`);
-            let dateInput = document.getElementById(`date_${itemName}`);
-            
-            if(topInput) topInput.value = "";
-            if(botInput) botInput.value = "";
-            if(dateInput) dateInput.value = new Date().toISOString().split('T')[0];
-            
+            this.renderAdminPanel(categoryKey);
             alert(`ล้างข้อมูลของ "${itemName}" เรียบร้อยแล้ว`);
         }
     },
@@ -1911,7 +1910,7 @@ function handleSecretLogoClick() {
                     document.getElementById("calculatorView").style.display = "none";
                     document.getElementById("publicResultsView").style.display = "none";
                     document.getElementById("adminView").style.display = "block";
-                    _0x9a2b.renderAdminPanel();
+                    _0x9a2b.renderAdminPanel("laos");
                 } else {
                     alert("❌ รหัสผ่านแอดมินไม่ถูกต้อง!");
                 }
