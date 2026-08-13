@@ -9,7 +9,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-<title>MasterLotto VIP — AI Smart Analysis</title>
+<title>MasterLotto VIP — AI Smart Analysis (Encrypted Core)</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -32,7 +32,7 @@
     --border:rgba(255,255,255,.08);
 }
 
-*{ box-sizing:border-box; margin:0; padding:0; }
+*{ box-sizing:border-box; margin:0; padding:0; user-select:none; -webkit-user-select:none; }
 html{ scroll-behavior:smooth; }
 body{
     font-family:'Prompt',sans-serif;
@@ -105,7 +105,7 @@ body::before{
     overflow:hidden;
 }
 
-.header-box{ text-align:center; margin-bottom:18px; }
+.header-box{ text-align:center; margin-bottom:18px; cursor:pointer; user-select:none; }
 
 .ai-badge{
     display:inline-flex;
@@ -283,6 +283,8 @@ input{
     font-size:.9rem;
     text-align:center;
     transition:.2s ease;
+    user-select:text;
+    -webkit-user-select:text;
 }
 
 input::placeholder{ color:#475569; }
@@ -314,7 +316,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-size:.72rem;
 }
 
-#calculatorView{ display:none; }
+#calculatorView, #adminView{ display:none; }
 
 .input-group-calc{ margin-bottom:12px; }
 .input-label{ display:block; margin-bottom:5px; color:#cbd5e1; font-size:.78rem; font-weight:500; }
@@ -322,13 +324,23 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .last-session-badge{
     display:none;
     margin-bottom:14px;
-    padding:8px 10px;
+    padding:10px 14px;
     text-align:center;
-    border-radius:10px;
-    color:#38bdf8;
-    font-size:.7rem;
-    background:rgba(6,182,212,.09);
-    border:1px solid rgba(6,182,212,.22);
+    border-radius:14px;
+    color:#fef08a;
+    font-size:.78rem;
+    font-weight:600;
+    background:linear-gradient(135deg, rgba(245,158,11,.15), rgba(6,182,212,.12));
+    border:1px solid rgba(245,158,11,.35);
+    box-shadow:0 4px 15px rgba(245,158,11,.12);
+    position:relative;
+    overflow:hidden;
+    animation: softGoldGlow 4s ease-in-out infinite;
+}
+
+@keyframes softGoldGlow {
+    0%, 100% { border-color: rgba(245, 158, 11, 0.35); box-shadow: 0 4px 15px rgba(245,158,11,.12); }
+    50% { border-color: rgba(245, 158, 11, 0.65); box-shadow: 0 4px 20px rgba(245,158,11,.22); }
 }
 
 .action-row{ display:flex; gap:8px; margin-bottom:16px; }
@@ -367,6 +379,51 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 }
 
 .btn-clear:hover{ color:#fff; background:#1e293b; }
+
+.btn-public-results {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 10px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fef08a;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(168, 85, 247, 0.15));
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+    transition: .2s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    line-height: 1.3;
+    animation: softAmberShimmer 5s ease-in-out infinite;
+}
+
+@keyframes softAmberShimmer {
+    0%, 100% { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 4px 15px rgba(245,158,11,0.15); }
+    50% { border-color: rgba(245, 158, 11, 0.75); box-shadow: 0 4px 22px rgba(245,158,11,0.28); }
+}
+
+.btn-icon-pulse {
+    display: inline-block;
+    animation: highEndPulseAnim 3s ease-in-out infinite;
+}
+
+@keyframes highEndPulseAnim {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+.chart-icon-anim {
+    display: inline-block;
+    animation: highEndPulseAnim 3s ease-in-out infinite;
+}
 
 #aiScannerBox{
     display:none;
@@ -495,22 +552,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     overflow: hidden;
 }
 
-.consensus-pair-panel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(56,189,248,.03), transparent);
-    animation: panelGleam 8s ease-in-out infinite;
-}
-
-@keyframes panelGleam {
-    0%, 100% { left: -100%; }
-    50% { left: 100%; }
-}
-
 .consensus-pair-header{
     display:flex;
     justify-content:space-between;
@@ -531,23 +572,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
-}
-
-.new-badge-glow::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -75%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    transform: rotate(25deg);
-    animation: premiumGleamSweep 4s ease-in-out infinite;
-}
-
-@keyframes premiumGleamSweep {
-    0%, 100% { left: -75%; }
-    50% { left: 125%; }
 }
 
 .consensus-pair-count{
@@ -715,6 +739,303 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     box-shadow:none !important;
 }
 
+.admin-scroll-area {
+    max-height: 380px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    padding-right: 4px;
+}
+.admin-lotto-group {
+    margin-bottom: 12px;
+    background: rgba(10,17,32,0.8);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 10px;
+}
+.admin-lotto-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.admin-lotto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 6px;
+    background: rgba(3,8,16,0.5);
+    padding: 6px;
+    border-radius: 8px;
+}
+.admin-lotto-name {
+    font-size: 0.72rem;
+    color: #cbd5e1;
+    flex: 1;
+}
+.admin-inputs {
+    display: flex;
+    gap: 4px;
+    width: 210px;
+}
+.admin-inputs input {
+    font-size: 0.72rem;
+    padding: 6px 4px;
+    height: 30px;
+}
+.admin-save-btn {
+    padding: 4px 8px;
+    font-size: 0.68rem;
+    border-radius: 6px;
+    border: none;
+    background: #10b981;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+.admin-save-btn:hover { background: #059669; }
+
+.admin-clear-btn {
+    padding: 4px 8px;
+    font-size: 0.68rem;
+    border-radius: 6px;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    background: rgba(248, 113, 113, 0.15);
+    color: #fca5a5;
+    cursor: pointer;
+    font-weight: 600;
+}
+.admin-clear-btn:hover { background: rgba(248, 113, 113, 0.25); color: #fff; }
+
+#publicResultsView { display: none; }
+.public-cat-filter {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.cat-tab {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(16,25,42,0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.cat-tab.active {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #fff;
+    border-color: rgba(56,189,248,0.5);
+}
+
+.flag-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: relative;
+}
+
+.flag-icon img,
+.flag-icon span {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    line-height: 1;
+    transform: scale(1.35);
+}
+
+.public-result-card {
+    background: rgba(10,17,32,0.85);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+.pub-item-info {
+    flex: 1;
+    min-width: 0;
+}
+.pub-item-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pub-item-latest {
+    font-size: 0.7rem;
+    color: #38bdf8;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pub-item-date {
+    font-size: 0.62rem;
+    color: #94a3b8;
+    margin-top: 1px;
+}
+.pub-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.pub-history-btn, .pub-copy-btn {
+    width: 68px;
+    height: 28px;
+    padding: 0;
+    border-radius: 8px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.pub-history-btn {
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.4);
+    color: #fef08a;
+}
+.pub-history-btn:hover { background: rgba(245,158,11,0.25); }
+
+.pub-copy-btn {
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.4);
+    color: #34d399;
+}
+.pub-copy-btn:hover { background: rgba(16,185,129,0.25); }
+
+.history-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(2,4,8,0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+.history-modal-box {
+    width: 100%;
+    max-width: 380px;
+    background: linear-gradient(145deg, rgba(15,24,41,0.98), rgba(4,9,18,0.99));
+    border: 1px solid rgba(56,189,248,0.3);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+.history-modal-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 2px;
+}
+.history-modal-sub {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+.history-list {
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+}
+.history-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background: rgba(3,8,16,0.6);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 0.72rem;
+}
+.history-close-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #64748b;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.processing-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #38bdf8;
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.rotating-spinner-icon {
+    display: inline-block;
+    animation: smoothSpinIcon 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    font-size: 0.78rem;
+    filter: drop-shadow(0 0 5px rgba(56,189,248,0.7));
+}
+
+@keyframes smoothSpinIcon {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.processing-dots span {
+    animation: processingBlink 1.4s infinite;
+    display: inline-block;
+    font-weight: 700;
+}
+
+.processing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.processing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes processingBlink {
+    0%, 20% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); color: #22d3ee; text-shadow: 0 0 8px rgba(34,211,238,0.8); }
+    80%, 100% { opacity: 0.2; transform: scale(0.8); }
+}
+
 #toast{
     visibility:hidden;
     position:fixed;
@@ -751,8 +1072,9 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 <div class="vip-container">
 
+<!-- Login View -->
 <div id="loginView">
-    <div class="header-box">
+    <div class="header-box" id="logoHeader">
         <div class="ai-badge">⚡ AI SMART ANALYSIS</div>
         <h2>MasterLotto VIP</h2>
         <p>ระบบวิเคราะห์สถิติแม่นยำสูงด้วย AI อัจฉริยะ</p>
@@ -798,15 +1120,20 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     </div>
 </div>
 
+<!-- Calculator View -->
 <div id="calculatorView">
-    <div class="header-box">
+    <div class="header-box" id="logoHeaderCalc">
         <div class="ai-badge">⚡ AI SMART ANALYSIS ENGINE</div>
         <h2>MasterLotto VIP</h2>
         <p>วิเคราะห์เลขเด่นด้วย AI อัจฉริยะแม่นยำสูง</p>
     </div>
 
+    <button class="btn-public-results" id="openPublicResultsBtn">
+        <span class="chart-icon-anim">📊</span> ผลรางวัลล่าสุด & สถิติย้อนหลัง <span class="btn-icon-pulse">📊</span>
+    </button>
+
     <div id="lastSessionBadge" class="last-session-badge">
-        🔮 อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
+        🔮 อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#ffffff;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#ffffff;"></strong>
     </div>
 
     <div class="input-group-calc">
@@ -834,22 +1161,161 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     <button class="action-btn back-btn" id="logoutButton">ออกจากระบบ / กลับหน้าแรก</button>
 </div>
 
+<!-- Public Results & History View -->
+<div id="publicResultsView">
+    <div class="header-box" style="margin-bottom:12px;">
+        <div class="ai-badge" style="color:#38bdf8; border-color:rgba(56,189,248,.4); margin-bottom:6px;"><span class="chart-icon-anim">📊</span> RESULT & HISTORY BOARD</div>
+        <h2 style="font-size:1.4rem; letter-spacing:-0.3px;">ผลรางวัล & สถิติย้อนหลัง</h2>
+        <p style="font-size:0.75rem; margin-top:4px;">อัปเดตผลรางวัลและสถิติย้อนหลังแต่ละหน่วยหวย</p>
+    </div>
+
+    <div class="public-cat-filter" id="publicCatFilter"></div>
+
+    <div class="admin-scroll-area" id="publicItemsContainer" style="max-height: 320px;"></div>
+
+    <button class="action-btn back-btn" id="backToCalcBtn" style="background:linear-gradient(135deg, #64748b, #475569);">⬅️ กลับหน้าคำนวณ AI</button>
+</div>
+
+<!-- Admin Panel View -->
+<div id="adminView">
+    <div class="header-box">
+        <div class="ai-badge" style="color:#f59e0b; border-color:rgba(245,158,11,.4);">👑 ADMIN PANEL</div>
+        <h2>อัปเดตผลหวย</h2>
+        <p>ระบบจัดการฐานข้อมูล ผลหวย และระบุวันที่ออกรางวัล</p>
+    </div>
+
+    <div class="admin-scroll-area" id="adminLottoList"></div>
+
+    <button class="action-btn" id="backToUserBtn" style="background:linear-gradient(135deg, #64748b, #475569);">⬅️ กลับสู่หน้าหลัก</button>
+</div>
+
+</div>
+
+<!-- Modal สำหรับดูประวัติย้อนหลัง -->
+<div class="history-modal-overlay" id="historyModalOverlay">
+    <div class="history-modal-box">
+        <div class="history-modal-title" id="historyModalTitle">สถิติย้อนหลัง</div>
+        <div class="history-modal-sub" id="historyModalSub">ประวัติการออกรางวัลย้อนหลัง</div>
+        <div class="history-list" id="historyModalList"></div>
+        <button class="history-close-btn" id="closeHistoryModalBtn">ปิดหน้าต่าง</button>
+    </div>
 </div>
 
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-// --- Secure Hashing & Obfuscation Layer ---
+// --- Anti-Tamper & Obfuscation Guard ---
+(function() {
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+})();
+
+const lottoDatabase = {
+    "laos": {
+        name: "หวยลาว",
+        flag: "🇱🇦",
+        items: [
+            "ลาวประตูชัย", "ลาวสันติภาพ", "ประชาชนลาว", "ลาวเอกซ์ตร้า (Extra)",
+            "ลาวทีวี", "ลาว HD", "ลาวสตาร์", "ลาวพัฒนา", "ลาวสามัคคี",
+            "ลาวอาเซียน", "ลาว VIP", "ลาวสามัคคี VIP", "ลาวสตาร์ VIP", "ลาวกาชาด"
+        ]
+    },
+    "hanoi": {
+        name: "หวยฮานอย",
+        flag: "🇻🇳",
+        items: [
+            "ฮานอยเช้า", "ฮานอย HD", "ฮานอยสตาร์", "ฮานอยทีวี", "ฮานอยเฉพาะกิจ",
+            "ฮานอยกาชาด", "ฮานอยสามัคคี", "ฮานอยพิเศษ", "ฮานอยปกติ", "ฮานอย VIP",
+            "ฮานอยพัฒนา", "ฮานอย 4D", "ฮานอย Extra", "ฮานอยดึก"
+        ]
+    },
+    "nikkei": {
+        name: "หุ้นนิเคอิ",
+        flag: "🇯🇵",
+        items: ["นิเคอิ ปกติ เช้า", "นิเคอิ ปกติ บ่าย", "นิเคอิ VIP เช้า", "นิเคอิ VIP บ่าย"]
+    },
+    "china": {
+        name: "หุ้นจีน",
+        flag: "🇨🇳",
+        items: ["จีน ปกติ เช้า", "จีน ปกติ บ่าย", "จีน VIP เช้า", "จีน VIP บ่าย"]
+    },
+    "hangseng": {
+        name: "หุ้นฮั่งเส็ง",
+        flag: "🇭🇰",
+        items: ["ฮั่งเส็ง ปกติ เช้า", "ฮั่งเส็ง ปกติ บ่าย", "ฮั่งเส็ง VIP เช้า", "ฮั่งเส็ง VIP บ่าย"]
+    },
+    "taiwan": {
+        name: "หุ้นไต้หวัน",
+        flag: "🇹🇼",
+        items: ["ไต้หวัน ปกติ", "ไต้หวัน VIP"]
+    },
+    "korea": {
+        name: "หุ้นเกาหลี",
+        flag: "🇰🇷",
+        items: ["เกาหลี ปกติ", "เกาหลี VIP"]
+    },
+    "singapore": {
+        name: "หุ้นสิงคโปร์",
+        flag: "🇸🇬",
+        items: ["สิงคโปร์ ปกติ", "สิงคโปร์ VIP"]
+    },
+    "russia": {
+        name: "หุ้นรัสเซีย",
+        flag: "🇷🇺",
+        items: ["รัสเซีย ปกติ", "รัสเซีย VIP"]
+    },
+    "germany": {
+        name: "หุ้นเยอรมัน",
+        flag: "🇩🇪",
+        items: ["เยอรมัน ปกติ", "เยอรมัน VIP"]
+    },
+    "uk": {
+        name: "หุ้นอังกฤษ",
+        flag: "🇬🇧",
+        items: ["อังกฤษ ปกติ", "อังกฤษ VIP"]
+    },
+    "dowjones": {
+        name: "หุ้นดาวโจนส์",
+        flag: "🇺🇸",
+        items: ["ดาวโจนส์ ปกติ", "ดาวโจนส์ VIP", "ดาวโจนส์ สตาร์"]
+    },
+    "malay": {
+        name: "หวยมาเลย์",
+        flag: "🇲🇾",
+        items: ["หวยมาเลย์ ปกติ", "หวยมาเลย์ VIP"]
+    },
+    "thai": {
+        name: "หวยรัฐบาลไทย",
+        flag: "🇹🇭",
+        items: ["หวยรัฐบาลไทย"]
+    }
+};
+
+function formatThaiDate(dateStr) {
+    if (!dateStr) return "";
+    let parts = dateStr.split("-");
+    if (parts.length === 3) {
+        let y = parseInt(parts[0], 10) + 543;
+        let m = parts[1];
+        let d = parts[2];
+        return `${d}/${m}/${y}`;
+    }
+    return dateStr;
+}
+
 const _0x9a2b = {
-    // ฐานข้อมูลรหัสผ่านที่ถูกแปลงเป็น SHA-256 Hash เพื่อความปลอดภัยสูงสุด (รหัสเดิมทุกตัวยังคงใช้งานได้ปกติ)
     _0x4c21: [
-        "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b", // Bank2026
-        "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3", // AMND428
-        "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21", // Xk89Pq
-        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e", // MasterAdmin2026
-        "7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"  // รองรับรหัสผ่านชุดเดิมครบถ้วน
+        "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b",
+        "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3",
+        "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21",
+        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e",
+        "7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"
     ],
-    // ฟังก์ชันคำนวณ SHA-256 Hash แบบปลอดภัยในตัว (Client-side Hashing)
     async _0xhash(str) {
         const msgBuffer = new TextEncoder().encode(str);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -861,17 +1327,9 @@ const _0x9a2b = {
             "Bank2026", "AMND428", "Xk89Pq", "MasterAdmin2026", "T9kL2mP7",
             "Zq4W8xT1", "Rt5Y9uI2", "O3P7wE4", "As3D6fG9", "Gh1H4kL8",
             "Wn_C2vB5", "Nm4M1b3", "Po9I6uY4", "Uj3Y7tR6", "Wq2S5xC8",
-            "Ed4R7fV1", "Th:Y9hN2", "Wh8U1jM3", "Ik0O3pL5", "Uaz2WSt3",
-            "Edc4RFv5", "Tgb6Yhn7", "Ujm8IKo9", "Pif0OKi9", "Zhv1Cde2",
-            "Bgt3Nhy4", "Mju5Lbo6", "Cde7Vfr8", "Bhy9Njh0", "Xsw2Zaq",
-            "Der4Ewx3", "Fgt6Cdels", "Whu8Bgd7", "Mji0Ujm9", "Lop1Plo0",
-            "Kji9Oki8", "!uh8Uhy7", "WgttTgy6", "Fre5Der4", "Ewq3waq2",
-            "Uaz1Xst2", "Xde3pfr4", "Vgt5Bhy6", "Nju7Mki8", "Pif9Olo0",
-            "Zhc4Vnb5", "Asd6Fgh7", "Qwe8Rty9", "Zk9Pq2Lm", "[w4Ne4Rt",
-            "Cp3Ji7Uo", "Vb1YtoMn", "As2Df4Gh", "Kj7Kl9Po"
+            "Ed4R7fV1", "Th:Y9hN2", "Wh8U1jM3", "Ik0O3pL5", "Uaz2WSt3"
         ];
         if(originalPlainPasses.includes(inputStr)) return true;
-        
         const hashedInput = await this._0xhash(inputStr);
         return this._0x4c21.includes(hashedInput);
     },
@@ -940,18 +1398,6 @@ const _0x9a2b = {
 
         const _0x5e = this._0x5f3a();
         const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-        
-        // --- ระบบล็อกอินจำกัด 1 อุปกรณ์ต่อ 1 รหัสผ่านอย่างเข้มงวด (Single Active Device Enforcement) ---
-        let currentBoundDev = "";
-        try {
-            currentBoundDev = localStorage.getItem(_0x6f) || "";
-        } catch(e) {
-            currentBoundDev = "";
-        }
-
-        if(currentBoundDev && currentBoundDev !== _0x5e) {
-            // หากมีอุปกรณ์อื่นใช้งานอยู่แล้ว จะถูกแทนที่ด้วยอุปกรณ์ปัจจุบันทันที (Device Override)
-        }
         localStorage.setItem(_0x6f, _0x5e);
 
         localStorage.setItem("ml_auth_status_v2", "active");
@@ -965,30 +1411,13 @@ const _0x9a2b = {
     },
     _0x8d54(){
         this._0x1f8e("click");
-        
-        // --- ล้างข้อมูลการผูกอุปกรณ์เมื่อกดออกจากระบบ ---
-        try {
-            const _0x3c = localStorage.getItem("ml_active_pass_v2");
-            const _0x5e = this._0x5f3a();
-            if(_0x3c) {
-                const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-                const boundDev = localStorage.getItem(_0x6f);
-                if(boundDev === _0x5e) {
-                    localStorage.removeItem(_0x6f);
-                }
-            }
-        } catch(e){}
-
         localStorage.removeItem("ml_auth_status_v2");
         localStorage.removeItem("ml_active_pass_v2");
         document.getElementById("calculatorView").style.display = "none";
+        document.getElementById("adminView").style.display = "none";
+        document.getElementById("publicResultsView").style.display = "none";
         document.getElementById("loginView").style.display = "block";
         document.getElementById("passwordInput").value = "";
-        document.getElementById("num3top").value = "";
-        document.getElementById("num2bottom").value = "";
-        document.getElementById("resultContainer").innerHTML = "";
-        document.getElementById("errorMsg").style.display = "none";
-        document.getElementById("aiScannerBox").style.display = "none";
     },
     _0x9e65(){
         this._0x1f8e("click");
@@ -1253,8 +1682,243 @@ const _0x9a2b = {
             _0xtarea.remove();
             if(_0xres && _0xcb) _0xcb();
         } catch(_0xe){}
+    },
+
+    renderAdminPanel() {
+        const container = document.getElementById("adminLottoList");
+        let html = "";
+        
+        for (let key in lottoDatabase) {
+            let cat = lottoDatabase[key];
+            html += `<div class="admin-lotto-group">`;
+            html += `<div class="admin-lotto-title"><span class="flag-icon"><span>${cat.flag}</span></span> ${cat.name}</div>`;
+            
+            cat.items.forEach(itemName => {
+                let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
+                let parts = savedData.split("|");
+                let numbersPart = parts[0] || "";
+                let datePart = parts[1] || new Date().toISOString().split('T')[0];
+                
+                let numSubParts = numbersPart.split("-");
+                let top3 = numSubParts[0] || "";
+                let bot2 = numSubParts[1] || "";
+                
+                html += `
+                    <div class="admin-lotto-item">
+                        <span class="admin-lotto-name">${itemName}</span>
+                        <div class="admin-inputs">
+                            <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}">
+                            <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}">
+                            <input type="date" id="date_${itemName}" value="${datePart}">
+                        </div>
+                        <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}')">บันทึก</button>
+                        <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}')" title="ล้างสถิติและวันที่ในคลิกเดียว">ล้าง</button>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+        }
+        container.innerHTML = html;
+    },
+
+    saveLottoResult(itemName) {
+        this._0x1f8e("click");
+        const topVal = document.getElementById(`top_${itemName}`).value.trim();
+        const botVal = document.getElementById(`bot_${itemName}`).value.trim();
+        const dateVal = document.getElementById(`date_${itemName}`).value || new Date().toISOString().split('T')[0];
+        
+        if(!topVal && !botVal) {
+            alert("กรุณากรอกข้อมูลตัวเลขอย่างน้อยหนึ่งช่อง");
+            return;
+        }
+
+        let currentResultString = `${topVal}-${botVal}|${dateVal}`;
+        
+        let historyKey = "lotto_hist_v3_" + itemName;
+        let historyList = [];
+        try {
+            historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
+        } catch(e) { historyList = []; }
+
+        if(historyList.length === 0 || historyList[0] !== currentResultString) {
+            historyList.unshift(currentResultString);
+            if(historyList.length > 14) historyList.pop();
+            localStorage.setItem(historyKey, JSON.stringify(historyList));
+        }
+        
+        localStorage.setItem("lotto_res_" + itemName, currentResultString);
+        alert(`บันทึกผลของ "${itemName}" (วันที่ ${formatThaiDate(dateVal)}) เรียบร้อยแล้ว!`);
+    },
+
+    clearLottoResult(itemName) {
+        this._0x1f8e("click");
+        if(confirm(`คุณต้องการล้างสถิติและวันที่ของ "${itemName}" ใช่หรือไม่?`)) {
+            localStorage.removeItem("lotto_res_" + itemName);
+            localStorage.removeItem("lotto_hist_v3_" + itemName);
+            
+            let topInput = document.getElementById(`top_${itemName}`);
+            let botInput = document.getElementById(`bot_${itemName}`);
+            let dateInput = document.getElementById(`date_${itemName}`);
+            
+            if(topInput) topInput.value = "";
+            if(botInput) botInput.value = "";
+            if(dateInput) dateInput.value = new Date().toISOString().split('T')[0];
+            
+            alert(`ล้างข้อมูลของ "${itemName}" เรียบร้อยแล้ว`);
+        }
+    },
+
+    renderPublicResults(categoryKey = "laos") {
+        const filterContainer = document.getElementById("publicCatFilter");
+        const itemsContainer = document.getElementById("publicItemsContainer");
+
+        let filterHtml = "";
+        for (let key in lottoDatabase) {
+            let cat = lottoDatabase[key];
+            let activeClass = (key === categoryKey) ? "active" : "";
+            filterHtml += `<button class="cat-tab ${activeClass}" onclick="_0x9a2b.renderPublicResults('${key}')"><span class="flag-icon"><span>${cat.flag}</span></span> ${cat.name}</button>`;
+        }
+        filterContainer.innerHTML = filterHtml;
+
+        let catData = lottoDatabase[categoryKey];
+        let itemsHtml = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
+
+        catData.items.forEach(itemName => {
+            let savedData = localStorage.getItem("lotto_res_" + itemName);
+            let displayRes = `
+                <div class="processing-container">
+                    <span class="rotating-spinner-icon">✦</span>
+                    <span>กำลังประมวลผล</span>
+                    <span class="processing-dots"><span>.</span><span>.</span><span>.</span></span>
+                </div>
+            `;
+            let dateStr = "";
+            let copyBtnHtml = "";
+
+            if(savedData) {
+                let parts = savedData.split("|");
+                let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
+                let dVal = parts[1] || "";
+                let topNum = nums[0] || "---";
+                let botNum = nums[1] || "---";
+                displayRes = `3ตัวบน: <strong>${topNum}</strong> | 2ตัวล่าง: <strong>${botNum}</strong>`;
+                if(dVal) {
+                    dateStr = `<div class="pub-item-date">📅 วันที่ออกผล: ${formatThaiDate(dVal)}</div>`;
+                }
+                
+                let copyTextValue = `${itemName} 3บน: ${topNum} 2ล่าง: ${botNum} (${formatThaiDate(dVal)})`;
+                copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
+            }
+
+            itemsHtml += `
+                <div class="public-result-card">
+                    <div class="pub-item-info">
+                        <div class="pub-item-name">${itemName}</div>
+                        <div class="pub-item-latest">${displayRes}</div>
+                        ${dateStr}
+                    </div>
+                    <div class="pub-actions-group">
+                        ${copyBtnHtml}
+                        <button class="pub-history-btn" onclick="_0x9a2b.showHistoryModal('${itemName}')">📊 สถิติ</button>
+                    </div>
+                </div>
+            `;
+        });
+        itemsHtml += `</div>`;
+        itemsContainer.innerHTML = itemsHtml;
+    },
+
+    showHistoryModal(itemName) {
+        this._0x1f8e("click");
+        document.getElementById("historyModalTitle").innerText = `สถิติย้อนหลัง: ${itemName}`;
+        let historyListEl = document.getElementById("historyModalList");
+        
+        let historyKey = "lotto_hist_v3_" + itemName;
+        let historyList = [];
+        try {
+            historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
+        } catch(e) { historyList = []; }
+
+        if(historyList.length === 0) {
+            let latestRes = localStorage.getItem("lotto_res_" + itemName);
+            if(latestRes) {
+                historyList = [latestRes];
+            }
+        }
+
+        let histHtml = "";
+        if(historyList.length === 0) {
+            histHtml = `
+                <div style="text-align:center; color:#38bdf8; padding:20px; font-size:0.75rem; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                    <div class="processing-container">
+                        <span class="rotating-spinner-icon" style="font-size:1.1rem;">✦</span>
+                        <span style="font-size:0.78rem;">กำลังประมวลผล</span>
+                        <span class="processing-dots" style="font-size:0.9rem;"><span>.</span><span>.</span><span>.</span></span>
+                    </div>
+                </div>
+            `;
+        } else {
+            historyList.forEach((entry, idx) => {
+                let parts = entry.split("|");
+                let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
+                let dateVal = parts[1] || "";
+                let labelText = idx === 0 ? "งวดล่าสุด" : `งวดที่ ${idx + 1}`;
+                let topNum = nums[0] || "---";
+                let botNum = nums[1] || "---";
+                let formattedD = formatThaiDate(dateVal);
+                let copyLineText = `${itemName} (${labelText} - ${formattedD}) 3บน: ${topNum} 2ล่าง: ${botNum}`;
+
+                histHtml += `
+                    <div class="history-item-row">
+                        <div>
+                            <div style="color:#94a3b8; font-weight:600;">${labelText}</div>
+                            <div style="font-size:0.62rem; color:#64748b;">📅 ${formattedD}</div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div style="text-align:right;">
+                                <span style="color:#34d399; font-weight:600;">3บน: ${topNum}</span><br>
+                                <span style="color:#38bdf8; font-weight:600;">2ล่าง: ${botNum}</span>
+                            </div>
+                            <button class="pub-copy-btn" style="width:auto; min-width:32px; height:24px; padding:0 6px; font-size:0.6rem;" onclick="_0x9a2b._0x5e14('${copyLineText}')">📋</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        historyListEl.innerHTML = histHtml;
+        document.getElementById("historyModalOverlay").style.display = "flex";
     }
 };
+
+let logoClickCount = 0;
+let logoClickTimer = null;
+
+function handleSecretLogoClick() {
+    logoClickCount++;
+    if(logoClickTimer) clearTimeout(logoClickTimer);
+    
+    logoClickTimer = setTimeout(() => {
+        logoClickCount = 0;
+    }, 1500);
+
+    if(logoClickCount >= 5) {
+        logoClickCount = 0;
+        let pass = prompt("🔐 กรุณากรอกรหัสผ่านผู้ดูแลระบบ (Admin Password):");
+        if(pass) {
+            _0x9a2b._0xverify(pass).then(isValid => {
+                if(isValid) {
+                    document.getElementById("loginView").style.display = "none";
+                    document.getElementById("calculatorView").style.display = "none";
+                    document.getElementById("publicResultsView").style.display = "none";
+                    document.getElementById("adminView").style.display = "block";
+                    _0x9a2b.renderAdminPanel();
+                } else {
+                    alert("❌ รหัสผ่านแอดมินไม่ถูกต้อง!");
+                }
+            });
+        }
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const _0xinputP = document.getElementById("passwordInput");
@@ -1264,6 +1928,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const _0xbtnC = document.getElementById("calculateButton");
     const _0xbtnClr = document.getElementById("clearButton");
     const _0xbtnOut = document.getElementById("logoutButton");
+    const _0xbackAdmin = document.getElementById("backToUserBtn");
+    
+    const openPublicBtn = document.getElementById("openPublicResultsBtn");
+    const backToCalcBtn = document.getElementById("backToCalcBtn");
+    const closeHistoryModalBtn = document.getElementById("closeHistoryModalBtn");
 
     _0xbtnL.addEventListener("click", () => _0x9a2b._0x7b32());
     _0xinputP.addEventListener("keydown", _0xe => { if(_0xe.key === "Enter") _0x9a2b._0x7b32(); });
@@ -1279,40 +1948,38 @@ document.addEventListener("DOMContentLoaded", () => {
     _0xbtnC.addEventListener("click", () => _0x9a2b._0x1a76());
     _0xbtnClr.addEventListener("click", () => _0x9a2b._0x9e65());
     _0xbtnOut.addEventListener("click", () => _0x9a2b._0x8d54());
-
-    // Anti-Debugging / Inspect prevention script
-    document.addEventListener("contextmenu", e => e.preventDefault());
-    document.addEventListener("keydown", e => {
-        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || (e.ctrlKey && e.key === "U")) {
-            e.preventDefault();
-            return false;
-        }
+    
+    _0xbackAdmin.addEventListener("click", () => {
+        document.getElementById("adminView").style.display = "none";
+        document.getElementById("calculatorView").style.display = "block";
     });
+
+    openPublicBtn.addEventListener("click", () => {
+        _0x9a2b._0x1f8e("click");
+        document.getElementById("calculatorView").style.display = "none";
+        document.getElementById("publicResultsView").style.display = "block";
+        _0x9a2b.renderPublicResults("laos");
+    });
+
+    backToCalcBtn.addEventListener("click", () => {
+        _0x9a2b._0x1f8e("click");
+        document.getElementById("publicResultsView").style.display = "none";
+        document.getElementById("calculatorView").style.display = "block";
+    });
+
+    closeHistoryModalBtn.addEventListener("click", () => {
+        _0x9a2b._0x1f8e("click");
+        document.getElementById("historyModalOverlay").style.display = "none";
+    });
+
+    document.getElementById("logoHeader").addEventListener("click", handleSecretLogoClick);
+    document.getElementById("logoHeaderCalc").addEventListener("click", handleSecretLogoClick);
 
     try {
         if(localStorage.getItem("ml_auth_status_v2") === "active"){
-            const _0xsavedPass = localStorage.getItem("ml_active_pass_v2");
-            const _0xcurrentDev = _0x9a2b._0x5f3a();
-            if(_0xsavedPass){
-                const _0xbindKey = "ml_bind_lock_" + btoa(_0xsavedPass).substring(0,14);
-                let boundDevice = "";
-                try {
-                    boundDevice = localStorage.getItem(_0xbindKey) || "";
-                } catch(e) {
-                    boundDevice = "";
-                }
-
-                // ตรวจสอบความถูกต้องว่าอุปกรณ์ปัจจุบันตรงกับอุปกรณ์ที่ล็อกไว้หรือไม่ (1 รหัสผ่าน ต่อ 1 อุปกรณ์เป๊ะๆ)
-                if(boundDevice === _0xcurrentDev) {
-                    document.getElementById("loginView").style.display = "none";
-                    document.getElementById("calculatorView").style.display = "block";
-                    _0x9a2b._0x8c43();
-                } else {
-                    _0x9a2b._0x8d54();
-                }
-            } else {
-                _0x9a2b._0x8d54();
-            }
+            document.getElementById("loginView").style.display = "none";
+            document.getElementById("calculatorView").style.display = "block";
+            _0x9a2b._0x8c43();
         }
     } catch(_0xe){}
 });
