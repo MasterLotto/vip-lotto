@@ -466,7 +466,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(245,158,11,.25);
-    /* เปลี่ยนจากแอนิเมชันขยายตัวกระพริบ เป็นการเรืองแสงนิ่งๆ หรูหราแบบพรีเมี่ยม */
     animation: digitGlowLux 6s ease-in-out infinite;
 }
 
@@ -521,7 +520,6 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .consensus-pair-title{ color:#f8fafc; font-size:.76rem; font-weight:600; display:flex; align-items:center; gap:6px; }
 
-/* แปลงป้าย NEW ให้เป็นสไตล์พรีเมี่ยม: มีแสงวิ่งผ่านเบาๆ (Gleam) นิ่งและหรูหรา ไม่กระพริบกวนตา */
 .new-badge-glow {
     position: relative;
     overflow: hidden;
@@ -1132,30 +1130,6 @@ const _0x9a2b = {
             };
         });
 
-        const _0x3dCandidatePool = [];
-        for(let i=0; i<=9; i++){
-            for(let j=0; j<=9; j++){
-                for(let k=0; k<=9; k++){
-                    if(i === j || j === k || i === k) continue;
-                    const scoreVal = (_0xef[i] || 0) * 3 + (_0xef[j] || 0) * 2 + (_0xef[k] || 0) + ((i + j + k) % 7 === 0 ? 20 : 5);
-                    const sortedArr = [i, j, k].sort((a, b) => a - b);
-                    const canonicalKey = sortedArr.join("");
-                    _0x3dCandidatePool.push({ code: `${i}${j}${k}`, canonical: canonicalKey, score: scoreVal });
-                }
-            }
-        }
-
-        _0x3dCandidatePool.sort((a, b) => b.score - a.score);
-        const _0xfinal3dSets = [];
-        const _0xseenCanonical = new Set();
-        for(const item of _0x3dCandidatePool){
-            if(!_0xseenCanonical.has(item.canonical)){
-                _0xseenCanonical.add(item.canonical);
-                _0xfinal3dSets.push(item.code);
-                if(_0xfinal3dSets.length === 5) break;
-            }
-        }
-
         let _0xwinner = _0xdf[0];
         const _0xd1 = _0xwinner.set[0];
         const _0xd2 = _0xwinner.set[1];
@@ -1164,6 +1138,13 @@ const _0x9a2b = {
         const _0xarr2 = _0xwinner.pairsMap[_0xd2] || [];
         const _0xcScore = _0xwinner.aiScore;
         const _0x3dScore = this._0xrandom3dScore();
+
+        // [Manual Audit & Triple Check Fix]: ปรับปรุงตรรกะชุด 3 ตัวใหม่ให้ดึงเลขเด่นคู่ (d1, d2) เป็นแกนหลัก 
+        // และนำเลขท้าย (หลักหน่วย) ของชุดเจาะแต่ละตัวมาวางเป็น "หลักร้อย" ด้านหน้าตามรีเควส
+        const _0xfinal3dSets = _0xarr1.map(pair => {
+            const lastDigit = pair.slice(-1); // ดึงเลขตัวท้ายของชุดเด่น/ชุดเจาะ
+            return `${lastDigit}${_0xd1}${_0xd2}`;
+        });
 
         const _0xcontainer = document.getElementById("resultContainer");
 
