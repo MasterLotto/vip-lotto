@@ -1012,14 +1012,21 @@ const _0x9a2b = {
             return [_0xf, _0xaa(_0xf + 1)];
         };
 
+        // อัปเกรดครอบคลุมครบถ้วน 10 สูตรวิเคราะห์ AI อัจฉริยะ (รองรับทุกสภาวะสถานการณ์ฉุกเฉิน)
         const _0xbc = [
             { name: "สูตรวิเคราะห์ AI ที่ 1", set: _0xab(_0x66 + _0x88) },
             { name: "สูตรวิเคราะห์ AI ที่ 2", set: _0xab(_0x55 + _0x66 + _0x77) },
             { name: "สูตรวิเคราะห์ AI ที่ 3", set: _0xab(_0x55 + _0x88) },
             { name: "สูตรวิเคราะห์ AI ที่ 4", set: _0xab(_0x77 + _0x99) },
-            { name: "สูตรวิเคราะห์ AI ที่ 5", set: _0xab(10 - _0x99) }
+            { name: "สูตรวิเคราะห์ AI ที่ 5", set: _0xab(10 - _0x99) },
+            { name: "สูตรวิเคราะห์ AI ที่ 6", set: _0xab(_0x55 + _0x77 + _0x99) },
+            { name: "สูตรวิเคราะห์ AI ที่ 7", set: _0xab(_0x66 + _0x77 + _0x88) },
+            { name: "สูตรวิเคราะห์ AI ที่ 8", set: _0xab(Math.abs(_0x55 - _0x99) + _0x66) },
+            { name: "สูตรวิเคราะห์ AI ที่ 9", set: _0xab(_0x55 + _0x66 * 2 + _0x77) },
+            { name: "สูตรวิเคราะห์ AI ที่ 10", set: _0xab(_0x88 * 3 + _0x99) }
         ];
 
+        // 1. ระบบนับคะแนนโหวต (Vote Count / Frequency) จากทั้ง 10 สูตรหลัก
         const _0xef = {};
         _0xbc.forEach(_0xitem => {
             _0xitem.set.forEach(_0xd => {
@@ -1027,10 +1034,12 @@ const _0x9a2b = {
             });
         });
 
+        // 2. ให้คะแนนน้ำหนักแต่ละสูตรตามผลโหวตความถี่
         _0xbc.forEach(_0xitem => {
             _0xitem.score = _0xitem.set.reduce((_0xacc, _0xdg) => _0xacc + ((_0xef[_0xdg] || 1) * 20), 0);
         });
 
+        // จัดลำดับสูตรหลักตามคะแนนโหวตสูงสุด
         _0xbc.sort((_0xa, _0xb) => _0xb.score - _0xa.score);
         _0xbc.forEach((_0xitem, _0xidx) => {
             _0xitem.isHot = _0xidx < 3;
@@ -1067,12 +1076,44 @@ const _0x9a2b = {
             };
         });
 
-        let _0xwinner = _0xdf[0];
-        const _0xd1 = _0xwinner.set[0];
-        const _0xd2 = _0xwinner.set[1];
+        // 3. ระบบกรองพิเศษเพื่อรองรับกรณีฉุกเฉินและน้ำหนักคะแนนสะสมสูงสุดจาก 10 สูตร
+        const _0xdigScores = {};
+        _0xdf.forEach(_0xfItem => {
+            _0xfItem.set.forEach((_0dg, _0idx) => {
+                const _0weight = (_0idx === 0 ? 2 : 1) * _0xfItem.score;
+                _0xdigScores[_0dg] = (_0xdigScores[_0dg] || 0) + _0weight;
+            });
+        });
 
-        const _0xarr1 = _0xwinner.pairsMap[_0xd1] || [];
-        const _0xarr2 = _0xwinner.pairsMap[_0xd2] || [];
+        const _0xsortedDigits = Object.keys(_0xdigScores).map(Number).sort((_0a, _0xb) => _0xdigScores[_0xb] - _0xdigScores[_0xa]);
+
+        let _0xd1, _0xd2, _0xwinner = _0xdf[0];
+        
+        if(_0xsortedDigits.length >= 2) {
+            _0xd1 = _0xsortedDigits[0];
+            _0xd2 = _0xsortedDigits[1];
+        } else {
+            _0xd1 = _0xwinner.set[0];
+            _0xd2 = _0xwinner.set[1];
+        }
+
+        let _0xarr1 = _0xwinner.pairsMap[_0xd1];
+        let _0xarr2 = _0xwinner.pairsMap[_0xd2];
+
+        if(!_0xarr1 || _0xarr1.length === 0){
+            for(let _0xf of _0xdf){
+                if(_0xf.pairsMap[_0xd1]){ _0xarr1 = _0xf.pairsMap[_0xd1]; break; }
+            }
+        }
+        if(!_0xarr2 || _0xarr2.length === 0){
+            for(let _0xf of _0xdf){
+                if(_0xf.pairsMap[_0xd2]){ _0xarr2 = _0xf.pairsMap[_0xd2]; break; }
+            }
+        }
+
+        _0xarr1 = _0xarr1 || [_0xd1 + "0", _0xd1 + "1"];
+        _0xarr2 = _0xarr2 || [_0xd2 + "0", _0xd2 + "1"];
+
         const _0xcScore = _0xwinner.aiScore;
         const _0x3dScore = this._0xrandom3dScore();
 
@@ -1125,7 +1166,7 @@ const _0x9a2b = {
 
             <div class="formula-toggle-container">
                 <button class="btn-toggle-formulas" id="toggleFormulasBtn" onclick="_0x9a2b._0x3c92()">
-                    📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม
+                    📊 แสดง/ซ่อน 10 สูตรวิเคราะห์ AI เพิ่มเติม
                 </button>
             </div>
 
@@ -1175,10 +1216,10 @@ const _0x9a2b = {
         const _0x2 = document.getElementById("toggleFormulasBtn");
         if(_0x1.style.display === "block"){
             _0x1.style.display = "none";
-            _0x2.innerHTML = "📊 แสดง/ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";
+            _0x2.innerHTML = "📊 แสดง/ซ่อน 10 สูตรวิเคราะห์ AI เพิ่มเติม";
         } else {
             _0x1.style.display = "block";
-            _0x2.innerHTML = "📊 ซ่อน 5 สูตรวิเคราะห์ AI";
+            _0x2.innerHTML = "📊 ซ่อน 10 สูตรวิเคราะห์ AI";
             _0x1.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
     },
