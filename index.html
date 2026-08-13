@@ -941,7 +941,25 @@ const _0x9a2b = {
 
         const _0x5e = this._0x5f3a();
         const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-        localStorage.setItem(_0x6f, _0x5e);
+        
+        // --- ระบบป้องกันล็อกอินซ้ำซ้อน (Single Active Session / Max 2 Devices) ---
+        let activeDevices = [];
+        try {
+            const rawDevs = localStorage.getItem(_0x6f);
+            if(rawDevs) activeDevices = JSON.parse(rawDevs);
+        } catch(e) {
+            activeDevices = [];
+        }
+
+        // คัดกรองอุปกรณ์ที่ซ้ำออก
+        if(!activeDevices.includes(_0x5e)) {
+            if(activeDevices.length >= 2) {
+                // หากเกิน 2 อุปกรณ์ ให้ถีบอุปกรณ์เก่าสุดออก (FIFO) หรือแจ้งเตือน
+                activeDevices.shift();
+            }
+            activeDevices.push(_0x5e);
+            localStorage.setItem(_0x6f, JSON.stringify(activeDevices));
+        }
 
         localStorage.setItem("ml_auth_status_v2", "active");
         localStorage.setItem("ml_active_pass_v2", _0x3c);
@@ -954,6 +972,23 @@ const _0x9a2b = {
     },
     _0x8d54(){
         this._0x1f8e("click");
+        
+        // --- ล้างข้อมูลการผูกอุปกรณ์เมื่อกดออกจากระบบ ---
+        try {
+            const _0x3c = localStorage.getItem("ml_active_pass_v2");
+            const _0x5e = this._0x5f3a();
+            if(_0x3c) {
+                const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
+                let activeDevices = JSON.parse(localStorage.getItem(_0x6f) || "[]");
+                activeDevices = activeDevices.filter(d => d !== _0x5e);
+                if(activeDevices.length > 0) {
+                    localStorage.setItem(_0x6f, JSON.stringify(activeDevices));
+                } else {
+                    localStorage.removeItem(_0x6f);
+                }
+            }
+        } catch(e){}
+
         localStorage.removeItem("ml_auth_status_v2");
         localStorage.removeItem("ml_active_pass_v2");
         document.getElementById("calculatorView").style.display = "none";
@@ -1267,10 +1302,24 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
         if(localStorage.getItem("ml_auth_status_v2") === "active"){
             const _0xsavedPass = localStorage.getItem("ml_active_pass_v2");
+            const _0xcurrentDev = _0x9a2b._0x5f3a();
             if(_0xsavedPass){
-                document.getElementById("loginView").style.display = "none";
-                document.getElementById("calculatorView").style.display = "block";
-                _0x9a2b._0x8c43();
+                const _0xbindKey = "ml_bind_lock_" + btoa(_0xsavedPass).substring(0,14);
+                let activeDevices = [];
+                try {
+                    activeDevices = JSON.parse(localStorage.getItem(_0xbindKey) || "[]");
+                } catch(e) {
+                    activeDevices = [];
+                }
+
+                // ตรวจสอบความถูกต้องว่าอุปกรณ์ปัจจุบันยังอยู่ในโควต้าที่อนุญาตหรือไม่
+                if(activeDevices.includes(_0xcurrentDev)) {
+                    document.getElementById("loginView").style.display = "none";
+                    document.getElementById("calculatorView").style.display = "block";
+                    _0x9a2b._0x8c43();
+                } else {
+                    _0x9a2b._0x8d54();
+                }
             } else {
                 _0x9a2b._0x8d54();
             }
