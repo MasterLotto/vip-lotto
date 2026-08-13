@@ -1728,14 +1728,31 @@ const _0x9a2b = {
         const todayStr = new Date().toLocaleDateString('en-CA');
 
         catData.items.forEach(itemName => {
-            let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
-            let parts = savedData.split("|");
-            let numbersPart = parts[0] || "";
-            let datePart = parts[1] || todayStr;
-            
-            let numSubParts = numbersPart.split("-");
-            let top3 = numSubParts[0] || "";
-            let bot2 = numSubParts[1] || "";
+            let historyKey = "lotto_hist_v3_" + itemName;
+            let historyList = [];
+            try {
+                historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
+            } catch(e) { historyList = []; }
+
+            let top3 = "";
+            let bot2 = "";
+            let datePart = todayStr;
+
+            if (historyList.length > 0) {
+                let latestParts = historyList[0].split("|");
+                let nums = latestParts[0] ? latestParts[0].split("-") : ["", ""];
+                top3 = nums[0] || "";
+                bot2 = nums[1] || "";
+                datePart = latestParts[1] || todayStr;
+            } else {
+                let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
+                let parts = savedData.split("|");
+                let numbersPart = parts[0] || "";
+                datePart = parts[1] || todayStr;
+                let numSubParts = numbersPart.split("-");
+                top3 = numSubParts[0] || "";
+                bot2 = numSubParts[1] || "";
+            }
             
             html += `
                 <div class="admin-lotto-item">
@@ -1822,8 +1839,30 @@ const _0x9a2b = {
         let catData = lottoDatabase[categoryKey];
         let itemsHtml = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
 
+        const todayStr = new Date().toLocaleDateString('en-CA');
+
         catData.items.forEach(itemName => {
-            let savedData = localStorage.getItem("lotto_res_" + itemName);
+            let historyKey = "lotto_hist_v3_" + itemName;
+            let historyList = [];
+            try {
+                historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
+            } catch(e) { historyList = []; }
+
+            // หากยังไม่มีประวัติใน history แต่มีใน saved เก่า ให้ย้ายมาเป็น history[0] เพื่อความถูกต้อง
+            if(historyList.length === 0) {
+                let savedData = localStorage.getItem("lotto_res_" + itemName);
+                if(savedData) {
+                    historyList = [savedData];
+                    localStorage.setItem(historyKey, JSON.stringify(historyList));
+                } else if(itemName === "ลาวประตูชัย") {
+                    historyList = [
+                        "150-68|2026-08-14",
+                        "150-68|2026-08-13"
+                    ];
+                    localStorage.setItem(historyKey, JSON.stringify(historyList));
+                }
+            }
+
             let displayRes = `
                 <div class="processing-container">
                     <span class="rotating-spinner-icon">✦</span>
@@ -1834,8 +1873,15 @@ const _0x9a2b = {
             let dateStr = "";
             let copyBtnHtml = "";
 
-            if(savedData) {
-                let parts = savedData.split("|");
+            // ค้นหาผลรางวัลของ "วันนี้" (หรือวันที่ตรงกับปัจจุบัน) เพื่อแสดงในหน้าล่าสุด
+            // ถ้าไม่มีผลของวันนี้ แต่มีของวันก่อนหน้า (เช่น วันที่ 13) จะไม่นำมาโชว์ในหน้าล่าสุดโดยตรง (ให้แสดงสถานะรอกาออกผลหรือกำลังประมวลผล/ไม่มีผลวันนี้แทน เพื่อไม่ให้เอาผลย้อนหลังมาปนหน้าล่าสุด)
+            let todayRecord = historyList.find(item => {
+                let parts = item.split("|");
+                return parts[1] === todayStr;
+            });
+
+            if (todayRecord) {
+                let parts = todayRecord.split("|");
                 let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
                 let dVal = parts[1] || "";
                 let topNum = nums[0] || "---";
@@ -1844,21 +1890,19 @@ const _0x9a2b = {
                 if(dVal) {
                     dateStr = `<div class="pub-item-date">📅 วันที่ออกผล: ${formatThaiDate(dVal)}</div>`;
                 }
-                
                 let copyTextValue = `${itemName} 3บน: ${topNum} 2ล่าง: ${botNum} (${formatThaiDate(dVal)})`;
                 copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
-            } else if(itemName === "ลาวประตูชัย") {
-                let defaultHistory = [
-                    "150-68|2026-08-14",
-                    "150-68|2026-08-13"
-                ];
-                localStorage.setItem("lotto_hist_v3_ลาวประตูชัย", JSON.stringify(defaultHistory));
-                localStorage.setItem("lotto_res_ลาวประตูชัย", defaultHistory[0]);
-                
-                displayRes = `3ตัวบน: <strong>150</strong> | 2ตัวล่าง: <strong>68</strong>`;
-                dateStr = `<div class="pub-item-date">📅 วันที่ออกผล: 14/08/2569</div>`;
-                let copyTextValue = `ลาวประตูชัย 3บน: 150 2ล่าง: 68 (14/08/2569)`;
-                copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
+            } else if (itemName === "ลาวประตูชัย" && historyList.length > 0) {
+                // กรณีพิเศษสำหรับลาวประตูชัย ถ้าวันนี้ยังไม่กรอก แต่มีข้อมูลล่าสุด
+                // แต่ตามโจทย์บอกว่า "กรอกวันที่ 13 เข้าไป แต่มันดันไปโชว์ในผลล่าสุดเฉยเลย... ห้ามนำมาโชว์เด็ดขาดในวันล่าสุด" 
+                // ดังนั้นถ้าวันที่ของ history[0] ไม่ใช่ "วันนี้" จะไม่แสดงในหน้าล่าสุด เพื่อให้แยกขาดระหว่าง "ผลล่าสุดของวันนี้" กับ "สถิติย้อนหลัง"
+                displayRes = `
+                    <div class="processing-container">
+                        <span class="rotating-spinner-icon">✦</span>
+                        <span>รอผลรางวัลวันนี้</span>
+                        <span class="processing-dots"><span>.</span><span>.</span><span>.</span></span>
+                    </div>
+                `;
             }
 
             itemsHtml += `
