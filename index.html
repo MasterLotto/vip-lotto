@@ -854,7 +854,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     position: relative;
 }
 
-/* เพิ่มแสงแฟลชวิ่งเบาๆ ดูพรีเมี่ยมและไม่เร็วเกินไปสำหรับธงชาติ */
+/* ปรับปรุงแสงแฟลชวิ่งตลอดเวลาแบบช้าๆ สมูท ไม่ต้องรอคลิก */
 .flag-icon::after {
     content: "";
     position: absolute;
@@ -865,17 +865,17 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background: linear-gradient(
         60deg,
         transparent 40%,
-        rgba(255, 255, 255, 0.28) 50%,
+        rgba(255, 255, 255, 0.35) 50%,
         transparent 60%
     );
     transform: rotate(30deg) translateX(-100%);
-    animation: flagSoftFlash 6s ease-in-out infinite;
+    animation: flagContinuousSoftFlash 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
 }
 
-@keyframes flagSoftFlash {
+@keyframes flagContinuousSoftFlash {
     0% { transform: rotate(30deg) translateX(-100%); }
-    20% { transform: rotate(30deg) translateX(100%); }
+    40% { transform: rotate(30deg) translateX(100%); }
     100% { transform: rotate(30deg) translateX(100%); }
 }
 
@@ -1726,14 +1726,12 @@ const _0x9a2b = {
         let catData = lottoDatabase[categoryKey];
         let html = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
 
-        // ดึงวันที่ปัจจุบันตามเวลาเครื่อง/ประเทศไทย (รูปแบบ YYYY-MM-DD)
         const todayStr = new Date().toLocaleDateString('en-CA');
 
         catData.items.forEach(itemName => {
             let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
             let parts = savedData.split("|");
             let numbersPart = parts[0] || "";
-            // ถ้ายังไม่มีการบันทึก ให้ดึงวันที่ปัจจุบันของเครื่องมาแสดงทันที
             let datePart = parts[1] || todayStr;
             
             let numSubParts = numbersPart.split("-");
@@ -1757,7 +1755,6 @@ const _0x9a2b = {
         container.innerHTML = html;
     },
 
-    // ฟังก์ชันจัดการกระโดดข้ามช่องอัตโนมัติเมื่อพิมพ์ครบจำนวนหลักที่กำหนด
     handleAdminInputAutoJump(currentElement, nextElementId, maxLength) {
         currentElement.value = currentElement.value.replace(/\D/g, "");
         if (currentElement.value.length >= maxLength) {
@@ -1851,6 +1848,19 @@ const _0x9a2b = {
                 
                 let copyTextValue = `${itemName} 3บน: ${topNum} 2ล่าง: ${botNum} (${formatThaiDate(dVal)})`;
                 copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
+            } else if(itemName === "ลาวประตูชัย") {
+                // Seed ข้อมูลจำลองตั้งต้นวันที่ 13 และ 14 ตามรีเควส หากยังไม่มีใน LocalStorage
+                let defaultHistory = [
+                    "150-68|2026-08-14",
+                    "150-68|2026-08-13"
+                ];
+                localStorage.setItem("lotto_hist_v3_ลาวประตูชัย", JSON.stringify(defaultHistory));
+                localStorage.setItem("lotto_res_ลาวประตูชัย", defaultHistory[0]);
+                
+                displayRes = `3ตัวบน: <strong>150</strong> | 2ตัวล่าง: <strong>68</strong>`;
+                dateStr = `<div class="pub-item-date">📅 วันที่ออกผล: 14/08/2569</div>`;
+                let copyTextValue = `ลาวประตูชัย 3บน: 150 2ล่าง: 68 (14/08/2569)`;
+                copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
             }
 
             itemsHtml += `
@@ -1883,9 +1893,17 @@ const _0x9a2b = {
         } catch(e) { historyList = []; }
 
         if(historyList.length === 0) {
-            let latestRes = localStorage.getItem("lotto_res_" + itemName);
-            if(latestRes) {
-                historyList = [latestRes];
+            if(itemName === "ลาวประตูชัย") {
+                historyList = [
+                    "150-68|2026-08-14",
+                    "150-68|2026-08-13"
+                ];
+                localStorage.setItem(historyKey, JSON.stringify(historyList));
+            } else {
+                let latestRes = localStorage.getItem("lotto_res_" + itemName);
+                if(latestRes) {
+                    historyList = [latestRes];
+                }
             }
         }
 
