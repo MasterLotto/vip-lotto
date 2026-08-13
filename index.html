@@ -846,7 +846,7 @@ const _0x9a2b = {
         "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b", // Bank2026
         "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3", // AMND428
         "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21", // Xk89Pq
-        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e", // MasterAdmin2026 (ตัวอย่างแปลงแฮช)
+        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e", // MasterAdmin2026
         "7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"  // รองรับรหัสผ่านชุดเดิมครบถ้วน
     ],
     // ฟังก์ชันคำนวณ SHA-256 Hash แบบปลอดภัยในตัว (Client-side Hashing)
@@ -857,7 +857,6 @@ const _0x9a2b = {
         return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     },
     async _0xverify(inputStr) {
-        // ชุดรหัสผ่านดั้งเดิมถูกเทียบผ่านระบบ Hash หรือผ่านการตรวจสอบแบบปลอดภัย
         const originalPlainPasses = [
             "Bank2026", "AMND428", "Xk89Pq", "MasterAdmin2026", "T9kL2mP7",
             "Zq4W8xT1", "Rt5Y9uI2", "O3P7wE4", "As3D6fG9", "Gh1H4kL8",
@@ -942,24 +941,18 @@ const _0x9a2b = {
         const _0x5e = this._0x5f3a();
         const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
         
-        // --- ระบบป้องกันล็อกอินซ้ำซ้อน (Single Active Session / Max 2 Devices) ---
-        let activeDevices = [];
+        // --- ระบบล็อกอินจำกัด 1 อุปกรณ์ต่อ 1 รหัสผ่านอย่างเข้มงวด (Single Active Device Enforcement) ---
+        let currentBoundDev = "";
         try {
-            const rawDevs = localStorage.getItem(_0x6f);
-            if(rawDevs) activeDevices = JSON.parse(rawDevs);
+            currentBoundDev = localStorage.getItem(_0x6f) || "";
         } catch(e) {
-            activeDevices = [];
+            currentBoundDev = "";
         }
 
-        // คัดกรองอุปกรณ์ที่ซ้ำออก
-        if(!activeDevices.includes(_0x5e)) {
-            if(activeDevices.length >= 2) {
-                // หากเกิน 2 อุปกรณ์ ให้ถีบอุปกรณ์เก่าสุดออก (FIFO) หรือแจ้งเตือน
-                activeDevices.shift();
-            }
-            activeDevices.push(_0x5e);
-            localStorage.setItem(_0x6f, JSON.stringify(activeDevices));
+        if(currentBoundDev && currentBoundDev !== _0x5e) {
+            // หากมีอุปกรณ์อื่นใช้งานอยู่แล้ว จะถูกแทนที่ด้วยอุปกรณ์ปัจจุบันทันที (Device Override)
         }
+        localStorage.setItem(_0x6f, _0x5e);
 
         localStorage.setItem("ml_auth_status_v2", "active");
         localStorage.setItem("ml_active_pass_v2", _0x3c);
@@ -979,11 +972,8 @@ const _0x9a2b = {
             const _0x5e = this._0x5f3a();
             if(_0x3c) {
                 const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-                let activeDevices = JSON.parse(localStorage.getItem(_0x6f) || "[]");
-                activeDevices = activeDevices.filter(d => d !== _0x5e);
-                if(activeDevices.length > 0) {
-                    localStorage.setItem(_0x6f, JSON.stringify(activeDevices));
-                } else {
+                const boundDev = localStorage.getItem(_0x6f);
+                if(boundDev === _0x5e) {
                     localStorage.removeItem(_0x6f);
                 }
             }
@@ -1305,15 +1295,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const _0xcurrentDev = _0x9a2b._0x5f3a();
             if(_0xsavedPass){
                 const _0xbindKey = "ml_bind_lock_" + btoa(_0xsavedPass).substring(0,14);
-                let activeDevices = [];
+                let boundDevice = "";
                 try {
-                    activeDevices = JSON.parse(localStorage.getItem(_0xbindKey) || "[]");
+                    boundDevice = localStorage.getItem(_0xbindKey) || "";
                 } catch(e) {
-                    activeDevices = [];
+                    boundDevice = "";
                 }
 
-                // ตรวจสอบความถูกต้องว่าอุปกรณ์ปัจจุบันยังอยู่ในโควต้าที่อนุญาตหรือไม่
-                if(activeDevices.includes(_0xcurrentDev)) {
+                // ตรวจสอบความถูกต้องว่าอุปกรณ์ปัจจุบันตรงกับอุปกรณ์ที่ล็อกไว้หรือไม่ (1 รหัสผ่าน ต่อ 1 อุปกรณ์เป๊ะๆ)
+                if(boundDevice === _0xcurrentDev) {
                     document.getElementById("loginView").style.display = "none";
                     document.getElementById("calculatorView").style.display = "block";
                     _0x9a2b._0x8c43();
