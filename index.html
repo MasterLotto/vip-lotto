@@ -1260,6 +1260,25 @@ const lottoDatabase = {
             "ฮานอยพัฒนา", "ฮานอย 4D", "ฮานอย Extra", "ฮานอยดึก"
         ]
     },
+    "thaistock": {
+        name: "หุ้นไทย",
+        flag: "🇹🇭",
+        items: [
+            "หุ้นไทย - เปิดเช้า",
+            "หุ้นไทย - ปิดเที่ยง",
+            "หุ้นไทย - เปิดบ่าย",
+            "หุ้นไทย - ปิดเย็น"
+        ]
+    },
+    "myanmar": {
+        name: "เมียนมาร์ 2D",
+        flag: "🇲🇲",
+        items: [
+            "รอบเที่ยง: 12:01 PM",
+            "รอบเย็น: 4:30 PM"
+        ],
+        isSpecial2D: true
+    },
     "nikkei": {
         name: "หุ้นนิเคอิ",
         flag: "🇯🇵",
@@ -1741,8 +1760,12 @@ const _0x9a2b = {
             if (historyList.length > 0) {
                 let latestParts = historyList[0].split("|");
                 let nums = latestParts[0] ? latestParts[0].split("-") : ["", ""];
-                top3 = nums[0] || "";
-                bot2 = nums[1] || "";
+                if (catData.isSpecial2D) {
+                    bot2 = nums[0] || "";
+                } else {
+                    top3 = nums[0] || "";
+                    bot2 = nums[1] || "";
+                }
                 datePart = latestParts[1] || todayStr;
             } else {
                 let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
@@ -1750,22 +1773,40 @@ const _0x9a2b = {
                 let numbersPart = parts[0] || "";
                 datePart = parts[1] || todayStr;
                 let numSubParts = numbersPart.split("-");
-                top3 = numSubParts[0] || "";
-                bot2 = numSubParts[1] || "";
+                if (catData.isSpecial2D) {
+                    bot2 = numSubParts[0] || "";
+                } else {
+                    top3 = numSubParts[0] || "";
+                    bot2 = numSubParts[1] || "";
+                }
             }
             
-            html += `
-                <div class="admin-lotto-item">
-                    <span class="admin-lotto-name">${itemName}</span>
-                    <div class="admin-inputs">
-                        <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'bot_${itemName}', 3)">
-                        <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'date_${itemName}', 2)">
-                        <input type="date" id="date_${itemName}" value="${datePart}">
+            if (catData.isSpecial2D) {
+                html += `
+                    <div class="admin-lotto-item">
+                        <span class="admin-lotto-name">${itemName}</span>
+                        <div class="admin-inputs" style="width: 150px;">
+                            <input type="tel" id="bot_${itemName}" placeholder="เลข 2 ตัวตรง" maxlength="2" value="${bot2}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'date_${itemName}', 2)">
+                            <input type="date" id="date_${itemName}" value="${datePart}">
+                        </div>
+                        <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}', true)">บันทึก</button>
+                        <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}', '${categoryKey}')" title="ล้างสถิติและวันที่ในคลิกเดียว">ล้าง</button>
                     </div>
-                    <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}')">บันทึก</button>
-                    <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}', '${categoryKey}')" title="ล้างสถิติและวันที่ในคลิกเดียว">ล้าง</button>
-                </div>
-            `;
+                `;
+            } else {
+                html += `
+                    <div class="admin-lotto-item">
+                        <span class="admin-lotto-name">${itemName}</span>
+                        <div class="admin-inputs">
+                            <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'bot_${itemName}', 3)">
+                            <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'date_${itemName}', 2)">
+                            <input type="date" id="date_${itemName}" value="${datePart}">
+                        </div>
+                        <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}', false)">บันทึก</button>
+                        <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}', '${categoryKey}')" title="ล้างสถิติและวันที่ในคลิกเดียว">ล้าง</button>
+                    </div>
+                `;
+            }
         });
         html += `</div>`;
         container.innerHTML = html;
@@ -1784,19 +1825,28 @@ const _0x9a2b = {
         }
     },
 
-    saveLottoResult(itemName) {
+    saveLottoResult(itemName, isSpecial2D = false) {
         this._0x1f8e("click");
-        const topVal = document.getElementById(`top_${itemName}`).value.trim();
-        const botVal = document.getElementById(`bot_${itemName}`).value.trim();
         const todayStr = new Date().toLocaleDateString('en-CA');
         const dateVal = document.getElementById(`date_${itemName}`).value || todayStr;
         
-        if(!topVal && !botVal) {
-            alert("กรุณากรอกข้อมูลตัวเลขอย่างน้อยหนึ่งช่อง");
-            return;
+        let currentResultString = "";
+        if (isSpecial2D) {
+            const botVal = document.getElementById(`bot_${itemName}`).value.trim();
+            if(!botVal) {
+                alert("กรุณากรอกเลข 2 ตัวตรง");
+                return;
+            }
+            currentResultString = `${botVal}|${dateVal}`;
+        } else {
+            const topVal = document.getElementById(`top_${itemName}`).value.trim();
+            const botVal = document.getElementById(`bot_${itemName}`).value.trim();
+            if(!topVal && !botVal) {
+                alert("กรุณากรอกข้อมูลตัวเลขอย่างน้อยหนึ่งช่อง");
+                return;
+            }
+            currentResultString = `${topVal}-${botVal}|${dateVal}`;
         }
-
-        let currentResultString = `${topVal}-${botVal}|${dateVal}`;
         
         let historyKey = "lotto_hist_v3_" + itemName;
         let historyList = [];
@@ -1848,17 +1898,10 @@ const _0x9a2b = {
                 historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
             } catch(e) { historyList = []; }
 
-            // หากยังไม่มีประวัติใน history แต่มีใน saved เก่า ให้ย้ายมาเป็น history[0] เพื่อความถูกต้อง
             if(historyList.length === 0) {
                 let savedData = localStorage.getItem("lotto_res_" + itemName);
                 if(savedData) {
                     historyList = [savedData];
-                    localStorage.setItem(historyKey, JSON.stringify(historyList));
-                } else if(itemName === "ลาวประตูชัย") {
-                    historyList = [
-                        "150-68|2026-08-14",
-                        "150-68|2026-08-13"
-                    ];
                     localStorage.setItem(historyKey, JSON.stringify(historyList));
                 }
             }
@@ -1873,8 +1916,6 @@ const _0x9a2b = {
             let dateStr = "";
             let copyBtnHtml = "";
 
-            // ค้นหาผลรางวัลของ "วันนี้" (หรือวันที่ตรงกับปัจจุบัน) เพื่อแสดงในหน้าล่าสุด
-            // ถ้าไม่มีผลของวันนี้ แต่มีของวันก่อนหน้า (เช่น วันที่ 13) จะไม่นำมาโชว์ในหน้าล่าสุดโดยตรง (ให้แสดงสถานะรอกาออกผลหรือกำลังประมวลผล/ไม่มีผลวันนี้แทน เพื่อไม่ให้เอาผลย้อนหลังมาปนหน้าล่าสุด)
             let todayRecord = historyList.find(item => {
                 let parts = item.split("|");
                 return parts[1] === todayStr;
@@ -1882,20 +1923,24 @@ const _0x9a2b = {
 
             if (todayRecord) {
                 let parts = todayRecord.split("|");
-                let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
                 let dVal = parts[1] || "";
-                let topNum = nums[0] || "---";
-                let botNum = nums[1] || "---";
-                displayRes = `3ตัวบน: <strong>${topNum}</strong> | 2ตัวล่าง: <strong>${botNum}</strong>`;
                 if(dVal) {
                     dateStr = `<div class="pub-item-date">📅 วันที่ออกผล: ${formatThaiDate(dVal)}</div>`;
                 }
-                let copyTextValue = `${itemName} 3บน: ${topNum} 2ล่าง: ${botNum} (${formatThaiDate(dVal)})`;
-                copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
-            } else if (itemName === "ลาวประตูชัย" && historyList.length > 0) {
-                // กรณีพิเศษสำหรับลาวประตูชัย ถ้าวันนี้ยังไม่กรอก แต่มีข้อมูลล่าสุด
-                // แต่ตามโจทย์บอกว่า "กรอกวันที่ 13 เข้าไป แต่มันดันไปโชว์ในผลล่าสุดเฉยเลย... ห้ามนำมาโชว์เด็ดขาดในวันล่าสุด" 
-                // ดังนั้นถ้าวันที่ของ history[0] ไม่ใช่ "วันนี้" จะไม่แสดงในหน้าล่าสุด เพื่อให้แยกขาดระหว่าง "ผลล่าสุดของวันนี้" กับ "สถิติย้อนหลัง"
+                if (catData.isSpecial2D) {
+                    let val2d = parts[0] || "---";
+                    displayRes = `2 ตัวตรง: <strong>${val2d}</strong>`;
+                    let copyTextValue = `${itemName} 2 ตัวตรง: ${val2d} (${formatThaiDate(dVal)})`;
+                    copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
+                } else {
+                    let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
+                    let topNum = nums[0] || "---";
+                    let botNum = nums[1] || "---";
+                    displayRes = `3ตัวบน: <strong>${topNum}</strong> | 2ตัวล่าง: <strong>${botNum}</strong>`;
+                    let copyTextValue = `${itemName} 3บน: ${topNum} 2ล่าง: ${botNum} (${formatThaiDate(dVal)})`;
+                    copyBtnHtml = `<button class="pub-copy-btn" onclick="_0x9a2b._0x5e14('${copyTextValue}')">📋 คัดลอก</button>`;
+                }
+            } else {
                 displayRes = `
                     <div class="processing-container">
                         <span class="rotating-spinner-icon">✦</span>
@@ -1914,7 +1959,7 @@ const _0x9a2b = {
                     </div>
                     <div class="pub-actions-group">
                         ${copyBtnHtml}
-                        <button class="pub-history-btn" onclick="_0x9a2b.showHistoryModal('${itemName}')">📊 สถิติ</button>
+                        <button class="pub-history-btn" onclick="_0x9a2b.showHistoryModal('${itemName}', ${Boolean(catData.isSpecial2D)})">📊 สถิติ</button>
                     </div>
                 </div>
             `;
@@ -1923,7 +1968,7 @@ const _0x9a2b = {
         itemsContainer.innerHTML = itemsHtml;
     },
 
-    showHistoryModal(itemName) {
+    showHistoryModal(itemName, isSpecial2D = false) {
         this._0x1f8e("click");
         document.getElementById("historyModalTitle").innerText = `สถิติย้อนหลัง: ${itemName}`;
         let historyListEl = document.getElementById("historyModalList");
@@ -1935,17 +1980,9 @@ const _0x9a2b = {
         } catch(e) { historyList = []; }
 
         if(historyList.length === 0) {
-            if(itemName === "ลาวประตูชัย") {
-                historyList = [
-                    "150-68|2026-08-14",
-                    "150-68|2026-08-13"
-                ];
-                localStorage.setItem(historyKey, JSON.stringify(historyList));
-            } else {
-                let latestRes = localStorage.getItem("lotto_res_" + itemName);
-                if(latestRes) {
-                    historyList = [latestRes];
-                }
+            let latestRes = localStorage.getItem("lotto_res_" + itemName);
+            if(latestRes) {
+                historyList = [latestRes];
             }
         }
 
@@ -1963,29 +2000,48 @@ const _0x9a2b = {
         } else {
             historyList.forEach((entry, idx) => {
                 let parts = entry.split("|");
-                let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
                 let dateVal = parts[1] || "";
                 let labelText = idx === 0 ? "งวดล่าสุด" : `งวดที่ ${idx + 1}`;
-                let topNum = nums[0] || "---";
-                let botNum = nums[1] || "---";
                 let formattedD = formatThaiDate(dateVal);
-                let copyLineText = `${itemName} (${labelText} - ${formattedD}) 3บน: ${topNum} 2ล่าง: ${botNum}`;
 
-                histHtml += `
-                    <div class="history-item-row">
-                        <div>
-                            <div style="color:#94a3b8; font-weight:600;">${labelText}</div>
-                            <div style="font-size:0.62rem; color:#64748b;">📅 ${formattedD}</div>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <div style="text-align:right;">
-                                <span style="color:#34d399; font-weight:600;">3บน: ${topNum}</span><br>
-                                <span style="color:#38bdf8; font-weight:600;">2ล่าง: ${botNum}</span>
+                if (isSpecial2D) {
+                    let val2d = parts[0] || "---";
+                    let copyLineText = `${itemName} (${labelText} - ${formattedD}) 2 ตัวตรง: ${val2d}`;
+                    histHtml += `
+                        <div class="history-item-row">
+                            <div>
+                                <div style="color:#94a3b8; font-weight:600;">${labelText}</div>
+                                <div style="font-size:0.62rem; color:#64748b;">📅 ${formattedD}</div>
                             </div>
-                            <button class="pub-copy-btn" style="width:auto; min-width:32px; height:24px; padding:0 6px; font-size:0.6rem;" onclick="_0x9a2b._0x5e14('${copyLineText}')">📋</button>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <div style="text-align:right;">
+                                    <span style="color:#34d399; font-weight:600;">2 ตัวตรง: ${val2d}</span>
+                                </div>
+                                <button class="pub-copy-btn" style="width:auto; min-width:32px; height:24px; padding:0 6px; font-size:0.6rem;" onclick="_0x9a2b._0x5e14('${copyLineText}')">📋</button>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    let nums = parts[0] ? parts[0].split("-") : ["---", "---"];
+                    let topNum = nums[0] || "---";
+                    let botNum = nums[1] || "---";
+                    let copyLineText = `${itemName} (${labelText} - ${formattedD}) 3บน: ${topNum} 2ล่าง: ${botNum}`;
+                    histHtml += `
+                        <div class="history-item-row">
+                            <div>
+                                <div style="color:#94a3b8; font-weight:600;">${labelText}</div>
+                                <div style="font-size:0.62rem; color:#64748b;">📅 ${formattedD}</div>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <div style="text-align:right;">
+                                    <span style="color:#34d399; font-weight:600;">3บน: ${topNum}</span><br>
+                                    <span style="color:#38bdf8; font-weight:600;">2ล่าง: ${botNum}</span>
+                                </div>
+                                <button class="pub-copy-btn" style="width:auto; min-width:32px; height:24px; padding:0 6px; font-size:0.6rem;" onclick="_0x9a2b._0x5e14('${copyLineText}')">📋</button>
+                            </div>
+                        </div>
+                    `;
+                }
             });
         }
         historyListEl.innerHTML = histHtml;
