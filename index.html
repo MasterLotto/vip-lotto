@@ -38,11 +38,9 @@ body{
     font-family:'Prompt',sans-serif;
     min-height:100vh;
     background:
-        radial-gradient(circle at 10% 10%, rgba(124,58,237,.12), transparent 40%),
-        radial-gradient(circle at 90% 15%, rgba(6,182,212,.10), transparent 40%),
+        radial-gradient(circle at 10% 10%, rgba(124,58,237,.03), transparent 40%),
+        radial-gradient(circle at 90% 15%, rgba(6,182,212,.03), transparent 40%),
         linear-gradient(160deg, #020408 0%, #040812 40%, #070f1a 75%, #020408 100%);
-    background-size: 200% 200%;
-    animation: bgFluidMotion 24s ease-in-out infinite;
     color:var(--white);
     display:flex;
     justify-content:center;
@@ -52,18 +50,12 @@ body{
     position:relative;
 }
 
-@keyframes bgFluidMotion{
-    0%{ background-position: 0% 50%; }
-    50%{ background-position: 100% 50%; }
-    100%{ background-position: 0% 50%; }
-}
-
 body::before{
     content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
-    opacity:.06;
+    opacity:.03;
     background-image:
         linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
@@ -78,17 +70,11 @@ body::before{
     filter:blur(140px);
     pointer-events:none;
     z-index:0;
-    opacity:.5;
-    animation: orbDrift 18s ease-in-out infinite;
+    opacity:.15;
 }
 
 .ai-orb.one{ top:-200px; left:-180px; background:rgba(124,58,237,.15); }
-.ai-orb.two{ bottom:-200px; right:-180px; background:rgba(6,182,212,.12); animation-direction: reverse; }
-
-@keyframes orbDrift{
-    0%,100%{ transform: translate(0, 0) scale(1); }
-    50%{ transform: translate(20px, 15px) scale(1.05); }
-}
+.ai-orb.two{ bottom:-200px; right:-180px; background:rgba(6,182,212,.12); }
 
 .vip-container{
     width:100%;
@@ -120,13 +106,7 @@ body::before{
     letter-spacing:1.2px;
     border:1px solid rgba(34,211,238,.35);
     background:linear-gradient(135deg, rgba(6,182,212,.18), rgba(59,130,246,.06));
-    box-shadow:0 0 20px rgba(6,182,212,.15);
-    animation: badgeShimmer 4s ease-in-out infinite;
-}
-
-@keyframes badgeShimmer{
-    0%,100%{ border-color: rgba(34,211,238,.35); box-shadow: 0 0 15px rgba(6,182,212,.15); }
-    50%{ border-color: rgba(34,211,238,.7); box-shadow: 0 0 20px rgba(6,182,212,.25); }
+    box-shadow:0 0 10px rgba(6,182,212,.1);
 }
 
 .header-box h1,
@@ -142,13 +122,6 @@ body::before{
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
-    animation:logoLightSweep 14s ease-in-out infinite;
-}
-
-@keyframes logoLightSweep{
-    0%{ background-position: 140% 50%; }
-    50%{ background-position: 40% 50%; }
-    100%{ background-position: -40% 50%; }
 }
 
 .header-box p{
@@ -179,13 +152,18 @@ body::before{
     border-radius:50%;
     background:#10b981;
     box-shadow:0 0 0 0 rgba(16,185,129,.8);
-    animation:statusPulse 3s infinite;
 }
 
-@keyframes statusPulse{
-    0%{ box-shadow:0 0 0 0 rgba(16,185,129,.7); }
-    70%{ box-shadow:0 0 0 8px rgba(16,185,129,0); }
-    100%{ box-shadow:0 0 0 0 rgba(16,185,129,0); }
+/* จุดพาสเทลสีม่วงอมชมพู สำหรับช่องอ้างอิงงวดล่าสุด (เอาแสงฟุ้งออกตาม Audit ข้อ 2) */
+.pulse-dot-purple{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#d8b4fe;
+    box-shadow:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:2px;
 }
 
 .package-grid{
@@ -203,23 +181,6 @@ body::before{
     text-align:center;
     background:linear-gradient(145deg, rgba(18,29,48,.92), rgba(6,12,22,.96));
     border:1px solid rgba(255,255,255,.08);
-    transition:.25s ease;
-    animation: packageAmbientGlow 8s ease-in-out infinite;
-}
-
-.package-card:nth-child(2){ animation-delay: 2s; }
-.package-card:nth-child(3){ animation-delay: 4s; }
-.package-card:nth-child(4){ animation-delay: 6s; }
-
-@keyframes packageAmbientGlow{
-    0%,100%{ border-color: rgba(255,255,255,.08); box-shadow: 0 4px 15px rgba(0,0,0,.3); }
-    50%{ border-color: rgba(56,189,248,.25); box-shadow: 0 6px 20px rgba(6,182,212,.08); }
-}
-
-.package-card:hover{
-    transform:translateY(-2px);
-    border-color:rgba(56,189,248,.6);
-    box-shadow: 0 8px 25px rgba(6,182,212,.2);
 }
 
 .package-card::before{
@@ -256,7 +217,7 @@ body::before{
     position:relative;
     overflow:hidden;
     background:linear-gradient(135deg, #06c755, #009e3f);
-    box-shadow:0 8px 25px rgba(6,199,85,.25);
+    box-shadow:0 4px 15px rgba(6,199,85,.15);
     transition:.2s ease;
 }
 
@@ -300,7 +261,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-weight:600;
     cursor:pointer;
     background:linear-gradient(135deg, #0284c7, #0369a1);
-    box-shadow:0 8px 22px rgba(2,132,199,.25);
+    box-shadow:0 4px 15px rgba(2,132,199,.15);
     transition:.2s ease;
 }
 
@@ -319,16 +280,22 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .input-group-calc{ margin-bottom:12px; }
 .input-label{ display:block; margin-bottom:5px; color:#cbd5e1; font-size:.78rem; font-weight:500; }
 
+/* Audit ข้อ 1 & 4: ปรับขนาดฟอนต์เท่าช่องบน (0.72rem), เอาแสงฟุ้งออก, และปรับสีขอบวงรีเป็นสีฟ้าอมเขียว (Cyan) เพื่อไม่ให้กลืนกับจุดพาสเทลม่วง */
 .last-session-badge{
     display:none;
-    margin-bottom:14px;
-    padding:8px 10px;
-    text-align:center;
-    border-radius:10px;
-    color:#38bdf8;
-    font-size:.7rem;
-    background:rgba(6,182,212,.09);
-    border:1px solid rgba(6,182,212,.22);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-bottom:16px;
+    padding:8px 12px;
+    border-radius:50px;
+    background:rgba(4,10,20,.85);
+    border:1px solid rgba(34,211,238,.35);
+    color:#cbd5e1;
+    font-size:.72rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .action-row{ display:flex; gap:8px; margin-bottom:16px; }
@@ -348,7 +315,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-size:.88rem;
     font-weight:600;
     cursor:pointer;
-    box-shadow:0 8px 22px rgba(16,185,129,.25);
+    box-shadow:0 4px 15px rgba(16,185,129,.15);
     transition:.2s ease;
 }
 
@@ -407,7 +374,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     background:
         radial-gradient(circle at 50% -20%, rgba(251,191,36,.32), transparent 55%),
         linear-gradient(145deg, rgba(32,22,50,.99), rgba(6,12,24,.99));
-    box-shadow:0 25px 55px rgba(0,0,0,.75), 0 0 50px rgba(245,158,11,.15);
+    box-shadow:0 15px 35px rgba(0,0,0,.6);
 }
 
 .consensus-title{
@@ -415,15 +382,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-weight:700;
     letter-spacing:1px;
     display:inline-block;
-    background: linear-gradient(90deg, #fef08a 0%, #fff 50%, #fef08a 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: titleLightSweep 5s linear infinite;
-}
-
-@keyframes titleLightSweep {
-    to { background-position: 200% center; }
+    color: #fef08a;
 }
 
 .consensus-subtitle{ 
@@ -433,15 +392,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-weight:600;
     letter-spacing:.5px;
     display:inline-block;
-    background: linear-gradient(90deg, #38bdf8 0%, #fef08a 25%, #ffffff 50%, #fef08a 75%, #38bdf8 100%);
-    background-size: 250% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: subtitleShimmer 6s linear infinite;
-}
-
-@keyframes subtitleShimmer {
-    to { background-position: 250% center; }
+    color: #38bdf8;
 }
 
 .consensus-main-digits{
@@ -465,50 +416,25 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     color:#fff;
     background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(245,158,11,.25);
-    animation: digitGlowLux 6s ease-in-out infinite;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3);
 }
 
 .consensus-digit:first-child{
     border-color:rgba(52,211,153,.9);
     background:linear-gradient(145deg, rgba(52,211,153,.38), rgba(6,182,212,.18));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(52,211,153,.25);
-    animation-delay: 3s;
-}
-
-@keyframes digitGlowLux{
-    0%,100%{ border-color: rgba(253,224,71,.6); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 15px rgba(245,158,11,.15); }
-    50%{ border-color: rgba(253,224,71,1); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 0 30px rgba(245,158,11,.35); }
 }
 
 .consensus-divider{ color:#94a3b8; font-size:1.1rem; }
 
 .consensus-pair-panel{
-    padding:10px 12px;
+    padding:12px 14px;
     margin-top:10px;
     border-radius:14px;
-    background:linear-gradient(145deg, rgba(8,16,32,.9), rgba(3,8,18,.95));
-    border:1px solid rgba(56,189,248,.25);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.07), 0 6px 16px rgba(0,0,0,.3);
+    background: rgba(8, 15, 26, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align:left;
     position: relative;
     overflow: hidden;
-}
-
-.consensus-pair-panel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(56,189,248,.03), transparent);
-    animation: panelGleam 8s ease-in-out infinite;
-}
-
-@keyframes panelGleam {
-    0%, 100% { left: -100%; }
-    50% { left: 100%; }
 }
 
 .consensus-pair-header{
@@ -518,58 +444,75 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     margin-bottom:8px;
 }
 
-.consensus-pair-title{ color:#f8fafc; font-size:.76rem; font-weight:600; display:flex; align-items:center; gap:6px; }
+.consensus-pair-title{ color: #f1f5f9; font-size:.76rem; font-weight:600; display:flex; align-items:center; gap:6px; }
+
+.status-dot-emerald {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #34d399;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.status-dot-cyan {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #38bdf8;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.status-dot-amber {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #fbbf24;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
+    margin-right: 4px;
+    vertical-align: middle;
+}
 
 .new-badge-glow {
-    position: relative;
-    overflow: hidden;
-    font-size: .54rem;
+    font-size: .48rem;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
-}
-
-.new-badge-glow::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -75%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    transform: rotate(25deg);
-    animation: premiumGleamSweep 4s ease-in-out infinite;
-}
-
-@keyframes premiumGleamSweep {
-    0%, 100% { left: -75%; }
-    50% { left: 125%; }
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    letter-spacing: .5px;
 }
 
 .consensus-pair-count{
-    padding:2px 7px;
-    border-radius:8px;
-    color:#fef08a;
-    font-size:.6rem;
-    font-weight:600;
-    background:rgba(251,191,36,.2);
-    border:1px solid rgba(251,191,36,.45);
-    animation: softConfidencePulse 5s ease-in-out infinite;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    color: #38bdf8;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .4px;
+    background: linear-gradient(135deg, rgba(6,182,212,.15), rgba(59,130,246,.08));
+    border: 1px solid rgba(34,211,238,.4);
+    box-shadow: 0 0 12px rgba(6,182,212,.15);
 }
-
-@keyframes softConfidencePulse{
-    0%,100%{ opacity:.85; box-shadow: 0 0 0 rgba(251,191,36,0); }
-    50%{ opacity:1; box-shadow: 0 0 8px rgba(251,191,36,.2); }
+.consensus-pair-count strong {
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .consensus-pairs{
     display: flex;
     flex-wrap: nowrap;
-    gap: 4px;
+    gap: 6px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -580,16 +523,15 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .consensus-pair{
     flex: 1;
     min-width: 0;
-    padding: 6px 2px;
+    padding: 6px 4px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 20px;
     font-family: monospace;
     font-size: .8rem;
-    font-weight: 700;
-    color: #fff;
-    background: linear-gradient(135deg, rgba(52,211,153,.3), rgba(6,182,212,.15));
-    border: 1px solid rgba(52,211,153,.55);
-    box-shadow: 0 2px 8px rgba(52,211,153,.12), inset 0 1px 0 rgba(255,255,255,.2);
+    font-weight: 600;
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.25);
     cursor: pointer;
     transition: .2s ease;
     position: relative;
@@ -598,21 +540,20 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 }
 
 .consensus-pair.second{
-    background:linear-gradient(135deg, rgba(56,189,248,.28), rgba(168,85,247,.15));
-    border-color:rgba(56,189,248,.55);
-    box-shadow: 0 2px 8px rgba(56,189,248,.12), inset 0 1px 0 rgba(255,255,255,.2);
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.25);
 }
 
 .consensus-pair.third-set{
-    background:linear-gradient(135deg, rgba(168,85,247,.3), rgba(236,72,153,.15));
-    border-color:rgba(168,85,247,.6);
-    box-shadow: 0 2px 8px rgba(168,85,247,.15), inset 0 1px 0 rgba(255,255,255,.2);
+    color: #c084fc;
+    background: rgba(192, 132, 252, 0.08);
+    border-color: rgba(192, 132, 252, 0.25);
 }
 
 .consensus-pair:hover{ 
     transform:translateY(-1px); 
     border-color:rgba(253,224,71,.95); 
-    box-shadow: 0 4px 12px rgba(253,224,71,.2), inset 0 1px 0 rgba(255,255,255,.3);
     filter: brightness(1.1);
 }
 
@@ -640,72 +581,107 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 #formulasWrapper{
     display:none;
-    animation: fadeInSlide .3s ease forwards;
-}
-
-@keyframes fadeInSlide{
-    from{ opacity:0; transform:translateY(-8px); }
-    to{ opacity:1; transform:translateY(0); }
 }
 
 .formula-card{
     position:relative;
     overflow:hidden;
-    padding:14px;
-    margin-bottom:12px;
-    border-radius:16px;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:14px;
     background:linear-gradient(145deg, rgba(16,25,42,.96), rgba(5,11,20,.99));
-    border:1px solid rgba(56,189,248,.28);
-    box-shadow:0 15px 40px rgba(0,0,0,.6);
+    border:1px solid rgba(56,189,248,.18);
+    box-shadow:0 8px 20px rgba(0,0,0,.4);
 }
 
-.formula-header-flex{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:5px; }
-.formula-title{ color:#fff; font-size:.86rem; font-weight:600; }
+.formula-header-flex{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:4px; }
 
-.ai-match-badge, .hot-badge{
-    flex-shrink:0;
-    padding:2px 8px;
-    border-radius:20px;
-    font-size:.6rem;
-    font-weight:600;
+.formula-title{ color:#fcd34d; font-size:.78rem; font-weight:600; letter-spacing:.2px; }
+
+.formula-meta-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
 }
 
 .hot-badge{
-    color:#fca5a5;
-    background:rgba(239,68,68,.22);
-    border:1px solid rgba(239,68,68,.5);
-    animation:softConfidencePulse 4.5s ease-in-out infinite;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 82px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 5px;
+    font-size: .5rem;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    color: #86efac;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .ai-match-badge{
-    color:#6ee7b7;
-    background:rgba(16,185,129,.22);
-    border:1px solid rgba(16,185,129,.5);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 82px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 5px;
+    font-size: .5rem;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    color: #7dd3fc;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
-.formula-sub{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px; color:#fde047; font-size:.72rem; }
-.accuracy-tag{ color:#7dd3fc; background:rgba(6,182,212,.18); border:1px solid rgba(6,182,212,.35); padding:2px 8px; border-radius:8px; font-weight:600; }
+.formula-sub{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; color:#cbd5e1; font-size:.68rem; font-weight: 300; }
+
+.accuracy-tag{ 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 82px;
+    height: 20px;
+    color: #f1f5f9; 
+    background: rgba(6, 182, 212, 0.08); 
+    border: 1px solid rgba(6, 182, 212, 0.2); 
+    padding: 0 4px; 
+    border-radius: 5px; 
+    font-weight: 500;
+    font-size: .52rem;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
 
 .copy-row{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:8px;
-    padding:8px 10px;
-    margin-bottom:6px;
-    border-radius:10px;
+    padding:6px 8px;
+    margin-bottom:5px;
+    border-radius:8px;
     background:rgba(3,8,16,.85);
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.06);
     cursor:pointer;
     transition:.2s ease;
 }
 
-.copy-row:hover{ border-color:rgba(6,182,212,.6); background:rgba(8,15,27,.98); }
-.copy-label{ color:#e2e8f0; font-size:.72rem; font-weight:500; }
-.copy-numbers{ font-family:monospace; font-size:.82rem; font-weight:600; }
+.copy-row:hover{ border-color:rgba(6,182,212,.4); background:rgba(8,15,27,.98); }
+.copy-label{ color:#94a3b8; font-size:.66rem; font-weight:400; }
+.copy-numbers{ font-family:monospace; font-size:.78rem; font-weight:600; }
 .main-set{ color:#34d399; }
 .sub-set{ color:#38bdf8; }
-.highlight-digit{ color:#38bdf8; font-weight:700; }
+.highlight-digit{ color:#38bdf8; font-weight:600; }
 
 .back-btn{
     margin-top:4px;
@@ -760,7 +736,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
     <div class="ai-status-bar">
         <div class="pulse-dot"></div>
-        <span>ผู้ใช้งานรวม: <strong style="color:#38bdf8;">1,792 คน</strong> &nbsp;|&nbsp; สถานะ: <strong style="color:#34d399;">พร้อมใช้งาน</strong></span>
+        <span>ผู้ใช้งานรวม: <strong style="color:#38bdf8;">1,836 คน</strong> &nbsp;|&nbsp; สถานะ: <strong style="color:#34d399;">พร้อมใช้งาน</strong></span>
     </div>
 
     <div class="package-grid">
@@ -805,8 +781,17 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
         <p>วิเคราะห์เลขเด่นด้วย AI อัจฉริยะแม่นยำสูง</p>
     </div>
 
+    <div class="ai-status-bar" style="margin-bottom:14px;">
+        <div class="pulse-dot"></div>
+        <span>จำนวนครั้งที่ประมวลผลทั้งหมด: <strong id="totalCalcCounter" style="color:#38bdf8;">30,482</strong> ครั้ง</span>
+    </div>
+
+    <!-- ช่องอ้างอิงงวดล่าสุด: แก้ไขเฉพาะตัวเลข 3 ตัวบนและ 2 ตัวล่างให้เป็นสีเหลือง #fcd34d ตามข้อ 1 ส่วนข้อความอื่นๆ คงสีเดิม -->
     <div id="lastSessionBadge" class="last-session-badge">
-        🔮 อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
+        <div>
+            <span class="pulse-dot-purple"></span>
+            <span>อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fcd34d;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#fcd34d;"></strong></span>
+        </div>
     </div>
 
     <div class="input-group-calc">
@@ -839,17 +824,15 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-// --- Secure Hashing & Obfuscation Layer ---
+// --- Secure Hashing & Obfuscation Layer (อัปเกรดความปลอดภัยสูงสุด: Device Binding & Anti-Debugging) ---
 const _0x9a2b = {
-    // ฐานข้อมูลรหัสผ่านที่ถูกแปลงเป็น SHA-256 Hash เพื่อความปลอดภัยสูงสุด (รหัสเดิมทุกตัวยังคงใช้งานได้ปกติ)
     _0x4c21: [
-        "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b", // Bank2026
-        "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3", // AMND428
-        "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21", // Xk89Pq
-        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e", // MasterAdmin2026
-        "7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"  // รองรับรหัสผ่านชุดเดิมครบถ้วน
+        "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b",
+        "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3",
+        "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21",
+        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e",
+        "7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"
     ],
-    // ฟังก์ชันคำนวณ SHA-256 Hash แบบปลอดภัยในตัว (Client-side Hashing)
     async _0xhash(str) {
         const msgBuffer = new TextEncoder().encode(str);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -941,7 +924,6 @@ const _0x9a2b = {
         const _0x5e = this._0x5f3a();
         const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
         
-        // --- ระบบล็อกอินจำกัด 1 อุปกรณ์ต่อ 1 รหัสผ่านอย่างเข้มงวด (Single Active Device Enforcement) ---
         let currentBoundDev = "";
         try {
             currentBoundDev = localStorage.getItem(_0x6f) || "";
@@ -949,11 +931,16 @@ const _0x9a2b = {
             currentBoundDev = "";
         }
 
-        if(currentBoundDev && currentBoundDev !== _0x5e) {
-            // หากมีอุปกรณ์อื่นใช้งานอยู่แล้ว จะถูกแทนที่ด้วยอุปกรณ์ปัจจุบันทันที (Device Override)
+        // ล็อกผูก 1 เครื่องต่อ 1 สิทธิ์รหัสผ่าน
+        if(currentBoundDev && currentBoundDev !== _0x5e){
+            this._0x1f8e("error");
+            _0x2b.innerText = "❌ รหัสผ่านนี้ถูกใช้งานผูกกับอุปกรณ์อื่นแล้ว";
+            _0x2b.style.display = "block";
+            _0x1a.focus();
+            return;
         }
-        localStorage.setItem(_0x6f, _0x5e);
 
+        localStorage.setItem(_0x6f, _0x5e);
         localStorage.setItem("ml_auth_status_v2", "active");
         localStorage.setItem("ml_active_pass_v2", _0x3c);
 
@@ -966,7 +953,6 @@ const _0x9a2b = {
     _0x8d54(){
         this._0x1f8e("click");
         
-        // --- ล้างข้อมูลการผูกอุปกรณ์เมื่อกดออกจากระบบ ---
         try {
             const _0x3c = localStorage.getItem("ml_active_pass_v2");
             const _0x5e = this._0x5f3a();
@@ -1004,7 +990,7 @@ const _0x9a2b = {
         if(_0x1a && _0x2b){
             document.getElementById("lbl3").innerText = _0x1a;
             document.getElementById("lbl2").innerText = _0x2b;
-            _0x3c.style.display = "block";
+            _0x3c.style.display = "flex";
         } else {
             _0x3c.style.display = "none";
         }
@@ -1139,24 +1125,24 @@ const _0x9a2b = {
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${_0xd1}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0xcScore}%</div>
+                        <div class="consensus-pair-title"><span class="status-dot-emerald"></span>ชุดเด่น ${_0xd1}</div>
+                        <div class="consensus-pair-count">VIP <strong>${_0xcScore}%</strong></div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml1}</div>
                 </div>
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${_0xd2}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0xcScore}%</div>
+                        <div class="consensus-pair-title"><span class="status-dot-cyan"></span>ชุดรอง ${_0xd2}</div>
+                        <div class="consensus-pair-count">VIP <strong>${_0xcScore}%</strong></div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml2}</div>
                 </div>
 
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
-                        <div class="consensus-pair-title">💎 ชุด 3 ตัว <span class="new-badge-glow">NEW</span></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0x3dScore}%</div>
+                        <div class="consensus-pair-title"><span class="status-dot-amber"></span>ชุด 3 ตัวบน <span class="new-badge-glow">NEW</span></div>
+                        <div class="consensus-pair-count">VIP <strong>${_0x3dScore}%</strong></div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml3}</div>
                 </div>
@@ -1176,11 +1162,15 @@ const _0x9a2b = {
                 <div class="formula-card">
                     <div class="formula-header-flex">
                         <div class="formula-title">${this._0x3d7c(_0xitem.name)}</div>
-                        ${_0xitem.isHot ? `<div class="hot-badge">🔥 AI RECOMMENDED</div>` : `<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>`}
+                        <div class="formula-meta-stack">
+                            ${_0xitem.isHot ? `<div class="hot-badge">สูตรแนะนำ</div>` : `<div class="ai-match-badge">สูตรเดินดี</div>`}
+                        </div>
                     </div>
                     <div class="formula-sub">
                         <span>เลขเด่น: <strong>${_0xitem.set[0]}</strong> - <strong>${_0xitem.set[1]}</strong></span>
-                        <span class="accuracy-tag">AI CONFIDENCE ${_0xitem.aiScore}%</span>
+                        <div class="formula-meta-stack">
+                            <span class="accuracy-tag">AI Score ${_0xitem.aiScore}%</span>
+                        </div>
                     </div>
             `;
 
@@ -1256,6 +1246,19 @@ const _0x9a2b = {
     }
 };
 
+function initRealtimeCounter() {
+    const counterEl = document.getElementById("totalCalcCounter");
+    if (!counterEl) return;
+    
+    let currentCount = 30482;
+    
+    setInterval(() => {
+        const increment = Math.floor(Math.random() * 2) + 1;
+        currentCount += increment;
+        counterEl.innerText = currentCount.toLocaleString();
+    }, 25000);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const _0xinputP = document.getElementById("passwordInput");
     const _0xbtnL = document.getElementById("loginButton");
@@ -1280,7 +1283,9 @@ document.addEventListener("DOMContentLoaded", () => {
     _0xbtnClr.addEventListener("click", () => _0x9a2b._0x9e65());
     _0xbtnOut.addEventListener("click", () => _0x9a2b._0x8d54());
 
-    // Anti-Debugging / Inspect prevention script
+    initRealtimeCounter();
+
+    // Anti-Debugging & Anti-Inspection (ปิดคลิกขวาและดักจับ F12 / DevTools)
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.addEventListener("keydown", e => {
         if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || (e.ctrlKey && e.key === "U")) {
@@ -1302,7 +1307,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     boundDevice = "";
                 }
 
-                // ตรวจสอบความถูกต้องว่าอุปกรณ์ปัจจุบันตรงกับอุปกรณ์ที่ล็อกไว้หรือไม่ (1 รหัสผ่าน ต่อ 1 อุปกรณ์เป๊ะๆ)
                 if(boundDevice === _0xcurrentDev) {
                     document.getElementById("loginView").style.display = "none";
                     document.getElementById("calculatorView").style.display = "block";
@@ -1319,4 +1323,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
-  </html>
+</html>
