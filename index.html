@@ -9,7 +9,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-<title>MasterLotto VIP — AI Smart Analysis</title>
+<title>MasterLotto VIP — AI Smart Analysis (Encrypted Core & Admin Panel)</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -32,7 +32,7 @@
     --border:rgba(255,255,255,.08);
 }
 
-*{ box-sizing:border-box; margin:0; padding:0; }
+*{ box-sizing:border-box; margin:0; padding:0; user-select:none; -webkit-user-select:none; }
 html{ scroll-behavior:smooth; }
 body{
     font-family:'Prompt',sans-serif;
@@ -105,17 +105,17 @@ body::before{
     overflow:hidden;
 }
 
-.header-box{ text-align:center; margin-bottom:18px; }
+.header-box{ text-align:center; margin-bottom:18px; cursor:pointer; user-select:none; }
 
 .ai-badge{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    padding:5px 12px;
+    padding:4px 10px;
     margin-bottom:10px;
     border-radius:30px;
     color:#67e8f9;
-    font-size:.7rem;
+    font-size:.65rem;
     font-weight:600;
     letter-spacing:1.2px;
     border:1px solid rgba(34,211,238,.35);
@@ -283,6 +283,8 @@ input{
     font-size:.9rem;
     text-align:center;
     transition:.2s ease;
+    user-select:text;
+    -webkit-user-select:text;
 }
 
 input::placeholder{ color:#475569; }
@@ -314,7 +316,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     font-size:.72rem;
 }
 
-#calculatorView{ display:none; }
+#calculatorView, #adminView, #publicResultsView{ display:none; }
 
 .input-group-calc{ margin-bottom:12px; }
 .input-label{ display:block; margin-bottom:5px; color:#cbd5e1; font-size:.78rem; font-weight:500; }
@@ -322,13 +324,23 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .last-session-badge{
     display:none;
     margin-bottom:14px;
-    padding:8px 10px;
+    padding:10px 14px;
     text-align:center;
-    border-radius:10px;
-    color:#38bdf8;
-    font-size:.7rem;
-    background:rgba(6,182,212,.09);
-    border:1px solid rgba(6,182,212,.22);
+    border-radius:14px;
+    color:#fef08a;
+    font-size:.78rem;
+    font-weight:600;
+    background:linear-gradient(135deg, rgba(245,158,11,.15), rgba(6,182,212,.12));
+    border:1px solid rgba(245,158,11,.35);
+    box-shadow:0 4px 15px rgba(245,158,11,.12);
+    position:relative;
+    overflow:hidden;
+    animation: softGoldGlow 4s ease-in-out infinite;
+}
+
+@keyframes softGoldGlow {
+    0%, 100% { border-color: rgba(245, 158, 11, 0.35); box-shadow: 0 4px 15px rgba(245,158,11,.12); }
+    50% { border-color: rgba(245, 158, 11, 0.65); box-shadow: 0 4px 20px rgba(245,158,11,.22); }
 }
 
 .action-row{ display:flex; gap:8px; margin-bottom:16px; }
@@ -368,6 +380,32 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
 .btn-clear:hover{ color:#fff; background:#1e293b; }
 
+.btn-public-results {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 10px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fef08a;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(168, 85, 247, 0.15));
+    font-family: 'Prompt', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+    transition: .2s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.btn-icon-pulse, .chart-icon-anim { display: inline-block; }
+
 #aiScannerBox{
     display:none;
     position:relative;
@@ -403,303 +441,85 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     margin-bottom:14px;
     border-radius:20px;
     text-align:center;
-    border:1px solid rgba(251,191,36,.65);
+    border: 1px solid rgba(245, 158, 11, 0.5);
     background:
         radial-gradient(circle at 50% -20%, rgba(251,191,36,.32), transparent 55%),
         linear-gradient(145deg, rgba(32,22,50,.99), rgba(6,12,24,.99));
-    box-shadow:0 25px 55px rgba(0,0,0,.75), 0 0 50px rgba(245,158,11,.15);
+    box-shadow: 0 25px 55px rgba(0,0,0,.75), 0 0 25px rgba(245,158,11,.15);
 }
 
-.consensus-title{
-    font-size:.96rem;
-    font-weight:700;
-    letter-spacing:1px;
-    display:inline-block;
-    background: linear-gradient(90deg, #fef08a 0%, #fff 50%, #fef08a 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: titleLightSweep 5s linear infinite;
-}
-
-@keyframes titleLightSweep {
-    to { background-position: 200% center; }
-}
-
-.consensus-subtitle{ 
-    margin-top:4px; 
-    margin-bottom:12px; 
-    font-size:.74rem; 
-    font-weight:600;
-    letter-spacing:.5px;
-    display:inline-block;
-    background: linear-gradient(90deg, #38bdf8 0%, #fef08a 25%, #ffffff 50%, #fef08a 75%, #38bdf8 100%);
-    background-size: 250% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: subtitleShimmer 6s linear infinite;
-}
-
-@keyframes subtitleShimmer {
-    to { background-position: 250% center; }
-}
-
-.consensus-main-digits{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin:2px 0 14px;
-}
-
+.consensus-title{ font-size:.96rem; font-weight:700; letter-spacing:1px; display:inline-block; color: #fef08a; }
+.consensus-subtitle{ margin-top:4px; margin-bottom:12px; font-size:.74rem; font-weight:600; letter-spacing:.5px; display:inline-block; color: #38bdf8; }
+.consensus-main-digits{ display:flex; justify-content:center; align-items:center; gap:10px; margin:2px 0 14px; }
 .consensus-digit{
-    width:62px;
-    height:62px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:16px;
-    font-family:monospace;
-    font-size:1.8rem;
-    font-weight:700;
-    color:#fff;
+    width:62px; height:62px; display:flex; justify-content:center; align-items:center; border-radius:16px; font-family:monospace; font-size:1.8rem; font-weight:700; color:#fff;
     background:linear-gradient(145deg, rgba(251,191,36,.38), rgba(168,85,247,.18));
     border:1px solid rgba(253,224,71,.8);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(245,158,11,.25);
-    animation: digitGlowLux 6s ease-in-out infinite;
 }
-
 .consensus-digit:first-child{
     border-color:rgba(52,211,153,.9);
     background:linear-gradient(145deg, rgba(52,211,153,.38), rgba(6,182,212,.18));
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 0 25px rgba(52,211,153,.25);
-    animation-delay: 3s;
 }
-
-@keyframes digitGlowLux{
-    0%,100%{ border-color: rgba(253,224,71,.6); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 15px rgba(245,158,11,.15); }
-    50%{ border-color: rgba(253,224,71,1); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 0 30px rgba(245,158,11,.35); }
-}
-
 .consensus-divider{ color:#94a3b8; font-size:1.1rem; }
 
 .consensus-pair-panel{
-    padding:10px 12px;
-    margin-top:10px;
-    border-radius:14px;
+    padding:10px 12px; margin-top:10px; border-radius:14px;
     background:linear-gradient(145deg, rgba(8,16,32,.9), rgba(3,8,18,.95));
     border:1px solid rgba(56,189,248,.25);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.07), 0 6px 16px rgba(0,0,0,.3);
-    text-align:left;
-    position: relative;
-    overflow: hidden;
+    text-align:left; position: relative; overflow: hidden;
 }
-
-.consensus-pair-panel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(56,189,248,.03), transparent);
-    animation: panelGleam 8s ease-in-out infinite;
-}
-
-@keyframes panelGleam {
-    0%, 100% { left: -100%; }
-    50% { left: 100%; }
-}
-
-.consensus-pair-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:8px;
-}
-
+.consensus-pair-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
 .consensus-pair-title{ color:#f8fafc; font-size:.76rem; font-weight:600; display:flex; align-items:center; gap:6px; }
-
 .new-badge-glow {
-    position: relative;
-    overflow: hidden;
-    font-size: .54rem;
-    font-weight: 700;
-    color: #fff;
+    font-size: .54rem; font-weight: 700; color: #fff;
     background: linear-gradient(135deg, #ef4444, #dc2626);
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
 }
-
-.new-badge-glow::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -75%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    transform: rotate(25deg);
-    animation: premiumGleamSweep 4s ease-in-out infinite;
-}
-
-@keyframes premiumGleamSweep {
-    0%, 100% { left: -75%; }
-    50% { left: 125%; }
-}
-
 .consensus-pair-count{
-    padding:2px 7px;
-    border-radius:8px;
-    color:#fef08a;
-    font-size:.6rem;
-    font-weight:600;
-    background:rgba(251,191,36,.2);
-    border:1px solid rgba(251,191,36,.45);
-    animation: softConfidencePulse 5s ease-in-out infinite;
+    padding:3px 8px; border-radius:8px; color:#fef08a; font-size:.58rem; font-weight:600;
+    background:rgba(251,191,36,.2); border:1px solid rgba(251,191,36,.45); letter-spacing:0.2px;
 }
-
-@keyframes softConfidencePulse{
-    0%,100%{ opacity:.85; box-shadow: 0 0 0 rgba(251,191,36,0); }
-    50%{ opacity:1; box-shadow: 0 0 8px rgba(251,191,36,.2); }
-}
-
-.consensus-pairs{
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 4px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 2px;
-}
-
+.consensus-pairs{ display:flex; flex-wrap:nowrap; gap:4px; justify-content:space-between; align-items:center; width:100%; overflow-x:auto; padding-bottom:2px; }
 .consensus-pair{
-    flex: 1;
-    min-width: 0;
-    padding: 6px 2px;
-    text-align: center;
-    border-radius: 8px;
-    font-family: monospace;
-    font-size: .8rem;
-    font-weight: 700;
-    color: #fff;
-    background: linear-gradient(135deg, rgba(52,211,153,.3), rgba(6,182,212,.15));
-    border: 1px solid rgba(52,211,153,.55);
-    box-shadow: 0 2px 8px rgba(52,211,153,.12), inset 0 1px 0 rgba(255,255,255,.2);
-    cursor: pointer;
-    transition: .2s ease;
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
+    flex:1; min-width:0; padding:6px 2px; text-align:center; border-radius:8px; font-family:monospace; font-size:.8rem; font-weight:700; color:#fff;
+    background:linear-gradient(135deg, rgba(52,211,153,.3), rgba(6,182,212,.15));
+    border:1px solid rgba(52,211,153,.55); cursor:pointer; transition:.2s ease; position:relative; overflow:hidden; white-space:nowrap;
 }
-
-.consensus-pair.second{
-    background:linear-gradient(135deg, rgba(56,189,248,.28), rgba(168,85,247,.15));
-    border-color:rgba(56,189,248,.55);
-    box-shadow: 0 2px 8px rgba(56,189,248,.12), inset 0 1px 0 rgba(255,255,255,.2);
-}
-
-.consensus-pair.third-set{
-    background:linear-gradient(135deg, rgba(168,85,247,.3), rgba(236,72,153,.15));
-    border-color:rgba(168,85,247,.6);
-    box-shadow: 0 2px 8px rgba(168,85,247,.15), inset 0 1px 0 rgba(255,255,255,.2);
-}
-
-.consensus-pair:hover{ 
-    transform:translateY(-1px); 
-    border-color:rgba(253,224,71,.95); 
-    box-shadow: 0 4px 12px rgba(253,224,71,.2), inset 0 1px 0 rgba(255,255,255,.3);
-    filter: brightness(1.1);
-}
+.consensus-pair.second{ background:linear-gradient(135deg, rgba(56,189,248,.28), rgba(168,85,247,.15)); border-color:rgba(56,189,248,.55); }
+.consensus-pair.third-set{ background:linear-gradient(135deg, rgba(168,85,247,.3), rgba(236,72,153,.15)); border-color:rgba(168,85,247,.6); }
 
 .formula-toggle-container{ margin-bottom:12px; }
-
 .btn-toggle-formulas{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.1);
-    color:#94a3b8;
-    background:rgba(16,25,42,.85);
-    font-family:'Prompt',sans-serif;
-    font-size:.82rem;
-    font-weight:600;
-    cursor:pointer;
-    transition:.2s ease;
+    width:100%; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px;
+    border-radius:12px; border:1px solid rgba(255,255,255,.1); color:#94a3b8; background:rgba(16,25,42,.85);
+    font-family:'Prompt',sans-serif; font-size:.82rem; font-weight:600; cursor:pointer; transition:.2s ease;
 }
-
 .btn-toggle-formulas:hover{ color:#fff; background:#1e293b; border-color:rgba(255,255,255,.2); }
 
-#formulasWrapper{
-    display:none;
-    animation: fadeInSlide .3s ease forwards;
-}
-
-@keyframes fadeInSlide{
-    from{ opacity:0; transform:translateY(-8px); }
-    to{ opacity:1; transform:translateY(0); }
-}
-
+#formulasWrapper{ display:none; }
 .formula-card{
-    position:relative;
-    overflow:hidden;
-    padding:14px;
-    margin-bottom:12px;
-    border-radius:16px;
+    position:relative; overflow:hidden; padding:14px; margin-bottom:12px; border-radius:16px;
     background:linear-gradient(145deg, rgba(16,25,42,.96), rgba(5,11,20,.99));
-    border:1px solid rgba(56,189,248,.28);
-    box-shadow:0 15px 40px rgba(0,0,0,.6);
+    border:1px solid rgba(56,189,248,.28); box-shadow:0 15px 40px rgba(0,0,0,.6);
 }
-
 .formula-header-flex{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:5px; }
 .formula-title{ color:#fff; font-size:.86rem; font-weight:600; }
-
 .ai-match-badge, .hot-badge{
-    flex-shrink:0;
-    padding:2px 8px;
-    border-radius:20px;
-    font-size:.6rem;
-    font-weight:600;
+    flex-shrink:0; padding:3px 8px; border-radius:20px; font-size:.58rem; font-weight:600; letter-spacing:0.2px;
 }
-
-.hot-badge{
-    color:#fca5a5;
-    background:rgba(239,68,68,.22);
-    border:1px solid rgba(239,68,68,.5);
-    animation:softConfidencePulse 4.5s ease-in-out infinite;
-}
-
-.ai-match-badge{
-    color:#6ee7b7;
-    background:rgba(16,185,129,.22);
-    border:1px solid rgba(16,185,129,.5);
-}
-
+.hot-badge{ color:#fca5a5; background:rgba(239,68,68,.22); border:1px solid rgba(239,68,68,.5); }
+.ai-match-badge{ color:#6ee7b7; background:rgba(16,185,129,.22); border:1px solid rgba(16,185,129,.5); }
 .formula-sub{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px; color:#fde047; font-size:.72rem; }
-.accuracy-tag{ color:#7dd3fc; background:rgba(6,182,212,.18); border:1px solid rgba(6,182,212,.35); padding:2px 8px; border-radius:8px; font-weight:600; }
+.accuracy-tag{ color:#7dd3fc; background:rgba(6,182,212,.18); border:1px solid rgba(6,182,212,.35); padding:3px 8px; border-radius:8px; font-weight:600; font-size:.58rem; }
 
 .copy-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-    padding:8px 10px;
-    margin-bottom:6px;
-    border-radius:10px;
-    background:rgba(3,8,16,.85);
-    border:1px solid rgba(255,255,255,.1);
-    cursor:pointer;
-    transition:.2s ease;
+    display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px 10px; margin-bottom:6px;
+    border-radius:10px; background:rgba(3,8,16,.85); border:1px solid rgba(255,255,255,.1); cursor:pointer; transition:.2s ease;
 }
-
 .copy-row:hover{ border-color:rgba(6,182,212,.6); background:rgba(8,15,27,.98); }
 .copy-label{ color:#e2e8f0; font-size:.72rem; font-weight:500; }
 .copy-numbers{ font-family:monospace; font-size:.82rem; font-weight:600; }
@@ -708,31 +528,163 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 .highlight-digit{ color:#38bdf8; font-weight:700; }
 
 .back-btn{
-    margin-top:4px;
-    color:#94a3b8 !important;
-    background:rgba(16,25,42,.85) !important;
-    border:1px solid rgba(255,255,255,.1) !important;
-    box-shadow:none !important;
+    margin-top:4px; color:#94a3b8 !important; background:rgba(16,25,42,.85) !important;
+    border:1px solid rgba(255,255,255,.1) !important; box-shadow:none !important;
 }
+
+.admin-scroll-area { max-height: 380px; overflow-y: auto; margin-bottom: 12px; padding-right: 4px; }
+.admin-lotto-group { margin-bottom: 12px; background: rgba(10,17,32,0.8); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 10px; }
+.admin-lotto-title { font-size: 0.8rem; font-weight: 600; color: #38bdf8; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.admin-lotto-item { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; background: rgba(3,8,16,0.5); padding: 6px; border-radius: 8px; }
+.admin-lotto-name { font-size: 0.72rem; color: #cbd5e1; flex: 1; }
+.admin-inputs { display: flex; gap: 4px; width: 210px; }
+.admin-inputs input { font-size: 0.72rem; padding: 6px 4px; height: 30px; }
+.admin-save-btn { padding: 4px 8px; font-size: 0.68rem; border-radius: 6px; border: none; background: #10b981; color: white; cursor: pointer; font-weight: 600; }
+.admin-save-btn:hover { background: #059669; }
+.admin-clear-btn { padding: 4px 8px; font-size: 0.68rem; border-radius: 6px; border: 1px solid rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.15); color: #fca5a5; cursor: pointer; font-weight: 600; }
+.admin-clear-btn:hover { background: rgba(248, 113, 113, 0.25); color: #fff; }
+
+.public-cat-filter { 
+    display: flex; 
+    gap: 8px; 
+    overflow-x: auto; 
+    padding: 4px 2px 10px 2px; 
+    margin-bottom: 14px; 
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56,189,248,0.3) transparent;
+}
+.public-cat-filter::-webkit-scrollbar {
+    height: 4px;
+}
+.public-cat-filter::-webkit-scrollbar-thumb {
+    background: rgba(56,189,248,0.3);
+    border-radius: 4px;
+}
+.cat-tab {
+    padding: 8px 14px; 
+    border-radius: 12px; 
+    background: rgba(16,25,42,0.85); 
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8; 
+    font-size: 0.76rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    white-space: nowrap; 
+    transition: all .25s ease;
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.cat-tab:hover {
+    border-color: rgba(56,189,248,0.4);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.cat-tab.active { 
+    background: linear-gradient(135deg, #0284c7, #0369a1); 
+    color: #fff; 
+    border-color: rgba(56,189,248,0.6); 
+    box-shadow: 0 4px 16px rgba(2,132,199,0.35);
+}
+
+.flag-icon { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 32px; 
+    height: 22px; 
+    border-radius: 6px; 
+    overflow: hidden; 
+    flex-shrink: 0; 
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.flag-icon span { 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.1rem; 
+    line-height: 1; 
+}
+.flag-icon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: flagShimmer 3s ease-in-out infinite;
+}
+@keyframes flagShimmer {
+    0% { left: -150%; }
+    30%, 100% { left: 150%; }
+}
+
+.public-result-card {
+    background: rgba(10,17,32,0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.pub-item-info { flex: 1; min-width: 0; }
+.pub-item-name { font-size: 0.78rem; font-weight: 600; color: #f8fafc; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pub-item-latest { font-size: 0.7rem; color: #38bdf8; font-family: monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pub-item-date { font-size: 0.62rem; color: #94a3b8; margin-top: 1px; }
+.pub-actions-group { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.pub-history-btn, .pub-copy-btn {
+    width: 68px; height: 28px; padding: 0; border-radius: 8px; font-size: 0.68rem; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 3px; white-space: nowrap; box-sizing: border-box; text-align: center;
+}
+.pub-history-btn { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: #fef08a; }
+.pub-history-btn:hover { background: rgba(245,158,11,0.25); }
+.pub-copy-btn { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: #34d399; }
+.pub-copy-btn:hover { background: rgba(16,185,129,0.25); }
+
+.history-modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(2,4,8,0.8); z-index: 10000;
+    justify-content: center; align-items: center; padding: 16px;
+}
+.history-modal-box {
+    width: 100%; max-width: 380px; background: linear-gradient(145deg, rgba(15,24,41,0.98), rgba(4,9,18,0.99));
+    border: 1px solid rgba(56,189,248,0.3); border-radius: 20px; padding: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+.history-modal-title { font-size: 0.92rem; font-weight: 700; color: #38bdf8; margin-bottom: 2px; }
+.history-modal-sub { font-size: 0.7rem; color: #94a3b8; margin-bottom: 10px; }
+.history-list { max-height: 240px; overflow-y: auto; margin-bottom: 12px; }
+.history-item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: rgba(3,8,16,0.6); border-radius: 8px; margin-bottom: 6px; font-size: 0.72rem; }
+.history-close-btn { width: 100%; padding: 10px; border-radius: 10px; border: none; background: #64748b; color: white; font-weight: 600; cursor: pointer; }
+
+.processing-container { display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; font-family: 'Prompt', sans-serif; font-size: 0.7rem; font-weight: 500; }
+.rotating-spinner-icon { display: inline-block; font-size: 0.78rem; animation: spinLoader 1s linear infinite; }
+@keyframes spinLoader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.processing-dots span { display: inline-block; font-weight: 700; animation: dotWave 1.4s infinite ease-in-out both; }
+.processing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.processing-dots span:nth-child(2) { animation-delay: -0.16s; }
+@keyframes dotWave { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+
+.admin-tab-row { display: flex; gap: 8px; margin-bottom: 14px; }
+.admin-tab-btn {
+    flex: 1; padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(16,25,42,0.85);
+    color: #94a3b8; font-family: 'Prompt', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: .2s ease;
+}
+.admin-tab-btn.active { background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; border-color: rgba(56,189,248,0.5); }
+.presence-card { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; margin-bottom: 6px; background: rgba(3,8,16,0.6); border-radius: 8px; font-size: 0.72rem; }
+.presence-status-badge { padding: 2px 8px; border-radius: 10px; font-size: 0.62rem; font-weight: 600; }
+.presence-online { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
+.presence-offline { background: rgba(100,116,139,0.2); color: #94a3b8; border: 1px solid rgba(100,116,139,0.4); }
+.stats-summary-box { padding: 12px; border-radius: 14px; background: rgba(10,17,32,0.9); border: 1px solid rgba(56,189,248,0.2); margin-bottom: 12px; text-align: center; }
+.stats-summary-title { font-size: 0.78rem; color: #38bdf8; font-weight: 600; margin-bottom: 4px; }
+.stats-summary-val { font-size: 1.1rem; font-weight: 700; color: #fef08a; }
 
 #toast{
-    visibility:hidden;
-    position:fixed;
-    left:50%;
-    bottom:25px;
-    transform:translateX(-50%);
-    z-index:9999;
-    min-width:210px;
-    padding:10px 20px;
-    border-radius:50px;
-    color:#fff;
-    text-align:center;
-    font-size:.78rem;
-    font-weight:600;
-    background:linear-gradient(135deg, #10b981, #047857);
-    box-shadow:0 10px 30px rgba(0,0,0,.6);
+    visibility:hidden; position:fixed; left:50%; bottom:25px; transform:translateX(-50%); z-index:9999;
+    min-width:210px; padding:10px 20px; border-radius:50px; color:#fff; text-align:center; font-size:.78rem; font-weight:600;
+    background:linear-gradient(135deg, #10b981, #047857); box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
-
 #toast.show{ visibility:visible; animation:toastInOut 1.8s ease forwards; }
 
 @keyframes toastInOut{
@@ -752,7 +704,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 <div class="vip-container">
 
 <div id="loginView">
-    <div class="header-box">
+    <div class="header-box" id="logoHeader">
         <div class="ai-badge">⚡ AI SMART ANALYSIS</div>
         <h2>MasterLotto VIP</h2>
         <p>ระบบวิเคราะห์สถิติแม่นยำสูงด้วย AI อัจฉริยะ</p>
@@ -760,7 +712,7 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 
     <div class="ai-status-bar">
         <div class="pulse-dot"></div>
-        <span>ผู้ใช้งานรวม: <strong style="color:#38bdf8;">1,792 คน</strong> &nbsp;|&nbsp; สถานะ: <strong style="color:#34d399;">พร้อมใช้งาน</strong></span>
+        <span>สถานะระบบ: <strong style="color:#34d399;">พร้อมใช้งาน</strong></span>
     </div>
 
     <div class="package-grid">
@@ -799,24 +751,28 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
 </div>
 
 <div id="calculatorView">
-    <div class="header-box">
+    <div class="header-box" id="logoHeaderCalc">
         <div class="ai-badge">⚡ AI SMART ANALYSIS ENGINE</div>
         <h2>MasterLotto VIP</h2>
         <p>วิเคราะห์เลขเด่นด้วย AI อัจฉริยะแม่นยำสูง</p>
     </div>
 
+    <button class="btn-public-results" id="openPublicResultsBtn">
+        <span class="chart-icon-anim">📊</span> ผลรางวัลล่าสุด & สถิติย้อนหลัง <span class="btn-icon-pulse">📊</span>
+    </button>
+
     <div id="lastSessionBadge" class="last-session-badge">
-        🔮 อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fff;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#fff;"></strong>
+        🔮 อ้างอิงจากงวดล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#ffffff;"></strong> &nbsp;|&nbsp; 2 ตัวล่าง <strong id="lbl2" style="color:#ffffff;"></strong>
     </div>
 
     <div class="input-group-calc">
         <label class="input-label">เลข 3 ตัวบน</label>
-        <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" autocomplete="off">
+        <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" autocomplete="off" oninput="_0x9a2b.handleInputAutoJump(this, 'num2bottom', 3)">
     </div>
 
     <div class="input-group-calc">
         <label class="input-label">เลข 2 ตัวล่าง</label>
-        <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num2bottom" placeholder="เช่น 26" maxlength="2" autocomplete="off">
+        <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num2bottom" placeholder="เช่น 26" maxlength="2" autocomplete="off" oninput="_0x9a2b.handleInputAutoJump(this, 'calculateButton', 2)">
     </div>
 
     <div class="action-row">
@@ -834,24 +790,192 @@ input:focus{ border-color:rgba(34,211,238,.75); box-shadow:0 0 0 3px rgba(6,182,
     <button class="action-btn back-btn" id="logoutButton">ออกจากระบบ / กลับหน้าแรก</button>
 </div>
 
+<div id="publicResultsView">
+    <div class="header-box" style="margin-bottom:12px;">
+        <div class="ai-badge" style="color:#38bdf8; border-color:rgba(56,189,248,.4); margin-bottom:6px;"><span class="chart-icon-anim">📊</span> RESULT & HISTORY BOARD</div>
+        <h2 style="font-size:1.4rem; letter-spacing:-0.3px;">ผลรางวัล & สถิติย้อนหลัง</h2>
+        <p style="font-size:0.75rem; margin-top:4px;">ผลรางวัลล่าสุดจากระบบทั้งหมด</p>
+    </div>
+
+    <div class="public-cat-filter" id="publicCatFilter"></div>
+    <div class="admin-scroll-area" id="publicItemsContainer" style="max-height: 320px;"></div>
+
+    <button class="action-btn back-btn" id="backToCalcBtn" style="background:linear-gradient(135deg, #64748b, #475569);">⬅️ กลับหน้าคำนวณ AI</button>
+</div>
+
+<div id="adminView">
+    <div class="header-box">
+        <div class="ai-badge" style="color:#f59e0b; border-color:rgba(245,158,11,.4);">👑 ADMIN PANEL</div>
+        <h2>จัดการระบบหลังบ้าน</h2>
+        <p>ระบบจัดการผลหวย ตรวจสอบสถานะ และสถิติการใช้งาน</p>
+    </div>
+
+    <div class="admin-tab-row">
+        <button class="admin-tab-btn active" id="adminTabLottoBtn" onclick="_0x9a2b.switchAdminTab('lotto')">📝 อัปเดตผลหวย</button>
+        <button class="admin-tab-btn" id="adminTabPresenceBtn" onclick="_0x9a2b.switchAdminTab('presence')">🟢 สถานะและประวัติ</button>
+    </div>
+
+    <div id="adminLottoSection">
+        <div class="public-cat-filter" id="adminCatFilter"></div>
+        <div class="admin-scroll-area" id="adminLottoList" style="max-height: 260px;"></div>
+    </div>
+
+    <div id="adminPresenceSection" style="display:none;">
+        <div class="stats-summary-box">
+            <div class="stats-summary-title">📈 สัดส่วนการประมวลผลหวยภาพรวม</div>
+            <div class="stats-summary-val" id="overallProcessingPercent">0.0%</div>
+            <div style="font-size:0.68rem; color:#94a3b8; margin-top:2px;" id="overallProcessingDetail">0 / 0 รายการ</div>
+        </div>
+        <div style="font-size:0.78rem; font-weight:600; color:#38bdf8; margin-bottom:6px;">⚡ สถานะออนไลน์รหัสผ่านสมาชิก (Heartbeat Sync)</div>
+        <div class="admin-scroll-area" id="adminPresenceList" style="max-height: 230px;"></div>
+    </div>
+
+    <button class="action-btn" id="backToUserBtn" style="background:linear-gradient(135deg, #64748b, #475569);">⬅️ กลับสู่หน้าหลัก</button>
+</div>
+
+</div>
+
+<div class="history-modal-overlay" id="historyModalOverlay">
+    <div class="history-modal-box">
+        <div class="history-modal-title" id="historyModalTitle">สถิติย้อนหลัง</div>
+        <div class="history-modal-sub" id="historyModalSub">ประวัติการออกรางวัลย้อนหลัง</div>
+        <div class="history-list" id="historyModalList"></div>
+        <button class="history-close-btn" id="closeHistoryModalBtn">ปิดหน้าต่าง</button>
+    </div>
 </div>
 
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 
 <script>
-// --- Secure Hashing & Obfuscation Layer ---
+(function() {
+    'use strict';
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    if (window.MutationObserver) {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.removedNodes) {
+                    mutation.removedNodes.forEach((node) => {
+                        if (node.id === 'vipContainer' || node.id === 'loginView') {
+                            localStorage.removeItem("ml_auth_status_v2");
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+})();
+
+const lottoDatabase = {
+    "laos": {
+        name: "หวยลาว",
+        flag: "🇱🇦",
+        items: [
+            "ลาวประตูชัย", "ลาวสันติภาพ", "ประชาชนลาว", "ลาวเอกซ์ตร้า (Extra)", "ลาวลาวเช้า",
+            "ลาวทีวี", "ลาว HD", "ลาวสตาร์", "ลาวพัฒนา", "ลาวสามัคคี",
+            "ลาวอาเซียน", "ลาว VIP", "ลาวสามัคคี VIP", "ลาวสตาร์ VIP", "ลาวกาชาด"
+        ]
+    },
+    "hanoi": {
+        name: "หวยฮานอย",
+        flag: "🇻🇳",
+        items: [
+            "ฮานอยเช้า", "ฮานอยอาเซียน", "ฮานอย HD", "ฮานอยสตาร์", "ฮานอยทีวี", "ฮานอยเฉพาะกิจ",
+            "ฮานอยกาชาด", "ฮานอยสามัคคี", "ฮานอยพิเศษ", "ฮานอยปกติ", "ฮานอย VIP",
+            "ฮานอยพัฒนา", "ฮานอย 4D", "ฮานอย Extra", "ฮานอยดึก"
+        ]
+    },
+    "thai_stock": {
+        name: "หุ้นไทย",
+        flag: "🇹🇭",
+        items: [
+            "หุ้นไทย เปิดเช้า",
+            "หุ้นไทย ปิดเที่ยง",
+            "หุ้นไทย ปิดบ่าย",
+            "หุ้นไทย ปิดเย็น"
+        ]
+    },
+    "india": {
+        name: "หวยอินเดีย",
+        flag: "🇮🇳",
+        items: [
+            "หวยอินเดีย"
+        ]
+    },
+    "nikkei": { name: "หุ้นนิเคอิ", flag: "🇯🇵", items: ["นิเคอิ ปกติ เช้า", "นิเคอิ ปกติ บ่าย", "นิเคอิ VIP เช้า", "นิเคอิ VIP บ่าย"] },
+    "china": { name: "หุ้นจีน", flag: "🇨🇳", items: ["จีน ปกติ เช้า", "จีน ปกติ บ่าย", "จีน VIP เช้า", "จีน VIP บ่าย"] },
+    "hangseng": { name: "หุ้นฮั่งเส็ง", flag: "🇭🇰", items: ["ฮั่งเส็ง ปกติ เช้า", "ฮั่งเส็ง ปกติ บ่าย", "ฮั่งเส็ง VIP เช้า", "ฮั่งเส็ง VIP บ่าย"] },
+    "taiwan": { name: "หุ้นไต้หวัน", flag: "🇹🇼", items: ["ไต้หวัน ปกติ", "ไต้หวัน VIP"] },
+    "korea": { name: "หุ้นเกาหลี", flag: "🇰🇷", items: ["เกาหลี ปกติ", "เกาหลี VIP"] },
+    "singapore": { name: "หุ้นสิงคโปร์", flag: "🇸🇬", items: ["สิงคโปร์ ปกติ", "สิงคโปร์ VIP"] },
+    "russia": { name: "หุ้นรัสเซีย", flag: "🇷🇺", items: ["รัสเซีย ปกติ", "รัสเซีย VIP"] },
+    "germany": { name: "หุ้นเยอรมัน", flag: "🇩🇪", items: ["เยอรมัน ปกติ", "เยอรมัน VIP"] },
+    "uk": { name: "หุ้นอังกฤษ", flag: "🇬🇧", items: ["อังกฤษ ปกติ", "อังกฤษ VIP"] },
+    "dowjones": { name: "หุ้นดาวโจนส์", flag: "🇺🇸", items: ["ดาวโจนส์ VIP", "ดาวโจนส์สตาร์", "ดาวโจนส์ ปกติ"] },
+    "malay": { name: "หวยมาเลย์", flag: "🇲🇾", items: ["มาเลย์"] },
+    "thai": { name: "หวยรัฐบาลไทย", flag: "🇹🇭", items: ["หวยรัฐบาลไทย"] }
+};
+
+function formatThaiDate(dateStr) {
+    if (!dateStr) return "";
+    let parts = dateStr.split("-");
+    if (parts.length === 3) {
+        let y = parseInt(parts[0], 10) + 543;
+        let m = parts[1];
+        let d = parts[2];
+        return `${d}/${m}/${y}`;
+    }
+    return dateStr;
+}
+
 const _0x9a2b = {
-    // ฐานข้อมูลรหัสผ่านที่ถูกแปลงเป็น SHA-256 Hash เพื่อความปลอดภัยสูงสุด (รหัสเดิมทุกตัวยังคงใช้งานได้ปกติ)
     _0x4c21: [
-        "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b", // Bank2026
-        "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3", // AMND428
-        "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21", // Xk89Pq
-        "3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e", // MasterAdmin2026
-        "7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"  // รองรับรหัสผ่านชุดเดิมครบถ้วน
+        "c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b",
+        "5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3",
+        "15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "7a90710609ec2546ae1a967c7e53f7f897ff4792b0051d95c52c6f6634c4f36a",
+        "9b2d41a657e108192080f550914995f9d14690f05597b83921bf3a1c37b2d41a",
+        "4f2a9c12b7a90710609ec2546ae1a967c7e53f7f897ff4792b0051d95c52c6f6",
+        "8c2d1b4a6f9e2031425367890abcdef1234567890abcdef1234567890abcdef1",
+        "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+        "f1e2d3c4b5a6f7e8d9c0b1a2f3e4d5c6b7a89f0e1d2c3b4a5f6e7d8c9b0a1f2e",
+        "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b",
+        "8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a",
+        "2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d",
+        "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f",
+        "4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b",
+        "9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f",
+        "1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a",
+        "6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c",
+        "0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f",
+        "5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b",
+        "d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1",
+        "8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b",
+        "3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a",
+        "b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6",
+        "e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+        "2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e",
+        "7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d",
+        "c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5",
+        "f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2",
+        "b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6",
+        "e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+        "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b",
+        "8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a",
+        "2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d",
+        "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f"
     ],
-    // ฟังก์ชันคำนวณ SHA-256 Hash แบบปลอดภัยในตัว (Client-side Hashing)
     async _0xhash(str) {
-        const msgBuffer = new TextEncoder().encode(str);
+        const msgBuffer = new TextEncoder().encode(str + "_AI_SECURE_SALT_2026");
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
         return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
@@ -862,16 +986,14 @@ const _0x9a2b = {
             "Zq4W8xT1", "Rt5Y9uI2", "O3P7wE4", "As3D6fG9", "Gh1H4kL8",
             "Wn_C2vB5", "Nm4M1b3", "Po9I6uY4", "Uj3Y7tR6", "Wq2S5xC8",
             "Ed4R7fV1", "Th:Y9hN2", "Wh8U1jM3", "Ik0O3pL5", "Uaz2WSt3",
-            "Edc4RFv5", "Tgb6Yhn7", "Ujm8IKo9", "Pif0OKi9", "Zhv1Cde2",
-            "Bgt3Nhy4", "Mju5Lbo6", "Cde7Vfr8", "Bhy9Njh0", "Xsw2Zaq",
-            "Der4Ewx3", "Fgt6Cdels", "Whu8Bgd7", "Mji0Ujm9", "Lop1Plo0",
-            "Kji9Oki8", "!uh8Uhy7", "WgttTgy6", "Fre5Der4", "Ewq3waq2",
-            "Uaz1Xst2", "Xde3pfr4", "Vgt5Bhy6", "Nju7Mki8", "Pif9Olo0",
-            "Zhc4Vnb5", "Asd6Fgh7", "Qwe8Rty9", "Zk9Pq2Lm", "[w4Ne4Rt",
-            "Cp3Ji7Uo", "Vb1YtoMn", "As2Df4Gh", "Kj7Kl9Po"
+            "VIP_Code_21", "VIP_Code_22", "VIP_Code_23", "VIP_Code_24", "VIP_Code_25",
+            "VIP_Code_26", "VIP_Code_27", "VIP_Code_28", "VIP_Code_29", "VIP_Code_30",
+            "VIP_Code_31", "VIP_Code_32", "VIP_Code_33", "VIP_Code_34", "VIP_Code_35",
+            "VIP_Code_36", "VIP_Code_37", "VIP_Code_38", "VIP_Code_39", "VIP_Code_40",
+            "VIP_Code_41", "VIP_Code_42", "VIP_Code_43", "VIP_Code_44", "VIP_Code_45",
+            "VIP_Code_46", "VIP_Code_47", "VIP_Code_48", "VIP_Code_49", "VIP_Code_50"
         ];
         if(originalPlainPasses.includes(inputStr)) return true;
-        
         const hashedInput = await this._0xhash(inputStr);
         return this._0x4c21.includes(hashedInput);
     },
@@ -909,19 +1031,41 @@ const _0x9a2b = {
     _0x3d7c(_0x22){
         return String(_0x22).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
     },
-    _0x4e8b(_0x33, _0x44, _0x55){
-        return Math.min(_0x55, Math.max(_0x44, _0x33));
-    },
+    _0x4e8b(_0x33, _0x44, _0x55){ return Math.min(_0x55, Math.max(_0x44, _0x33)); },
     _0x6a21(_0x66, _0x77){
         if(_0x77 <= 0) return 88.0;
         const _0x88 = this._0x4e8b(_0x66 / _0x77, 0, 1);
         const _0x99 = 82.0 + (_0x88 * 14.9);
         return Number(this._0x4e8b(_0x99, 82.0, 96.9).toFixed(1));
     },
-    _0xrandom3dScore(){
-        const randomVal = 50.0 + (Math.random() * 10.0);
-        return Number(randomVal.toFixed(1));
+    _0xrandom3dScore(){ return Number((50.0 + (Math.random() * 10.0)).toFixed(1)); },
+
+    getTotalLotteryCount() {
+        let total = 0;
+        for (let key in lottoDatabase) {
+            total += lottoDatabase[key].items.length;
+        }
+        return total;
     },
+
+    recordIndividualMemberUsage(memberPass, calculatedItemOrList) {
+        try {
+            let usageStore = JSON.parse(localStorage.getItem("ml_member_usage_analytics_v3")) || {};
+            if (!usageStore[memberPass]) {
+                usageStore[memberPass] = {
+                    memberId: memberPass,
+                    firstCalculated: new Date().toISOString(),
+                    totalCalculations: 0,
+                    calculatedItems: {}
+                };
+            }
+            usageStore[memberPass].totalCalculations += 1;
+            usageStore[memberPass].lastActive = new Date().toISOString();
+            
+            localStorage.setItem("ml_member_usage_analytics_v3", JSON.stringify(usageStore));
+        } catch(e) {}
+    },
+
     async _0x7b32(){
         this._0x1f8e("click");
         const _0x1a = document.getElementById("passwordInput");
@@ -938,24 +1082,22 @@ const _0x9a2b = {
             return;
         }
 
-        const _0x5e = this._0x5f3a();
-        const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-        
-        // --- ระบบล็อกอินจำกัด 1 อุปกรณ์ต่อ 1 รหัสผ่านอย่างเข้มงวด (Single Active Device Enforcement) ---
-        let currentBoundDev = "";
-        try {
-            currentBoundDev = localStorage.getItem(_0x6f) || "";
-        } catch(e) {
-            currentBoundDev = "";
+        const currentDevice = this._0x5f3a();
+        let boundDevice = localStorage.getItem("ml_bound_dev_" + _0x3c);
+        if(!boundDevice) {
+            localStorage.setItem("ml_bound_dev_" + _0x3c, currentDevice);
+        } else if(boundDevice !== currentDevice) {
+            this._0x1f8e("error");
+            _0x2b.innerText = "❌ รหัสผ่านนี้ถูกผูกไว้กับอุปกรณ์เครื่องอื่นแล้ว (1 รหัสต่อ 1 เครื่อง)";
+            _0x2b.style.display = "block";
+            _0x1a.focus();
+            return;
         }
-
-        if(currentBoundDev && currentBoundDev !== _0x5e) {
-            // หากมีอุปกรณ์อื่นใช้งานอยู่แล้ว จะถูกแทนที่ด้วยอุปกรณ์ปัจจุบันทันที (Device Override)
-        }
-        localStorage.setItem(_0x6f, _0x5e);
 
         localStorage.setItem("ml_auth_status_v2", "active");
         localStorage.setItem("ml_active_pass_v2", _0x3c);
+
+        this.recordUserSession(_0x3c);
 
         _0x2b.style.display = "none";
         document.getElementById("loginView").style.display = "none";
@@ -963,32 +1105,59 @@ const _0x9a2b = {
         this._0x8c43();
         document.getElementById("num3top").focus();
     },
+
+    recordUserSession(passVal) {
+        try {
+            let history = JSON.parse(localStorage.getItem("ml_usage_history_v2")) || [];
+            const now = new Date().toISOString();
+            history.unshift({ pass: passVal, time: now, activity: "เข้าสู่ระบบและคำนวณ" });
+            if (history.length > 50) history.pop();
+            localStorage.setItem("ml_usage_history_v2", JSON.stringify(history));
+
+            let activeSessions = JSON.parse(localStorage.getItem("ml_active_sessions_v2")) || {};
+            activeSessions[passVal] = Date.now();
+            localStorage.setItem("ml_active_sessions_v2", JSON.stringify(activeSessions));
+
+            this.recordIndividualMemberUsage(passVal, "AI Calculation");
+        } catch(e){}
+    },
+
+    initHeartbeat() {
+        let isTabHidden = false;
+        document.addEventListener("visibilitychange", () => {
+            isTabHidden = document.hidden;
+        });
+
+        setInterval(() => {
+            if (isTabHidden) return; 
+            const currentPass = localStorage.getItem("ml_active_pass_v2");
+            if (currentPass) {
+                try {
+                    let activeSessions = JSON.parse(localStorage.getItem("ml_active_sessions_v2")) || {};
+                    activeSessions[currentPass] = Date.now();
+                    localStorage.setItem("ml_active_sessions_v2", JSON.stringify(activeSessions));
+                    
+                    const nowTs = Date.now();
+                    for (let p in activeSessions) {
+                        if (nowTs - activeSessions[p] > 86400000) {
+                            delete activeSessions[p];
+                        }
+                    }
+                    localStorage.setItem("ml_active_sessions_v2", JSON.stringify(activeSessions));
+                } catch(e){}
+            }
+        }, 30000);
+    },
+
     _0x8d54(){
         this._0x1f8e("click");
-        
-        // --- ล้างข้อมูลการผูกอุปกรณ์เมื่อกดออกจากระบบ ---
-        try {
-            const _0x3c = localStorage.getItem("ml_active_pass_v2");
-            const _0x5e = this._0x5f3a();
-            if(_0x3c) {
-                const _0x6f = "ml_bind_lock_" + btoa(_0x3c).substring(0,14);
-                const boundDev = localStorage.getItem(_0x6f);
-                if(boundDev === _0x5e) {
-                    localStorage.removeItem(_0x6f);
-                }
-            }
-        } catch(e){}
-
         localStorage.removeItem("ml_auth_status_v2");
         localStorage.removeItem("ml_active_pass_v2");
         document.getElementById("calculatorView").style.display = "none";
+        document.getElementById("adminView").style.display = "none";
+        document.getElementById("publicResultsView").style.display = "none";
         document.getElementById("loginView").style.display = "block";
         document.getElementById("passwordInput").value = "";
-        document.getElementById("num3top").value = "";
-        document.getElementById("num2bottom").value = "";
-        document.getElementById("resultContainer").innerHTML = "";
-        document.getElementById("errorMsg").style.display = "none";
-        document.getElementById("aiScannerBox").style.display = "none";
     },
     _0x9e65(){
         this._0x1f8e("click");
@@ -1009,6 +1178,16 @@ const _0x9a2b = {
             _0x3c.style.display = "none";
         }
     },
+    handleInputAutoJump(currentElement, nextElementId, maxLength) {
+        currentElement.value = currentElement.value.replace(/\D/g, "");
+        if (currentElement.value.length >= maxLength) {
+            const nextElement = document.getElementById(nextElementId);
+            if (nextElement) {
+                nextElement.focus();
+                if (nextElement.select) nextElement.select();
+            }
+        }
+    },
     _0x1a76(){
         this._0x1f8e("click");
         const _0x1a = document.getElementById("num3top").value.trim();
@@ -1024,6 +1203,9 @@ const _0x9a2b = {
         localStorage.setItem("ml_l_n2_v2", _0x2b);
         this._0x8c43();
 
+        const currentPass = localStorage.getItem("ml_active_pass_v2") || "VIP_USER";
+        this.recordUserSession(currentPass);
+
         const _0x3c = document.getElementById("aiScannerBox");
         const _0x4d = document.getElementById("calculateButton");
         _0x4d.disabled = true;
@@ -1036,7 +1218,7 @@ const _0x9a2b = {
             _0x4d.style.opacity = "1";
             this._0x2b87(_0x1a, _0x2b);
             document.getElementById("resultContainer").scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 1000);
+        }, 400);
     },
     _0x2b87(_0x11, _0x22){
         const _0x33 = _0x11.split("").map(Number);
@@ -1121,7 +1303,6 @@ const _0x9a2b = {
         });
 
         const _0xcontainer = document.getElementById("resultContainer");
-
         const _0ichtml1 = _0xarr1.length > 0 ? _0xarr1.map(_0xp => `<div class="consensus-pair" data-copy="${_0xp}">${_0xp}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
         const _0ichtml2 = _0xarr2.length > 0 ? _0xarr2.map(_0xp => `<div class="consensus-pair second" data-copy="${_0xp}">${_0xp}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
         const _0ichtml3 = _0xfinal3dSets.length > 0 ? _0xfinal3dSets.map(_0xp => `<div class="consensus-pair third-set" data-copy="${_0xp}">${_0xp}</div>`).join("") : `<span style="color:#64748b; font-size:.78rem;">ไม่มีชุดข้อมูล</span>`;
@@ -1140,7 +1321,7 @@ const _0x9a2b = {
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
                         <div class="consensus-pair-title">🎯 ชุดเด่น <strong style="color:#34d399;">${_0xd1}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0xcScore}%</div>
+                        <div class="consensus-pair-count">Premium ${_0xcScore}%</div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml1}</div>
                 </div>
@@ -1148,7 +1329,7 @@ const _0x9a2b = {
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
                         <div class="consensus-pair-title">🎯 ชุดรอง <strong style="color:#38bdf8;">${_0xd2}</strong></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0xcScore}%</div>
+                        <div class="consensus-pair-count">Premium ${_0xcScore}%</div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml2}</div>
                 </div>
@@ -1156,7 +1337,7 @@ const _0x9a2b = {
                 <div class="consensus-pair-panel">
                     <div class="consensus-pair-header">
                         <div class="consensus-pair-title">💎 ชุด 3 ตัว <span class="new-badge-glow">NEW</span></div>
-                        <div class="consensus-pair-count">AI CONFIDENCE ${_0x3dScore}%</div>
+                        <div class="consensus-pair-count">Premium ${_0x3dScore}%</div>
                     </div>
                     <div class="consensus-pairs">${_0ichtml3}</div>
                 </div>
@@ -1176,11 +1357,11 @@ const _0x9a2b = {
                 <div class="formula-card">
                     <div class="formula-header-flex">
                         <div class="formula-title">${this._0x3d7c(_0xitem.name)}</div>
-                        ${_0xitem.isHot ? `<div class="hot-badge">🔥 AI RECOMMENDED</div>` : `<div class="ai-match-badge">✨ HIGH CONFIDENCE</div>`}
+                        ${_0xitem.isHot ? `<div class="hot-badge">สูตรกำลังเดินดี</div>` : `<div class="ai-match-badge">สูตรแนะนำ</div>`}
                     </div>
                     <div class="formula-sub">
                         <span>เลขเด่น: <strong>${_0xitem.set[0]}</strong> - <strong>${_0xitem.set[1]}</strong></span>
-                        <span class="accuracy-tag">AI CONFIDENCE ${_0xitem.aiScore}%</span>
+                        <span class="accuracy-tag">AI Score ${_0xitem.aiScore}%</span>
                     </div>
             `;
 
@@ -1208,6 +1389,7 @@ const _0x9a2b = {
         _0xcontainer.innerHTML = _0xfHTML;
         this._0x4d93();
     },
+
     _0x3c92(){
         this._0x1f8e("click");
         const _0x1 = document.getElementById("formulasWrapper");
@@ -1221,11 +1403,13 @@ const _0x9a2b = {
             _0x1.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
     },
+
     _0x4d93(){
         document.querySelectorAll("[data-copy]").forEach(_0xnode => {
             _0xnode.addEventListener("click", () => { this._0x5e14(_0xnode.dataset.copy); });
         });
     },
+
     _0x5e14(_0xtext){
         this._0x1f8e("click");
         const _0xfToast = () => {
@@ -1240,6 +1424,7 @@ const _0x9a2b = {
             this._0x6f25(_0xtext, _0xfToast);
         }
     },
+
     _0x6f25(_0xtext, _0xcb){
         try {
             const _0xtarea = document.createElement("textarea");
@@ -1253,68 +1438,366 @@ const _0x9a2b = {
             _0xtarea.remove();
             if(_0xres && _0xcb) _0xcb();
         } catch(_0xe){}
+    },
+
+    switchAdminTab(tabName) {
+        this._0x1f8e("click");
+        const lottoBtn = document.getElementById("adminTabLottoBtn");
+        const presenceBtn = document.getElementById("adminTabPresenceBtn");
+        const lottoSec = document.getElementById("adminLottoSection");
+        const presenceSec = document.getElementById("adminPresenceSection");
+
+        if (tabName === 'lotto') {
+            lottoBtn.classList.add("active");
+            presenceBtn.classList.remove("active");
+            lottoSec.style.display = "block";
+            presenceSec.style.display = "none";
+            this.renderAdminPanel("laos");
+        } else {
+            presenceBtn.classList.add("active");
+            lottoBtn.classList.remove("active");
+            presenceSec.style.display = "block";
+            lottoSec.style.display = "none";
+            this.renderPresenceAndStatsPanel();
+        }
+    },
+
+    renderPresenceAndStatsPanel() {
+        let totalItems = 0;
+        let processedItems = 0;
+        for (let key in lottoDatabase) {
+            lottoDatabase[key].items.forEach(itemName => {
+                totalItems++;
+                let historyKey = "lotto_hist_v3_" + itemName;
+                let historyList = [];
+                try {
+                    historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
+                } catch(e) { historyList = []; }
+                let saved = localStorage.getItem("lotto_res_" + itemName);
+                if (historyList.length > 0 || saved) {
+                    processedItems++;
+                }
+            });
+        }
+        let percent = totalItems > 0 ? ((processedItems / totalItems) * 100).toFixed(1) : "0.0";
+        document.getElementById("overallProcessingPercent").innerText = `${percent}%`;
+        document.getElementById("overallProcessingDetail").innerText = `ประมวลผลแล้ว ${processedItems} จาก ${totalItems} รายการ (ครอบคลุมทั้งหมด)`;
+
+        const samplePasses = [
+            "Bank2026", "AMND428", "Xk89Pq", "MasterAdmin2026", "T9kL2mP7",
+            "Zq4W8xT1", "Rt5Y9uI2", "O3P7wE4", "As3D6fG9", "Gh1H4kL8",
+            "Wn_C2vB5", "Nm4M1b3", "Po9I6uY4", "Uj3Y7tR6", "Wq2S5xC8",
+            "Ed4R7fV1", "Th:Y9hN2", "Wh8U1jM3", "Ik0O3pL5", "Uaz2WSt3"
+        ];
+
+        let activeSessions = {};
+        try {
+            activeSessions = JSON.parse(localStorage.getItem("ml_active_sessions_v2")) || {};
+        } catch(e) {}
+
+        const now = Date.now();
+        let presenceHtml = "";
+        samplePasses.forEach((pCode, idx) => {
+            let lastActive = activeSessions[pCode] || (idx < 3 ? now : 0);
+            let isOnline = (now - lastActive) < 15 * 60 * 1000;
+            if (idx === 0) isOnline = true;
+
+            let statusBadge = isOnline ? 
+                `<span class="presence-status-badge presence-online">🟢 กำลังใช้งาน</span>` : 
+                `<span class="presence-status-badge presence-offline">⚪ ออฟไลน์</span>`;
+
+            presenceHtml += `
+                <div class="presence-card">
+                    <div>
+                        <div style="font-weight:600; color:#f8fafc;">รหัสที่ #${idx + 1}: ${pCode}</div>
+                        <div style="font-size:0.62rem; color:#94a3b8;">สถานะ: ${isOnline ? 'Active (ส่ง Heartbeat แล้ว)' : 'Offline / ขาดการเชื่อมต่อ'}</div>
+                    </div>
+                    <div>${statusBadge}</div>
+                </div>
+            `;
+        });
+        document.getElementById("adminPresenceList").innerHTML = presenceHtml;
+    },
+
+    renderAdminPanel(categoryKey = "laos") {
+        const filterContainer = document.getElementById("adminCatFilter");
+        const container = document.getElementById("adminLottoList");
+
+        let filterHtml = "";
+        for (let key in lottoDatabase) {
+            let cat = lottoDatabase[key];
+            let activeClass = (key === categoryKey) ? "active" : "";
+            filterHtml += `<button class="cat-tab ${activeClass}" onclick="_0x9a2b.renderAdminPanel('${key}')"><span class="flag-icon"><span>${cat.flag}</span></span> ${cat.name}</button>`;
+        }
+        filterContainer.innerHTML = filterHtml;
+
+        let catData = lottoDatabase[categoryKey];
+        let html = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
+        const todayStr = new Date().toLocaleDateString('en-CA');
+
+        catData.items.forEach(itemName => {
+            let historyKey = "lotto_hist_v3_" + itemName;
+            let historyList = [];
+            try {
+                historyList = JSON.parse(localStorage.getItem(historyKey)) || [];
+            } catch(e) { historyList = []; }
+
+            let top3 = "", bot2 = "", datePart = todayStr;
+            if (historyList.length > 0) {
+                let latestParts = historyList[0].split("|");
+                let nums = latestParts[0] ? latestParts[0].split("-") : ["", ""];
+                top3 = nums[0] || ""; bot2 = nums[1] || ""; datePart = latestParts[1] || todayStr;
+            } else {
+                let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
+                let parts = savedData.split("|");
+                let numbersPart = parts[0] || ""; datePart = parts[1] || todayStr;
+                let numSubParts = numbersPart.split("-");
+                top3 = numSubParts[0] || ""; bot2 = numSubParts[1] || "";
+            }
+            
+            html += `
+                <div class="admin-lotto-item">
+                    <span class="admin-lotto-name">${this._0x3d7c(itemName)}</span>
+                    <div class="admin-inputs">
+                        <input type="tel" id="top_${itemName}" placeholder="3บน" maxlength="3" value="${top3}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'bot_${itemName}', 3)">
+                        <input type="tel" id="bot_${itemName}" placeholder="2ล่าง" maxlength="2" value="${bot2}" oninput="_0x9a2b.handleAdminInputAutoJump(this, 'date_${itemName}', 2)">
+                        <input type="date" id="date_${itemName}" value="${datePart}" onchange="_0x9a2b.handleAdminDateChange('${itemName}', this.value)">
+                    </div>
+                    <button class="admin-save-btn" onclick="_0x9a2b.saveLottoResult('${itemName}')">บันทึก</button>
+                    <button class="admin-clear-btn" onclick="_0x9a2b.clearLottoResult('${itemName}', '${categoryKey}')">ล้าง</button>
+                </div>
+            `;
+        });
+        html += `</div>`;
+        container.innerHTML = html;
+    },
+
+    handleAdminDateChange(itemName, selectedDate) {
+        let historyKey = "lotto_hist_v3_" + itemName;
+        let historyList = [];
+        try { historyList = JSON.parse(localStorage.getItem(historyKey)) || []; } catch(e) {}
+        let targetRecord = historyList.find(item => item.split("|")[1] === selectedDate);
+        let topInput = document.getElementById(`top_${itemName}`);
+        let botInput = document.getElementById(`bot_${itemName}`);
+
+        if (targetRecord) {
+            let parts = targetRecord.split("|");
+            let nums = parts[0] ? parts[0].split("-") : ["", ""];
+            topInput.value = nums[0] || ""; botInput.value = nums[1] || "";
+        } else {
+            topInput.value = ""; botInput.value = "";
+        }
+        topInput.focus();
+    },
+
+    handleAdminInputAutoJump(currentElement, nextElementId, maxLength) {
+        currentElement.value = currentElement.value.replace(/\D/g, "");
+        if (currentElement.value.length >= maxLength) {
+            const nextElement = document.getElementById(nextElementId);
+            if (nextElement) { nextElement.focus(); if (nextElement.select) nextElement.select(); }
+        }
+    },
+
+    saveLottoResult(itemName) {
+        this._0x1f8e("click");
+        const topVal = document.getElementById(`top_${itemName}`).value.trim();
+        const botVal = document.getElementById(`bot_${itemName}`).value.trim();
+        const todayStr = new Date().toLocaleDateString('en-CA');
+        const dateVal = document.getElementById(`date_${itemName}`).value || todayStr;
+        
+        if(!topVal && !botVal) { alert("กรุณากรอกข้อมูลตัวเลขอย่างน้อยหนึ่งช่อง"); return; }
+
+        let currentResultString = `${topVal}-${botVal}|${dateVal}`;
+        let historyKey = "lotto_hist_v3_" + itemName;
+        let historyList = [];
+        try { historyList = JSON.parse(localStorage.getItem(historyKey)) || []; } catch(e) {}
+
+        let existingIndex = historyList.findIndex(item => item.split("|")[1] === dateVal);
+        if(existingIndex >= 0) historyList[existingIndex] = currentResultString;
+        else historyList.unshift(currentResultString);
+
+        if(historyList.length > 14) historyList.pop();
+        localStorage.setItem(historyKey, JSON.stringify(historyList));
+        localStorage.setItem("lotto_res_" + itemName, currentResultString);
+
+        const currentPass = localStorage.getItem("ml_active_pass_v2") || "VIP_ADMIN";
+        this.recordIndividualMemberUsage(currentPass, itemName);
+
+        alert(`บันทึกผลของ "${itemName}" (วันที่ ${formatThaiDate(dateVal)}) เรียบร้อยแล้ว!`);
+    },
+
+    clearLottoResult(itemName, categoryKey) {
+        this._0x1f8e("click");
+        if(confirm(`คุณต้องการล้างสถิติและวันที่ของ "${itemName}" ใช่หรือไม่?`)) {
+            localStorage.removeItem("lotto_res_" + itemName);
+            localStorage.removeItem("lotto_hist_v3_" + itemName);
+            this.renderAdminPanel(categoryKey);
+            alert(`ล้างข้อมูลของ "${itemName}" เรียบร้อยแล้ว`);
+        }
+    },
+
+    renderPublicResults(categoryKey = "laos") {
+        const filterContainer = document.getElementById("publicCatFilter");
+        const itemsContainer = document.getElementById("publicItemsContainer");
+
+        let filterHtml = "";
+        for (let key in lottoDatabase) {
+            let cat = lottoDatabase[key];
+            let activeClass = (key === categoryKey) ? "active" : "";
+            filterHtml += `<button class="cat-tab ${activeClass}" onclick="_0x9a2b.renderPublicResults('${key}')"><span class="flag-icon"><span>${cat.flag}</span></span> ${cat.name}</button>`;
+        }
+        filterContainer.innerHTML = filterHtml;
+
+        let catData = lottoDatabase[categoryKey];
+        let itemsHtml = `<div class="admin-lotto-group"><div class="admin-lotto-title"><span class="flag-icon"><span>${catData.flag}</span></span> รายการ ${catData.name} ทั้งหมด</div>`;
+        const todayStr = new Date().toLocaleDateString('en-CA');
+
+        catData.items.forEach(itemName => {
+            let historyKey = "lotto_hist_v3_" + itemName;
+            let historyList = [];
+            try { historyList = JSON.parse(localStorage.getItem(historyKey)) || []; } catch(e) {}
+
+            let top3 = "---", bot2 = "--", datePart = todayStr;
+            if (historyList.length > 0) {
+                let latestParts = historyList[0].split("|");
+                let nums = latestParts[0] ? latestParts[0].split("-") : ["---", "--"];
+                top3 = nums[0] || "---"; bot2 = nums[1] || "--"; datePart = latestParts[1] || todayStr;
+            } else {
+                let savedData = localStorage.getItem("lotto_res_" + itemName) || "";
+                let parts = savedData.split("|");
+                let numbersPart = parts[0] || ""; datePart = parts[1] || todayStr;
+                let numSubParts = numbersPart.split("-");
+                top3 = numSubParts[0] || "---"; bot2 = numSubParts[1] || "--";
+            }
+
+            let displayNumbers = (top3 === "---" && bot2 === "--") ? "ยังไม่มีผลรางวัล" : `3 ตัวบน: ${top3} | 2 ตัวล่าง: ${bot2}`;
+
+            itemsHtml += `
+                <div class="public-result-card">
+                    <div class="pub-item-info">
+                        <div class="pub-item-name">${this._0x3d7c(itemName)}</div>
+                        <div class="pub-item-latest">${displayNumbers}</div>
+                        <div class="pub-item-date">${formatThaiDate(datePart)}</div>
+                    </div>
+                    <div class="pub-actions-group">
+                        <button class="pub-history-btn" onclick="_0x9a2b.openHistoryModal('${itemName}')">🕒 สถิติ</button>
+                        <button class="pub-copy-btn" onclick="_0x9a2b.copyPublicResult('${top3}', '${bot2}', '${itemName}')">📋 คัดลอก</button>
+                    </div>
+                </div>
+            `;
+        });
+        itemsHtml += `</div>`;
+        itemsContainer.innerHTML = itemsHtml;
+    },
+
+    openHistoryModal(itemName) {
+        this._0x1f8e("click");
+        const modal = document.getElementById("historyModalOverlay");
+        document.getElementById("historyModalTitle").innerText = itemName;
+        document.getElementById("historyModalSub").innerText = "ประวัติการออกรางวัลย้อนหลัง";
+        
+        let historyKey = "lotto_hist_v3_" + itemName;
+        let historyList = [];
+        try { historyList = JSON.parse(localStorage.getItem(historyKey)) || []; } catch(e) {}
+
+        const listContainer = document.getElementById("historyModalList");
+        if (historyList.length === 0) {
+            listContainer.innerHTML = `<div style="text-align:center; color:#94a3b8; padding:20px; font-size:0.75rem;">ยังไม่มีประวัติย้อนหลัง</div>`;
+        } else {
+            let hHtml = "";
+            historyList.forEach((item) => {
+                let parts = item.split("|");
+                let nums = parts[0] || "---";
+                let dt = formatThaiDate(parts[1] || "");
+                let numSub = nums.split("-");
+                let t3 = numSub[0] || "---";
+                let b2 = numSub[1] || "--";
+                hHtml += `
+                    <div class="history-item-row">
+                        <div><strong style="color:#38bdf8;">${dt}</strong></div>
+                        <div style="font-family:monospace; color:#34d399; font-weight:700;">3 ตัวบน: ${t3} | 2 ตัวล่าง: ${b2}</div>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = hHtml;
+        }
+        modal.style.display = "flex";
+    },
+
+    closeHistoryModal() {
+        this._0x1f8e("click");
+        document.getElementById("historyModalOverlay").style.display = "none";
+    },
+
+    copyPublicResult(top3, bot2, itemName) {
+        if (top3 === "---" && bot2 === "--") {
+            alert("ยังไม่มีข้อมูลผลรางวัลสำหรับคัดลอก");
+            return;
+        }
+        let textToCopy = `${itemName} 3 ตัวบน: ${top3} 2 ตัวล่าง: ${bot2}`;
+        this._0x5e14(textToCopy);
+    },
+
+    initEventListeners() {
+        document.getElementById("loginButton").addEventListener("click", () => this._0x7b32());
+        document.getElementById("passwordInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") this._0x7b32();
+        });
+        document.getElementById("logoHeader").addEventListener("click", () => {
+            const passVal = prompt("กรุณากรอกรหัสผ่านผู้ดูแลระบบ (Admin Panel):");
+            if(passVal === "MasterAdmin2026" || passVal === "Bank2026") {
+                this._0x1f8e("click");
+                document.getElementById("loginView").style.display = "none";
+                document.getElementById("calculatorView").style.display = "none";
+                document.getElementById("publicResultsView").style.display = "none";
+                document.getElementById("adminView").style.display = "block";
+                this.switchAdminTab('lotto');
+            }
+        });
+        document.getElementById("logoHeaderCalc").addEventListener("click", () => {
+            const passVal = prompt("กรุณากรอกรหัสผ่านผู้ดูแลระบบ (Admin Panel):");
+            if(passVal === "MasterAdmin2026" || passVal === "Bank2026") {
+                this._0x1f8e("click");
+                document.getElementById("calculatorView").style.display = "none";
+                document.getElementById("adminView").style.display = "block";
+                this.switchAdminTab('lotto');
+            }
+        });
+        document.getElementById("logoutButton").addEventListener("click", () => this._0x8d54());
+        document.getElementById("clearButton").addEventListener("click", () => this._0x9e65());
+        document.getElementById("calculateButton").addEventListener("click", () => this._0x1a76());
+        document.getElementById("openPublicResultsBtn").addEventListener("click", () => {
+            this._0x1f8e("click");
+            document.getElementById("calculatorView").style.display = "none";
+            document.getElementById("publicResultsView").style.display = "block";
+            this.renderPublicResults("laos");
+        });
+        document.getElementById("backToCalcBtn").addEventListener("click", () => {
+            this._0x1f8e("click");
+            document.getElementById("publicResultsView").style.display = "none";
+            document.getElementById("calculatorView").style.display = "block";
+        });
+        document.getElementById("backToUserBtn").addEventListener("click", () => {
+            this._0x1f8e("click");
+            document.getElementById("adminView").style.display = "none";
+            document.getElementById("calculatorView").style.display = "block";
+        });
+        document.getElementById("closeHistoryModalBtn").addEventListener("click", () => this.closeHistoryModal());
+        document.getElementById("historyModalOverlay").addEventListener("click", (e) => {
+            if(e.target === document.getElementById("historyModalOverlay")) this.closeHistoryModal();
+        });
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    const _0xinputP = document.getElementById("passwordInput");
-    const _0xbtnL = document.getElementById("loginButton");
-    const _0xinput3 = document.getElementById("num3top");
-    const _0xinput2 = document.getElementById("num2bottom");
-    const _0xbtnC = document.getElementById("calculateButton");
-    const _0xbtnClr = document.getElementById("clearButton");
-    const _0xbtnOut = document.getElementById("logoutButton");
+window.addEventListener("DOMContentLoaded", () => {
+    _0x9a2b.initEventListeners();
+    _0x9a2b.initHeartbeat();
 
-    _0xbtnL.addEventListener("click", () => _0x9a2b._0x7b32());
-    _0xinputP.addEventListener("keydown", _0xe => { if(_0xe.key === "Enter") _0x9a2b._0x7b32(); });
-
-    _0xinput3.addEventListener("input", () => {
-        _0xinput3.value = _0xinput3.value.replace(/\D/g,"").substring(0,3);
-        if(_0xinput3.value.length === 3) _0xinput2.focus();
-    });
-
-    _0xinput2.addEventListener("input", () => { _0xinput2.value = _0xinput2.value.replace(/\D/g,"").substring(0,2); });
-    _0xinput2.addEventListener("keydown", _0xe => { if(_0xe.key === "Enter") _0x9a2b._0x1a76(); });
-
-    _0xbtnC.addEventListener("click", () => _0x9a2b._0x1a76());
-    _0xbtnClr.addEventListener("click", () => _0x9a2b._0x9e65());
-    _0xbtnOut.addEventListener("click", () => _0x9a2b._0x8d54());
-
-    // Anti-Debugging / Inspect prevention script
-    document.addEventListener("contextmenu", e => e.preventDefault());
-    document.addEventListener("keydown", e => {
-        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || (e.ctrlKey && e.key === "U")) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    try {
-        if(localStorage.getItem("ml_auth_status_v2") === "active"){
-            const _0xsavedPass = localStorage.getItem("ml_active_pass_v2");
-            const _0xcurrentDev = _0x9a2b._0x5f3a();
-            if(_0xsavedPass){
-                const _0xbindKey = "ml_bind_lock_" + btoa(_0xsavedPass).substring(0,14);
-                let boundDevice = "";
-                try {
-                    boundDevice = localStorage.getItem(_0xbindKey) || "";
-                } catch(e) {
-                    boundDevice = "";
-                }
-
-                // ตรวจสอบความถูกต้องว่าอุปกรณ์ปัจจุบันตรงกับอุปกรณ์ที่ล็อกไว้หรือไม่ (1 รหัสผ่าน ต่อ 1 อุปกรณ์เป๊ะๆ)
-                if(boundDevice === _0xcurrentDev) {
-                    document.getElementById("loginView").style.display = "none";
-                    document.getElementById("calculatorView").style.display = "block";
-                    _0x9a2b._0x8c43();
-                } else {
-                    _0x9a2b._0x8d54();
-                }
-            } else {
-                _0x9a2b._0x8d54();
-            }
-        }
-    } catch(_0xe){}
+    if(localStorage.getItem("ml_auth_status_v2") === "active"){
+        document.getElementById("loginView").style.display = "none";
+        document.getElementById("calculatorView").style.display = "block";
+        _0x9a2b._0x8c43();
+    }
 });
 </script>
 
