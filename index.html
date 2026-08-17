@@ -59,67 +59,6 @@ input:focus{border-color:rgba(0,229,255,.7);box-shadow:0 0 0 3px rgba(0,229,255,
 #calculatorView{display:none;}
 .input-group-calc{margin-bottom:11px;}
 .input-label{display:block;margin-bottom:5px;color:#cbd5e1;font-size:.68rem;font-weight:600;}
-
-/* Radar Dot & Ripple Effects Styling */
-.radar-dot-wrapper {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 10px;
-    height: 10px;
-    margin-right: 6px;
-    vertical-align: middle;
-}
-.radar-core-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-}
-.radar-core-dot.cyan {
-    background: #00e5ff;
-    box-shadow: 0 0 8px #00e5ff;
-}
-.radar-core-dot.yellow {
-    background: #f59e0b;
-    box-shadow: 0 0 8px #f59e0b;
-}
-.radar-ripple {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    opacity: 0;
-    z-index: 1;
-    pointer-events: none;
-}
-.radar-ripple.cyan {
-    border: 1.5px solid #00e5ff;
-}
-.radar-ripple.yellow {
-    border: 1.5px solid #f59e0b;
-}
-@keyframes rippleAnim {
-    0% {
-        width: 6px;
-        height: 6px;
-        opacity: 0.8;
-    }
-    100% {
-        width: 28px;
-        height: 28px;
-        opacity: 0;
-    }
-}
-.radar-ripple.active {
-    animation: rippleAnim 0.8s ease-out forwards;
-}
-
 .last-session-badge{display:none;justify-content:center;align-items:center;gap:7px;margin-bottom:12px;padding:7px 10px;border-radius:11px;background:rgba(4,10,20,.8);border:1px solid rgba(0,229,255,.25);color:#cbd5e1;font-size:.62rem;}
 .action-row{display:flex;gap:8px;margin-bottom:12px;}
 .btn-calculate{flex:1;display:flex;justify-content:center;align-items:center;gap:7px;padding:11px;border:0;border-radius:12px;color:#fff;background:linear-gradient(135deg,#10b981,#047857);font-family:'Prompt',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(16,185,129,.20);transition:.25s;}
@@ -290,6 +229,54 @@ input:focus{border-color:rgba(0,229,255,.7);box-shadow:0 0 0 3px rgba(0,229,255,
 .formula-pair-cell.second .formula-pair-num{color:#00e5ff;}
 .formula-pair-pct{font-family:monospace;font-size:.38rem;color:#64748b;margin-top:1px;}
 
+/* CSS สำหรับ Radar Dot และ Ripple Effect ตามสเปกเป๊ะๆ */
+.radar-dot-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.radar-core-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    z-index: 2;
+}
+.radar-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+@keyframes rippleAnim {
+    0% {
+        width: 7px;
+        height: 7px;
+        opacity: 0.9;
+    }
+    100% {
+        width: 26px;
+        height: 26px;
+        opacity: 0;
+    }
+}
+.ripple-active {
+    animation: rippleAnim 0.75s cubic-bezier(0, 0.2, 0.8, 1) forwards;
+}
+
 .back-btn{margin-top:12px;color:#94a3b8!important;background:#101925!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:none!important;}
 #toast{visibility:hidden;position:fixed;left:50%;bottom:25px;transform:translateX(-50%);z-index:9999;min-width:210px;padding:10px 20px;border-radius:50px;color:#fff;text-align:center;font-size:.7rem;font-weight:700;background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 15px 40px rgba(0,0,0,.7);}
 #toast.show{visibility:visible;animation:toastInOut 1.8s ease forwards;}
@@ -334,15 +321,29 @@ input:focus{border-color:rgba(0,229,255,.7);box-shadow:0 0 0 3px rgba(0,229,255,
         <h2>MasterLotto VIP<span class="vip-plus-symbol">+</span></h2>
         <p>ระบบประมวลผล AI อัจฉริยะ</p>
     </div>
+    
+    <!-- บล็อกยอดประมวลผลรวม -->
     <div class="ai-status-bar">
-        <span>
-            <span class="radar-dot-wrapper"><span class="radar-core-dot cyan" id="cyanCoreDot"></span><span class="radar-ripple cyan" id="cyanRipple"></span></span>ยอดประมวลผลรวมในระบบ: <strong id="totalCalcCounter" style="color:#00e5ff;">30,482</strong> ครั้ง
+        <span style="display:inline-flex; align-items:center;">
+            <span class="radar-dot-wrapper">
+                <span class="radar-core-dot" style="background:#00e5ff; box-shadow:0 0 10px #00e5ff;"></span>
+                <span class="radar-ripple" id="cyanRipple" style="border:1.5px solid #00e5ff;"></span>
+            </span>
+            ยอดประมวลผลรวมในระบบ : <strong id="totalCalcCounter" style="color:#00e5ff; margin-left:4px; margin-right:4px;">32,157</strong> ครั้ง
         </span>
     </div>
+
+    <!-- บล็อกอ้างอิงล่าสุด -->
     <div id="lastSessionBadge" class="last-session-badge">
-        <span class="radar-dot-wrapper"><span class="radar-core-dot yellow" id="yellowCoreDot"></span><span class="radar-ripple yellow" id="yellowRipple"></span></span>
-        <span>อ้างอิงล่าสุด: 3 ตัวบน <strong id="lbl3" style="color:#fcd34d;"></strong> | 2 ตัวล่าง <strong id="lbl2" style="color:#fcd34d;"></strong></span>
+        <span style="display:inline-flex; align-items:center;">
+            <span class="radar-dot-wrapper">
+                <span class="radar-core-dot" style="background:#ffffff; box-shadow:0 0 10px #ffffff;"></span>
+                <span class="radar-ripple" id="yellowRipple" style="border:1.5px solid #ffffff;"></span>
+            </span>
+            อ้างอิงล่าสุด : <span style="color:#ffffff; font-weight:500;">3 ตัวบน</span><strong id="lbl3" style="color:#fde047; margin-left:2px; font-weight:700;"></strong> &nbsp;|&nbsp; <span style="color:#ffffff; font-weight:500;">2 ตัวล่าง</span><strong id="lbl2" style="color:#fde047; margin-left:2px; font-weight:700;"></strong>
+        </span>
     </div>
+
     <div class="input-group-calc">
         <label class="input-label">เลข 3 ตัวบน (งวดล่าสุด)</label>
         <input type="tel" inputmode="numeric" pattern="[0-9]*" id="num3top" placeholder="เช่น 701" maxlength="3" autocomplete="off" spellcheck="false">
@@ -367,17 +368,16 @@ input:focus{border-color:rgba(0,229,255,.7);box-shadow:0 0 0 3px rgba(0,229,255,
 <div id="toast">คัดลอกตัวเลขเรียบร้อยแล้ว!</div>
 <script>
 const _secEnc={_dbToken:["42616e6b32303236","414d4e44343238","586b38395071","4d617374657241646d696e32303236","54396b4c326d5037","5a71345738785431","5274355939754932","4f335037774534","4173334436664739","47683148346b4c38","576e5f4332764235","4e6d344d316233","506f394936755934","556a335937745236","5771325335784338","4564345237665631","54683a5939684e32","57683855316a4d33","496b304f33704c35","55617a3257537433","4564633452467635","5467623659686e37","556a6d38494b6f39","506966304f4b6939","5a68763143646532","426774334e687934","4d6a75354c626f36","4364653756667238","426879394e6a6830","587377325a6171","4465723445777833","466774364364656c73","5768753842676437","4d6a6930556a6d39","4c6f7031506c6f30","4b6a69394f6b6938","2175683855687937","5767747454677936","4672653544657234","4577713377617132","55617a3158737432","5864653370667234","5667743542687936","4e6a75374d6b6938","506966394f6c6f30","5a686334566e6235","4173643646676837","5177653852747939","5a6b395071324c6d","5b77344e65345274","4370334a6937556f","56623159746f4d6e","4173324466344768","4b6a374b6c39506f"],_hexDecode(hex){let str="";for(let i=0;i<hex.length;i+=2){str+=String.fromCharCode(parseInt(hex.substr(i,2),16));}return str;},async _checkMatch(inputVal){for(const hex of this._dbToken){if(inputVal===this._hexDecode(hex)){return true;}}return false;}};
-const _app={_passes:["c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b","5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3","15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21","3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e","7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"],async _hash(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("");},async _verify(p){if(await _secEnc._checkMatch(p)){return true;}return this._passes.includes(await this._hash(p));},_device(){let d=localStorage.getItem("ml_secure_device_v2");if(!d){d="DEV_SECURE_"+btoa([screen.width,screen.height,screen.colorDepth,navigator.language,navigator.userAgent,Math.random()].join("||")).replace(/[^a-zA-Z0-9]/g,"").substring(0,28);localStorage.setItem("ml_secure_device_v2",d);}return d;},_audio(t="click"){try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const c=new AC();const o=c.createOscillator();const g=c.createGain();o.type=t==="error"?"sawtooth":"sine";o.frequency.setValueAtTime(t==="error"?180:580,c.currentTime);g.gain.setValueAtTime(t==="error"?.07:.045,c.currentTime);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+(t==="error"?.12:.06));}catch(e){}},_esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");},async login(){this._audio("click");const ip=document.getElementById("passwordInput");const err=document.getElementById("errorMsg");const val=ip.value.trim();if(!val||!(await this._verify(val))){this._audio("error");err.innerText="❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ";err.style.display="block";ip.focus();return;}const dev=this._device();const lockKey="ml_bind_lock_"+btoa(val).substring(0,14);let bound="";try{bound=localStorage.getItem(lockKey)||"";}catch(e){}if(bound&&bound!==dev){this._audio("error");err.innerText="❌ รหัสผ่านนี้ถูกใช้งานผูกกับอุปกรณ์อื่นแล้ว";err.style.display="block";ip.focus();return;}localStorage.setItem(lockKey,dev);localStorage.setItem("ml_auth_status_v2","active");localStorage.setItem("ml_active_pass_v2",val);err.style.display="none";document.getElementById("loginView").style.display="none";document.getElementById("calculatorView").style.display="block";this.checkSessionBadge();document.getElementById("num3top").focus();this.startTradingTerminal();},logout(){this._audio("click");try{const p=localStorage.getItem("ml_active_pass_v2");if(p){const lk="ml_bind_lock_"+btoa(p).substring(0,14);if(localStorage.getItem(lk)===this._device()){localStorage.removeItem(lk);}}}catch(e){}localStorage.removeItem("ml_auth_status_v2");localStorage.removeItem("ml_active_pass_v2");document.getElementById("calculatorView").style.display="none";document.getElementById("loginView").style.display="block";["passwordInput","num3top","num2bottom"].forEach(id=>{document.getElementById(id).value="";});document.getElementById("resultContainer").innerHTML="";document.getElementById("errorMsg").style.display="none";this.stopTradingTerminal();},clearCalc(){this._audio("click");document.getElementById("resultContainer").innerHTML="";document.getElementById("num3top").value="";document.getElementById("num2bottom").value="";document.getElementById("num3top").focus();},checkSessionBadge(){const n3=localStorage.getItem("ml_l_n3_v2");const n2=localStorage.getItem("ml_l_n2_v2");const badge=document.getElementById("lastSessionBadge");if(n3&&n2){document.getElementById("lbl3").innerText=n3;document.getElementById("lbl2").innerText=n2;badge.style.display="flex";}else{badge.style.display="none";}},calculate(){this._audio("click");const n3=document.getElementById("num3top").value.trim();const n2=document.getElementById("num2bottom").value.trim();if(!/^\d{3}$/.test(n3)||!/^\d{2}$/.test(n2)){this._audio("error");alert("กรุณากรอกเลข 3 ตัวให้ครบ 3 หลัก และเลข 2 ตัวล่างให้ครบ 2 หลัก");return;}
-    
-    // Trigger Yellow Radar Ripple Effect on Calculation Press
-    const yellowRipple = document.getElementById("yellowRipple");
-    if(yellowRipple){
-        yellowRipple.classList.remove("active");
-        void yellowRipple.offsetWidth;
-        yellowRipple.classList.add("active");
+const _app={_passes:["c824fb7cb0628236d6a2a06140b0807b1d1f04f208170c65507da29b7d34193b","5b1d4493393ec5165b4c9e43b176cf9fc97579f187a07c92b95b83921bf3a1c3","15e2197be3407e324c478a87d0ef060938ff5a3b7d195c8bc803e3cdcd5c8e21","3d4e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e","7a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"],async _hash(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("");},async _verify(p){if(await _secEnc._checkMatch(p)){return true;}return this._passes.includes(await this._hash(p));},_device(){let d=localStorage.getItem("ml_secure_device_v2");if(!d){d="DEV_SECURE_"+btoa([screen.width,screen.height,screen.colorDepth,navigator.language,navigator.userAgent,Math.random()].join("||")).replace(/[^a-zA-Z0-9]/g,"").substring(0,28);localStorage.setItem("ml_secure_device_v2",d);}return d;},_audio(t="click"){try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const c=new AC();const o=c.createOscillator();const g=c.createGain();o.type=t==="error"?"sawtooth":"sine";o.frequency.setValueAtTime(t==="error"?180:580,c.currentTime);g.gain.setValueAtTime(t==="error"?.07:.045,c.currentTime);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+(t==="error"?.12:.06));}catch(e){}},_esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");},async login(){this._audio("click");const ip=document.getElementById("passwordInput");const err=document.getElementById("errorMsg");const val=ip.value.trim();if(!val||!(await this._verify(val))){this._audio("error");err.innerText="❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ";err.style.display="block";ip.focus();return;}const dev=this._device();const lockKey="ml_bind_lock_"+btoa(val).substring(0,14);let bound="";try{bound=localStorage.getItem(lockKey)||"";}catch(e){}if(bound&&bound!==dev){this._audio("error");err.innerText="❌ รหัสผ่านนี้ถูกใช้งานผูกกับอุปกรณ์อื่นแล้ว";err.style.display="block";ip.focus();return;}localStorage.setItem(lockKey,dev);localStorage.setItem("ml_auth_status_v2","active");localStorage.setItem("ml_active_pass_v2",val);err.style.display="none";document.getElementById("loginView").style.display="none";document.getElementById("calculatorView").style.display="block";this.checkSessionBadge();document.getElementById("num3top").focus();this.startTradingTerminal();},logout(){this._audio("click");try{const p=localStorage.getItem("ml_active_pass_v2");if(p){const lk="ml_bind_lock_"+btoa(p).substring(0,14);if(localStorage.getItem(lk)===this._device()){localStorage.removeItem(lk);}}}catch(e){}localStorage.removeItem("ml_auth_status_v2");localStorage.removeItem("ml_active_pass_v2");document.getElementById("calculatorView").style.display="none";document.getElementById("loginView").style.display="block";["passwordInput","num3top","num2bottom"].forEach(id=>{document.getElementById(id).value="";});document.getElementById("resultContainer").innerHTML="";document.getElementById("errorMsg").style.display="none";this.stopTradingTerminal();},clearCalc(){this._audio("click");document.getElementById("resultContainer").innerHTML="";document.getElementById("num3top").value="";document.getElementById("num2bottom").value="";document.getElementById("num3top").focus();},checkSessionBadge(){const n3=localStorage.getItem("ml_l_n3_v2");const n2=localStorage.getItem("ml_l_n2_v2");const badge=document.getElementById("lastSessionBadge");if(n3&&n2){document.getElementById("lbl3").innerText=n3;document.getElementById("lbl2").innerText=n2;badge.style.display="flex";}else{badge.style.display="none";}},
+triggerYellowRipple(){
+    const r = document.getElementById("yellowRipple");
+    if(r){
+        r.classList.remove("ripple-active");
+        void r.offsetWidth;
+        r.classList.add("ripple-active");
     }
-
-    localStorage.setItem("ml_l_n3_v2",n3);localStorage.setItem("ml_l_n2_v2",n2);this.checkSessionBadge();const scan=document.getElementById("aiScannerBox");const btn=document.getElementById("calculateButton");btn.disabled=true;scan.style.display="block";const messages=["SCANNING HISTORICAL STRUCTURE...","CALCULATING DIGIT MOMENTUM...","RUNNING NEURAL CONSENSUS...","BUILDING QUANT SIGNAL...","FINALIZING ANALYSIS..."];let mi=0;const scannerText=document.getElementById("aiScannerText");scannerText.innerText=messages[0];const msgTimer=setInterval(()=>{mi++;if(mi<messages.length){scannerText.innerText=messages[mi];}},120);setTimeout(()=>{clearInterval(msgTimer);scan.style.display="none";btn.disabled=false;this.runAnalysis(n3,n2);document.getElementById("resultContainer").scrollIntoView({behavior:"smooth",block:"start"});},650);},runAnalysis(n3,n2){const d3=n3.split("").map(Number);const d2=n2.split("").map(Number);const [A,B,C]=d3;const [R1,R2]=d2;const mod=v=>((v%10)+10)%10;const getPair=v=>{const f=mod(v);return[f,mod(f+1)];};const fList=[{name:"สูตรวิเคราะห์ AI ที่ 1",set:getPair(B+R1)},{name:"สูตรวิเคราะห์ AI ที่ 2",set:getPair(A+B+C)},{name:"สูตรวิเคราะห์ AI ที่ 3",set:getPair(A+R1)},{name:"สูตรวิเคราะห์ AI ที่ 4",set:getPair(C+R2)},{name:"สูตรวิเคราะห์ AI ที่ 5",set:getPair(10-R2)}];const votes={};for(let d=0;d<=9;d++){votes[d]=0;}fList.forEach(item=>{item.set.forEach(dig=>{votes[dig]++;});});fList.forEach(item=>{item.score=item.set.reduce((acc,dg)=>acc+((votes[dg]||1)*25),100);item.consensusCount=item.set.reduce((max,dg)=>Math.max(max,votes[dg]||0),0);});fList.sort((a,b)=>b.consensusCount-a.consensusCount||b.score-a.score);fList.forEach((item,idx)=>{item.isHot=idx<3;});fList.forEach((item,idx)=>{const maxVote=item.consensusCount;let baseScore=87.5;if(maxVote>=3){baseScore=99.1-(idx*.1);}else if(maxVote===2){baseScore=95-(idx*.5);}else{baseScore=91-(idx*.8);}item.aiScore=Number(Math.max(87.5,Math.min(99.9,baseScore)).toFixed(1));});const target=mod(Math.abs(7-A));const evaluated=fList.map(item=>{let match=false;for(let off=-2;off<=2;off++){if(item.set.includes(mod(target+off))){match=true;break;}}const span=match?3:2;const pool=[];for(let off=-span;off<=span;off++){pool.push(mod(target+off));}const cleanPool=pool.filter(dg=>!item.set.includes(dg)).filter((dg,i,arr)=>arr.indexOf(dg)===i).sort((a,b)=>a-b);const pMap={};item.set.forEach(dg=>{pMap[dg]=cleanPool.filter(sub=>sub!==dg).map(sub=>`${dg}${sub}`);});return{name:item.name,isHot:item.isHot,score:item.score,aiScore:item.aiScore,set:item.set,pairsMap:pMap};});const winner=evaluated[0];const [d1,d2_dig]=winner.set;const arr1=winner.pairsMap[d1]||[];const arr2=winner.pairsMap[d2_dig]||[];const final3d=arr1.map(p=>`${p.slice(-1)}${d1}${d2_dig}`);const formula1=evaluated[0];const formula2=evaluated[1];const cScore1=formula1?formula1.aiScore:99.9;let cScore2=formula2?formula2.aiScore:96.4;if(cScore1===cScore2||Math.abs(cScore1-cScore2)<.5){cScore2=Number((cScore1-.4).toFixed(1));}const cScore3=Number((50.1+Math.random()*.8).toFixed(1));const marketDigits=Object.keys(votes).map(Number).map(digit=>{const v=votes[digit]||0;let maxAi=87.5;evaluated.forEach(f=>{if(f.set.includes(digit)&&f.aiScore>maxAi){maxAi=f.aiScore;}});return{digit,votes:v,percentage:v>0?maxAi:0};}).filter(i=>i.votes>0).sort((a,b)=>b.votes-a.votes||b.percentage-a.percentage||a.digit-b.digit).slice(0,4);const marketTop=marketDigits.map((item,index)=>index===0||index===1?{...item,percentage:index===0?cScore1:cScore2}:item);const marketMax=Math.max(...marketTop.map(i=>i.percentage),99.9);const marketRanked=marketTop.map((item,index)=>({...item,rank:index+1,status:item.percentage>=93?"HIGH":item.percentage>=88?"MEDIUM":"WATCH"}));
+},
+calculate(){this._audio("click");const n3=document.getElementById("num3top").value.trim();const n2=document.getElementById("num2bottom").value.trim();if(!/^\d{3}$/.test(n3)||!/^\d{2}$/.test(n2)){this._audio("error");alert("กรุณากรอกเลข 3 ตัวให้ครบ 3 หลัก และเลข 2 ตัวล่างให้ครบ 2 หลัก");return;}localStorage.setItem("ml_l_n3_v2",n3);localStorage.setItem("ml_l_n2_v2",n2);this.checkSessionBadge();this.triggerYellowRipple();const scan=document.getElementById("aiScannerBox");const btn=document.getElementById("calculateButton");btn.disabled=true;scan.style.display="block";const messages=["SCANNING HISTORICAL STRUCTURE...","CALCULATING DIGIT MOMENTUM...","RUNNING NEURAL CONSENSUS...","BUILDING QUANT SIGNAL...","FINALIZING ANALYSIS..."];let mi=0;const scannerText=document.getElementById("aiScannerText");scannerText.innerText=messages[0];const msgTimer=setInterval(()=>{mi++;if(mi<messages.length){scannerText.innerText=messages[mi];}},120);setTimeout(()=>{clearInterval(msgTimer);scan.style.display="none";btn.disabled=false;this.runAnalysis(n3,n2);document.getElementById("resultContainer").scrollIntoView({behavior:"smooth",block:"start"});},650);},runAnalysis(n3,n2){const d3=n3.split("").map(Number);const d2=n2.split("").map(Number);const [A,B,C]=d3;const [R1,R2]=d2;const mod=v=>((v%10)+10)%10;const getPair=v=>{const f=mod(v);return[f,mod(f+1)];};const fList=[{name:"สูตรวิเคราะห์ AI ที่ 1",set:getPair(B+R1)},{name:"สูตรวิเคราะห์ AI ที่ 2",set:getPair(A+B+C)},{name:"สูตรวิเคราะห์ AI ที่ 3",set:getPair(A+R1)},{name:"สูตรวิเคราะห์ AI ที่ 4",set:getPair(C+R2)},{name:"สูตรวิเคราะห์ AI ที่ 5",set:getPair(10-R2)}];const votes={};for(let d=0;d<=9;d++){votes[d]=0;}fList.forEach(item=>{item.set.forEach(dig=>{votes[dig]++;});});fList.forEach(item=>{item.score=item.set.reduce((acc,dg)=>acc+((votes[dg]||1)*25),100);item.consensusCount=item.set.reduce((max,dg)=>Math.max(max,votes[dg]||0),0);});fList.sort((a,b)=>b.consensusCount-a.consensusCount||b.score-a.score);fList.forEach((item,idx)=>{item.isHot=idx<3;});fList.forEach((item,idx)=>{const maxVote=item.consensusCount;let baseScore=87.5;if(maxVote>=3){baseScore=99.1-(idx*.1);}else if(maxVote===2){baseScore=95-(idx*.5);}else{baseScore=91-(idx*.8);}item.aiScore=Number(Math.max(87.5,Math.min(99.9,baseScore)).toFixed(1));});const target=mod(Math.abs(7-A));const evaluated=fList.map(item=>{let match=false;for(let off=-2;off<=2;off++){if(item.set.includes(mod(target+off))){match=true;break;}}const span=match?3:2;const pool=[];for(let off=-span;off<=span;off++){pool.push(mod(target+off));}const cleanPool=pool.filter(dg=>!item.set.includes(dg)).filter((dg,i,arr)=>arr.indexOf(dg)===i).sort((a,b)=>a-b);const pMap={};item.set.forEach(dg=>{pMap[dg]=cleanPool.filter(sub=>sub!==dg).map(sub=>`${dg}${sub}`);});return{name:item.name,isHot:item.isHot,score:item.score,aiScore:item.aiScore,set:item.set,pairsMap:pMap};});const winner=evaluated[0];const [d1,d2_dig]=winner.set;const arr1=winner.pairsMap[d1]||[];const arr2=winner.pairsMap[d2_dig]||[];const final3d=arr1.map(p=>`${p.slice(-1)}${d1}${d2_dig}`);const formula1=evaluated[0];const formula2=evaluated[1];const cScore1=formula1?formula1.aiScore:99.9;let cScore2=formula2?formula2.aiScore:96.4;if(cScore1===cScore2||Math.abs(cScore1-cScore2)<.5){cScore2=Number((cScore1-.4).toFixed(1));}const cScore3=Number((50.1+Math.random()*.8).toFixed(1));const marketDigits=Object.keys(votes).map(Number).map(digit=>{const v=votes[digit]||0;let maxAi=87.5;evaluated.forEach(f=>{if(f.set.includes(digit)&&f.aiScore>maxAi){maxAi=f.aiScore;}});return{digit,votes:v,percentage:v>0?maxAi:0};}).filter(i=>i.votes>0).sort((a,b)=>b.votes-a.votes||b.percentage-a.percentage||a.digit-b.digit).slice(0,4);const marketTop=marketDigits.map((item,index)=>index===0||index===1?{...item,percentage:index===0?cScore1:cScore2}:item);const marketMax=Math.max(...marketTop.map(i=>i.percentage),99.9);const marketRanked=marketTop.map((item,index)=>({...item,rank:index+1,status:item.percentage>=93?"HIGH":item.percentage>=88?"MEDIUM":"WATCH"}));
 
 const matrixD1 = marketRanked[0] ? marketRanked[0].digit : d1;
 const matrixD2 = marketRanked[1] ? marketRanked[1].digit : d2_dig;
@@ -672,19 +672,17 @@ renderTradingChart(){
 toggleFormulas(){this._audio("click");const wrap=document.getElementById("formulasWrapper");const btn=document.getElementById("toggleFormulasBtn");if(wrap.style.display==="block"){wrap.style.display="none";btn.innerText="📊 แสดง 5 สูตรวิเคราะห์ AI เพิ่มเติม";}else{wrap.style.display="block";btn.innerText="📊 ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";}},copyText(text){this._audio("click");if(!text)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{this.showToast();}).catch(()=>{this.fallbackCopyText(text);});}else{this.fallbackCopyText(text);}},fallbackCopyText(text){const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');this.showToast();}catch(e){}document.body.removeChild(ta);},showToast(){const toast=document.getElementById("toast");toast.className="show";setTimeout(()=>{toast.className="";},1800);},startLiveStatsSimulation(){
     let currentTotal = parseInt(localStorage.getItem("ml_dynamic_total_users") || "2172", 10);
     let lastUserUpdate = parseInt(localStorage.getItem("ml_last_user_update") || Date.now(), 10);
-    let currentCalc = parseInt(localStorage.getItem("ml_dynamic_calc_val") || "30482", 10);
+    let currentCalc = parseInt(localStorage.getItem("ml_dynamic_calc_val") || "32157", 10);
     let currentOnline = parseInt(localStorage.getItem("ml_dynamic_online_users") || "1248", 10);
 
     const totalEl = document.getElementById("totalUsersStat");
     const onlineEl = document.getElementById("onlineUsersStat");
     const calcEl = document.getElementById("totalCalcCounter");
-    const cyanRipple = document.getElementById("cyanRipple");
 
     if(totalEl) totalEl.innerText = currentTotal.toLocaleString();
     if(onlineEl) onlineEl.innerText = currentOnline.toLocaleString();
     if(calcEl) calcEl.innerText = currentCalc.toLocaleString();
 
-    // 1. สมาชิกทั้งหมด: เพิ่มขึ้นวันละ 1-5 คน แบบไม่มีเพดาน
     setInterval(()=>{
         const now = Date.now();
         const elapsedDays = (now - lastUserUpdate) / (1000 * 60 * 60 * 24);
@@ -698,41 +696,42 @@ toggleFormulas(){this._audio("click");const wrap=document.getElementById("formul
         }
     }, 60000);
 
-    // 2. online ตอนนี้: สุ่มขึ้นลงทุกๆ 1 นาที
     setInterval(()=>{
         const steps = [3, 5, 7, 10, 50, 100];
         const stepVal = steps[Math.floor(Math.random() * steps.length)];
         const isAdd = Math.random() >= 0.5;
+        
         if(isAdd) {
             currentOnline += stepVal;
         } else {
             currentOnline -= stepVal;
             if(currentOnline < 500) currentOnline = 500;
         }
+        
         localStorage.setItem("ml_dynamic_online_users", currentOnline);
         if(onlineEl) onlineEl.innerText = currentOnline.toLocaleString();
     }, 60000);
 
-    // 3. ยอดประมวลผลรวมในระบบ: อัตราประมาณ 7 ครั้งต่อนาที ทยอยขยับเพิ่มทีละ 1 ครั้งแบบกระจายเวลาอย่างเป็นธรรมชาติ
-    // คำนวณช่วงเวลาเฉลี่ย: 60,000 ms / 7 ครั้ง ≈ 8,571 ms ต่อครั้ง พร้อมสุ่มความหน่วงเพิ่มเติม
-    const scheduleNextCalcTick = () => {
-        const randomDelay = Math.floor(Math.random() * 3000) + 7000; // สุ่มระหว่าง 7 ถึง 10 วินาทีต่อการขยับ 1 ครั้ง (เฉลี่ย ~7 ครั้งต่อนาที)
-        setTimeout(() => {
-            currentCalc += 1; // เพิ่มทีละ 1 ครั้ง
+    const triggerCyanRipple = () => {
+        const r = document.getElementById("cyanRipple");
+        if(r){
+            r.classList.remove("ripple-active");
+            void r.offsetWidth;
+            r.classList.add("ripple-active");
+        }
+    };
+
+    const scheduleNextCalc = () => {
+        const randomDelay = Math.floor(Math.random() * 5000) + 6000; 
+        setTimeout(()=>{
+            currentCalc += 1;
             localStorage.setItem("ml_dynamic_calc_val", currentCalc);
             if(calcEl) calcEl.innerText = currentCalc.toLocaleString();
-
-            // Trigger Cyan Radar Ripple Effect on Number Increment
-            if(cyanRipple){
-                cyanRipple.classList.remove("active");
-                void cyanRipple.offsetWidth;
-                cyanRipple.classList.add("active");
-            }
-
-            scheduleNextCalcTick();
+            triggerCyanRipple();
+            scheduleNextCalc();
         }, randomDelay);
     };
-    scheduleNextCalcTick();
+    scheduleNextCalc();
 }};document.addEventListener("DOMContentLoaded",()=>{const pw=document.getElementById("passwordInput");if(pw){pw.addEventListener("keypress",e=>{if(e.key==="Enter"){_app.login();}});document.getElementById("loginButton").addEventListener("click",()=>{_app.login();});}const n3=document.getElementById("num3top");const n2=document.getElementById("num2bottom");if(n3&&n2){n3.addEventListener("input",e=>{if(n3.value.length>=3){n2.focus();}});n3.addEventListener("keypress",e=>{if(e.key==="Enter"){n2.focus();}});n2.addEventListener("keypress",e=>{if(e.key==="Enter"){_app.calculate();}});document.getElementById("calculateButton").addEventListener("click",()=>{_app.calculate();});document.getElementById("clearButton").addEventListener("click",()=>{_app.clearCalc();});document.getElementById("logoutButton").addEventListener("click",()=>{_app.logout();});}_app.startLiveStatsSimulation();if(localStorage.getItem("ml_auth_status_v2")==="active"){document.getElementById("loginView").style.display="none";document.getElementById("calculatorView").style.display="block";_app.checkSessionBadge();_app.startTradingTerminal();}});window.addEventListener("resize",()=>{if(_app.tradingData){_app.renderTradingChart();}});
 </script>
 </body>
