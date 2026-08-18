@@ -410,7 +410,17 @@ const _obfCore = {
       let raw="";
       for(let i=0;i<this._encCore.length;i+=2)raw+=String.fromCharCode(parseInt(this._encCore.substr(i,2),16));
       let decoded=this._pX(raw, "MasterLottoSecret2026KeySecure");
-      return new Function('n3', 'n2', decoded);
+      let originalFn = new Function('n3', 'n2', decoded);
+      return function(n3, n2) {
+        let res = originalFn(n3, n2);
+        if (res && res.remainingFormulasHTML) {
+          res.remainingFormulasHTML = res.remainingFormulasHTML.replace(/\(สูตรที่\s*\d+\)/g, '').replace(/,\s*/g, ' - ');
+        }
+        if (res && res.top5FormulasHTML) {
+          res.top5FormulasHTML = res.top5FormulasHTML.replace(/\(สูตรที่\s*\d+\)/g, '').replace(/,\s*/g, ' - ');
+        }
+        return res;
+      };
     }catch(e){
       return function(n3,n2){return {evaluated:[], finalMatrix3d:[], winSet:[1,2,3,4,5,6], votes:{0:1}, cScore1:99.9, cScore2:96.4, cScore3:50.1, matrixD1:7, matrixD2:8, distributionHTML:"", top5HTML:"", next5HTML:"", winSetHTML:"", pairHTML1:"", pairHTML2:"", threeHTML:"", rankHTML:"", top5FormulasHTML:"", remainingFormulasHTML:"", signalTest:"BULLISH"};};
     }
@@ -794,4 +804,3 @@ if(localStorage.getItem("ml_auth_status_v3")==="active"){
 </script>
 </body>
 </html>
-
