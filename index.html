@@ -233,16 +233,16 @@ input:focus{border-color:rgba(0,229,255,.8);box-shadow:0 0 0 3px rgba(0,229,255,
             <span class="radar-dot-wrapper">
                 <span class="radar-core-dot" style="background:#00e5ff; box-shadow:0 0 10px #00e5ff;"></span>
             </span>
-            ยอดประมวลผลรวมในระบบ : <strong id="totalCalcCounter" style="color:#00e5ff; margin-left:4px; margin-right:4px;">32,157</strong> ครั้ง
+            ยอดประมวลผลรวมในระบบ : <strong id="totalCalcCounter" style="color:#00e5ff; margin-left:4px; margin-right:4px;">30,482</strong> ครั้ง
         </span>
     </div>
 
     <div id="lastSessionBadge" class="last-session-badge">
         <span style="display:inline-flex; align-items:center;">
             <span class="radar-dot-wrapper">
-                <span class="radar-core-dot" style="background:#ffffff; box-shadow:0 0 10px #ffffff;"></span>
+                <span class="radar-core-dot" style="background:#fde047; box-shadow:0 0 10px #fde047;"></span>
             </span>
-            อ้างอิงล่าสุด : <span style="color:#ffffff; font-weight:500;">3 ตัวบน</span><strong id="lbl3" style="color:#fde047; margin-left:2px; font-weight:700;"></strong> &nbsp;|&nbsp; <span style="color:#ffffff; font-weight:500;">2 ตัวล่าง</span><strong id="lbl2" style="color:#fde047; margin-left:2px; font-weight:700;"></strong>
+            อ้างอิงล่าสุด : <strong style="color:#ffffff; font-weight:500;">3 ตัวบน&nbsp;</strong><strong id="lbl3" style="color:#fde047; margin-left:2px; font-weight:700;"></strong> &nbsp;|&nbsp; <span style="color:#ffffff; font-weight:500;">2 ตัวล่าง <strong id="lbl2" style="color:#fde047; margin-left:2px; font-weight:700;"></strong></span>
         </span>
     </div>
 
@@ -330,7 +330,7 @@ fHTML+=`</div>`;document.getElementById("resultContainer").innerHTML=fHTML;docum
 toggleFormulas(){this._audio("click");const wrap=document.getElementById("formulasWrapper");const btn=document.getElementById("toggleFormulasBtn");if(wrap.style.display==="block"){wrap.style.display="none";btn.innerText="📊 แสดง 5 สูตรวิเคราะห์ AI เพิ่มเติม";}else{wrap.style.display="block";btn.innerText="📊 ซ่อน 5 สูตรวิเคราะห์ AI เพิ่มเติม";}},copyText(text){this._audio("click");if(!text)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{this.showToast();}).catch(()=>{this.fallbackCopyText(text);});}else{this.fallbackCopyText(text);}},fallbackCopyText(text){const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');this.showToast();}catch(e){}document.body.removeChild(ta);},showToast(){const toast=document.getElementById("toast");toast.className="show";setTimeout(()=>{toast.className="";},1800);},startLiveStatsSimulation(){
     let currentTotal = parseInt(localStorage.getItem("ml_dynamic_total_users") || "2172", 10);
     let lastUserUpdate = parseInt(localStorage.getItem("ml_last_user_update") || Date.now(), 10);
-    let currentCalc = parseInt(localStorage.getItem("ml_dynamic_calc_val") || "32157", 10);
+    let currentCalc = parseInt(localStorage.getItem("ml_dynamic_calc_val") || "30482", 10);
     let currentOnline = parseInt(localStorage.getItem("ml_dynamic_online_users") || "1248", 10);
 
     const totalEl = document.getElementById("totalUsersStat");
