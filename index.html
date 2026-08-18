@@ -399,34 +399,6 @@ const _secEnc = {
     return false;
   }
 };
-
-const _obfCore = {
-  _k: ["5f6d6170536574", "5f63616c634d6f64", "5f6765744d6174726978"],
-  _d(h){let s="";for(let i=0;i<h.length;i+=2)s+=String.fromCharCode(parseInt(h.substr(i,2),16));return s;},
-  _pX(s,r){return s.split("").map((c,i)=>String.fromCharCode(c.charCodeAt(0)^(r.charCodeAt(i%r.length)))).join("");},
-  _encCore: "10192e071c0c1b0c03160a0f1b0a03051c110618031a0e051a0210061903120f0110051e001b0f1a02030f061c02090403160b09080512000c0f1e000f0701041113000b0e01081e021a0f07090b050005080c100c010a080a00060912000d0216000c0d120a11030e00070216070605170f1a0e05081b0a1d00061e0f0907100e120f1807090e0c051a041f0516080b061b0717080b001a0808070b0213080e0c1b0f13010b000a06090e0e0a0d01130a080f000b031b010c0506041113000f0b06060c0f130b05040e0a00000311090306041c09060b060f061b170f060703190b0e0a061b0b02100b0e0108090f1d0b130e0c0d021c0b020a060f081c03030206190a0f0302060309190101030b0e0413060f071a06010006030c010e050f0c000c06110f090d0b090a06160913070b0f021c03030206190a0f0302060309190101030b0e0413060f071a06010006030c010e050f0c000c06110f090d0b090a06160913070b0f021c050a040b080f120e060d051c090209040306120b08080512000c0f1e000f0701041113000b0e01081e021a0f07090b050005080c100c010a080a00060912000d0216000c0d120a11030e00070216070605170f1a0e05081b0a1d00061e0f0907100e120f1807090e0c051a041f0516080b061b0717080b001a0808070b0213080e0c1b0f13010b000a06090e0e0a0d01130a080f000b031b010c0506041113000f0b06060c0f130b05040e0a00000311090306041c09060b060f061b170f060703190b0e0a061b0b02100b0e0108090f1d0b130e0c0d021c0b020a060f081c03030206190a0f0302060309190101030b0e0413060f071a06010006030c010e050f0c000c06110f090d0b090a06160913070b0f021c03030206190a0f0302060309190101030b0e0413060f071a06010006030c010e050f0c000c06110f090d0b090a06160913070b0f021c050a040b080f120e060d051c09020904030612",
-  _getEvalFn(){
-    try{
-      let raw="";
-      for(let i=0;i<this._encCore.length;i+=2)raw+=String.fromCharCode(parseInt(this._encCore.substr(i,2),16));
-      let decoded=this._pX(raw, "MasterLottoSecret2026KeySecure");
-      let originalFn = new Function('n3', 'n2', decoded);
-      return function(n3, n2) {
-        let res = originalFn(n3, n2);
-        if (res && res.remainingFormulasHTML) {
-          res.remainingFormulasHTML = res.remainingFormulasHTML.replace(/\(สูตรที่\s*\d+\)/g, '').replace(/,\s*/g, ' - ');
-        }
-        if (res && res.top5FormulasHTML) {
-          res.top5FormulasHTML = res.top5FormulasHTML.replace(/\(สูตรที่\s*\d+\)/g, '').replace(/,\s*/g, ' - ');
-        }
-        return res;
-      };
-    }catch(e){
-      return function(n3,n2){return {evaluated:[], finalMatrix3d:[], winSet:[1,2,3,4,5,6], votes:{0:1}, cScore1:99.9, cScore2:96.4, cScore3:50.1, matrixD1:7, matrixD2:8, distributionHTML:"", top5HTML:"", next5HTML:"", winSetHTML:"", pairHTML1:"", pairHTML2:"", threeHTML:"", rankHTML:"", top5FormulasHTML:"", remainingFormulasHTML:"", signalTest:"BULLISH"};};
-    }
-  }
-};
-
 const _app = {
   _toastTimer:null,
   async _verify(p){
@@ -543,8 +515,163 @@ const _app = {
     updateTotalProcessedIncrement();
   },
   runAnalysis(n3,n2){
-    const engineFn = _obfCore._getEvalFn();
-    const res = engineFn(n3, n2);
+    const d3=n3.split("").map(Number);
+    const d2=n2.split("").map(Number);
+    const [A,B,C]=d3;
+    const [R1,R2]=d2;
+    const mod=v=>((v%10)+10)%10;
+    const getPair=v=>{const f=mod(v);return[f,mod(f+1)];};
+    
+    const sum3 = A + B + C;
+    
+    const hundredsDigit = parseInt(n3.toString()[0]);
+    const subResult = 7 - hundredsDigit;
+    const firstDigit = parseInt(Math.abs(subResult).toString().slice(-1));
+    const secondDigit = mod(firstDigit + 1);
+    const formula6Set = [firstDigit, secondDigit];
+    
+    const fList=[
+      {name:"AI Model 01",subName:"",set:getPair(B + R1)},
+      {name:"AI Model 02",subName:"",set:getPair(sum3)},
+      {name:"AI Model 03",subName:"",set:getPair(A + R1)},
+      {name:"AI Model 04",subName:"",set:getPair(C + R2)},
+      {name:"AI Model 05",subName:"",set:getPair(10 - R2)},
+      {name:"AI Model 06",subName:"",set:formula6Set}
+    ];
+
+    const votes={};
+    for(let d=0;d<=9;d++)votes[d]=0;
+    fList.forEach(item=>{item.set.forEach(dig=>{votes[dig]++;});});
+    fList.forEach(item=>{
+      item.score=item.set.reduce((acc,dg)=>acc+((votes[dg]||1)*25),100);
+      item.consensusCount=item.set.reduce((max,dg)=>Math.max(max,votes[dg]||0),0);
+    });
+    
+    fList.forEach((item,idx)=>{
+      const maxVote=item.consensusCount;
+      let baseScore=87.5;
+      if(maxVote>=3)baseScore=99.1-(idx*.1);
+      else if(maxVote===2)baseScore=95-(idx*.5);
+      else baseScore=91-(idx*.8);
+      item.aiScore=Number(Math.max(87.5,Math.min(99.9,baseScore)).toFixed(1));
+    });
+    fList.sort((a,b)=>b.aiScore-a.aiScore);
+    
+    const evaluated=fList.map(item=>{
+      const cleanPool=[0,1,2,3,4,5,6,7,8,9].filter(dg=>!item.set.includes(dg));
+      const pMap={};
+      item.set.forEach(dg=>{
+        pMap[dg]=cleanPool.slice(0, 5).map(sub=>`${dg}${sub}`);
+      });
+      return{name:item.name,subName:item.subName,isHot:item.isHot,score:item.score,aiScore:item.aiScore,set:item.set,pMap,pairsMap:pMap};
+    });
+
+    const winner=evaluated[0];
+    const [d1,d2_dig]=winner.set;
+    const arr1=winner.pairsMap[d1]||[];
+    const arr2=winner.pairsMap[d2_dig]||[];
+    const final3d=arr1.map(p=>`${p.slice(-1)}${d1}${d2_dig}`);
+    const formula1=evaluated[0];
+    const formula2=evaluated[1];
+    const cScore1=formula1?formula1.aiScore:99.9;
+    let cScore2=formula2?formula2.aiScore:96.4;
+    if(cScore1===cScore2||Math.abs(cScore1-cScore2)<.5)cScore2=Number((cScore1-.4).toFixed(1));
+    const cScore3=Number((50.1+Math.random()*.8).toFixed(1));
+
+    const digitScores=Object.keys(votes).map(Number).map(digit=>{
+      let score=0;
+      evaluated.forEach(model=>{if(model.set.includes(digit))score+=model.aiScore;});
+      const frequency=votes[digit]||0;
+      return{digit,votes:frequency,score};
+    });
+    const ranking=digitScores.sort((a,b)=>b.score-a.score||b.votes-a.votes||a.digit-b.digit);
+    const top5=ranking.slice(0,5);
+    const next5=ranking.slice(5,10);
+    const winSet=[];
+    ranking.forEach(item=>{if(!winSet.includes(item.digit)&&winSet.length<6)winSet.push(item.digit);});
+    
+    const marketDigits=Object.keys(votes).map(Number).map(digit=>{
+      const v=votes[digit]||0;
+      let maxAi=87.5;
+      evaluated.forEach(f=>{if(f.set.includes(digit)&&f.aiScore>maxAi)maxAi=f.aiScore;});
+      return{digit,votes:v,percentage:v>0?maxAi:0};
+    }).filter(i=>i.votes>0).sort((a,b)=>b.votes-a.votes||b.percentage-a.percentage||a.digit-b.digit).slice(0,4);
+    const marketTop=marketDigits.map((item,index)=>index===0||index===1?{...item,percentage:index===0?cScore1:cScore2}:item);
+    const marketRanked=marketTop.map((item,index)=>({...item,rank:index+1}));
+    const matrixD1=marketRanked[0]?marketRanked[0].digit:d1;
+    const matrixD2=marketRanked[1]?marketRanked[1].digit:d2_dig;
+    const matrixScore1=marketRanked[0]?marketRanked[0].percentage:cScore1;
+    const matrixScore2=marketRanked[1]?marketRanked[1].percentage:cScore2;
+    const matrixFormula1=evaluated.find(f=>f.set.includes(matrixD1));
+    const matrixFormula2=evaluated.find(f=>f.set.includes(matrixD2));
+    const matrixArr1=matrixFormula1?matrixFormula1.pairsMap[matrixD1]||arr1:arr1;
+    const matrixArr2=matrixFormula2?matrixFormula2.pairsMap[matrixD2]||arr2:arr2;
+    const finalMatrix3d=matrixArr1.map(p=>`${p.slice(-1)}${matrixD1}${matrixD2}`);
+    
+    const maxVote=Math.max(...Object.values(votes),1);
+    const pastelColors=[
+      '#48c99d', '#29c5d1', '#9b7ed9', '#e5b64e', '#e58f65',
+      '#d97ed1', '#5fa8d3', '#52b788', '#f4d78a', '#8ea89d'
+    ];
+    const distributionHTML=Object.keys(votes).map(Number).map(digit=>{
+      const amount=votes[digit]||0;
+      const height=Math.max(10,Math.round((amount/maxVote)*100));
+      const barColor=pastelColors[digit%pastelColors.length];
+      return`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`;
+    }).join("");
+
+    const makeChip=(item,index,cls="")=>{
+      const pct=Math.min(99.9,Math.max(70,Number((99-index*1.3).toFixed(1))));
+      return`<div class="number-chip ${cls}" data-copy="${this._esc(item.digit)}"><strong>${item.digit}</strong><small>${pct}%</small></div>`;
+    };
+    const top5HTML=top5.map((item,index)=>makeChip(item,index,index===0?"top":"")).join("");
+    const next5HTML=next5.map((item,index)=>makeChip(item,index,index===0?"gold":"")).join("");
+    const winSetHTML=winSet.map((digit,index)=>{
+      const pct=Number((98-index*1.4).toFixed(1));
+      return`<div class="win-item" data-copy="${digit}"><strong>${digit}</strong><span>RANK ${index+1} • ${pct}%</span></div>`;
+    }).join("");
+
+    const pairHTML1=matrixArr1.length?matrixArr1.map((p,index)=>{
+      const pct=Number((98.5-index*.4).toFixed(1));
+      return`<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
+    }).join(""):`<div style="grid-column:1/-1;color:#9aa7a0;font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
+
+    const pairHTML2=matrixArr2.length?matrixArr2.map((p,index)=>{
+      const pct=Number((97.8-index*.4).toFixed(1));
+      return`<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
+    }).join(""):`<div style="grid-column:1/-1;color:#9aa7a0;font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
+
+    const threeHTML=finalMatrix3d.length?finalMatrix3d.map((p,index)=>{
+      const pct=Number((50.4-index*.1).toFixed(1));
+      return`<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
+    }).join(""):`<div style="grid-column:1/-1;color:#9aa7a0;font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
+
+    const rankHTML=top5.map((item,index)=>{
+      const pct=Math.min(99.9,Math.max(75,98.8-index*1.2));
+      return`<div class="rank-row" data-copy="${item.digit}"><div class="rank-no">#${String(index+1).padStart(2,"0")}</div><div class="rank-digit">${item.digit}</div><div class="rank-info"><div class="rank-name">${index===0?"ชุดเด่น / PRIMARY SET":index===1?"ชุดรอง / SECONDARY SET":"ชุดเด่น / HOT VECTOR"}</div><div class="rank-track"><div class="rank-fill" style="width:${pct}%"></div></div></div><div class="rank-percent">${pct.toFixed(1)}%</div></div>`;
+    }).join("");
+
+    let top5FormulasHTML = "";
+    let remainingFormulasHTML = "";
+    
+    evaluated.forEach((item, index)=>{
+      let pairs=[];
+      item.set.forEach((digit)=>{
+        const list=item.pairsMap[digit]||[];
+        list.forEach(p=>{pairs.push({pair:p});});
+      });
+      const pairCards=pairs.map((obj,idx)=>`<div class="formula-pair" data-copy="${this._esc(obj.pair)}"><strong>${this._esc(obj.pair)}</strong><small>${(97.5-idx*.3).toFixed(1)}%</small></div>`).join("");
+      
+      const cardHtml = `<div class="formula-card"><div class="formula-head"><div class="formula-name">${this._esc(item.name)} <span style="font-weight:400;color:var(--muted);font-size:0.45rem;">(${this._esc(item.subName)})</span></div><div class="formula-badge">AI ${item.aiScore}%</div></div><div class="formula-sub">เลขเด่น: <strong>${item.set.join(", ")}</strong></div><div class="formula-pairs">${pairCards}</div></div>`;
+      
+      if (index < 5) {
+        top5FormulasHTML += cardHtml;
+      } else {
+        remainingFormulasHTML += cardHtml;
+      }
+    });
+
+    const signalTest=matrixScore1>=95?"BULLISH":matrixScore1>=90?"POSITIVE":"WATCH";
 
     const html=`<div class="result-shell">
       <div class="result-head">
@@ -552,9 +679,9 @@ const _app = {
         <div class="result-note">${new Date().toLocaleTimeString("th-TH")}</div>
       </div>
       <section class="primary-signal">
-        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS / ชุดเด่นหลัก</div><div class="confidence">${res.matrixScore1.toFixed(1)}%</div></div>
-        <div class="primary-number"><div class="big-digit">${res.matrixD1}</div><div class="digit-divider">×</div><div class="big-digit">${res.matrixD2}</div></div>
-        <div class="primary-caption">ชุดเด่น <strong>${res.matrixD1}</strong> + ชุดรอง <strong>${res.matrixD2}</strong> / PRIMARY SET + SECONDARY SET</div>
+        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS / ชุดเด่นหลัก</div><div class="confidence">${matrixScore1.toFixed(1)}%</div></div>
+        <div class="primary-number"><div class="big-digit">${matrixD1}</div><div class="digit-divider">×</div><div class="big-digit">${matrixD2}</div></div>
+        <div class="primary-caption">ชุดเด่น <strong>${matrixD1}</strong> + ชุดรอง <strong>${matrixD2}</strong> / PRIMARY SET + SECONDARY SET</div>
       </section>
       <div class="section-marker">DIGIT OVERVIEW / ภาพรวมตัวเลข</div>
       <section class="overview-panel">
@@ -562,7 +689,7 @@ const _app = {
           <div><div class="overview-title">Digit Distribution</div><div class="overview-sub">การกระจายตัวของคะแนนจาก Multi-Engine Matrix</div></div>
           <div class="overview-badge">0 — 9</div>
         </div>
-        <div class="overview-bars">${res.distributionHTML}</div>
+        <div class="overview-bars">${distributionHTML}</div>
         <div class="overview-axis"><span>LOW</span><span>STRUCTURE</span><span>HIGH</span></div>
       </section>
       <section class="ranking-board">
@@ -570,21 +697,21 @@ const _app = {
           <div><div class="ranking-kicker">DIGIT RANKING</div><div class="ranking-title">ชุดเด่นรวม TOP 5 <span>/ Overall Leading Digits</span></div></div>
           <div class="ranking-badge">TOP SIGNAL</div>
         </div>
-        <div class="rank-list">${res.rankHTML}</div>
+        <div class="rank-list">${rankHTML}</div>
       </section>
       <div class="section-marker">NUMBER MATRIX / เมทริกซ์ตัวเลข</div>
       <section class="matrix-grid">
         <div class="matrix-card">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเด่น / PRIMARY SET</div><div class="matrix-score">${res.matrixScore1.toFixed(1)}%</div></div>
-          <div class="number-row">${res.pairHTML1}</div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเด่น / PRIMARY SET</div><div class="matrix-score">${matrixScore1.toFixed(1)}%</div></div>
+          <div class="number-row">${pairHTML1}</div>
         </div>
         <div class="matrix-card">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดรอง / SECONDARY SET</div><div class="matrix-score">${res.matrixScore2.toFixed(1)}%</div></div>
-          <div class="number-row">${res.pairHTML2}</div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดรอง / SECONDARY SET</div><div class="matrix-score">${matrixScore2.toFixed(1)}%</div></div>
+          <div class="number-row">${pairHTML2}</div>
         </div>
         <div class="matrix-card full">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุด 3 ตัว / THREE-DIGIT SET</div><div class="matrix-score">${res.cScore3}%</div></div>
-          <div class="number-row">${res.threeHTML}</div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุด 3 ตัว / THREE-DIGIT SET</div><div class="matrix-score">${cScore3}%</div></div>
+          <div class="number-row">${threeHTML}</div>
         </div>
       </section>
       <section class="win-set">
@@ -592,18 +719,18 @@ const _app = {
           <div class="win-title">ชุดวิน 6 ตัว<small>SIX-DIGIT WIN SET / กลุ่มเลขเด่นรวม</small></div>
           <div class="win-badge">VIP SET</div>
         </div>
-        <div class="win-grid">${res.winSetHTML}</div>
+        <div class="win-grid">${winSetHTML}</div>
       </section>
       <section class="matrix-card" style="margin-bottom:9px;">
         <div class="matrix-card-head">
           <div class="matrix-title"><span class="matrix-dot" style="background:var(--gold);"></span>ชุดรองรวม TOP 5 / SECONDARY SET</div>
           <div class="matrix-score" style="color:var(--gold);">SECONDARY SET</div>
         </div>
-        <div class="number-row">${res.next5HTML}</div>
+        <div class="number-row">${next5HTML}</div>
       </section>
       <section class="analysis-grid">
-        <div class="analysis-tile"><div class="analysis-label">MARKET BIAS</div><div class="analysis-value green">${res.signalTest}</div></div>
-        <div class="analysis-tile"><div class="analysis-label">CONSENSUS</div><div class="analysis-value cyan">${res.matrixScore1.toFixed(1)}%</div></div>
+        <div class="analysis-tile"><div class="analysis-label">MARKET BIAS</div><div class="analysis-value green">${signalTest}</div></div>
+        <div class="analysis-tile"><div class="analysis-label">CONSENSUS</div><div class="analysis-value cyan">${matrixScore1.toFixed(1)}%</div></div>
         <div class="analysis-tile"><div class="analysis-label">ENGINE</div><div class="analysis-value gold">ONLINE</div></div>
       </section>
       
@@ -613,11 +740,11 @@ const _app = {
           <span>▼</span>
         </button>
         <div id="top5FormulasWrapper" style="display:none; margin-top:7px;">
-          ${res.top5FormulasHTML}
+          ${top5FormulasHTML}
         </div>
         
         <div id="remainingFormulasWrapper" style="display:none; margin-top:6px;">
-          ${res.remainingFormulasHTML}
+          ${remainingFormulasHTML}
         </div>
 
         <button class="formula-toggle" id="toggleViewMoreBtn" type="button" style="margin-top:7px; justify-content:center; gap:8px; display:none;">
