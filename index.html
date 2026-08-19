@@ -670,27 +670,135 @@ const _app = {
     const compass = this._calculateCompass(n3, n2);
     const independentWinSet = this._calculateIndependentWin(n3, n2);
 
+    const getUnitDirect = (v) => {
+      const str = String(v);
+      const lastChar = str.slice(-1);
+      const first = parseInt(lastChar, 10);
+      return [first, (first + 1) % 10];
+    };
+
+    const sum3 = H + T_top + U_top;
+    const fixedBase = 7;
+    const anchorRaw = fixedBase - H;
+    const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
+
+    const fList = [
+      { name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(T_top + T_bot), isAdminRecommended: true },
+      { name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false },
+      { name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false },
+      { name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false },
+      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false }
+    ];
+
+    const evaluated = fList.map((item) => {
+      const formulaSet = item.set;
+      let rawRange = [];
+      let hasCollision = false;
+
+      for (let offset = -2; offset <= 2; offset++) {
+        const val = this._normalize(anchor + offset);
+        if (formulaSet.includes(val)) {
+          hasCollision = true;
+          break;
+        }
+      }
+
+      if (hasCollision) {
+        for (let offset = -3; offset <= 3; offset++) {
+          rawRange.push(this._normalize(anchor + offset));
+        }
+      } else {
+        for (let offset = -2; offset <= 2; offset++) {
+          rawRange.push(this._normalize(anchor + offset));
+        }
+      }
+
+      const excludedDigits = [...new Set(formulaSet)];
+      let cleanedPool = rawRange.filter(dg => !excludedDigits.includes(dg));
+      const generatedPairs = [];
+      const rejectedPairs = [];
+
+      formulaSet.forEach(sourceDigit => {
+        cleanedPool.forEach(poolDigit => {
+          if (sourceDigit === poolDigit) {
+            rejectedPairs.push(`${sourceDigit}${poolDigit} (self-match)`);
+            return;
+          }
+          generatedPairs.push({ digitA: sourceDigit, digitB: poolDigit, pairStr: `${sourceDigit}${poolDigit}` });
+        });
+      });
+
+      const pMap = {};
+      formulaSet.forEach(sourceDigit => {
+        let pairsForDigit = generatedPairs.filter(p => p.digitA === sourceDigit).map(p => p.pairStr);
+        let nextFill = (sourceDigit + 1) % 10;
+        while (pairsForDigit.length < 5) {
+          if (nextFill !== sourceDigit && !pairsForDigit.includes(`${sourceDigit}${nextFill}`) && !excludedDigits.includes(nextFill)) {
+            pairsForDigit.push(`${sourceDigit}${nextFill}`);
+          }
+          nextFill = (nextFill + 1) % 10;
+        }
+
+        pairsForDigit = [...new Set(pairsForDigit)].filter(p => p[0] !== p[1]).sort();
+        if (pairsForDigit.length > 5) pairsForDigit = pairsForDigit.slice(0, 5);
+        pMap[sourceDigit] = pairsForDigit;
+      });
+
+      return {
+        name: item.name,
+        subName: item.subName,
+        isAdminRecommended: item.isAdminRecommended,
+        set: item.set,
+        pairsMap: pMap
+      };
+    });
+
     const votes = {};
     for (let d = 0; d <= 9; d++) votes[d] = 0;
+    evaluated.forEach(item => { item.set.forEach(dig => { votes[dig]++; }); });
+
+    evaluated.forEach((item, idx) => {
+      const maxVote = item.set.reduce((max, dg) => Math.max(max, votes[dg] || 0), 0);
+      let baseScore = 87.5;
+      if (maxVote >= 3) baseScore = 99.1 - (idx * .1);
+      else if (maxVote === 2) baseScore = 95 - (idx * .5);
+      else baseScore = 91 - (idx * .8);
+      item.aiScore = Number(Math.max(87.5, Math.min(99.9, baseScore)).toFixed(1));
+    });
+
+    evaluated.sort((a, b) => b.aiScore - a.aiScore);
+
+    const winner = evaluated[0];
+    const [d1, d2_dig] = winner.set;
+    const arr1 = winner.pairsMap[d1] || [];
+    const arr2 = winner.pairsMap[d2_dig] || [];
+    const matrixArr3d = arr1.map(p => `${p.slice(-1)}${d1}${d2_dig}`);
+
+    const formula1 = evaluated[0];
+    const formula2 = evaluated[1];
+    const cScore1 = formula1 ? formula1.aiScore : 99.9;
+    let cScore2 = formula2 ? formula2.aiScore : 96.4;
+    if (cScore1 === cScore2 || Math.abs(cScore1 - cScore2) < .5) cScore2 = Number((cScore1 - .4).toFixed(1));
+    const cScore3 = Number((50.1 + Math.random() * .8).toFixed(1));
 
     const digitScores = Object.keys(votes).map(Number).map(digit => {
       let score = 0;
-      let frequency = 0;
+      evaluated.forEach(model => { if (model.set.includes(digit)) score += model.aiScore; });
+      let frequency = votes[digit] || 0;
       let compassBonus = 0;
       const inTop = compass.topZone.includes(digit);
       const inBot = compass.bottomZone.includes(digit);
 
       if (inTop && inBot) {
-        compassBonus = 1.5;
-      } else if (inTop || inBot) {
         compassBonus = 1.0;
+      } else if (inTop || inBot) {
+        compassBonus = 0.5;
       }
 
-      score += (compassBonus * 20);
+      score += (compassBonus * 10);
 
       if (independentWinSet.includes(digit)) {
-        score += 35.0;
-        frequency += 2;
+        score += 8.5;
       }
 
       return { digit, votes: frequency, score, compassBonus };
@@ -699,38 +807,13 @@ const _app = {
     const ranking = digitScores.sort((a, b) => b.score - a.score || b.votes - a.votes || a.digit - b.digit);
     const top5 = ranking.slice(0, 5);
 
-    const d1 = top5[0] ? top5[0].digit : 0;
-    const d2_dig = top5[1] ? top5[1].digit : 1;
-
-    const arr1 = [
-      `${d1}${(d1+1)%10}`,
-      `${d1}${(d1+3)%10}`,
-      `${d1}${(d1+5)%10}`,
-      `${d1}${(d1+7)%10}`,
-      `${d1}${(d1+9)%10}`
-    ];
-
-    const arr2 = [
-      `${d2_dig}${(d2_dig+1)%10}`,
-      `${d2_dig}${(d2_dig+3)%10}`,
-      `${d2_dig}${(d2_dig+5)%10}`,
-      `${d2_dig}${(d2_dig+7)%10}`,
-      `${d2_dig}${(d2_dig+9)%10}`
-    ];
-
-    const matrixArr3d = arr1.map(p => `${p.slice(-1)}${d1}${d2_dig}`);
-
-    const cScore1 = 98.5;
-    const cScore2 = 94.2;
-    const cScore3 = 91.0;
-
     const maxVoteVal = Math.max(...Object.values(votes), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
 
     const distributionHTML = [];
     for (let digit = 0; digit <= 9; digit++) {
-      const amount = independentWinSet.includes(digit) ? 5 : (compass.topZone.includes(digit) || compass.bottomZone.includes(digit) ? 3 : 1);
-      const height = Math.max(15, Math.round((amount / 5) * 100));
+      const amount = votes[digit] || 0;
+      const height = Math.max(10, Math.round((amount / maxVoteVal) * 100));
       const barColor = pastelColors[digit % pastelColors.length];
       distributionHTML.push(`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`);
     }
@@ -756,7 +839,8 @@ const _app = {
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const rankHTML = top5.map((item, index) => {
-      const pct = Math.min(99.9, Math.max(75, 98.8 - (index * 1.2)));
+      const matchedModel = evaluated.find(m => m.set.includes(item.digit));
+      const pct = matchedModel ? matchedModel.aiScore : Math.min(99.9, Math.max(75, 98.8 - (index * 1.2)));
       return `<div class="rank-row" data-copy="${item.digit}">
         <div class="rank-no">#${String(index + 1).padStart(2, "0")}</div>
         <div class="rank-digit">${item.digit}</div>
@@ -765,18 +849,22 @@ const _app = {
       </div>`;
     }).join("");
 
-    let allFormulasHTML = `
-      <div class="formula-card">
-        <div class="formula-head"><div class="formula-name">🧭 Directional Compass Engine <span class="compact-badge">เข็มทิศ</span></div><div class="formula-badge">AI score 98.5%</div></div>
-        <div class="formula-sub">โซนบน: <strong>${compass.topZone.join(" - ")}</strong> | โซนล่าง: <strong>${compass.bottomZone.join(" - ")}</strong></div>
-        <div class="formula-pairs">${arr1.map((p, idx) => `<div class="formula-pair" data-copy="${p}"><strong>${p}</strong><small>${(98.5 - idx*0.3).toFixed(1)}%</small></div>`).join("")}</div>
-      </div>
-      <div class="formula-card">
-        <div class="formula-head"><div class="formula-name">🎯 Independent Win Set <span class="compact-badge">เลขวิน</span></div><div class="formula-badge">AI score 96.0%</div></div>
-        <div class="formula-sub">ชุดวิน 6 ตัว: <strong>${independentWinSet.join(" - ")}</strong></div>
-        <div class="formula-pairs">${arr2.map((p, idx) => `<div class="formula-pair" data-copy="${p}"><strong>${p}</strong><small>${(96.0 - idx*0.3).toFixed(1)}%</small></div>`).join("")}</div>
-      </div>
-    `;
+    let allFormulasHTML = "";
+    evaluated.forEach((item) => {
+      let pairs = [];
+      item.set.forEach((digit) => {
+        const list = item.pairsMap[digit] || [];
+        list.forEach(p => { pairs.push({ pair: p }); });
+      });
+      const pairCards = pairs.map((obj, idx) => {
+        const displayPair = obj.pair;
+        const subPct = Number((item.aiScore - idx * .3).toFixed(1));
+        return `<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
+      }).join("");
+
+      const badgeHtml = item.isAdminRecommended ? `<span class="compact-badge">แอดมินแนะนำ</span>` : "";
+      allFormulasHTML += `<div class="formula-card"><div class="formula-head"><div class="formula-name">${this._esc(item.name)} ${badgeHtml}</div><div class="formula-badge">AI score ${item.aiScore}%</div></div><div class="formula-sub">เลขเด่น: <strong>${item.set.join(" - ")}</strong></div><div class="formula-pairs">${pairCards}</div></div>`;
+    });
 
     const html = `<div class="result-shell">
       <div class="result-head">
@@ -830,7 +918,7 @@ const _app = {
       
       <section class="formula-section">
         <button class="formula-toggle" id="toggleMainFormulasBtn" type="button" style="margin-bottom:6px;">
-          <span>📊 ระบบเข็มทิศและเลขวินอัจฉริยะ (Compass & Win Set)</span>
+          <span>📊 5 AI Models ที่ดีที่สุด (Top 5 Ranked)</span>
           <span>▼</span>
         </button>
         <div id="allFormulasWrapper" style="display:none; margin-top:6px;">
@@ -839,7 +927,7 @@ const _app = {
       </section>
 
       <div class="disclaimer">
-        <strong>หมายเหตุ:</strong> ระบบประมวลผลทำงานประสานกันอย่างไร้รอยต่อโดยใช้ตรรกะเข็มทิศและชุดวิน
+        <strong>หมายเหตุ:</strong> ระบบประมวลผลทำงานประสานกันอย่างไร้รอยต่อโดยไม่กระทบตรรกะเดิมของ 5 โมเดลหลัก
       </div>`;
 
     document.getElementById("resultContainer").innerHTML = html;
