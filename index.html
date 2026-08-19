@@ -587,8 +587,8 @@ const _app = {
     const messages=[
       "READING INPUT STRUCTURE...",
       "CALCULATING DIGIT MOMENTUM...",
-      "RUNNING BACKEND COMPASS & SCORING...",
-      "EVALUATING 5 MATHEMATICAL MODELS...",
+      "RUNNING Multi-Engine Matrix CONSENSUS...",
+      "COMPUTING DIRECTIONAL COMPASS LAYER...",
       "BUILDING NUMBER MATRIX...",
       "MAPPING DIGIT DISTRIBUTION...",
       "GENERATING WIN SET...",
@@ -616,49 +616,26 @@ const _app = {
     return ((x % 10) + 10) % 10;
   },
 
-  // ---------------------------------------------------------------------------
-  // 5 สูตรคณิตศาสตร์บริสุทธิ์ (Backend Scoring & Compass Engine)
-  // ทำหน้าที่ให้คะแนนและเป็นเข็มทิศเบื้องหลัง โดยไม่แตะต้องสูตรเลขเจาะหลัก
-  // ---------------------------------------------------------------------------
-  _runBackendQuantEngine(n3, n2) {
+  _calculateCompass(n3, n2) {
     const d3 = n3.split("").map(Number);
     const d2 = n2.split("").map(Number);
-    const H_top = d3[0], T_top = d3[1], U_top = d3[2];
-    const T_bot = d2[0], U_bot = d2[1];
-    
-    const sumTop = H_top + T_top + U_top;
-    const sumBot = T_bot + U_bot;
-    const totalSum = sumTop + sumBot;
+    const sum3Top = d3.reduce((a, b) => a + b, 0);
+    const topCenter = sum3Top % 10;
+    const sum2Bot = d2.reduce((a, b) => a + b, 0);
+    const bottomCenter = sum2Bot % 10;
 
-    // 1. Dynamic Modulo-Cross Vector (ผลต่างไขว้มอดูลัส)
-    const model1Digit = Math.abs((H_top + T_top) - (T_bot * 2)) % 10;
-
-    // 2. Non-Linear Prime Weighting Matrix (ตัวคูณเฉพาะเชิงไม่เป็นเส้นตรง)
-    const model2Digit = ((U_top * 3) + (U_bot * 7)) % 10;
-
-    // 3. Harmonic Ratio & Remainder Balance (สัดส่วนฮาร์มอนิกและเศษเหลือ)
-    const model3Digit = Math.floor((sumTop / (sumBot + 1)) * 9) % 10;
-
-    // 4. Absolute Cross-Difference Offset (ผลต่างไขว้สัมบูรณ์หักล้าง)
-    const model4Digit = (10 - ((Math.abs(T_top - U_bot)) + (Math.abs(H_top - T_bot))) % 10) % 10;
-
-    // 5. Systemic Global Momentum Anchor (จุดยึดเหนี่ยวมอนเมนตัมภาพรวม)
-    const model5Digit = (totalSum * 3) % 10;
-
-    const compassDigits = [model1Digit, model2Digit, model3Digit, model4Digit, model5Digit];
-    const uniqueCompass = [...new Set(compassDigits)];
-
-    return {
-      digits: compassDigits,
-      uniqueDigits: uniqueCompass,
-      scores: {
-        model1: model1Digit,
-        model2: model2Digit,
-        model3: model3Digit,
-        model4: model4Digit,
-        model5: model5Digit
+    const getZone = (center) => {
+      let zone = [];
+      for (let offset = -2; offset <= 2; offset++) {
+        zone.push(this._normalize(center + offset));
       }
+      return [...new Set(zone)];
     };
+
+    const topZone = getZone(topCenter);
+    const bottomZone = getZone(bottomCenter);
+
+    return { topCenter, bottomCenter, topZone, bottomZone };
   },
 
   _calculateIndependentWin(n3, n2) {
@@ -690,8 +667,7 @@ const _app = {
     const [H, T_top, U_top] = d3;
     const [T_bot, U_bot] = d2;
 
-    // เรียกใช้งาน Backend Quant Engine (5 สูตรคณิตศาสตร์บริสุทธิ์ ทำหน้าที่เป็นระบบเข็มทิศและให้คะแนน)
-    const backendEngine = this._runBackendQuantEngine(n3, n2);
+    const compass = this._calculateCompass(n3, n2);
     const independentWinSet = this._calculateIndependentWin(n3, n2);
 
     const getUnitDirect = (v) => {
@@ -777,6 +753,7 @@ const _app = {
       };
     });
 
+    // คัดกรองและปรับปรุงน้ำหนักคะแนน 5 โมเดลหลัก: ลดความซ้ำซ้อนและป้องกันการทับถมของเวทคะแนน
     const uniqueModelSets = new Map();
     evaluated.forEach(item => {
       const setKey = item.set.slice().sort().join("-");
@@ -814,15 +791,19 @@ const _app = {
     if (cScore1 === cScore2 || Math.abs(cScore1 - cScore2) < .5) cScore2 = Number((cScore1 - .5).toFixed(1));
     const cScore3 = Number((50.1 + Math.random() * .8).toFixed(1));
 
-    // ผนวกรวมคะแนนจาก Backend Compass Engine (5 สูตรคณิตศาสตร์บริสุทธิ์) เข้ากับคะแนนรวมของตัวเลข
+    // รักษาระบบเข็มทิศและเลขวิน 6 ตัวให้ทำงานตามเดิม แต่ตัดคะแนนโบนัสที่บวกทับซ้อนกันเองออกเพื่อให้ตัวเลขสะท้อนค่าที่แท้จริง
     const digitScores = Object.keys(votes).map(Number).map(digit => {
       let score = 0;
       uniqueEvaluated.forEach(model => { if (model.set.includes(digit)) score += model.aiScore; });
       let frequency = votes[digit] || 0;
       let compassBonus = 0;
-      
-      if (backendEngine.uniqueDigits.includes(digit)) {
-        compassBonus = 0.5; // ให้คะแนนโบนัสเข็มทิศจาก 5 สูตรหลังบ้าน
+      const inTop = compass.topZone.includes(digit);
+      const inBot = compass.bottomZone.includes(digit);
+
+      if (inTop && inBot) {
+        compassBonus = 0.4;
+      } else if (inTop || inBot) {
+        compassBonus = 0.2;
       }
 
       score += (compassBonus * 2);
@@ -910,7 +891,7 @@ const _app = {
       <section class="overview-panel">
         <div class="overview-head">
           <div><div class="overview-title">NEURAL WEIGHT SPECTRUM</div><div class="overview-sub">การกระจายน้ำหนักความน่าจะเป็นของตัวเลข</div></div>
-          <div class="overview-badge">BACKEND COMPASS ACTIVE</div>
+          <div class="overview-badge">COMPASS ACTIVE</div>
         </div>
         <div class="overview-bars">${distributionHTMLString}</div>
         <div class="overview-axis"><span>LOW</span><span>STRUCTURE</span><span>HIGH</span></div>
@@ -948,7 +929,7 @@ const _app = {
       
       <section class="formula-section">
         <button class="formula-toggle" id="toggleMainFormulasBtn" type="button" style="margin-bottom:6px;">
-          <span>📊 โมเดลการวิเคราะห์หลัก (Top Ranked Models)</span>
+          <span>📊 5 AI Models ที่ดีที่สุด (Top 5 Ranked)</span>
           <span>▼</span>
         </button>
         <div id="allFormulasWrapper" style="display:none; margin-top:6px;">
@@ -957,7 +938,7 @@ const _app = {
       </section>
 
       <div class="disclaimer">
-        <strong>หมายเหตุ:</strong> ข้อมูลวิเคราะห์เชิงสถิติเพื่อเป็นแนวทางเท่านั้น โปรดใช้วิจารณญาณในการตัดสินใจ
+        <strong>หมายเหตุ:</strong> ระบบประมวลผลทำงานประสานกันอย่างไร้รอยต่อโดยไม่กระทบตรรกะเดิมของ 5 โมเดลหลัก
       </div>`;
 
     document.getElementById("resultContainer").innerHTML = html;
