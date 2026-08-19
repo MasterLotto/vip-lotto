@@ -655,24 +655,23 @@ const _app = {
     const d2=n2.split("").map(Number);
     const [A,B,C]=d3;
     const [R1,R2]=d2;
-    const mod=v=>((v%10)+10)%10;
-    const getPair=v=>{const f=mod(v);return[f,mod(f+1)];};
     
-    const sum3 = A + B + C;
-    
-    const hundredsDigit = parseInt(n3.toString()[0]);
-    const subResult = 7 - hundredsDigit;
-    const firstDigit = parseInt(Math.abs(subResult).toString().slice(-1));
-    const secondDigit = mod(firstDigit + 1);
-    const formula6Set = [firstDigit, secondDigit];
+    const getUnitDirect = (v) => {
+      const str = String(v);
+      const lastChar = str.slice(-1);
+      const first = parseInt(lastChar, 10);
+      return [first, (first + 1) % 10];
+    };
+
+    const sum3 = A + B + C; 
     
     const fList=[
-      {name:"AI Model 01",subName:"",set:getPair(B + R1)},
-      {name:"AI Model 02",subName:"",set:getPair(sum3)},
-      {name:"AI Model 03",subName:"",set:getPair(A + R1)},
-      {name:"AI Model 04",subName:"",set:getPair(C + R2)},
-      {name:"AI Model 05",subName:"",set:getPair(10 - R2)},
-      {name:"AI Model 06",subName:"หลักสิบบนบวกล่าง",set:formula6Set, isAdminRecommended:true}
+      {name:"AI โมเดล 01",subName:"B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(B + R1),isAdminRecommended:true},
+      {name:"AI โมเดล 02",subName:"A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(sum3)},
+      {name:"AI โมเดล 03",subName:"A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(A + R1)},
+      {name:"AI โมเดล 04",subName:"C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(C + R2)},
+      {name:"AI โมเดล 05",subName:"10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(10 - R2)},
+      {name:"AI โมเดล 06",subName:"7 - A -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(7 - A)}
     ];
 
     const votes={};
@@ -758,41 +757,46 @@ const _app = {
       '#087F5B', '#078FA1', '#765BC8', '#B78320', '#10A879',
       '#2CC5D0', '#E7BF63', '#55D3A7', '#18352C', '#73827B'
     ];
-    const distributionHTML=Object.keys(votes).map(Number).map(digit=>{
-      const amount=votes[digit]||0;
-      const height=Math.max(10,Math.round((amount/maxVote)*100));
-      const barColor=pastelColors[digit%pastelColors.length];
-      return`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`;
-    }).join("");
+    
+    const distributionHTML = [];
+    for(let digit = 0; digit <= 9; digit++) {
+      const amount = votes[digit] || 0;
+      const height = Math.max(10, Math.round((amount / maxVote) * 100));
+      const barColor = pastelColors[digit % pastelColors.length];
+      distributionHTML.push(`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`);
+    }
+    const distributionHTMLString = distributionHTML.join("");
 
     const makeChip=(item,index,cls="")=>{
-      const pct=Math.min(99.9,Math.max(70,Number((99-index*1.3).toFixed(1))));
+      const pct=Math.min(99.9,Math.max(70,Number((item.score ? (item.score / 5) : (99-index*1.3)).toFixed(1))));
       return`<div class="number-chip ${cls}" data-copy="${this._esc(item.digit)}"><strong>${item.digit}</strong><small>${pct}%</small></div>`;
     };
     const top5HTML=top5.map((item,index)=>makeChip(item,index,index===0?"top":"")).join("");
     const next5HTML=next5.map((item,index)=>makeChip(item,index,index===0?"gold":"")).join("");
     const winSetHTML=winSet.map((digit,index)=>{
-      const pct=Number((98-index*1.4).toFixed(1));
+      const matchedModel = evaluated.find(m => m.set.includes(digit));
+      const pct = matchedModel ? matchedModel.aiScore : Number((98-index*1.4).toFixed(1));
       return`<div class="win-item" data-copy="${digit}"><strong>${digit}</strong><span>RANK ${index+1} • ${pct}%</span></div>`;
     }).join("");
 
     const pairHTML1=rawArr1.length?rawArr1.map((p,index)=>{
-      const pct=Number((98.5-index*.4).toFixed(1));
+      const pct=Number((cScore1 - index*.4).toFixed(1));
       return`<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join(""):`<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const pairHTML2=rawArr2.length?rawArr2.map((p,index)=>{
-      const pct=Number((97.8-index*.4).toFixed(1));
+      const pct=Number((cScore2 - index*.4).toFixed(1));
       return`<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join(""):`<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const threeHTML=matrixArr3d.length?matrixArr3d.map((p,index)=>{
-      const pct=Number((50.4-index*.1).toFixed(1));
+      const pct=Number((cScore3 - index*.1).toFixed(1));
       return`<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join(""):`<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const rankHTML=top5.map((item,index)=>{
-      const pct=Math.min(99.9,Math.max(75,98.8-(index*1.2)));
+      const matchedModel = evaluated.find(m => m.set.includes(item.digit));
+      const pct = matchedModel ? matchedModel.aiScore : Math.min(99.9,Math.max(75,98.8-(index*1.2)));
       return `<div class="rank-row" data-copy="${item.digit}">
         <div class="rank-no">#${String(index+1).padStart(2,"0")}</div>
         <div class="rank-digit">${item.digit}</div>
@@ -811,7 +815,8 @@ const _app = {
       });
       const pairCards=pairs.map((obj,idx)=>{
         const displayPair=obj.pair.replace(/\s*-\s*/g,"");
-        return`<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${(97.5-idx*.3).toFixed(1)}%</small></div>`;
+        const subPct = Number((item.aiScore - idx * .3).toFixed(1));
+        return`<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
       }).join("");
       
       const badgeHtml = item.isAdminRecommended ? `<span class="compact-badge">แอดมินแนะนำ</span>` : "";
@@ -837,7 +842,7 @@ const _app = {
           <div><div class="overview-title">NEURAL WEIGHT SPECTRUM</div><div class="overview-sub">การกระจายน้ำหนักความน่าจะเป็นของตัวเลข</div></div>
           <div class="overview-badge">0 — 9</div>
         </div>
-        <div class="overview-bars">${distributionHTML}</div>
+        <div class="overview-bars">${distributionHTMLString}</div>
         <div class="overview-axis"><span>LOW</span><span>STRUCTURE</span><span>HIGH</span></div>
       </section>
       <section class="ranking-board">
@@ -897,19 +902,26 @@ const _app = {
       </div>`;
     
     document.getElementById("resultContainer").innerHTML=html;
+    
     document.querySelectorAll("[data-copy]").forEach(node=>{
-      node.addEventListener("click",()=>{this.copyText(node.dataset.copy);});
+      const newClone = node.cloneNode(true);
+      node.parentNode.replaceChild(newClone, node);
+      newClone.addEventListener("click",()=>{this.copyText(newClone.dataset.copy);});
     });
     
     const toggleMainBtn=document.getElementById("toggleMainFormulasBtn");
     const allWrapper=document.getElementById("allFormulasWrapper");
 
     if(toggleMainBtn && allWrapper){
-      toggleMainBtn.addEventListener("click",()=>{
+      const newToggleBtn = toggleMainBtn.cloneNode(true);
+      toggleMainBtn.parentNode.replaceChild(newToggleBtn, toggleMainBtn);
+      
+      newToggleBtn.addEventListener("click",()=>{
         this._audio("click");
-        const isOpen = allWrapper.style.display==="block";
-        allWrapper.style.display = isOpen ? "none" : "block";
-        toggleMainBtn.querySelector("span:last-child").innerText = isOpen ? "▼" : "▲";
+        const freshWrapper = document.getElementById("allFormulasWrapper");
+        const isOpen = freshWrapper.style.display==="block";
+        freshWrapper.style.display = isOpen ? "none" : "block";
+        newToggleBtn.querySelector("span:last-child").innerText = isOpen ? "▼" : "▲";
       });
     }
   },
