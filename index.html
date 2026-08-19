@@ -652,7 +652,7 @@ const _app = {
   },
   
   // ==================================================
-  // ANCHOR-PAIR GENERATION LOGIC & SEPARATED MODULES
+  // STRICT DETERMINISTIC ANCHOR-PAIR & POOL GENERATION ENGINE
   // ==================================================
   _normalize(x) {
     return ((x % 10) + 10) % 10;
@@ -661,8 +661,8 @@ const _app = {
   runAnalysis(n3, n2) {
     const d3 = n3.split("").map(Number);
     const d2 = n2.split("").map(Number);
-    const [H, B, C] = d3;
-    const [R1, R2] = d2;
+    const [H, T_top, U_top] = d3;
+    const [T_bot, U_bot] = d2;
 
     const getUnitDirect = (v) => {
       const str = String(v);
@@ -671,36 +671,53 @@ const _app = {
       return [first, (first + 1) % 10];
     };
 
-    const sum3 = H + B + C;
+    const sum3 = H + T_top + U_top;
 
-    // MODULE A: Existing formula / scoring / ranking calculation
-    const fList = [
-      { name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(B + R1), isAdminRecommended: true },
-      { name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false },
-      { name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + R1), isAdminRecommended: false },
-      { name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(C + R2), isAdminRecommended: false },
-      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - R2), isAdminRecommended: false },
-      { name: "AI โมเดล 06", subName: "7 - H -> ใช้ระบบ Fixed-Base Anchor-Pair Module", set: [], isAdminRecommended: false }
-    ];
-
+    // Strict Rule Implementation for Model 06 & general modules
     const fixedBase = 7;
     const anchorRaw = fixedBase - H;
     const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
 
-    const rawRange = [anchor - 2, anchor - 1, anchor, anchor + 1, anchor + 2];
-    const normalizedRange = rawRange.map(x => this._normalize(x));
-    const rangeSpan = 2;
-
-    // Process Model 06 explicitly using Modules B-E
-    const m6FormulaSet = getUnitDirect(H + R1); // Baseline source pool for Model 6
-    fList[5].set = m6FormulaSet;
+    const fList = [
+      { name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(T_top + T_bot), isAdminRecommended: true },
+      { name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false },
+      { name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false },
+      { name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false },
+      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false },
+      { name: "AI โมเดล 06", subName: "7 - H -> Fixed-Base Anchor-Pair Module (Deterministic 100%)", set: getUnitDirect(T_top + T_bot), isAdminRecommended: false }
+    ];
 
     const evaluated = fList.map((item) => {
       const formulaSet = item.set;
+      
+      // Step: Check Collision between anchor-centered pool and formula set
+      let rawRange = [];
+      let rangeSpan = 2;
+      let hasCollision = false;
+
+      for (let offset = -2; offset <= 2; offset++) {
+        const val = this._normalize(anchor + offset);
+        if (formulaSet.includes(val)) {
+          hasCollision = true;
+          break;
+        }
+      }
+
+      if (hasCollision) {
+        rangeSpan = 3;
+        for (let offset = -3; offset <= 3; offset++) {
+          rawRange.push(this._normalize(anchor + offset));
+        }
+      } else {
+        for (let offset = -2; offset <= 2; offset++) {
+          rawRange.push(this._normalize(anchor + offset));
+        }
+      }
+
+      // Remove double digits and self-matches from pool filters
       const excludedDigits = [...new Set(formulaSet)];
-      
-      const cleanedPool = normalizedRange.filter(dg => !excludedDigits.includes(dg));
-      
+      let cleanedPool = rawRange.filter(dg => !excludedDigits.includes(dg));
+
       const generatedPairs = [];
       const rejectedPairs = [];
 
@@ -710,42 +727,37 @@ const _app = {
             rejectedPairs.push(`${sourceDigit}${poolDigit} (self-match)`);
             return;
           }
-          const pairObj = { digitA: sourceDigit, digitB: poolDigit, pairStr: `${sourceDigit} - ${poolDigit}` };
-          generatedPairs.push(pairObj);
+          generatedPairs.push({ digitA: sourceDigit, digitB: poolDigit, pairStr: `${sourceDigit}${poolDigit}` });
         });
       });
 
+      // Strict enforcement of precisely 5 pairs per source digit
       const pMap = {};
-      formulaSet.forEach(dg => {
-        pMap[dg] = generatedPairs.filter(p => p.digitA === dg).map(p => p.pairStr);
-      });
+      formulaSet.forEach(sourceDigit => {
+        let pairsForDigit = generatedPairs.filter(p => p.digitA === sourceDigit).map(p => p.pairStr);
+        
+        // If pool is short, pull continuous digits sequentially to fulfill exactly 5 pairs
+        let nextFill = (sourceDigit + 1) % 10;
+        while (pairsForDigit.length < 5) {
+          if (nextFill !== sourceDigit && !pairsForDigit.includes(`${sourceDigit}${nextFill}`) && !excludedDigits.includes(nextFill)) {
+            pairsForDigit.push(`${sourceDigit}${nextFill}`);
+          }
+          nextFill = (nextFill + 1) % 10;
+        }
 
-      // Debug Object Required by Spec Section 11
-      const debugInfo = {
-        source3Digit: n3,
-        hundredsDigit: H,
-        fixedBase: fixedBase,
-        anchorRaw: anchorRaw,
-        anchor: anchor,
-        rangeSpan: rangeSpan,
-        rawRange: rawRange,
-        normalizedRange: normalizedRange,
-        formulaSet: formulaSet,
-        excludedDigits: excludedDigits,
-        cleanedPool: cleanedPool,
-        generatedPairs: generatedPairs,
-        rejectedPairs: rejectedPairs
-      };
-      
-      //console.log("MODULE DEBUG INFO:", debugInfo);
+        // Enforce Ascending Order and remove any duplicate/double pairs
+        pairsForDigit = [...new Set(pairsForDigit)].filter(p => p[0] !== p[1]).sort();
+        if (pairsForDigit.length > 5) pairsForDigit = pairsForDigit.slice(0, 5);
+
+        pMap[sourceDigit] = pairsForDigit;
+      });
 
       return {
         name: item.name,
         subName: item.subName,
         isAdminRecommended: item.isAdminRecommended,
         set: item.set,
-        pairsMap: pMap,
-        debug: debugInfo
+        pairsMap: pMap
       };
     });
 
@@ -773,8 +785,6 @@ const _app = {
     const arr1 = winner.pairsMap[d1] || [];
     const arr2 = winner.pairsMap[d2_dig] || [];
 
-    const rawArr1 = arr1.map(p => p.replace(/\s*-\s*/g, ""));
-    const rawArr2 = arr2.map(p => p.replace(/\s*-\s*/g, ""));
     const matrixArr3d = arr1.map(p => `${p.slice(-1)}${d1}${d2_dig}`);
 
     const formula1 = evaluated[0];
@@ -820,12 +830,12 @@ const _app = {
       return `<div class="win-item" data-copy="${digit}"><strong>${digit}</strong><span>RANK ${index + 1} • ${pct}%</span></div>`;
     }).join("");
 
-    const pairHTML1 = rawArr1.length ? rawArr1.map((p, index) => {
+    const pairHTML1 = arr1.length ? arr1.map((p, index) => {
       const pct = Number((cScore1 - index * .4).toFixed(1));
       return `<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
-    const pairHTML2 = rawArr2.length ? rawArr2.map((p, index) => {
+    const pairHTML2 = arr2.length ? arr2.map((p, index) => {
       const pct = Number((cScore2 - index * .4).toFixed(1));
       return `<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
@@ -854,7 +864,7 @@ const _app = {
         list.forEach(p => { pairs.push({ pair: p }); });
       });
       const pairCards = pairs.map((obj, idx) => {
-        const displayPair = obj.pair.replace(/\s*-\s*/g, "");
+        const displayPair = obj.pair;
         const subPct = Number((item.aiScore - idx * .3).toFixed(1));
         return `<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
       }).join("");
