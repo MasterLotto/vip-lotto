@@ -673,7 +673,7 @@ const _app = {
 
     const sum3 = H + T_top + U_top;
 
-    // Strict Rule Implementation for Model 06 & general modules
+    // Strict Rule Implementation for 5 Models
     const fixedBase = 7;
     const anchorRaw = fixedBase - H;
     const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
@@ -683,8 +683,7 @@ const _app = {
       { name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false },
       { name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false },
       { name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false },
-      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false },
-      { name: "AI โมเดล 06", subName: "7 - H -> Fixed-Base Anchor-Pair Module (Deterministic 100%)", set: getUnitDirect(T_top + T_bot), isAdminRecommended: false }
+      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false }
     ];
 
     const evaluated = fList.map((item) => {
@@ -774,9 +773,8 @@ const _app = {
       item.aiScore = Number(Math.max(87.5, Math.min(99.9, baseScore)).toFixed(1));
     });
 
+    // แก้ไขจุดนี้: ยกเลิกการล็อกลำดับแอดมิน ให้เรียงตามคะแนนความน่าจะเป็นจริง (Consensus & AI Score) เท่านั้น
     evaluated.sort((a, b) => {
-      if (a.isAdminRecommended && !b.isAdminRecommended) return -1;
-      if (!a.isAdminRecommended && b.isAdminRecommended) return 1;
       return b.aiScore - a.aiScore;
     });
 
@@ -938,7 +936,7 @@ const _app = {
       
       <section class="formula-section">
         <button class="formula-toggle" id="toggleMainFormulasBtn" type="button" style="margin-bottom:7px;">
-          <span>📊 6 AI Models ที่ดีที่สุด (Top 6 Ranked)</span>
+          <span>📊 5 AI Models ที่ดีที่สุด (Top 5 Ranked)</span>
           <span>▼</span>
         </button>
         <div id="allFormulasWrapper" style="display:none; margin-top:7px;">
