@@ -773,7 +773,6 @@ const _app = {
       item.aiScore = Number(Math.max(87.5, Math.min(99.9, baseScore)).toFixed(1));
     });
 
-    // แก้ไขจุดนี้: ยกเลิกการล็อกลำดับแอดมิน ให้เรียงตามคะแนนความน่าจะเป็นจริง (Consensus & AI Score) เท่านั้น
     evaluated.sort((a, b) => {
       return b.aiScore - a.aiScore;
     });
