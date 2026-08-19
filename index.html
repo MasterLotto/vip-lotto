@@ -650,12 +650,20 @@ const _app = {
 
     updateTotalProcessedIncrement();
   },
-  runAnalysis(n3,n2){
-    const d3=n3.split("").map(Number);
-    const d2=n2.split("").map(Number);
-    const [A,B,C]=d3;
-    const [R1,R2]=d2;
-    
+  
+  // ==================================================
+  // ANCHOR-PAIR GENERATION LOGIC & SEPARATED MODULES
+  // ==================================================
+  _normalize(x) {
+    return ((x % 10) + 10) % 10;
+  },
+
+  runAnalysis(n3, n2) {
+    const d3 = n3.split("").map(Number);
+    const d2 = n2.split("").map(Number);
+    const [H, B, C] = d3;
+    const [R1, R2] = d2;
+
     const getUnitDirect = (v) => {
       const str = String(v);
       const lastChar = str.slice(-1);
@@ -663,142 +671,175 @@ const _app = {
       return [first, (first + 1) % 10];
     };
 
-    const sum3 = A + B + C; 
-    
-    const fList=[
-      {name:"AI โมเดล 01",subName:"B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(B + R1),isAdminRecommended:true},
-      {name:"AI โมเดล 02",subName:"A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(sum3)},
-      {name:"AI โมเดล 03",subName:"A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(A + R1)},
-      {name:"AI โมเดล 04",subName:"C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(C + R2)},
-      {name:"AI โมเดล 05",subName:"10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(10 - R2)},
-      {name:"AI โมเดล 06",subName:"7 - A -> ใช้หลักหน่วยตรงๆ + 1 แต้ม",set:getUnitDirect(7 - A)}
+    const sum3 = H + B + C;
+
+    // MODULE A: Existing formula / scoring / ranking calculation
+    const fList = [
+      { name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(B + R1), isAdminRecommended: true },
+      { name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false },
+      { name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + R1), isAdminRecommended: false },
+      { name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(C + R2), isAdminRecommended: false },
+      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - R2), isAdminRecommended: false },
+      { name: "AI โมเดล 06", subName: "7 - H -> ใช้ระบบ Fixed-Base Anchor-Pair Module", set: [], isAdminRecommended: false }
     ];
 
-    const votes={};
-    for(let d=0;d<=9;d++)votes[d]=0;
-    fList.forEach(item=>{item.set.forEach(dig=>{votes[dig]++;});});
-    fList.forEach(item=>{
-      item.score=item.set.reduce((acc,dg)=>acc+((votes[dg]||1)*25),100);
-      item.consensusCount=item.set.reduce((max,dg)=>Math.max(max,votes[dg]||0),0);
-    });
-    
-    fList.forEach((item,idx)=>{
-      const maxVote=item.consensusCount;
-      let baseScore=87.5;
-      if(maxVote>=3)baseScore=99.1-(idx*.1);
-      else if(maxVote===2)baseScore=95-(idx*.5);
-      else baseScore=91-(idx*.8);
-      item.aiScore=Number(Math.max(87.5,Math.min(99.9,baseScore)).toFixed(1));
+    const fixedBase = 7;
+    const anchorRaw = fixedBase - H;
+    const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
+
+    const rawRange = [anchor - 2, anchor - 1, anchor, anchor + 1, anchor + 2];
+    const normalizedRange = rawRange.map(x => this._normalize(x));
+    const rangeSpan = 2;
+
+    // Process Model 06 explicitly using Modules B-E
+    const m6FormulaSet = getUnitDirect(H + R1); // Baseline source pool for Model 6
+    fList[5].set = m6FormulaSet;
+
+    const evaluated = fList.map((item) => {
+      const formulaSet = item.set;
+      const excludedDigits = [...new Set(formulaSet)];
+      
+      const cleanedPool = normalizedRange.filter(dg => !excludedDigits.includes(dg));
+      
+      const generatedPairs = [];
+      const rejectedPairs = [];
+
+      formulaSet.forEach(sourceDigit => {
+        cleanedPool.forEach(poolDigit => {
+          if (sourceDigit === poolDigit) {
+            rejectedPairs.push(`${sourceDigit}${poolDigit} (self-match)`);
+            return;
+          }
+          const pairObj = { digitA: sourceDigit, digitB: poolDigit, pairStr: `${sourceDigit} - ${poolDigit}` };
+          generatedPairs.push(pairObj);
+        });
+      });
+
+      const pMap = {};
+      formulaSet.forEach(dg => {
+        pMap[dg] = generatedPairs.filter(p => p.digitA === dg).map(p => p.pairStr);
+      });
+
+      // Debug Object Required by Spec Section 11
+      const debugInfo = {
+        source3Digit: n3,
+        hundredsDigit: H,
+        fixedBase: fixedBase,
+        anchorRaw: anchorRaw,
+        anchor: anchor,
+        rangeSpan: rangeSpan,
+        rawRange: rawRange,
+        normalizedRange: normalizedRange,
+        formulaSet: formulaSet,
+        excludedDigits: excludedDigits,
+        cleanedPool: cleanedPool,
+        generatedPairs: generatedPairs,
+        rejectedPairs: rejectedPairs
+      };
+      
+      //console.log("MODULE DEBUG INFO:", debugInfo);
+
+      return {
+        name: item.name,
+        subName: item.subName,
+        isAdminRecommended: item.isAdminRecommended,
+        set: item.set,
+        pairsMap: pMap,
+        debug: debugInfo
+      };
     });
 
-    fList.sort((a,b)=>{
-      if(a.isAdminRecommended && !b.isAdminRecommended) return -1;
-      if(!a.isAdminRecommended && b.isAdminRecommended) return 1;
+    const votes = {};
+    for (let d = 0; d <= 9; d++) votes[d] = 0;
+    evaluated.forEach(item => { item.set.forEach(dig => { votes[dig]++; }); });
+
+    evaluated.forEach((item, idx) => {
+      const maxVote = item.set.reduce((max, dg) => Math.max(max, votes[dg] || 0), 0);
+      let baseScore = 87.5;
+      if (maxVote >= 3) baseScore = 99.1 - (idx * .1);
+      else if (maxVote === 2) baseScore = 95 - (idx * .5);
+      else baseScore = 91 - (idx * .8);
+      item.aiScore = Number(Math.max(87.5, Math.min(99.9, baseScore)).toFixed(1));
+    });
+
+    evaluated.sort((a, b) => {
+      if (a.isAdminRecommended && !b.isAdminRecommended) return -1;
+      if (!a.isAdminRecommended && b.isAdminRecommended) return 1;
       return b.aiScore - a.aiScore;
     });
-    
-    const evaluated=fList.map(item=>{
-      const cleanPool=[0,1,2,3,4,5,6,7,8,9].filter(dg=>!item.set.includes(dg));
-      const pMap={};
-      item.set.forEach(dg=>{
-        pMap[dg]=cleanPool.slice(0, 5).map(sub=>`${dg} - ${sub}`);
-      });
-      return{name:item.name,subName:item.subName,isAdminRecommended:item.isAdminRecommended,score:item.score,aiScore:item.aiScore,set:item.set,pMap,pairsMap:pMap};
-    });
 
-    const winner=evaluated[0];
-    const [d1,d2_dig]=winner.set;
-    const arr1=winner.pairsMap[d1]||[];
-    const arr2=winner.pairsMap[d2_dig]||[];
-    
-    const matrixArr1Raw = arr1.map(p => p.replace(/\s*-\s*/g, ""));
-    const matrixArr2Raw = arr2.map(p => p.replace(/\s*-\s*/g, ""));
-    
-    const final3d=arr1.map(p=>`${p.slice(-1)} - ${d1} - ${d2_dig}`);
-    const formula1=evaluated[0];
-    const formula2=evaluated[1];
-    const cScore1=formula1?formula1.aiScore:99.9;
-    let cScore2=formula2?formula2.aiScore:96.4;
-    if(cScore1===cScore2||Math.abs(cScore1-cScore2)<.5)cScore2=Number((cScore1-.4).toFixed(1));
-    const cScore3=Number((50.1+Math.random()*.8).toFixed(1));
+    const winner = evaluated[0];
+    const [d1, d2_dig] = winner.set;
+    const arr1 = winner.pairsMap[d1] || [];
+    const arr2 = winner.pairsMap[d2_dig] || [];
 
-    const digitScores=Object.keys(votes).map(Number).map(digit=>{
-      let score=0;
-      evaluated.forEach(model=>{if(model.set.includes(digit))score+=model.aiScore;});
-      const frequency=votes[digit]||0;
-      return{digit,votes:frequency,score};
+    const rawArr1 = arr1.map(p => p.replace(/\s*-\s*/g, ""));
+    const rawArr2 = arr2.map(p => p.replace(/\s*-\s*/g, ""));
+    const matrixArr3d = arr1.map(p => `${p.slice(-1)}${d1}${d2_dig}`);
+
+    const formula1 = evaluated[0];
+    const formula2 = evaluated[1];
+    const cScore1 = formula1 ? formula1.aiScore : 99.9;
+    let cScore2 = formula2 ? formula2.aiScore : 96.4;
+    if (cScore1 === cScore2 || Math.abs(cScore1 - cScore2) < .5) cScore2 = Number((cScore1 - .4).toFixed(1));
+    const cScore3 = Number((50.1 + Math.random() * .8).toFixed(1));
+
+    const digitScores = Object.keys(votes).map(Number).map(digit => {
+      let score = 0;
+      evaluated.forEach(model => { if (model.set.includes(digit)) score += model.aiScore; });
+      const frequency = votes[digit] || 0;
+      return { digit, votes: frequency, score };
     });
-    const ranking=digitScores.sort((a,b)=>b.score-a.score||b.votes-a.votes||a.digit-b.digit);
-    const top5=ranking.slice(0,5);
-    const next5=ranking.slice(5,10);
-    const winSet=[];
-    ranking.forEach(item=>{if(!winSet.includes(item.digit)&&winSet.length<6)winSet.push(item.digit);});
-    
-    const marketDigits=Object.keys(votes).map(Number).map(digit=>{
-      const v=votes[digit]||0;
-      let maxAi=87.5;
-      evaluated.forEach(f=>{if(f.set.includes(digit)&&f.aiScore>maxAi)maxAi=f.aiScore;});
-      return{digit,votes:v,percentage:v>0?maxAi:0};
-    }).filter(i=>i.votes>0).sort((a,b)=>b.votes-a.votes||b.percentage-a.percentage||a.digit-b.digit).slice(0,4);
-    const marketTop=marketDigits.map((item,index)=>index===0||index===1?{...item,percentage:index===0?cScore1:cScore2}:item);
-    const marketRanked=marketTop.map((item,index)=>({...item,rank:index+1}));
-    const matrixD1=marketRanked[0]?marketRanked[0].digit:d1;
-    const matrixD2=marketRanked[1]?marketRanked[1].digit:d2_dig;
-    const matrixFormula1=evaluated.find(f=>f.set.includes(matrixD1));
-    const matrixFormula2=evaluated.find(f=>f.set.includes(matrixD2));
-    
-    const rawArr1 = (matrixFormula1?matrixFormula1.pairsMap[matrixD1]||arr1:arr1).map(p => p.replace(/\s*-\s*/g, ""));
-    const rawArr2 = (matrixFormula2?matrixFormula2.pairsMap[matrixD2]||arr2:arr2).map(p => p.replace(/\s*-\s*/g, ""));
-    
-    const matrixArr3d = (matrixFormula1?matrixFormula1.pairsMap[matrixD1]||arr1:arr1).map(p=>`${p.slice(-1)}${matrixD1}${matrixD2}`);
-    
-    const maxVote=Math.max(...Object.values(votes),1);
-    const pastelColors=[
-      '#087F5B', '#078FA1', '#765BC8', '#B78320', '#10A879',
-      '#2CC5D0', '#E7BF63', '#55D3A7', '#18352C', '#73827B'
-    ];
-    
+    const ranking = digitScores.sort((a, b) => b.score - a.score || b.votes - a.votes || a.digit - b.digit);
+    const top5 = ranking.slice(0, 5);
+    const next5 = ranking.slice(5, 10);
+    const winSet = [];
+    ranking.forEach(item => { if (!winSet.includes(item.digit) && winSet.length < 6) winSet.push(item.digit); });
+
+    const maxVoteVal = Math.max(...Object.values(votes), 1);
+    const pastelColors = ['#087F5B', '#078FA1', '#765BC8', '#B78320', '#10A879', '#2CC5D0', '#E7BF63', '#55D3A7', '#18352C', '#73827B'];
+
     const distributionHTML = [];
-    for(let digit = 0; digit <= 9; digit++) {
+    for (let digit = 0; digit <= 9; digit++) {
       const amount = votes[digit] || 0;
-      const height = Math.max(10, Math.round((amount / maxVote) * 100));
+      const height = Math.max(10, Math.round((amount / maxVoteVal) * 100));
       const barColor = pastelColors[digit % pastelColors.length];
       distributionHTML.push(`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`);
     }
     const distributionHTMLString = distributionHTML.join("");
 
-    const makeChip=(item,index,cls="")=>{
-      const pct=Math.min(99.9,Math.max(70,Number((item.score ? (item.score / 5) : (99-index*1.3)).toFixed(1))));
-      return`<div class="number-chip ${cls}" data-copy="${this._esc(item.digit)}"><strong>${item.digit}</strong><small>${pct}%</small></div>`;
+    const makeChip = (item, index, cls = "") => {
+      const pct = Math.min(99.9, Math.max(70, Number((item.score ? (item.score / 5) : (99 - index * 1.3)).toFixed(1))));
+      return `<div class="number-chip ${cls}" data-copy="${this._esc(item.digit)}"><strong>${item.digit}</strong><small>${pct}%</small></div>`;
     };
-    const top5HTML=top5.map((item,index)=>makeChip(item,index,index===0?"top":"")).join("");
-    const next5HTML=next5.map((item,index)=>makeChip(item,index,index===0?"gold":"")).join("");
-    const winSetHTML=winSet.map((digit,index)=>{
+    const top5HTML = top5.map((item, index) => makeChip(item, index, index === 0 ? "top" : "")).join("");
+    const next5HTML = next5.map((item, index) => makeChip(item, index, index === 0 ? "gold" : "")).join("");
+    const winSetHTML = winSet.map((digit, index) => {
       const matchedModel = evaluated.find(m => m.set.includes(digit));
-      const pct = matchedModel ? matchedModel.aiScore : Number((98-index*1.4).toFixed(1));
-      return`<div class="win-item" data-copy="${digit}"><strong>${digit}</strong><span>RANK ${index+1} • ${pct}%</span></div>`;
+      const pct = matchedModel ? matchedModel.aiScore : Number((98 - index * 1.4).toFixed(1));
+      return `<div class="win-item" data-copy="${digit}"><strong>${digit}</strong><span>RANK ${index + 1} • ${pct}%</span></div>`;
     }).join("");
 
-    const pairHTML1=rawArr1.length?rawArr1.map((p,index)=>{
-      const pct=Number((cScore1 - index*.4).toFixed(1));
-      return`<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
-    }).join(""):`<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
+    const pairHTML1 = rawArr1.length ? rawArr1.map((p, index) => {
+      const pct = Number((cScore1 - index * .4).toFixed(1));
+      return `<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
+    }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
-    const pairHTML2=rawArr2.length?rawArr2.map((p,index)=>{
-      const pct=Number((cScore2 - index*.4).toFixed(1));
-      return`<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
-    }).join(""):`<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
+    const pairHTML2 = rawArr2.length ? rawArr2.map((p, index) => {
+      const pct = Number((cScore2 - index * .4).toFixed(1));
+      return `<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
+    }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
-    const threeHTML=matrixArr3d.length?matrixArr3d.map((p,index)=>{
-      const pct=Number((cScore3 - index*.1).toFixed(1));
-      return`<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
-    }).join(""):`<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
+    const threeHTML = matrixArr3d.length ? matrixArr3d.map((p, index) => {
+      const pct = Number((cScore3 - index * .1).toFixed(1));
+      return `<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
+    }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.45rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
-    const rankHTML=top5.map((item,index)=>{
+    const rankHTML = top5.map((item, index) => {
       const matchedModel = evaluated.find(m => m.set.includes(item.digit));
-      const pct = matchedModel ? matchedModel.aiScore : Math.min(99.9,Math.max(75,98.8-(index*1.2)));
+      const pct = matchedModel ? matchedModel.aiScore : Math.min(99.9, Math.max(75, 98.8 - (index * 1.2)));
       return `<div class="rank-row" data-copy="${item.digit}">
-        <div class="rank-no">#${String(index+1).padStart(2,"0")}</div>
+        <div class="rank-no">#${String(index + 1).padStart(2, "0")}</div>
         <div class="rank-digit">${item.digit}</div>
         <div class="rank-bar-wrap"><div class="rank-bar-fill" style="width: ${pct}%;"></div></div>
         <div class="rank-percent">${pct.toFixed(1)}%</div>
@@ -806,35 +847,33 @@ const _app = {
     }).join("");
 
     let allFormulasHTML = "";
-    
-    evaluated.forEach((item)=>{
-      let pairs=[];
-      item.set.forEach((digit)=>{
-        const list=item.pairsMap[digit]||[];
-        list.forEach(p=>{pairs.push({pair:p});});
+    evaluated.forEach((item) => {
+      let pairs = [];
+      item.set.forEach((digit) => {
+        const list = item.pairsMap[digit] || [];
+        list.forEach(p => { pairs.push({ pair: p }); });
       });
-      const pairCards=pairs.map((obj,idx)=>{
-        const displayPair=obj.pair.replace(/\s*-\s*/g,"");
+      const pairCards = pairs.map((obj, idx) => {
+        const displayPair = obj.pair.replace(/\s*-\s*/g, "");
         const subPct = Number((item.aiScore - idx * .3).toFixed(1));
-        return`<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
+        return `<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
       }).join("");
-      
+
       const badgeHtml = item.isAdminRecommended ? `<span class="compact-badge">แอดมินแนะนำ</span>` : "";
-      
       allFormulasHTML += `<div class="formula-card"><div class="formula-head"><div class="formula-name">${this._esc(item.name)} ${badgeHtml}</div><div class="formula-badge">AI score ${item.aiScore}%</div></div><div class="formula-sub">เลขเด่น: <strong>${item.set.join(" - ")}</strong></div><div class="formula-pairs">${pairCards}</div></div>`;
     });
 
-    const signalTest=cScore1>=95?"BULLISH":cScore1>=90?"POSITIVE":"WATCH";
+    const signalTest = cScore1 >= 95 ? "BULLISH" : cScore1 >= 90 ? "POSITIVE" : "WATCH";
 
-    const html=`<div class="result-shell">
+    const html = `<div class="result-shell">
       <div class="result-head">
         <div><div class="result-kicker">ANALYSIS COMPLETE / วิเคราะห์เสร็จแล้ว</div><div class="result-title">Quant Intelligence Result</div></div>
         <div class="result-note">${new Date().toLocaleTimeString("th-TH")}</div>
       </div>
       <section class="primary-signal">
         <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS / ชุดเด่นหลัก</div><div class="confidence">${cScore1.toFixed(1)}%</div></div>
-        <div class="primary-number"><div class="big-digit">${matrixD1}</div><div class="digit-divider">-</div><div class="big-digit">${matrixD2}</div></div>
-        <div class="primary-caption">ชุดเด่น <strong>${matrixD1}</strong> - ชุดรอง <strong>${matrixD2}</strong> / PRIMARY SET + SECONDARY SET</div>
+        <div class="primary-number"><div class="big-digit">${d1}</div><div class="digit-divider">-</div><div class="big-digit">${d2_dig}</div></div>
+        <div class="primary-caption">ชุดเด่น <strong>${d1}</strong> - ชุดรอง <strong>${d2_dig}</strong> / PRIMARY SET + SECONDARY SET</div>
       </section>
       <div class="section-marker">DIGIT OVERVIEW / ภาพรวมตัวเลข</div>
       <section class="overview-panel">
@@ -900,68 +939,69 @@ const _app = {
       <div class="disclaimer">
         <strong>หมายเหตุ:</strong> คะแนนและเปอร์เซ็นต์เป็นค่าประเมินจากระบบโมเดลและโครงสร้างข้อมูลภายในระบบ
       </div>`;
-    
-    document.getElementById("resultContainer").innerHTML=html;
-    
-    document.querySelectorAll("[data-copy]").forEach(node=>{
+
+    document.getElementById("resultContainer").innerHTML = html;
+
+    document.querySelectorAll("[data-copy]").forEach(node => {
       const newClone = node.cloneNode(true);
       node.parentNode.replaceChild(newClone, node);
-      newClone.addEventListener("click",()=>{this.copyText(newClone.dataset.copy);});
+      newClone.addEventListener("click", () => { this.copyText(newClone.dataset.copy); });
     });
-    
-    const toggleMainBtn=document.getElementById("toggleMainFormulasBtn");
-    const allWrapper=document.getElementById("allFormulasWrapper");
 
-    if(toggleMainBtn && allWrapper){
+    const toggleMainBtn = document.getElementById("toggleMainFormulasBtn");
+    const allWrapper = document.getElementById("allFormulasWrapper");
+
+    if (toggleMainBtn && allWrapper) {
       const newToggleBtn = toggleMainBtn.cloneNode(true);
       toggleMainBtn.parentNode.replaceChild(newToggleBtn, toggleMainBtn);
-      
-      newToggleBtn.addEventListener("click",()=>{
+
+      newToggleBtn.addEventListener("click", () => {
         this._audio("click");
         const freshWrapper = document.getElementById("allFormulasWrapper");
-        const isOpen = freshWrapper.style.display==="block";
+        const isOpen = freshWrapper.style.display === "block";
         freshWrapper.style.display = isOpen ? "none" : "block";
         newToggleBtn.querySelector("span:last-child").innerText = isOpen ? "▼" : "▲";
       });
     }
   },
-  copyText(text){
+
+  copyText(text) {
     this._audio("click");
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(()=>this.showToast()).catch(()=>this.fallbackCopyText(text));
-    }else{
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => this.showToast()).catch(() => this.fallbackCopyText(text));
+    } else {
       this.fallbackCopyText(text);
     }
   },
-  fallbackCopyText(text){
-    const ta=document.createElement("textarea");
-    ta.value=text;
-    ta.style.position="fixed";
-    ta.style.opacity="0";
+  fallbackCopyText(text) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
     document.body.appendChild(ta);
     ta.focus();
     ta.select();
-    try{
+    try {
       document.execCommand('copy');
       this.showToast();
-    }catch(e){}
+    } catch (e) {}
     document.body.removeChild(ta);
   },
-  showToast(){
+  showToast() {
     clearTimeout(this._toastTimer);
-    const t=document.getElementById("toast");
+    const t = document.getElementById("toast");
     t.classList.add("show");
-    this._toastTimer=setTimeout(()=>{
+    this._toastTimer = setTimeout(() => {
       t.classList.remove("show");
-    },1800);
+    }, 1800);
   }
 };
 
-document.getElementById("loginButton").addEventListener("click",()=>_app.login());
-document.getElementById("passwordInput").addEventListener("keyup",e=>{if(e.key==="Enter")_app.login();});
-document.getElementById("calculateButton").addEventListener("click",()=>_app.calculate());
-document.getElementById("clearButton").addEventListener("click",()=>_app.clearCalc());
-document.getElementById("logoutButton").addEventListener("click",()=>_app.logout());
+document.getElementById("loginButton").addEventListener("click", () => _app.login());
+document.getElementById("passwordInput").addEventListener("keyup", e => { if (e.key === "Enter") _app.login(); });
+document.getElementById("calculateButton").addEventListener("click", () => _app.calculate());
+document.getElementById("clearButton").addEventListener("click", () => _app.clearCalc());
+document.getElementById("logoutButton").addEventListener("click", () => _app.logout());
 
 const n3Input = document.getElementById("num3top");
 const n2Input = document.getElementById("num2bottom");
@@ -972,9 +1012,9 @@ n3Input.addEventListener("input", () => {
   }
 });
 
-["num3top","num2bottom"].forEach(id=>{
-  document.getElementById(id).addEventListener("keyup",e=>{
-    if(e.key==="Enter")_app.calculate();
+["num3top", "num2bottom"].forEach(id => {
+  document.getElementById(id).addEventListener("keyup", e => {
+    if (e.key === "Enter") _app.calculate();
   });
 });
 
@@ -1003,8 +1043,8 @@ function updateTotalProcessedIncrement() {
 
   const countEl = document.getElementById("totalProcessedCount");
   const dotEl = document.getElementById("totalDot");
-  if(countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
-  if(dotEl) {
+  if (countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
+  if (dotEl) {
     dotEl.classList.remove("ripple");
     void dotEl.offsetWidth;
     dotEl.classList.add("ripple");
@@ -1021,13 +1061,13 @@ function scheduleNextProcessedIncrement() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const countEl = document.getElementById("totalProcessedCount");
-  if(countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
+  if (countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
   
   const onlineEl = document.getElementById("onlineUsersCount");
-  if(onlineEl) onlineEl.innerText = currentOnlineUsers.toLocaleString() + " คน";
+  if (onlineEl) onlineEl.innerText = currentOnlineUsers.toLocaleString() + " คน";
   
   const latencyEl = document.getElementById("serverLatencyCount");
-  if(latencyEl) latencyEl.innerText = currentServerLatency + " ms";
+  if (latencyEl) latencyEl.innerText = currentServerLatency + " ms";
 });
 scheduleNextProcessedIncrement();
 
@@ -1036,7 +1076,7 @@ setInterval(() => {
   currentOnlineUsers = Math.max(450, Math.min(1500, currentOnlineUsers + onlineDelta));
   localStorage.setItem("ml_online_users_v3", currentOnlineUsers);
   const onlineEl = document.getElementById("onlineUsersCount");
-  if(onlineEl) onlineEl.innerText = currentOnlineUsers.toLocaleString() + " คน";
+  if (onlineEl) onlineEl.innerText = currentOnlineUsers.toLocaleString() + " คน";
 }, 60000);
 
 function startServerLatencySimulator() {
@@ -1045,7 +1085,7 @@ function startServerLatencySimulator() {
     currentServerLatency = Math.max(14, Math.min(32, currentServerLatency + latencyDelta));
     localStorage.setItem("ml_server_latency_v3", currentServerLatency);
     const latencyEl = document.getElementById("serverLatencyCount");
-    if(latencyEl) {
+    if (latencyEl) {
       latencyEl.innerText = currentServerLatency + " ms";
       latencyEl.style.transform = "scale(1.05)";
       setTimeout(() => { latencyEl.style.transform = "scale(1)"; }, 200);
@@ -1054,9 +1094,9 @@ function startServerLatencySimulator() {
 }
 startServerLatencySimulator();
 
-if(localStorage.getItem("ml_auth_status_v3")==="active"){
-  document.getElementById("loginView").style.display="none";
-  document.getElementById("calculatorView").style.display="block";
+if (localStorage.getItem("ml_auth_status_v3") === "active") {
+  document.getElementById("loginView").style.display = "none";
+  document.getElementById("calculatorView").style.display = "block";
   _app.checkSessionBadge();
 }
 </script>
