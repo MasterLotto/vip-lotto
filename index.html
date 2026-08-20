@@ -617,8 +617,7 @@ const _app = {
   },
 
   // ---------------------------------------------------------------------------
-  // 5 สูตรคณิตศาสตร์บริสุทธิ์ (Backend Scoring & Compass Engine)
-  // ทำหน้าที่ให้คะแนนและเป็นเข็มทิศเบื้องหลัง โดยไม่แตะต้องสูตรเลขเจาะหลัก
+  // Backend Compass Engine (Cross-Validation Layer) - Deterministic 100%
   // ---------------------------------------------------------------------------
   _runBackendQuantEngine(n3, n2) {
     const d3 = n3.split("").map(Number);
@@ -630,19 +629,10 @@ const _app = {
     const sumBot = T_bot + U_bot;
     const totalSum = sumTop + sumBot;
 
-    // 1. Dynamic Modulo-Cross Vector (ผลต่างไขว้มอดูลัส)
     const model1Digit = Math.abs((H_top + T_top) - (T_bot * 2)) % 10;
-
-    // 2. Non-Linear Prime Weighting Matrix (ตัวคูณเฉพาะเชิงไม่เป็นเส้นตรง)
     const model2Digit = ((U_top * 3) + (U_bot * 7)) % 10;
-
-    // 3. Harmonic Ratio & Remainder Balance (สัดส่วนฮาร์มอนิกและเศษเหลือ)
     const model3Digit = Math.floor((sumTop / (sumBot + 1)) * 9) % 10;
-
-    // 4. Absolute Cross-Difference Offset (ผลต่างไขว้สัมบูรณ์หักล้าง)
     const model4Digit = (10 - ((Math.abs(T_top - U_bot)) + (Math.abs(H_top - T_bot))) % 10) % 10;
-
-    // 5. Systemic Global Momentum Anchor (จุดยึดเหนี่ยวมอนเมนตัมภาพรวม)
     const model5Digit = (totalSum * 3) % 10;
 
     const compassDigits = [model1Digit, model2Digit, model3Digit, model4Digit, model5Digit];
@@ -661,38 +651,13 @@ const _app = {
     };
   },
 
-  _calculateIndependentWin(n3, n2) {
-    const combinedDigits = (n3 + n2).split("").map(Number);
-    let uniqueDigits = [...new Set(combinedDigits)];
-
-    if (uniqueDigits.length < 6) {
-      const d2Arr = n2.split("").map(Number);
-      let anchor = d2Arr[d2Arr.length - 1];
-      
-      let currentVal = anchor;
-      while (uniqueDigits.length < 6) {
-        if (!uniqueDigits.includes(currentVal)) {
-          uniqueDigits.push(currentVal);
-        }
-        currentVal = (currentVal + 1) % 10;
-      }
-    } else if (uniqueDigits.length > 6) {
-      uniqueDigits = uniqueDigits.slice(0, 6);
-    }
-
-    uniqueDigits.sort((a, b) => a - b);
-    return uniqueDigits;
-  },
-
   runAnalysis(n3, n2) {
     const d3 = n3.split("").map(Number);
     const d2 = n2.split("").map(Number);
     const [H, T_top, U_top] = d3;
     const [T_bot, U_bot] = d2;
 
-    // เรียกใช้งาน Backend Quant Engine (5 สูตรคณิตศาสตร์บริสุทธิ์ ทำหน้าที่เป็นระบบเข็มทิศและให้คะแนน)
     const backendEngine = this._runBackendQuantEngine(n3, n2);
-    const independentWinSet = this._calculateIndependentWin(n3, n2);
 
     const getUnitDirect = (v) => {
       const str = String(v);
@@ -706,12 +671,13 @@ const _app = {
     const anchorRaw = fixedBase - H;
     const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
 
+    // 5 AI Models หลัก (คงตรรกะและสูตรเดิมไว้ 100%)
     const fList = [
-      { name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(T_top + T_bot), isAdminRecommended: true },
-      { name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false },
-      { name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false },
-      { name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false },
-      { name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false }
+      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(T_top + T_bot), isAdminRecommended: true, positionalWeight: 1.2 },
+      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false, positionalWeight: 1.0 },
+      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false, positionalWeight: 1.0 },
+      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false, positionalWeight: 1.2 },
+      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false, positionalWeight: 1.0 }
     ];
 
     const evaluated = fList.map((item) => {
@@ -769,108 +735,202 @@ const _app = {
       });
 
       return {
+        id: item.id,
         name: item.name,
         subName: item.subName,
         isAdminRecommended: item.isAdminRecommended,
+        positionalWeight: item.positionalWeight,
         set: item.set,
         pairsMap: pMap
       };
     });
 
-    const uniqueModelSets = new Map();
-    evaluated.forEach(item => {
-      const setKey = item.set.slice().sort().join("-");
-      if (!uniqueModelSets.has(setKey)) {
-        uniqueModelSets.set(setKey, item);
-      }
+    // ---------------------------------------------------------------------------
+    // UPGRADE 1: RE-WEIGHTING SYSTEM & DYNAMIC SCORING
+    // ---------------------------------------------------------------------------
+    const digitScores = {};
+    for (let d = 0; d <= 9; d++) {
+      digitScores[d] = {
+        digit: d,
+        frequency: 0,
+        baseScore: 0,
+        compassBonus: 0,
+        momentumBonus: 0,
+        totalScore: 0
+      };
+    }
+
+    evaluated.forEach(model => {
+      model.set.forEach(dig => {
+        digitScores[dig].frequency += 1;
+        digitScores[dig].baseScore += (10 * model.positionalWeight);
+      });
     });
-    const uniqueEvaluated = Array.from(uniqueModelSets.values());
 
-    const votes = {};
-    for (let d = 0; d <= 9; d++) votes[d] = 0;
-    uniqueEvaluated.forEach(item => { item.set.forEach(dig => { votes[dig]++; }); });
-
-    uniqueEvaluated.forEach((item, idx) => {
-      const maxVote = item.set.reduce((max, dg) => Math.max(max, votes[dg] || 0), 0);
-      let baseScore = 87.5;
-      if (maxVote >= 2) baseScore = 98.1 - (idx * .2);
-      else baseScore = 92 - (idx * .5);
-      item.aiScore = Number(Math.max(85.0, Math.min(99.5, baseScore)).toFixed(1));
+    // นับความถี่ที่ตัวเลขปรากฏใน Backend Compass Engine
+    const compassFreq = {};
+    backendEngine.digits.forEach(d => {
+      compassFreq[d] = (compassFreq[d] || 0) + 1;
     });
 
-    uniqueEvaluated.sort((a, b) => b.aiScore - a.aiScore);
-    const evaluatedFinal = uniqueEvaluated;
+    // คำนวณความต่างเชิงเส้นตรงสำหรับ Momentum Bonus
+    const linearDiff = Math.abs(T_top - U_top) + Math.abs(T_bot - U_bot);
 
-    const winner = evaluatedFinal[0];
-    const [d1, d2_dig] = winner.set;
-    const arr1 = winner.pairsMap[d1] || [];
-    const arr2 = winner.pairsMap[d2_dig] || [];
-    const matrixArr3d = arr1.map(p => `${p.slice(-1)}${d1}${d2_dig}`);
-
-    const formula1 = evaluatedFinal[0];
-    const formula2 = evaluatedFinal[1];
-    const cScore1 = formula1 ? formula1.aiScore : 98.5;
-    let cScore2 = formula2 ? formula2.aiScore : 94.2;
-    if (cScore1 === cScore2 || Math.abs(cScore1 - cScore2) < .5) cScore2 = Number((cScore1 - .5).toFixed(1));
-    const cScore3 = Number((50.1 + Math.random() * .8).toFixed(1));
-
-    // ผนวกรวมคะแนนจาก Backend Compass Engine (5 สูตรคณิตศาสตร์บริสุทธิ์) เข้ากับคะแนนรวมของตัวเลข
-    const digitScores = Object.keys(votes).map(Number).map(digit => {
-      let score = 0;
-      uniqueEvaluated.forEach(model => { if (model.set.includes(digit)) score += model.aiScore; });
-      let frequency = votes[digit] || 0;
-      let compassBonus = 0;
+    for (let d = 0; d <= 9; d++) {
+      const item = digitScores[d];
       
-      if (backendEngine.uniqueDigits.includes(digit)) {
-        compassBonus = 0.5; // ให้คะแนนโบนัสเข็มทิศจาก 5 สูตรหลังบ้าน
+      // 1. Conditional compassBonus: มอบโบนัส +15% เมื่อปรากฏซ้ำตั้งแต่ 2 โมเดลย่อยขึ้นไปเท่านั้น
+      if ((compassFreq[d] || 0) >= 2) {
+        item.compassBonus = item.baseScore * 0.15;
+      }
+      
+      // 2. Momentum Bonus: ใช้ค่าปรับสมดุล Momentum จากความต่างของตัวเลขแบบเชิงเส้นตรง (ไม่คูณ sumDeltaRate ซ้ำซ้อน)
+      if (d === T_bot || d === U_top) {
+        item.momentumBonus = item.baseScore * 0.12 * (1.0 + (linearDiff / 36.0));
       }
 
-      score += (compassBonus * 2);
+      item.totalScore = item.baseScore + item.compassBonus + item.momentumBonus;
+    }
 
-      if (independentWinSet.includes(digit)) {
-        score += 2.0;
-      }
+    const matrixSorted = Object.values(digitScores).sort((a, b) => b.totalScore - a.totalScore || b.frequency - a.frequency || a.digit - b.digit);
+    
+    // คัดเลือกเลขเด่น 2 ตัวแรก
+    let primaryDigitObj = matrixSorted[0];
+    let secondaryDigitObj = matrixSorted[1];
 
-      return { digit, votes: frequency, score, compassBonus };
+    const isAligned = (digit) => {
+      const existsInModels = evaluated.some(m => m.set.includes(digit));
+      const existsInCompass = backendEngine.uniqueDigits.includes(digit);
+      return existsInModels && existsInCompass;
+    };
+
+    const alignedCandidates = matrixSorted.filter(item => isAligned(item.digit));
+    if (alignedCandidates.length >= 2) {
+      primaryDigitObj = alignedCandidates[0];
+      secondaryDigitObj = alignedCandidates[1];
+    } else if (alignedCandidates.length === 1) {
+      primaryDigitObj = alignedCandidates[0];
+      secondaryDigitObj = matrixSorted.find(item => item.digit !== primaryDigitObj.digit) || matrixSorted[1];
+    }
+
+    const d1 = primaryDigitObj.digit;
+    const d2_dig = secondaryDigitObj.digit;
+
+    // 3. ปรับปรุงการคำนวณสเกล AI Score (% Confidence) สะท้อนค่าเบี่ยงเบนจริงตาม Weighted Score
+    const allScores = matrixSorted.map(s => s.totalScore);
+    const minScore = Math.min(...allScores);
+    const maxScore = Math.max(...allScores);
+    const scoreRange = (maxScore - minScore) || 1;
+
+    const calcConfidence = (score) => {
+      const normalizedPct = 80.0 + ((score - minScore) / scoreRange) * 18.5;
+      return Number(Math.min(98.5, Math.max(80.0, normalizedPct)).toFixed(1));
+    };
+
+    const cScore1 = calcConfidence(primaryDigitObj.totalScore);
+    let cScore2 = calcConfidence(secondaryDigitObj.totalScore);
+    if (cScore1 === cScore2 || Math.abs(cScore1 - cScore2) < 0.5) {
+      cScore2 = Number((cScore1 - 0.8).toFixed(1));
+    }
+    
+    evaluated.forEach(model => {
+      const modelScoreSum = model.set.reduce((sum, dig) => sum + digitScores[dig].totalScore, 0);
+      model.aiScore = calcConfidence(modelScoreSum / 2);
     });
 
-    const ranking = digitScores.sort((a, b) => b.score - a.score || b.votes - a.votes || a.digit - b.digit);
-    const top5 = ranking.slice(0, 5);
+    evaluated.sort((a, b) => b.aiScore - a.aiScore);
 
-    const maxVoteVal = Math.max(...Object.values(votes), 1);
+    const winnerModel = evaluated[0];
+    const arr1 = winnerModel.pairsMap[d1] || evaluated.find(m => m.pairsMap[d1])?.pairsMap[d1] || [];
+    const arr2 = winnerModel.pairsMap[d2_dig] || evaluated.find(m => m.pairsMap[d2_dig])?.pairsMap[d2_dig] || [];
+    const matrixArr3d = arr1.slice(0, 5).map(p => `${p.slice(-1)}${d1}${d2_dig}`);
+    const cScore3 = Number(((cScore1 + cScore2) / 2 - 2.5).toFixed(1));
+
+    // ---------------------------------------------------------------------------
+    // UPGRADE 2: WIN SET UPGRADE (Matrix Dynamic Top 6 with Balanced Constraint)
+    // ---------------------------------------------------------------------------
+    // 1) ดึงตัวเลขที่มีคะแนนสะสมสูงสุด 6 อันดับแรกจาก Matrix
+    let winSetObjects = matrixSorted.slice(0, 6);
+    let currentSet = winSetObjects.map(item => item.digit);
+
+    // ฟังก์ชันตรวจสอบ Balanced Constraint
+    const checkBalance = (digits) => {
+      const evenCount = digits.filter(d => d % 2 === 0).length;
+      const oddCount = digits.length - evenCount;
+      const lowCount = digits.filter(d => d >= 0 && d <= 4).length;
+      const highCount = digits.length - lowCount;
+
+      const isEvenOddBalanced = (evenCount >= 2 && oddCount >= 2);
+      const isHighLowBalanced = (lowCount >= 2 && highCount >= 2);
+
+      return {
+        isBalanced: isEvenOddBalanced && isHighLowBalanced,
+        evenCount, oddCount, lowCount, highCount
+      };
+    };
+
+    // 2 & 3) หากเกิดอาการเอียงฝั่ง extreme ให้ลองสลับเอาระดับ 7 หรือ 8 เข้ามาแทนที่ตัวเลขอันดับสุดท้าย
+    if (!checkBalance(currentSet).isBalanced) {
+      const candidatesIndex = [6, 7]; // อันดับที่ 7 และ 8 ใน Matrix
+      let bestSet = [...currentSet];
+      let foundReplacement = false;
+
+      for (let idx of candidatesIndex) {
+        if (idx < matrixSorted.length) {
+          const testSet = [...currentSet.slice(0, 5), matrixSorted[idx].digit];
+          if (checkBalance(testSet).isBalanced) {
+            bestSet = testSet;
+            foundReplacement = true;
+            break;
+          }
+        }
+      }
+
+      if (foundReplacement) {
+        currentSet = bestSet;
+      }
+    }
+
+    // 4) เรียงลำดับตัวเลขในชุดวินจากน้อยไปมาก (Ascending Order)
+    const winSet = currentSet.sort((a, b) => a - b);
+
+    // ---------------------------------------------------------------------------
+    // UI Rendering
+    // ---------------------------------------------------------------------------
+    const top5 = matrixSorted.slice(0, 5);
+    const maxScoreVal = Math.max(...matrixSorted.map(s => s.totalScore), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
 
     const distributionHTML = [];
     for (let digit = 0; digit <= 9; digit++) {
-      const amount = votes[digit] || 0;
-      const height = Math.max(10, Math.round((amount / maxVoteVal) * 100));
+      const item = digitScores[digit];
+      const height = Math.max(10, Math.round((item.totalScore / maxScoreVal) * 100));
       const barColor = pastelColors[digit % pastelColors.length];
       distributionHTML.push(`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`);
     }
     const distributionHTMLString = distributionHTML.join("");
 
-    const indWinSetHTML = independentWinSet.map((digit, index) => {
-      return `<div class="ind-win-item" data-copy="${digit}"><strong>${digit}</strong><span>RANK ${index + 1}</span></div>`;
+    const indWinSetHTML = winSet.map((digit, index) => {
+      return `<div class="ind-win-item" data-copy="${digit}"><strong>${digit}</strong><span>POS ${index + 1}</span></div>`;
     }).join("");
 
     const pairHTML1 = arr1.length ? arr1.map((p, index) => {
-      const pct = Number((cScore1 - index * .4).toFixed(1));
+      const pct = Number((cScore1 - index * 0.4).toFixed(1));
       return `<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const pairHTML2 = arr2.length ? arr2.map((p, index) => {
-      const pct = Number((cScore2 - index * .4).toFixed(1));
+      const pct = Number((cScore2 - index * 0.4).toFixed(1));
       return `<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const threeHTML = matrixArr3d.length ? matrixArr3d.map((p, index) => {
-      const pct = Number((cScore3 - index * .1).toFixed(1));
+      const pct = Number((cScore3 - index * 0.1).toFixed(1));
       return `<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const rankHTML = top5.map((item, index) => {
-      const matchedModel = evaluatedFinal.find(m => m.set.includes(item.digit));
-      const pct = matchedModel ? matchedModel.aiScore : Math.min(98.5, Math.max(75, 96.8 - (index * 1.2)));
+      const pct = calcConfidence(item.totalScore);
       return `<div class="rank-row" data-copy="${item.digit}">
         <div class="rank-no">#${String(index + 1).padStart(2, "0")}</div>
         <div class="rank-digit">${item.digit}</div>
@@ -880,7 +940,7 @@ const _app = {
     }).join("");
 
     let allFormulasHTML = "";
-    evaluatedFinal.forEach((item) => {
+    evaluated.forEach((item) => {
       let pairs = [];
       item.set.forEach((digit) => {
         const list = item.pairsMap[digit] || [];
@@ -888,7 +948,7 @@ const _app = {
       });
       const pairCards = pairs.map((obj, idx) => {
         const displayPair = obj.pair;
-        const subPct = Number((item.aiScore - idx * .3).toFixed(1));
+        const subPct = Number((item.aiScore - idx * 0.3).toFixed(1));
         return `<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
       }).join("");
 
@@ -933,7 +993,7 @@ const _app = {
           <div class="number-row">${pairHTML2}</div>
         </div>
         <div class="matrix-card full">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span> ชุด 3 ตัว</div><div class="matrix-score">${cScore3}%</div></div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span> ชุด 3 ตัว</div><div class="matrix-score">${cScore3.toFixed(1)}%</div></div>
           <div class="number-row">${threeHTML}</div>
         </div>
       </section>
@@ -1057,8 +1117,7 @@ if (isNaN(currentServerLatency)) {
 }
 
 function updateTotalProcessedIncrement() {
-  const incrementAmount = Math.floor(Math.random() * 2) + 1;
-  currentTotalProcessed += incrementAmount;
+  currentTotalProcessed += 1;
   localStorage.setItem("ml_total_processed_v3", currentTotalProcessed);
 
   const countEl = document.getElementById("totalProcessedCount");
@@ -1071,14 +1130,6 @@ function updateTotalProcessedIncrement() {
   }
 }
 
-function scheduleNextProcessedIncrement() {
-  const randomInterval = Math.floor(Math.random() * 3000) + 7500;
-  setTimeout(() => {
-    updateTotalProcessedIncrement();
-    scheduleNextProcessedIncrement();
-  }, randomInterval);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const countEl = document.getElementById("totalProcessedCount");
   if (countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
@@ -1089,30 +1140,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const latencyEl = document.getElementById("serverLatencyCount");
   if (latencyEl) latencyEl.innerText = currentServerLatency + " ms";
 });
-scheduleNextProcessedIncrement();
-
-setInterval(() => {
-  const onlineDelta = Math.floor(Math.random() * 50) - 24; 
-  currentOnlineUsers = Math.max(450, Math.min(1500, currentOnlineUsers + onlineDelta));
-  localStorage.setItem("ml_online_users_v3", currentOnlineUsers);
-  const onlineEl = document.getElementById("onlineUsersCount");
-  if (onlineEl) onlineEl.innerText = currentOnlineUsers.toLocaleString() + " คน";
-}, 60000);
-
-function startServerLatencySimulator() {
-  setInterval(() => {
-    const latencyDelta = Math.floor(Math.random() * 7) - 3;
-    currentServerLatency = Math.max(14, Math.min(32, currentServerLatency + latencyDelta));
-    localStorage.setItem("ml_server_latency_v3", currentServerLatency);
-    const latencyEl = document.getElementById("serverLatencyCount");
-    if (latencyEl) {
-      latencyEl.innerText = currentServerLatency + " ms";
-      latencyEl.style.transform = "scale(1.05)";
-      setTimeout(() => { latencyEl.style.transform = "scale(1)"; }, 200);
-    }
-  }, Math.floor(Math.random() * 4000) + 4000);
-}
-startServerLatencySimulator();
 
 if (localStorage.getItem("ml_auth_status_v3") === "active") {
   document.getElementById("loginView").style.display = "none";
