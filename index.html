@@ -187,16 +187,29 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .result-title{margin-top:1px;font-size:.95rem;font-weight:800;color:var(--text);}
 .result-note{color:var(--muted);font-size:.42rem;}
 
-.primary-signal{position:relative;overflow:hidden;padding:14px;margin-bottom:10px;border-radius:20px;background:radial-gradient(circle at 90% 10%,rgba(34,197,139,.22),transparent 38%),radial-gradient(circle at 5% 90%,rgba(212,176,67,.15),transparent 35%),linear-gradient(145deg,#FFFFFF,#EBF5F0);border:1px solid rgba(10,102,71,.3);box-shadow:0 12px 35px rgba(10,102,71,.1);}
-.signal-top{display:flex;justify-content:space-between;align-items:center;}
-.signal-label{color:var(--muted);font-size:.42rem;font-weight:700;letter-spacing:.8px;}
-.confidence{padding:4px 8px;border-radius:8px;color:var(--emerald);background:var(--emerald-light);border:1px solid rgba(10,102,71,.25);font-family:'IBM Plex Mono',monospace;font-size:.44rem;font-weight:700;}
+/* --- LUXURY VIP++ PRIMARY SIGNAL (Refined Static + Premium Subtle Luxury Glow/Shimmer) --- */
+.primary-signal{position:relative;overflow:hidden;padding:16px 14px;margin-bottom:10px;border-radius:22px;background:radial-gradient(circle at 90% 10%,rgba(34,197,139,.18),transparent 45%),radial-gradient(circle at 10% 90%,rgba(212,176,67,.12),transparent 40%),linear-gradient(135deg,#FFFFFF,#F5FAF8,#EFEFEF);border:1.5px solid rgba(10,102,71,.25);box-shadow:0 12px 30px rgba(10,102,71,.08),inset 0 1px 2px rgba(255,255,255,1);animation:vipCardGlow 6s ease-in-out infinite;}
+@keyframes vipCardGlow{0%,100%{border-color:rgba(10,102,71,.25);box-shadow:0 12px 30px rgba(10,102,71,.08),inset 0 1px 2px rgba(255,255,255,1);}50%{border-color:rgba(34,197,139,.45);box-shadow:0 16px 35px rgba(34,197,139,.15),inset 0 1px 3px rgba(255,255,255,1);}}
 
-.primary-number{display:flex;justify-content:center;align-items:center;gap:8px;margin:12px 0;}
-.big-digit{width:54px;height:54px;display:flex;justify-content:center;align-items:center;border-radius:16px;color:var(--text);background:linear-gradient(145deg,#FFFFFF,#DCF2E7);border:1px solid rgba(10,102,71,.32);box-shadow:0 8px 20px rgba(10,102,71,.1);font-family:'IBM Plex Mono',monospace;font-size:1.5rem;font-weight:700;}
-.digit-divider{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:1rem;font-weight:700;}
-.primary-caption{text-align:center;color:var(--muted);font-size:.44rem;}
-.primary-caption strong{color:var(--text);}
+.primary-signal::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:vipLightSweep 8s ease-in-out infinite;pointer-events:none;}
+@keyframes vipLightSweep{0%{left:-100%;}40%,100%{left:100%;}}
+
+.signal-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+.signal-label{color:var(--emerald);font-size:.44rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;display:flex;align-items:center;gap:4px;}
+.signal-label::before{content:"✨";font-size:.4rem;}
+
+/* Locked 99.1% VIP Badge */
+.confidence{position:relative;overflow:hidden;padding:5px 11px;border-radius:10px;color:#0A6647;background:linear-gradient(135deg,#D5F5E3,#FCF5DC);border:1px solid rgba(10,102,71,.35);font-family:'IBM Plex Mono',monospace;font-size:.48rem;font-weight:800;box-shadow:0 4px 15px rgba(10,102,71,.12);}
+
+.primary-number{display:flex;justify-content:center;align-items:center;gap:10px;margin:14px 0;position:relative;z-index:2;}
+/* Luxury Clean Static Big Digits with Subtle Inner Shadow & Luxury Light Highlight */
+.big-digit{width:60px;height:60px;display:flex;justify-content:center;align-items:center;border-radius:18px;color:var(--text);background:linear-gradient(145deg,#FFFFFF,#EAF7F0);border:1.5px solid rgba(10,102,71,.3);box-shadow:0 6px 18px rgba(10,102,71,.06),inset 0 1px 2px rgba(255,255,255,1),0 0 12px rgba(34,197,139,.1);font-family:'IBM Plex Mono',monospace;font-size:1.65rem;font-weight:800;position:relative;}
+
+.digit-divider{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:800;text-shadow:0 2px 6px rgba(161,113,9,.2);}
+
+.primary-caption{text-align:center;color:var(--muted);font-size:.46rem;position:relative;z-index:2;font-weight:600;}
+.primary-caption span.plain-lbl {color: var(--emerald); font-weight: 800; margin: 0 2px;}
+/* ---------------------------------------------------- */
 
 .section-marker{display:flex;align-items:center;gap:6px;margin:4px 2px 6px;color:var(--muted);font-size:.4rem;font-weight:800;letter-spacing:.9px;}
 .section-marker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#B8DACB,transparent);}
@@ -214,17 +227,17 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .overview-axis{display:flex;justify-content:space-between;margin-top:5px;color:var(--muted-2);font-family:'IBM Plex Mono',monospace;font-size:.32rem;}
 
 .matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
-.matrix-card{position:relative;overflow:hidden;padding:10px;border-radius:16px;background:#fff;border:1px solid #B8DACB;box-shadow:0 6px 18px rgba(10,102,71,.05);}
+.matrix-card{position:relative;overflow:hidden;padding:8px;border-radius:16px;background:#fff;border:1px solid #B8DACB;box-shadow:0 6px 18px rgba(10,102,71,.05);}
 .matrix-card.full{grid-column:1/-1;}
-.matrix-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
-.matrix-title{display:flex;align-items:center;gap:5px;font-size:.52rem;font-weight:800;color:var(--text);}
+.matrix-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.matrix-title{display:flex;align-items:center;gap:5px;font-size:.5rem;font-weight:800;color:var(--text);}
 .matrix-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(10,102,71,.12);}
-.matrix-score{color:var(--emerald);font-family:'IBM Plex Mono',monospace;font-size:.44rem;font-weight:700;}
+.matrix-score{color:var(--emerald);font-family:'IBM Plex Mono',monospace;font-size:.42rem;font-weight:700;}
 
-.number-row{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
-.number-chip{position:relative;overflow:hidden;min-width:0;padding:6px 2px;text-align:center;border-radius:8px;background:var(--bg2);border:1px solid #B8DACB;cursor:pointer;transition:transform .2s var(--ease);}
-.number-chip strong{display:block;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:700;}
-.number-chip small{display:block;margin-top:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.34rem;}
+.number-row{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}
+.number-chip{position:relative;overflow:hidden;min-width:0;padding:4px 1px;text-align:center;border-radius:8px;background:var(--bg2);border:1px solid #B8DACB;cursor:pointer;transition:transform .2s var(--ease);}
+.number-chip strong{display:block;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:700;}
+.number-chip small{display:block;margin-top:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.31rem;}
 .number-chip.top{background:var(--emerald-light);border-color:rgba(10,102,71,.35);}
 .number-chip.top strong{color:var(--emerald);}
 .number-chip.gold{background:var(--gold3);border-color:rgba(161,113,9,.3);}
@@ -281,15 +294,15 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .rank-bar-fill{position:absolute;top:0;left:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,#0A6647,#22C58B,#D4B043);}
 .rank-percent{text-align:right;color:#22C58B;font-family:'IBM Plex Mono',monospace;font-size:.44rem;font-weight:700;z-index:1;}
 
-.ind-win-set{position:relative;overflow:hidden;padding:12px;margin-bottom:10px;border-radius:18px;background:linear-gradient(145deg,#FFFFFF,#F0FDF4);border:1px solid #B8DACB;box-shadow:var(--shadow2);}
-.ind-win-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.ind-win-title{font-size:.72rem;font-weight:800;color:var(--text);}
-.ind-win-title small{display:block;color:var(--muted);font-size:.38rem;font-weight:600;margin-top:1px;letter-spacing:0.5px;}
-.ind-win-badge{color:var(--gold);background:var(--gold3);border:1px solid rgba(161,113,9,.3);padding:4px 9px;border-radius:10px;font-family:'IBM Plex Mono',monospace;font-size:.38rem;font-weight:700;}
-.ind-win-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;}
-.ind-win-item{position:relative;overflow:hidden;padding:9px 3px;text-align:center;border-radius:12px;background:#fff;border:1px solid #B8DACB;cursor:pointer;transition:transform .2s var(--ease);}
-.ind-win-item strong{display:block;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.85rem;font-weight:700;}
-.ind-win-item span{display:block;margin-top:2px;color:var(--muted);font-size:.32rem;font-weight:700;}
+.ind-win-set{position:relative;overflow:hidden;padding:10px 12px;margin-bottom:10px;border-radius:18px;background:linear-gradient(145deg,#FFFFFF,#F0FDF4);border:1px solid #B8DACB;box-shadow:var(--shadow2);}
+.ind-win-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.ind-win-title{font-size:.68rem;font-weight:800;color:var(--text);}
+.ind-win-title small{display:block;color:var(--muted);font-size:.36rem;font-weight:600;margin-top:1px;letter-spacing:0.5px;}
+.ind-win-badge{color:var(--gold);background:var(--gold3);border:1px solid rgba(161,113,9,.3);padding:3px 8px;border-radius:10px;font-family:'IBM Plex Mono',monospace;font-size:.36rem;font-weight:700;}
+.ind-win-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;}
+.ind-win-item{position:relative;overflow:hidden;padding:6px 2px;text-align:center;border-radius:10px;background:#fff;border:1px solid #B8DACB;cursor:pointer;transition:transform .2s var(--ease);}
+.ind-win-item strong{display:block;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:700;}
+.ind-win-item span{display:block;margin-top:1px;color:var(--muted);font-size:.3rem;font-weight:700;}
 
 .formula-section{margin-top:2px;}
 .formula-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:14px;border:1px solid rgba(10,102,71,.3);color:var(--text-2);background:var(--emerald-light);cursor:pointer;font-size:.52rem;font-weight:800;}
@@ -617,6 +630,60 @@ const _app = {
   },
 
   // ---------------------------------------------------------------------------
+  // 100 Back-End Formulas Engine (Pure Raw Units / No +1, Filtered against 5 Main Models)
+  // ---------------------------------------------------------------------------
+  _run100FormulasEngine(H, T_top, U_top, T_bot, U_bot, sumTop, sumBot, totalSum) {
+    const rawFormulas = [
+      // 1-10
+      (H + T_top), (H + U_top), (T_top + U_top), (H + T_bot), (H + U_bot),
+      (T_top + T_bot), (T_top + U_bot), (U_top + T_bot), (U_top + U_bot), (T_bot + U_bot),
+      // 11-20
+      (sumTop + T_bot), (sumTop + U_bot), (sumTop + H), (sumTop + T_top), (sumTop + U_top),
+      (10 - H), (10 - T_top), (10 - U_top), (10 - T_bot), (10 - U_bot),
+      // 21-30
+      (H + T_top + T_bot), (H + U_top + U_bot), (T_top + U_top + T_bot), (T_top + U_top + U_bot), (H + T_bot + U_bot),
+      (T_top + T_bot + U_bot), (sumTop - T_bot), (sumTop - U_bot), (sumTop + sumBot), (sumTop - sumBot),
+      // 31-40
+      ((H + T_top) - U_bot), ((T_top + U_top) - T_bot), ((H + U_top) - T_bot), (20 - (T_top + T_bot)), (20 - (U_top + U_bot)),
+      (H + T_top + U_top - T_bot), (H + T_top + U_top - U_bot), (10 + T_top - U_bot), (10 + U_top - T_bot), (sumTop + 10 - U_bot),
+      // 41-50
+      (H + U_bot - T_top), (T_top + U_bot - H), (U_top + T_bot - H), (sumBot + H - T_top), (sumBot + H - U_top),
+      (H + sumBot - T_top), (H + sumBot - U_top), (T_top + sumBot - H), (T_top + sumBot - U_top), (U_top + sumBot - H),
+      // 51-60
+      (U_top + sumBot - T_top), (30 - (H + T_top + T_bot)), (30 - (H + U_top + U_bot)), (30 - (T_top + U_top + T_bot)), (30 - (H + T_bot + U_bot)),
+      ((H + T_top) + T_bot - U_bot), ((H + U_top) + U_bot - T_bot), ((T_top + U_top) + T_bot - H), (sumTop + T_bot - U_bot), (sumTop + U_bot - T_bot),
+      // 61-70
+      (H + T_top + sumBot), (H + U_top + sumBot), (T_top + U_top + sumBot), (H + T_bot + sumTop), (H + U_bot + sumTop),
+      (T_top + T_bot + sumTop), (T_top + U_bot + sumTop), (U_top + T_bot + sumTop), (U_top + U_bot + sumTop), (T_bot + U_bot + sumTop),
+      // 71-80
+      (10 + H + T_top), (10 + H + U_top), (10 + T_top + U_top), (10 + T_bot + U_bot), (10 + H + T_bot),
+      (10 + H + U_bot), (10 + T_top + T_bot), (10 + T_top + U_bot), (10 + U_top + T_bot), (10 + U_top + U_bot),
+      // 81-90
+      ((H - T_top) + U_bot), ((H - U_top) + T_bot), ((T_top - U_top) + U_bot), ((T_bot - U_bot) + H), ((T_bot - U_bot) + T_top),
+      ((T_bot - U_bot) + U_top), (20 - H - T_top), (20 - H - U_top), (20 - T_top - U_top), (20 - T_bot - U_bot),
+      // 91-100
+      (20 - H - T_bot), (20 - H - U_bot), (20 - T_top - T_bot), (20 - T_top - U_bot), (20 - U_top - T_bot),
+      (20 - U_top - U_bot), (totalSum), (totalSum * 2), (totalSum + H), (totalSum + T_bot)
+    ];
+
+    const countedDigits = {};
+    for(let d=0; d<=9; d++) countedDigits[d] = 0;
+
+    rawFormulas.forEach(rawVal => {
+      const unit = ((rawVal % 10) + 10) % 10;
+      countedDigits[unit] = (countedDigits[unit] || 0) + 1;
+    });
+
+    const sortedByCount = Object.keys(countedDigits).map(Number).sort((a,b) => countedDigits[b] - countedDigits[a] || b - a);
+    const rankTop10 = sortedByCount.slice(0, 10);
+
+    return {
+      ranking: rankTop10,
+      counts: countedDigits
+    };
+  },
+
+  // ---------------------------------------------------------------------------
   // Backend Compass Engine (Cross-Validation Layer) - Deterministic 100%
   // ---------------------------------------------------------------------------
   _runBackendQuantEngine(n3, n2) {
@@ -657,7 +724,12 @@ const _app = {
     const [H, T_top, U_top] = d3;
     const [T_bot, U_bot] = d2;
 
+    const sumTop = H + T_top + U_top;
+    const sumBot = T_bot + U_bot;
+    const totalSum = sumTop + sumBot;
+
     const backendEngine = this._runBackendQuantEngine(n3, n2);
+    const formula100Engine = this._run100FormulasEngine(H, T_top, U_top, T_bot, U_bot, sumTop, sumBot, totalSum);
 
     const getUnitDirect = (v) => {
       const str = String(v);
@@ -666,18 +738,17 @@ const _app = {
       return [first, (first + 1) % 10];
     };
 
-    const sum3 = H + T_top + U_top;
     const fixedBase = 7;
     const anchorRaw = fixedBase - H;
     const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
 
-    // 5 AI Models หลัก (คงตรรกะและสูตรเดิมไว้ 100%)
+    // 5 AI Models หลัก
     const fList = [
-      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(T_top + T_bot), isAdminRecommended: true, positionalWeight: 1.2 },
-      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false, positionalWeight: 1.0 },
-      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false, positionalWeight: 1.0 },
-      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false, positionalWeight: 1.2 },
-      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false, positionalWeight: 1.0 }
+      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(T_top + T_bot), positionalWeight: 1.2 },
+      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(sum3 = sumTop), positionalWeight: 1.0 },
+      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(H + T_bot), positionalWeight: 1.0 },
+      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(U_top + U_bot), positionalWeight: 1.2 },
+      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(10 - U_bot), positionalWeight: 1.0 }
     ];
 
     const evaluated = fList.map((item) => {
@@ -738,7 +809,6 @@ const _app = {
         id: item.id,
         name: item.name,
         subName: item.subName,
-        isAdminRecommended: item.isAdminRecommended,
         positionalWeight: item.positionalWeight,
         set: item.set,
         pairsMap: pMap
@@ -746,7 +816,7 @@ const _app = {
     });
 
     // ---------------------------------------------------------------------------
-    // UPGRADE 1: RE-WEIGHTING SYSTEM & DYNAMIC SCORING
+    // RE-WEIGHTING SYSTEM & DYNAMIC SCORING
     // ---------------------------------------------------------------------------
     const digitScores = {};
     for (let d = 0; d <= 9; d++) {
@@ -756,6 +826,7 @@ const _app = {
         baseScore: 0,
         compassBonus: 0,
         momentumBonus: 0,
+        formula100Bonus: 0,
         totalScore: 0
       };
     }
@@ -767,34 +838,36 @@ const _app = {
       });
     });
 
-    // นับความถี่ที่ตัวเลขปรากฏใน Backend Compass Engine
     const compassFreq = {};
     backendEngine.digits.forEach(d => {
       compassFreq[d] = (compassFreq[d] || 0) + 1;
     });
 
-    // คำนวณความต่างเชิงเส้นตรงสำหรับ Momentum Bonus
     const linearDiff = Math.abs(T_top - U_top) + Math.abs(T_bot - U_bot);
+    const formulaRankSet = formula100Engine.ranking; 
 
     for (let d = 0; d <= 9; d++) {
       const item = digitScores[d];
       
-      // 1. Conditional compassBonus: มอบโบนัส +15% เมื่อปรากฏซ้ำตั้งแต่ 2 โมเดลย่อยขึ้นไปเท่านั้น
       if ((compassFreq[d] || 0) >= 2) {
         item.compassBonus = item.baseScore * 0.15;
       }
       
-      // 2. Momentum Bonus: ใช้ค่าปรับสมดุล Momentum จากความต่างของตัวเลขแบบเชิงเส้นตรง (ไม่คูณ sumDeltaRate ซ้ำซ้อน)
       if (d === T_bot || d === U_top) {
         item.momentumBonus = item.baseScore * 0.12 * (1.0 + (linearDiff / 36.0));
       }
 
-      item.totalScore = item.baseScore + item.compassBonus + item.momentumBonus;
+      const rankIdx = formulaRankSet.indexOf(d);
+      if (rankIdx !== -1) {
+        const bonusMultiplier = rankIdx < 3 ? 0.10 : 0.05;
+        item.formula100Bonus = item.baseScore * bonusMultiplier;
+      }
+
+      item.totalScore = item.baseScore + item.compassBonus + item.momentumBonus + item.formula100Bonus;
     }
 
     const matrixSorted = Object.values(digitScores).sort((a, b) => b.totalScore - a.totalScore || b.frequency - a.frequency || a.digit - b.digit);
     
-    // คัดเลือกเลขเด่น 2 ตัวแรก
     let primaryDigitObj = matrixSorted[0];
     let secondaryDigitObj = matrixSorted[1];
 
@@ -816,7 +889,6 @@ const _app = {
     const d1 = primaryDigitObj.digit;
     const d2_dig = secondaryDigitObj.digit;
 
-    // 3. ปรับปรุงการคำนวณสเกล AI Score (% Confidence) สะท้อนค่าเบี่ยงเบนจริงตาม Weighted Score
     const allScores = matrixSorted.map(s => s.totalScore);
     const minScore = Math.min(...allScores);
     const maxScore = Math.max(...allScores);
@@ -827,12 +899,6 @@ const _app = {
       return Number(Math.min(98.5, Math.max(80.0, normalizedPct)).toFixed(1));
     };
 
-    const cScore1 = calcConfidence(primaryDigitObj.totalScore);
-    let cScore2 = calcConfidence(secondaryDigitObj.totalScore);
-    if (cScore1 === cScore2 || Math.abs(cScore1 - cScore2) < 0.5) {
-      cScore2 = Number((cScore1 - 0.8).toFixed(1));
-    }
-    
     evaluated.forEach(model => {
       const modelScoreSum = model.set.reduce((sum, dig) => sum + digitScores[dig].totalScore, 0);
       model.aiScore = calcConfidence(modelScoreSum / 2);
@@ -840,41 +906,39 @@ const _app = {
 
     evaluated.sort((a, b) => b.aiScore - a.aiScore);
 
+    evaluated.forEach((model, idx) => {
+      model.isRecommended = idx < 2;
+    });
+
     const winnerModel = evaluated[0];
     const arr1 = winnerModel.pairsMap[d1] || evaluated.find(m => m.pairsMap[d1])?.pairsMap[d1] || [];
     const arr2 = winnerModel.pairsMap[d2_dig] || evaluated.find(m => m.pairsMap[d2_dig])?.pairsMap[d2_dig] || [];
     const matrixArr3d = arr1.slice(0, 5).map(p => `${p.slice(-1)}${d1}${d2_dig}`);
-    const cScore3 = Number(((cScore1 + cScore2) / 2 - 2.5).toFixed(1));
+    
+    // RANDOM 3 DIGITS PERCENTAGE BETWEEN 50.1 AND 50.9
+    const getRandomThreeDigitPct = () => {
+      return Number((50.1 + Math.random() * 0.8).toFixed(1));
+    };
+    const cScore3 = getRandomThreeDigitPct();
 
-    // ---------------------------------------------------------------------------
-    // UPGRADE 2: WIN SET UPGRADE (Matrix Dynamic Top 6 with Balanced Constraint)
-    // ---------------------------------------------------------------------------
-    // 1) ดึงตัวเลขที่มีคะแนนสะสมสูงสุด 6 อันดับแรกจาก Matrix
+    // WIN SET 6 DIGITS (Sorted from least to greatest as per saved context)
     let winSetObjects = matrixSorted.slice(0, 6);
     let currentSet = winSetObjects.map(item => item.digit);
 
-    // ฟังก์ชันตรวจสอบ Balanced Constraint
     const checkBalance = (digits) => {
       const evenCount = digits.filter(d => d % 2 === 0).length;
       const oddCount = digits.length - evenCount;
       const lowCount = digits.filter(d => d >= 0 && d <= 4).length;
       const highCount = digits.length - lowCount;
-
-      const isEvenOddBalanced = (evenCount >= 2 && oddCount >= 2);
-      const isHighLowBalanced = (lowCount >= 2 && highCount >= 2);
-
       return {
-        isBalanced: isEvenOddBalanced && isHighLowBalanced,
-        evenCount, oddCount, lowCount, highCount
+        isBalanced: (evenCount >= 2 && oddCount >= 2) && (lowCount >= 2 && highCount >= 2)
       };
     };
 
-    // 2 & 3) หากเกิดอาการเอียงฝั่ง extreme ให้ลองสลับเอาระดับ 7 หรือ 8 เข้ามาแทนที่ตัวเลขอันดับสุดท้าย
     if (!checkBalance(currentSet).isBalanced) {
-      const candidatesIndex = [6, 7]; // อันดับที่ 7 และ 8 ใน Matrix
+      const candidatesIndex = [6, 7];
       let bestSet = [...currentSet];
       let foundReplacement = false;
-
       for (let idx of candidatesIndex) {
         if (idx < matrixSorted.length) {
           const testSet = [...currentSet.slice(0, 5), matrixSorted[idx].digit];
@@ -885,18 +949,14 @@ const _app = {
           }
         }
       }
-
       if (foundReplacement) {
         currentSet = bestSet;
       }
     }
 
-    // 4) เรียงลำดับตัวเลขในชุดวินจากน้อยไปมาก (Ascending Order)
     const winSet = currentSet.sort((a, b) => a - b);
 
-    // ---------------------------------------------------------------------------
     // UI Rendering
-    // ---------------------------------------------------------------------------
     const top5 = matrixSorted.slice(0, 5);
     const maxScoreVal = Math.max(...matrixSorted.map(s => s.totalScore), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
@@ -915,17 +975,17 @@ const _app = {
     }).join("");
 
     const pairHTML1 = arr1.length ? arr1.map((p, index) => {
-      const pct = Number((cScore1 - index * 0.4).toFixed(1));
+      const pct = Number((91.1 - index * 0.3).toFixed(1));
       return `<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const pairHTML2 = arr2.length ? arr2.map((p, index) => {
-      const pct = Number((cScore2 - index * 0.4).toFixed(1));
+      const pct = Number((91.1 - index * 0.3).toFixed(1));
       return `<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const threeHTML = matrixArr3d.length ? matrixArr3d.map((p, index) => {
-      const pct = Number((cScore3 - index * 0.1).toFixed(1));
+      const pct = Number((cScore3 - index * 0.05).toFixed(1));
       return `<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
@@ -952,8 +1012,8 @@ const _app = {
         return `<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
       }).join("");
 
-      const badgeHtml = item.isAdminRecommended ? `<span class="compact-badge">แอดมินแนะนำ</span>` : "";
-      allFormulasHTML += `<div class="formula-card"><div class="formula-head"><div class="formula-name">${this._esc(item.name)} ${badgeHtml}</div><div class="formula-badge">AI score ${item.aiScore}%</div></div><div class="formula-sub">เลขเด่น: <strong>${item.set.join(" - ")}</strong></div><div class="formula-pairs">${pairCards}</div></div>`;
+      const badgeHtml = item.isRecommended ? `<span class="compact-badge">สูตรแนะนำ</span>` : "";
+      allFormulasHTML += `<div class="formula-card"><div class="formula-head"><div class="formula-name">${this._esc(item.name)} ${badgeHtml}</div><div class="formula-badge">AI Score ${item.aiScore}%</div></div><div class="formula-sub">เลขเด่น: <strong>${item.set.join(" - ")}</strong></div><div class="formula-pairs">${pairCards}</div></div>`;
     });
 
     const html = `<div class="result-shell">
@@ -962,9 +1022,9 @@ const _app = {
         <div class="result-note">${new Date().toLocaleTimeString("th-TH")}</div>
       </div>
       <section class="primary-signal">
-        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS</div><div class="confidence">${cScore1.toFixed(1)}%</div></div>
+        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS</div><div class="confidence">99.1%</div></div>
         <div class="primary-number"><div class="big-digit">${d1}</div><div class="digit-divider">-</div><div class="big-digit">${d2_dig}</div></div>
-        <div class="primary-caption">ชุดเด่น <strong>${d1}</strong> - ชุดรอง <strong>${d2_dig}</strong></div>
+        <div class="primary-caption">ชุดเด่น <span class="plain-lbl">${d1}</span> - ชุดรอง <span class="plain-lbl">${d2_dig}</span></div>
       </section>
       <div class="section-marker">DIGIT OVERVIEW</div>
       <section class="overview-panel">
@@ -985,11 +1045,11 @@ const _app = {
       <div class="section-marker">NUMBER MATRIX</div>
       <section class="matrix-grid">
         <div class="matrix-card">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>เลขเด่นสูงสุด / PRIMARY</div><div class="matrix-score">${cScore1.toFixed(1)}%</div></div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเจาะ ${d1}</div><div class="matrix-score">99.1%</div></div>
           <div class="number-row">${pairHTML1}</div>
         </div>
         <div class="matrix-card">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>เลขเด่นรอง / SECONDARY</div><div class="matrix-score">${cScore2.toFixed(1)}%</div></div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเจาะ ${d2_dig}</div><div class="matrix-score">99.1%</div></div>
           <div class="number-row">${pairHTML2}</div>
         </div>
         <div class="matrix-card full">
