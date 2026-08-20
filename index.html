@@ -187,7 +187,6 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .result-title{margin-top:1px;font-size:.95rem;font-weight:800;color:var(--text);}
 .result-note{color:var(--muted);font-size:.42rem;}
 
-/* --- LUXURY VIP++ PRIMARY SIGNAL (Refined Static + Premium Subtle Luxury Glow/Shimmer) --- */
 .primary-signal{position:relative;overflow:hidden;padding:16px 14px;margin-bottom:10px;border-radius:22px;background:radial-gradient(circle at 90% 10%,rgba(34,197,139,.18),transparent 45%),radial-gradient(circle at 10% 90%,rgba(212,176,67,.12),transparent 40%),linear-gradient(135deg,#FFFFFF,#F5FAF8,#EFEFEF);border:1.5px solid rgba(10,102,71,.25);box-shadow:0 12px 30px rgba(10,102,71,.08),inset 0 1px 2px rgba(255,255,255,1);animation:vipCardGlow 6s ease-in-out infinite;}
 @keyframes vipCardGlow{0%,100%{border-color:rgba(10,102,71,.25);box-shadow:0 12px 30px rgba(10,102,71,.08),inset 0 1px 2px rgba(255,255,255,1);}50%{border-color:rgba(34,197,139,.45);box-shadow:0 16px 35px rgba(34,197,139,.15),inset 0 1px 3px rgba(255,255,255,1);}}
 
@@ -198,18 +197,15 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .signal-label{color:var(--emerald);font-size:.44rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;display:flex;align-items:center;gap:4px;}
 .signal-label::before{content:"✨";font-size:.4rem;}
 
-/* Locked 99.1% VIP Badge */
 .confidence{position:relative;overflow:hidden;padding:5px 11px;border-radius:10px;color:#0A6647;background:linear-gradient(135deg,#D5F5E3,#FCF5DC);border:1px solid rgba(10,102,71,.35);font-family:'IBM Plex Mono',monospace;font-size:.48rem;font-weight:800;box-shadow:0 4px 15px rgba(10,102,71,.12);}
 
 .primary-number{display:flex;justify-content:center;align-items:center;gap:10px;margin:14px 0;position:relative;z-index:2;}
-/* Luxury Clean Static Big Digits with Subtle Inner Shadow & Luxury Light Highlight */
 .big-digit{width:60px;height:60px;display:flex;justify-content:center;align-items:center;border-radius:18px;color:var(--text);background:linear-gradient(145deg,#FFFFFF,#EAF7F0);border:1.5px solid rgba(10,102,71,.3);box-shadow:0 6px 18px rgba(10,102,71,.06),inset 0 1px 2px rgba(255,255,255,1),0 0 12px rgba(34,197,139,.1);font-family:'IBM Plex Mono',monospace;font-size:1.65rem;font-weight:800;position:relative;}
 
 .digit-divider{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:800;text-shadow:0 2px 6px rgba(161,113,9,.2);}
 
 .primary-caption{text-align:center;color:var(--muted);font-size:.46rem;position:relative;z-index:2;font-weight:600;}
 .primary-caption span.plain-lbl {color: var(--emerald); font-weight: 800; margin: 0 2px;}
-/* ---------------------------------------------------- */
 
 .section-marker{display:flex;align-items:center;gap:6px;margin:4px 2px 6px;color:var(--muted);font-size:.4rem;font-weight:800;letter-spacing:.9px;}
 .section-marker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#B8DACB,transparent);}
@@ -957,7 +953,6 @@ const _app = {
     const winSet = currentSet.sort((a, b) => a - b);
 
     // UI Rendering
-    const top5 = matrixSorted.slice(0, 5);
     const maxScoreVal = Math.max(...matrixSorted.map(s => s.totalScore), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
 
@@ -989,7 +984,13 @@ const _app = {
       return `<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
-    const rankHTML = top5.map((item, index) => {
+    // --- [จุดที่ทำการแก้ไขเฉพาะ UI Rendering Top 5 ตามคำสั่ง] ---
+    const primaryObj = digitScores[d1];
+    const secondaryObj = digitScores[d2_dig];
+    const remainingTop5 = matrixSorted.filter(item => item.digit !== d1 && item.digit !== d2_dig).slice(0, 3);
+    const alignedTop5 = [primaryObj, secondaryObj, ...remainingTop5];
+
+    const rankHTML = alignedTop5.map((item, index) => {
       const pct = calcConfidence(item.totalScore);
       return `<div class="rank-row" data-copy="${item.digit}">
         <div class="rank-no">#${String(index + 1).padStart(2, "0")}</div>
@@ -998,6 +999,7 @@ const _app = {
         <div class="rank-percent">${pct.toFixed(1)}%</div>
       </div>`;
     }).join("");
+    // -------------------------------------------------------------
 
     let allFormulasHTML = "";
     evaluated.forEach((item) => {
