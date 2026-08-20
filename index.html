@@ -585,10 +585,12 @@ const _app = {
     btn.disabled=true;
     scan.style.display="block";
     const messages=[
-      "READING 100 RAW FORMULAS...",
-      "CALCULATING FREQUENCY RANKING...",
-      "APPLYING BONUS TO MODEL 01 & 05...",
-      "MAPPING NUMBER MATRIX...",
+      "READING INPUT STRUCTURE...",
+      "CALCULATING DIGIT MOMENTUM...",
+      "RUNNING BACKEND COMPASS & SCORING...",
+      "EVALUATING 5 MATHEMATICAL MODELS...",
+      "BUILDING NUMBER MATRIX...",
+      "MAPPING DIGIT DISTRIBUTION...",
       "GENERATING WIN SET...",
       "FINALIZING ANALYSIS..."
     ];
@@ -614,67 +616,105 @@ const _app = {
     return ((x % 10) + 10) % 10;
   },
 
+  // ---------------------------------------------------------------------------
+  // Backend Compass Engine (Cross-Validation Layer) - Deterministic 100%
+  // ---------------------------------------------------------------------------
+  _runBackendQuantEngine(n3, n2) {
+    const d3 = n3.split("").map(Number);
+    const d2 = n2.split("").map(Number);
+    const H_top = d3[0], T_top = d3[1], U_top = d3[2];
+    const T_bot = d2[0], U_bot = d2[1];
+    
+    const sumTop = H_top + T_top + U_top;
+    const sumBot = T_bot + U_bot;
+    const totalSum = sumTop + sumBot;
+
+    const model1Digit = Math.abs((H_top + T_top) - (T_bot * 2)) % 10;
+    const model2Digit = ((U_top * 3) + (U_bot * 7)) % 10;
+    const model3Digit = Math.floor((sumTop / (sumBot + 1)) * 9) % 10;
+    const model4Digit = (10 - ((Math.abs(T_top - U_bot)) + (Math.abs(H_top - T_bot))) % 10) % 10;
+    const model5Digit = (totalSum * 3) % 10;
+
+    const compassDigits = [model1Digit, model2Digit, model3Digit, model4Digit, model5Digit];
+    const uniqueCompass = [...new Set(compassDigits)];
+
+    return {
+      digits: compassDigits,
+      uniqueDigits: uniqueCompass,
+      scores: {
+        model1: model1Digit,
+        model2: model2Digit,
+        model3: model3Digit,
+        model4: model4Digit,
+        model5: model5Digit
+      }
+    };
+  },
+
   runAnalysis(n3, n2) {
     const d3 = n3.split("").map(Number);
     const d2 = n2.split("").map(Number);
     const [H, T_top, U_top] = d3;
     const [T_bot, U_bot] = d2;
 
+    const backendEngine = this._runBackendQuantEngine(n3, n2);
+
+    const getUnitDirect = (v) => {
+      const str = String(v);
+      const lastChar = str.slice(-1);
+      const first = parseInt(lastChar, 10);
+      return [first, (first + 1) % 10];
+    };
+
     const sum3 = H + T_top + U_top;
-    const sumBot = T_bot + U_bot;
-    const totalSum = sum3 + sumBot;
+    const fixedBase = 7;
+    const anchorRaw = fixedBase - H;
+    const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
 
-    // ---------------------------------------------------------------------------
-    // ประเมิน 100 สูตรดิบ (ดึงเฉพาะหลักหน่วย / ตัวท้ายสุด ไม่มี +1)
-    // ---------------------------------------------------------------------------
-    const rawFormulas = [
-      (H + T_top), (H + U_top), (T_top + U_top), (H + T_bot), (H + U_bot), (T_top + T_bot), (T_top + U_bot), (U_top + T_bot), (U_top + U_bot), (T_bot + U_bot),
-      (sum3 + T_bot), (sum3 + U_bot), (sum3 + H), (sum3 + T_top), (sum3 + U_top), (10 - H), (10 - T_top), (10 - U_top), (10 - T_bot), (10 - U_bot),
-      (H + T_top + T_bot), (H + U_top + U_bot), (T_top + U_top + T_bot), (T_top + U_top + U_bot), (H + T_bot + U_bot), (T_top + T_bot + U_bot), (sum3 - T_bot), (sum3 - U_bot), (sum3 + sumBot), (sum3 - sumBot),
-      ((H + T_top) - U_bot), ((T_top + U_top) - T_bot), ((H + U_top) - T_bot), (20 - (T_top + T_bot)), (20 - (U_top + U_bot)), (H + T_top + U_top - T_bot), (H + T_top + U_top - U_bot), (10 + T_top - U_bot), (10 + U_top - T_bot), (sum3 + 10 - U_bot),
-      (H + U_bot - T_top), (T_top + U_bot - H), (U_top + T_bot - H), (sumBot + H - T_top), (sumBot + H - U_top), (H + sumBot - T_top), (H + sumBot - U_top), (T_top + sumBot - H), (T_top + sumBot - U_top), (U_top + sumBot - H),
-      (U_top + sumBot - T_top), (30 - (H + T_top + T_bot)), (30 - (H + U_top + U_bot)), (30 - (T_top + U_top + T_bot)), (30 - (H + T_bot + U_bot)), ((H + T_top) + T_bot - U_bot), ((H + U_top) + U_bot - T_bot), ((T_top + U_top) + T_bot - H), (sum3 + T_bot - U_bot), (sum3 + U_bot - T_bot),
-      (H + T_top + sumBot), (H + U_top + sumBot), (T_top + U_top + sumBot), (H + T_bot + sum3), (H + U_bot + sum3), (T_top + T_bot + sum3), (T_top + U_bot + sum3), (U_top + T_bot + sum3), (U_top + U_bot + sum3), (T_bot + U_bot + sum3),
-      (10 + H + T_top), (10 + H + U_top), (10 + T_top + U_top), (10 + T_bot + U_bot), (10 + H + T_bot), (10 + H + U_bot), (10 + T_top + T_bot), (10 + T_top + U_bot), (10 + U_top + T_bot), (10 + U_top + U_bot),
-      ((H - T_top) + U_bot), ((H - U_top) + T_bot), ((T_top - U_top) + U_bot), ((T_bot - U_bot) + H), ((T_bot - U_bot) + T_top), ((T_bot - U_bot) + U_top), (20 - H - T_top), (20 - H - U_top), (20 - T_top - U_top), (20 - T_bot - U_bot),
-      (20 - H - T_bot), (20 - H - U_bot), (20 - T_top - T_bot), (20 - T_top - U_bot), (20 - U_top - T_bot), (20 - U_top - U_bot), (30 - H - T_top - U_top), (30 - T_bot - U_bot - H), (30 - H - T_bot - U_bot), (30 - (T_top + U_top + T_bot + U_bot))
-    ];
-
-    const formulaDigitsCount = {};
-    for(let d=0; d<=9; d++) formulaDigitsCount[d] = 0;
-    rawFormulas.forEach(res => {
-      const unit = this._normalize(res);
-      formulaDigitsCount[unit]++;
-    });
-
-    const sortedFormulaDigits = Object.entries(formulaDigitsCount).sort((a,b) => b[1] - a[1] || a[0] - b[0]);
-    const top5FormulaDigits = sortedFormulaDigits.slice(0, 5).map(item => Number(item[0]));
-
-    // ---------------------------------------------------------------------------
-    // 5 โมเดลหลัก (เลขดิบๆ เปล่าๆ ไม่บวก 1) พร้อมให้โบนัสโมเดลที่ 1 และ 5
-    // ---------------------------------------------------------------------------
+    // 5 AI Models หลัก (คงตรรกะและสูตรเดิมไว้ 100%)
     const fList = [
-      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> เลขดิบ (โบนัสพิเศษ)", set: [this._normalize(T_top + T_bot)], bonus: 3.5, positionalWeight: 1.5 },
-      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> เลขดิบ", set: [this._normalize(sum3)], bonus: 0, positionalWeight: 1.0 },
-      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> เลขดิบ", set: [this._normalize(H + T_bot)], bonus: 0, positionalWeight: 1.0 },
-      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> เลขดิบ", set: [this._normalize(U_top + U_bot)], bonus: 0, positionalWeight: 1.1 },
-      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> เลขดิบ (โบนัสพิเศษ)", set: [this._normalize(10 - U_bot)], bonus: 3.0, positionalWeight: 1.4 }
+      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(T_top + T_bot), isAdminRecommended: true, positionalWeight: 1.2 },
+      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(sum3), isAdminRecommended: false, positionalWeight: 1.0 },
+      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(H + T_bot), isAdminRecommended: false, positionalWeight: 1.0 },
+      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(U_top + U_bot), isAdminRecommended: false, positionalWeight: 1.2 },
+      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยตรงๆ + 1 แต้ม", set: getUnitDirect(10 - U_bot), isAdminRecommended: false, positionalWeight: 1.0 }
     ];
 
     const evaluated = fList.map((item) => {
       const formulaSet = item.set;
       let rawRange = [];
+      let hasCollision = false;
+
       for (let offset = -2; offset <= 2; offset++) {
-        rawRange.push(this._normalize(U_top + offset));
+        const val = this._normalize(anchor + offset);
+        if (formulaSet.includes(val)) {
+          hasCollision = true;
+          break;
+        }
       }
-      let cleanedPool = [...new Set([...formulaSet, ...rawRange])];
+
+      if (hasCollision) {
+        for (let offset = -3; offset <= 3; offset++) {
+          rawRange.push(this._normalize(anchor + offset));
+        }
+      } else {
+        for (let offset = -2; offset <= 2; offset++) {
+          rawRange.push(this._normalize(anchor + offset));
+        }
+      }
+
+      const excludedDigits = [...new Set(formulaSet)];
+      let cleanedPool = rawRange.filter(dg => !excludedDigits.includes(dg));
       const generatedPairs = [];
+      const rejectedPairs = [];
 
       formulaSet.forEach(sourceDigit => {
         cleanedPool.forEach(poolDigit => {
-          if (sourceDigit !== poolDigit) {
-            generatedPairs.push({ digitA: sourceDigit, digitB: poolDigit, pairStr: `${sourceDigit}${poolDigit}` });
+          if (sourceDigit === poolDigit) {
+            rejectedPairs.push(`${sourceDigit}${poolDigit} (self-match)`);
+            return;
           }
+          generatedPairs.push({ digitA: sourceDigit, digitB: poolDigit, pairStr: `${sourceDigit}${poolDigit}` });
         });
       });
 
@@ -683,11 +723,12 @@ const _app = {
         let pairsForDigit = generatedPairs.filter(p => p.digitA === sourceDigit).map(p => p.pairStr);
         let nextFill = (sourceDigit + 1) % 10;
         while (pairsForDigit.length < 5) {
-          if (nextFill !== sourceDigit && !pairsForDigit.includes(`${sourceDigit}${nextFill}`)) {
+          if (nextFill !== sourceDigit && !pairsForDigit.includes(`${sourceDigit}${nextFill}`) && !excludedDigits.includes(nextFill)) {
             pairsForDigit.push(`${sourceDigit}${nextFill}`);
           }
           nextFill = (nextFill + 1) % 10;
         }
+
         pairsForDigit = [...new Set(pairsForDigit)].filter(p => p[0] !== p[1]).sort();
         if (pairsForDigit.length > 5) pairsForDigit = pairsForDigit.slice(0, 5);
         pMap[sourceDigit] = pairsForDigit;
@@ -697,7 +738,7 @@ const _app = {
         id: item.id,
         name: item.name,
         subName: item.subName,
-        bonus: item.bonus,
+        isAdminRecommended: item.isAdminRecommended,
         positionalWeight: item.positionalWeight,
         set: item.set,
         pairsMap: pMap
@@ -705,39 +746,77 @@ const _app = {
     });
 
     // ---------------------------------------------------------------------------
-    // ระบบ Score & Ranking โดยใช้ 5 อันดับจาก 100 สูตรเป็นเลขเจาะหลัก
+    // UPGRADE 1: RE-WEIGHTING SYSTEM & DYNAMIC SCORING
     // ---------------------------------------------------------------------------
     const digitScores = {};
     for (let d = 0; d <= 9; d++) {
       digitScores[d] = {
         digit: d,
-        frequency: formulaDigitsCount[d],
-        baseScore: formulaDigitsCount[d] * 2.0,
-        modelBonus: 0,
+        frequency: 0,
+        baseScore: 0,
+        compassBonus: 0,
+        momentumBonus: 0,
         totalScore: 0
       };
     }
 
     evaluated.forEach(model => {
       model.set.forEach(dig => {
-        digitScores[dig].modelBonus += (model.bonus * 5) + (model.positionalWeight * 3);
+        digitScores[dig].frequency += 1;
+        digitScores[dig].baseScore += (10 * model.positionalWeight);
       });
     });
 
+    // นับความถี่ที่ตัวเลขปรากฏใน Backend Compass Engine
+    const compassFreq = {};
+    backendEngine.digits.forEach(d => {
+      compassFreq[d] = (compassFreq[d] || 0) + 1;
+    });
+
+    // คำนวณความต่างเชิงเส้นตรงสำหรับ Momentum Bonus
+    const linearDiff = Math.abs(T_top - U_top) + Math.abs(T_bot - U_bot);
+
     for (let d = 0; d <= 9; d++) {
-      digitScores[d].totalScore = digitScores[d].baseScore + digitScores[d].modelBonus;
+      const item = digitScores[d];
+      
+      // 1. Conditional compassBonus: มอบโบนัส +15% เมื่อปรากฏซ้ำตั้งแต่ 2 โมเดลย่อยขึ้นไปเท่านั้น
+      if ((compassFreq[d] || 0) >= 2) {
+        item.compassBonus = item.baseScore * 0.15;
+      }
+      
+      // 2. Momentum Bonus: ใช้ค่าปรับสมดุล Momentum จากความต่างของตัวเลขแบบเชิงเส้นตรง (ไม่คูณ sumDeltaRate ซ้ำซ้อน)
+      if (d === T_bot || d === U_top) {
+        item.momentumBonus = item.baseScore * 0.12 * (1.0 + (linearDiff / 36.0));
+      }
+
+      item.totalScore = item.baseScore + item.compassBonus + item.momentumBonus;
     }
 
     const matrixSorted = Object.values(digitScores).sort((a, b) => b.totalScore - a.totalScore || b.frequency - a.frequency || a.digit - b.digit);
     
-    // บังคับให้ 5 อันดับแรกมาจาก Top 5 ที่ซ้ำกันมากที่สุดใน 100 สูตร
-    const top5 = matrixSorted.slice(0, 5);
-    const primaryDigitObj = top5[0];
-    const secondaryDigitObj = top5[1];
+    // คัดเลือกเลขเด่น 2 ตัวแรก
+    let primaryDigitObj = matrixSorted[0];
+    let secondaryDigitObj = matrixSorted[1];
+
+    const isAligned = (digit) => {
+      const existsInModels = evaluated.some(m => m.set.includes(digit));
+      const existsInCompass = backendEngine.uniqueDigits.includes(digit);
+      return existsInModels && existsInCompass;
+    };
+
+    const alignedCandidates = matrixSorted.filter(item => isAligned(item.digit));
+    if (alignedCandidates.length >= 2) {
+      primaryDigitObj = alignedCandidates[0];
+      secondaryDigitObj = alignedCandidates[1];
+    } else if (alignedCandidates.length === 1) {
+      primaryDigitObj = alignedCandidates[0];
+      secondaryDigitObj = matrixSorted.find(item => item.digit !== primaryDigitObj.digit) || matrixSorted[1];
+    }
 
     const d1 = primaryDigitObj.digit;
     const d2_dig = secondaryDigitObj.digit;
 
+    // 3. ปรับปรุงการคำนวณสเกล AI Score (% Confidence) สะท้อนค่าเบี่ยงเบนจริงตาม Weighted Score
     const allScores = matrixSorted.map(s => s.totalScore);
     const minScore = Math.min(...allScores);
     const maxScore = Math.max(...allScores);
@@ -756,7 +835,7 @@ const _app = {
     
     evaluated.forEach(model => {
       const modelScoreSum = model.set.reduce((sum, dig) => sum + digitScores[dig].totalScore, 0);
-      model.aiScore = calcConfidence(modelScoreSum / (model.set.length || 1));
+      model.aiScore = calcConfidence(modelScoreSum / 2);
     });
 
     evaluated.sort((a, b) => b.aiScore - a.aiScore);
@@ -767,12 +846,58 @@ const _app = {
     const matrixArr3d = arr1.slice(0, 5).map(p => `${p.slice(-1)}${d1}${d2_dig}`);
     const cScore3 = Number(((cScore1 + cScore2) / 2 - 2.5).toFixed(1));
 
-    // ชุดวิน 6 ตัว เรียงจากน้อยไปมาก
-    const winSet = top5.slice(0, 6).map(item => item.digit).sort((a, b) => a - b);
+    // ---------------------------------------------------------------------------
+    // UPGRADE 2: WIN SET UPGRADE (Matrix Dynamic Top 6 with Balanced Constraint)
+    // ---------------------------------------------------------------------------
+    // 1) ดึงตัวเลขที่มีคะแนนสะสมสูงสุด 6 อันดับแรกจาก Matrix
+    let winSetObjects = matrixSorted.slice(0, 6);
+    let currentSet = winSetObjects.map(item => item.digit);
+
+    // ฟังก์ชันตรวจสอบ Balanced Constraint
+    const checkBalance = (digits) => {
+      const evenCount = digits.filter(d => d % 2 === 0).length;
+      const oddCount = digits.length - evenCount;
+      const lowCount = digits.filter(d => d >= 0 && d <= 4).length;
+      const highCount = digits.length - lowCount;
+
+      const isEvenOddBalanced = (evenCount >= 2 && oddCount >= 2);
+      const isHighLowBalanced = (lowCount >= 2 && highCount >= 2);
+
+      return {
+        isBalanced: isEvenOddBalanced && isHighLowBalanced,
+        evenCount, oddCount, lowCount, highCount
+      };
+    };
+
+    // 2 & 3) หากเกิดอาการเอียงฝั่ง extreme ให้ลองสลับเอาระดับ 7 หรือ 8 เข้ามาแทนที่ตัวเลขอันดับสุดท้าย
+    if (!checkBalance(currentSet).isBalanced) {
+      const candidatesIndex = [6, 7]; // อันดับที่ 7 และ 8 ใน Matrix
+      let bestSet = [...currentSet];
+      let foundReplacement = false;
+
+      for (let idx of candidatesIndex) {
+        if (idx < matrixSorted.length) {
+          const testSet = [...currentSet.slice(0, 5), matrixSorted[idx].digit];
+          if (checkBalance(testSet).isBalanced) {
+            bestSet = testSet;
+            foundReplacement = true;
+            break;
+          }
+        }
+      }
+
+      if (foundReplacement) {
+        currentSet = bestSet;
+      }
+    }
+
+    // 4) เรียงลำดับตัวเลขในชุดวินจากน้อยไปมาก (Ascending Order)
+    const winSet = currentSet.sort((a, b) => a - b);
 
     // ---------------------------------------------------------------------------
     // UI Rendering
     // ---------------------------------------------------------------------------
+    const top5 = matrixSorted.slice(0, 5);
     const maxScoreVal = Math.max(...matrixSorted.map(s => s.totalScore), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
 
@@ -827,7 +952,7 @@ const _app = {
         return `<div class="formula-pair" data-copy="${this._esc(displayPair)}"><strong>${this._esc(displayPair)}</strong><small>${subPct}%</small></div>`;
       }).join("");
 
-      const badgeHtml = (item.id === 1 || item.id === 5) ? `<span class="compact-badge">โบนัสพิเศษ</span>` : "";
+      const badgeHtml = item.isAdminRecommended ? `<span class="compact-badge">แอดมินแนะนำ</span>` : "";
       allFormulasHTML += `<div class="formula-card"><div class="formula-head"><div class="formula-name">${this._esc(item.name)} ${badgeHtml}</div><div class="formula-badge">AI score ${item.aiScore}%</div></div><div class="formula-sub">เลขเด่น: <strong>${item.set.join(" - ")}</strong></div><div class="formula-pairs">${pairCards}</div></div>`;
     });
 
@@ -837,22 +962,22 @@ const _app = {
         <div class="result-note">${new Date().toLocaleTimeString("th-TH")}</div>
       </div>
       <section class="primary-signal">
-        <div class="signal-top"><div class="signal-label">100 FORMULAS TOP CONSENSUS</div><div class="confidence">${cScore1.toFixed(1)}%</div></div>
+        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS</div><div class="confidence">${cScore1.toFixed(1)}%</div></div>
         <div class="primary-number"><div class="big-digit">${d1}</div><div class="digit-divider">-</div><div class="big-digit">${d2_dig}</div></div>
-        <div class="primary-caption">ชุดเจาะเด่น <strong>${d1}</strong> - ชุดเจาะรอง <strong>${d2_dig}</strong></div>
+        <div class="primary-caption">ชุดเด่น <strong>${d1}</strong> - ชุดรอง <strong>${d2_dig}</strong></div>
       </section>
       <div class="section-marker">DIGIT OVERVIEW</div>
       <section class="overview-panel">
         <div class="overview-head">
-          <div><div class="overview-title">100 FORMULAS FREQUENCY SPECTRUM</div><div class="overview-sub">การกระจายความถี่จาก 100 สูตรดิบ</div></div>
-          <div class="overview-badge">RAW DATA ACTIVE</div>
+          <div><div class="overview-title">NEURAL WEIGHT SPECTRUM</div><div class="overview-sub">การกระจายน้ำหนักความน่าจะเป็นของตัวเลข</div></div>
+          <div class="overview-badge">BACKEND COMPASS ACTIVE</div>
         </div>
         <div class="overview-bars">${distributionHTMLString}</div>
         <div class="overview-axis"><span>LOW</span><span>STRUCTURE</span><span>HIGH</span></div>
       </section>
       <section class="ranking-board">
         <div class="ranking-header">
-          <div><div class="ranking-kicker">DIGIT RANKING</div><div class="ranking-title">🏆 5 อันดับเลขซ้ำสูงสุดจาก 100 สูตร <span>/ Top 5 Filtered Digits</span></div></div>
+          <div><div class="ranking-kicker">DIGIT RANKING</div><div class="ranking-title">🏆 เลขเด่นรวม TOP 5 <span>/ Overall Leading Digits</span></div></div>
           <div class="ranking-badge">TOP SIGNAL</div>
         </div>
         <div class="rank-list">${rankHTML}</div>
@@ -875,7 +1000,7 @@ const _app = {
       
       <section class="ind-win-set">
         <div class="ind-win-header">
-          <div class="ind-win-title">🎯 ชุดวิน 6 ตัว<small>SIX-DIGIT WIN SET / เรียงจากน้อยไปมาก</small></div>
+          <div class="ind-win-title">🎯 ชุดวิน 6 ตัว<small>SIX-DIGIT WIN SET / กลุ่มเลขเด่นรวม</small></div>
           <div class="ind-win-badge">VIP SET</div>
         </div>
         <div class="ind-win-grid">${indWinSetHTML}</div>
@@ -883,7 +1008,7 @@ const _app = {
       
       <section class="formula-section">
         <button class="formula-toggle" id="toggleMainFormulasBtn" type="button" style="margin-bottom:6px;">
-          <span>📊 โมเดลการวิเคราะห์หลัก (Model 01 & 05 Bonus)</span>
+          <span>📊 โมเดลการวิเคราะห์หลัก (Top Ranked Models)</span>
           <span>▼</span>
         </button>
         <div id="allFormulasWrapper" style="display:none; margin-top:6px;">
@@ -892,7 +1017,7 @@ const _app = {
       </section>
 
       <div class="disclaimer">
-        <strong>หมายเหตุ:</strong> ข้อมูลวิเคราะห์เชิงสถิติจาก 100 สูตรดิบเพื่อเป็นแนวทางเท่านั้น โปรดใช้วิจารณญาณในการตัดสินใจ
+        <strong>หมายเหตุ:</strong> ข้อมูลวิเคราะห์เชิงสถิติเพื่อเป็นแนวทางเท่านั้น โปรดใช้วิจารณญาณในการตัดสินใจ
       </div>`;
 
     document.getElementById("resultContainer").innerHTML = html;
