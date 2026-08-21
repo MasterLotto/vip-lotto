@@ -231,7 +231,7 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .signal-label{color:var(--emerald);font-size:.54rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:4px;}
 .signal-label::before{content:"✨";font-size:.5rem;}
 
-.confidence{position:relative;overflow:hidden;padding:5px 11px;border-radius:9px;color:#0A6647;background:linear-gradient(135deg,#E1F8ED,#FEF9C3);border:1px solid rgba(10,102,71,.3);font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:800;box-shadow:0 3px 12px rgba(10,102,71,.1);}
+.confidence{position:relative;overflow:hidden;padding:5px 11px;border-radius:99px;color:#0A6647;background:linear-gradient(135deg,#E1F8ED,#FEF9C3);border:1px solid rgba(10,102,71,.3);font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:800;box-shadow:0 3px 12px rgba(10,102,71,.1);}
 
 .primary-number{display:flex;justify-content:center;align-items:center;gap:12px;margin:12px 0;position:relative;z-index:2;}
 .big-digit{width:64px;height:64px;display:flex;justify-content:center;align-items:center;border-radius:16px;color:var(--text);background:linear-gradient(135deg,#FFFFFF,#E6F5EE);border:1.5px solid rgba(10,102,71,.28);box-shadow:0 5px 15px rgba(10,102,71,.05),inset 0 1px 2px rgba(255,255,255,1),0 0 10px rgba(16,185,129,.1);font-family:'IBM Plex Mono',monospace;font-size:1.8rem;font-weight:800;position:relative;}
@@ -546,16 +546,16 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
         height = canvas.height = window.innerHeight;
     });
 
-    const flakeCount = 45; // บางเบา สบายตา ไม่เกะกะสายตา
+    const flakeCount = 45;
     const flakes = [];
 
     for (let i = 0; i < flakeCount; i++) {
         flakes.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            radius: Math.random() * 2.2 + 0.8, // ขนาดละมุน
-            depth: Math.random() * 0.8 + 0.2,   // มิติความลึก (Depth of field)
-            speedY: Math.random() * 0.4 + 0.2, // ปลิวช้าๆ นุ่มนวล
+            radius: Math.random() * 2.2 + 0.8,
+            depth: Math.random() * 0.8 + 0.2,
+            speedY: Math.random() * 0.4 + 0.2,
             speedX: Math.random() * 0.2 - 0.1,
             opacity: Math.random() * 0.5 + 0.35,
             swing: Math.random() * Math.PI * 2,
@@ -572,7 +572,6 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
             f.x += Math.sin(f.swing) * 0.3 + f.speedX;
             f.y += f.speedY * f.depth;
 
-            // Seamless Loop
             if (f.y > height + 10) {
                 f.y = -10;
                 f.x = Math.random() * width;
@@ -582,7 +581,7 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 
             ctx.beginPath();
             ctx.arc(f.x, f.y, f.radius * f.depth, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(16, 185, 129, ${f.opacity * f.depth * 0.45})`; // เอฟเฟกต์มรกตประกายระยิบระยับบางเบา
+            ctx.fillStyle = `rgba(16, 185, 129, ${f.opacity * f.depth * 0.45})`;
             ctx.shadowBlur = 8 * f.depth;
             ctx.shadowColor = "rgba(16, 185, 129, 0.4)";
             ctx.fill();
@@ -598,7 +597,6 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
    2. Realtime Simulation Engine (Persistent & Dynamic)
    ========================================================= */
 
-// ข้อที่ 1: ประมวลผลทั้งหมดในระบบ (เริ่มต้น 35,000+, สุ่มเพิ่ม 5-7 ครั้ง/นาที, ขึ้นทีละ 1, กระพริบคลื่นน้ำวงเล็ก, คงอยู่ถาวร)
 let totalProcessed = parseInt(localStorage.getItem("ml_total_processed_v1"), 10);
 if (!totalProcessed || isNaN(totalProcessed) || totalProcessed < 35000) {
     totalProcessed = 35000;
@@ -613,14 +611,13 @@ function updateProcessedUI(triggerRipple = true) {
         const dot = document.getElementById("totalDot");
         if (dot) {
             dot.classList.remove("ripple");
-            void dot.offsetWidth; // Force Reflow
+            void dot.offsetWidth;
             dot.classList.add("ripple");
         }
     }
 }
 
 function scheduleProcessedIncrements() {
-    // ใน 1 นาที สุ่ม 5 ถึง 7 ครั้ง
     const timesInMinute = Math.floor(Math.random() * 3) + 5; 
     const intervals = [];
     
@@ -637,19 +634,17 @@ function scheduleProcessedIncrements() {
         }, delay);
     });
 
-    // วนลูปทุกๆ 1 นาที
     setTimeout(scheduleProcessedIncrements, 60000);
 }
 
-// ข้อที่ 2: สมาชิกออนไลน์ (ฐาน 1,150 คน, สุ่มขึ้นลง 1-100 ทุกๆ 1 นาที)
 let currentOnline = parseInt(localStorage.getItem("ml_online_users_v1"), 10);
 if (!currentOnline || isNaN(currentOnline)) {
     currentOnline = 1150;
 }
 
 function updateOnlineUsers() {
-    const change = Math.floor(Math.random() * 100) + 1; // 1 ถึง 100
-    const isUp = Math.random() > 0.45; // มีโอกาสสลับขึ้นลงสมจริง
+    const change = Math.floor(Math.random() * 100) + 1;
+    const isUp = Math.random() > 0.45;
     
     if (isUp) {
         currentOnline += change;
@@ -657,7 +652,6 @@ function updateOnlineUsers() {
         currentOnline -= change;
     }
 
-    // รักษาระดับฐานให้อยู่รอบๆ 1,150 คน
     if (currentOnline < 1050) currentOnline += Math.floor(Math.random() * 40) + 20;
     if (currentOnline > 1280) currentOnline -= Math.floor(Math.random() * 40) + 20;
 
@@ -666,23 +660,21 @@ function updateOnlineUsers() {
     if (el) el.innerText = currentOnline.toLocaleString() + " คน";
 }
 
-// ข้อที่ 3: ความเร็วของ Server (สุ่มวิ่ง 18 - 26 ms)
 function updateServerLatency() {
     const latency = Math.floor(Math.random() * (26 - 18 + 1)) + 18;
     const el = document.getElementById("serverLatencyCount");
     if (el) el.innerText = latency + " ms";
 }
 
-// เริ่มการทำงานระบบจำลอง Realtime
 document.addEventListener("DOMContentLoaded", () => {
     updateProcessedUI(false);
     scheduleProcessedIncrements();
 
     updateOnlineUsers();
-    setInterval(updateOnlineUsers, 60000); // ทุกๆ 1 นาที
+    setInterval(updateOnlineUsers, 60000);
 
     updateServerLatency();
-    setInterval(updateServerLatency, 3500); // อัปเดตความเร็วเซิร์ฟเวอร์แบบ Realtime นุ่มนวล
+    setInterval(updateServerLatency, 3500);
 });
 
 /* =========================================================
@@ -823,7 +815,6 @@ const _app = {
       this.runAnalysis(n3,n2);
       document.getElementById("resultContainer").scrollIntoView({behavior:"smooth",block:"start"});
       
-      // เพิ่มยอดประมวลผลเมื่อผู้ใช้กดปุ่มวิเคราะห์
       totalProcessed += 1;
       localStorage.setItem("ml_total_processed_v1", totalProcessed);
       updateProcessedUI(true);
@@ -896,12 +887,38 @@ const _app = {
     const anchorRaw = fixedBase - H;
     const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
 
+    // คำนวณค่าจาก 5 โมเดลหลัก
+    let rawM1 = (T_top + T_bot) % 10;
+    let rawM2 = sumTop % 10;
+    let rawM3 = (H + T_bot) % 10;
+    let rawM4 = (U_top + U_bot) % 10;
+    let rawM5 = (10 - U_bot) % 10;
+
+    // Dynamic Shift System (Model Anti-Collision Logic)
+    let modelRawValues = [rawM1, rawM2, rawM3, rawM4, rawM5];
+    let uniqueModelDigits = new Set(modelRawValues);
+
+    if (uniqueModelDigits.size < 4) {
+      const fallbackFormulas = [
+        (T_top + U_bot) % 10,
+        (H + U_top) % 10,
+        (sumBot) % 10,
+        (H + sumBot) % 10,
+        (totalSum) % 10
+      ];
+      for (let fbVal of fallbackFormulas) {
+        const normFb = ((fbVal % 10) + 10) % 10;
+        uniqueModelDigits.add(normFb);
+        if (uniqueModelDigits.size >= 6) break;
+      }
+    }
+
     const fList = [
-      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(T_top + T_bot), positionalWeight: 1.0 },
-      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(sumTop), positionalWeight: 1.0 },
-      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(H + T_bot), positionalWeight: 1.0 },
-      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(U_top + U_bot), positionalWeight: 1.0 },
-      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(10 - U_bot), positionalWeight: 1.0 }
+      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(rawM1), positionalWeight: 1.0 },
+      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(rawM2), positionalWeight: 1.0 },
+      { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(rawM3), positionalWeight: 1.0 },
+      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(rawM4), positionalWeight: 1.0 },
+      { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(rawM5), positionalWeight: 1.0 }
     ];
 
     const allowedModelDigits = new Set();
@@ -1033,6 +1050,7 @@ const _app = {
       }
     }
 
+    // Scoring System Logic Refactoring: Dynamic Multiplier x1.15
     for (let d = 0; d <= 9; d++) {
       const item = digitScores[d];
       item.totalScore = (item.modelScore * 0.35) + 
@@ -1042,17 +1060,43 @@ const _app = {
                         (item.winSetScore * 0.10);
 
       if (allowedModelDigits.has(d)) {
-        item.totalScore += 0.5;
+        item.totalScore *= 1.15;
       }
     }
 
-    const matrixSorted = Object.values(digitScores)
+    // ==========================================
+    // 1. เรียงลำดับตัวเลขทั้งหมดตามคะแนน (สำหรับ Matrix/ตารางแสดงผล)
+    // ==========================================
+    const matrixSortedAll = Object.values(digitScores)
       .sort((a, b) => b.totalScore - a.totalScore || b.digit - a.digit);
-    
-    const primaryDigitObj = matrixSorted[0];
-    const secondaryDigitObj = matrixSorted[1];
+
+    // ==========================================
+    // 2. กรองเฉพาะตัวเลขที่อยู่ในโมเดล 01–05 (allowedModelDigits)
+    // ==========================================
+    const allowedModelArray = Array.from(allowedModelDigits);
+
+    const filteredModelScores = matrixSortedAll.filter(item => 
+      allowedModelArray.includes(item.digit)
+    );
+
+    // ==========================================
+    // 3. คัดเลือกตัวเด่น (d1) และ ตัวรอง (d2) จากกลุ่มที่ผ่านการกรองแล้วเท่านั้น
+    // ==========================================
+    let primaryDigitObj = filteredModelScores[0];
+    let secondaryDigitObj = filteredModelScores[1];
+
+    // [Fallback Protection] ถ้าตัวเลขในโมเดลมีไม่พอ 2 ตัว ให้ดึงเลขคะแนนสูงสุดที่เหลือมาเสริม
+    if (!primaryDigitObj) {
+      primaryDigitObj = matrixSortedAll[0];
+    }
+    if (!secondaryDigitObj) {
+      secondaryDigitObj = matrixSortedAll.find(item => item.digit !== primaryDigitObj.digit) || matrixSortedAll[1];
+    }
+
     const d1 = primaryDigitObj.digit;
     const d2_dig = secondaryDigitObj.digit;
+
+    const matrixSorted = matrixSortedAll;
 
     const allScores = matrixSorted.map(s => s.totalScore);
     const minScore = Math.min(...allScores);
@@ -1082,8 +1126,18 @@ const _app = {
     
     const cScore3 = Number((50.1 + Math.random() * 0.8).toFixed(1));
 
-    let winSetObjects = matrixSorted.slice(0, 6);
-    let currentSet = winSetObjects.map(item => item.digit);
+    // Win Set Selection Optimization (Wildcard Slot Guarantee)
+    let top5Digits = matrixSorted.slice(0, 5).map(item => item.digit);
+
+    let wildcardCandidate = matrixSorted.find(item => 
+      !allowedModelDigits.has(item.digit) && !top5Digits.includes(item.digit)
+    );
+
+    if (!wildcardCandidate) {
+      wildcardCandidate = matrixSorted.find(item => !top5Digits.includes(item.digit));
+    }
+
+    let currentSet = [...top5Digits, wildcardCandidate ? wildcardCandidate.digit : matrixSorted[5].digit];
 
     const checkBalance = (digits) => {
       const evenCount = digits.filter(d => d % 2 === 0).length;
@@ -1094,7 +1148,7 @@ const _app = {
     };
 
     if (!checkBalance(currentSet).isBalanced) {
-      const candidatesIndex = [6, 7];
+      const candidatesIndex = [6, 7, 8, 9];
       let bestSet = [...currentSet];
       let foundReplacement = false;
       for (let idx of candidatesIndex) {
@@ -1348,4 +1402,4 @@ n3Input.addEventListener("input", () => {
 })();
 </script>
 </body>
-</html>
+          </html>
