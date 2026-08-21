@@ -63,6 +63,17 @@ button,input{font-family:'Prompt',sans-serif;}
 button{-webkit-user-select:none;user-select:none;}
 ::selection{background:rgba(10,102,71,.25);color:var(--text);}
 
+/* High-End Cinema Snow Canvas Background */
+#snowCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .ambient::before,.ambient::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;}
 .ambient::before{width:320px;height:320px;top:-70px;left:-70px;background:rgba(16,185,129,.45);}
@@ -70,9 +81,8 @@ button{-webkit-user-select:none;user-select:none;}
 
 .grid-overlay{position:absolute;inset:0;opacity:.05;background-image:linear-gradient(rgba(10,102,71,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(10,102,71,.08) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,black,transparent 90%);}
 
-/* ปรับความกว้างหลักขึ้น ~17% จาก 480px เป็น 560px */
 .app-shell{width:100%;max-width:560px;min-height:100vh;margin:0 auto;padding:max(12px,env(safe-area-inset-top)) clamp(10px,2.5vw,14px) max(24px,env(safe-area-inset-bottom));position:relative;z-index:2;}
-.app-card{position:relative;overflow:hidden;min-height:calc(100vh - 24px);border:1px solid #A8D5C2;border-radius:24px;background:rgba(255,255,255,.98);box-shadow:0 25px 60px rgba(10,102,71,.14),inset 0 1px 0 rgba(255,255,255,1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.app-card{position:relative;overflow:hidden;min-height:calc(100vh - 24px);border:1px solid #A8D5C2;border-radius:24px;background:rgba(255,255,255,.94);box-shadow:0 25px 60px rgba(10,102,71,.14),inset 0 1px 0 rgba(255,255,255,1);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}
 .app-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0A6647,#10B981,#14B8A6,#EAB308);background-size:250% 100%;animation:spectrumFlow 6s ease-in-out infinite;opacity:1;}
 @keyframes spectrumFlow{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
 
@@ -115,7 +125,8 @@ button{-webkit-user-select:none;user-select:none;}
 .package-price{margin-top:3px;font-family:'IBM Plex Mono',monospace;font-size:1.15rem;font-weight:700;color:var(--text);}
 .package-desc{margin-top:2px;color:var(--muted-2);font-size:.48rem;}
 
-.contact-btn{width:100%;display:flex;justify-content:center;align-items:center;gap:6px;padding:11px;margin-bottom:10px;border-radius:12px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#0A6647,#0D7A55);box-shadow:0 6px 16px rgba(10,102,71,.22);font-size:.7rem;font-weight:700;}
+.contact-btn{width:100%;display:flex;justify-content:center;align-items:center;gap:6px;padding:11px;margin-bottom:10px;border-radius:12px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#0A6647,#0D7A55);box-shadow:0 6px 16px rgba(10,102,71,.22);font-size:.7rem;font-weight:700;transition:transform .2s ease, box-shadow .2s ease;}
+.contact-btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(10,102,71,.28);}
 
 .login-panel{padding:14px;border-radius:18px;background:linear-gradient(135deg,#FFFFFF,#EEF9F2);border:1px solid #A8D5C2;box-shadow:var(--shadow2);}
 .section-eyebrow{color:var(--emerald);font-size:.54rem;font-weight:800;letter-spacing:.8px;text-align:center;}
@@ -127,7 +138,8 @@ input{width:100%;height:44px;padding:0 12px;border-radius:12px;outline:none;bord
 input::placeholder{color:var(--muted-2);}
 input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px rgba(10,102,71,.12);}
 
-.primary-btn{width:100%;height:44px;margin-top:8px;border:0;border-radius:12px;color:#fff;cursor:pointer;background:linear-gradient(110deg,#0A6647,#0D7A55,#0A6647);background-size:200% 100%;box-shadow:0 6px 16px rgba(10,102,71,.2);font-size:.72rem;font-weight:700;}
+.primary-btn{width:100%;height:44px;margin-top:8px;border:0;border-radius:12px;color:#fff;cursor:pointer;background:linear-gradient(110deg,#0A6647,#0D7A55,#0A6647);background-size:200% 100%;box-shadow:0 6px 16px rgba(10,102,71,.2);font-size:.72rem;font-weight:700;transition:transform .2s ease;}
+.primary-btn:hover{transform:translateY(-1px);}
 
 #errorMsg{display:none;margin-top:6px;text-align:center;color:var(--red);font-size:.58rem;font-weight:700;}
 #calculatorView{display:none;}
@@ -144,10 +156,29 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .engine-value.green{color:var(--emerald-2);}
 .engine-value.gold{color:var(--gold);}
 
-.total-dot-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:6px;height:6px;flex:0 0 6px;}
-.total-dot{width:4px;height:4px;border-radius:50%;background:var(--emerald-3);}
-.total-dot.ripple{animation:dotRipple .5s cubic-bezier(0,0,.2,1);}
-@keyframes dotRipple{0%{box-shadow:0 0 0 0 rgba(16,185,129,.85);}70%{box-shadow:0 0 0 4px rgba(16,185,129,0);}}
+/* Realistic Subtle Micro Ripple Pulse for Execution Trigger */
+.total-dot-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:8px;height:8px;flex:0 0 8px;}
+.total-dot{width:4px;height:4px;border-radius:50%;background:var(--emerald-3);position:relative;z-index:2;}
+.total-dot::after{
+    content:"";
+    position:absolute;
+    top:50%; left:50%;
+    width:100%; height:100%;
+    border-radius:50%;
+    background:rgba(16,185,129,0.7);
+    transform:translate(-50%,-50%) scale(1);
+    opacity:0;
+    pointer-events:none;
+}
+.total-dot.ripple::after{
+    animation: microWaterRipple 0.85s cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+@keyframes microWaterRipple{
+    0%{ transform:translate(-50%,-50%) scale(1); opacity:0.9; }
+    50%{ opacity:0.5; }
+    100%{ transform:translate(-50%,-50%) scale(4.5); opacity:0; }
+}
+
 .engine-icon{font-size:.48rem;line-height:1;opacity:.9;}
 .online-glow-icon{display:inline-flex;align-items:center;justify-content:center;}
 
@@ -166,10 +197,12 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .field-card input{height:42px;background:#fff;font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:700;letter-spacing:2px;}
 
 .action-row{display:grid;grid-template-columns:1fr 85px;gap:7px;margin-top:8px;}
-.calculate-btn{height:44px;border:0;border-radius:12px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0A6647,#0D7A55);box-shadow:0 6px 16px rgba(10,102,71,.22);font-size:.7rem;font-weight:800;}
+.calculate-btn{height:44px;border:0;border-radius:12px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0A6647,#0D7A55);box-shadow:0 6px 16px rgba(10,102,71,.22);font-size:.7rem;font-weight:800;transition:transform .2s ease;}
+.calculate-btn:hover:not(:disabled){transform:translateY(-1px);}
 .calculate-btn:disabled{opacity:.55;cursor:not-allowed;}
 
-.clear-btn{height:44px;border-radius:12px;color:var(--muted);background:var(--bg2);border:1px solid #A8D5C2;font-size:.6rem;font-weight:700;}
+.clear-btn{height:44px;border-radius:12px;color:var(--muted);background:var(--bg2);border:1px solid #A8D5C2;font-size:.6rem;font-weight:700;transition:background .2s ease;}
+.clear-btn:hover{background:#fff;}
 
 #aiScannerBox{display:none;position:relative;overflow:hidden;padding:16px 12px;margin-bottom:10px;text-align:center;border-radius:18px;background:radial-gradient(circle at center,rgba(16,185,129,.14),transparent 60%),#EEFBF4;border:1px solid rgba(10,102,71,.25);}
 .scanner-ring{position:relative;width:52px;height:52px;margin:0 auto 10px;border-radius:50%;border:1px solid rgba(10,102,71,.25);}
@@ -211,7 +244,6 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .section-marker{display:flex;align-items:center;gap:6px;margin:4px 2px 7px;color:var(--muted);font-size:.48rem;font-weight:800;letter-spacing:.8px;}
 .section-marker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#A8D5C2,transparent);}
 
-/* STATS BAR (EVEN/ODD) */
 .stats-analytics-card{position:relative;overflow:hidden;padding:12px;margin-bottom:10px;border-radius:18px;background:linear-gradient(135deg,#FFFFFF,#EEF9F2);border:1px solid #A8D5C2;box-shadow:var(--shadow2);}
 .stats-flex{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .stats-title{font-size:.8rem;font-weight:800;color:var(--text);}
@@ -305,7 +337,7 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 .ind-win-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .ind-win-title{font-size:.78rem;font-weight:800;color:var(--text);}
 .ind-win-title small{display:block;color:var(--muted);font-size:.42rem;font-weight:600;margin-top:1px;letter-spacing:0.3px;}
-.ind-win-badge{color:var(--gold);background:var(--gold3);border:1px solid rgba(158,108,2,.25);padding:3px 8px;border-radius:9px;font-family:'IBM Plex Mono',monospace;font-size:.44rem;font-weight:700;}
+.ind-win-badge{color:var(--gold);background:var(--gold3);border:1px solid rgba(158,108,2,.25);padding:3px 8px;border-radius:99px;font-family:'IBM Plex Mono',monospace;font-size:.44rem;font-weight:700;}
 .ind-win-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;}
 .ind-win-item{position:relative;overflow:hidden;padding:6px 2px;text-align:center;border-radius:10px;background:#fff;border:1px solid #A8D5C2;cursor:pointer;transition:transform .2s var(--ease);}
 .ind-win-item strong{display:block;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.82rem;font-weight:700;}
@@ -342,6 +374,9 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 </style>
 </head>
 <body>
+<!-- Canvas Snow Effect Background -->
+<canvas id="snowCanvas"></canvas>
+
 <div class="ambient"><div class="grid-overlay"></div></div>
 <div class="app-shell">
 <div class="app-card">
@@ -437,15 +472,15 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 
   <div class="engine-strip">
     <div class="engine-card">
-      <div class="engine-label">ประมวลผลทั้งหมด</div>
+      <div class="engine-label">ประมวลผลทั้งหมดในระบบ</div>
       <div class="engine-value cyan">
         <span class="total-dot-wrap"><span class="total-dot" id="totalDot"></span></span>
-        <span id="totalProcessedCount">32,157</span> ครั้ง
+        <span id="totalProcessedCount">35,000</span> ครั้ง
       </div>
     </div>
     <div class="engine-card">
       <div class="engine-label"><span class="engine-icon online-glow-icon">👤</span> สมาชิกออนไลน์</div>
-      <div class="engine-value green" id="onlineUsersCount">1154 คน</div>
+      <div class="engine-value green" id="onlineUsersCount">1,150 คน</div>
     </div>
     <div class="engine-card">
       <div class="engine-label"><span class="engine-icon">🖥️</span> ความเร็วเซิร์ฟเวอร์</div>
@@ -493,7 +528,166 @@ input:focus{background:#fff;border-color:rgba(10,102,71,.6);box-shadow:0 0 0 3px
 </div>
 </div>
 <div id="toast">✓ คัดลอกตัวเลขแล้ว / COPIED</div>
+
 <script>
+/* =========================================================
+   1. Hollywood High-End Snow Effect (Relaxing 3D Depth)
+   ========================================================= */
+(function setupHollywoodSnow() {
+    const canvas = document.getElementById("snowCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const flakeCount = 45; // บางเบา สบายตา ไม่เกะกะสายตา
+    const flakes = [];
+
+    for (let i = 0; i < flakeCount; i++) {
+        flakes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 2.2 + 0.8, // ขนาดละมุน
+            depth: Math.random() * 0.8 + 0.2,   // มิติความลึก (Depth of field)
+            speedY: Math.random() * 0.4 + 0.2, // ปลิวช้าๆ นุ่มนวล
+            speedX: Math.random() * 0.2 - 0.1,
+            opacity: Math.random() * 0.5 + 0.35,
+            swing: Math.random() * Math.PI * 2,
+            swingSpeed: Math.random() * 0.01 + 0.005
+        });
+    }
+
+    function renderSnow() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < flakeCount; i++) {
+            const f = flakes[i];
+            f.swing += f.swingSpeed;
+            f.x += Math.sin(f.swing) * 0.3 + f.speedX;
+            f.y += f.speedY * f.depth;
+
+            // Seamless Loop
+            if (f.y > height + 10) {
+                f.y = -10;
+                f.x = Math.random() * width;
+            }
+            if (f.x > width + 10) f.x = -10;
+            if (f.x < -10) f.x = width + 10;
+
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, f.radius * f.depth, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(16, 185, 129, ${f.opacity * f.depth * 0.45})`; // เอฟเฟกต์มรกตประกายระยิบระยับบางเบา
+            ctx.shadowBlur = 8 * f.depth;
+            ctx.shadowColor = "rgba(16, 185, 129, 0.4)";
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+
+        requestAnimationFrame(renderSnow);
+    }
+    renderSnow();
+})();
+
+/* =========================================================
+   2. Realtime Simulation Engine (Persistent & Dynamic)
+   ========================================================= */
+
+// ข้อที่ 1: ประมวลผลทั้งหมดในระบบ (เริ่มต้น 35,000+, สุ่มเพิ่ม 5-7 ครั้ง/นาที, ขึ้นทีละ 1, กระพริบคลื่นน้ำวงเล็ก, คงอยู่ถาวร)
+let totalProcessed = parseInt(localStorage.getItem("ml_total_processed_v1"), 10);
+if (!totalProcessed || isNaN(totalProcessed) || totalProcessed < 35000) {
+    totalProcessed = 35000;
+    localStorage.setItem("ml_total_processed_v1", totalProcessed);
+}
+
+function updateProcessedUI(triggerRipple = true) {
+    const el = document.getElementById("totalProcessedCount");
+    if (el) el.innerText = totalProcessed.toLocaleString();
+
+    if (triggerRipple) {
+        const dot = document.getElementById("totalDot");
+        if (dot) {
+            dot.classList.remove("ripple");
+            void dot.offsetWidth; // Force Reflow
+            dot.classList.add("ripple");
+        }
+    }
+}
+
+function scheduleProcessedIncrements() {
+    // ใน 1 นาที สุ่ม 5 ถึง 7 ครั้ง
+    const timesInMinute = Math.floor(Math.random() * 3) + 5; 
+    const intervals = [];
+    
+    for (let i = 0; i < timesInMinute; i++) {
+        intervals.push(Math.floor(Math.random() * 58000) + 1000);
+    }
+    intervals.sort((a, b) => a - b);
+
+    intervals.forEach(delay => {
+        setTimeout(() => {
+            totalProcessed += 1;
+            localStorage.setItem("ml_total_processed_v1", totalProcessed);
+            updateProcessedUI(true);
+        }, delay);
+    });
+
+    // วนลูปทุกๆ 1 นาที
+    setTimeout(scheduleProcessedIncrements, 60000);
+}
+
+// ข้อที่ 2: สมาชิกออนไลน์ (ฐาน 1,150 คน, สุ่มขึ้นลง 1-100 ทุกๆ 1 นาที)
+let currentOnline = parseInt(localStorage.getItem("ml_online_users_v1"), 10);
+if (!currentOnline || isNaN(currentOnline)) {
+    currentOnline = 1150;
+}
+
+function updateOnlineUsers() {
+    const change = Math.floor(Math.random() * 100) + 1; // 1 ถึง 100
+    const isUp = Math.random() > 0.45; // มีโอกาสสลับขึ้นลงสมจริง
+    
+    if (isUp) {
+        currentOnline += change;
+    } else {
+        currentOnline -= change;
+    }
+
+    // รักษาระดับฐานให้อยู่รอบๆ 1,150 คน
+    if (currentOnline < 1050) currentOnline += Math.floor(Math.random() * 40) + 20;
+    if (currentOnline > 1280) currentOnline -= Math.floor(Math.random() * 40) + 20;
+
+    localStorage.setItem("ml_online_users_v1", currentOnline);
+    const el = document.getElementById("onlineUsersCount");
+    if (el) el.innerText = currentOnline.toLocaleString() + " คน";
+}
+
+// ข้อที่ 3: ความเร็วของ Server (สุ่มวิ่ง 18 - 26 ms)
+function updateServerLatency() {
+    const latency = Math.floor(Math.random() * (26 - 18 + 1)) + 18;
+    const el = document.getElementById("serverLatencyCount");
+    if (el) el.innerText = latency + " ms";
+}
+
+// เริ่มการทำงานระบบจำลอง Realtime
+document.addEventListener("DOMContentLoaded", () => {
+    updateProcessedUI(false);
+    scheduleProcessedIncrements();
+
+    updateOnlineUsers();
+    setInterval(updateOnlineUsers, 60000); // ทุกๆ 1 นาที
+
+    updateServerLatency();
+    setInterval(updateServerLatency, 3500); // อัปเดตความเร็วเซิร์ฟเวอร์แบบ Realtime นุ่มนวล
+});
+
+/* =========================================================
+   3. Core Application Logic
+   ========================================================= */
 const _secEnc = {
   _dbToken:[
     "4d617374657241646d696e32303236",
@@ -515,6 +709,7 @@ const _secEnc = {
     return false;
   }
 };
+
 const _app = {
   _toastTimer:null,
   async _verify(p){
@@ -627,9 +822,12 @@ const _app = {
       btn.disabled=false;
       this.runAnalysis(n3,n2);
       document.getElementById("resultContainer").scrollIntoView({behavior:"smooth",block:"start"});
+      
+      // เพิ่มยอดประมวลผลเมื่อผู้ใช้กดปุ่มวิเคราะห์
+      totalProcessed += 1;
+      localStorage.setItem("ml_total_processed_v1", totalProcessed);
+      updateProcessedUI(true);
     },800);
-
-    updateTotalProcessedIncrement();
   },
   
   _normalize(x) {
@@ -1139,21 +1337,6 @@ n3Input.addEventListener("input", () => {
     if (e.key === "Enter") _app.calculate();
   });
 });
-
-function updateTotalProcessedIncrement() {
-  const el = document.getElementById("totalProcessedCount");
-  if (!el) return;
-  let currentVal = parseInt(el.innerText.replace(/,/g, ""), 10) || 32157;
-  currentVal += 1;
-  el.innerText = currentVal.toLocaleString();
-
-  const dot = document.getElementById("totalDot");
-  if (dot) {
-    dot.classList.remove("ripple");
-    void dot.offsetWidth;
-    dot.classList.add("ripple");
-  }
-}
 
 (function initApp() {
   const isAuth = localStorage.getItem("ml_auth_status_v3");
