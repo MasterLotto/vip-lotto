@@ -695,7 +695,7 @@ const _app = {
       { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(10 - U_bot), positionalWeight: 1.0 }
     ];
 
-    //รวบรวมรายชื่อเลขทั้งหมดที่อยู่ใน 5 โมเดลหลักอย่างเคร่งครัด
+    // รวบรวมรายชื่อเลขทั้งหมดที่อยู่ใน 5 โมเดลหลัก
     const allowedModelDigits = new Set();
     fList.forEach(item => {
       item.set.forEach(d => allowedModelDigits.add(d));
@@ -765,7 +765,7 @@ const _app = {
       };
     });
 
-    // --- ระบบคะแนนรวม (Total Score & Backend Engine Evaluation) ---
+    // --- ระบบคะแนนรวมแบบสมดุล (Weighted Composite Scoring Engine) ---
     const digitScores = {};
     for (let d = 0; d <= 9; d++) {
       digitScores[d] = {
@@ -779,26 +779,25 @@ const _app = {
       };
     }
 
-    // 1. ระบบคะแนนจาก 5 โมเดลหลัก
+    // 1. คะแนนจาก 5 โมเดลหลัก (Weight max = 1.0)
     evaluated.forEach(model => {
       model.set.forEach(dig => {
         digitScores[dig].modelScore += 1.0;
       });
     });
 
-    // 2. ระบบ 100 สูตร
+    // 2. คะแนนจาก 100 สูตร (Normalized Scale max = 1.0)
+    const maxFormCount = Math.max(...Object.values(formula100Engine.counts), 1);
     for (let d = 0; d <= 9; d++) {
       const matchCount = formula100Engine.counts[d] || 0;
-      digitScores[d].formula100Score = matchCount * 0.1;
+      digitScores[d].formula100Score = (matchCount / maxFormCount); 
     }
 
-    // 3. ระบบเรดาร์
+    // 3. คะแนนจากระบบเรดาร์ 3 มิติ (Normalized Scale max = 1.0)
     const X_val = (T_bot + U_bot) % 10;
     const radar1Range = [(X_val - 1 + 10) % 10, X_val, (X_val + 1) % 10];
-
     const Y_val = (H + T_top + U_top) % 10;
     const radar2Range = [(Y_val - 1 + 10) % 10, Y_val, (Y_val + 1) % 10];
-
     const Z_val = (H + T_top + U_top + T_bot + U_bot) % 10;
     const radar3Range = [(Z_val - 1 + 10) % 10, Z_val, (Z_val + 1) % 10];
 
@@ -807,10 +806,10 @@ const _app = {
       if (radar1Range.includes(d)) rHits++;
       if (radar2Range.includes(d)) rHits++;
       if (radar3Range.includes(d)) rHits++;
-      digitScores[d].radarScore = rHits * 0.5;
+      digitScores[d].radarScore = (rHits / 3);
     }
 
-    // 4. ระบบ 5 สูตรหลังบ้าน
+    // 4. คะแนนสูตรหลังบ้าน 5 สูตร (Normalized Scale max = 1.0)
     const backendFormulasSet = [
       (H * 2 + T_bot) % 10,
       (T_top + U_bot) % 10,
@@ -818,37 +817,42 @@ const _app = {
       (Math.abs(T_top - U_top)) % 10,
       (totalSum) % 10
     ];
-    
     for (let d = 0; d <= 9; d++) {
       if (backendFormulasSet.includes(d)) {
-        digitScores[d].backendScore = 0.5;
+        digitScores[d].backendScore = 1.0;
       }
     }
 
-    // 5. ระบบชุดวินหลังบ้าน
+    // 5. คะแนนชุดวินหลังบ้าน (Normalized Scale max = 1.0)
     const winCandidate = (H + T_top + U_top + T_bot + U_bot) % 10;
     for (let d = 0; d <= 9; d++) {
       if (d === winCandidate || d === ((winCandidate + 5) % 10)) {
-        digitScores[d].winSetScore = 0.5;
+        digitScores[d].winSetScore = 1.0;
       }
     }
 
-    // --- กรองและปัดตกเลขที่ไม่อยู่ใน 5 โมเดลหลักอย่างเคร่งครัด ---
+    // --- การประมวลผลคะแนนสุทธิรวมค่าน้ำหนัก (Weighted Sum + Bonus) ---
     for (let d = 0; d <= 9; d++) {
-      if (!allowedModelDigits.has(d)) {
-        digitScores[d].totalScore = -999; // ปัดตกลงทันที
-      } else {
-        const item = digitScores[d];
-        item.totalScore = item.modelScore + item.formula100Score + item.radarScore + item.backendScore + item.winSetScore;
+      const item = digitScores[d];
+      
+      // คำนวณตามสัดส่วนน้ำหนัก %
+      item.totalScore = (item.modelScore * 0.35) + 
+                        (item.formula100Score * 0.25) + 
+                        (item.radarScore * 0.15) + 
+                        (item.backendScore * 0.15) + 
+                        (item.winSetScore * 0.10);
+
+      // ให้โบนัสพิเศษสำหรับเลขที่อยู่ใน 5 โมเดลหลัก โดยไม่ตัดเลขอื่นทิ้ง (-999)
+      if (allowedModelDigits.has(d)) {
+        item.totalScore += 0.5;
       }
     }
 
-    // จัดลำดับคะแนนรวมเฉพาะเลขที่ผ่านเกณฑ์ (อยู่ใน 5 โมเดล) จากมากไปน้อย
+    // จัดลำดับคะแนนรวมจากมากไปน้อย
     const matrixSorted = Object.values(digitScores)
-      .filter(item => allowedModelDigits.has(item.digit))
       .sort((a, b) => b.totalScore - a.totalScore || b.digit - a.digit);
     
-    // เลือก 2 อันดับแรกที่คะแนนและเปอร์เซ็นต์มากที่สุดไปอยู่ใน PRIMARY CONSENSUS
+    // เลือก 2 อันดับแรกที่คะแนนมากที่สุดไปอยู่ใน PRIMARY CONSENSUS
     const primaryDigitObj = matrixSorted[0];
     const secondaryDigitObj = matrixSorted[1];
     const d1 = primaryDigitObj.digit;
@@ -910,7 +914,7 @@ const _app = {
       if (foundReplacement) currentSet = bestSet;
     }
 
-    // เรียงเลขวินจากน้อยไปมากตามรีเควส
+    // เรียงเลขวินจากน้อยไปมาก
     const winSet = currentSet.sort((a, b) => a - b);
     const maxScoreVal = Math.max(...matrixSorted.map(s => s.totalScore), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
@@ -1111,54 +1115,29 @@ n3Input.addEventListener("input", () => {
   });
 });
 
-let currentTotalProcessed = parseInt(localStorage.getItem("ml_total_processed_v3"), 10);
-if (isNaN(currentTotalProcessed)) {
-  currentTotalProcessed = 32157;
-  localStorage.setItem("ml_total_processed_v3", currentTotalProcessed);
-}
-
-let currentOnlineUsers = parseInt(localStorage.getItem("ml_online_users_v3"), 10);
-if (isNaN(currentOnlineUsers)) {
-  currentOnlineUsers = 723;
-  localStorage.setItem("ml_online_users_v3", currentOnlineUsers);
-}
-
-let currentServerLatency = parseInt(localStorage.getItem("ml_server_latency_v3"), 10);
-if (isNaN(currentServerLatency)) {
-  currentServerLatency = 18;
-  localStorage.setItem("ml_server_latency_v3", currentServerLatency);
-}
-
 function updateTotalProcessedIncrement() {
-  currentTotalProcessed += 1;
-  localStorage.setItem("ml_total_processed_v3", currentTotalProcessed);
+  const el = document.getElementById("totalProcessedCount");
+  if (!el) return;
+  let currentVal = parseInt(el.innerText.replace(/,/g, ""), 10) || 32157;
+  currentVal += 1;
+  el.innerText = currentVal.toLocaleString();
 
-  const countEl = document.getElementById("totalProcessedCount");
-  const dotEl = document.getElementById("totalDot");
-  if (countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
-  if (dotEl) {
-    dotEl.classList.remove("ripple");
-    void dotEl.offsetWidth;
-    dotEl.classList.add("ripple");
+  const dot = document.getElementById("totalDot");
+  if (dot) {
+    dot.classList.remove("ripple");
+    void dot.offsetWidth;
+    dot.classList.add("ripple");
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const countEl = document.getElementById("totalProcessedCount");
-  if (countEl) countEl.innerText = currentTotalProcessed.toLocaleString();
-  
-  const onlineEl = document.getElementById("onlineUsersCount");
-  if (onlineEl) onlineEl.innerText = currentOnlineUsers.toLocaleString() + " คน";
-  
-  const latencyEl = document.getElementById("serverLatencyCount");
-  if (latencyEl) latencyEl.innerText = currentServerLatency + " ms";
-});
-
-if (localStorage.getItem("ml_auth_status_v3") === "active") {
-  document.getElementById("loginView").style.display = "none";
-  document.getElementById("calculatorView").style.display = "block";
-  _app.checkSessionBadge();
-}
+(function initApp() {
+  const isAuth = localStorage.getItem("ml_auth_status_v3");
+  if (isAuth === "active") {
+    document.getElementById("loginView").style.display = "none";
+    document.getElementById("calculatorView").style.display = "block";
+    _app.checkSessionBadge();
+  }
+})();
 </script>
 </body>
 </html>
