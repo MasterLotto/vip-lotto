@@ -625,39 +625,26 @@ const _app = {
     return ((x % 10) + 10) % 10;
   },
 
-  // ---------------------------------------------------------------------------
-  // 100 Back-End Formulas Engine (Pure Raw Units / No +1, Filtered against 5 Main Models)
-  // ---------------------------------------------------------------------------
   _run100FormulasEngine(H, T_top, U_top, T_bot, U_bot, sumTop, sumBot, totalSum) {
     const rawFormulas = [
-      // 1-10
       (H + T_top), (H + U_top), (T_top + U_top), (H + T_bot), (H + U_bot),
       (T_top + T_bot), (T_top + U_bot), (U_top + T_bot), (U_top + U_bot), (T_bot + U_bot),
-      // 11-20
       (sumTop + T_bot), (sumTop + U_bot), (sumTop + H), (sumTop + T_top), (sumTop + U_top),
       (10 - H), (10 - T_top), (10 - U_top), (10 - T_bot), (10 - U_bot),
-      // 21-30
       (H + T_top + T_bot), (H + U_top + U_bot), (T_top + U_top + T_bot), (T_top + U_top + U_bot), (H + T_bot + U_bot),
       (T_top + T_bot + U_bot), (sumTop - T_bot), (sumTop - U_bot), (sumTop + sumBot), (sumTop - sumBot),
-      // 31-40
       ((H + T_top) - U_bot), ((T_top + U_top) - T_bot), ((H + U_top) - T_bot), (20 - (T_top + T_bot)), (20 - (U_top + U_bot)),
       (H + T_top + U_top - T_bot), (H + T_top + U_top - U_bot), (10 + T_top - U_bot), (10 + U_top - T_bot), (sumTop + 10 - U_bot),
-      // 41-50
       (H + U_bot - T_top), (T_top + U_bot - H), (U_top + T_bot - H), (sumBot + H - T_top), (sumBot + H - U_top),
       (H + sumBot - T_top), (H + sumBot - U_top), (T_top + sumBot - H), (T_top + sumBot - U_top), (U_top + sumBot - H),
-      // 51-60
       (U_top + sumBot - T_top), (30 - (H + T_top + T_bot)), (30 - (H + U_top + U_bot)), (30 - (T_top + U_top + T_bot)), (30 - (H + T_bot + U_bot)),
       ((H + T_top) + T_bot - U_bot), ((H + U_top) + U_bot - T_bot), ((T_top + U_top) + T_bot - H), (sumTop + T_bot - U_bot), (sumTop + U_bot - T_bot),
-      // 61-70
       (H + T_top + sumBot), (H + U_top + sumBot), (T_top + U_top + sumBot), (H + T_bot + sumTop), (H + U_bot + sumTop),
       (T_top + T_bot + sumTop), (T_top + U_bot + sumTop), (U_top + T_bot + sumTop), (U_top + U_bot + sumTop), (T_bot + U_bot + sumTop),
-      // 71-80
       (10 + H + T_top), (10 + H + U_top), (10 + T_top + U_top), (10 + T_bot + U_bot), (10 + H + T_bot),
       (10 + H + U_bot), (10 + T_top + T_bot), (10 + T_top + U_bot), (10 + U_top + T_bot), (10 + U_top + U_bot),
-      // 81-90
       ((H - T_top) + U_bot), ((H - U_top) + T_bot), ((T_top - U_top) + U_bot), ((T_bot - U_bot) + H), ((T_bot - U_bot) + T_top),
       ((T_bot - U_bot) + U_top), (20 - H - T_top), (20 - H - U_top), (20 - T_top - U_top), (20 - T_bot - U_bot),
-      // 91-100
       (20 - H - T_bot), (20 - H - U_bot), (20 - T_top - T_bot), (20 - T_top - U_bot), (20 - U_top - T_bot),
       (20 - U_top - U_bot), (totalSum), (totalSum * 2), (totalSum + H), (totalSum + T_bot)
     ];
@@ -671,46 +658,9 @@ const _app = {
     });
 
     const sortedByCount = Object.keys(countedDigits).map(Number).sort((a,b) => countedDigits[b] - countedDigits[a] || b - a);
-    const rankTop10 = sortedByCount.slice(0, 10);
-
     return {
-      ranking: rankTop10,
+      ranking: sortedByCount.slice(0, 10),
       counts: countedDigits
-    };
-  },
-
-  // ---------------------------------------------------------------------------
-  // Backend Compass Engine (Cross-Validation Layer) - Deterministic 100%
-  // ---------------------------------------------------------------------------
-  _runBackendQuantEngine(n3, n2) {
-    const d3 = n3.split("").map(Number);
-    const d2 = n2.split("").map(Number);
-    const H_top = d3[0], T_top = d3[1], U_top = d3[2];
-    const T_bot = d2[0], U_bot = d2[1];
-    
-    const sumTop = H_top + T_top + U_top;
-    const sumBot = T_bot + U_bot;
-    const totalSum = sumTop + sumBot;
-
-    const model1Digit = Math.abs((H_top + T_top) - (T_bot * 2)) % 10;
-    const model2Digit = ((U_top * 3) + (U_bot * 7)) % 10;
-    const model3Digit = Math.floor((sumTop / (sumBot + 1)) * 9) % 10;
-    const model4Digit = (10 - ((Math.abs(T_top - U_bot)) + (Math.abs(H_top - T_bot))) % 10) % 10;
-    const model5Digit = (totalSum * 3) % 10;
-
-    const compassDigits = [model1Digit, model2Digit, model3Digit, model4Digit, model5Digit];
-    const uniqueCompass = [...new Set(compassDigits)];
-
-    return {
-      digits: compassDigits,
-      uniqueDigits: uniqueCompass,
-      scores: {
-        model1: model1Digit,
-        model2: model2Digit,
-        model3: model3Digit,
-        model4: model4Digit,
-        model5: model5Digit
-      }
     };
   },
 
@@ -724,7 +674,6 @@ const _app = {
     const sumBot = T_bot + U_bot;
     const totalSum = sumTop + sumBot;
 
-    const backendEngine = this._runBackendQuantEngine(n3, n2);
     const formula100Engine = this._run100FormulasEngine(H, T_top, U_top, T_bot, U_bot, sumTop, sumBot, totalSum);
 
     const getUnitDirect = (v) => {
@@ -738,12 +687,11 @@ const _app = {
     const anchorRaw = fixedBase - H;
     const anchor = ((Math.abs(anchorRaw) % 10) + 10) % 10;
 
-    // 5 AI Models หลัก
     const fList = [
-      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(T_top + T_bot), positionalWeight: 1.2 },
-      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(sum3 = sumTop), positionalWeight: 1.0 },
+      { id: 1, name: "AI โมเดล 01", subName: "B + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(T_top + T_bot), positionalWeight: 1.0 },
+      { id: 2, name: "AI โมเดล 02", subName: "A + B + C -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(sumTop), positionalWeight: 1.0 },
       { id: 3, name: "AI โมเดล 03", subName: "A + R1 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(H + T_bot), positionalWeight: 1.0 },
-      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(U_top + U_bot), positionalWeight: 1.2 },
+      { id: 4, name: "AI โมเดล 04", subName: "C + R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(U_top + U_bot), positionalWeight: 1.0 },
       { id: 5, name: "AI โมเดล 05", subName: "10 - R2 -> ใช้หลักหน่วยดิบเพียวๆ", set: getUnitDirect(10 - U_bot), positionalWeight: 1.0 }
     ];
 
@@ -811,77 +759,85 @@ const _app = {
       };
     });
 
-    // ---------------------------------------------------------------------------
-    // RE-WEIGHTING SYSTEM & DYNAMIC SCORING
-    // ---------------------------------------------------------------------------
+    // --- ระบบคะแนนรวม (Total Score & Backend Engine Evaluation) ---
     const digitScores = {};
     for (let d = 0; d <= 9; d++) {
       digitScores[d] = {
         digit: d,
-        frequency: 0,
-        baseScore: 0,
-        compassBonus: 0,
-        momentumBonus: 0,
-        formula100Bonus: 0,
+        modelScore: 0,
+        formula100Score: 0,
+        radarScore: 0,
+        backendScore: 0,
+        winSetScore: 0,
         totalScore: 0
       };
     }
 
+    // 1. ระบบคะแนนจาก 5 โมเดลหลัก (1.0 คะแนนต่อชุดที่ชน)
     evaluated.forEach(model => {
       model.set.forEach(dig => {
-        digitScores[dig].frequency += 1;
-        digitScores[dig].baseScore += (10 * model.positionalWeight);
+        digitScores[dig].modelScore += 1.0;
       });
     });
 
-    const compassFreq = {};
-    backendEngine.digits.forEach(d => {
-      compassFreq[d] = (compassFreq[d] || 0) + 1;
-    });
+    // 2. ระบบ 100 สูตร (0.1 คะแนนต่อการซ้ำ 1 ครั้ง)
+    for (let d = 0; d <= 9; d++) {
+      const matchCount = formula100Engine.counts[d] || 0;
+      digitScores[d].formula100Score = matchCount * 0.1;
+    }
 
-    const linearDiff = Math.abs(T_top - U_top) + Math.abs(T_bot - U_bot);
-    const formulaRankSet = formula100Engine.ranking; 
+    // 3. ระบบเรดาร์ (3 สมการ Modulus 10, เรดาร์ละ 0.5 คะแนน)
+    const X_val = (T_bot + U_bot) % 10;
+    const radar1Range = [(X_val - 1 + 10) % 10, X_val, (X_val + 1) % 10];
+
+    const Y_val = (H + T_top + U_top) % 10;
+    const radar2Range = [(Y_val - 1 + 10) % 10, Y_val, (Y_val + 1) % 10];
+
+    const Z_val = (H + T_top + U_top + T_bot + U_bot) % 10;
+    const radar3Range = [(Z_val - 1 + 10) % 10, Z_val, (Z_val + 1) % 10];
 
     for (let d = 0; d <= 9; d++) {
-      const item = digitScores[d];
-      
-      if ((compassFreq[d] || 0) >= 2) {
-        item.compassBonus = item.baseScore * 0.15;
-      }
-      
-      if (d === T_bot || d === U_top) {
-        item.momentumBonus = item.baseScore * 0.12 * (1.0 + (linearDiff / 36.0));
-      }
-
-      const rankIdx = formulaRankSet.indexOf(d);
-      if (rankIdx !== -1) {
-        const bonusMultiplier = rankIdx < 3 ? 0.10 : 0.05;
-        item.formula100Bonus = item.baseScore * bonusMultiplier;
-      }
-
-      item.totalScore = item.baseScore + item.compassBonus + item.momentumBonus + item.formula100Bonus;
+      let rHits = 0;
+      if (radar1Range.includes(d)) rHits++;
+      if (radar2Range.includes(d)) rHits++;
+      if (radar3Range.includes(d)) rHits++;
+      digitScores[d].radarScore = rHits * 0.5;
     }
 
-    const matrixSorted = Object.values(digitScores).sort((a, b) => b.totalScore - a.totalScore || b.frequency - a.frequency || a.digit - b.digit);
+    // 4. ระบบ 5 สูตรหลังบ้าน (สูตรละ 0.5 คะแนน)
+    const backendFormulasSet = [
+      (H * 2 + T_bot) % 10,
+      (T_top + U_bot) % 10,
+      (sumTop) % 10,
+      (Math.abs(T_top - U_top)) % 10,
+      (totalSum) % 10
+    ];
     
-    let primaryDigitObj = matrixSorted[0];
-    let secondaryDigitObj = matrixSorted[1];
-
-    const isAligned = (digit) => {
-      const existsInModels = evaluated.some(m => m.set.includes(digit));
-      const existsInCompass = backendEngine.uniqueDigits.includes(digit);
-      return existsInModels && existsInCompass;
-    };
-
-    const alignedCandidates = matrixSorted.filter(item => isAligned(item.digit));
-    if (alignedCandidates.length >= 2) {
-      primaryDigitObj = alignedCandidates[0];
-      secondaryDigitObj = alignedCandidates[1];
-    } else if (alignedCandidates.length === 1) {
-      primaryDigitObj = alignedCandidates[0];
-      secondaryDigitObj = matrixSorted.find(item => item.digit !== primaryDigitObj.digit) || matrixSorted[1];
+    for (let d = 0; d <= 9; d++) {
+      if (backendFormulasSet.includes(d)) {
+        digitScores[d].backendScore = 0.5;
+      }
     }
 
+    // 5. ระบบชุดวินหลังบ้าน (ให้คะแนนส่วนเสริม 0.5 คะแนน)
+    const winCandidate = (H + T_top + U_top + T_bot + U_bot) % 10;
+    for (let d = 0; d <= 9; d++) {
+      if (d === winCandidate || d === ((winCandidate + 5) % 10)) {
+        digitScores[d].winSetScore = 0.5;
+      }
+    }
+
+    // --- รวมคะแนนทั้งหมด (Total Score) ---
+    for (let d = 0; d <= 9; d++) {
+      const item = digitScores[d];
+      item.totalScore = item.modelScore + item.formula100Score + item.radarScore + item.backendScore + item.winSetScore;
+    }
+
+    // จัดลำดับคะแนนรวมจากมากไปน้อยเพื่อใช้คัดกรอง Primary Consensus และ Top 5
+    const matrixSorted = Object.values(digitScores).sort((a, b) => b.totalScore - a.totalScore || b.digit - a.digit);
+    
+    const primaryDigitObj = matrixSorted[0];
+    const secondaryDigitObj = matrixSorted[1];
     const d1 = primaryDigitObj.digit;
     const d2_dig = secondaryDigitObj.digit;
 
@@ -895,29 +851,24 @@ const _app = {
       return Number(Math.min(98.5, Math.max(80.0, normalizedPct)).toFixed(1));
     };
 
+    const primaryPct = calcConfidence(primaryDigitObj.totalScore);
+    const secondaryPct = calcConfidence(secondaryDigitObj.totalScore);
+
     evaluated.forEach(model => {
       const modelScoreSum = model.set.reduce((sum, dig) => sum + digitScores[dig].totalScore, 0);
       model.aiScore = calcConfidence(modelScoreSum / 2);
     });
 
     evaluated.sort((a, b) => b.aiScore - a.aiScore);
-
-    evaluated.forEach((model, idx) => {
-      model.isRecommended = idx < 2;
-    });
+    evaluated.forEach((model, idx) => { model.isRecommended = idx < 2; });
 
     const winnerModel = evaluated[0];
     const arr1 = winnerModel.pairsMap[d1] || evaluated.find(m => m.pairsMap[d1])?.pairsMap[d1] || [];
     const arr2 = winnerModel.pairsMap[d2_dig] || evaluated.find(m => m.pairsMap[d2_dig])?.pairsMap[d2_dig] || [];
     const matrixArr3d = arr1.slice(0, 5).map(p => `${p.slice(-1)}${d1}${d2_dig}`);
     
-    // RANDOM 3 DIGITS PERCENTAGE BETWEEN 50.1 AND 50.9
-    const getRandomThreeDigitPct = () => {
-      return Number((50.1 + Math.random() * 0.8).toFixed(1));
-    };
-    const cScore3 = getRandomThreeDigitPct();
+    const cScore3 = Number((50.1 + Math.random() * 0.8).toFixed(1));
 
-    // WIN SET 6 DIGITS (Sorted from least to greatest as per saved context)
     let winSetObjects = matrixSorted.slice(0, 6);
     let currentSet = winSetObjects.map(item => item.digit);
 
@@ -926,9 +877,7 @@ const _app = {
       const oddCount = digits.length - evenCount;
       const lowCount = digits.filter(d => d >= 0 && d <= 4).length;
       const highCount = digits.length - lowCount;
-      return {
-        isBalanced: (evenCount >= 2 && oddCount >= 2) && (lowCount >= 2 && highCount >= 2)
-      };
+      return { isBalanced: (evenCount >= 2 && oddCount >= 2) && (lowCount >= 2 && highCount >= 2) };
     };
 
     if (!checkBalance(currentSet).isBalanced) {
@@ -945,14 +894,10 @@ const _app = {
           }
         }
       }
-      if (foundReplacement) {
-        currentSet = bestSet;
-      }
+      if (foundReplacement) currentSet = bestSet;
     }
 
     const winSet = currentSet.sort((a, b) => a - b);
-
-    // UI Rendering
     const maxScoreVal = Math.max(...matrixSorted.map(s => s.totalScore), 1);
     const pastelColors = ['#0A6647', '#066B78', '#5A42B0', '#A17109', '#0D7A55', '#1FB3BE', '#D4B043', '#22C58B', '#0F2A20', '#425C51'];
 
@@ -963,19 +908,18 @@ const _app = {
       const barColor = pastelColors[digit % pastelColors.length];
       distributionHTML.push(`<div class="overview-bar" style="--bar-height:${height}%; --bar-color:${barColor};" data-copy="${digit}"><span class="overview-digit">${digit}</span></div>`);
     }
-    const distributionHTMLString = distributionHTML.join("");
 
     const indWinSetHTML = winSet.map((digit, index) => {
       return `<div class="ind-win-item" data-copy="${digit}"><strong>${digit}</strong><span>POS ${index + 1}</span></div>`;
     }).join("");
 
     const pairHTML1 = arr1.length ? arr1.map((p, index) => {
-      const pct = Number((91.1 - index * 0.3).toFixed(1));
+      const pct = Number((primaryPct - index * 0.3).toFixed(1));
       return `<div class="number-chip top" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
     const pairHTML2 = arr2.length ? arr2.map((p, index) => {
-      const pct = Number((91.1 - index * 0.3).toFixed(1));
+      const pct = Number((secondaryPct - index * 0.3).toFixed(1));
       return `<div class="number-chip" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
@@ -984,13 +928,7 @@ const _app = {
       return `<div class="number-chip gold" data-copy="${this._esc(p)}"><strong>${this._esc(p)}</strong><small>${pct}%</small></div>`;
     }).join("") : `<div style="grid-column:1/-1;color:var(--muted);font-size:.42rem;text-align:center;">ไม่มีชุดข้อมูล</div>`;
 
-    // --- [จุดที่ทำการแก้ไขเฉพาะ UI Rendering Top 5 ตามคำสั่ง] ---
-    const primaryObj = digitScores[d1];
-    const secondaryObj = digitScores[d2_dig];
-    const remainingTop5 = matrixSorted.filter(item => item.digit !== d1 && item.digit !== d2_dig).slice(0, 3);
-    const alignedTop5 = [primaryObj, secondaryObj, ...remainingTop5];
-
-    const rankHTML = alignedTop5.map((item, index) => {
+    const rankHTML = matrixSorted.slice(0, 5).map((item, index) => {
       const pct = calcConfidence(item.totalScore);
       return `<div class="rank-row" data-copy="${item.digit}">
         <div class="rank-no">#${String(index + 1).padStart(2, "0")}</div>
@@ -999,7 +937,6 @@ const _app = {
         <div class="rank-percent">${pct.toFixed(1)}%</div>
       </div>`;
     }).join("");
-    // -------------------------------------------------------------
 
     let allFormulasHTML = "";
     evaluated.forEach((item) => {
@@ -1024,7 +961,7 @@ const _app = {
         <div class="result-note">${new Date().toLocaleTimeString("th-TH")}</div>
       </div>
       <section class="primary-signal">
-        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS</div><div class="confidence">99.1%</div></div>
+        <div class="signal-top"><div class="signal-label">PRIMARY CONSENSUS</div><div class="confidence">${primaryPct.toFixed(1)}%</div></div>
         <div class="primary-number"><div class="big-digit">${d1}</div><div class="digit-divider">-</div><div class="big-digit">${d2_dig}</div></div>
         <div class="primary-caption">ชุดเด่น <span class="plain-lbl">${d1}</span> - ชุดรอง <span class="plain-lbl">${d2_dig}</span></div>
       </section>
@@ -1034,7 +971,7 @@ const _app = {
           <div><div class="overview-title">NEURAL WEIGHT SPECTRUM</div><div class="overview-sub">การกระจายน้ำหนักความน่าจะเป็นของตัวเลข</div></div>
           <div class="overview-badge">BACKEND COMPASS ACTIVE</div>
         </div>
-        <div class="overview-bars">${distributionHTMLString}</div>
+        <div class="overview-bars">${distributionHTML.join("")}</div>
         <div class="overview-axis"><span>LOW</span><span>STRUCTURE</span><span>HIGH</span></div>
       </section>
       <section class="ranking-board">
@@ -1047,11 +984,11 @@ const _app = {
       <div class="section-marker">NUMBER MATRIX</div>
       <section class="matrix-grid">
         <div class="matrix-card">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเจาะ ${d1}</div><div class="matrix-score">99.1%</div></div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเจาะ ${d1}</div><div class="matrix-score">${primaryPct.toFixed(1)}%</div></div>
           <div class="number-row">${pairHTML1}</div>
         </div>
         <div class="matrix-card">
-          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเจาะ ${d2_dig}</div><div class="matrix-score">99.1%</div></div>
+          <div class="matrix-card-head"><div class="matrix-title"><span class="matrix-dot"></span>ชุดเจาะ ${d2_dig}</div><div class="matrix-score">${secondaryPct.toFixed(1)}%</div></div>
           <div class="number-row">${pairHTML2}</div>
         </div>
         <div class="matrix-card full">
