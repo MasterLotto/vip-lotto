@@ -24,39 +24,29 @@
 --surface:#fff;
 --surface2:#EEF8F3;
 --surface3:#DCEFE7;
-
 --navy:#081B14;
 --navy2:#102C21;
-
 --emerald:#0A6647;
 --emerald2:#0D7A55;
 --green:#10B981;
 --greenSoft:#E3F8EE;
-
 --cyan:#087380;
 --cyan2:#14B8A6;
-
 --gold:#9E6C02;
 --gold2:#EAB308;
 --goldSoft:#FEF9C3;
-
 --purple:#6D28D9;
 --red:#BE123C;
-
 --text:#051912;
 --text2:#17372B;
 --muted:#567568;
 --muted2:#7A9A8D;
-
 --line:#B9DCCE;
 --lineSoft:rgba(10,102,71,.14);
-
 --shadow:0 14px 32px rgba(10,102,71,.09);
 --shadowSoft:0 7px 18px rgba(10,102,71,.055);
-
 --radius:20px;
 --radius2:14px;
-
 --ease:cubic-bezier(.2,.8,.2,1);
 }
 
@@ -292,10 +282,6 @@ animation:livePulse 1.8s ease-in-out infinite;
 50%{transform:scale(.72);opacity:.45}
 }
 
-/* =========================================================
-   SHARED PREMIUM CARD LANGUAGE
-========================================================= */
-
 .hero,
 .login-panel,
 .command-center,
@@ -434,10 +420,6 @@ font-size:.50rem;
 font-weight:700;
 box-shadow:0 2px 6px rgba(10,102,71,.04);
 }
-
-/* =========================================================
-   LOGIN
-========================================================= */
 
 .login-dashboard{
 display:grid;
@@ -715,10 +697,6 @@ font-size:.56rem;
 font-weight:700;
 }
 
-/* =========================================================
-   ENGINE
-========================================================= */
-
 #calculatorView{
 display:none;
 }
@@ -828,10 +806,6 @@ font-family:'IBM Plex Mono',monospace;
 font-size:.61rem;
 }
 
-/* =========================================================
-   COMMAND
-========================================================= */
-
 .command-center{
 padding:12px;
 margin-bottom:10px;
@@ -933,10 +907,6 @@ opacity:.55;
 cursor:not-allowed;
 }
 
-/* =========================================================
-   SCANNER
-========================================================= */
-
 #aiScannerBox{
 display:none;
 position:relative;
@@ -996,10 +966,6 @@ font-size:.55rem;
 font-weight:700;
 }
 
-/* =========================================================
-   RESULT
-========================================================= */
-
 .result-shell{
 animation:resultIn .5s var(--ease);
 }
@@ -1041,10 +1007,6 @@ font-weight:800;
 color:var(--muted);
 font-size:.49rem;
 }
-
-/* =========================================================
-   TOP 3 — SINGLE RANKING MASTER
-========================================================= */
 
 .top3-signal-board{
 padding:12px;
@@ -1437,10 +1399,6 @@ box-shadow:0 0 0 3px rgba(16,185,129,.12);
 animation:livePulse 1.8s ease-in-out infinite;
 }
 
-/* =========================================================
-   BALANCE
-========================================================= */
-
 .stats-analytics-card{
 padding:11px 12px;
 margin-bottom:9px;
@@ -1501,10 +1459,6 @@ font-size:.46rem;
 font-weight:700;
 }
 
-/* =========================================================
-   SECTION MARKER
-========================================================= */
-
 .section-marker{
 display:flex;
 align-items:center;
@@ -1527,10 +1481,6 @@ rgba(10,102,71,.22),
 transparent
 );
 }
-
-/* =========================================================
-   AI PROBABILITY RANKING — PREMIUM
-========================================================= */
 
 .overview-panel{
 padding:12px;
@@ -1744,10 +1694,6 @@ font-family:'IBM Plex Mono',monospace;
 font-size:.41rem;
 }
 
-/* =========================================================
-   DEEP SCAN — TOP 3 COLOR SYSTEM
-========================================================= */
-
 .deep-scan-board{
 padding:12px;
 margin-bottom:9px;
@@ -1811,18 +1757,6 @@ font-weight:800;
 margin-top:1px;
 color:var(--muted);
 font-size:.45rem;
-}
-
-.deep-scan-badge{
-padding:4px 8px;
-border-radius:8px;
-color:var(--gold);
-background:var(--goldSoft);
-border:1px solid rgba(158,108,2,.22);
-font-family:'IBM Plex Mono',monospace;
-font-size:.43rem;
-font-weight:800;
-white-space:nowrap;
 }
 
 .deep-scan-grid{
@@ -2067,10 +2001,6 @@ font-size:.36rem;
 color:var(--muted);
 }
 
-/* =========================================================
-   3D SMART SCAN
-========================================================= */
-
 .three-d-scan{
 margin-top:7px;
 padding-top:8px;
@@ -2146,9 +2076,12 @@ font-size:.35rem;
 color:var(--muted);
 }
 
-/* =========================================================
-   WIN SET
-========================================================= */
+
+.ind-win-set{
+border-radius:19px;
+background:
+linear-gradient(135deg,#fff,#F2F9F5);
+}
 
 .ind-win-set{
 padding:10px 12px;
@@ -2235,10 +2168,6 @@ color:var(--muted);
 font-size:.35rem;
 font-weight:700;
 }
-
-/* =========================================================
-   FORMULA
-========================================================= */
 
 .formula-section{
 margin-top:2px;
@@ -2360,10 +2289,6 @@ font-family:'IBM Plex Mono',monospace;
 font-size:.37rem;
 }
 
-/* =========================================================
-   DISCLAIMER / LOGOUT / TOAST
-========================================================= */
-
 .disclaimer{
 margin-top:9px;
 padding:9px 11px;
@@ -2428,66 +2353,217 @@ opacity:1;
 transform:translate(-50%,0);
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media(max-width:400px){
-
-.ind-win-grid{
-grid-template-columns:repeat(3,1fr);
-}
-
-.top3-row{
-grid-template-columns:25px 35px 1fr 50px;
-gap:5px;
-padding-left:6px;
-padding-right:6px;
-}
-
-.top3-title{
-font-size:.78rem;
-}
-
-.top3-sub{
-font-size:.42rem;
-}
-
-.deep-scan-pairs{
-gap:3px;
-}
-
-.overview-bars{
-gap:3px;
-}
-
-.overview-bar{
-height:70px;
-}
-
-.overview-rank{
-font-size:.30rem;
-padding:2px 3px;
-}
-
-.overview-score{
-font-size:.29rem;
-}
+.ind-win-grid{grid-template-columns:repeat(3,1fr);}
+.top3-row{grid-template-columns:25px 35px 1fr 50px;gap:5px;padding-left:6px;padding-right:6px;}
+.top3-title{font-size:.78rem;}
+.top3-sub{font-size:.42rem;}
+.deep-scan-pairs{gap:3px;}
+.overview-bars{gap:3px;}
+.overview-bar{height:70px;}
+.overview-rank{font-size:.30rem;padding:2px 3px;}
+.overview-score{font-size:.29rem;}
 
 }
 
 @media(prefers-reduced-motion:reduce){
-
-*,
-*::before,
-*::after{
+*,*::before,*::after{
 animation-duration:.001ms!important;
 animation-iteration-count:1!important;
 scroll-behavior:auto!important;
 transition:none!important;
 }
-
 }
+
+/* =========================================================
+ AUDITED UI REFINEMENTS — TOP 3 / BEST JUE / WIN SET
+ ========================================================= */
+.deep-scan-model-name{
+font-size:.58rem;
+font-weight:800;
+letter-spacing:.15px;
+line-height:1.15;
+color:var(--text2);
+}
+
+.deep-scan-card.rank-one .deep-scan-model-name{
+color:#8A6200;
+text-shadow:0 0 10px rgba(234,179,8,.16);
+}
+
+.deep-scan-card.rank-two .deep-scan-model-name{
+color:#3F6B5A;
+}
+
+.deep-scan-card.rank-three .deep-scan-model-name{
+color:#087380;
+}
+
+/* Best JUE rank 1–5 colors are applied only to matching pairs inside TOP 3. */
+.deep-scan-card .deep-pair.jue-rank-1{
+background:linear-gradient(135deg,rgba(254,249,195,.92),rgba(255,255,255,.98));
+border-color:rgba(158,108,2,.38);
+box-shadow:0 4px 12px rgba(158,108,2,.12),inset 0 1px 0 rgba(255,255,255,.85);
+}
+.deep-scan-card .deep-pair.jue-rank-1 strong{
+color:#8A6200;
+text-shadow:0 0 8px rgba(234,179,8,.18);
+}
+.deep-scan-card .deep-pair.jue-rank-1 small{color:#9E6C02;}
+
+.deep-scan-card .deep-pair.jue-rank-2{
+background:linear-gradient(135deg,rgba(243,246,244,.98),rgba(255,255,255,.98));
+border-color:rgba(110,126,120,.34);
+box-shadow:0 4px 11px rgba(110,126,120,.09);
+}
+.deep-scan-card .deep-pair.jue-rank-2 strong{color:#53645E;}
+.deep-scan-card .deep-pair.jue-rank-2 small{color:#687A73;}
+
+.deep-scan-card .deep-pair.jue-rank-3{
+background:linear-gradient(135deg,rgba(252,227,209,.92),rgba(255,255,255,.98));
+border-color:rgba(180,105,58,.34);
+box-shadow:0 4px 11px rgba(180,105,58,.10);
+}
+.deep-scan-card .deep-pair.jue-rank-3 strong{color:#9A5730;}
+.deep-scan-card .deep-pair.jue-rank-3 small{color:#A96843;}
+
+.deep-scan-card .deep-pair.jue-rank-4{
+background:linear-gradient(135deg,rgba(224,249,247,.92),rgba(255,255,255,.98));
+border-color:rgba(8,115,128,.30);
+box-shadow:0 4px 11px rgba(8,115,128,.08);
+}
+.deep-scan-card .deep-pair.jue-rank-4 strong{color:#087380;}
+.deep-scan-card .deep-pair.jue-rank-4 small{color:#0B8793;}
+
+.deep-scan-card .deep-pair.jue-rank-5{
+background:linear-gradient(135deg,rgba(243,237,255,.92),rgba(255,255,255,.98));
+border-color:rgba(109,40,217,.25);
+box-shadow:0 4px 11px rgba(109,40,217,.07);
+}
+.deep-scan-card .deep-pair.jue-rank-5 strong{color:#6D28D9;}
+.deep-scan-card .deep-pair.jue-rank-5 small{color:#7651C7;}
+
+.deep-scan-card .deep-pair.jue-rank-1::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(110deg,transparent 28%,rgba(255,255,255,.72) 50%,transparent 72%);
+transform:translateX(-120%);
+animation:jueBestShine 4.8s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes jueBestShine{
+0%,62%{transform:translateX(-120%);opacity:0}
+72%{opacity:.8}
+86%,100%{transform:translateX(120%);opacity:0}
+}
+
+/* Premium treatment for the six-number win set. */
+.ind-win-set{
+position:relative;
+overflow:hidden;
+padding:12px;
+margin-bottom:9px;
+border-radius:20px;
+border:1px solid rgba(10,102,71,.18);
+background:
+radial-gradient(circle at 100% 0%,rgba(234,179,8,.10),transparent 32%),
+radial-gradient(circle at 0% 100%,rgba(16,185,129,.08),transparent 42%),
+linear-gradient(135deg,#FFFFFF,#F1F9F5);
+box-shadow:var(--shadowSoft);
+}
+
+.ind-win-set::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:2px;
+background:linear-gradient(90deg,transparent,#EAB308,#10B981,#14B8A6,transparent);
+opacity:.82;
+}
+
+.ind-win-header{
+position:relative;
+z-index:2;
+margin-bottom:8px;
+}
+
+.ind-win-title{
+font-size:.78rem;
+font-weight:800;
+}
+
+.ind-win-title small{
+display:block;
+margin-top:2px;
+color:var(--muted);
+font-family:'IBM Plex Mono',monospace;
+font-size:.38rem;
+font-weight:700;
+letter-spacing:.35px;
+}
+
+.ind-win-badge{
+padding:4px 8px;
+color:#7A5700;
+background:linear-gradient(135deg,#FFF9D7,#FEF3A6);
+border:1px solid rgba(158,108,2,.22);
+font-family:'IBM Plex Mono',monospace;
+font-size:.42rem;
+font-weight:800;
+box-shadow:0 3px 9px rgba(158,108,2,.06);
+}
+
+.ind-win-grid{
+position:relative;
+z-index:2;
+gap:5px;
+}
+
+.ind-win-item{
+padding:8px 2px 7px;
+border-radius:11px;
+background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(241,248,244,.98));
+box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 3px 9px rgba(10,102,71,.035);
+}
+
+.ind-win-item::before{
+content:"";
+position:absolute;
+left:7px;
+right:7px;
+top:0;
+height:2px;
+border-radius:99px;
+background:linear-gradient(90deg,#0A6647,#10B981,#EAB308);
+opacity:.52;
+}
+
+.ind-win-item:nth-child(1)::before{opacity:.95;}
+.ind-win-item:nth-child(2)::before{opacity:.80;}
+.ind-win-item:nth-child(3)::before{opacity:.70;}
+.ind-win-item:nth-child(n+4)::before{opacity:.50;}
+
+.ind-win-item:hover{
+transform:translateY(-2px);
+box-shadow:0 7px 15px rgba(10,102,71,.075),inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.ind-win-item strong{
+font-size:.86rem;
+letter-spacing:.5px;
+}
+
+.ind-win-item span{
+margin-top:2px;
+font-family:'IBM Plex Mono',monospace;
+font-size:.33rem;
+letter-spacing:.25px;
+}
+
 </style>
 </head>
 
@@ -2503,34 +2579,24 @@ transition:none!important;
 <div class="app-card">
 <div class="app-inner">
 
-<!-- =========================================================
-LOGIN
-========================================================= -->
-
 <div id="loginView">
 
 <div class="top-nav">
-
 <div class="brand-mini">
-
 <div class="brand-mark">AI</div>
-
 <div>
 <div class="brand-name">Enterprise Quant</div>
 <div class="brand-sub">Predictive Data Engine</div>
 </div>
-
 </div>
 
 <div class="system-pill">
 <span class="live-dot"></span>
 SYSTEM READY
 </div>
-
 </div>
 
 <section class="hero">
-
 <div class="hero-kicker">
 <span></span>
 QUANT ANALYSIS ENGINE
@@ -2551,37 +2617,18 @@ Mester Lotto <em>VIP+</em>
 <div class="meta-chip">Win Set</div>
 <div class="meta-chip">Neural Matrix</div>
 </div>
-
 </section>
 
 <div class="login-dashboard">
-
 <div class="mini-stat">
-<div class="mini-stat-label">
-ผู้ใช้งานระบบ / MEMBERS
-</div>
-
-<div
-class="mini-stat-value"
-id="totalUsersStat"
->
-2,637
-</div>
-
+<div class="mini-stat-label">ผู้ใช้งานระบบ / MEMBERS</div>
+<div class="mini-stat-value" id="totalUsersStat">2,637</div>
 </div>
 
 <div class="mini-stat">
-
-<div class="mini-stat-label">
-สถานะระบบ / STATUS
+<div class="mini-stat-label">สถานะระบบ / STATUS</div>
+<div class="mini-stat-value green">ONLINE</div>
 </div>
-
-<div class="mini-stat-value green">
-ONLINE
-</div>
-
-</div>
-
 </div>
 
 <div class="packages">
@@ -2612,13 +2659,11 @@ ONLINE
 
 </div>
 
-<a
-href="https://line.me/ti/p/cWXNwvCmqc"
+<a href="https://line.me/ti/p/cWXNwvCmqc"
 target="_blank"
 rel="noopener noreferrer"
 class="contact-btn"
-onclick="_app._audio('click')"
->
+onclick="_app._audio('click')">
 💬 ติดต่อแอดมิน / CONTACT ADMIN
 </a>
 
@@ -2647,8 +2692,7 @@ spellcheck="false"
 <button
 class="primary-btn"
 id="loginButton"
-type="button"
->
+type="button">
 🔐 CONNECT TO ENGINE / เข้าสู่ระบบ
 </button>
 
@@ -2657,27 +2701,20 @@ type="button"
 </div>
 
 </section>
-
 </div>
 
-
-<!-- =========================================================
-CALCULATOR
-========================================================= -->
 
 <div id="calculatorView">
 
 <div class="top-nav">
 
 <div class="brand-mini">
-
 <div class="brand-mark">AI</div>
 
 <div>
 <div class="brand-name">Enterprise Quant</div>
 <div class="brand-sub">AI Intelligence Console</div>
 </div>
-
 </div>
 
 <div class="system-pill">
@@ -2686,6 +2723,7 @@ ENGINE ONLINE
 </div>
 
 </div>
+
 
 <section class="hero">
 
@@ -2712,32 +2750,24 @@ Mester Lotto <em>VIP+</em>
 
 </section>
 
+
 <div class="engine-strip">
 
 <div class="engine-card">
-
 <div class="engine-label">
 ประมวลผลทั้งหมดในระบบ
 </div>
 
 <div class="engine-value cyan">
-
 <span class="total-dot-wrap">
-<span
-class="total-dot"
-id="totalDot"
-></span>
+<span class="total-dot" id="totalDot"></span>
 </span>
 
-<span id="totalProcessedCount">
-4,100
-</span>
-
+<span id="totalProcessedCount">4,100</span>
 ครั้ง
-
+</div>
 </div>
 
-</div>
 
 <div class="engine-card">
 
@@ -2748,12 +2778,12 @@ id="totalDot"
 
 <div
 class="engine-value green"
-id="onlineUsersCount"
->
+id="onlineUsersCount">
 1,150 คน
 </div>
 
 </div>
+
 
 <div class="engine-card">
 
@@ -2764,8 +2794,7 @@ id="onlineUsersCount"
 
 <div
 class="engine-value gold"
-id="serverLatencyCount"
->
+id="serverLatencyCount">
 18 ms
 </div>
 
@@ -2773,27 +2802,22 @@ id="serverLatencyCount"
 
 </div>
 
-<div
-id="lastSessionBadge"
-class="last-session"
->
+
+<div id="lastSessionBadge" class="last-session">
 
 <span>อ้างอิงจากผลล่าสุด:</span>
-
 <strong id="lbl3"></strong>
-
 <span>•</span>
-
 <strong id="lbl2"></strong>
 
 </div>
+
 
 <section class="command-center">
 
 <div class="command-header">
 
 <div>
-
 <div class="command-title">
 Analysis Input
 </div>
@@ -2801,7 +2825,6 @@ Analysis Input
 <div class="command-sub">
 กรอกข้อมูลล่าสุด เพื่อเริ่มประมวลผล
 </div>
-
 </div>
 
 <div class="command-badge">
@@ -2810,14 +2833,14 @@ INPUT READY
 
 </div>
 
+
 <div class="input-grid">
 
 <div class="field-card">
 
 <label
 class="field-label"
-for="num3top"
->
+for="num3top">
 เลข 3 ตัวบน
 </label>
 
@@ -2834,12 +2857,12 @@ spellcheck="false"
 
 </div>
 
+
 <div class="field-card">
 
 <label
 class="field-label"
-for="num2bottom"
->
+for="num2bottom">
 เลข 2 ตัวล่าง
 </label>
 
@@ -2858,27 +2881,27 @@ spellcheck="false"
 
 </div>
 
+
 <div class="action-row">
 
 <button
 class="calculate-btn"
 id="calculateButton"
-type="button"
->
+type="button">
 ⚡ RUN ANALYSIS / เริ่มประมวลผล
 </button>
 
 <button
 class="clear-btn"
 id="clearButton"
-type="button"
->
+type="button">
 ล้าง / CLEAR
 </button>
 
 </div>
 
 </section>
+
 
 <div id="aiScannerBox">
 
@@ -2890,13 +2913,14 @@ INITIALIZING QUANT ANALYSIS...
 
 </div>
 
+
 <div id="resultContainer"></div>
+
 
 <button
 class="logout-btn"
 id="logoutButton"
-type="button"
->
+type="button">
 ออกจากระบบ / LOGOUT
 </button>
 
@@ -2906,6 +2930,7 @@ type="button"
 </div>
 </div>
 
+
 <div id="toast">
 ✓ คัดลอกตัวเลขแล้ว / COPIED
 </div>
@@ -2913,14 +2938,9 @@ type="button"
 
 <script>
 
-/* =========================================================
-   AMBIENT PARTICLES
-========================================================= */
-
 (function(){
 
 const canvas=document.getElementById("snowCanvas");
-
 if(!canvas)return;
 
 const ctx=canvas.getContext("2d");
@@ -2928,37 +2948,25 @@ const ctx=canvas.getContext("2d");
 let width=canvas.width=window.innerWidth;
 let height=canvas.height=window.innerHeight;
 
-window.addEventListener(
-"resize",
-()=>{
+window.addEventListener("resize",()=>{
 width=canvas.width=window.innerWidth;
 height=canvas.height=window.innerHeight;
-}
-);
+});
 
 const flakes=[];
 
 for(let i=0;i<45;i++){
 
 flakes.push({
-
 x:Math.random()*width,
 y:Math.random()*height,
-
 radius:Math.random()*2.2+.8,
-
 depth:Math.random()*.8+.2,
-
 speedY:Math.random()*.4+.2,
-
 speedX:Math.random()*.2-.1,
-
 opacity:Math.random()*.5+.35,
-
 swing:Math.random()*Math.PI*2,
-
 swingSpeed:Math.random()*.01+.005
-
 });
 
 }
@@ -2970,7 +2978,6 @@ ctx.clearRect(0,0,width,height);
 flakes.forEach(f=>{
 
 f.swing+=f.swingSpeed;
-
 f.x+=Math.sin(f.swing)*.3+f.speedX;
 f.y+=f.speedY*f.depth;
 
@@ -3008,10 +3015,6 @@ render();
 })();
 
 
-/* =========================================================
-   SYSTEM COUNTERS
-========================================================= */
-
 let totalProcessed=
 parseInt(
 localStorage.getItem("ml_total_processed_v1"),
@@ -3033,12 +3036,11 @@ totalProcessed
 
 }
 
+
 function updateProcessedUI(triggerRipple=true){
 
 const el=
-document.getElementById(
-"totalProcessedCount"
-);
+document.getElementById("totalProcessedCount");
 
 if(el)
 el.innerText=
@@ -3062,6 +3064,7 @@ dot.classList.add("ripple");
 }
 
 }
+
 
 function scheduleProcessedIncrements(){
 
@@ -3104,11 +3107,10 @@ scheduleProcessedIncrements,
 
 }
 
+
 let currentOnline=
 parseInt(
-localStorage.getItem(
-"ml_online_users_v1"
-),
+localStorage.getItem("ml_online_users_v1"),
 10
 );
 
@@ -3117,6 +3119,7 @@ if(
 isNaN(currentOnline)
 )
 currentOnline=1150;
+
 
 function updateOnlineUsers(){
 
@@ -3128,19 +3131,13 @@ currentOnline+=change;
 else
 currentOnline-=change;
 
-if(currentOnline<1050){
-
+if(currentOnline<1050)
 currentOnline+=
 Math.floor(Math.random()*40)+20;
 
-}
-
-if(currentOnline>1280){
-
+if(currentOnline>1280)
 currentOnline-=
 Math.floor(Math.random()*40)+20;
-
-}
 
 localStorage.setItem(
 "ml_online_users_v1",
@@ -3157,6 +3154,7 @@ el.innerText=
 currentOnline.toLocaleString()+" คน";
 
 }
+
 
 function updateServerLatency(){
 
@@ -3175,6 +3173,7 @@ el.innerText=
 latency+" ms";
 
 }
+
 
 document.addEventListener(
 "DOMContentLoaded",
@@ -3202,10 +3201,6 @@ updateServerLatency,
 );
 
 
-/* =========================================================
-   SECURITY / ACCESS KEY
-========================================================= */
-
 const _secEnc={
 
 _dbToken:[
@@ -3218,14 +3213,13 @@ _hexDecode(hex){
 
 let str="";
 
-for(
-let i=0;
-i<hex.length;
-i+=2
-){
+for(let i=0;i<hex.length;i+=2){
 
 str+=String.fromCharCode(
-parseInt(hex.substr(i,2),16)
+parseInt(
+hex.substr(i,2),
+16
+)
 );
 
 }
@@ -3236,15 +3230,15 @@ return str;
 
 async _checkMatch(inputVal){
 
-const value=String(inputVal||"").trim();
+const value=
+String(inputVal||"").trim();
 
 for(
 const hex of this._dbToken
 ){
 
 if(
-value===
-this._hexDecode(hex)
+value===this._hexDecode(hex)
 )
 return true;
 
@@ -3257,10 +3251,6 @@ return false;
 };
 
 
-/* =========================================================
-   MAIN APP
-========================================================= */
-
 const _app={
 
 _toastTimer:null,
@@ -3270,6 +3260,7 @@ async _verify(p){
 return await _secEnc._checkMatch(p);
 
 },
+
 
 _audio(type="click"){
 
@@ -3294,23 +3285,17 @@ type==="error"
 :"sine";
 
 o.frequency.setValueAtTime(
-type==="error"
-?190
-:520,
+type==="error"?190:520,
 now
 );
 
 o.frequency.exponentialRampToValueAtTime(
-type==="error"
-?130
-:720,
+type==="error"?130:720,
 now+.08
 );
 
 g.gain.setValueAtTime(
-type==="error"
-?.035
-:.025,
+type==="error"?.035:.025,
 now
 );
 
@@ -3329,6 +3314,7 @@ o.stop(now+.13);
 
 },
 
+
 _esc(s){
 
 return String(s)
@@ -3339,6 +3325,7 @@ return String(s)
 .replace(/'/g,"&#039;");
 
 },
+
 
 async login(){
 
@@ -3354,11 +3341,10 @@ document.getElementById(
 "errorMsg"
 );
 
-if(!input||!error){
-return;
-}
+if(!input||!error)return;
 
-const value=input.value.trim();
+const value=
+input.value.trim();
 
 if(
 !value||
@@ -3393,12 +3379,15 @@ document.getElementById(
 this.checkSessionBadge();
 
 const num3=
-document.getElementById("num3top");
+document.getElementById(
+"num3top"
+);
 
 if(num3)
 num3.focus();
 
 },
+
 
 logout(){
 
@@ -3439,6 +3428,7 @@ document.getElementById(
 
 },
 
+
 clearCalc(){
 
 this._audio("click");
@@ -3460,6 +3450,7 @@ document.getElementById(
 ).focus();
 
 },
+
 
 checkSessionBadge(){
 
@@ -3499,6 +3490,7 @@ badge.style.display="none";
 }
 
 },
+
 
 calculate(){
 
@@ -3541,6 +3533,7 @@ n2
 
 this.checkSessionBadge();
 
+
 const scan=
 document.getElementById(
 "aiScannerBox"
@@ -3555,16 +3548,27 @@ btn.disabled=true;
 
 scan.style.display="block";
 
+
 const messages=[
+
 "READING INPUT STRUCTURE...",
+
 "CALCULATING DIGIT MOMENTUM...",
-"RUNNING BACKEND COMPASS & SCORING...",
+
+"RUNNING TOP 5 PAIR RANKING ENGINE...",
+
 "EVALUATING 5 MATHEMATICAL MODELS...",
+
 "BUILDING NUMBER MATRIX...",
+
 "MAPPING DIGIT DISTRIBUTION...",
+
 "GENERATING WIN SET...",
+
 "FINALIZING ANALYSIS..."
+
 ];
+
 
 let index=0;
 
@@ -3576,7 +3580,9 @@ document.getElementById(
 scannerText.innerText=
 messages[0];
 
-const timer=setInterval(()=>{
+
+const timer=
+setInterval(()=>{
 
 index++;
 
@@ -3589,6 +3595,7 @@ messages[index];
 
 },100);
 
+
 setTimeout(()=>{
 
 clearInterval(timer);
@@ -3597,7 +3604,10 @@ scan.style.display="none";
 
 btn.disabled=false;
 
-this.runAnalysis(n3,n2);
+this.runAnalysis(
+n3,
+n2
+);
 
 document.getElementById(
 "resultContainer"
@@ -3619,9 +3629,6 @@ updateProcessedUI(true);
 
 },
 
-/* =========================================================
-   NORMALIZE
-========================================================= */
 
 _normalize(x){
 
@@ -3629,9 +3636,6 @@ return(x%10+10)%10;
 
 },
 
-/* =========================================================
-   ORIGINAL 100 FORMULA ENGINE
-========================================================= */
 
 _run100FormulasEngine(
 H,
@@ -3773,10 +3777,12 @@ totalSum+T_bot
 
 ];
 
+
 const countedDigits={};
 
 for(let d=0;d<=9;d++)
 countedDigits[d]=0;
+
 
 rawFormulas.forEach(rawVal=>{
 
@@ -3788,6 +3794,7 @@ countedDigits[unit]=
 
 });
 
+
 const sortedByCount=
 Object.keys(countedDigits)
 .map(Number)
@@ -3797,6 +3804,7 @@ countedDigits[b]-countedDigits[a]||
 b-a
 );
 
+
 return{
 ranking:sortedByCount.slice(0,10),
 counts:countedDigits
@@ -3804,9 +3812,6 @@ counts:countedDigits
 
 },
 
-/* =========================================================
-   MAIN ANALYSIS
-========================================================= */
 
 runAnalysis(n3,n2){
 
@@ -3836,6 +3841,7 @@ T_bot+U_bot;
 const totalSum=
 sumTop+sumBot;
 
+
 const formula100Engine=
 this._run100FormulasEngine(
 H,
@@ -3847,6 +3853,7 @@ sumTop,
 sumBot,
 totalSum
 );
+
 
 const getUnitDirect=v=>{
 
@@ -3865,6 +3872,7 @@ first,
 
 };
 
+
 const fixedBase=7;
 
 const anchorRaw=
@@ -3872,6 +3880,7 @@ fixedBase-H;
 
 const anchor=
 (Math.abs(anchorRaw)%10+10)%10;
+
 
 let rawM1=
 (T_top+T_bot)%10;
@@ -3888,6 +3897,7 @@ let rawM4=
 let rawM5=
 (10-U_bot)%10;
 
+
 let modelRawValues=[
 rawM1,
 rawM2,
@@ -3899,16 +3909,15 @@ rawM5
 let uniqueModelDigits=
 new Set(modelRawValues);
 
+
 if(uniqueModelDigits.size<4){
 
 const fallbackFormulas=[
-
 (T_top+U_bot)%10,
 (H+U_top)%10,
 sumBot%10,
 (H+sumBot)%10,
 totalSum%10
-
 ];
 
 for(
@@ -3918,7 +3927,9 @@ let fbVal of fallbackFormulas
 const normFb=
 (fbVal%10+10)%10;
 
-uniqueModelDigits.add(normFb);
+uniqueModelDigits.add(
+normFb
+);
 
 if(uniqueModelDigits.size>=6)
 break;
@@ -3927,59 +3938,56 @@ break;
 
 }
 
+
 const fList=[
 
 {
 id:1,
 name:"AI โมเดล 01",
-subName:"B + R1 -> ใช้หลักหน่วยดิบเพียวๆ",
-set:getUnitDirect(rawM1),
-positionalWeight:1
+subName:"B + R1",
+set:getUnitDirect(rawM1)
 },
 
 {
 id:2,
 name:"AI โมเดล 02",
-subName:"A + B + C -> ใช้หลักหน่วยดิบเพียวๆ",
-set:getUnitDirect(rawM2),
-positionalWeight:1
+subName:"A + B + C",
+set:getUnitDirect(rawM2)
 },
 
 {
 id:3,
 name:"AI โมเดล 03",
-subName:"A + R1 -> ใช้หลักหน่วยดิบเพียวๆ",
-set:getUnitDirect(rawM3),
-positionalWeight:1
+subName:"A + R1",
+set:getUnitDirect(rawM3)
 },
 
 {
 id:4,
 name:"AI โมเดล 04",
-subName:"C + R2 -> ใช้หลักหน่วยดิบเพียวๆ",
-set:getUnitDirect(rawM4),
-positionalWeight:1
+subName:"C + R2",
+set:getUnitDirect(rawM4)
 },
 
 {
 id:5,
 name:"AI โมเดล 05",
-subName:"10 - R2 -> ใช้หลักหน่วยดิบเพียวๆ",
-set:getUnitDirect(rawM5),
-positionalWeight:1
+subName:"10 - R2",
+set:getUnitDirect(rawM5)
 }
 
 ];
 
-const allowedModelDigits=new Set;
+
+const allowedModelDigits=
+new Set();
 
 fList.forEach(item=>{
-
-item.set.forEach(d=>
-allowedModelDigits.add(d)
-);
-
+item.set.forEach(d=>{
+allowedModelDigits.add(d);
 });
+});
+
 
 const evaluated=
 fList.map(model=>{
@@ -4002,14 +4010,18 @@ this._normalize(
 anchor+offset
 );
 
-if(formulaSet.includes(val)){
+if(
+formulaSet.includes(val)
+){
 
 hasCollision=true;
+
 break;
 
 }
 
 }
+
 
 if(hasCollision){
 
@@ -4045,46 +4057,54 @@ anchor+offset
 
 }
 
+
 const excludedDigits=
-[...new Set(formulaSet)];
+[
+...new Set(formulaSet)
+];
+
 
 let cleanedPool=
 rawRange.filter(
-dg=>!excludedDigits.includes(dg)
+dg=>
+!excludedDigits.includes(dg)
 );
+
 
 const generatedPairs=[];
-const rejectedPairs=[];
 
-formulaSet.forEach(sourceDigit=>{
 
-cleanedPool.forEach(poolDigit=>{
+formulaSet.forEach(
+sourceDigit=>{
 
-if(sourceDigit===poolDigit){
+cleanedPool.forEach(
+poolDigit=>{
 
-rejectedPairs.push(
-`${sourceDigit}${poolDigit} (self-match)`
-);
-
+if(sourceDigit===poolDigit)
 return;
-
-}
 
 generatedPairs.push({
 
 digitA:sourceDigit,
+
 digitB:poolDigit,
-pairStr:`${sourceDigit}${poolDigit}`
+
+pairStr:
+`${sourceDigit}${poolDigit}`
 
 });
 
 });
 
-});
+}
+);
+
 
 const pMap={};
 
-formulaSet.forEach(sourceDigit=>{
+
+formulaSet.forEach(
+sourceDigit=>{
 
 let pairsForDigit=
 generatedPairs
@@ -4095,8 +4115,10 @@ p=>p.digitA===sourceDigit
 p=>p.pairStr
 );
 
+
 let nextFill=
 (sourceDigit+1)%10;
+
 
 while(
 pairsForDigit.length<5
@@ -4107,7 +4129,9 @@ nextFill!==sourceDigit&&
 !pairsForDigit.includes(
 `${sourceDigit}${nextFill}`
 )&&
-!excludedDigits.includes(nextFill)
+!excludedDigits.includes(
+nextFill
+)
 ){
 
 pairsForDigit.push(
@@ -4121,8 +4145,8 @@ nextFill=
 
 }
 
-pairsForDigit=
-[
+
+pairsForDigit=[
 ...new Set(pairsForDigit)
 ]
 .filter(
@@ -4130,23 +4154,25 @@ p=>p[0]!==p[1]
 )
 .sort();
 
+
 if(
 pairsForDigit.length>5
 )
 pairsForDigit=
 pairsForDigit.slice(0,5);
 
+
 pMap[sourceDigit]=
 pairsForDigit;
 
 });
+
 
 return{
 
 id:model.id,
 name:model.name,
 subName:model.subName,
-positionalWeight:model.positionalWeight,
 set:model.set,
 pairsMap:pMap
 
@@ -4154,31 +4180,44 @@ pairsMap:pMap
 
 });
 
+
 const digitScores={};
+
 
 for(let d=0;d<=9;d++){
 
 digitScores[d]={
+
 digit:d,
+
 modelScore:0,
+
 formula100Score:0,
+
 radarScore:0,
+
 backendScore:0,
+
 winSetScore:0,
+
 totalScore:0
+
 };
 
 }
 
+
 evaluated.forEach(model=>{
 
-model.set.forEach(dig=>{
-
-digitScores[dig].modelScore+=1;
+model.set.forEach(
+dig=>{
+digitScores[dig]
+.modelScore+=1;
+}
+);
 
 });
 
-});
 
 const maxFormCount=
 Math.max(
@@ -4188,15 +4227,16 @@ formula100Engine.counts
 1
 );
 
+
 for(let d=0;d<=9;d++){
 
-const matchCount=
-formula100Engine.counts[d]||0;
-
-digitScores[d].formula100Score=
-matchCount/maxFormCount;
+digitScores[d]
+.formula100Score=
+(formula100Engine.counts[d]||0)/
+maxFormCount;
 
 }
+
 
 const X_val=
 (T_bot+U_bot)%10;
@@ -4207,6 +4247,7 @@ X_val,
 (X_val+1)%10
 ];
 
+
 const Y_val=
 (H+T_top+U_top)%10;
 
@@ -4215,6 +4256,7 @@ const radar2Range=[
 Y_val,
 (Y_val+1)%10
 ];
+
 
 const Z_val=
 (H+T_top+U_top+T_bot+U_bot)%10;
@@ -4225,23 +4267,32 @@ Z_val,
 (Z_val+1)%10
 ];
 
+
 for(let d=0;d<=9;d++){
 
 let rHits=0;
 
-if(radar1Range.includes(d))
+if(
+radar1Range.includes(d)
+)
 rHits++;
 
-if(radar2Range.includes(d))
+if(
+radar2Range.includes(d)
+)
 rHits++;
 
-if(radar3Range.includes(d))
+if(
+radar3Range.includes(d)
+)
 rHits++;
 
-digitScores[d].radarScore=
+digitScores[d]
+.radarScore=
 rHits/3;
 
 }
+
 
 const backendFormulasSet=[
 
@@ -4253,17 +4304,21 @@ totalSum%10
 
 ];
 
+
 for(let d=0;d<=9;d++){
 
 if(
 backendFormulasSet.includes(d)
 )
-digitScores[d].backendScore=1;
+digitScores[d]
+.backendScore=1;
 
 }
 
+
 const winCandidate=
 (H+T_top+U_top+T_bot+U_bot)%10;
+
 
 for(let d=0;d<=9;d++){
 
@@ -4271,9 +4326,11 @@ if(
 d===winCandidate||
 d===(winCandidate+5)%10
 )
-digitScores[d].winSetScore=1;
+digitScores[d]
+.winSetScore=1;
 
 }
+
 
 for(let d=0;d<=9;d++){
 
@@ -4294,6 +4351,7 @@ item.totalScore*=1.15;
 
 }
 
+
 const matrixSortedAll=
 Object.values(digitScores)
 .sort(
@@ -4302,43 +4360,10 @@ b.totalScore-a.totalScore||
 b.digit-a.digit
 );
 
-const allowedModelArray=
-Array.from(allowedModelDigits);
-
-const filteredModelScores=
-matrixSortedAll.filter(
-item=>
-allowedModelArray.includes(
-item.digit
-)
-);
-
-let primaryDigitObj=
-filteredModelScores[0];
-
-let secondaryDigitObj=
-filteredModelScores[1];
-
-if(!primaryDigitObj)
-primaryDigitObj=
-matrixSortedAll[0];
-
-if(!secondaryDigitObj)
-secondaryDigitObj=
-matrixSortedAll.find(
-item=>
-item.digit!==primaryDigitObj.digit
-)||
-matrixSortedAll[1];
-
-const d1=
-primaryDigitObj.digit;
-
-const d2_dig=
-secondaryDigitObj.digit;
 
 const matrixSorted=
 matrixSortedAll;
+
 
 const allScores=
 matrixSorted.map(
@@ -4353,6 +4378,7 @@ Math.max(...allScores);
 
 const scoreRange=
 maxScore-minScore||1;
+
 
 const calcConfidence=score=>{
 
@@ -4374,6 +4400,7 @@ normalizedPct
 
 };
 
+
 evaluated.forEach(model=>{
 
 const modelScoreSum=
@@ -4381,9 +4408,13 @@ model.set.reduce(
 (sum,dig)=>
 sum+
 (
-digitScores[dig].totalScore>0
-?digitScores[dig].totalScore
-:0
+digitScores[dig]
+.totalScore>0
+?
+digitScores[dig]
+.totalScore
+:
+0
 ),
 0
 );
@@ -4394,6 +4425,7 @@ modelScoreSum/2
 );
 
 });
+
 
 evaluated.sort(
 (a,b)=>
@@ -4407,52 +4439,655 @@ idx<2;
 }
 );
 
-const winnerModel=
-evaluated[0];
-
-
-/* =========================================================
-   TOP 3 — ACTUAL MATRIX RANKING
-========================================================= */
 
 const top3Digits=
 matrixSorted.slice(0,3);
 
 const thirdRankDigit=
 top3Digits[2]
-?top3Digits[2].digit
-:null;
+?
+top3Digits[2].digit
+:
+null;
+
+const d1=
+top3Digits[0].digit;
+
+const d2_dig=
+top3Digits[1].digit;
 
 
 /* =========================================================
-   DEEP SCAN — 3 REAL TOP DIGIT SETS
+EXISTING TOP 5 FOCUS — PAIR RANKING
+========================================================= */
+
+const pairVotesMap={};
+
+
+evaluated.forEach(
+model=>{
+
+const modelVotedPairsThisModel=
+new Set();
+
+Object.values(
+model.pairsMap
+).forEach(
+pairList=>{
+
+pairList.forEach(
+pStr=>{
+
+const d1_char=
+pStr[0];
+
+const d2_char=
+pStr[1];
+
+if(
+d1_char===d2_char
+)
+return;
+
+const canonicalKey=
+[
+d1_char,
+d2_char
+]
+.sort()
+.join("");
+
+
+if(
+!modelVotedPairsThisModel
+.has(canonicalKey)
+){
+
+modelVotedPairsThisModel
+.add(canonicalKey);
+
+if(
+!pairVotesMap[canonicalKey]
+){
+
+pairVotesMap[canonicalKey]={
+
+canonical:
+canonicalKey,
+
+displayPair:
+pStr,
+
+votes:0,
+
+digitScoreSum:0
+
+};
+
+}
+
+pairVotesMap[
+canonicalKey
+].votes+=1;
+
+}
+
+});
+
+});
+
+});
+
+
+Object.values(
+pairVotesMap
+).forEach(
+item=>{
+
+const dX=
+parseInt(
+item.canonical[0],
+10
+);
+
+const dY=
+parseInt(
+item.canonical[1],
+10
+);
+
+item.digitScoreSum=
+(
+digitScores[dX]?.totalScore||0
+)+
+(
+digitScores[dY]?.totalScore||0
+);
+
+});
+
+
+const sortedPairsAll=
+Object.values(
+pairVotesMap
+)
+.sort(
+(a,b)=>{
+
+if(
+b.votes!==a.votes
+)
+return b.votes-a.votes;
+
+return b.digitScoreSum-
+a.digitScoreSum;
+
+}
+);
+
+
+let top5Pairs=
+sortedPairsAll.slice(0,5);
+
+
+while(
+top5Pairs.length<5&&
+sortedPairsAll.length>
+top5Pairs.length
+){
+
+const nextCandidate=
+sortedPairsAll[
+top5Pairs.length
+];
+
+if(
+nextCandidate&&
+!top5Pairs.includes(
+nextCandidate
+)
+){
+
+top5Pairs.push(
+nextCandidate
+);
+
+}else{
+
+break;
+
+}
+
+}
+
+
+const top5MaxVotes=
+top5Pairs[0]?.votes||5;
+
+
+const top5PairRankedHTML=
+top5Pairs.map(
+(item,index)=>{
+
+const rawRatio=
+item.votes/
+top5MaxVotes;
+
+const computedPct=
+Number(
+(
+86.5+
+rawRatio*11.8-
+index*.4
+).toFixed(1)
+);
+
+const secureDisplayPair=
+item.displayPair;
+
+
+return`
+
+<div
+class="deep-pair"
+data-copy="${this._esc(
+secureDisplayPair
+)}">
+
+<strong>
+${this._esc(
+secureDisplayPair
+)}
+</strong>
+
+<small>
+${computedPct}%
+</small>
+
+</div>
+
+`;
+
+}
+).join("")
+||
+`
+<div
+style="
+grid-column:1/-1;
+padding:7px;
+text-align:center;
+color:var(--muted);
+font-size:.46rem;
+">
+ไม่มีชุดข้อมูลคู่เด่น
+</div>
+`;
+
+
+/* =========================================================
+DEEP SCAN — 3 REAL TOP DIGIT SETS
 ========================================================= */
 
 function findPairsForDigit(digit){
 
-return winnerModel.pairsMap[digit]||
-evaluated.find(
+return evaluated.find(
 m=>m.pairsMap[digit]
-)?.pairsMap[digit]||
-[];
+)?.pairsMap[digit]||[];
 
 }
+
 
 const deepSets=
 top3Digits.map(
 item=>({
 
 digit:item.digit,
-score:calcConfidence(item.totalScore),
-pairs:findPairsForDigit(item.digit).slice(0,5)
+
+score:
+calcConfidence(
+item.totalScore
+),
+
+pairs:
+findPairsForDigit(
+item.digit
+).slice(0,5)
 
 })
 );
 
 
+const deepScanHTML=
+deepSets.map(
+(set,index)=>{
+
+const rankNames=[
+"AI ALPHA SCAN",
+"AI BETA SCAN",
+"AI GAMMA SCAN"
+];
+
+const rankClasses=[
+"rank-one",
+"rank-two",
+"rank-three"
+];
+
+const rankNumbers=[
+"#1",
+"#2",
+"#3"
+];
+
+
+const pairHTML=
+set.pairs.length
+?
+set.pairs.map(
+(p,pIndex)=>{
+
+const pct=
+Number(
+(
+set.score-
+.3*pIndex
+).toFixed(1)
+);
+
+return`
+
+<div
+class="deep-pair"
+data-copy="${this._esc(p)}">
+
+<strong>
+${this._esc(p)}
+</strong>
+
+<small>
+${pct}%
+</small>
+
+</div>
+
+`;
+
+}
+).join("")
+:
+`
+<div
+style="
+grid-column:1/-1;
+padding:7px;
+text-align:center;
+color:var(--muted);
+font-size:.46rem;
+">
+ไม่มีชุดข้อมูล
+</div>
+`;
+
+
+return`
+
+<div
+class="deep-scan-card ${rankClasses[index]}">
+
+<div class="deep-scan-top">
+
+<div class="deep-scan-name">
+
+<div class="deep-scan-digit">
+${set.digit}
+</div>
+
+<div>
+
+<span class="deep-rank-label">
+RANK ${rankNumbers[index]}
+</span>
+<div class="deep-scan-model-name">
+${rankNames[index]}
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="deep-scan-score">
+${set.score.toFixed(1)}%
+</div>
+
+</div>
+
+</div>
+
+<div class="deep-scan-pairs">
+${pairHTML}
+</div>
+
+</div>
+
+`;
+
+}
+).join("");
+
+
 /* =========================================================
-   3 DIGIT SMART SCAN
+NEW BEST JUE PAIR RANKING ENGINE
+=========================================================
+
+Rules:
+
+1. Read only generated JUE pairs from all 5 main models.
+2. 02 and 20 are treated as the same canonical pair.
+3. Every occurrence counts as exactly 1 point.
+No per-model de-duplication is performed.
+4. The source digit must appear in Top 3 Single.
+5. The pair must appear inside the existing Top 3 JUE sets.
+6. Only the top 5 are displayed.
+7. UI does not expose counts, scores or model names.
+8. Display orientation is whichever exact orientation occurs
+more frequently. If tied, lexical order is used.
 ========================================================= */
+
+
+const top3SingleDigitSet=
+new Set(
+top3Digits.map(
+item=>String(item.digit)
+)
+);
+
+
+const top3DeepPairCanonicalSet=
+new Set();
+
+
+deepSets.forEach(
+set=>{
+
+(set.pairs||[]).forEach(
+pairStr=>{
+
+const cleanPair=
+String(pairStr||"");
+
+if(
+!/^\d{2}$/.test(cleanPair)||
+cleanPair[0]===cleanPair[1]
+)
+return;
+
+
+const canonical=
+[
+cleanPair[0],
+cleanPair[1]
+]
+.sort()
+.join("");
+
+
+top3DeepPairCanonicalSet.add(
+canonical
+);
+
+});
+
+});
+
+
+const bestJuePairMap={};
+
+
+evaluated.forEach(
+model=>{
+
+Object.entries(
+model.pairsMap||{}
+).forEach(
+([sourceDigit,pairList])=>{
+
+(pairList||[]).forEach(
+pairStr=>{
+
+const pair=
+String(pairStr||"");
+
+if(
+!/^\d{2}$/.test(pair)||
+pair[0]===pair[1]
+)
+return;
+
+
+const canonical=
+[
+pair[0],
+pair[1]
+]
+.sort()
+.join("");
+
+
+if(
+!bestJuePairMap[canonical]
+){
+
+bestJuePairMap[canonical]={
+
+canonical,
+
+total:0,
+
+orientationCounts:{},
+
+sourceCounts:{}
+
+};
+
+}
+
+
+const item=
+bestJuePairMap[
+canonical
+];
+
+
+item.total+=1;
+
+
+item.orientationCounts[pair]=
+(
+item.orientationCounts[pair]||0
+)+1;
+
+
+item.sourceCounts[
+String(sourceDigit)
+]=
+(
+item.sourceCounts[
+String(sourceDigit)
+]||0
+)+1;
+
+});
+
+});
+
+});
+
+
+const bestJueCandidates=
+Object.values(
+bestJuePairMap
+)
+
+.filter(
+item=>{
+
+const sourceIsTop3=
+Object.keys(
+item.sourceCounts
+)
+.some(
+digit=>
+top3SingleDigitSet.has(
+digit
+)
+);
+
+const isInsideTop3Jue=
+top3DeepPairCanonicalSet.has(
+item.canonical
+);
+
+return(
+sourceIsTop3&&
+isInsideTop3Jue
+);
+
+}
+)
+
+.map(
+item=>{
+
+const orientations=
+Object.entries(
+item.orientationCounts
+)
+.sort(
+(a,b)=>{
+
+if(
+b[1]!==a[1]
+)
+return b[1]-a[1];
+
+return a[0].localeCompare(
+b[0]
+);
+
+}
+);
+
+return{
+
+...item,
+
+displayPair:
+orientations[0]?.[0]||
+item.canonical
+
+};
+
+}
+)
+
+.sort(
+(a,b)=>{
+
+if(
+b.total!==a.total
+)
+return b.total-a.total;
+
+
+const aDirect=
+a.orientationCounts[
+a.displayPair
+]||0;
+
+const bDirect=
+b.orientationCounts[
+b.displayPair
+]||0;
+
+
+if(
+bDirect!==aDirect
+)
+return bDirect-aDirect;
+
+
+return a.displayPair.localeCompare(
+b.displayPair
+);
+
+}
+)
+
+.slice(0,5);
+
 
 const arr1=
 findPairsForDigit(d1);
@@ -4460,10 +5095,6 @@ findPairsForDigit(d1);
 const arr2=
 findPairsForDigit(d2_dig);
 
-const arr3=
-thirdRankDigit!==null
-?findPairsForDigit(thirdRankDigit)
-:[];
 
 const matrixArr3d=
 arr1.slice(0,5)
@@ -4471,6 +5102,7 @@ arr1.slice(0,5)
 p=>
 `${p.slice(-1)}${d1}${d2_dig}`
 );
+
 
 const cScore3=
 Number(
@@ -4481,10 +5113,6 @@ Number(
 );
 
 
-/* =========================================================
-   WIN SET
-========================================================= */
-
 let top5Digits=
 matrixSorted
 .slice(0,5)
@@ -4492,31 +5120,44 @@ matrixSorted
 item=>item.digit
 );
 
+
 let wildcardCandidate=
 matrixSorted.find(
 item=>
-!allowedModelDigits.has(item.digit)&&
-!top5Digits.includes(item.digit)
+!allowedModelDigits.has(
+item.digit
+)&&
+!top5Digits.includes(
+item.digit
+)
 );
+
 
 if(!wildcardCandidate){
 
 wildcardCandidate=
 matrixSorted.find(
 item=>
-!top5Digits.includes(item.digit)
+!top5Digits.includes(
+item.digit
+)
 );
 
 }
 
+
 let currentSet=[
 ...top5Digits,
 wildcardCandidate
-?wildcardCandidate.digit
-:matrixSorted[5].digit
+?
+wildcardCandidate.digit
+:
+matrixSorted[5].digit
 ];
 
-const checkBalance=digits=>{
+
+const checkBalance=
+digits=>{
 
 const evenCount=
 digits.filter(
@@ -4546,8 +5187,10 @@ highCount>=2
 
 };
 
+
 if(
-!checkBalance(currentSet).isBalanced
+!checkBalance(currentSet)
+.isBalanced
 ){
 
 const candidatesIndex=[
@@ -4559,6 +5202,7 @@ let bestSet=[
 ];
 
 let foundReplacement=false;
+
 
 for(
 let idx of candidatesIndex
@@ -4574,7 +5218,8 @@ matrixSorted[idx].digit
 ];
 
 if(
-checkBalance(testSet).isBalanced
+checkBalance(testSet)
+.isBalanced
 ){
 
 bestSet=testSet;
@@ -4589,15 +5234,18 @@ break;
 
 }
 
+
 if(foundReplacement)
 currentSet=bestSet;
 
 }
 
+
 const winSet=
 currentSet.sort(
 (a,b)=>a-b
 );
+
 
 const combinedAnalysisPool=[
 ...matrixSorted
@@ -4606,14 +5254,12 @@ const combinedAnalysisPool=[
 ...winSet
 ];
 
+
 const evenCountTotal=
 combinedAnalysisPool.filter(
 d=>d%2===0
 ).length;
 
-const oddCountTotal=
-combinedAnalysisPool.length-
-evenCountTotal;
 
 const evenPct=
 Number(
@@ -4624,12 +5270,14 @@ combinedAnalysisPool.length*
 ).toFixed(1)
 );
 
+
 const oddPct=
 Number(
 (
 100-evenPct
 ).toFixed(1)
 );
+
 
 const maxScoreVal=
 Math.max(
@@ -4640,10 +5288,6 @@ s=>s.totalScore
 );
 
 
-/* =========================================================
-   DISTRIBUTION — PREMIUM 0-9 RANKING
-========================================================= */
-
 const distributionHTML=
 matrixSorted.map(
 (item,index)=>{
@@ -4653,7 +5297,8 @@ item.digit;
 
 const height=
 item.totalScore>0
-?Math.max(
+?
+Math.max(
 12,
 Math.round(
 item.totalScore/
@@ -4661,13 +5306,24 @@ maxScoreVal*
 100
 )
 )
-:6;
+:
+6;
 
-let barColor="#0A6647";
-let barTop="#10B981";
-let glow="rgba(16,185,129,.12)";
+
+let barColor=
+"#0A6647";
+
+let barTop=
+"#10B981";
+
+let glow=
+"rgba(16,185,129,.12)";
+
 let rankClass="";
-let rankLabel=`#${index+1}`;
+
+let rankLabel=
+`#${index+1}`;
+
 
 if(index===0){
 
@@ -4677,6 +5333,7 @@ glow="rgba(234,179,8,.22)";
 rankClass="rank-1";
 
 }
+
 else if(index===1){
 
 barColor="#10B981";
@@ -4685,6 +5342,7 @@ glow="rgba(16,185,129,.18)";
 rankClass="rank-2";
 
 }
+
 else if(index===2){
 
 barColor="#14B8A6";
@@ -4693,27 +5351,40 @@ glow="rgba(20,184,166,.17)";
 rankClass="rank-3";
 
 }
-else if(index===3||index===4){
+
+else if(
+index===3||
+index===4
+){
 
 barColor="#0A6647";
 barTop="#A7F3D0";
 glow="rgba(10,102,71,.12)";
 
 }
-else if(index===5||index===6){
+
+else if(
+index===5||
+index===6
+){
 
 barColor="#9E6C02";
 barTop="#FEF3C7";
 glow="rgba(158,108,2,.10)";
 
 }
-else if(index===7||index===8){
+
+else if(
+index===7||
+index===8
+){
 
 barColor="#087380";
 barTop="#CCFBF1";
 glow="rgba(8,115,128,.10)";
 
 }
+
 else{
 
 barColor="#BE123C";
@@ -4722,10 +5393,15 @@ glow="rgba(190,18,60,.08)";
 
 }
 
+
 const scorePct=
-calcConfidence(item.totalScore);
+calcConfidence(
+item.totalScore
+);
+
 
 return`
+
 <div
 class="overview-bar ${rankClass}"
 style="
@@ -4735,8 +5411,13 @@ style="
 --bar-glow:${glow};
 "
 data-copy="${digit}"
-title="Rank ${index+1} • Digit ${digit} • ${scorePct.toFixed(1)}%"
->
+title="
+Rank ${index+1}
+•
+Digit ${digit}
+•
+${scorePct.toFixed(1)}%
+">
 
 <span class="overview-rank">
 ${rankLabel}
@@ -4751,154 +5432,41 @@ ${digit}
 </span>
 
 </div>
+
 `;
 
 }
 ).join("");
 
-
-/* =========================================================
-   WIN SET HTML
-========================================================= */
 
 const indWinSetHTML=
 winSet.map(
-(digit,index)=>
-`
+(digit,index)=>`
+
 <div
 class="ind-win-item"
-data-copy="${digit}"
->
-<strong>${digit}</strong>
-<span>POS ${index+1}</span>
-</div>
-`
-).join("");
+data-copy="${digit}">
 
-
-/* =========================================================
-   DEEP SCAN HTML — RANK COLORS MATCH TOP 3
-========================================================= */
-
-const deepScanHTML=
-deepSets.map(
-(set,index)=>{
-
-const rankNames=[
-"AI ALPHA SCAN",
-"AI BETA SCAN",
-"AI GAMMA SCAN"
-];
-
-const rankClasses=[
-"rank-one",
-"rank-two",
-"rank-three"
-];
-
-const rankNumbers=[
-"#1",
-"#2",
-"#3"
-];
-
-const pairHTML=
-set.pairs.length
-?set.pairs.map(
-(p,pIndex)=>{
-
-const pct=
-Number(
-(
-set.score-
-.3*pIndex
-).toFixed(1)
-);
-
-return`
-<div
-class="deep-pair"
-data-copy="${this._esc(p)}"
->
 <strong>
-${this._esc(p)}
+${digit}
 </strong>
-<small>
-${pct}%
-</small>
-</div>
-`;
 
-}
-).join("")
-:
-`
-<div
-style="
-grid-column:1/-1;
-padding:7px;
-text-align:center;
-color:var(--muted);
-font-size:.46rem;
-"
->
-ไม่มีชุดข้อมูล
-</div>
-`;
-
-return`
-<div class="deep-scan-card ${rankClasses[index]}">
-
-<div class="deep-scan-top">
-
-<div class="deep-scan-name">
-
-<div class="deep-scan-digit">
-${set.digit}
-</div>
-
-<div>
-
-<span class="deep-rank-label">
-${rankNumbers[index]} / ${rankNames[index]}
+<span>
+POS ${index+1}
 </span>
 
-<div>
-${rankNames[index]} 
 </div>
 
-</div>
-
-</div>
-
-<div>
-
-<div class="deep-scan-score">
-${set.score.toFixed(1)}%
-</div>
-
-</div>
-
-</div>
-
-<div class="deep-scan-pairs">
-${pairHTML}
-</div>
-
-</div>
-`;
-
-}
+`
 ).join("");
 
-
-/* =========================================================
-   3D HTML
-========================================================= */
 
 const threeHTML=
 matrixArr3d.length
-?matrixArr3d.map(
+
+?
+
+matrixArr3d.map(
 (p,index)=>{
 
 const pct=
@@ -4909,11 +5477,13 @@ cScore3-
 ).toFixed(1)
 );
 
+
 return`
+
 <div
 class="three-d-item"
-data-copy="${this._esc(p)}"
->
+data-copy="${this._esc(p)}">
+
 <strong>
 ${this._esc(p)}
 </strong>
@@ -4923,11 +5493,14 @@ ${pct}%
 </small>
 
 </div>
+
 `;
 
 }
 ).join("")
+
 :
+
 `
 <div
 style="
@@ -4935,16 +5508,11 @@ grid-column:1/-1;
 color:var(--muted);
 font-size:.46rem;
 text-align:center;
-"
->
+">
 ไม่มีชุดข้อมูล
 </div>
 `;
 
-
-/* =========================================================
-   TOP 3 HTML
-========================================================= */
 
 const top3Class=[
 "rank-one",
@@ -4958,6 +5526,7 @@ const top3Names=[
 "GAMMA SIGNAL"
 ];
 
+
 const top3HTML=
 top3Digits.map(
 (item,index)=>{
@@ -4967,11 +5536,12 @@ calcConfidence(
 item.totalScore
 );
 
+
 return`
+
 <div
 class="top3-row ${top3Class[index]}"
-data-copy="${item.digit}"
->
+data-copy="${item.digit}">
 
 <div class="top3-position">
 #${index+1}
@@ -4985,15 +5555,17 @@ ${item.digit}
 
 <div class="top3-label">
 ${top3Names[index]}
-<span>RANK ${index+1}</span>
+<span>
+RANK ${index+1}
+</span>
 </div>
 
 <div class="top3-bar">
 
 <div
 class="top3-bar-fill"
-style="width:${pct}%;"
-></div>
+style="width:${pct}%;">
+</div>
 
 </div>
 
@@ -5004,36 +5576,38 @@ ${pct.toFixed(1)}%
 </div>
 
 </div>
+
 `;
 
 }
 ).join("");
 
 
-/* =========================================================
-   FORMULA DETAILS
-========================================================= */
-
 let allFormulasHTML="";
 
-evaluated.forEach(item=>{
+
+evaluated.forEach(
+item=>{
 
 let pairs=[];
 
-item.set.forEach(digit=>{
 
-const list=
-item.pairsMap[digit]||[];
+item.set.forEach(
+digit=>{
 
-list.forEach(p=>{
-
+(
+item.pairsMap[digit]||[]
+)
+.forEach(
+p=>{
 pairs.push({
 pair:p
 });
+}
+);
 
 });
 
-});
 
 const pairCards=
 pairs.map(
@@ -5047,11 +5621,12 @@ item.aiScore-
 ).toFixed(1)
 );
 
+
 return`
+
 <div
 class="formula-pair"
-data-copy="${this._esc(obj.pair)}"
->
+data-copy="${this._esc(obj.pair)}">
 
 <strong>
 ${this._esc(obj.pair)}
@@ -5062,15 +5637,20 @@ ${subPct}%
 </small>
 
 </div>
+
 `;
 
 }
 ).join("");
 
+
 const badgeHtml=
 item.isRecommended
-?'<span class="compact-badge">สูตรแนะนำ</span>'
-:"";
+?
+'<span class="compact-badge">สูตรแนะนำ</span>'
+:
+"";
+
 
 allFormulasHTML+=`
 
@@ -5103,7 +5683,9 @@ ${item.set.join(" - ")}
 </div>
 
 <div class="formula-pairs">
+
 ${pairCards}
+
 </div>
 
 </div>
@@ -5113,24 +5695,21 @@ ${pairCards}
 });
 
 
-/* =========================================================
-   FINAL HTML
-========================================================= */
-
 const html=`
 
 <div class="result-shell">
+
 
 <div class="result-head">
 
 <div>
 
 <div class="result-kicker">
-​SCAN COMPLETE
+SCAN COMPLETE
 </div>
 
 <div class="result-title">
-​AI PROCESSING COMPLETE
+AI PROCESSING COMPLETE
 </div>
 
 </div>
@@ -5141,10 +5720,6 @@ ${new Date().toLocaleTimeString("th-TH")}
 
 </div>
 
-
-<!-- =======================================================
-     TOP 3 SIGNALS
-======================================================= -->
 
 <section class="top3-signal-board">
 
@@ -5160,21 +5735,18 @@ DIGIT PRIORITY MATRIX
 🏆 ALPHA TOP 3 SIGNALS
 </div>
 
-<div class="top3-sub">
+<div class="top3-sub"></div>
 
 </div>
 
-</div>
-
-<div class="top3-badge">
-​BEST
-</div>
 
 </div>
+
 
 <div class="top3-list">
 ${top3HTML}
 </div>
+
 
 <div class="top3-footnote">
 
@@ -5182,8 +5754,9 @@ ${top3HTML}
 
 <span>
 จัดอันดับตาม
-<strong>AI Real-Time Score</strong>
-
+<strong>
+AI Real-Time Score
+</strong>
 </span>
 
 </div>
@@ -5205,19 +5778,21 @@ AI BALANCE
 
 </div>
 
+
 <div class="ratio-bar-container">
 
 <div
 class="ratio-even"
-style="width:${evenPct}%"
-></div>
+style="width:${evenPct}%">
+</div>
 
 <div
 class="ratio-odd"
-style="width:${oddPct}%"
-></div>
+style="width:${oddPct}%">
+</div>
 
 </div>
+
 
 <div class="ratio-legend">
 
@@ -5239,10 +5814,6 @@ DIGIT OVERVIEW
 </div>
 
 
-<!-- =======================================================
-     AI PROBABILITY RANKING
-======================================================= -->
-
 <section class="overview-panel">
 
 <div class="overview-head">
@@ -5260,14 +5831,16 @@ AI PROBABILITY RANKING
 </div>
 
 <div class="overview-badge">
-​🟢 AI ACTIVE
+🟢 AI ACTIVE
 </div>
 
 </div>
+
 
 <div class="overview-bars">
 ${distributionHTML}
 </div>
+
 
 <div class="overview-axis">
 
@@ -5289,13 +5862,9 @@ DIGIT SCORE
 
 
 <div class="section-marker">
-​ALPHA DEEP SCAN
+ALPHA DEEP SCAN
 </div>
 
-
-<!-- =======================================================
-     DEEP SCAN
-======================================================= -->
 
 <section class="deep-scan-board">
 
@@ -5311,28 +5880,25 @@ TOP 3 MATRIX SIGNALS
 🎯 ชุดเจาะ TOP 3
 </div>
 
-<div class="deep-scan-sub">
+<div class="deep-scan-sub"></div>
 
 </div>
 
-</div>
-
-<div class="deep-scan-badge">
 
 </div>
 
-</div>
 
 <div class="deep-scan-grid">
 ${deepScanHTML}
 </div>
+
 
 <div class="three-d-scan">
 
 <div class="three-d-head">
 
 <div class="three-d-title">
-​🎲 ชุด 3 ตัวบน
+🎲 ชุด 3 ตัวบน
 </div>
 
 <div class="three-d-score">
@@ -5356,19 +5922,18 @@ ${threeHTML}
 
 <div class="ind-win-title">
 
-​🧩 ชุดวิน 6 ตัว
+🧩 ชุดวิน 6 ตัว
 
-<small>
-
-</small>
+<small>CURATED WIN SET • 6 PICKS</small>
 
 </div>
 
 <div class="ind-win-badge">
-VIP SET
+✦ VIP SET
 </div>
 
 </div>
+
 
 <div class="ind-win-grid">
 ${indWinSetHTML}
@@ -5382,11 +5947,10 @@ ${indWinSetHTML}
 <button
 class="formula-toggle"
 id="toggleMainFormulasBtn"
-type="button"
->
+type="button">
 
 <span>
-​🧠 TOP 5 Model / AI ALGORITHM DETAILS
+🧠 TOP 5 Model / AI ALGORITHM DETAILS
 </span>
 
 <span>
@@ -5395,10 +5959,13 @@ type="button"
 
 </button>
 
+
 <div
 id="allFormulasWrapper"
-style="display:none;margin-top:6px;"
->
+style="
+display:none;
+margin-top:6px;
+">
 
 ${allFormulasHTML}
 
@@ -5409,33 +5976,58 @@ ${allFormulasHTML}
 
 <div class="disclaimer">
 
-<strong>หมายเหตุ:</strong>
+<strong>
+หมายเหตุ:
+</strong>
 
 ข้อมูลวิเคราะห์เชิงสถิติเพื่อเป็นแนวทางเท่านั้น
 โปรดใช้วิจารณญาณในการตัดสินใจ
 
 </div>
 
+
 </div>
+
 `;
 
-
-/* =========================================================
-   RENDER
-========================================================= */
 
 document.getElementById(
 "resultContainer"
 ).innerHTML=html;
 
-
 /* =========================================================
-   COPY
+ APPLY BEST JUE TOP 5 COLORS TO MATCHING TOP 3 PAIRS
+ The ranking engine remains active; only the presentation moves
+ into the existing TOP 3 matrix so the UI stays compact.
 ========================================================= */
+const bestJueRankLookup={};
+bestJueCandidates.forEach(
+(item,index)=>{
+bestJueRankLookup[item.canonical]=index+1;
+}
+);
+
+document.querySelectorAll(
+".deep-scan-card .deep-pair[data-copy]"
+).forEach(
+node=>{
+const pair=String(node.dataset.copy||"");
+if(!/^\d{2}$/.test(pair)||pair[0]===pair[1])
+return;
+const canonical=[pair[0],pair[1]].sort().join("");
+const rank=bestJueRankLookup[canonical];
+if(rank){
+node.classList.add(`jue-rank-${rank}`);
+node.dataset.jueRank=String(rank);
+}
+}
+);
+
 
 document.querySelectorAll(
 "[data-copy]"
-).forEach(node=>{
+).forEach(
+node=>{
 
 const clone=
 node.cloneNode(true);
@@ -5448,20 +6040,14 @@ node
 clone.addEventListener(
 "click",
 ()=>{
-
 this.copyText(
 clone.dataset.copy
 );
-
 }
 );
 
 });
 
-
-/* =========================================================
-   FORMULA TOGGLE
-========================================================= */
 
 const toggleMainBtn=
 document.getElementById(
@@ -5472,6 +6058,7 @@ const allWrapper=
 document.getElementById(
 "allFormulasWrapper"
 );
+
 
 if(
 toggleMainBtn&&
@@ -5489,15 +6076,21 @@ allWrapper.style.display==="block";
 
 allWrapper.style.display=
 isOpen
-?"none"
-:"block";
+?
+"none"
+:
+"block";
 
-toggleMainBtn.querySelector(
+toggleMainBtn
+.querySelector(
 "span:last-child"
-).innerText=
+)
+.innerText=
 isOpen
-?"▼"
-:"▲";
+?
+"▼"
+:
+"▲";
 
 }
 );
@@ -5506,10 +6099,6 @@ isOpen
 
 },
 
-
-/* =========================================================
-   COPY
-========================================================= */
 
 copyText(text){
 
@@ -5537,10 +6126,13 @@ this.fallbackCopyText(text);
 
 },
 
+
 fallbackCopyText(text){
 
 const ta=
-document.createElement("textarea");
+document.createElement(
+"textarea"
+);
 
 ta.value=text;
 
@@ -5563,6 +6155,7 @@ this.showToast();
 document.body.removeChild(ta);
 
 },
+
 
 showToast(){
 
@@ -5590,10 +6183,6 @@ t.classList.remove("show");
 };
 
 
-/* =========================================================
-   EVENTS
-========================================================= */
-
 const loginButton=
 document.getElementById(
 "loginButton"
@@ -5619,6 +6208,7 @@ document.getElementById(
 "logoutButton"
 );
 
+
 if(loginButton){
 
 loginButton.addEventListener(
@@ -5627,6 +6217,7 @@ loginButton.addEventListener(
 );
 
 }
+
 
 if(passwordInput){
 
@@ -5642,6 +6233,7 @@ _app.login();
 
 }
 
+
 if(calculateButton){
 
 calculateButton.addEventListener(
@@ -5651,6 +6243,7 @@ calculateButton.addEventListener(
 
 }
 
+
 if(clearButton){
 
 clearButton.addEventListener(
@@ -5659,6 +6252,7 @@ clearButton.addEventListener(
 );
 
 }
+
 
 if(logoutButton){
 
@@ -5670,10 +6264,6 @@ logoutButton.addEventListener(
 }
 
 
-/* =========================================================
-   INPUT AUTO JUMP
-========================================================= */
-
 const n3Input=
 document.getElementById(
 "num3top"
@@ -5683,6 +6273,7 @@ const n2Input=
 document.getElementById(
 "num2bottom"
 );
+
 
 if(n3Input){
 
@@ -5707,6 +6298,7 @@ n2Input.focus();
 
 }
 
+
 if(n2Input){
 
 n2Input.addEventListener(
@@ -5724,10 +6316,12 @@ n2Input.value.replace(
 
 }
 
+
 [
 "num3top",
 "num2bottom"
-].forEach(id=>{
+].forEach(
+id=>{
 
 const el=
 document.getElementById(id);
@@ -5748,10 +6342,6 @@ _app.calculate();
 
 });
 
-
-/* =========================================================
-   SESSION RESTORE
-========================================================= */
 
 (function initApp(){
 
@@ -5784,14 +6374,7 @@ _app.checkSessionBadge();
 
 }
 
-}catch(e){
-
-/*
-   หาก localStorage ใช้งานไม่ได้
-   ให้ระบบยังคงหน้า Login ทำงานตามปกติ
-*/
-
-}
+}catch(e){}
 
 })();
 
