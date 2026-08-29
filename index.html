@@ -1995,7 +1995,7 @@ opacity:1;
 transform:translate(-50%,0);
 }
 @media(max-width:400px){
-.ind-win-grid{grid-template-columns:repeat(3,1fr);}
+.ind-win-grid{grid-template-columns:repeat(6,minmax(0,1fr));}
 .top3-row{grid-template-columns:25px 35px 1fr 50px;gap:5px;padding-left:6px;padding-right:6px;}
 .top3-title{font-size:.78rem;}
 .top3-sub{font-size:.42rem;}
@@ -2398,16 +2398,29 @@ letter-spacing:.25px;
 /* =========================================================
    MANUAL AUDIT — ROUND 4 / USER REQUESTED FINAL TUNING
    ========================================================= */
-/* Engine cards: compress top/bottom only; preserve horizontal footprint. */
-.engine-card{
-  min-height:48px!important;
-  height:48px!important;
-  padding:3px 8px!important;
-  border-radius:11px!important;
+/* Engine cards: centered, evenly spaced, preserve existing card dimensions. */
+.engine-strip{
+  width:min(100%, 760px);
+  margin-left:auto!important;
+  margin-right:auto!important;
+  gap:12px!important;
+  justify-content:center;
+  align-items:stretch;
 }
-.engine-strip{gap:8px!important;margin-bottom:8px!important;}
-.engine-label{font-size:.43rem!important;line-height:1.02!important;}
-.engine-value{margin-top:1px!important;font-size:.56rem!important;line-height:1.0!important;}
+.engine-card{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.engine-label,.engine-value{
+  justify-content:center;
+  text-align:center;
+}
+.engine-label{line-height:1.15!important;}
+.engine-value{line-height:1.12!important;}
 /* Main action: clean emerald luxury, no black/graphite, fitted 1px outline. */
 .calculate-btn{
   border:1px solid rgba(16,185,129,.42)!important;
@@ -2494,6 +2507,41 @@ letter-spacing:.25px;
   .top3-row.rank-one .top3-bar-fill::after{
     animation:none !important;
   }
+}
+</style>
+<style id="final-user-layout-tuning">
+/* FINAL USER REQUEST: keep Win Set card size; six picks stay on one horizontal row. */
+.ind-win-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:4px!important;}
+.ind-win-title{font-size:.70rem!important;font-weight:800!important;line-height:1.1!important;}
+.ind-win-title small{font-size:inherit!important;}
+@media(max-width:400px){.ind-win-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:3px!important;}}
+/* FINAL USER REQUEST: centered, orderly engine cards; do not resize them. */
+.engine-strip{width:min(100%,760px)!important;margin-left:auto!important;margin-right:auto!important;gap:12px!important;justify-content:center!important;}
+.engine-card{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;}
+.engine-label,.engine-value{justify-content:center!important;text-align:center!important;}
+/* Premium VIP action colors — visual styling only. */
+.calculate-btn{
+  color:#F4FFFA!important;
+  background:linear-gradient(135deg,#087A59 0%,#0B9A70 52%,#08704F 100%)!important;
+  border:1px solid rgba(52,211,153,.48)!important;
+  box-shadow:0 7px 17px rgba(6,95,70,.18),inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 1px rgba(255,255,255,.05)!important;
+}
+.calculate-btn:hover:not(:disabled){
+  background:linear-gradient(135deg,#0A8A64 0%,#12AA7D 52%,#087956 100%)!important;
+  border-color:rgba(110,231,183,.62)!important;
+  box-shadow:0 9px 20px rgba(6,95,70,.22),0 0 12px rgba(16,185,129,.10),inset 0 1px 0 rgba(255,255,255,.25)!important;
+}
+.clear-btn{
+  color:#FFF8F7!important;
+  background:linear-gradient(135deg,#8F2631 0%,#A93643 52%,#7E202B 100%)!important;
+  border:1px solid rgba(252,165,165,.44)!important;
+  box-shadow:0 7px 16px rgba(126,32,43,.17),inset 0 1px 0 rgba(255,255,255,.20)!important;
+}
+.clear-btn:hover{
+  color:#FFFFFF!important;
+  background:linear-gradient(135deg,#9E2D39 0%,#B9414D 52%,#8C2530 100%)!important;
+  border-color:rgba(254,202,202,.62)!important;
+  box-shadow:0 9px 19px rgba(126,32,43,.22),0 0 12px rgba(185,28,28,.10),inset 0 1px 0 rgba(255,255,255,.23)!important;
 }
 </style>
 </head>
@@ -3653,18 +3701,21 @@ digitScores[d]
 for(let d=0;d<=9;d++){
 const item=
 digitScores[d];
-item.totalScore=
+item.rawScore=
 .35*item.modelScore+
 .25*item.formula100Score+
 .15*item.radarScore+
 .15*item.backendScore+
 .1*item.winSetScore;
+/* One canonical score pipeline: Raw Score -> Ranking Score -> Display Confidence. */
+item.totalScore=item.rawScore;
+item.rankingScore=item.rawScore;
 }
 const matrixSortedAll=
 Object.values(digitScores)
 .sort(
 (a,b)=>
-b.totalScore-a.totalScore||
+b.rankingScore-a.rankingScore||
 b.digit-a.digit
 );
 const matrixSorted=
@@ -3695,6 +3746,9 @@ normalizedPct
 ).toFixed(1)
 );
 };
+Object.values(digitScores).forEach(item=>{
+item.displayConfidence=calcConfidence(item.rankingScore);
+});
 evaluated.forEach(model=>{
 const modelScoreSum=
 model.set.reduce(
@@ -4500,9 +4554,7 @@ const top3HTML=
 top3Digits.map(
 (item,index)=>{
 const pct=
-calcConfidence(
-item.totalScore
-);
+item.displayConfidence;
 return`
 <div
 class="top3-row ${top3Class[index]}"
@@ -4730,7 +4782,7 @@ ${threeHTML}
 </section>
 <section class="ind-win-set">
 <div class="ind-win-header">
-<div class="ind-win-title"><small>CURATED WIN SET • 6 PICKS</small>
+<div class="ind-win-title">🧩 ชุดวิน 6 ตัว
 </div>
 <div class="ind-win-badge">
 ✦ VIP SET
