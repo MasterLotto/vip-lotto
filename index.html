@@ -11,12 +11,18 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self';">
 
 
+
+
 <title>Mester Lotto VIP+ — Premium Quant Intelligence</title>
+
+
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
 
 
 <style>
@@ -54,6 +60,8 @@
 }
 
 
+
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -62,9 +70,13 @@ padding:0;
 }
 
 
+
+
 html{
 scroll-behavior:smooth;
 }
+
+
 
 
 body{
@@ -79,10 +91,14 @@ linear-gradient(135deg,#fff,#F0FAF5 58%,#E5F3ED);
 }
 
 
+
+
 button,
 input{
 font-family:'Prompt',sans-serif;
 }
+
+
 
 
 button{
@@ -91,10 +107,14 @@ user-select:none;
 }
 
 
+
+
 ::selection{
 background:rgba(10,102,71,.18);
 color:var(--text);
 }
+
+
 
 
 #snowCanvas{
@@ -108,6 +128,8 @@ mix-blend-mode:normal;
 }
 
 
+
+
 .ambient{
 position:fixed;
 inset:0;
@@ -115,6 +137,8 @@ pointer-events:none;
 z-index:0;
 overflow:hidden;
 }
+
+
 
 
 .ambient::before,
@@ -127,6 +151,8 @@ opacity:.34;
 }
 
 
+
+
 .ambient::before{
 width:320px;
 height:320px;
@@ -136,6 +162,8 @@ background:rgba(16,185,129,.34);
 }
 
 
+
+
 .ambient::after{
 width:340px;
 height:340px;
@@ -143,6 +171,8 @@ right:-100px;
 bottom:8%;
 background:rgba(234,179,8,.20);
 }
+
+
 
 
 .grid-overlay{
@@ -155,6 +185,8 @@ linear-gradient(90deg,rgba(10,102,71,.12) 1px,transparent 1px);
 background-size:34px 34px;
 mask-image:linear-gradient(to bottom,#000,transparent 88%);
 }
+
+
 
 
 .app-shell{
@@ -171,6 +203,8 @@ z-index:2;
 }
 
 
+
+
 .app-card{
 position:relative;
 overflow:hidden;
@@ -184,6 +218,8 @@ inset 0 1px 0 #fff;
 backdrop-filter:blur(24px);
 -webkit-backdrop-filter:blur(24px);
 }
+
+
 
 
 .app-card::before{
@@ -207,10 +243,14 @@ animation:spectrumFlow 7s ease-in-out infinite;
 }
 
 
+
+
 @keyframes spectrumFlow{
 0%,100%{background-position:0 50%}
 50%{background-position:100% 50%}
 }
+
+
 
 
 .app-inner{
@@ -219,6 +259,8 @@ clamp(14px,3vw,18px)
 clamp(12px,3vw,16px)
 22px;
 }
+
+
 
 
 .top-nav{
@@ -230,12 +272,16 @@ margin-bottom:14px;
 }
 
 
+
+
 .brand-mini{
 display:flex;
 align-items:center;
 gap:9px;
 min-width:0;
 }
+
+
 
 
 .brand-mark{
@@ -257,6 +303,8 @@ position:relative;
 }
 
 
+
+
 .brand-mark::after{
 content:"";
 position:absolute;
@@ -266,11 +314,15 @@ border:1px solid rgba(255,255,255,.32);
 }
 
 
+
+
 .brand-name{
 font-size:.82rem;
 font-weight:800;
 letter-spacing:.2px;
 }
+
+
 
 
 .brand-sub{
@@ -279,6 +331,8 @@ font-size:.55rem;
 font-weight:600;
 color:var(--muted);
 }
+
+
 
 
 .system-pill{
@@ -296,6 +350,8 @@ white-space:nowrap;
 }
 
 
+
+
 .live-dot{
 width:6px;
 height:6px;
@@ -307,10 +363,14 @@ animation:livePulse 1.8s ease-in-out infinite;
 }
 
 
+
+
 @keyframes livePulse{
 0%,100%{transform:scale(1);opacity:1}
 50%{transform:scale(.72);opacity:.45}
 }
+
+
 
 
 .hero,
@@ -329,6 +389,8 @@ box-shadow:var(--shadowSoft);
 }
 
 
+
+
 .hero,
 .login-panel,
 .command-center,
@@ -341,6 +403,8 @@ linear-gradient(135deg,#fff,#F2F9F5);
 }
 
 
+
+
 .hero{
 padding:16px 14px 14px;
 margin-bottom:10px;
@@ -349,6 +413,8 @@ radial-gradient(circle at 95% 5%,rgba(16,185,129,.18),transparent 42%),
 radial-gradient(circle at 5% 95%,rgba(234,179,8,.12),transparent 38%),
 linear-gradient(135deg,#fff,#EEF9F2);
 }
+
+
 
 
 .hero::after{
@@ -365,6 +431,8 @@ box-shadow:
 0 0 0 38px rgba(16,185,129,.025);
 pointer-events:none;
 }
+
+
 
 
 .hero-kicker{
@@ -385,6 +453,8 @@ letter-spacing:.8px;
 }
 
 
+
+
 .hero-kicker span{
 width:5px;
 height:5px;
@@ -392,6 +462,8 @@ border-radius:50%;
 background:var(--green);
 box-shadow:0 0 6px rgba(16,185,129,.75);
 }
+
+
 
 
 .hero h1{
@@ -402,6 +474,8 @@ line-height:1.15;
 letter-spacing:-.4px;
 font-weight:800;
 }
+
+
 
 
 .hero h1 em{
@@ -422,10 +496,14 @@ animation:titleGradient 7s ease-in-out infinite;
 }
 
 
+
+
 @keyframes titleGradient{
 0%,100%{background-position:0 50%}
 50%{background-position:100% 50%}
 }
+
+
 
 
 .hero p{
@@ -438,9 +516,13 @@ color:var(--muted);
 }
 
 
+
+
 .hero p b{
 color:var(--text2);
 }
+
+
 
 
 .hero-meta{
@@ -451,6 +533,8 @@ flex-wrap:wrap;
 gap:5px;
 margin-top:10px;
 }
+
+
 
 
 .meta-chip{
@@ -465,12 +549,16 @@ box-shadow:0 2px 6px rgba(10,102,71,.04);
 }
 
 
+
+
 .login-dashboard{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:7px;
 margin-bottom:10px;
 }
+
+
 
 
 .mini-stat{
@@ -482,11 +570,15 @@ box-shadow:var(--shadowSoft);
 }
 
 
+
+
 .mini-stat-label{
 color:var(--muted);
 font-size:.50rem;
 font-weight:700;
 }
+
+
 
 
 .mini-stat-value{
@@ -497,9 +589,13 @@ font-weight:700;
 }
 
 
+
+
 .mini-stat-value.green{
 color:var(--emerald);
 }
+
+
 
 
 .packages{
@@ -508,6 +604,8 @@ grid-template-columns:repeat(2,1fr);
 gap:7px;
 margin-bottom:10px;
 }
+
+
 
 
 .package{
@@ -526,11 +624,15 @@ border-color .22s ease;
 }
 
 
+
+
 .package:hover{
 transform:translateY(-1px);
 box-shadow:0 9px 22px rgba(10,102,71,.08);
 border-color:rgba(10,102,71,.24);
 }
+
+
 
 
 .package::before{
@@ -542,6 +644,8 @@ right:0;
 height:2px;
 background:var(--emerald);
 }
+
+
 
 
 .package::after{
@@ -556,9 +660,13 @@ background:rgba(16,185,129,.055);
 }
 
 
+
+
 .package:nth-child(2)::before{background:var(--cyan)}
 .package:nth-child(3)::before{background:var(--gold2)}
 .package:nth-child(4)::before{background:var(--purple)}
+
+
 
 
 .package-title{
@@ -568,6 +676,8 @@ font-size:.53rem;
 font-weight:700;
 color:var(--muted);
 }
+
+
 
 
 .package-price{
@@ -580,6 +690,8 @@ font-weight:700;
 }
 
 
+
+
 .package-desc{
 position:relative;
 z-index:1;
@@ -587,6 +699,8 @@ margin-top:2px;
 font-size:.47rem;
 color:var(--muted2);
 }
+
+
 
 
 .contact-btn{
@@ -618,6 +732,8 @@ background-position .35s ease;
 }
 
 
+
+
 .contact-btn:hover{
 transform:translateY(-1px);
 background-position:100% 50%;
@@ -625,9 +741,13 @@ box-shadow:0 9px 22px rgba(10,102,71,.23);
 }
 
 
+
+
 .login-panel{
 padding:14px;
 }
+
+
 
 
 .section-eyebrow{
@@ -639,12 +759,16 @@ text-align:center;
 }
 
 
+
+
 .login-heading{
 margin-top:3px;
 font-size:.95rem;
 font-weight:800;
 text-align:center;
 }
+
+
 
 
 .login-description{
@@ -654,6 +778,8 @@ color:var(--muted);
 font-size:.55rem;
 text-align:center;
 }
+
+
 
 
 input{
@@ -671,9 +797,13 @@ transition:.2s ease;
 }
 
 
+
+
 input::placeholder{
 color:var(--muted2);
 }
+
+
 
 
 input:focus{
@@ -681,6 +811,8 @@ background:#fff;
 border-color:rgba(10,102,71,.55);
 box-shadow:0 0 0 3px rgba(10,102,71,.10);
 }
+
+
 
 
 .primary-btn,
@@ -713,6 +845,8 @@ background-position .35s ease;
 }
 
 
+
+
 .primary-btn::after,
 .calculate-btn::after{
 content:"";
@@ -734,15 +868,21 @@ pointer-events:none;
 }
 
 
+
+
 .primary-btn:hover::after,
 .calculate-btn:hover:not(:disabled)::after{
 left:130%;
 }
 
 
+
+
 .primary-btn{
 margin-top:8px;
 }
+
+
 
 
 .primary-btn:hover,
@@ -755,10 +895,14 @@ background-position:100% 50%;
 }
 
 
+
+
 .primary-btn:active,
 .calculate-btn:active:not(:disabled){
 transform:translateY(0);
 }
+
+
 
 
 #errorMsg{
@@ -771,9 +915,13 @@ font-weight:700;
 }
 
 
+
+
 #calculatorView{
 display:none;
 }
+
+
 
 
 .engine-strip{
@@ -782,6 +930,8 @@ grid-template-columns:1fr 1fr 1fr;
 gap:6px;
 margin-bottom:10px;
 }
+
+
 
 
 .engine-card{
@@ -795,6 +945,8 @@ box-shadow:var(--shadowSoft);
 }
 
 
+
+
 .engine-card::before{
 content:"";
 position:absolute;
@@ -806,14 +958,20 @@ background:linear-gradient(180deg,#0A6647,#10B981);
 }
 
 
+
+
 .engine-card:nth-child(2)::before{
 background:linear-gradient(180deg,#0D7A55,#14B8A6);
 }
 
 
+
+
 .engine-card:nth-child(3)::before{
 background:linear-gradient(180deg,#9E6C02,#EAB308);
 }
+
+
 
 
 .engine-label{
@@ -829,6 +987,8 @@ text-overflow:ellipsis;
 }
 
 
+
+
 .engine-value{
 display:flex;
 align-items:center;
@@ -840,9 +1000,13 @@ font-weight:700;
 }
 
 
+
+
 .engine-value.cyan{color:var(--cyan)}
 .engine-value.green{color:var(--emerald)}
 .engine-value.gold{color:var(--gold)}
+
+
 
 
 .total-dot-wrap{
@@ -854,6 +1018,8 @@ height:8px;
 }
 
 
+
+
 .total-dot{
 width:4px;
 height:4px;
@@ -862,15 +1028,21 @@ background:var(--green);
 }
 
 
+
+
 .total-dot.ripple{
 animation:microRipple .85s ease-out;
 }
+
+
 
 
 @keyframes microRipple{
 0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}
 100%{box-shadow:0 0 0 9px rgba(16,185,129,0)}
 }
+
+
 
 
 .last-session{
@@ -888,6 +1060,8 @@ font-size:.53rem;
 }
 
 
+
+
 .last-session strong{
 color:var(--gold);
 font-family:'IBM Plex Mono',monospace;
@@ -895,10 +1069,14 @@ font-size:.61rem;
 }
 
 
+
+
 .command-center{
 padding:12px;
 margin-bottom:10px;
 }
+
+
 
 
 .command-header{
@@ -910,10 +1088,14 @@ margin-bottom:10px;
 }
 
 
+
+
 .command-title{
 font-size:.87rem;
 font-weight:800;
 }
+
+
 
 
 .command-sub{
@@ -921,6 +1103,8 @@ margin-top:1px;
 color:var(--muted);
 font-size:.51rem;
 }
+
+
 
 
 .command-badge{
@@ -935,11 +1119,15 @@ font-weight:700;
 }
 
 
+
+
 .input-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:7px;
 }
+
+
 
 
 .field-card{
@@ -948,6 +1136,8 @@ border-radius:12px;
 background:var(--surface2);
 border:1px solid rgba(10,102,71,.15);
 }
+
+
 
 
 .field-label{
@@ -963,6 +1153,8 @@ text-overflow:ellipsis;
 }
 
 
+
+
 .field-card input{
 height:42px;
 background:#fff;
@@ -973,12 +1165,16 @@ letter-spacing:2px;
 }
 
 
+
+
 .action-row{
 display:grid;
 grid-template-columns:1fr 82px;
 gap:7px;
 margin-top:8px;
 }
+
+
 
 
 .clear-btn{
@@ -996,6 +1192,8 @@ border-color .2s ease;
 }
 
 
+
+
 .clear-btn:hover{
 transform:translateY(-1px);
 background:#fff;
@@ -1003,10 +1201,14 @@ border-color:rgba(10,102,71,.28);
 }
 
 
+
+
 .calculate-btn:disabled{
 opacity:.55;
 cursor:not-allowed;
 }
+
+
 
 
 #aiScannerBox{
@@ -1024,6 +1226,8 @@ border:1px solid rgba(10,102,71,.18);
 }
 
 
+
+
 .scanner-ring{
 position:relative;
 width:52px;
@@ -1032,6 +1236,8 @@ margin:0 auto 10px;
 border-radius:50%;
 border:1px solid rgba(10,102,71,.20);
 }
+
+
 
 
 .scanner-ring::before{
@@ -1046,6 +1252,8 @@ animation:spin 1s linear infinite;
 }
 
 
+
+
 .scanner-ring::after{
 content:"";
 position:absolute;
@@ -1056,15 +1264,21 @@ animation:scannerPulse .9s ease-in-out infinite;
 }
 
 
+
+
 @keyframes spin{
 to{transform:rotate(360deg)}
 }
+
+
 
 
 @keyframes scannerPulse{
 0%,100%{transform:scale(.7);opacity:.5}
 50%{transform:scale(1);opacity:1}
 }
+
+
 
 
 #aiScannerText{
@@ -1075,9 +1289,13 @@ font-weight:700;
 }
 
 
+
+
 .result-shell{
 animation:resultIn .5s var(--ease);
 }
+
+
 
 
 @keyframes resultIn{
@@ -1092,6 +1310,8 @@ transform:none;
 }
 
 
+
+
 .result-head{
 display:flex;
 justify-content:space-between;
@@ -1099,6 +1319,8 @@ align-items:flex-end;
 gap:8px;
 margin:2px 2px 8px;
 }
+
+
 
 
 .result-kicker{
@@ -1110,6 +1332,8 @@ letter-spacing:.8px;
 }
 
 
+
+
 .result-title{
 margin-top:1px;
 font-size:1.08rem;
@@ -1117,10 +1341,14 @@ font-weight:800;
 }
 
 
+
+
 .result-note{
 color:var(--muted);
 font-size:.49rem;
 }
+
+
 
 
 .top3-signal-board{
@@ -1140,6 +1368,8 @@ linear-gradient(
 );
 border-color:rgba(10,102,71,.19);
 }
+
+
 
 
 .top3-signal-board::before{
@@ -1163,6 +1393,8 @@ animation:top3Flow 5s ease-in-out infinite;
 }
 
 
+
+
 @keyframes top3Flow{
 0%,100%{
 background-position:0 50%;
@@ -1173,6 +1405,8 @@ background-position:100% 50%;
 opacity:1;
 }
 }
+
+
 
 
 .top3-head{
@@ -1186,6 +1420,8 @@ margin-bottom:9px;
 }
 
 
+
+
 .top3-kicker{
 color:var(--emerald);
 font-family:'IBM Plex Mono',monospace;
@@ -1195,6 +1431,8 @@ letter-spacing:1px;
 }
 
 
+
+
 .top3-title{
 margin-top:2px;
 font-size:.84rem;
@@ -1202,11 +1440,15 @@ font-weight:800;
 }
 
 
+
+
 .top3-sub{
 margin-top:1px;
 color:var(--muted);
 font-size:.45rem;
 }
+
+
 
 
 .top3-badge{
@@ -1222,6 +1464,8 @@ white-space:nowrap;
 }
 
 
+
+
 .top3-list{
 position:relative;
 z-index:2;
@@ -1229,6 +1473,8 @@ display:flex;
 flex-direction:column;
 gap:5px;
 }
+
+
 
 
 .top3-row{
@@ -1250,11 +1496,15 @@ border-color .25s ease;
 }
 
 
+
+
 .top3-row:hover{
 transform:translateY(-1px);
 border-color:rgba(16,185,129,.34);
 box-shadow:0 6px 16px rgba(10,102,71,.07);
 }
+
+
 
 
 .top3-row::before{
@@ -1277,14 +1527,20 @@ pointer-events:none;
 }
 
 
+
+
 .top3-row:nth-child(2)::before{
 animation-delay:1.2s;
 }
 
 
+
+
 .top3-row:nth-child(3)::before{
 animation-delay:2.4s;
 }
+
+
 
 
 @keyframes top3Sweep{
@@ -1302,6 +1558,8 @@ opacity:0;
 }
 
 
+
+
 .top3-row.rank-one{
 background:
 linear-gradient(
@@ -1313,10 +1571,16 @@ border-color:rgba(158,108,2,.24);
 }
 
 
+
+
 .top3-row.rank-two{background:linear-gradient(90deg,rgba(235,239,238,.92),rgba(247,252,249,.97));border-color:rgba(83,100,94,.24);}
 
 
+
+
 .top3-row.rank-three{background:linear-gradient(90deg,rgba(252,232,220,.72),rgba(247,252,249,.97));border-color:rgba(180,105,58,.22);}
+
+
 
 
 .top3-position{
@@ -1332,15 +1596,23 @@ color:var(--muted2);
 }
 
 
+
+
 .top3-row.rank-one .top3-position{
 color:var(--gold);
 }
 
 
+
+
 .top3-row.rank-two .top3-position{color:#53645E;}
 
 
+
+
 .top3-row.rank-three .top3-position{color:#9A5730;}
+
+
 
 
 .top3-digit{
@@ -1369,6 +1641,8 @@ font-weight:800;
 }
 
 
+
+
 .top3-row.rank-one .top3-digit{
 color:#5F4300;
 background:
@@ -1381,10 +1655,16 @@ border-color:rgba(158,108,2,.34);
 }
 
 
+
+
 .top3-row.rank-two .top3-digit{color:#43514D;background:linear-gradient(135deg,#EEF1F0,#C9D1CE);border-color:rgba(83,100,94,.34);}
 
 
+
+
 .top3-row.rank-three .top3-digit{color:#7C4325;background:linear-gradient(135deg,#F8D9C5,#E9B394);border-color:rgba(180,105,58,.34);}
+
+
 
 
 .top3-info{
@@ -1392,6 +1672,8 @@ position:relative;
 z-index:2;
 min-width:0;
 }
+
+
 
 
 .top3-label{
@@ -1404,11 +1686,15 @@ font-weight:800;
 }
 
 
+
+
 .top3-label span{
 color:var(--muted);
 font-size:.41rem;
 font-weight:600;
 }
+
+
 
 
 .top3-bar{
@@ -1420,6 +1706,8 @@ border-radius:99px;
 background:#DDEDE5;
 overflow:hidden;
 }
+
+
 
 
 .top3-bar-fill{
@@ -1437,6 +1725,8 @@ transition:width .7s var(--ease);
 }
 
 
+
+
 .top3-row.rank-one .top3-bar-fill{
 background:
 linear-gradient(
@@ -1448,10 +1738,16 @@ linear-gradient(
 }
 
 
+
+
 .top3-row.rank-two .top3-bar-fill{background:linear-gradient(90deg,#7A8883,#C4CCC8,#879590);}
 
 
+
+
 .top3-row.rank-three .top3-bar-fill{background:linear-gradient(90deg,#9A5730,#D79A76,#B86F49);}
+
+
 
 
 .top3-score{
@@ -1465,12 +1761,18 @@ color:var(--emerald);
 }
 
 
+
+
 .top3-row.rank-one .top3-score{
 color:var(--gold);
 }
 
 
+
+
 .top3-row.rank-three .top3-score{color:#9A5730;}
+
+
 
 
 .top3-footnote{
@@ -1489,9 +1791,13 @@ text-align:center;
 }
 
 
+
+
 .top3-footnote strong{
 color:var(--text2);
 }
+
+
 
 
 .mini-live{
@@ -1504,10 +1810,14 @@ animation:livePulse 1.8s ease-in-out infinite;
 }
 
 
+
+
 .stats-analytics-card{
 padding:11px 12px;
 margin-bottom:9px;
 }
+
+
 
 
 .stats-flex{
@@ -1518,10 +1828,14 @@ margin-bottom:8px;
 }
 
 
+
+
 .stats-title{
 font-size:.75rem;
 font-weight:800;
 }
+
+
 
 
 .stats-badge{
@@ -1536,6 +1850,8 @@ font-weight:700;
 }
 
 
+
+
 .ratio-bar-container{
 display:flex;
 width:100%;
@@ -1548,6 +1864,8 @@ border:1px solid rgba(10,102,71,.10);
 }
 
 
+
+
 .ratio-even{
 height:100%;
 background:linear-gradient(90deg,#0A6647,#10B981);
@@ -1555,11 +1873,15 @@ transition:width .4s var(--ease);
 }
 
 
+
+
 .ratio-odd{
 height:100%;
 background:linear-gradient(90deg,#9E6C02,#EAB308);
 transition:width .4s var(--ease);
 }
+
+
 
 
 .ratio-legend{
@@ -1572,6 +1894,8 @@ font-weight:700;
 }
 
 
+
+
 .section-marker{
 display:flex;
 align-items:center;
@@ -1582,6 +1906,8 @@ font-size:.46rem;
 font-weight:800;
 letter-spacing:.8px;
 }
+
+
 
 
 .section-marker::after{
@@ -1597,10 +1923,14 @@ transparent
 }
 
 
+
+
 .overview-panel{
 padding:12px;
 margin-bottom:9px;
 }
+
+
 
 
 .overview-head{
@@ -1612,10 +1942,14 @@ margin-bottom:9px;
 }
 
 
+
+
 .overview-title{
 font-size:.80rem;
 font-weight:800;
 }
+
+
 
 
 .overview-sub{
@@ -1623,6 +1957,8 @@ margin-top:2px;
 color:var(--muted);
 font-size:.46rem;
 }
+
+
 
 
 .overview-badge{
@@ -1637,6 +1973,8 @@ font-weight:700;
 }
 
 
+
+
 .overview-bars{
 display:grid;
 grid-template-columns:repeat(10,1fr);
@@ -1644,6 +1982,8 @@ gap:4px;
 align-items:end;
 padding:4px 2px 0;
 }
+
+
 
 
 .overview-bar{
@@ -1668,11 +2008,15 @@ box-shadow .22s ease;
 }
 
 
+
+
 .overview-bar:hover{
 transform:translateY(-2px);
 border-color:rgba(10,102,71,.28);
 box-shadow:0 6px 14px rgba(10,102,71,.07);
 }
+
+
 
 
 .overview-bar::before{
@@ -1695,6 +2039,8 @@ transition:height .7s var(--ease);
 }
 
 
+
+
 .overview-bar::after{
 content:"";
 position:absolute;
@@ -1704,6 +2050,8 @@ bottom:0;
 height:1px;
 background:rgba(10,102,71,.13);
 }
+
+
 
 
 .overview-bar.rank-1{
@@ -1719,14 +2067,20 @@ box-shadow:
 }
 
 
+
+
 .overview-bar.rank-2{
 border-color:rgba(10,102,71,.27);
 }
 
 
+
+
 .overview-bar.rank-3{
 border-color:rgba(8,115,128,.28);
 }
+
+
 
 
 .overview-rank{
@@ -1747,11 +2101,15 @@ white-space:nowrap;
 }
 
 
+
+
 .overview-bar.rank-1 .overview-rank{
 color:var(--gold);
 border-color:rgba(158,108,2,.20);
 background:rgba(254,249,195,.88);
 }
+
+
 
 
 .overview-bar.rank-2 .overview-rank{
@@ -1761,11 +2119,15 @@ background:rgba(227,248,238,.90);
 }
 
 
+
+
 .overview-bar.rank-3 .overview-rank{
 color:var(--cyan);
 border-color:rgba(8,115,128,.18);
 background:rgba(224,249,247,.90);
 }
+
+
 
 
 .overview-digit{
@@ -1781,9 +2143,13 @@ font-weight:800;
 }
 
 
+
+
 .overview-bar.rank-1 .overview-digit{
 color:#5F4300;
 }
+
+
 
 
 .overview-bar.rank-2 .overview-digit{
@@ -1791,9 +2157,13 @@ color:var(--emerald);
 }
 
 
+
+
 .overview-bar.rank-3 .overview-digit{
 color:var(--cyan);
 }
+
+
 
 
 .overview-score{
@@ -1810,9 +2180,13 @@ white-space:nowrap;
 }
 
 
+
+
 .overview-bar.rank-1 .overview-score{
 color:var(--gold);
 }
+
+
 
 
 .overview-bar.rank-2 .overview-score{
@@ -1820,9 +2194,13 @@ color:var(--emerald);
 }
 
 
+
+
 .overview-bar.rank-3 .overview-score{
 color:var(--cyan);
 }
+
+
 
 
 .overview-axis{
@@ -1833,6 +2211,8 @@ color:var(--muted2);
 font-family:'IBM Plex Mono',monospace;
 font-size:.41rem;
 }
+
+
 
 
 .deep-scan-board{
@@ -1852,6 +2232,8 @@ linear-gradient(
 );
 border-color:rgba(10,102,71,.19);
 }
+
+
 
 
 .deep-scan-board::before{
@@ -1874,6 +2256,8 @@ opacity:.75;
 }
 
 
+
+
 .deep-scan-head{
 display:flex;
 justify-content:space-between;
@@ -1881,6 +2265,8 @@ align-items:flex-start;
 gap:8px;
 margin-bottom:9px;
 }
+
+
 
 
 .deep-scan-kicker{
@@ -1892,11 +2278,15 @@ letter-spacing:1px;
 }
 
 
+
+
 .deep-scan-title{
 margin-top:2px;
 font-size:.83rem;
 font-weight:800;
 }
+
+
 
 
 .deep-scan-sub{
@@ -1906,11 +2296,15 @@ font-size:.45rem;
 }
 
 
+
+
 .deep-scan-grid{
 display:grid;
 grid-template-columns:1fr;
 gap:6px;
 }
+
+
 
 
 .deep-scan-card{
@@ -1931,10 +2325,14 @@ box-shadow .22s ease;
 }
 
 
+
+
 .deep-scan-card:hover{
 transform:translateY(-1px);
 box-shadow:0 7px 16px rgba(10,102,71,.065);
 }
+
+
 
 
 .deep-scan-card::before{
@@ -1946,6 +2344,8 @@ bottom:0;
 width:3px;
 background:linear-gradient(180deg,#9E6C02,#EAB308);
 }
+
+
 
 
 .deep-scan-card::after{
@@ -1961,16 +2361,26 @@ pointer-events:none;
 }
 
 
+
+
 .deep-scan-card.rank-two::before{background:linear-gradient(180deg,#697873,#AAB5B0,#596761);}
+
+
 
 
 .deep-scan-card.rank-two::after{background:rgba(110,126,120,.055);}
 
 
+
+
 .deep-scan-card.rank-three::before{background:linear-gradient(180deg,#9A5730,#D79A76,#B86F49);}
 
 
+
+
 .deep-scan-card.rank-three::after{background:rgba(180,105,58,.055);}
+
+
 
 
 .deep-scan-top{
@@ -1984,6 +2394,8 @@ margin-bottom:7px;
 }
 
 
+
+
 .deep-scan-name{
 display:flex;
 align-items:center;
@@ -1991,6 +2403,8 @@ gap:7px;
 font-size:.55rem;
 font-weight:800;
 }
+
+
 
 
 .deep-rank-label{
@@ -2002,6 +2416,8 @@ font-weight:800;
 letter-spacing:.5px;
 color:var(--muted);
 }
+
+
 
 
 .deep-scan-digit{
@@ -2028,6 +2444,8 @@ font-weight:800;
 }
 
 
+
+
 .deep-scan-card.rank-two .deep-scan-digit{
 color:#43514D;
 background:linear-gradient(135deg,#EEF1F0,#C9D1CE);
@@ -2038,6 +2456,8 @@ inset 0 1px 0 rgba(255,255,255,.25);
 }
 
 
+
+
 .deep-scan-card.rank-three .deep-scan-digit{
 color:#7C4325;
 background:linear-gradient(135deg,#F8D9C5,#E9B394);
@@ -2046,6 +2466,8 @@ box-shadow:
 0 4px 10px rgba(8,115,128,.10),
 inset 0 1px 0 rgba(255,255,255,.25);
 }
+
+
 
 
 .deep-scan-rank{
@@ -2060,10 +2482,16 @@ border:1px solid rgba(158,108,2,.18);
 }
 
 
+
+
 .deep-scan-card.rank-two .deep-scan-rank{color:#53645E;background:rgba(238,241,240,.92);border-color:rgba(83,100,94,.22);}
 
 
+
+
 .deep-scan-card.rank-three .deep-scan-rank{color:#9A5730;background:rgba(252,232,220,.88);border-color:rgba(180,105,58,.22);}
+
+
 
 
 .deep-scan-score{
@@ -2074,10 +2502,16 @@ font-weight:800;
 }
 
 
+
+
 .deep-scan-card.rank-two .deep-scan-score{color:#53645E;}
 
 
+
+
 .deep-scan-card.rank-three .deep-scan-score{color:#9A5730;}
+
+
 
 
 .deep-scan-pairs{
@@ -2087,6 +2521,8 @@ display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:4px;
 }
+
+
 
 
 .deep-pair{
@@ -2105,10 +2541,14 @@ border-color .2s ease;
 }
 
 
+
+
 .deep-pair:hover{
 transform:translateY(-1px);
 box-shadow:0 4px 10px rgba(10,102,71,.06);
 }
+
+
 
 
 .deep-pair strong{
@@ -2119,12 +2559,18 @@ color:var(--gold);
 }
 
 
+
+
 .deep-scan-card.rank-two .deep-pair{
 border-color:rgba(10,102,71,.13);
 }
 
 
+
+
 .deep-scan-card.rank-two .deep-pair strong{color:#53645E;}
+
+
 
 
 .deep-scan-card.rank-three .deep-pair{
@@ -2132,7 +2578,11 @@ border-color:rgba(8,115,128,.13);
 }
 
 
+
+
 .deep-scan-card.rank-three .deep-pair strong{color:#9A5730;}
+
+
 
 
 .deep-pair small{
@@ -2144,11 +2594,15 @@ color:var(--muted);
 }
 
 
+
+
 .three-d-scan{
 margin-top:7px;
 padding-top:8px;
 border-top:1px solid rgba(10,102,71,.09);
 }
+
+
 
 
 .three-d-head{
@@ -2159,10 +2613,14 @@ margin-bottom:5px;
 }
 
 
+
+
 .three-d-title{
 font-size:.55rem;
 font-weight:800;
 }
+
+
 
 
 .three-d-score{
@@ -2177,11 +2635,15 @@ font-weight:800;
 }
 
 
+
+
 .three-d-grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:4px;
 }
+
+
 
 
 .three-d-item{
@@ -2205,10 +2667,14 @@ border-color .2s ease;
 }
 
 
+
+
 .three-d-item:hover{
 transform:translateY(-1px);
 box-shadow:0 4px 10px rgba(158,108,2,.06);
 }
+
+
 
 
 .three-d-item strong{
@@ -2217,6 +2683,8 @@ font-family:'IBM Plex Mono',monospace;
 font-size:.63rem;
 color:var(--gold);
 }
+
+
 
 
 .three-d-item small{
@@ -2230,6 +2698,10 @@ color:var(--muted);
 
 
 
+
+
+
+
 .ind-win-set{
 border-radius:19px;
 background:
@@ -2237,10 +2709,14 @@ linear-gradient(135deg,#fff,#F2F9F5);
 }
 
 
+
+
 .ind-win-set{
 padding:10px 12px;
 margin-bottom:9px;
 }
+
+
 
 
 .ind-win-header{
@@ -2252,10 +2728,14 @@ margin-bottom:7px;
 }
 
 
+
+
 .ind-win-title{
 font-size:.76rem;
 font-weight:800;
 }
+
+
 
 
 .ind-win-title small{
@@ -2266,6 +2746,8 @@ font-size:.41rem;
 font-weight:600;
 letter-spacing:.2px;
 }
+
+
 
 
 .ind-win-badge{
@@ -2280,11 +2762,15 @@ font-weight:700;
 }
 
 
+
+
 .ind-win-grid{
 display:grid;
 grid-template-columns:repeat(6,1fr);
 gap:4px;
 }
+
+
 
 
 .ind-win-item{
@@ -2308,11 +2794,15 @@ border-color .2s ease;
 }
 
 
+
+
 .ind-win-item:hover{
 transform:translateY(-1px);
 box-shadow:0 5px 12px rgba(10,102,71,.07);
 border-color:rgba(16,185,129,.28);
 }
+
+
 
 
 .ind-win-item strong{
@@ -2324,6 +2814,8 @@ font-weight:800;
 }
 
 
+
+
 .ind-win-item span{
 display:block;
 margin-top:1px;
@@ -2333,9 +2825,13 @@ font-weight:700;
 }
 
 
+
+
 .formula-section{
 margin-top:2px;
 }
+
+
 
 
 .formula-toggle{
@@ -2354,11 +2850,15 @@ font-weight:800;
 }
 
 
+
+
 .formula-toggle span:last-child{
 color:var(--emerald);
 font-family:'IBM Plex Mono',monospace;
 font-size:.49rem;
 }
+
+
 
 
 .formula-card{
@@ -2367,6 +2867,8 @@ margin-bottom:6px;
 border-radius:14px;
 background:#fff;
 }
+
+
 
 
 .formula-card::before{
@@ -2380,12 +2882,16 @@ background:linear-gradient(180deg,#0A6647,#087380);
 }
 
 
+
+
 .formula-head{
 display:flex;
 justify-content:space-between;
 align-items:center;
 gap:6px;
 }
+
+
 
 
 .formula-name{
@@ -2397,6 +2903,8 @@ font-weight:800;
 }
 
 
+
+
 .compact-badge{
 padding:2px 6px;
 border-radius:6px;
@@ -2406,6 +2914,8 @@ border:1px solid rgba(158,108,2,.20);
 font-size:.40rem;
 font-weight:700;
 }
+
+
 
 
 .formula-badge{
@@ -2420,6 +2930,8 @@ font-weight:700;
 }
 
 
+
+
 .formula-sub{
 margin-top:5px;
 padding-bottom:5px;
@@ -2429,10 +2941,14 @@ font-size:.47rem;
 }
 
 
+
+
 .formula-sub strong{
 color:var(--gold);
 font-family:'IBM Plex Mono',monospace;
 }
+
+
 
 
 .formula-pairs{
@@ -2441,6 +2957,8 @@ grid-template-columns:repeat(5,1fr);
 gap:4px;
 margin-top:6px;
 }
+
+
 
 
 .formula-pair{
@@ -2453,6 +2971,8 @@ cursor:pointer;
 }
 
 
+
+
 .formula-pair strong{
 display:block;
 font-family:'IBM Plex Mono',monospace;
@@ -2461,11 +2981,15 @@ font-size:.61rem;
 }
 
 
+
+
 .formula-pair small{
 color:var(--muted);
 font-family:'IBM Plex Mono',monospace;
 font-size:.37rem;
 }
+
+
 
 
 .disclaimer{
@@ -2481,9 +3005,13 @@ line-height:1.45;
 }
 
 
+
+
 .disclaimer strong{
 color:var(--text2);
 }
+
+
 
 
 .logout-btn{
@@ -2504,11 +3032,15 @@ background .2s ease;
 }
 
 
+
+
 .logout-btn:hover{
 transform:translateY(-1px);
 background:var(--bg2);
 border-color:rgba(10,102,71,.28);
 }
+
+
 
 
 #toast{
@@ -2532,10 +3064,14 @@ transition:.25s;
 }
 
 
+
+
 #toast.show{
 opacity:1;
 transform:translate(-50%,0);
 }
+
+
 
 
 @media(max-width:400px){
@@ -2550,7 +3086,11 @@ transform:translate(-50%,0);
 .overview-score{font-size:.29rem;}
 
 
+
+
 }
+
+
 
 
 @media(prefers-reduced-motion:reduce){
@@ -2561,6 +3101,8 @@ scroll-behavior:auto!important;
 transition:none!important;
 }
 }
+
+
 
 
 /* =========================================================
@@ -2575,10 +3117,14 @@ color:var(--text2);
 }
 
 
+
+
 .deep-scan-card.rank-one .deep-scan-model-name{
 color:#8A6200;
 text-shadow:0 0 10px rgba(234,179,8,.16);
 }
+
+
 
 
 .deep-scan-card.rank-two .deep-scan-model-name{
@@ -2586,9 +3132,13 @@ color:#3F6B5A;
 }
 
 
+
+
 .deep-scan-card.rank-three .deep-scan-model-name{
 color:#087380;
 }
+
+
 
 
 /* Best JUE rank 1–5 colors are applied only to matching pairs inside TOP 3. */
@@ -2604,9 +3154,13 @@ text-shadow:0 0 8px rgba(234,179,8,.18);
 .deep-scan-card .deep-pair.jue-rank-1 small{color:#9E6C02;}
 
 
+
+
 .deep-scan-card .deep-pair.jue-rank-2{background:linear-gradient(135deg,rgba(238,241,240,.98),rgba(255,255,255,.98));border-color:rgba(83,100,94,.34);box-shadow:0 4px 11px rgba(83,100,94,.10);}
 .deep-scan-card .deep-pair.jue-rank-2 strong{color:#53645E;}
 .deep-scan-card .deep-pair.jue-rank-2 small{color:#687A73;}
+
+
 
 
 .deep-scan-card .deep-pair.jue-rank-3{
@@ -2618,6 +3172,8 @@ box-shadow:0 4px 11px rgba(180,105,58,.10);
 .deep-scan-card .deep-pair.jue-rank-3 small{color:#A96843;}
 
 
+
+
 .deep-scan-card .deep-pair.jue-rank-4{
 background:linear-gradient(135deg,rgba(224,249,247,.92),rgba(255,255,255,.98));
 border-color:rgba(8,115,128,.30);
@@ -2627,6 +3183,8 @@ box-shadow:0 4px 11px rgba(8,115,128,.08);
 .deep-scan-card .deep-pair.jue-rank-4 small{color:#0B8793;}
 
 
+
+
 .deep-scan-card .deep-pair.jue-rank-5{
 background:linear-gradient(135deg,rgba(243,237,255,.92),rgba(255,255,255,.98));
 border-color:rgba(109,40,217,.25);
@@ -2634,6 +3192,8 @@ box-shadow:0 4px 11px rgba(109,40,217,.07);
 }
 .deep-scan-card .deep-pair.jue-rank-5 strong{color:#6D28D9;}
 .deep-scan-card .deep-pair.jue-rank-5 small{color:#7651C7;}
+
+
 
 
 .deep-scan-card .deep-pair.jue-rank-1::after{
@@ -2647,11 +3207,15 @@ pointer-events:none;
 }
 
 
+
+
 @keyframes jueBestShine{
 0%,62%{transform:translateX(-120%);opacity:0}
 72%{opacity:.8}
 86%,100%{transform:translateX(120%);opacity:0}
 }
+
+
 
 
 /* Premium treatment for the six-number win set. */
@@ -2670,6 +3234,8 @@ box-shadow:var(--shadowSoft);
 }
 
 
+
+
 .ind-win-set::before{
 content:"";
 position:absolute;
@@ -2682,6 +3248,8 @@ opacity:.82;
 }
 
 
+
+
 .ind-win-header{
 position:relative;
 z-index:2;
@@ -2689,10 +3257,14 @@ margin-bottom:8px;
 }
 
 
+
+
 .ind-win-title{
 font-size:.78rem;
 font-weight:800;
 }
+
+
 
 
 .ind-win-title small{
@@ -2704,6 +3276,8 @@ font-size:.38rem;
 font-weight:700;
 letter-spacing:.35px;
 }
+
+
 
 
 .ind-win-badge{
@@ -2718,11 +3292,15 @@ box-shadow:0 3px 9px rgba(158,108,2,.06);
 }
 
 
+
+
 .ind-win-grid{
 position:relative;
 z-index:2;
 gap:5px;
 }
+
+
 
 
 .ind-win-item{
@@ -2731,6 +3309,8 @@ border-radius:11px;
 background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(241,248,244,.98));
 box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 3px 9px rgba(10,102,71,.035);
 }
+
+
 
 
 .ind-win-item::before{
@@ -2746,10 +3326,14 @@ opacity:.52;
 }
 
 
+
+
 .ind-win-item:nth-child(1)::before{opacity:.95;}
 .ind-win-item:nth-child(2)::before{opacity:.80;}
 .ind-win-item:nth-child(3)::before{opacity:.70;}
 .ind-win-item:nth-child(n+4)::before{opacity:.50;}
+
+
 
 
 .ind-win-item:hover{
@@ -2758,10 +3342,14 @@ box-shadow:0 7px 15px rgba(10,102,71,.075),inset 0 1px 0 rgba(255,255,255,.9);
 }
 
 
+
+
 .ind-win-item strong{
 font-size:.86rem;
 letter-spacing:.5px;
 }
+
+
 
 
 .ind-win-item span{
@@ -2774,12 +3362,17 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
 /* =========================================================
  PREMIUM CYBER-LUXURY FINISHING — AUDITED ROUND 2
  ========================================================= */
 :root{
   --lux-shadow:0 10px 30px rgba(10,102,71,.075),0 1px 0 rgba(255,255,255,.9) inset;
 }
+
 
 .package,.formula-card,.ind-win-set,.top3-row,.deep-scan-card{
   isolation:isolate;
@@ -2816,13 +3409,16 @@ letter-spacing:.25px;
 @keyframes top3LuxurySweep{0%,55%{transform:translateX(-125%);opacity:0}65%{opacity:.55}78%,100%{transform:translateX(125%);opacity:0}}
 @keyframes winSetSweep{0%,58%{transform:translateX(-130%);opacity:0}68%{opacity:.55}82%,100%{transform:translateX(130%);opacity:0}}
 
+
 /* Premium silver for Rank 2 in all audited ranking surfaces */
 .top3-row.rank-two .top3-position,.top3-row.rank-two .top3-score,
 .deep-scan-card.rank-two .deep-scan-model-name,.deep-scan-card.rank-two .deep-scan-score{color:#53645E;}
 
+
 /* Premium rose-gold for Rank 3 */
 .top3-row.rank-three .top3-position,.top3-row.rank-three .top3-score,
 .deep-scan-card.rank-three .deep-scan-model-name,.deep-scan-card.rank-three .deep-scan-score{color:#9A5730;}
+
 
 /* Premium percentage rails */
 .top3-bar{box-shadow:inset 0 1px 1px rgba(255,255,255,.75),0 1px 0 rgba(10,102,71,.035);}
@@ -2831,27 +3427,99 @@ letter-spacing:.25px;
 .top3-row.rank-three .top3-bar-fill{background:linear-gradient(90deg,#99562F,#D79A76,#F0C5AE,#B86F49);background-size:180% 100%;animation:railGlow 9s ease-in-out infinite;}
 @keyframes railGlow{0%,100%{background-position:0 0}50%{background-position:100% 0}}
 
+
 /* Package conversion area: richer without changing the original palette */
 .packages .package{animation:packageFloat 9s ease-in-out infinite;}
 .packages .package:nth-child(2){animation-delay:1.5s}.packages .package:nth-child(3){animation-delay:3s}.packages .package:nth-child(4){animation-delay:4.5s}
 @keyframes packageFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
 
+
 /* Five-model table/card surfaces: subtle depth only */
 .formula-card .formula-head{position:relative;}
 .formula-card .formula-head::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:linear-gradient(90deg,transparent,rgba(10,102,71,.10),transparent);}
+
 
 @media(prefers-reduced-motion:reduce){
   .package,.top3-row::before,.ind-win-item::after,.package::before,.package::after,.top3-row.rank-one .top3-bar-fill,.top3-row.rank-two .top3-bar-fill,.top3-row.rank-three .top3-bar-fill{animation:none!important;}
 }
 
+
+
+
+/* =========================================================
+ PREMIUM VIP+ UPGRADE — FINAL VISUAL PASS
+ ========================================================= */
+.hero-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px;}
+.meta-chip{position:relative;min-height:32px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(241,249,245,.88));border:1px solid rgba(10,102,71,.13);box-shadow:0 5px 14px rgba(10,102,71,.045),inset 0 1px 0 rgba(255,255,255,.95);font-size:.49rem;letter-spacing:.15px;}
+.meta-chip:nth-child(3){border-color:rgba(8,115,128,.22);color:#075D68;background:linear-gradient(135deg,rgba(235,251,249,.95),rgba(248,253,251,.95));}
+.meta-chip:last-child{border-color:rgba(158,108,2,.28);color:#765000;background:linear-gradient(135deg,rgba(254,249,195,.78),rgba(255,255,255,.96));box-shadow:0 5px 15px rgba(158,108,2,.055),inset 0 1px 0 #fff;}
+.engine-strip{gap:7px;}
+.engine-card{position:relative;overflow:hidden;min-height:78px;padding:10px 9px;border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(240,249,244,.94));border:1px solid rgba(10,102,71,.13);box-shadow:0 9px 22px rgba(10,102,71,.055),inset 0 1px 0 rgba(255,255,255,.98);}
+.engine-card::after{content:"";position:absolute;inset:auto -20px -30px auto;width:90px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 68%);pointer-events:none;}
+.engine-label{position:relative;z-index:1;font-size:.47rem;letter-spacing:.1px;}
+.engine-value{position:relative;z-index:1;margin-top:6px;font-size:.72rem;font-weight:800;letter-spacing:-.15px;}
+.last-session{margin:8px 0 9px;padding:8px 10px;border-radius:12px;background:linear-gradient(100deg,rgba(254,249,195,.48),rgba(255,255,255,.92),rgba(238,248,243,.7));border:1px solid rgba(158,108,2,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 5px 15px rgba(10,102,71,.035);}
+.command-center{position:relative;overflow:hidden;border:1px solid rgba(10,102,71,.14);box-shadow:0 13px 30px rgba(10,102,71,.065),inset 0 1px 0 #fff;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(239,249,244,.96));}
+.command-center::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(234,179,8,.55),rgba(16,185,129,.38),transparent);}
+.field-card{padding:9px;border-radius:13px;background:linear-gradient(145deg,rgba(247,252,249,.96),rgba(255,255,255,.98));border:1px solid rgba(10,102,71,.13);box-shadow:inset 0 1px 0 #fff,0 5px 13px rgba(10,102,71,.035);}
+.field-label{font-size:.49rem;letter-spacing:.15px;}
+.field-card input{height:44px;border-radius:10px;border:1px solid rgba(10,102,71,.17);background:linear-gradient(145deg,#fff,#F7FCF9);box-shadow:inset 0 1px 3px rgba(10,102,71,.035),0 1px 0 #fff;font-size:1.12rem;transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease;}
+.field-card input:focus{border-color:rgba(158,108,2,.52);box-shadow:0 0 0 3px rgba(234,179,8,.09),0 8px 18px rgba(158,108,2,.07),inset 0 1px 0 #fff;transform:translateY(-1px);outline:none;}
+.calculate-btn{height:44px;border-radius:13px;background:linear-gradient(135deg,#081B14 0%,#0A6647 54%,#0D7A55 100%);border:1px solid rgba(234,179,8,.48);box-shadow:0 8px 18px rgba(10,102,71,.18),inset 0 1px 0 rgba(255,255,255,.18),0 0 0 1px rgba(255,255,255,.35) inset;font-weight:800;letter-spacing:.05px;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;}
+.calculate-btn:hover{transform:translateY(-1px);filter:saturate(1.05);box-shadow:0 11px 24px rgba(10,102,71,.22),0 0 18px rgba(234,179,8,.09),inset 0 1px 0 rgba(255,255,255,.22);}
+.clear-btn{height:44px;background:linear-gradient(145deg,#fff,#F1F7F4);box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(10,102,71,.035);}
+.ratio-bar-container{height:7px;}
+
+/* Rank identity: thin illuminated full-outline instead of a colored side tab. */
+.deep-scan-card{border:1px solid rgba(10,102,71,.12);}
+.deep-scan-card::before{display:none;}
+.deep-scan-card.rank-one{border-color:rgba(158,108,2,.42);box-shadow:inset 0 0 0 1px rgba(234,179,8,.12),0 8px 20px rgba(158,108,2,.055);}
+.deep-scan-card.rank-one::before{background:linear-gradient(180deg,#8B6508,#EAB308,#FFF0A6,#B88716);box-shadow:0 0 8px rgba(234,179,8,.22);}
+.deep-scan-card.rank-two{border-color:rgba(105,120,115,.40);box-shadow:inset 0 0 0 1px rgba(192,202,198,.14),0 8px 20px rgba(83,100,94,.045);}
+.deep-scan-card.rank-two::before{background:linear-gradient(180deg,#697873,#D8DEDC,#8D9994);box-shadow:0 0 8px rgba(144,158,152,.17);}
+.deep-scan-card.rank-three{border-color:rgba(180,105,58,.40);box-shadow:inset 0 0 0 1px rgba(215,154,118,.14),0 8px 20px rgba(180,105,58,.045);}
+.deep-scan-card.rank-three::before{background:linear-gradient(180deg,#9A5730,#E7B092,#B86F49);box-shadow:0 0 8px rgba(215,154,118,.18);}
+.deep-scan-card.rank-two .deep-scan-digit{border-color:rgba(105,120,115,.42);box-shadow:0 4px 10px rgba(83,100,94,.08),inset 0 1px 0 rgba(255,255,255,.55);}
+.deep-scan-card.rank-three .deep-scan-digit{border-color:rgba(180,105,58,.42);box-shadow:0 4px 10px rgba(180,105,58,.08),inset 0 1px 0 rgba(255,255,255,.55);}
+
+/* Keep Top 3 rank colors consistent across the whole card surface. */
+.top3-row.rank-one{border-color:rgba(158,108,2,.38);box-shadow:inset 0 0 0 1px rgba(234,179,8,.09),0 6px 16px rgba(158,108,2,.045);}
+.top3-row.rank-two{border-color:rgba(105,120,115,.38);box-shadow:inset 0 0 0 1px rgba(192,202,198,.12),0 6px 16px rgba(83,100,94,.04);}
+.top3-row.rank-three{border-color:rgba(180,105,58,.38);box-shadow:inset 0 0 0 1px rgba(215,154,118,.12),0 6px 16px rgba(180,105,58,.04);}
+
+/* 3-digit top module gets its own visual identity, separate from Rank 3. */
+.three-d-scan{position:relative;margin-top:10px;padding:10px;border-radius:15px;background:linear-gradient(145deg,rgba(248,252,255,.98),rgba(238,247,249,.94));border:1px solid rgba(8,115,128,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 8px 22px rgba(8,115,128,.045);}
+.three-d-scan::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(20,184,166,.65),rgba(8,115,128,.25),transparent);}
+.three-d-title{color:#075D68;letter-spacing:.15px;}
+.three-d-score{color:#075D68;background:rgba(20,184,166,.07);border-color:rgba(8,115,128,.20);}
+.three-d-item{background:linear-gradient(145deg,#fff,#F1FAFA);border-color:rgba(8,115,128,.16);box-shadow:inset 0 1px 0 #fff;}
+.three-d-item strong{color:#075D68;}
+.three-d-item:hover{box-shadow:0 5px 12px rgba(8,115,128,.07);}
+
+/* Curated 6-number set: restrained luxury treatment. */
+.ind-win-set{position:relative;overflow:hidden;border:1px solid rgba(158,108,2,.16);box-shadow:0 12px 28px rgba(10,102,71,.055),inset 0 1px 0 #fff;background:linear-gradient(145deg,#fff,#F5FAF7 72%,#FFFBE9);}
+.ind-win-set::after{content:"";position:absolute;right:-25px;top:-35px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(234,179,8,.10),transparent 70%);pointer-events:none;}
+.ind-win-item{border-color:rgba(158,108,2,.18);background:linear-gradient(145deg,#fff,#F7FAF8);box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(10,102,71,.035);}
+.ind-win-item strong{position:relative;z-index:2;color:#765000;text-shadow:0 1px 0 #fff;}
+.ind-win-item:hover{border-color:rgba(158,108,2,.34);box-shadow:0 8px 16px rgba(158,108,2,.07),inset 0 1px 0 #fff;}
+
+/* Slightly calmer overall motion for a premium dashboard feel. */
+@media (prefers-reduced-motion:reduce){.top3-row::before,.ind-win-item::after,.package::before,.package::after{animation:none!important}.deep-scan-card,.ind-win-item,.calculate-btn,.field-card input{transition:none!important}}
+
 </style>
 </head>
+
+
 
 
 <body>
 
 
+
+
 <canvas id="snowCanvas"></canvas>
+
+
 
 
 <div class="ambient">
@@ -2859,12 +3527,18 @@ letter-spacing:.25px;
 </div>
 
 
+
+
 <div class="app-shell">
 <div class="app-card">
 <div class="app-inner">
 
 
+
+
 <div id="loginView">
+
+
 
 
 <div class="top-nav">
@@ -2877,11 +3551,15 @@ letter-spacing:.25px;
 </div>
 
 
+
+
 <div class="system-pill">
 <span class="live-dot"></span>
 SYSTEM READY
 </div>
 </div>
+
+
 
 
 <section class="hero">
@@ -2891,15 +3569,21 @@ QUANT ANALYSIS ENGINE
 </div>
 
 
+
+
 <h1>
-Mester Lotto <em>VIP+</em>
+Master Lotto <em>VIP+</em>
 </h1>
+
+
 
 
 <p>
 ระบบคำนวณและวิเคราะห์ข้อมูล AI อัจฉริยะ<br>
 <b>Predictive Data Engine</b>
 </p>
+
+
 
 
 <div class="hero-meta">
@@ -2911,11 +3595,15 @@ Mester Lotto <em>VIP+</em>
 </section>
 
 
+
+
 <div class="login-dashboard">
 <div class="mini-stat">
 <div class="mini-stat-label">ผู้ใช้งานระบบ / MEMBERS</div>
 <div class="mini-stat-value" id="totalUsersStat">2,637</div>
 </div>
+
+
 
 
 <div class="mini-stat">
@@ -2925,7 +3613,11 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 <div class="packages">
+
+
 
 
 <div class="package">
@@ -2935,11 +3627,15 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 <div class="package">
 <div class="package-title">15 วัน / 15 DAYS</div>
 <div class="package-price">199 ฿</div>
 <div class="package-desc">รายงวด / Period</div>
 </div>
+
+
 
 
 <div class="package">
@@ -2949,6 +3645,8 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 <div class="package">
 <div class="package-title">1 ปี / 1 YEAR</div>
 <div class="package-price">1,890 ฿</div>
@@ -2956,7 +3654,11 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 </div>
+
+
 
 
 <a href="https://line.me/ti/p/cWXNwvCmqc"
@@ -2968,7 +3670,11 @@ onclick="_app._audio('click')">
 </a>
 
 
+
+
 <section class="login-panel">
+
+
 
 
 <div class="section-eyebrow">
@@ -2976,14 +3682,20 @@ SECURE ACCESS / ระบบสมาชิก
 </div>
 
 
+
+
 <div class="login-heading">
 เชื่อมต่อ Master Engine
 </div>
 
 
+
+
 <div class="login-description">
 กรุณากรอกรหัสผ่านเพื่อเข้าสู่ระบบ
 </div>
+
+
 
 
 <input
@@ -2995,6 +3707,8 @@ spellcheck="false"
 >
 
 
+
+
 <button
 class="primary-btn"
 id="loginButton"
@@ -3003,9 +3717,13 @@ type="button">
 </button>
 
 
+
+
 <div id="errorMsg">
 ❌ รหัสผ่านไม่ถูกต้อง / ACCESS DENIED
 </div>
+
+
 
 
 </section>
@@ -3014,14 +3732,24 @@ type="button">
 
 
 
+
+
+
+
 <div id="calculatorView">
+
+
 
 
 <div class="top-nav">
 
 
+
+
 <div class="brand-mini">
 <div class="brand-mark">AI</div>
+
+
 
 
 <div>
@@ -3031,18 +3759,28 @@ type="button">
 </div>
 
 
+
+
 <div class="system-pill">
 <span class="live-dot"></span>
 ENGINE ONLINE
 </div>
 
 
+
+
 </div>
 
 
 
 
+
+
+
+
 <section class="hero">
+
+
 
 
 <div class="hero-kicker">
@@ -3051,15 +3789,21 @@ PREMIUM ANALYSIS CONSOLE
 </div>
 
 
+
+
 <h1>
-Mester Lotto <em>VIP+</em>
+Master Lotto <em>VIP+</em>
 </h1>
+
+
 
 
 <p>
 วิเคราะห์ด้วย AI อัจฉริยะ<br>
 <b>Multi-Layer AI Processing</b>
 </p>
+
+
 
 
 <div class="hero-meta">
@@ -3070,12 +3814,20 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 </section>
 
 
 
 
+
+
+
+
 <div class="engine-strip">
+
+
 
 
 <div class="engine-card">
@@ -3084,13 +3836,17 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 <div class="engine-value cyan">
 <span class="total-dot-wrap">
 <span class="total-dot" id="totalDot"></span>
 </span>
 
 
-<span id="totalProcessedCount">4,100</span>
+
+
+<span id="totalProcessedCount">50,150</span>
 ครั้ง
 </div>
 </div>
@@ -3098,7 +3854,13 @@ Mester Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 <div class="engine-card">
+
+
 
 
 <div class="engine-label">
@@ -3107,19 +3869,29 @@ Mester Lotto <em>VIP+</em>
 </div>
 
 
+
+
 <div
 class="engine-value green"
 id="onlineUsersCount">
-1,150 คน
+1,515 คน
 </div>
 
 
+
+
 </div>
+
+
+
+
 
 
 
 
 <div class="engine-card">
+
+
 
 
 <div class="engine-label">
@@ -3128,22 +3900,34 @@ id="onlineUsersCount">
 </div>
 
 
+
+
 <div
 class="engine-value gold"
 id="serverLatencyCount">
-18 ms
+21.5 ms
 </div>
 
 
-</div>
 
 
 </div>
+
+
+
+
+</div>
+
+
+
+
 
 
 
 
 <div id="lastSessionBadge" class="last-session">
+
+
 
 
 <span>อ้างอิงจากผลล่าสุด:</span>
@@ -3152,7 +3936,13 @@ id="serverLatencyCount">
 <strong id="lbl2"></strong>
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -3160,7 +3950,11 @@ id="serverLatencyCount">
 <section class="command-center">
 
 
+
+
 <div class="command-header">
+
+
 
 
 <div>
@@ -3169,10 +3963,14 @@ Analysis Input
 </div>
 
 
+
+
 <div class="command-sub">
 กรอกข้อมูลล่าสุด เพื่อเริ่มประมวลผล
 </div>
 </div>
+
+
 
 
 <div class="command-badge">
@@ -3180,7 +3978,13 @@ INPUT READY
 </div>
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -3188,7 +3992,11 @@ INPUT READY
 <div class="input-grid">
 
 
+
+
 <div class="field-card">
+
+
 
 
 <label
@@ -3196,6 +4004,8 @@ class="field-label"
 for="num3top">
 เลข 3 ตัวบน
 </label>
+
+
 
 
 <input
@@ -3210,7 +4020,13 @@ spellcheck="false"
 >
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -3218,11 +4034,15 @@ spellcheck="false"
 <div class="field-card">
 
 
+
+
 <label
 class="field-label"
 for="num2bottom">
 เลข 2 ตัวล่าง
 </label>
+
+
 
 
 <input
@@ -3237,15 +4057,25 @@ spellcheck="false"
 >
 
 
-</div>
 
 
 </div>
+
+
+
+
+</div>
+
+
+
+
 
 
 
 
 <div class="action-row">
+
+
 
 
 <button
@@ -3256,6 +4086,8 @@ type="button">
 </button>
 
 
+
+
 <button
 class="clear-btn"
 id="clearButton"
@@ -3264,7 +4096,11 @@ type="button">
 </button>
 
 
+
+
 </div>
+
+
 
 
 </section>
@@ -3272,10 +4108,18 @@ type="button">
 
 
 
+
+
+
+
 <div id="aiScannerBox">
 
 
+
+
 <div class="scanner-ring"></div>
+
+
 
 
 <div id="aiScannerText">
@@ -3283,12 +4127,22 @@ INITIALIZING QUANT ANALYSIS...
 </div>
 
 
+
+
 </div>
 
 
 
 
+
+
+
+
 <div id="resultContainer"></div>
+
+
+
+
 
 
 
@@ -3301,12 +4155,20 @@ type="button">
 </button>
 
 
+
+
 </div>
+
+
 
 
 </div>
 </div>
 </div>
+
+
+
+
 
 
 
@@ -3318,7 +4180,13 @@ type="button">
 
 
 
+
+
+
+
 <script>
+
+
 
 
 (function(){
@@ -3378,39 +4246,26 @@ function render(){
 resize();seed();window.addEventListener("resize",()=>{resize();seed();});render();
 })();
 
-let totalProcessed=
-parseInt(
-localStorage.getItem("ml_total_processed_v1"),
-10
-);
 
-
-if(
-!totalProcessed||
-isNaN(totalProcessed)||
-totalProcessed<35000
-){
-
-
-totalProcessed=35000;
-
-
-localStorage.setItem(
-"ml_total_processed_v1",
-totalProcessed
-);
-
-
+let totalProcessed=50150n;
+try{
+  const stored=localStorage.getItem("ml_total_processed_v2");
+  if(stored && /^\d+$/.test(stored)) totalProcessed=BigInt(stored);
+}catch(e){}
+if(totalProcessed<50150n){
+  totalProcessed=50150n;
+  localStorage.setItem("ml_total_processed_v2",String(totalProcessed));
 }
-
-
-
 
 function updateProcessedUI(triggerRipple=true){
 
 
+
+
 const el=
 document.getElementById("totalProcessedCount");
+
+
 
 
 if(el)
@@ -3418,32 +4273,54 @@ el.innerText=
 totalProcessed.toLocaleString();
 
 
+
+
 if(triggerRipple){
+
+
 
 
 const dot=
 document.getElementById("totalDot");
 
 
+
+
 if(dot){
+
+
 
 
 dot.classList.remove("ripple");
 
 
+
+
 void dot.offsetWidth;
+
+
 
 
 dot.classList.add("ripple");
 
 
-}
 
 
 }
 
 
+
+
 }
+
+
+
+
+}
+
+
+
+
 
 
 
@@ -3451,14 +4328,22 @@ dot.classList.add("ripple");
 function scheduleProcessedIncrements(){
 
 
+
+
 const count=
 Math.floor(Math.random()*3)+5;
+
+
 
 
 const intervals=[];
 
 
+
+
 for(let i=0;i<count;i++){
+
+
 
 
 intervals.push(
@@ -3466,34 +4351,54 @@ Math.floor(Math.random()*58000)+1000
 );
 
 
+
+
 }
+
+
 
 
 intervals.sort((a,b)=>a-b);
 
 
+
+
 intervals.forEach(delay=>{
+
+
 
 
 setTimeout(()=>{
 
 
-totalProcessed+=1;
+
+
+totalProcessed+=1n;
+
+
 
 
 localStorage.setItem(
-"ml_total_processed_v1",
+"ml_total_processed_v2",
 totalProcessed
 );
+
+
 
 
 updateProcessedUI(true);
 
 
+
+
 },delay);
 
 
+
+
 });
+
+
 
 
 setTimeout(
@@ -3502,95 +4407,53 @@ scheduleProcessedIncrements,
 );
 
 
+
+
 }
+
+
+
+
 
 
 
 
 let currentOnline=
 parseInt(
-localStorage.getItem("ml_online_users_v1"),
+localStorage.getItem("ml_online_users_v2"),
 10
 );
 
-
-if(
-!currentOnline||
-isNaN(currentOnline)
-)
-currentOnline=1150;
-
-
-
+if(!Number.isFinite(currentOnline) || currentOnline<1400 || currentOnline>1700){
+  currentOnline=1515;
+  localStorage.setItem("ml_online_users_v2",String(currentOnline));
+}
 
 function updateOnlineUsers(){
-
-
-const change=
-Math.floor(Math.random()*100)+1;
-
-
-if(Math.random()>.45)
-currentOnline+=change;
-else
-currentOnline-=change;
-
-
-if(currentOnline<1050)
-currentOnline+=
-Math.floor(Math.random()*40)+20;
-
-
-if(currentOnline>1280)
-currentOnline-=
-Math.floor(Math.random()*40)+20;
-
-
-localStorage.setItem(
-"ml_online_users_v1",
-currentOnline
-);
-
-
-const el=
-document.getElementById(
-"onlineUsersCount"
-);
-
-
-if(el)
-el.innerText=
-currentOnline.toLocaleString()+" คน";
-
-
+  const change=Math.floor(Math.random()*100)+1;
+  currentOnline += Math.random()>.48 ? change : -change;
+  if(currentOnline<1450) currentOnline=1450+Math.floor(Math.random()*45);
+  if(currentOnline>1650) currentOnline=1650-Math.floor(Math.random()*45);
+  localStorage.setItem("ml_online_users_v2",String(currentOnline));
+  const el=document.getElementById("onlineUsersCount");
+  if(el) el.innerText=currentOnline.toLocaleString()+" คน";
 }
 
 
-
+let currentLatency=
+parseFloat(localStorage.getItem("ml_server_latency_v2"));
+if(!Number.isFinite(currentLatency)) currentLatency=21.5;
 
 function updateServerLatency(){
-
-
-const latency=
-Math.floor(
-Math.random()*(26-18+1)
-)+18;
-
-
-const el=
-document.getElementById(
-"serverLatencyCount"
-);
-
-
-if(el)
-el.innerText=
-latency+" ms";
-
-
+  const drift=(Math.random()-.5)*2.4;
+  const target=18+Math.random()*8;
+  currentLatency += (target-currentLatency)*.28 + drift*.18;
+  currentLatency=Math.min(27,Math.max(17,currentLatency));
+  currentLatency=Math.round(currentLatency*10)/10;
+  localStorage.setItem("ml_server_latency_v2",String(currentLatency));
+  const el=document.getElementById("serverLatencyCount");
+  if(el) el.innerText=currentLatency.toFixed(1)+" ms";
 }
-
-
 
 
 document.addEventListener(
@@ -3598,117 +4461,100 @@ document.addEventListener(
 ()=>{
 
 
+
+
 updateProcessedUI(false);
+
+
 
 
 scheduleProcessedIncrements();
 
 
+
+
 updateOnlineUsers();
+
+
 
 
 setInterval(
 updateOnlineUsers,
-60000
+30000
 );
+
+
 
 
 updateServerLatency();
 
 
+
+
 setInterval(
 updateServerLatency,
-3500
+2500
 );
+
+
 
 
 }
 );
+
+
+
+
 
 
 
 
 const _secEnc={
 
-
-_dbToken:[
-"4d617374657241646d696e32303236",
-"54396b4c326d5037",
-"5a71345738785431"
+// Access credentials are represented only as SHA-256 digests in this client build.
+// For production security, move authentication to a server-side endpoint.
+_hashes:[
+  "3a0c6560163397829d89c545a2eeb26b1cb9e16744d83970979908c4b99f5b32",
+  "7b61ba42323c8c1cf70f5b62e6a5525a28779ba587bf92497b6be1c41f5b5d15",
+  "25295df9679abdb8156fb3292416766cd04ebaa7008acaf2973a42ece0bd74ed"
 ],
-
-
-_hexDecode(hex){
-
-
-let str="";
-
-
-for(let i=0;i<hex.length;i+=2){
-
-
-str+=String.fromCharCode(
-parseInt(
-hex.substr(i,2),
-16
-)
-);
-
-
-}
-
-
-return str;
-
-
-},
-
-
 async _checkMatch(inputVal){
-
-
-const value=
-String(inputVal||"").trim();
-
-
-for(
-const hex of this._dbToken
-){
-
-
-if(
-value===this._hexDecode(hex)
-)
-return true;
-
-
+  const value=String(inputVal||"").trim();
+  if(!value || !window.crypto?.subtle) return false;
+  const data=new TextEncoder().encode(value);
+  const digest=await crypto.subtle.digest("SHA-256",data);
+  const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,"0")).join("");
+  return this._hashes.includes(hash);
 }
-
-
-return false;
-
-
-}
-
 
 };
-
-
 
 
 const _app={
 
 
+
+
 _toastTimer:null,
+
+
 
 
 async _verify(p){
 
 
+
+
 return await _secEnc._checkMatch(p);
 
 
+
+
 },
+
+
+
+
 
 
 
@@ -3716,7 +4562,11 @@ return await _secEnc._checkMatch(p);
 _audio(type="click"){
 
 
+
+
 try{
+
+
 
 
 const AC=
@@ -3724,17 +4574,27 @@ window.AudioContext||
 window.webkitAudioContext;
 
 
+
+
 if(!AC)return;
 
 
+
+
 const c=new AC();
+
+
 
 
 const o=c.createOscillator();
 const g=c.createGain();
 
 
+
+
 const now=c.currentTime;
+
+
 
 
 o.type=
@@ -3743,10 +4603,14 @@ type==="error"
 :"sine";
 
 
+
+
 o.frequency.setValueAtTime(
 type==="error"?190:520,
 now
 );
+
+
 
 
 o.frequency.exponentialRampToValueAtTime(
@@ -3755,10 +4619,14 @@ now+.08
 );
 
 
+
+
 g.gain.setValueAtTime(
 type==="error"?.035:.025,
 now
 );
+
+
 
 
 g.gain.exponentialRampToValueAtTime(
@@ -3767,15 +4635,23 @@ now+.12
 );
 
 
+
+
 o.connect(g);
 g.connect(c.destination);
+
+
 
 
 o.start(now);
 o.stop(now+.13);
 
 
+
+
 }catch(e){}
+
+
 
 
 },
@@ -3783,7 +4659,13 @@ o.stop(now+.13);
 
 
 
+
+
+
+
 _esc(s){
+
+
 
 
 return String(s)
@@ -3794,7 +4676,13 @@ return String(s)
 .replace(/'/g,"&#039;");
 
 
+
+
 },
+
+
+
+
 
 
 
@@ -3802,7 +4690,11 @@ return String(s)
 async login(){
 
 
+
+
 this._audio("click");
+
+
 
 
 const input=
@@ -3811,17 +4703,25 @@ document.getElementById(
 );
 
 
+
+
 const error=
 document.getElementById(
 "errorMsg"
 );
 
 
+
+
 if(!input||!error)return;
+
+
 
 
 const value=
 input.value.trim();
+
+
 
 
 if(
@@ -3830,22 +4730,36 @@ if(
 ){
 
 
+
+
 this._audio("error");
+
+
 
 
 error.style.display="block";
 
 
+
+
 input.focus();
+
+
 
 
 return;
 
 
+
+
 }
 
 
+
+
 error.style.display="none";
+
+
 
 
 localStorage.setItem(
@@ -3854,9 +4768,13 @@ localStorage.setItem(
 );
 
 
+
+
 document.getElementById(
 "loginView"
 ).style.display="none";
+
+
 
 
 document.getElementById(
@@ -3864,7 +4782,11 @@ document.getElementById(
 ).style.display="block";
 
 
+
+
 this.checkSessionBadge();
+
+
 
 
 const num3=
@@ -3873,8 +4795,12 @@ document.getElementById(
 );
 
 
+
+
 if(num3)
 num3.focus();
+
+
 
 
 },
@@ -3882,10 +4808,18 @@ num3.focus();
 
 
 
+
+
+
+
 logout(){
 
 
+
+
 this._audio("click");
+
+
 
 
 localStorage.removeItem(
@@ -3893,14 +4827,20 @@ localStorage.removeItem(
 );
 
 
+
+
 document.getElementById(
 "calculatorView"
 ).style.display="none";
 
 
+
+
 document.getElementById(
 "loginView"
 ).style.display="block";
+
+
 
 
 [
@@ -3910,19 +4850,29 @@ document.getElementById(
 ].forEach(id=>{
 
 
+
+
 const el=
 document.getElementById(id);
+
+
 
 
 if(el)el.value="";
 
 
+
+
 });
+
+
 
 
 document.getElementById(
 "resultContainer"
 ).innerHTML="";
+
+
 
 
 document.getElementById(
@@ -3930,7 +4880,13 @@ document.getElementById(
 ).style.display="none";
 
 
+
+
 },
+
+
+
+
 
 
 
@@ -3938,7 +4894,11 @@ document.getElementById(
 clearCalc(){
 
 
+
+
 this._audio("click");
+
+
 
 
 document.getElementById(
@@ -3946,9 +4906,13 @@ document.getElementById(
 ).innerHTML="";
 
 
+
+
 document.getElementById(
 "num3top"
 ).value="";
+
+
 
 
 document.getElementById(
@@ -3956,9 +4920,13 @@ document.getElementById(
 ).value="";
 
 
+
+
 document.getElementById(
 "num3top"
 ).focus();
+
+
 
 
 },
@@ -3966,7 +4934,13 @@ document.getElementById(
 
 
 
+
+
+
+
 checkSessionBadge(){
+
+
 
 
 const n3=
@@ -3975,10 +4949,14 @@ localStorage.getItem(
 );
 
 
+
+
 const n2=
 localStorage.getItem(
 "ml_l_n2_v3"
 );
+
+
 
 
 const badge=
@@ -3987,10 +4965,16 @@ document.getElementById(
 );
 
 
+
+
 if(!badge)return;
 
 
+
+
 if(n3&&n2){
+
+
 
 
 document.getElementById(
@@ -3998,21 +4982,33 @@ document.getElementById(
 ).innerText=n3;
 
 
+
+
 document.getElementById(
 "lbl2"
 ).innerText=n2;
 
 
+
+
 badge.style.display="flex";
+
+
 
 
 }else{
 
 
+
+
 badge.style.display="none";
 
 
+
+
 }
+
+
 
 
 },
@@ -4020,10 +5016,18 @@ badge.style.display="none";
 
 
 
+
+
+
+
 calculate(){
 
 
+
+
 this._audio("click");
+
+
 
 
 const n3=
@@ -4032,10 +5036,14 @@ document.getElementById(
 ).value.trim();
 
 
+
+
 const n2=
 document.getElementById(
 "num2bottom"
 ).value.trim();
+
+
 
 
 if(
@@ -4044,7 +5052,11 @@ if(
 ){
 
 
+
+
 this._audio("error");
+
+
 
 
 alert(
@@ -4052,10 +5064,16 @@ alert(
 );
 
 
+
+
 return;
 
 
+
+
 }
+
+
 
 
 localStorage.setItem(
@@ -4064,13 +5082,21 @@ n3
 );
 
 
+
+
 localStorage.setItem(
 "ml_l_n2_v3",
 n2
 );
 
 
+
+
 this.checkSessionBadge();
+
+
+
+
 
 
 
@@ -4081,13 +5107,19 @@ document.getElementById(
 );
 
 
+
+
 const btn=
 document.getElementById(
 "calculateButton"
 );
 
 
+
+
 btn.disabled=true;
+
+
 
 
 scan.style.display="block";
@@ -4095,31 +5127,53 @@ scan.style.display="block";
 
 
 
+
+
+
+
 const messages=[
+
+
 
 
 "READING INPUT STRUCTURE...",
 
 
+
+
 "CALCULATING DIGIT MOMENTUM...",
+
+
 
 
 "RUNNING TOP 5 PAIR RANKING ENGINE...",
 
 
+
+
 "EVALUATING 5 MATHEMATICAL MODELS...",
+
+
 
 
 "BUILDING NUMBER MATRIX...",
 
 
+
+
 "MAPPING DIGIT DISTRIBUTION...",
+
+
 
 
 "GENERATING WIN SET...",
 
 
+
+
 "FINALIZING ANALYSIS..."
+
+
 
 
 ];
@@ -4127,7 +5181,13 @@ const messages=[
 
 
 
+
+
+
+
 let index=0;
+
+
 
 
 const scannerText=
@@ -4136,8 +5196,14 @@ document.getElementById(
 );
 
 
+
+
 scannerText.innerText=
 messages[0];
+
+
+
+
 
 
 
@@ -4146,17 +5212,27 @@ const timer=
 setInterval(()=>{
 
 
+
+
 index++;
 
 
+
+
 if(index<messages.length){
+
+
 
 
 scannerText.innerText=
 messages[index];
 
 
+
+
 }
+
+
 
 
 },100);
@@ -4164,22 +5240,36 @@ messages[index];
 
 
 
+
+
+
+
 setTimeout(()=>{
+
+
 
 
 clearInterval(timer);
 
 
+
+
 scan.style.display="none";
 
 
+
+
 btn.disabled=false;
+
+
 
 
 this.runAnalysis(
 n3,
 n2
 );
+
+
 
 
 document.getElementById(
@@ -4190,22 +5280,36 @@ block:"start"
 });
 
 
-totalProcessed+=1;
+
+
+totalProcessed+=1n;
+
+
 
 
 localStorage.setItem(
-"ml_total_processed_v1",
+"ml_total_processed_v2",
 totalProcessed
 );
+
+
 
 
 updateProcessedUI(true);
 
 
+
+
 },800);
 
 
+
+
 },
+
+
+
+
 
 
 
@@ -4213,10 +5317,18 @@ updateProcessedUI(true);
 _normalize(x){
 
 
+
+
 return(x%10+10)%10;
 
 
+
+
 },
+
+
+
+
 
 
 
@@ -4233,7 +5345,11 @@ totalSum
 ){
 
 
+
+
 const rawFormulas=[
+
+
 
 
 H+T_top,
@@ -4248,6 +5364,8 @@ U_top+U_bot,
 T_bot+U_bot,
 
 
+
+
 sumTop+T_bot,
 sumTop+U_bot,
 sumTop+H,
@@ -4255,11 +5373,15 @@ sumTop+T_top,
 sumTop+U_top,
 
 
+
+
 10-H,
 10-T_top,
 10-U_top,
 10-T_bot,
 10-U_bot,
+
+
 
 
 H+T_top+T_bot,
@@ -4270,10 +5392,14 @@ H+T_bot+U_bot,
 T_top+T_bot+U_bot,
 
 
+
+
 sumTop-T_bot,
 sumTop-U_bot,
 sumTop+sumBot,
 sumTop-sumBot,
+
+
 
 
 H+T_top-U_bot,
@@ -4281,19 +5407,29 @@ T_top+U_top-T_bot,
 H+U_top-T_bot,
 
 
+
+
 20-(T_top+T_bot),
 20-(U_top+U_bot),
+
+
 
 
 H+T_top+U_top-T_bot,
 H+T_top+U_top-U_bot,
 
 
+
+
 10+T_top-U_bot,
 10+U_top-T_bot,
 
 
+
+
 sumTop+10-U_bot,
+
+
 
 
 H+U_bot-T_top,
@@ -4301,20 +5437,30 @@ T_top+U_bot-H,
 U_top+T_bot-H,
 
 
+
+
 sumBot+H-T_top,
 sumBot+H-U_top,
+
+
 
 
 H+sumBot-T_top,
 H+sumBot-U_top,
 
 
+
+
 T_top+sumBot-H,
 T_top+sumBot-U_top,
 
 
+
+
 U_top+sumBot-H,
 U_top+sumBot-T_top,
+
+
 
 
 30-(H+T_top+T_bot),
@@ -4323,18 +5469,26 @@ U_top+sumBot-T_top,
 30-(H+T_bot+U_bot),
 
 
+
+
 H+T_top+T_bot-U_bot,
 H+U_top+U_bot-T_bot,
 T_top+U_top+T_bot-H,
+
+
 
 
 sumTop+T_bot-U_bot,
 sumTop+U_bot-T_bot,
 
 
+
+
 H+T_top+sumBot,
 H+U_top+sumBot,
 T_top+U_top+sumBot,
+
+
 
 
 H+T_bot+sumTop,
@@ -4344,6 +5498,8 @@ T_top+U_bot+sumTop,
 U_top+T_bot+sumTop,
 U_top+U_bot+sumTop,
 T_bot+U_bot+sumTop,
+
+
 
 
 10+H+T_top,
@@ -4358,14 +5514,20 @@ T_bot+U_bot+sumTop,
 10+U_top+U_bot,
 
 
+
+
 H-T_top+U_bot,
 H-U_top+T_bot,
 T_top-U_top+U_bot,
 
 
+
+
 T_bot-U_bot+H,
 T_bot-U_bot+T_top,
 T_bot-U_bot+U_top,
+
+
 
 
 20-H-T_top,
@@ -4380,10 +5542,14 @@ T_bot-U_bot+U_top,
 20-U_top-U_bot,
 
 
+
+
 totalSum,
 2*totalSum,
 totalSum+H,
 totalSum+T_bot
+
+
 
 
 ];
@@ -4391,7 +5557,13 @@ totalSum+T_bot
 
 
 
+
+
+
+
 const countedDigits={};
+
+
 
 
 for(let d=0;d<=9;d++)
@@ -4400,18 +5572,32 @@ countedDigits[d]=0;
 
 
 
+
+
+
+
 rawFormulas.forEach(rawVal=>{
+
+
 
 
 const unit=
 (rawVal%10+10)%10;
 
 
+
+
 countedDigits[unit]=
 (countedDigits[unit]||0)+1;
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -4428,10 +5614,16 @@ b-a
 
 
 
+
+
+
+
 return{
 ranking:sortedByCount.slice(0,10),
 counts:countedDigits
 };
+
+
 
 
 },
@@ -4439,15 +5631,25 @@ counts:countedDigits
 
 
 
+
+
+
+
 runAnalysis(n3,n2){
+
+
 
 
 const inputDigits3=
 n3.split("").map(Number);
 
 
+
+
 const inputDigits2=
 n2.split("").map(Number);
+
+
 
 
 const[
@@ -4457,22 +5659,34 @@ U_top
 ]=inputDigits3;
 
 
+
+
 const[
 T_bot,
 U_bot
 ]=inputDigits2;
 
 
+
+
 const sumTop=
 H+T_top+U_top;
+
+
 
 
 const sumBot=
 T_bot+U_bot;
 
 
+
+
 const totalSum=
 sumTop+sumBot;
+
+
+
+
 
 
 
@@ -4492,10 +5706,18 @@ totalSum
 
 
 
+
+
+
+
 const getUnitDirect=v=>{
 
 
+
+
 const str=String(v);
+
+
 
 
 const first=
@@ -4505,10 +5727,14 @@ str.slice(-1),
 );
 
 
+
+
 return[
 first,
 (first+1)%10
 ];
+
+
 
 
 };
@@ -4516,11 +5742,19 @@ first,
 
 
 
+
+
+
+
 const fixedBase=7;
+
+
 
 
 const anchorRaw=
 fixedBase-H;
+
+
 
 
 const anchor=
@@ -4529,24 +5763,40 @@ const anchor=
 
 
 
+
+
+
+
 let rawM1=
 (T_top+T_bot)%10;
+
+
 
 
 let rawM2=
 sumTop%10;
 
 
+
+
 let rawM3=
 (H+T_bot)%10;
+
+
 
 
 let rawM4=
 (U_top+U_bot)%10;
 
 
+
+
 let rawM5=
 (10-U_bot)%10;
+
+
+
+
 
 
 
@@ -4560,13 +5810,21 @@ rawM5
 ];
 
 
+
+
 let uniqueModelDigits=
 new Set(modelRawValues);
 
 
 
 
+
+
+
+
 if(uniqueModelDigits.size<4){
+
+
 
 
 const fallbackFormulas=[
@@ -4578,13 +5836,19 @@ totalSum%10
 ];
 
 
+
+
 for(
 let fbVal of fallbackFormulas
 ){
 
 
+
+
 const normFb=
 (fbVal%10+10)%10;
+
+
 
 
 uniqueModelDigits.add(
@@ -4592,19 +5856,31 @@ normFb
 );
 
 
+
+
 if(uniqueModelDigits.size>=6)
 break;
 
 
-}
 
 
 }
+
+
+
+
+}
+
+
+
+
 
 
 
 
 const fList=[
+
+
 
 
 {
@@ -4615,12 +5891,16 @@ set:getUnitDirect(rawM1)
 },
 
 
+
+
 {
 id:2,
 name:"AI โมเดล 02",
 subName:"A + B + C",
 set:getUnitDirect(rawM2)
 },
+
+
 
 
 {
@@ -4631,12 +5911,16 @@ set:getUnitDirect(rawM3)
 },
 
 
+
+
 {
 id:4,
 name:"AI โมเดล 04",
 subName:"C + R2",
 set:getUnitDirect(rawM4)
 },
+
+
 
 
 {
@@ -4647,13 +5931,21 @@ set:getUnitDirect(rawM5)
 }
 
 
+
+
 ];
+
+
+
+
 
 
 
 
 const allowedModelDigits=
 new Set();
+
+
 
 
 fList.forEach(item=>{
@@ -4665,18 +5957,30 @@ allowedModelDigits.add(d);
 
 
 
+
+
+
+
 const evaluated=
 fList.map(model=>{
+
+
 
 
 const formulaSet=
 model.set;
 
 
+
+
 let rawRange=[];
 
 
+
+
 let hasCollision=false;
+
+
 
 
 for(
@@ -4686,10 +5990,14 @@ offset++
 ){
 
 
+
+
 const val=
 this._normalize(
 anchor+offset
 );
+
+
 
 
 if(
@@ -4697,21 +6005,35 @@ formulaSet.includes(val)
 ){
 
 
+
+
 hasCollision=true;
+
+
 
 
 break;
 
 
-}
 
 
 }
+
+
+
+
+}
+
+
+
+
 
 
 
 
 if(hasCollision){
+
+
 
 
 for(
@@ -4721,6 +6043,8 @@ offset++
 ){
 
 
+
+
 rawRange.push(
 this._normalize(
 anchor+offset
@@ -4728,10 +6052,16 @@ anchor+offset
 );
 
 
+
+
 }
 
 
+
+
 }else{
+
+
 
 
 for(
@@ -4741,6 +6071,8 @@ offset++
 ){
 
 
+
+
 rawRange.push(
 this._normalize(
 anchor+offset
@@ -4748,10 +6080,18 @@ anchor+offset
 );
 
 
-}
 
 
 }
+
+
+
+
+}
+
+
+
+
 
 
 
@@ -4760,6 +6100,10 @@ const excludedDigits=
 [
 ...new Set(formulaSet)
 ];
+
+
+
+
 
 
 
@@ -4773,7 +6117,15 @@ dg=>
 
 
 
+
+
+
+
 const generatedPairs=[];
+
+
+
+
 
 
 
@@ -4782,35 +6134,57 @@ formulaSet.forEach(
 sourceDigit=>{
 
 
+
+
 cleanedPool.forEach(
 poolDigit=>{
+
+
 
 
 if(sourceDigit===poolDigit)
 return;
 
 
+
+
 generatedPairs.push({
+
+
 
 
 digitA:sourceDigit,
 
 
+
+
 digitB:poolDigit,
+
+
 
 
 pairStr:
 `${sourceDigit}${poolDigit}`
 
 
-});
 
 
 });
+
+
+
+
+});
+
+
 
 
 }
 );
+
+
+
+
 
 
 
@@ -4820,8 +6194,14 @@ const pMap={};
 
 
 
+
+
+
+
 formulaSet.forEach(
 sourceDigit=>{
+
+
 
 
 let pairsForDigit=
@@ -4836,8 +6216,16 @@ p=>p.pairStr
 
 
 
+
+
+
+
 let nextFill=
 (sourceDigit+1)%10;
+
+
+
+
 
 
 
@@ -4845,6 +6233,8 @@ let nextFill=
 while(
 pairsForDigit.length<5
 ){
+
+
 
 
 if(
@@ -4858,19 +6248,31 @@ nextFill
 ){
 
 
+
+
 pairsForDigit.push(
 `${sourceDigit}${nextFill}`
 );
 
 
+
+
 }
+
+
 
 
 nextFill=
 (nextFill+1)%10;
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -4886,6 +6288,10 @@ p=>p[0]!==p[1]
 
 
 
+
+
+
+
 if(
 pairsForDigit.length>5
 )
@@ -4895,8 +6301,14 @@ pairsForDigit.slice(0,5);
 
 
 
+
+
+
+
 pMap[sourceDigit]=
 pairsForDigit;
+
+
 
 
 });
@@ -4904,7 +6316,13 @@ pairsForDigit;
 
 
 
+
+
+
+
 return{
+
+
 
 
 id:model.id,
@@ -4914,10 +6332,18 @@ set:model.set,
 pairsMap:pMap
 
 
+
+
 };
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -4927,34 +6353,58 @@ const digitScores={};
 
 
 
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
 
 
 digitScores[d]={
 
 
+
+
 digit:d,
+
+
 
 
 modelScore:0,
 
 
+
+
 formula100Score:0,
+
+
 
 
 radarScore:0,
 
 
+
+
 backendScore:0,
+
+
 
 
 winSetScore:0,
 
 
+
+
 totalScore:0
 
 
+
+
 };
+
+
 
 
 }
@@ -4962,7 +6412,13 @@ totalScore:0
 
 
 
+
+
+
+
 evaluated.forEach(model=>{
+
+
 
 
 model.set.forEach(
@@ -4973,7 +6429,13 @@ digitScores[dig]
 );
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -4989,7 +6451,13 @@ formula100Engine.counts
 
 
 
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
 
 
 digitScores[d]
@@ -4998,13 +6466,21 @@ digitScores[d]
 maxFormCount;
 
 
+
+
 }
+
+
+
+
 
 
 
 
 const X_val=
 (T_bot+U_bot)%10;
+
+
 
 
 const radar1Range=[
@@ -5016,8 +6492,14 @@ X_val,
 
 
 
+
+
+
+
 const Y_val=
 (H+T_top+U_top)%10;
+
+
 
 
 const radar2Range=[
@@ -5029,8 +6511,14 @@ Y_val,
 
 
 
+
+
+
+
 const Z_val=
 (H+T_top+U_top+T_bot+U_bot)%10;
+
+
 
 
 const radar3Range=[
@@ -5042,10 +6530,18 @@ Z_val,
 
 
 
+
+
+
+
 for(let d=0;d<=9;d++){
 
 
+
+
 let rHits=0;
+
+
 
 
 if(
@@ -5054,10 +6550,14 @@ radar1Range.includes(d)
 rHits++;
 
 
+
+
 if(
 radar2Range.includes(d)
 )
 rHits++;
+
+
 
 
 if(
@@ -5066,12 +6566,20 @@ radar3Range.includes(d)
 rHits++;
 
 
+
+
 digitScores[d]
 .radarScore=
 rHits/3;
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -5088,7 +6596,13 @@ totalSum%10
 
 
 
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
 
 
 if(
@@ -5098,7 +6612,13 @@ digitScores[d]
 .backendScore=1;
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -5109,7 +6629,13 @@ const winCandidate=
 
 
 
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
 
 
 if(
@@ -5120,7 +6646,13 @@ digitScores[d]
 .winSetScore=1;
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -5128,8 +6660,12 @@ digitScores[d]
 for(let d=0;d<=9;d++){
 
 
+
+
 const item=
 digitScores[d];
+
+
 
 
 item.totalScore=
@@ -5143,7 +6679,16 @@ item.totalScore=
 
 
 
+
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -5159,8 +6704,16 @@ b.digit-a.digit
 
 
 
+
+
+
+
 const matrixSorted=
 matrixSortedAll;
+
+
+
+
 
 
 
@@ -5171,12 +6724,18 @@ s=>s.totalScore
 );
 
 
+
+
 const minScore=
 Math.min(...allScores);
 
 
+
+
 const maxScore=
 Math.max(...allScores);
+
+
 
 
 const scoreRange=
@@ -5185,7 +6744,13 @@ maxScore-minScore||1;
 
 
 
+
+
+
+
 const calcConfidence=score=>{
+
+
 
 
 const normalizedPct=
@@ -5193,6 +6758,8 @@ const normalizedPct=
 (score-minScore)/
 scoreRange*
 18.5;
+
+
 
 
 return Number(
@@ -5206,12 +6773,20 @@ normalizedPct
 );
 
 
+
+
 };
 
 
 
 
+
+
+
+
 evaluated.forEach(model=>{
+
+
 
 
 const modelScoreSum=
@@ -5231,13 +6806,21 @@ digitScores[dig]
 );
 
 
+
+
 model.aiScore=
 calcConfidence(
 modelScoreSum/2
 );
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -5246,6 +6829,8 @@ evaluated.sort(
 (a,b)=>
 b.aiScore-a.aiScore
 );
+
+
 
 
 evaluated.forEach(
@@ -5258,8 +6843,14 @@ idx<2;
 
 
 
+
+
+
+
 const top3Digits=
 matrixSorted.slice(0,3);
+
+
 
 
 const thirdRankDigit=
@@ -5270,12 +6861,20 @@ top3Digits[2].digit
 null;
 
 
+
+
 const d1=
 top3Digits[0].digit;
 
 
+
+
 const d2_dig=
 top3Digits[1].digit;
+
+
+
+
 
 
 
@@ -5285,7 +6884,13 @@ EXISTING TOP 5 FOCUS — PAIR RANKING
 ========================================================= */
 
 
+
+
 const pairVotesMap={};
+
+
+
+
 
 
 
@@ -5294,8 +6899,12 @@ evaluated.forEach(
 model=>{
 
 
+
+
 const modelVotedPairsThisModel=
 new Set();
+
+
 
 
 Object.values(
@@ -5304,22 +6913,32 @@ model.pairsMap
 pairList=>{
 
 
+
+
 pairList.forEach(
 pStr=>{
+
+
 
 
 const d1_char=
 pStr[0];
 
 
+
+
 const d2_char=
 pStr[1];
+
+
 
 
 if(
 d1_char===d2_char
 )
 return;
+
+
 
 
 const canonicalKey=
@@ -5333,14 +6952,22 @@ d2_char
 
 
 
+
+
+
+
 if(
 !modelVotedPairsThisModel
 .has(canonicalKey)
 ){
 
 
+
+
 modelVotedPairsThisModel
 .add(canonicalKey);
+
+
 
 
 if(
@@ -5348,27 +6975,43 @@ if(
 ){
 
 
+
+
 pairVotesMap[canonicalKey]={
+
+
 
 
 canonical:
 canonicalKey,
 
 
+
+
 displayPair:
 pStr,
+
+
 
 
 votes:0,
 
 
+
+
 digitScoreSum:0
+
+
 
 
 };
 
 
+
+
 }
+
+
 
 
 pairVotesMap[
@@ -5376,16 +7019,28 @@ canonicalKey
 ].votes+=1;
 
 
+
+
 }
 
 
-});
 
 
 });
 
 
+
+
 });
+
+
+
+
+});
+
+
+
+
 
 
 
@@ -5396,6 +7051,8 @@ pairVotesMap
 item=>{
 
 
+
+
 const dX=
 parseInt(
 item.canonical[0],
@@ -5403,11 +7060,15 @@ item.canonical[0],
 );
 
 
+
+
 const dY=
 parseInt(
 item.canonical[1],
 10
 );
+
+
 
 
 item.digitScoreSum=
@@ -5419,7 +7080,13 @@ digitScores[dY]?.totalScore||0
 );
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -5432,14 +7099,20 @@ pairVotesMap
 (a,b)=>{
 
 
+
+
 if(
 b.votes!==a.votes
 )
 return b.votes-a.votes;
 
 
+
+
 return b.digitScoreSum-
 a.digitScoreSum;
+
+
 
 
 }
@@ -5448,8 +7121,16 @@ a.digitScoreSum;
 
 
 
+
+
+
+
 let top5Pairs=
 sortedPairsAll.slice(0,5);
+
+
+
+
 
 
 
@@ -5461,10 +7142,14 @@ top5Pairs.length
 ){
 
 
+
+
 const nextCandidate=
 sortedPairsAll[
 top5Pairs.length
 ];
+
+
 
 
 if(
@@ -5475,21 +7160,35 @@ nextCandidate
 ){
 
 
+
+
 top5Pairs.push(
 nextCandidate
 );
 
 
+
+
 }else{
+
+
 
 
 break;
 
 
-}
 
 
 }
+
+
+
+
+}
+
+
+
+
 
 
 
@@ -5500,14 +7199,22 @@ top5Pairs[0]?.votes||5;
 
 
 
+
+
+
+
 const top5PairRankedHTML=
 top5Pairs.map(
 (item,index)=>{
 
 
+
+
 const rawRatio=
 item.votes/
 top5MaxVotes;
+
+
 
 
 const computedPct=
@@ -5520,13 +7227,21 @@ index*.4
 );
 
 
+
+
 const secureDisplayPair=
 item.displayPair;
 
 
 
 
+
+
+
+
 return`
+
+
 
 
 <div
@@ -5536,6 +7251,8 @@ secureDisplayPair
 )}">
 
 
+
+
 <strong>
 ${this._esc(
 secureDisplayPair
@@ -5543,15 +7260,23 @@ secureDisplayPair
 </strong>
 
 
+
+
 <small>
 ${computedPct}%
 </small>
 
 
+
+
 </div>
 
 
+
+
 `;
+
+
 
 
 }
@@ -5573,12 +7298,20 @@ font-size:.46rem;
 
 
 
+
+
+
+
 /* =========================================================
 DEEP SCAN — 3 REAL TOP DIGIT SETS
 ========================================================= */
 
 
+
+
 function findPairsForDigit(digit){
+
+
 
 
 return evaluated.find(
@@ -5586,7 +7319,13 @@ m=>m.pairsMap[digit]
 )?.pairsMap[digit]||[];
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -5596,7 +7335,11 @@ top3Digits.map(
 item=>({
 
 
+
+
 digit:item.digit,
+
+
 
 
 score:
@@ -5605,14 +7348,22 @@ item.totalScore
 ),
 
 
+
+
 pairs:
 findPairsForDigit(
 item.digit
 ).slice(0,5)
 
 
+
+
 })
 );
+
+
+
+
 
 
 
@@ -5622,6 +7373,8 @@ deepSets.map(
 (set,index)=>{
 
 
+
+
 const rankNames=[
 "AI ALPHA SCAN",
 "AI BETA SCAN",
@@ -5629,11 +7382,15 @@ const rankNames=[
 ];
 
 
+
+
 const rankClasses=[
 "rank-one",
 "rank-two",
 "rank-three"
 ];
+
+
 
 
 const rankNumbers=[
@@ -5645,11 +7402,17 @@ const rankNumbers=[
 
 
 
+
+
+
+
 const pairHTML=
 set.pairs.length
 ?
 set.pairs.map(
 (p,pIndex)=>{
+
+
 
 
 const pct=
@@ -5661,7 +7424,11 @@ set.score-
 );
 
 
+
+
 return`
+
+
 
 
 <div
@@ -5669,9 +7436,13 @@ class="deep-pair"
 data-copy="${this._esc(p)}">
 
 
+
+
 <strong>
 ${this._esc(p)}
 </strong>
+
+
 
 
 <small>
@@ -5679,10 +7450,16 @@ ${pct}%
 </small>
 
 
+
+
 </div>
 
 
+
+
 `;
+
+
 
 
 }
@@ -5704,17 +7481,29 @@ font-size:.46rem;
 
 
 
+
+
+
+
 return`
+
+
 
 
 <div
 class="deep-scan-card ${rankClasses[index]}">
 
 
+
+
 <div class="deep-scan-top">
 
 
+
+
 <div class="deep-scan-name">
+
+
 
 
 <div class="deep-scan-digit">
@@ -5722,7 +7511,11 @@ ${set.digit}
 </div>
 
 
+
+
 <div>
+
+
 
 
 <span class="deep-rank-label">
@@ -5733,13 +7526,21 @@ ${rankNames[index]}
 </div>
 
 
-</div>
 
 
 </div>
+
+
+
+
+</div>
+
+
 
 
 <div>
+
+
 
 
 <div class="deep-scan-score">
@@ -5747,10 +7548,16 @@ ${set.score.toFixed(1)}%
 </div>
 
 
-</div>
 
 
 </div>
+
+
+
+
+</div>
+
+
 
 
 <div class="deep-scan-pairs">
@@ -5758,14 +7565,24 @@ ${pairHTML}
 </div>
 
 
+
+
 </div>
+
+
 
 
 `;
 
 
+
+
 }
 ).join("");
+
+
+
+
 
 
 
@@ -5775,7 +7592,11 @@ NEW BEST JUE PAIR RANKING ENGINE
 =========================================================
 
 
+
+
 Rules:
+
+
 
 
 1. Read only generated JUE pairs from all 5 main models.
@@ -5793,6 +7614,10 @@ more frequently. If tied, lexical order is used.
 
 
 
+
+
+
+
 const top3SingleDigitSet=
 new Set(
 top3Digits.map(
@@ -5803,8 +7628,16 @@ item=>String(item.digit)
 
 
 
+
+
+
+
 const top3DeepPairCanonicalSet=
 new Set();
+
+
+
+
 
 
 
@@ -5813,12 +7646,18 @@ deepSets.forEach(
 set=>{
 
 
+
+
 (set.pairs||[]).forEach(
 pairStr=>{
 
 
+
+
 const cleanPair=
 String(pairStr||"");
+
+
 
 
 if(
@@ -5826,6 +7665,10 @@ if(
 cleanPair[0]===cleanPair[1]
 )
 return;
+
+
+
+
 
 
 
@@ -5841,15 +7684,27 @@ cleanPair[1]
 
 
 
+
+
+
+
 top3DeepPairCanonicalSet.add(
 canonical
 );
 
 
-});
 
 
 });
+
+
+
+
+});
+
+
+
+
 
 
 
@@ -5859,8 +7714,14 @@ const bestJuePairMap={};
 
 
 
+
+
+
+
 evaluated.forEach(
 model=>{
+
+
 
 
 Object.entries(
@@ -5869,12 +7730,18 @@ model.pairsMap||{}
 ([sourceDigit,pairList])=>{
 
 
+
+
 (pairList||[]).forEach(
 pairStr=>{
 
 
+
+
 const pair=
 String(pairStr||"");
+
+
 
 
 if(
@@ -5882,6 +7749,10 @@ if(
 pair[0]===pair[1]
 )
 return;
+
+
+
+
 
 
 
@@ -5897,30 +7768,52 @@ pair[1]
 
 
 
+
+
+
+
 if(
 !bestJuePairMap[canonical]
 ){
 
 
+
+
 bestJuePairMap[canonical]={
+
+
 
 
 canonical,
 
 
+
+
 total:0,
+
+
 
 
 orientationCounts:{},
 
 
+
+
 sourceCounts:{}
+
+
 
 
 };
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -5933,7 +7826,15 @@ canonical
 
 
 
+
+
+
+
 item.total+=1;
+
+
+
+
 
 
 
@@ -5942,6 +7843,10 @@ item.orientationCounts[pair]=
 (
 item.orientationCounts[pair]||0
 )+1;
+
+
+
+
 
 
 
@@ -5956,13 +7861,23 @@ String(sourceDigit)
 )+1;
 
 
-});
 
 
 });
 
 
+
+
 });
+
+
+
+
+});
+
+
+
+
 
 
 
@@ -5973,8 +7888,12 @@ bestJuePairMap
 )
 
 
+
+
 .filter(
 item=>{
+
+
 
 
 const sourceIsTop3=
@@ -5989,10 +7908,14 @@ digit
 );
 
 
+
+
 const isInsideTop3Jue=
 top3DeepPairCanonicalSet.has(
 item.canonical
 );
+
+
 
 
 return(
@@ -6001,12 +7924,18 @@ isInsideTop3Jue
 );
 
 
+
+
 }
 )
 
 
+
+
 .map(
 item=>{
+
+
 
 
 const orientations=
@@ -6017,10 +7946,14 @@ item.orientationCounts
 (a,b)=>{
 
 
+
+
 if(
 b[1]!==a[1]
 )
 return b[1]-a[1];
+
+
 
 
 return a[0].localeCompare(
@@ -6028,14 +7961,22 @@ b[0]
 );
 
 
+
+
 }
 );
+
+
 
 
 return{
 
 
+
+
 ...item,
+
+
 
 
 displayPair:
@@ -6043,15 +7984,23 @@ orientations[0]?.[0]||
 item.canonical
 
 
+
+
 };
+
+
 
 
 }
 )
 
 
+
+
 .sort(
 (a,b)=>{
+
+
 
 
 if(
@@ -6062,16 +8011,26 @@ return b.total-a.total;
 
 
 
+
+
+
+
 const aDirect=
 a.orientationCounts[
 a.displayPair
 ]||0;
 
 
+
+
 const bDirect=
 b.orientationCounts[
 b.displayPair
 ]||0;
+
+
+
+
 
 
 
@@ -6084,16 +8043,28 @@ return bDirect-aDirect;
 
 
 
+
+
+
+
 return a.displayPair.localeCompare(
 b.displayPair
 );
+
+
 
 
 }
 )
 
 
+
+
 .slice(0,5);
+
+
+
+
 
 
 
@@ -6102,8 +8073,14 @@ const arr1=
 findPairsForDigit(d1);
 
 
+
+
 const arr2=
 findPairsForDigit(d2_dig);
+
+
+
+
 
 
 
@@ -6114,6 +8091,10 @@ arr1.slice(0,5)
 p=>
 `${p.slice(-1)}${d1}${d2_dig}`
 );
+
+
+
+
 
 
 
@@ -6129,12 +8110,20 @@ Number(
 
 
 
+
+
+
+
 let top5Digits=
 matrixSorted
 .slice(0,5)
 .map(
 item=>item.digit
 );
+
+
+
+
 
 
 
@@ -6153,7 +8142,13 @@ item.digit
 
 
 
+
+
+
+
 if(!wildcardCandidate){
+
+
 
 
 wildcardCandidate=
@@ -6165,7 +8160,13 @@ item.digit
 );
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -6182,8 +8183,14 @@ matrixSorted[5].digit
 
 
 
+
+
+
+
 const checkBalance=
 digits=>{
+
+
 
 
 const evenCount=
@@ -6192,8 +8199,12 @@ d=>d%2===0
 ).length;
 
 
+
+
 const oddCount=
 digits.length-evenCount;
+
+
 
 
 const lowCount=
@@ -6202,11 +8213,17 @@ d=>d>=0&&d<=4
 ).length;
 
 
+
+
 const highCount=
 digits.length-lowCount;
 
 
+
+
 return{
+
+
 
 
 isBalanced:
@@ -6216,10 +8233,18 @@ lowCount>=2&&
 highCount>=2
 
 
-};
 
 
 };
+
+
+
+
+};
+
+
+
+
 
 
 
@@ -6230,9 +8255,13 @@ if(
 ){
 
 
+
+
 const candidatesIndex=[
 6,7,8,9
 ];
+
+
 
 
 let bestSet=[
@@ -6240,7 +8269,13 @@ let bestSet=[
 ];
 
 
+
+
 let foundReplacement=false;
+
+
+
+
 
 
 
@@ -6250,9 +8285,13 @@ let idx of candidatesIndex
 ){
 
 
+
+
 if(
 idx<matrixSorted.length
 ){
+
+
 
 
 const testSet=[
@@ -6261,28 +8300,46 @@ matrixSorted[idx].digit
 ];
 
 
+
+
 if(
 checkBalance(testSet)
 .isBalanced
 ){
 
 
+
+
 bestSet=testSet;
+
+
 
 
 foundReplacement=true;
 
 
+
+
 break;
 
 
-}
 
 
 }
 
 
+
+
 }
+
+
+
+
+}
+
+
+
+
 
 
 
@@ -6291,7 +8348,13 @@ if(foundReplacement)
 currentSet=bestSet;
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -6300,6 +8363,10 @@ const winSet=
 currentSet.sort(
 (a,b)=>a-b
 );
+
+
+
+
 
 
 
@@ -6314,10 +8381,18 @@ const combinedAnalysisPool=[
 
 
 
+
+
+
+
 const evenCountTotal=
 combinedAnalysisPool.filter(
 d=>d%2===0
 ).length;
+
+
+
+
 
 
 
@@ -6334,12 +8409,20 @@ combinedAnalysisPool.length*
 
 
 
+
+
+
+
 const oddPct=
 Number(
 (
 100-evenPct
 ).toFixed(1)
 );
+
+
+
+
 
 
 
@@ -6355,13 +8438,21 @@ s=>s.totalScore
 
 
 
+
+
+
+
 const distributionHTML=
 matrixSorted.map(
 (item,index)=>{
 
 
+
+
 const digit=
 item.digit;
+
+
 
 
 const height=
@@ -6381,19 +8472,31 @@ maxScoreVal*
 
 
 
+
+
+
+
 let barColor=
 "#0A6647";
+
+
 
 
 let barTop=
 "#10B981";
 
 
+
+
 let glow=
 "rgba(16,185,129,.12)";
 
 
+
+
 let rankClass="";
+
+
 
 
 let rankLabel=
@@ -6402,7 +8505,13 @@ let rankLabel=
 
 
 
+
+
+
+
 if(index===0){
+
+
 
 
 barColor="#EAB308";
@@ -6411,10 +8520,16 @@ glow="rgba(234,179,8,.22)";
 rankClass="rank-1";
 
 
+
+
 }
 
 
+
+
 else if(index===1){
+
+
 
 
 barColor="#10B981";
@@ -6423,10 +8538,16 @@ glow="rgba(16,185,129,.18)";
 rankClass="rank-2";
 
 
+
+
 }
 
 
+
+
 else if(index===2){
+
+
 
 
 barColor="#14B8A6";
@@ -6435,7 +8556,11 @@ glow="rgba(20,184,166,.17)";
 rankClass="rank-3";
 
 
+
+
 }
+
+
 
 
 else if(
@@ -6444,12 +8569,18 @@ index===4
 ){
 
 
+
+
 barColor="#0A6647";
 barTop="#A7F3D0";
 glow="rgba(10,102,71,.12)";
 
 
+
+
 }
+
+
 
 
 else if(
@@ -6458,12 +8589,18 @@ index===6
 ){
 
 
+
+
 barColor="#9E6C02";
 barTop="#FEF3C7";
 glow="rgba(158,108,2,.10)";
 
 
+
+
 }
+
+
 
 
 else if(
@@ -6472,15 +8609,23 @@ index===8
 ){
 
 
+
+
 barColor="#087380";
 barTop="#CCFBF1";
 glow="rgba(8,115,128,.10)";
 
 
+
+
 }
 
 
+
+
 else{
+
+
 
 
 barColor="#BE123C";
@@ -6488,7 +8633,13 @@ barTop="#FFE4E6";
 glow="rgba(190,18,60,.08)";
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -6501,7 +8652,13 @@ item.totalScore
 
 
 
+
+
+
+
 return`
+
+
 
 
 <div
@@ -6522,9 +8679,13 @@ ${scorePct.toFixed(1)}%
 ">
 
 
+
+
 <span class="overview-rank">
 ${rankLabel}
 </span>
+
+
 
 
 <span class="overview-score">
@@ -6532,19 +8693,31 @@ ${scorePct.toFixed(1)}%
 </span>
 
 
+
+
 <span class="overview-digit">
 ${digit}
 </span>
 
 
+
+
 </div>
+
+
 
 
 `;
 
 
+
+
 }
 ).join("");
+
+
+
+
 
 
 
@@ -6554,9 +8727,13 @@ winSet.map(
 (digit,index)=>`
 
 
+
+
 <div
 class="ind-win-item"
 data-copy="${digit}">
+
+
 
 
 <strong>
@@ -6564,12 +8741,18 @@ ${digit}
 </strong>
 
 
+
+
 <span>
 POS ${index+1}
 </span>
 
 
+
+
 </div>
+
+
 
 
 `
@@ -6578,15 +8761,25 @@ POS ${index+1}
 
 
 
+
+
+
+
 const threeHTML=
 matrixArr3d.length
+
+
 
 
 ?
 
 
+
+
 matrixArr3d.map(
 (p,index)=>{
+
+
 
 
 const pct=
@@ -6600,7 +8793,13 @@ cScore3-
 
 
 
+
+
+
+
 return`
+
+
 
 
 <div
@@ -6608,9 +8807,13 @@ class="three-d-item"
 data-copy="${this._esc(p)}">
 
 
+
+
 <strong>
 ${this._esc(p)}
 </strong>
+
+
 
 
 <small>
@@ -6618,17 +8821,27 @@ ${pct}%
 </small>
 
 
+
+
 </div>
 
 
+
+
 `;
+
+
 
 
 }
 ).join("")
 
 
+
+
 :
+
+
 
 
 `
@@ -6646,11 +8859,17 @@ text-align:center;
 
 
 
+
+
+
+
 const top3Class=[
 "rank-one",
 "rank-two",
 "rank-three"
 ];
+
+
 
 
 const top3Names=[
@@ -6662,9 +8881,15 @@ const top3Names=[
 
 
 
+
+
+
+
 const top3HTML=
 top3Digits.map(
 (item,index)=>{
+
+
 
 
 const pct=
@@ -6675,7 +8900,13 @@ item.totalScore
 
 
 
+
+
+
+
 return`
+
+
 
 
 <div
@@ -6683,9 +8914,13 @@ class="top3-row ${top3Class[index]}"
 data-copy="${item.digit}">
 
 
+
+
 <div class="top3-position">
 #${index+1}
 </div>
+
+
 
 
 <div class="top3-digit">
@@ -6693,7 +8928,11 @@ ${item.digit}
 </div>
 
 
+
+
 <div class="top3-info">
+
+
 
 
 <div class="top3-label">
@@ -6704,7 +8943,11 @@ RANK ${index+1}
 </div>
 
 
+
+
 <div class="top3-bar">
+
+
 
 
 <div
@@ -6713,10 +8956,16 @@ style="width:${pct}%;">
 </div>
 
 
-</div>
 
 
 </div>
+
+
+
+
+</div>
+
+
 
 
 <div class="top3-score">
@@ -6724,14 +8973,24 @@ ${pct.toFixed(1)}%
 </div>
 
 
+
+
 </div>
+
+
 
 
 `;
 
 
+
+
 }
 ).join("");
+
+
+
+
 
 
 
@@ -6741,8 +9000,14 @@ let allFormulasHTML="";
 
 
 
+
+
+
+
 evaluated.forEach(
 item=>{
+
+
 
 
 let pairs=[];
@@ -6750,8 +9015,14 @@ let pairs=[];
 
 
 
+
+
+
+
 item.set.forEach(
 digit=>{
+
+
 
 
 (
@@ -6766,7 +9037,13 @@ pair:p
 );
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -6774,6 +9051,8 @@ pair:p
 const pairCards=
 pairs.map(
 (obj,idx)=>{
+
+
 
 
 const subPct=
@@ -6787,7 +9066,13 @@ item.aiScore-
 
 
 
+
+
+
+
 return`
+
+
 
 
 <div
@@ -6795,9 +9080,13 @@ class="formula-pair"
 data-copy="${this._esc(obj.pair)}">
 
 
+
+
 <strong>
 ${this._esc(obj.pair)}
 </strong>
+
+
 
 
 <small>
@@ -6805,14 +9094,24 @@ ${subPct}%
 </small>
 
 
+
+
 </div>
+
+
 
 
 `;
 
 
+
+
 }
 ).join("");
+
+
+
+
 
 
 
@@ -6827,25 +9126,43 @@ item.isRecommended
 
 
 
+
+
+
+
 allFormulasHTML+=`
+
+
 
 
 <div class="formula-card">
 
 
+
+
 <div class="formula-head">
+
+
 
 
 <div class="formula-name">
 
 
+
+
 ${this._esc(item.name)}
+
+
 
 
 ${badgeHtml}
 
 
+
+
 </div>
+
+
 
 
 <div class="formula-badge">
@@ -6853,13 +9170,21 @@ AI Score ${item.aiScore}%
 </div>
 
 
+
+
 </div>
+
+
 
 
 <div class="formula-sub">
 
 
+
+
 เลขเด่น:
+
+
 
 
 <strong>
@@ -6867,22 +9192,36 @@ ${item.set.join(" - ")}
 </strong>
 
 
+
+
 </div>
+
+
 
 
 <div class="formula-pairs">
 
 
+
+
 ${pairCards}
 
 
-</div>
 
 
 </div>
+
+
+
+
+</div>
+
+
 
 
 `;
+
+
 
 
 });
@@ -6890,7 +9229,13 @@ ${pairCards}
 
 
 
+
+
+
+
 const html=`
+
+
 
 
 <div class="result-shell">
@@ -6898,10 +9243,18 @@ const html=`
 
 
 
+
+
+
+
 <div class="result-head">
 
 
+
+
 <div>
+
+
 
 
 <div class="result-kicker">
@@ -6909,12 +9262,18 @@ SCAN COMPLETE
 </div>
 
 
+
+
 <div class="result-title">
 AI PROCESSING COMPLETE
 </div>
 
 
+
+
 </div>
+
+
 
 
 <div class="result-note">
@@ -6922,7 +9281,13 @@ ${new Date().toLocaleTimeString("th-TH")}
 </div>
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -6930,10 +9295,16 @@ ${new Date().toLocaleTimeString("th-TH")}
 <section class="top3-signal-board">
 
 
+
+
 <div class="top3-head">
 
 
+
+
 <div>
+
+
 
 
 <div class="top3-kicker">
@@ -6941,20 +9312,34 @@ DIGIT PRIORITY MATRIX
 </div>
 
 
+
+
 <div class="top3-title">
 🏆 ALPHA TOP 3 SIGNALS
 </div>
 
 
+
+
 <div class="top3-sub"></div>
 
 
+
+
+</div>
+
+
+
+
+
+
+
+
 </div>
 
 
 
 
-</div>
 
 
 
@@ -6966,10 +9351,18 @@ ${top3HTML}
 
 
 
+
+
+
+
 <div class="top3-footnote">
 
 
+
+
 <span class="mini-live"></span>
+
+
 
 
 <span>
@@ -6980,7 +9373,11 @@ AI Real-Time Score
 </span>
 
 
+
+
 </div>
+
+
 
 
 </section>
@@ -6988,10 +9385,18 @@ AI Real-Time Score
 
 
 
+
+
+
+
 <section class="stats-analytics-card">
 
 
+
+
 <div class="stats-flex">
+
+
 
 
 <div class="stats-title">
@@ -6999,17 +9404,27 @@ AI Real-Time Score
 </div>
 
 
+
+
 <div class="stats-badge">
 AI BALANCE
 </div>
 
 
+
+
 </div>
 
 
 
 
+
+
+
+
 <div class="ratio-bar-container">
+
+
 
 
 <div
@@ -7018,13 +9433,21 @@ style="width:${evenPct}%">
 </div>
 
 
+
+
 <div
 class="ratio-odd"
 style="width:${oddPct}%">
 </div>
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -7032,9 +9455,13 @@ style="width:${oddPct}%">
 <div class="ratio-legend">
 
 
+
+
 <span>
 เลขคู่: ${evenPct}%
 </span>
+
+
 
 
 <span>
@@ -7042,10 +9469,18 @@ style="width:${oddPct}%">
 </span>
 
 
+
+
 </div>
 
 
+
+
 </section>
+
+
+
+
 
 
 
@@ -7057,13 +9492,23 @@ DIGIT OVERVIEW
 
 
 
+
+
+
+
 <section class="overview-panel">
+
+
 
 
 <div class="overview-head">
 
 
+
+
 <div>
+
+
 
 
 <div class="overview-title">
@@ -7071,12 +9516,18 @@ AI PROBABILITY RANKING
 </div>
 
 
+
+
 <div class="overview-sub">
 อันดับคะแนนเลข 0-9
 </div>
 
 
+
+
 </div>
+
+
 
 
 <div class="overview-badge">
@@ -7084,7 +9535,13 @@ AI PROBABILITY RANKING
 </div>
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -7096,7 +9553,13 @@ ${distributionHTML}
 
 
 
+
+
+
+
 <div class="overview-axis">
+
+
 
 
 <span>
@@ -7104,9 +9567,13 @@ ${distributionHTML}
 </span>
 
 
+
+
 <span>
 DIGIT SCORE
 </span>
+
+
 
 
 <span>
@@ -7114,10 +9581,18 @@ DIGIT SCORE
 </span>
 
 
+
+
 </div>
 
 
+
+
 </section>
+
+
+
+
 
 
 
@@ -7129,13 +9604,23 @@ ALPHA DEEP SCAN
 
 
 
+
+
+
+
 <section class="deep-scan-board">
+
+
 
 
 <div class="deep-scan-head">
 
 
+
+
 <div>
+
+
 
 
 <div class="deep-scan-kicker">
@@ -7143,20 +9628,34 @@ TOP 3 MATRIX SIGNALS
 </div>
 
 
+
+
 <div class="deep-scan-title">
 🎯 ชุดเจาะ TOP 3
 </div>
 
 
+
+
 <div class="deep-scan-sub"></div>
 
 
+
+
+</div>
+
+
+
+
+
+
+
+
 </div>
 
 
 
 
-</div>
 
 
 
@@ -7168,10 +9667,20 @@ ${deepScanHTML}
 
 
 
-<div class="three-d-scan">
+
+
+
+
+</section>
+
+<section class="three-d-scan">
+
+
 
 
 <div class="three-d-head">
+
+
 
 
 <div class="three-d-title">
@@ -7179,12 +9688,18 @@ ${deepScanHTML}
 </div>
 
 
+
+
 <div class="three-d-score">
 ACCURACY ${cScore3.toFixed(1)}%
 </div>
 
 
+
+
 </div>
+
+
 
 
 <div class="three-d-grid">
@@ -7192,7 +9707,11 @@ ${threeHTML}
 </div>
 
 
+
+
 </div>
+
+
 
 
 </section>
@@ -7200,22 +9719,38 @@ ${threeHTML}
 
 
 
+
+
+
+
 <section class="ind-win-set">
+
+
 
 
 <div class="ind-win-header">
 
 
+
+
 <div class="ind-win-title">
+
+
 
 
 🧩 ชุดวิน 6 ตัว
 
 
+
+
 <small>CURATED WIN SET • 6 PICKS</small>
 
 
+
+
 </div>
+
+
 
 
 <div class="ind-win-badge">
@@ -7223,7 +9758,13 @@ ${threeHTML}
 </div>
 
 
+
+
 </div>
+
+
+
+
 
 
 
@@ -7233,12 +9774,20 @@ ${indWinSetHTML}
 </div>
 
 
+
+
 </section>
 
 
 
 
+
+
+
+
 <section class="formula-section">
+
+
 
 
 <button
@@ -7247,9 +9796,13 @@ id="toggleMainFormulasBtn"
 type="button">
 
 
+
+
 <span>
 🧠 TOP 5 Model / AI ALGORITHM DETAILS
 </span>
+
+
 
 
 <span>
@@ -7257,7 +9810,13 @@ type="button">
 </span>
 
 
+
+
 </button>
+
+
+
+
 
 
 
@@ -7270,10 +9829,16 @@ margin-top:6px;
 ">
 
 
+
+
 ${allFormulasHTML}
 
 
+
+
 </div>
+
+
 
 
 </section>
@@ -7281,7 +9846,13 @@ ${allFormulasHTML}
 
 
 
+
+
+
+
 <div class="disclaimer">
+
+
 
 
 <strong>
@@ -7289,16 +9860,26 @@ ${allFormulasHTML}
 </strong>
 
 
+
+
 ข้อมูลวิเคราะห์เชิงสถิติเพื่อเป็นแนวทางเท่านั้น
 โปรดใช้วิจารณญาณในการตัดสินใจ
 
 
-</div>
-
-
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
 
 
 `;
@@ -7306,9 +9887,15 @@ ${allFormulasHTML}
 
 
 
+
+
+
+
 document.getElementById(
 "resultContainer"
 ).innerHTML=html;
+
+
 
 
 /* =========================================================
@@ -7322,6 +9909,8 @@ bestJueCandidates.forEach(
 bestJueRankLookup[item.canonical]=index+1;
 }
 );
+
+
 
 
 document.querySelectorAll(
@@ -7343,20 +9932,30 @@ node.dataset.jueRank=String(rank);
 
 
 
+
+
+
+
 document.querySelectorAll(
 "[data-copy]"
 ).forEach(
 node=>{
 
 
+
+
 const clone=
 node.cloneNode(true);
+
+
 
 
 node.parentNode.replaceChild(
 clone,
 node
 );
+
+
 
 
 clone.addEventListener(
@@ -7369,7 +9968,13 @@ clone.dataset.copy
 );
 
 
+
+
 });
+
+
+
+
 
 
 
@@ -7380,10 +9985,16 @@ document.getElementById(
 );
 
 
+
+
 const allWrapper=
 document.getElementById(
 "allFormulasWrapper"
 );
+
+
+
+
 
 
 
@@ -7394,16 +10005,24 @@ allWrapper
 ){
 
 
+
+
 toggleMainBtn.addEventListener(
 "click",
 ()=>{
 
 
+
+
 this._audio("click");
+
+
 
 
 const isOpen=
 allWrapper.style.display==="block";
+
+
 
 
 allWrapper.style.display=
@@ -7412,6 +10031,8 @@ isOpen
 "none"
 :
 "block";
+
+
 
 
 toggleMainBtn
@@ -7426,11 +10047,17 @@ isOpen
 "▲";
 
 
+
+
 }
 );
 
 
+
+
 }
+
+
 
 
 },
@@ -7438,16 +10065,26 @@ isOpen
 
 
 
+
+
+
+
 copyText(text){
 
 
+
+
 this._audio("click");
+
+
 
 
 if(
 navigator.clipboard&&
 navigator.clipboard.writeText
 ){
+
+
 
 
 navigator.clipboard
@@ -7460,13 +10097,21 @@ navigator.clipboard
 );
 
 
+
+
 }else{
+
+
 
 
 this.fallbackCopyText(text);
 
 
+
+
 }
+
+
 
 
 },
@@ -7474,7 +10119,13 @@ this.fallbackCopyText(text);
 
 
 
+
+
+
+
 fallbackCopyText(text){
+
+
 
 
 const ta=
@@ -7483,33 +10134,53 @@ document.createElement(
 );
 
 
+
+
 ta.value=text;
+
+
 
 
 ta.style.position="fixed";
 ta.style.opacity="0";
 
 
+
+
 document.body.appendChild(ta);
+
+
 
 
 ta.focus();
 ta.select();
 
 
+
+
 try{
+
+
 
 
 document.execCommand("copy");
 
 
+
+
 this.showToast();
+
+
 
 
 }catch(e){}
 
 
+
+
 document.body.removeChild(ta);
+
+
 
 
 },
@@ -7517,12 +10188,20 @@ document.body.removeChild(ta);
 
 
 
+
+
+
+
 showToast(){
+
+
 
 
 clearTimeout(
 this._toastTimer
 );
+
+
 
 
 const t=
@@ -7531,7 +10210,11 @@ document.getElementById(
 );
 
 
+
+
 t.classList.add("show");
+
+
 
 
 this._toastTimer=
@@ -7543,10 +10226,18 @@ t.classList.remove("show");
 );
 
 
+
+
 }
 
 
+
+
 };
+
+
+
+
 
 
 
@@ -7557,10 +10248,14 @@ document.getElementById(
 );
 
 
+
+
 const passwordInput=
 document.getElementById(
 "passwordInput"
 );
+
+
 
 
 const calculateButton=
@@ -7569,10 +10264,14 @@ document.getElementById(
 );
 
 
+
+
 const clearButton=
 document.getElementById(
 "clearButton"
 );
+
+
 
 
 const logoutButton=
@@ -7583,7 +10282,13 @@ document.getElementById(
 
 
 
+
+
+
+
 if(loginButton){
+
+
 
 
 loginButton.addEventListener(
@@ -7592,7 +10297,13 @@ loginButton.addEventListener(
 );
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -7600,25 +10311,39 @@ loginButton.addEventListener(
 if(passwordInput){
 
 
+
+
 passwordInput.addEventListener(
 "keyup",
 e=>{
+
+
 
 
 if(e.key==="Enter")
 _app.login();
 
 
+
+
 }
 );
 
 
+
+
 }
+
+
+
+
 
 
 
 
 if(calculateButton){
+
+
 
 
 calculateButton.addEventListener(
@@ -7627,12 +10352,20 @@ calculateButton.addEventListener(
 );
 
 
+
+
 }
 
 
 
 
+
+
+
+
 if(clearButton){
+
+
 
 
 clearButton.addEventListener(
@@ -7641,12 +10374,20 @@ clearButton.addEventListener(
 );
 
 
+
+
 }
 
 
 
 
+
+
+
+
 if(logoutButton){
+
+
 
 
 logoutButton.addEventListener(
@@ -7655,7 +10396,13 @@ logoutButton.addEventListener(
 );
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -7666,6 +10413,8 @@ document.getElementById(
 );
 
 
+
+
 const n2Input=
 document.getElementById(
 "num2bottom"
@@ -7674,12 +10423,20 @@ document.getElementById(
 
 
 
+
+
+
+
 if(n3Input){
+
+
 
 
 n3Input.addEventListener(
 "input",
 ()=>{
+
+
 
 
 n3Input.value=
@@ -7689,6 +10446,8 @@ n3Input.value.replace(
 );
 
 
+
+
 if(
 n3Input.value.length>=3&&
 n2Input
@@ -7696,11 +10455,19 @@ n2Input
 n2Input.focus();
 
 
+
+
 }
 );
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -7708,9 +10475,13 @@ n2Input.focus();
 if(n2Input){
 
 
+
+
 n2Input.addEventListener(
 "input",
 ()=>{
+
+
 
 
 n2Input.value=
@@ -7720,11 +10491,19 @@ n2Input.value.replace(
 );
 
 
+
+
 }
 );
 
 
+
+
 }
+
+
+
+
 
 
 
@@ -7736,11 +10515,17 @@ n2Input.value.replace(
 id=>{
 
 
+
+
 const el=
 document.getElementById(id);
 
 
+
+
 if(el){
+
+
 
 
 el.addEventListener(
@@ -7748,15 +10533,23 @@ el.addEventListener(
 e=>{
 
 
+
+
 if(e.key==="Enter")
 _app.calculate();
+
+
 
 
 }
 );
 
 
+
+
 }
+
+
 
 
 });
@@ -7764,10 +10557,18 @@ _app.calculate();
 
 
 
+
+
+
+
 (function initApp(){
 
 
+
+
 try{
+
+
 
 
 const active=
@@ -7776,7 +10577,11 @@ localStorage.getItem(
 );
 
 
+
+
 if(active==="active"){
+
+
 
 
 const loginView=
@@ -7785,33 +10590,51 @@ document.getElementById(
 );
 
 
+
+
 const calculatorView=
 document.getElementById(
 "calculatorView"
 );
 
 
+
+
 if(loginView)
 loginView.style.display="none";
+
+
 
 
 if(calculatorView)
 calculatorView.style.display="block";
 
 
+
+
 _app.checkSessionBadge();
+
+
 
 
 }
 
 
+
+
 }catch(e){}
+
+
 
 
 })();
 
 
+
+
 </script>
+
+
 
 
 </body>
