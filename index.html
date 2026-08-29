@@ -617,6 +617,17 @@ background-position:100% 50%;
 .calculate-btn:active:not(:disabled){
 transform:translateY(0);
 }
+/* Audited: action buttons keep their normal color in every state. */
+.primary-btn:disabled,.calculate-btn:disabled,
+.primary-btn:disabled:hover,.calculate-btn:disabled:hover,
+.primary-btn:disabled:active,.calculate-btn:disabled:active,
+.primary-btn:disabled:focus,.calculate-btn:disabled:focus{
+opacity:1!important;filter:none!important;color:#fff!important;
+background:linear-gradient(110deg,#0A6647,#0D7A55,#0A6647)!important;
+background-size:200% 100%!important;
+box-shadow:0 7px 18px rgba(10,102,71,.18),inset 0 1px 0 rgba(255,255,255,.16)!important;
+transform:none!important;
+}
 #errorMsg{
 display:none;
 margin-top:6px;
@@ -2472,6 +2483,10 @@ letter-spacing:.25px;
   animation:railGlow 8.5s ease-in-out infinite!important;
   will-change:background-position;
 }
+<style id="audited-button-stability">
+.calculate-btn,.calculate-btn:hover,.calculate-btn:active,.calculate-btn:focus,.calculate-btn:disabled,.calculate-btn:disabled:hover,.calculate-btn:disabled:active,.calculate-btn:disabled:focus,
+.clear-btn,.clear-btn:hover,.clear-btn:active,.clear-btn:focus,.clear-btn:disabled,.clear-btn:disabled:hover,.clear-btn:disabled:active,.clear-btn:disabled:focus{opacity:1!important;filter:none!important;}
+</style>
 </style>
 <style id="alpha-rank1-motion-final">
 /* FINAL FIX v8: Rank 1 percentage rail — smooth left↔right gold sweep. */
@@ -3015,6 +3030,11 @@ body{background:radial-gradient(circle at 10% 4%,rgba(16,185,129,.222),transpare
 </style>
 
 
+
+<style id="final-audited-button-solid-color">
+.calculate-btn,.calculate-btn:hover,.calculate-btn:focus,.calculate-btn:focus-visible,.calculate-btn:active,.calculate-btn:disabled,.calculate-btn[disabled]{color:#F5FFFB!important;background:linear-gradient(112deg,#064C38 0%,#087A55 36%,#12A978 62%,#075A42 100%)!important;background-position:50% 50%!important;background-size:180% 100%!important;filter:none!important;opacity:1!important;}
+.clear-btn,.clear-btn:hover,.clear-btn:focus,.clear-btn:focus-visible,.clear-btn:active,.clear-btn:disabled,.clear-btn[disabled]{color:#FFF8F8!important;background:linear-gradient(112deg,#5E0D18 0%,#7F1D2B 38%,#A32639 62%,#68101D 100%)!important;background-position:50% 50%!important;background-size:180% 100%!important;filter:none!important;opacity:1!important;}
+</style>
 </head>
 <body>
 <canvas id="snowCanvas"></canvas>
@@ -3323,14 +3343,17 @@ function render(){
 }
 resize();seed();window.addEventListener("resize",()=>{resize();seed();});render();
 })();
+function _safeStorageGet(kind,key){try{const storage=kind==="session"?window.sessionStorage:window.localStorage;return storage.getItem(key);}catch(e){return null;}}
+function _safeStorageSet(kind,key,value){try{const storage=kind==="session"?window.sessionStorage:window.localStorage;storage.setItem(key,String(value));}catch(e){} }
+function _safeStorageRemove(kind,key){try{const storage=kind==="session"?window.sessionStorage:window.localStorage;storage.removeItem(key);}catch(e){} }
 let totalProcessed=50150n;
 try{
-  const stored=localStorage.getItem("ml_total_processed_v2");
+  const stored=_safeStorageGet("local","ml_total_processed_v2");
   if(stored && /^\d+$/.test(stored)) totalProcessed=BigInt(stored);
 }catch(e){}
 if(totalProcessed<50150n){
   totalProcessed=50150n;
-  localStorage.setItem("ml_total_processed_v2",String(totalProcessed));
+  _safeStorageSet("local","ml_total_processed_v2",totalProcessed);
 }
 function updateProcessedUI(triggerRipple=true){
 const el=
@@ -3361,10 +3384,7 @@ intervals.sort((a,b)=>a-b);
 intervals.forEach(delay=>{
 setTimeout(()=>{
 totalProcessed+=1n;
-localStorage.setItem(
-"ml_total_processed_v2",
-totalProcessed
-);
+_safeStorageSet("local","ml_total_processed_v2",totalProcessed);
 updateProcessedUI(true);
 },delay);
 });
@@ -3375,24 +3395,24 @@ scheduleProcessedIncrements,
 }
 let currentOnline=
 parseInt(
-localStorage.getItem("ml_online_users_v2"),
+_safeStorageGet("local","ml_online_users_v2"),
 10
 );
 if(!Number.isFinite(currentOnline) || currentOnline<1400 || currentOnline>1700){
   currentOnline=1515;
-  localStorage.setItem("ml_online_users_v2",String(currentOnline));
+  _safeStorageSet("local","ml_online_users_v2",currentOnline);
 }
 function updateOnlineUsers(){
   const change=Math.floor(Math.random()*100)+1;
   currentOnline += Math.random()>.48 ? change : -change;
   if(currentOnline<1450) currentOnline=1450+Math.floor(Math.random()*45);
   if(currentOnline>1650) currentOnline=1650-Math.floor(Math.random()*45);
-  localStorage.setItem("ml_online_users_v2",String(currentOnline));
+  _safeStorageSet("local","ml_online_users_v2",currentOnline);
   const el=document.getElementById("onlineUsersCount");
   if(el) el.innerText=currentOnline.toLocaleString()+" คน";
 }
 let currentLatency=
-parseFloat(localStorage.getItem("ml_server_latency_v2"));
+parseFloat(_safeStorageGet("local","ml_server_latency_v2"));
 if(!Number.isFinite(currentLatency)) currentLatency=21.5;
 function updateServerLatency(){
   const drift=(Math.random()-.5)*2.4;
@@ -3400,7 +3420,7 @@ function updateServerLatency(){
   currentLatency += (target-currentLatency)*.28 + drift*.18;
   currentLatency=Math.min(27,Math.max(17,currentLatency));
   currentLatency=Math.round(currentLatency*10)/10;
-  localStorage.setItem("ml_server_latency_v2",String(currentLatency));
+  _safeStorageSet("local","ml_server_latency_v2",currentLatency);
   const el=document.getElementById("serverLatencyCount");
   if(el) el.innerText=currentLatency.toFixed(1)+" ms";
 }
@@ -3510,14 +3530,8 @@ input.focus();
 return;
 }
 error.style.display="none";
-localStorage.setItem(
-"ml_auth_status_v3",
-"active"
-);
-sessionStorage.setItem(
-"ml_auth_status_v3",
-"active"
-);
+_safeStorageSet("local","ml_auth_status_v3","active");
+_safeStorageSet("session","ml_auth_status_v3","active");
 document.getElementById(
 "loginView"
 ).style.display="none";
@@ -3534,12 +3548,8 @@ num3.focus();
 },
 logout(){
 this._audio("click");
-localStorage.removeItem(
-"ml_auth_status_v3"
-);
-sessionStorage.removeItem(
-"ml_auth_status_v3"
-);
+_safeStorageRemove("local","ml_auth_status_v3");
+_safeStorageRemove("session","ml_auth_status_v3");
 document.getElementById(
 "calculatorView"
 ).style.display="none";
@@ -3579,13 +3589,9 @@ document.getElementById(
 },
 checkSessionBadge(){
 const n3=
-localStorage.getItem(
-"ml_l_n3_v3"
-);
+_safeStorageGet("local","ml_l_n3_v3");
 const n2=
-localStorage.getItem(
-"ml_l_n2_v3"
-);
+_safeStorageGet("local","ml_l_n2_v3");
 const badge=
 document.getElementById(
 "lastSessionBadge"
@@ -3623,14 +3629,8 @@ alert(
 );
 return;
 }
-localStorage.setItem(
-"ml_l_n3_v3",
-n3
-);
-localStorage.setItem(
-"ml_l_n2_v3",
-n2
-);
+_safeStorageSet("local","ml_l_n3_v3",n3);
+_safeStorageSet("local","ml_l_n2_v3",n2);
 this.checkSessionBadge();
 const scan=
 document.getElementById(
@@ -3647,7 +3647,7 @@ const messages=[
 "CALCULATING DIGIT MOMENTUM...",
 "RUNNING TOP 5 PAIR RANKING ENGINE...",
 "EVALUATING AI N1–AI N5 MAIN MODELS...",
-"CHECKING BACKEND SUPPORT & DUPLICATES...",
+"CHECKING N1–N5 SUPPORT & DUPLICATES...",
 "BUILDING NUMBER MATRIX...",
 "MAPPING DIGIT DISTRIBUTION...",
 "GENERATING WIN SET...",
@@ -3672,10 +3672,14 @@ setTimeout(()=>{
 clearInterval(timer);
 scan.style.display="none";
 btn.disabled=false;
-this.runAnalysis(
-n3,
-n2
-);
+try{
+ this.runAnalysis(n3,n2);
+}catch(error){
+ console.error("Analysis error:",error);
+ this._audio("error");
+ const result=document.getElementById("resultContainer");
+ if(result) result.innerHTML='<div style="padding:18px;text-align:center;color:#9A5730;font-weight:800;">ระบบวิเคราะห์เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง</div>';
+}
 document.getElementById(
 "resultContainer"
 ).scrollIntoView({
@@ -3683,10 +3687,7 @@ behavior:"smooth",
 block:"start"
 });
 totalProcessed+=1n;
-localStorage.setItem(
-"ml_total_processed_v2",
-totalProcessed
-);
+_safeStorageSet("local","ml_total_processed_v2",totalProcessed);
 updateProcessedUI(true);
 },800);
 },
@@ -3811,7 +3812,7 @@ const uniqueBackendGroups=Object.values(backendGroups);
 for(let d=0;d<=9;d++){let hits=0;uniqueBackendGroups.forEach(set=>{if(set.has(d))hits++;});digitScores[d].backendScore=hits/(uniqueBackendGroups.length||1);}
 const winCandidate=mod10(totalSum);
 for(let d=0;d<=9;d++)if(d===winCandidate||d===mod10(winCandidate+5))digitScores[d].winSetScore=1;
-for(let d=0;d<=9;d++){const item=digitScores[d];item.rawScore=.60*item.formulaScore+.15*item.radarScore+.15*item.backendScore+.10*item.winSetScore;item.totalScore=item.rawScore;item.rankingScore=item.rawScore;}
+for(let d=0;d<=9;d++){const item=digitScores[d];item.rawScore=.70*item.formulaScore+.15*item.radarScore+.15*item.winSetScore;item.totalScore=item.rawScore;item.rankingScore=item.rawScore;}
 const matrixSortedAll=Object.values(digitScores).sort((a,b)=>b.rankingScore-a.rankingScore||b.formulaScore-a.formulaScore||b.backendScore-a.backendScore||a.digit-b.digit);
 const matrixSorted=matrixSortedAll;
 const allScores=matrixSorted.map(s=>s.totalScore);
@@ -3822,23 +3823,14 @@ const calcConfidence=score=>{const normalizedPct=80+(score-minScore)/scoreRange*
 Object.values(digitScores).forEach(item=>{item.displayConfidence=calcConfidence(item.rankingScore);});
 mainEvaluated.forEach(model=>{
  const distinctDigits=[...new Set(model.set)];
- const support=distinctDigits.reduce((sum,d)=>sum+(digitScores[d]?.totalScore||0),0)/(distinctDigits.length||1);
+ /* AI N1–N5 score uses only formula consensus, never Backend/Legacy scores. */
+ const support=distinctDigits.reduce((sum,d)=>sum+(digitScores[d]?.formulaScore||0),0)/(distinctDigits.length||1);
  model.aiScore=calcConfidence(support);
  model.rawFormulaSupport=support;
  model.isRecommended=false;
-/* Keep the formula and its score logic unchanged; only de-duplicate the displayed
-   primary/secondary digit direction when a formula yields the same digit twice. */
  const formulaDigits=[...model.set];
- if(formulaDigits.length>1&&formulaDigits[0]===formulaDigits[1]){
-   formulaDigits[1]=(formulaDigits[1]+1)%10;
- }
- const distinctFormulaDigits=[];
- formulaDigits.forEach(d=>{
-   if(!distinctFormulaDigits.includes(d))distinctFormulaDigits.push(d);
- });
- model.set=distinctFormulaDigits;
- model.recommendedDigits=distinctFormulaDigits
-   .map(d=>({digit:d,score:digitScores[d]?.totalScore||0,confidence:digitScores[d]?.displayConfidence||80}))
+ model.recommendedDigits=[...new Set(formulaDigits)]
+   .map(d=>({digit:d,score:digitScores[d]?.formulaScore||0,confidence:digitScores[d]?.displayConfidence||80}))
    .sort((a,b)=>b.score-a.score||b.confidence-a.confidence||a.digit-b.digit)
    .slice(0,3);
 });
@@ -3864,6 +3856,8 @@ const top3Digits=matrixSorted.slice(0,3);
 const thirdRankDigit=top3Digits[2]?top3Digits[2].digit:null;
 const d1=top3Digits[0].digit;
 const d2_dig=top3Digits[1].digit;
+const top3FocusWeight=new Map();
+top3Digits.forEach((item,index)=>top3FocusWeight.set(item.digit,3-index));
 /* =========================================================
 EXISTING TOP 5 FOCUS — PAIR RANKING
 ========================================================= */
@@ -3890,64 +3884,17 @@ const top5PairRankedHTML=top5Pairs.map((item,index)=>{const rawRatio=item.votes/
 DEEP SCAN — 3 REAL TOP DIGIT SETS
 ========================================================= */
 function findPairsForDigit(digit){
- /*
-  * TOP 3 MATRIX SIGNALS must be driven only by the five PRIMARY AI
-  * formulas (N1..N5). The selected Top-3 digit is the fixed leading
-  * digit, and its JUE pair is taken from the N1..N5 formula that has
-  * the highest existing AI score/support for that digit.
-  *
-  * Important:
-  * - Do NOT use legacy/backend models (01..10) here.
-  * - Do NOT import pairs from another ranking position.
-  * - The Top-3 digit always stays in the tens/leading position.
-  * - The JUE digit is always the units/trailing position.
-  * - When several primary models qualify, the highest model score wins.
-  * - Ties are resolved deterministically by the pair's existing order.
-  */
- const target=String(digit);
- const candidates=[];
- mainEvaluated.forEach((model,modelIndex)=>{
-   const modelScore=Number(model.aiScore||0);
-   const targetPairs=[];
-   Object.values(model.pairsMap||{}).forEach(list=>{
-     (list||[]).forEach(pairStr=>{
-       const pair=String(pairStr||'');
-       if(!/^\d{2}$/.test(pair)||pair[0]===pair[1])return;
-       /* The Top-3 digit must be the leading/source digit. */
-       if(pair[0]!==target)return;
-       const normalized=target+pair[1];
-       if(!targetPairs.includes(normalized))targetPairs.push(normalized);
-     });
-   });
-   targetPairs.sort((a,b)=>Number(a[1])-Number(b[1]));
-   targetPairs.forEach((pair,pairIndex)=>{
-     candidates.push({
-       pair,
-       modelScore,
-       modelIndex,
-       pairIndex
-     });
-   });
- });
- if(!candidates.length)return[];
- /* Highest-scoring N1..N5 formula first; then stable pair ordering. */
- candidates.sort((a,b)=>
-   b.modelScore-a.modelScore||
-   a.pairIndex-b.pairIndex||
-   a.modelIndex-b.modelIndex||
-   Number(a.pair[1])-Number(b.pair[1])
- );
- /* Keep the winning formula's JUE set together, not mixed with another rank. */
- const winningScore=candidates[0].modelScore;
- const winningModelIndex=candidates[0].modelIndex;
- const winningCandidates=candidates.filter(item=>
-   item.modelIndex===winningModelIndex && item.modelScore===winningScore
- );
- return winningCandidates
-   .map(item=>item.pair)
-   .filter((pair,index,arr)=>arr.indexOf(pair)===index)
-   .sort((a,b)=>Number(a[1])-Number(b[1]))
-   .slice(0,5);
+  const target=String(digit);
+  const candidates=mainEvaluated.filter(model=>model.set.some(d=>String(d)===target)).sort((a,b)=>b.aiScore-a.aiScore||String(a.id).localeCompare(String(b.id)));
+  if(!candidates.length)return [];
+  const winner=candidates[0], seen=new Set(), result=[];
+  Object.values(winner.pairsMap||{}).forEach(list=>{(list||[]).forEach(pairStr=>{
+    const pair=String(pairStr||'');
+    if(!/^\d{2}$/.test(pair)||pair[0]===pair[1]||(pair[0]!==target&&pair[1]!==target))return;
+    const other=pair[0]===target?pair[1]:pair[0], normalized=`${target}${other}`;
+    if(!seen.has(normalized)){seen.add(normalized);result.push(normalized);}
+  });});
+  return result.sort((a,b)=>Number(a[1])-Number(b[1])||a.localeCompare(b)).slice(0,5);
 }
 const deepSets=
 top3Digits.map(
@@ -4065,280 +4012,58 @@ No per-model de-duplication is performed.
 8. Display orientation is whichever exact orientation occurs
 more frequently. If tied, lexical order is used.
 ========================================================= */
-const top3SingleDigitSet=
-new Set(
-top3Digits.map(
-item=>String(item.digit)
-)
-);
-const top3DeepPairCanonicalSet=
-new Set();
-deepSets.forEach(
-set=>{
-(set.pairs||[]).forEach(
-pairStr=>{
-const cleanPair=
-String(pairStr||"");
-if(
-!/^\d{2}$/.test(cleanPair)||
-cleanPair[0]===cleanPair[1]
-)
-return;
-const canonical=
-[
-cleanPair[0],
-cleanPair[1]
-]
-.sort()
-.join("");
-top3DeepPairCanonicalSet.add(
-canonical
-);
-});
-});
+const top3SingleDigitSet=new Set(top3Digits.map(item=>String(item.digit)));
 const bestJuePairMap={};
-evaluated.forEach(
-model=>{
-Object.entries(
-model.pairsMap||{}
-).forEach(
-([sourceDigit,pairList])=>{
-(pairList||[]).forEach(
-pairStr=>{
-const pair=
-String(pairStr||"");
-if(
-!/^\d{2}$/.test(pair)||
-pair[0]===pair[1]
-)
-return;
-const canonical=
-[
-pair[0],
-pair[1]
-]
-.sort()
-.join("");
-if(
-!bestJuePairMap[canonical]
-){
-bestJuePairMap[canonical]={
-canonical,
-total:0,
-orientationCounts:{},
-sourceCounts:{}
-};
-}
-const item=
-bestJuePairMap[
-canonical
-];
-item.total+=1;
-item.orientationCounts[pair]=
-(
-item.orientationCounts[pair]||0
-)+1;
-item.sourceCounts[
-String(sourceDigit)
-]=
-(
-item.sourceCounts[
-String(sourceDigit)
-]||0
-)+1;
-});
-});
-});
-const bestJueCandidates=
-Object.values(
-bestJuePairMap
-)
-.filter(
-item=>{
-const sourceIsTop3=
-Object.keys(
-item.sourceCounts
-)
-.some(
-digit=>
-top3SingleDigitSet.has(
-digit
-)
-);
-const isInsideTop3Jue=
-top3DeepPairCanonicalSet.has(
-item.canonical
-);
-return(
-sourceIsTop3&&
-isInsideTop3Jue
-);
-}
-)
-.map(
-item=>{
-const orientations=
-Object.entries(
-item.orientationCounts
-)
-.sort(
-(a,b)=>{
-if(
-b[1]!==a[1]
-)
-return b[1]-a[1];
-return a[0].localeCompare(
-b[0]
-);
-}
-);
-return{
-...item,
-displayPair:
-orientations[0]?.[0]||
-item.canonical
-};
-}
-)
-.sort(
-(a,b)=>{
-if(
-b.total!==a.total
-)
-return b.total-a.total;
-const aDirect=
-a.orientationCounts[
-a.displayPair
-]||0;
-const bDirect=
-b.orientationCounts[
-b.displayPair
-]||0;
-if(
-bDirect!==aDirect
-)
-return bDirect-aDirect;
-return a.displayPair.localeCompare(
-b.displayPair
-);
-}
-)
-.slice(0,5);
+mainEvaluated.forEach(model=>{Object.values(model.pairsMap||{}).forEach(pairList=>{(pairList||[]).forEach(pairStr=>{
+  const pair=String(pairStr||''); if(!/^\d{2}$/.test(pair)||pair[0]===pair[1])return;
+  const canonical=[pair[0],pair[1]].sort().join('');
+  const item=bestJuePairMap[canonical]||(bestJuePairMap[canonical]={canonical,total:0,orientationCounts:{},sourceCounts:{},modelScores:[]});
+  item.total++; item.orientationCounts[pair]=(item.orientationCounts[pair]||0)+1;
+  item.sourceCounts[pair[0]]=(item.sourceCounts[pair[0]]||0)+1; item.sourceCounts[pair[1]]=(item.sourceCounts[pair[1]]||0)+1; item.modelScores.push(model.aiScore);
+});});});
+const bestJueCandidates=Object.values(bestJuePairMap).filter(item=>Object.keys(item.sourceCounts).some(d=>top3SingleDigitSet.has(d))).map(item=>{
+  const displayPair=Object.entries(item.orientationCounts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))[0]?.[0]||item.canonical;
+  return {...item,displayPair,quality:item.total+(Math.max(...item.modelScores,0)/100)};
+}).sort((a,b)=>b.quality-a.quality||b.total-a.total||a.displayPair.localeCompare(b.displayPair)).slice(0,5);
 /* =========================================================
 AUDITED 3-DIGIT SET ENGINE
 Uses existing signals only:
 Digit Strength + N1–N5 Consensus + Pair Support + existing TOP 3 focus support,
 then selects a diverse Top 5. No formula generation rules are changed.
 ========================================================= */
-const threeDigitPool=matrixSorted.slice(0,6).map(item=>item.digit);
-
-
+const threeDigitPool=matrixSorted.filter(item=>item.digit!==5).map(item=>item.digit);
 const modelDigitSupport=new Map();
-mainEvaluated.forEach(model=>{
-  [...new Set(model.set)].forEach(digit=>{
-    modelDigitSupport.set(digit,(modelDigitSupport.get(digit)||0)+1);
-  });
-});
-
-
+mainEvaluated.forEach(model=>{[...new Set(model.set)].forEach(digit=>{if(digit!==5)modelDigitSupport.set(digit,(modelDigitSupport.get(digit)||0)+1);});});
 const pairSupport=new Map();
-backendEvaluated.forEach(model=>{
-  Object.values(model.pairsMap||{}).forEach(list=>{
-    (list||[]).forEach(pairStr=>{
-      const pair=String(pairStr||"");
-      if(!/^\d{2}$/.test(pair)||pair[0]===pair[1])return;
-      const key=[Number(pair[0]),Number(pair[1])].sort((a,b)=>a-b).join("");
-      pairSupport.set(key,(pairSupport.get(key)||0)+1);
-    });
-  });
-});
-
-
-/* Existing TOP 3 focus signals: stronger emphasis for higher-ranked focused digits. */
-const top3FocusWeight=new Map();
-top3Digits.forEach((item,index)=>{
-  top3FocusWeight.set(item.digit,[3,2,1][index]||0);
-});
-
-
+mainEvaluated.forEach(model=>{Object.values(model.pairsMap||{}).forEach(list=>{(list||[]).forEach(pairStr=>{
+  const pair=String(pairStr||''); if(!/^\d{2}$/.test(pair)||pair[0]===pair[1]||pair.includes('5'))return;
+  const key=[Number(pair[0]),Number(pair[1])].sort((a,b)=>a-b).join(''); pairSupport.set(key,(pairSupport.get(key)||0)+1);
+});});});
 const matrixArr3d=[];
-for(let i=0;i<threeDigitPool.length-2;i++){
-  for(let j=i+1;j<threeDigitPool.length-1;j++){
-    for(let k=j+1;k<threeDigitPool.length;k++){
-      const digits=[threeDigitPool[i],threeDigitPool[j],threeDigitPool[k]];
-      const digitStrength=digits.reduce(
-        (sum,digit)=>sum+(digitScores[digit]?.totalScore||0),0
-      );
-      const modelSupport=digits.reduce(
-        (sum,digit)=>sum+(modelDigitSupport.get(digit)||0),0
-      );
-      const pairScore=[
-        [digits[0],digits[1]],[digits[0],digits[2]],[digits[1],digits[2]]
-      ].reduce((sum,pair)=>sum+(
-        pairSupport.get([...pair].sort((a,b)=>a-b).join(""))||0
-      ),0);
-      const focusSupport=digits.reduce(
-        (sum,digit)=>sum+(top3FocusWeight.get(digit)||0),0
-      );
-      const canonicalDigits=[...digits].sort((a,b)=>a-b);
-      matrixArr3d.push({
-        digits:canonicalDigits,
-        key:canonicalDigits.join(""),
-        score:digitStrength+(modelSupport*2)+(pairScore*1.5)+(focusSupport*2),
-        digitStrength,modelSupport,pairScore,focusSupport
-      });
-    }
-  }
+for(let i=0;i<threeDigitPool.length-2;i++)for(let j=i+1;j<threeDigitPool.length-1;j++)for(let k=j+1;k<threeDigitPool.length;k++){
+  const digits=[threeDigitPool[i],threeDigitPool[j],threeDigitPool[k]]; if(new Set(digits).size!==3||digits.includes(5))continue;
+  const digitStrength=digits.reduce((sum,digit)=>sum+(digitScores[digit]?.totalScore||0),0);
+  const modelSupport=digits.reduce((sum,digit)=>sum+(modelDigitSupport.get(digit)||0),0);
+  const pairScore=[[digits[0],digits[1]],[digits[0],digits[2]],[digits[1],digits[2]]].reduce((sum,pair)=>sum+(pairSupport.get([...pair].sort((a,b)=>a-b).join(''))||0),0);
+  const focusSupport=digits.reduce((sum,digit)=>sum+(top3FocusWeight.get(digit)||0),0); const canonicalDigits=[...digits].sort((a,b)=>a-b);
+  matrixArr3d.push({digits:canonicalDigits,key:canonicalDigits.join(''),score:digitStrength+(modelSupport*.35)+(pairScore*.55)+(focusSupport*.35),digitStrength,modelSupport,pairScore,focusSupport});
 }
-
-
-matrixArr3d.sort((a,b)=>
-  b.score-a.score||
-  b.digitStrength-a.digitStrength||
-  b.modelSupport-a.modelSupport||
-  b.pairScore-a.pairScore||
-  b.focusSupport-a.focusSupport||
-  a.key.localeCompare(b.key)
-);
-
-
-/* Diversity control: retain strength, but penalize over-repeating the same digits
-   when filling the final five positions. */
-const selectedThreeSets=[];
-const digitUsage=new Map();
-const remainingThreeSets=[...matrixArr3d];
-while(selectedThreeSets.length<5&&remainingThreeSets.length){
-  let bestIndex=0,bestAdjusted=-Infinity;
-  remainingThreeSets.forEach((item,index)=>{
-    const overlap=item.digits.reduce(
-      (sum,digit)=>sum+(digitUsage.get(digit)||0),0
-    );
-    const adjusted=item.score-(overlap*2.25);
-    if(
-      adjusted>bestAdjusted||
-      (adjusted===bestAdjusted&&item.score>remainingThreeSets[bestIndex].score)||
-      (adjusted===bestAdjusted&&item.score===remainingThreeSets[bestIndex].score&&item.key<remainingThreeSets[bestIndex].key)
-    ){
-      bestAdjusted=adjusted;
-      bestIndex=index;
-    }
-  });
-  const chosen=remainingThreeSets.splice(bestIndex,1)[0];
-  selectedThreeSets.push(chosen);
-  chosen.digits.forEach(digit=>{
-    digitUsage.set(digit,(digitUsage.get(digit)||0)+1);
-  });
+matrixArr3d.sort((a,b)=>b.score-a.score||b.digitStrength-a.digitStrength||b.modelSupport-a.modelSupport||b.pairScore-a.pairScore||b.focusSupport-a.focusSupport||a.key.localeCompare(b.key));
+const uniqueThreeSets=[],seenThreeKeys=new Set();
+for(const item of matrixArr3d){
+  if(item.digits.length!==3||new Set(item.digits).size!==3||item.digits.includes(5))continue;
+  if(seenThreeKeys.has(item.key))continue;
+  seenThreeKeys.add(item.key); uniqueThreeSets.push(item);
+  if(uniqueThreeSets.length>=5)break;
 }
-matrixArr3d.splice(0,matrixArr3d.length,...selectedThreeSets);
-
-
+matrixArr3d.splice(0,matrixArr3d.length,...uniqueThreeSets);
+const minThreeScore=Math.min(...matrixArr3d.map(item=>item.score),0);
 const maxThreeScore=Math.max(...matrixArr3d.map(item=>item.score),1);
-const cScore3=
-Number(
-calcConfidence(
-(top3Digits[0]?.totalScore||0)
-).toFixed(1)
-);
+const threeScorePct=score=>{
+  const range=maxThreeScore-minThreeScore||1;
+  return Number((80+((score-minThreeScore)/range)*18.5).toFixed(1));
+};
+const cScore3=matrixArr3d.length?threeScorePct(matrixArr3d[0].score):80;
 let top5Digits=
 matrixSorted
 .slice(0,5)
@@ -4595,13 +4320,7 @@ matrixArr3d.map(
 (item,index)=>{
 const p=item.key;
 const pct=
-Number(
-(
-calcConfidence(
-(item.score/maxThreeScore)*100
-)
-).toFixed(1)
-);
+threeScorePct(item.score);
 return`
 <div
 class="three-d-item"
@@ -5168,12 +4887,8 @@ _app.calculate();
 (function initApp(){
 try{
 const active=
-localStorage.getItem(
-"ml_auth_status_v3"
-)||
-sessionStorage.getItem(
-"ml_auth_status_v3"
-);
+_safeStorageGet("local","ml_auth_status_v3")||
+_safeStorageGet("session","ml_auth_status_v3");
 if(active==="active"){
 const loginView=
 document.getElementById(
