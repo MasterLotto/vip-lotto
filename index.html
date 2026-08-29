@@ -2427,6 +2427,30 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================================
    MANUAL AUDIT — ROUND 4 / USER REQUESTED FINAL TUNING
    ========================================================= */
@@ -2596,12 +2620,84 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
 /* Requested UI refinement: reduce only the icon + "ชุดวิน 6 ตัว" text, never the container. */
 .ind-win-title{font-size:calc(.70rem * .90)!important;}
 .ind-win-title::first-letter{font-size:calc(1em * .90);}
 </style>
 <style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2646,6 +2742,54 @@ body{color:var(--premium-ink);text-rendering:optimizeLegibility;-webkit-font-smo
 .deep-scan-card .deep-pair{box-shadow:0 3px 9px rgba(16,35,29,.035),inset 0 1px 0 #fff;}
 .deep-scan-card .deep-pair.jue-rank-1::after{display:none;}
 #toast{box-shadow:0 12px 28px rgba(16,35,29,.18);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2734,12 +2878,60 @@ body{color:var(--premium-ink);text-rendering:optimizeLegibility;-webkit-font-smo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style id="final-luxury-visual-tuning">
 /* =========================================================
    FINAL VISUAL TUNING — USER REQUESTED
    Scope: Clear button + ~5% richer color + subtle vitality.
    No calculation logic changed.
    ========================================================= */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2792,6 +2984,30 @@ body{color:var(--premium-ink);text-rendering:optimizeLegibility;-webkit-font-smo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ~5% richer global color presence without making the interface loud. */
 body{
   background:
@@ -2826,6 +3042,30 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Give the existing ambient layer a little life, not a distracting animation. */
 .ambient::before,
 .ambient::after{
@@ -2847,6 +3087,30 @@ body{
   from{transform:translate3d(0,0,0) scale(1);}
   to{transform:translate3d(-10px,-7px,0) scale(1.03);}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2897,6 +3161,30 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Formula Recommendation: genuinely micro-sized and visually quiet. */
 .formula-signal-right{
   flex:0 1 auto;
@@ -2935,11 +3223,59 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* The model title is intentionally concise and international. */
 .formula-name{
   letter-spacing:.25px;
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2963,6 +3299,12 @@ body{background:radial-gradient(circle at 10% 4%,rgba(16,185,129,.222),transpare
 .formula-card{background:linear-gradient(145deg,#fff,#F1F7F4)!important;border-color:rgba(90,105,98,.24)!important}.formula-card::before{background:linear-gradient(180deg,#F0BE32,#A9B5B0,#C78461)!important;opacity:.95!important}.formula-model-pct{color:#087A55!important}.overview-bar{border-color:rgba(8,122,85,.14)!important}.ind-win-set{background:linear-gradient(145deg,#fff,#F2F9F5 76%,#FFF9E8)!important;border-color:rgba(183,122,8,.21)!important}.ind-win-item{border-color:rgba(183,122,8,.21)!important}
 @media(prefers-reduced-motion:reduce){.calculate-btn::before,.clear-btn::before{animation:none!important}}
 </style>
+
+
+
+
+
+
 
 
 <style id="final-audited-action-buttons">
@@ -3031,9 +3373,137 @@ body{background:radial-gradient(circle at 10% 4%,rgba(16,185,129,.222),transpare
 
 
 
+
+
+
+
+
+
+
+
+
 <style id="final-audited-button-solid-color">
 .calculate-btn,.calculate-btn:hover,.calculate-btn:focus,.calculate-btn:focus-visible,.calculate-btn:active,.calculate-btn:disabled,.calculate-btn[disabled]{color:#F5FFFB!important;background:linear-gradient(112deg,#064C38 0%,#087A55 36%,#12A978 62%,#075A42 100%)!important;background-position:50% 50%!important;background-size:180% 100%!important;filter:none!important;opacity:1!important;}
 .clear-btn,.clear-btn:hover,.clear-btn:focus,.clear-btn:focus-visible,.clear-btn:active,.clear-btn:disabled,.clear-btn[disabled]{color:#FFF8F8!important;background:linear-gradient(112deg,#5E0D18 0%,#7F1D2B 38%,#A32639 62%,#68101D 100%)!important;background-position:50% 50%!important;background-size:180% 100%!important;filter:none!important;opacity:1!important;}
+</style>
+<style id="premium-gateway-redesign">#loginView.premium-gateway{max-width:560px;margin:0 auto;padding:18px 16px 28px;color:#F7F3EA;background:radial-gradient(circle at 20% 0%,rgba(182,124,47,.16),transparent 30%),radial-gradient(circle at 100% 25%,rgba(89,68,160,.20),transparent 34%),linear-gradient(180deg,#090A10 0%,#10111A 52%,#08090E 100%);border-radius:28px;overflow:hidden;position:relative;box-shadow:0 28px 70px rgba(8,9,15,.34),inset 0 1px 0 rgba(255,255,255,.08)}#loginView.premium-gateway:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.035) 45%,transparent 55%);pointer-events:none}#loginView.premium-gateway .pg-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 2px 18px;position:relative;z-index:1}.pg-brand{display:flex;align-items:center;gap:9px}.pg-mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-weight:900;font-size:12px;color:#17130B;background:linear-gradient(145deg,#F6D88B,#B77A28);box-shadow:0 8px 22px rgba(214,157,66,.22)}.pg-brand-name{font-size:12px;font-weight:900;letter-spacing:1.4px}.pg-brand-sub{font-size:7px;letter-spacing:1.3px;color:#9D9AA8;margin-top:2px}.pg-live{font:700 7px/1.2 'IBM Plex Mono',monospace;letter-spacing:.8px;color:#9FD9C4;border:1px solid rgba(143,213,185,.16);padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.035)}.pg-live span{display:inline-block;width:5px;height:5px;border-radius:50%;background:#7BE0B6;box-shadow:0 0 9px #7BE0B6;margin-right:5px}.pg-hero{text-align:center;padding:18px 10px 22px;position:relative;z-index:1}.pg-eyebrow,.pg-section-title small,.pg-preview-head small{display:block;font:800 7px/1.2 'IBM Plex Mono',monospace;letter-spacing:1.8px;color:#CDA75B}.pg-hero h1{font-size:31px;line-height:1.14;margin:10px 0;letter-spacing:-1.1px}.pg-hero h1 em{font-style:normal;background:linear-gradient(90deg,#F5D98B,#B77A28,#E4C36F);-webkit-background-clip:text;background-clip:text;color:transparent}.pg-hero p{font-size:11px;line-height:1.8;color:#B8B5C0;margin:0}.pg-proof{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin-top:17px;font-size:8px;color:#DDD8CC}.pg-proof i{width:3px;height:3px;border-radius:50%;background:#A67A36}.pg-preview,.pg-pricing{position:relative;z-index:1;margin-top:12px;padding:16px;border:1px solid rgba(255,255,255,.09);border-radius:21px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));backdrop-filter:blur(10px)}.pg-preview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.pg-preview-head strong,.pg-section-title strong{display:block;font-size:13px;margin-top:4px;color:#F4F0E7}.pg-preview-head>span{font:900 9px 'IBM Plex Mono',monospace;color:#DAB56A;border:1px solid rgba(218,181,106,.25);padding:6px 8px;border-radius:9px}.pg-feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pg-feature{padding:12px;border-radius:15px;background:rgba(5,6,11,.36);border:1px solid rgba(255,255,255,.06);min-height:77px}.pg-feature b{font:800 7px 'IBM Plex Mono',monospace;color:#B98A43}.pg-feature strong{display:block;font-size:10px;margin:6px 0 4px;color:#ECE8DF}.pg-feature span{font-size:8px;line-height:1.55;color:#918F9A}.pg-section-title{margin-bottom:12px}.pg-package-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pg-package{position:relative;padding:13px;border-radius:17px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);min-width:0}.pg-package.pg-featured{background:linear-gradient(145deg,rgba(205,161,82,.18),rgba(104,74,146,.13));border-color:rgba(215,175,94,.40);box-shadow:0 12px 28px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.10)}.pg-badge{position:absolute;right:9px;top:9px;font:900 6px 'IBM Plex Mono',monospace;letter-spacing:.5px;color:#1A140A;background:linear-gradient(135deg,#F0D58B,#B77A28);padding:4px 6px;border-radius:999px}.pg-package-top{display:flex;justify-content:space-between;gap:6px;align-items:center;color:#D8D1C3;font-size:8px;font-weight:800;letter-spacing:.6px}.pg-package-top small{font:700 6px 'IBM Plex Mono',monospace;color:#8E8A96}.pg-price{display:flex;align-items:flex-end;gap:3px;margin:9px 0 4px}.pg-price strong{font-size:27px;line-height:.9;letter-spacing:-1px;color:#FFF8E9}.pg-price span{font-size:10px;color:#C9A55D;margin-bottom:2px}.pg-package p{font-size:7px;line-height:1.5;color:#9895A0;min-height:21px;margin:0 0 9px}.pg-package button{width:100%;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.055);color:#D9D4CA;border-radius:9px;padding:7px;font-size:7px;font-weight:800}.pg-package.pg-featured button{background:linear-gradient(135deg,#DDB86C,#9C6523);color:#17120A;border-color:rgba(255,224,154,.25)}.pg-trust{position:relative;z-index:1;text-align:center;padding:14px 8px 2px}.pg-trust span{display:block;font:800 6px 'IBM Plex Mono',monospace;letter-spacing:1.4px;color:#777481}.pg-trust b{display:block;font-size:7px;color:#A6A3AE;margin-top:4px;font-weight:600}.pg-login-panel{position:relative;z-index:1;margin-top:14px!important;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035))!important;border:1px solid rgba(255,255,255,.10)!important;box-shadow:0 20px 42px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.08)!important}.pg-login-panel .login-heading{color:#F6F0E5}.pg-login-panel .login-description{color:#9E9BA7}.pg-login-panel input{background:rgba(0,0,0,.24)!important;color:#F4F0E7!important;border-color:rgba(255,255,255,.10)!important}.pg-login-panel .primary-btn{background:linear-gradient(135deg,#E1BC6B,#9D6728)!important;color:#17120A!important;border-color:rgba(255,223,151,.25)!important;box-shadow:0 10px 24px rgba(188,128,44,.20)!important}.pg-login-panel .contact-btn{display:block;margin-top:9px;text-align:center;color:#CFC9BE}.pg-login-panel #errorMsg{color:#F1A6AD!important;background:rgba(163,43,58,.10)!important;border-color:rgba(240,121,139,.14)!important}@media(max-width:430px){#loginView.premium-gateway{border-radius:22px;padding:15px 11px 22px}.pg-hero h1{font-size:28px}.pg-feature{min-height:82px}.pg-package{padding:11px}.pg-price strong{font-size:24px}}
+
+<style>
+/* MASTER LOTTO VIP+ — Premium login hero replacement */
+#loginView.premium-gateway .pg-brand-hero{padding:26px 10px 25px;margin-top:2px}
+.master-logo-lockup{position:relative;width:min(100%,300px);height:132px;margin:0 auto;display:grid;place-items:center}
+.master-logo-orbit{position:absolute;width:124px;height:124px;border:1px solid rgba(224,187,103,.22);border-radius:50%;box-shadow:0 0 0 8px rgba(210,166,79,.025),0 0 38px rgba(201,151,54,.10);transform:rotate(-18deg)}
+.master-logo-orbit:before,.master-logo-orbit:after{content:"";position:absolute;inset:9px;border:1px solid rgba(224,187,103,.10);border-radius:50%}
+.master-logo-orbit:after{inset:22px;border-color:rgba(224,187,103,.08)}
+.orbit-line{position:absolute;left:-8px;right:-8px;top:61px;height:1px;background:linear-gradient(90deg,transparent,rgba(236,205,135,.7),transparent);transform:rotate(24deg)}
+.orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;right:7px;top:27px;background:#E5C477;box-shadow:0 0 14px rgba(229,196,119,.9)}
+.master-logo-core{position:relative;z-index:2;min-width:194px;padding:19px 25px 16px;border:1px solid rgba(231,197,119,.34);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));box-shadow:0 18px 42px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.12),0 0 32px rgba(204,158,66,.08);backdrop-filter:blur(12px)}
+.master-logo-top{display:block;font:900 11px/1 'IBM Plex Mono',monospace;letter-spacing:2.8px;color:#F2D58D;text-shadow:0 0 16px rgba(229,196,119,.16)}
+.master-logo-core strong{display:block;margin-top:8px;font-size:39px;line-height:.82;letter-spacing:2px;color:#FFF7E3;font-weight:950;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.master-logo-core strong span{margin-left:2px;color:#D9AF5B}
+.master-logo-divider{display:flex;align-items:center;justify-content:center;gap:7px;margin:2px auto 15px}
+.master-logo-divider span{width:44px;height:1px;background:linear-gradient(90deg,transparent,rgba(218,177,91,.45))}
+.master-logo-divider span:last-child{background:linear-gradient(90deg,rgba(218,177,91,.45),transparent)}
+.master-logo-divider i{width:4px;height:4px;border-radius:50%;background:#DDB866;box-shadow:0 0 10px rgba(221,184,102,.7)}
+.master-ai-title{font-size:22px!important;line-height:1.38!important;letter-spacing:-.5px!important;margin:0 0 9px!important;color:#F6F0E5}
+.master-ai-title em{font-style:normal;background:linear-gradient(90deg,#F7DEA0,#C18B36,#E8CA7C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.master-ai-subtitle{font-size:10px!important;line-height:1.85!important;color:#AAA7B2!important;margin:0!important}
+@media(max-width:430px){#loginView.premium-gateway .pg-brand-hero{padding:21px 7px 22px}.master-logo-lockup{height:122px}.master-logo-orbit{width:114px;height:114px}.master-logo-core{min-width:184px;padding:17px 22px 15px}.master-logo-core strong{font-size:36px}.master-logo-top{font-size:10px;letter-spacing:2.4px}.master-ai-title{font-size:19px!important}.master-ai-subtitle{font-size:9px!important}}
+</style>
+</style>
+
+<style id="premium-gateway-system-harmony">
+/* Front/login palette harmonized with the internal analysis console */
+#loginView.premium-gateway{
+  background:
+    radial-gradient(circle at 18% 0%,rgba(18,169,120,.16),transparent 31%),
+    radial-gradient(circle at 100% 24%,rgba(234,179,8,.10),transparent 32%),
+    linear-gradient(180deg,#06130F 0%,#081B14 48%,#050D0A 100%);
+  box-shadow:0 28px 70px rgba(3,18,13,.42),inset 0 1px 0 rgba(255,255,255,.07);
+}
+#loginView.premium-gateway:before{
+  background:linear-gradient(120deg,transparent 0%,rgba(18,169,120,.035) 45%,transparent 55%);
+}
+#loginView.premium-gateway .pg-topbar{
+  border-bottom:1px solid rgba(16,185,129,.10);
+}
+#loginView.premium-gateway .pg-mark{
+  color:#06130F;
+  background:linear-gradient(145deg,#F7D774,#B88716);
+  box-shadow:0 8px 22px rgba(234,179,8,.18);
+}
+#loginView.premium-gateway .pg-brand-sub{color:#7FB5A2}
+#loginView.premium-gateway .pg-live{
+  color:#9FE2C7;
+  border-color:rgba(16,185,129,.20);
+  background:rgba(16,185,129,.045);
+}
+#loginView.premium-gateway .pg-live span{
+  background:#10B981;
+  box-shadow:0 0 9px #10B981;
+}
+#loginView.premium-gateway .pg-eyebrow,
+#loginView.premium-gateway .pg-section-title small{color:#F0C85B}
+#loginView.premium-gateway .master-logo-orbit{
+  border-color:rgba(16,185,129,.25);
+  box-shadow:0 0 0 8px rgba(16,185,129,.025),0 0 38px rgba(16,185,129,.12);
+}
+#loginView.premium-gateway .master-logo-orbit:before{border-color:rgba(234,179,8,.13)}
+#loginView.premium-gateway .master-logo-orbit:after{border-color:rgba(16,185,129,.11)}
+#loginView.premium-gateway .orbit-line{
+  background:linear-gradient(90deg,transparent,rgba(16,185,129,.75),transparent);
+}
+#loginView.premium-gateway .orbit-dot{
+  background:#EAB308;
+  box-shadow:0 0 14px rgba(234,179,8,.85);
+}
+#loginView.premium-gateway .master-logo-core{
+  border-color:rgba(234,179,8,.34);
+  background:linear-gradient(145deg,rgba(16,185,129,.12),rgba(255,255,255,.035));
+  box-shadow:0 18px 42px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.10),0 0 32px rgba(16,185,129,.08);
+}
+#loginView.premium-gateway .master-logo-top{color:#F7D774}
+#loginView.premium-gateway .master-logo-core strong{color:#F5FFFB}
+#loginView.premium-gateway .master-logo-core strong span{color:#EAB308}
+#loginView.premium-gateway .master-logo-divider span{background:linear-gradient(90deg,transparent,rgba(234,179,8,.48))}
+#loginView.premium-gateway .master-logo-divider span:last-child{background:linear-gradient(90deg,rgba(234,179,8,.48),transparent)}
+#loginView.premium-gateway .master-logo-divider i{background:#EAB308;box-shadow:0 0 10px rgba(234,179,8,.70)}
+#loginView.premium-gateway .master-ai-title{color:#F5FFFB}
+#loginView.premium-gateway .master-ai-title em{
+  background:linear-gradient(90deg,#D7FBEA,#10B981,#F7D774);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+#loginView.premium-gateway .pg-pricing{
+  border-color:rgba(16,185,129,.12);
+  background:linear-gradient(145deg,rgba(16,185,129,.065),rgba(255,255,255,.022));
+}
+#loginView.premium-gateway .pg-package{
+  background:rgba(4,28,21,.42);
+  border-color:rgba(16,185,129,.10);
+}
+#loginView.premium-gateway .pg-package.pg-featured{
+  background:linear-gradient(145deg,rgba(16,185,129,.15),rgba(234,179,8,.08));
+  border-color:rgba(234,179,8,.34);
+  box-shadow:0 12px 28px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.09);
+}
+#loginView.premium-gateway .pg-badge{
+  color:#06130F;
+  background:linear-gradient(135deg,#F7D774,#B88716);
+}
+#loginView.premium-gateway .pg-package.pg-featured button{
+  background:linear-gradient(135deg,#F7D774,#B88716);
+  color:#06130F;
+}
+#loginView.premium-gateway .pg-login-panel{
+  background:linear-gradient(145deg,rgba(16,185,129,.075),rgba(255,255,255,.028))!important;
+  border-color:rgba(16,185,129,.14)!important;
+}
+#loginView.premium-gateway .pg-login-panel .primary-btn{
+  background:linear-gradient(112deg,#064C38 0%,#087A55 36%,#12A978 62%,#075A42 100%)!important;
+  color:#F5FFFB!important;
+  border-color:rgba(16,185,129,.28)!important;
+  box-shadow:0 10px 24px rgba(16,185,129,.16)!important;
+}
 </style>
 </head>
 <body>
@@ -3044,102 +3514,24 @@ body{background:radial-gradient(circle at 10% 4%,rgba(16,185,129,.222),transpare
 <div class="app-shell">
 <div class="app-card">
 <div class="app-inner">
-<div id="loginView">
-<div class="top-nav">
-<div class="brand-mini">
-<div class="brand-mark">AI</div>
-<div>
-<div class="brand-name">Enterprise Quant</div>
-<div class="brand-sub">Predictive Data Engine</div>
+<div id="loginView" class="premium-gateway">
+<div class="pg-topbar"><div class="pg-brand"><div class="pg-mark">AI</div><div><div class="pg-brand-name">MASTER LOTTO</div><div class="pg-brand-sub">VIP+ MEMBER ACCESS</div></div></div><div class="pg-live"><span></span> SYSTEM ONLINE</div></div>
+<section class="pg-hero pg-brand-hero">
+<div class="master-logo-lockup" aria-label="Master Lotto VIP+">
+  <div class="master-logo-orbit"><span class="orbit-dot"></span><span class="orbit-line"></span></div>
+  <div class="master-logo-core"><span class="master-logo-top">MASTER LOTTO</span><strong>VIP<span>+</span></strong></div>
 </div>
-</div>
-</div>
-<section class="hero">
-<div class="hero-kicker">
-<span></span>
-QUANT ANALYSIS ENGINE
-</div>
-<h1>
-Master Lotto <em>VIP+</em>
-</h1>
-<p>
-ระบบคำนวณและวิเคราะห์ข้อมูล AI อัจฉริยะ<br>
-<b>Multi-Layer AI Processing</b>
-</p>
-<div class="hero-meta">
-<div class="meta-chip">AI Pattern</div>
-<div class="meta-chip">Digit Ranking</div>
-<div class="meta-chip">Win Set</div>
-<div class="meta-chip">Neural Matrix</div>
-</div>
+<div class="master-logo-divider"><span></span><i></i><span></span></div>
+<h1 class="master-ai-title">ระบบประมวลผลและวิเคราะห์<br><em>ด้วย AI อัจฉริยะ</em></h1>
+
 </section>
-<div class="login-dashboard">
-<div class="mini-stat">
-<div class="mini-stat-label">ผู้ใช้งานระบบ / MEMBERS</div>
-<div class="mini-stat-value" id="totalUsersStat">2,637</div>
-</div>
-<div class="mini-stat">
-<div class="mini-stat-label">สถานะระบบ / STATUS</div>
-<div class="mini-stat-value green">ONLINE</div>
-</div>
-</div>
-<div class="packages">
-<div class="package">
-<div class="package-title">7 วัน / 7 DAYS</div>
-<div class="package-price">99 ฿</div>
-<div class="package-desc">Starter Tier</div>
-</div>
-<div class="package">
-<div class="package-title">15 วัน / 15 DAYS</div>
-<div class="package-price">199 ฿</div>
-<div class="package-desc">รายงวด / Period</div>
-</div>
-<div class="package">
-<div class="package-title">1 เดือน / 1 MONTH</div>
-<div class="package-price">299 ฿</div>
-<div class="package-desc">ยอดนิยม / Popular</div>
-</div>
-<div class="package">
-<div class="package-title">1 ปี / 1 YEAR</div>
-<div class="package-price">1,890 ฿</div>
-<div class="package-desc">VIP ระยะยาว</div>
-</div>
-</div>
-<a href="https://line.me/ti/p/cWXNwvCmqc"
-target="_blank"
-rel="noopener noreferrer"
-class="contact-btn"
-onclick="_app._audio('click')">
-💬 ติดต่อแอดมิน / CONTACT ADMIN
-</a>
-<section class="login-panel">
-<div class="section-eyebrow">
-SECURE ACCESS / ระบบสมาชิก
-</div>
-<div class="login-heading">
-เชื่อมต่อ Master Engine
-</div>
-<div class="login-description">
-กรุณากรอกรหัสผ่านเพื่อเข้าสู่ระบบ
-</div>
-<input
-type="password"
-id="passwordInput"
-placeholder="••• System Access Key •••"
-autocomplete="current-password"
-spellcheck="false"
->
-<button
-class="primary-btn"
-id="loginButton"
-type="button">
-🔐 CONNECT TO ENGINE / เข้าสู่ระบบ
-</button>
-<div id="errorMsg">
-❌ รหัสผ่านไม่ถูกต้อง / ACCESS DENIED
-</div>
-</section>
-</div>
+<section class="pg-pricing"><div class="pg-section-title"><small>MEMBERSHIP</small><strong>เลือกสิทธิ์การใช้งาน</strong></div><div class="pg-package-grid">
+<div class="pg-package"><div class="pg-package-top"><span>STARTER</span><small>7 DAYS</small></div><div class="pg-price"><strong>99</strong><span>฿</span></div><p>เริ่มต้นทดลองประสบการณ์ VIP+</p><button type="button" onclick="document.querySelector('.login-panel')?.scrollIntoView({behavior:'smooth',block:'center'})">เลือกแพ็กเกจ</button></div>
+<div class="pg-package"><div class="pg-package-top"><span>PERIOD</span><small>15 DAYS</small></div><div class="pg-price"><strong>199</strong><span>฿</span></div><p>เหมาะสำหรับใช้งานเป็นงวด</p><button type="button" onclick="document.querySelector('.login-panel')?.scrollIntoView({behavior:'smooth',block:'center'})">เลือกแพ็กเกจ</button></div>
+<div class="pg-package pg-featured"><div class="pg-badge">MOST POPULAR</div><div class="pg-package-top"><span>PREMIUM</span><small>1 MONTH</small></div><div class="pg-price"><strong>299</strong><span>฿</span></div><p>สมดุลที่สุดสำหรับสมาชิก VIP+</p><button type="button" onclick="document.querySelector('.login-panel')?.scrollIntoView({behavior:'smooth',block:'center'})">เลือกแพ็กเกจ</button></div>
+<div class="pg-package"><div class="pg-package-top"><span>VIP LONG</span><small>1 YEAR</small></div><div class="pg-price"><strong>1,890</strong><span>฿</span></div><p>สิทธิ์ใช้งานระยะยาว</p><button type="button" onclick="document.querySelector('.login-panel')?.scrollIntoView({behavior:'smooth',block:'center'})">เลือกแพ็กเกจ</button></div></div></section>
+<div class="pg-trust"><span>SECURE MEMBER ACCESS</span><b>ข้อมูลการเข้าใช้งานสำหรับสมาชิกเท่านั้น</b></div>
+<section class="login-panel pg-login-panel"><div class="section-eyebrow">SECURE ACCESS / ระบบสมาชิก</div><div class="login-heading">เข้าสู่ Master Lotto VIP+</div><div class="login-description">กรอกรหัสผ่านเพื่อเปิดใช้งานระบบวิเคราะห์สำหรับสมาชิก</div><input type="password" id="passwordInput" placeholder="••• System Access Key •••" autocomplete="current-password" spellcheck="false"><button class="primary-btn" id="loginButton" type="button">🔐 เข้าสู่ระบบ VIP+</button><div id="errorMsg">❌ รหัสผ่านไม่ถูกต้อง / ACCESS DENIED</div><a href="https://line.me/ti/p/cWXNwvCmqc" target="_blank" rel="noopener noreferrer" class="contact-btn" onclick="_app._audio('click')">💬 ติดต่อแอดมิน / CONTACT ADMIN</a></section></div>
 <div id="calculatorView">
 <div class="top-nav">
 <div class="brand-mini">
@@ -3793,6 +4185,30 @@ mainEvaluated.forEach(model=>model.set.forEach(d=>allowedModelDigits.add(d)));
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const digitScores={};
 for(let d=0;d<=9;d++)digitScores[d]={digit:d,formulaScore:0,radarScore:0,backendScore:0,winSetScore:0,totalScore:0,rankingScore:0};
 const mainFormulaGroups={};
@@ -3812,15 +4228,12 @@ const uniqueBackendGroups=Object.values(backendGroups);
 for(let d=0;d<=9;d++){let hits=0;uniqueBackendGroups.forEach(set=>{if(set.has(d))hits++;});digitScores[d].backendScore=hits/(uniqueBackendGroups.length||1);}
 const winCandidate=mod10(totalSum);
 for(let d=0;d<=9;d++)if(d===winCandidate||d===mod10(winCandidate+5))digitScores[d].winSetScore=1;
-for(let d=0;d<=9;d++){const item=digitScores[d];item.rawScore=.70*item.formulaScore+.15*item.radarScore+.15*item.winSetScore;item.totalScore=item.rawScore;item.rankingScore=item.rawScore;}
-const matrixSortedAll=Object.values(digitScores).sort((a,b)=>b.rankingScore-a.rankingScore||b.formulaScore-a.formulaScore||b.backendScore-a.backendScore||a.digit-b.digit);
-const matrixSorted=matrixSortedAll;
-const allScores=matrixSorted.map(s=>s.totalScore);
-const minScore=Math.min(...allScores);
-const maxScore=Math.max(...allScores);
-const scoreRange=maxScore-minScore||1;
-const calcConfidence=score=>{const normalizedPct=80+(score-minScore)/scoreRange*18.5;return Number(Math.min(98.5,Math.max(80,normalizedPct)).toFixed(1));};
-Object.values(digitScores).forEach(item=>{item.displayConfidence=calcConfidence(item.rankingScore);});
+/* AUDITED MASTER SCORING: internal selection score is separated from legacy display confidence. Formula remains dominant; Radar, Backend and Win Set are supporting evidence. */
+for(let d=0;d<=9;d++){const item=digitScores[d];item.displayScore=.70*item.formulaScore+.15*item.radarScore+.15*item.winSetScore;item.selectionScore=.60*item.formulaScore+.15*item.radarScore+.15*item.backendScore+.10*item.winSetScore;item.rawScore=item.displayScore;item.totalScore=item.selectionScore;item.rankingScore=item.selectionScore;}
+const displayScoreValues=Object.values(digitScores).map(s=>s.displayScore);const displayMinScore=Math.min(...displayScoreValues);const displayMaxScore=Math.max(...displayScoreValues);const displayRange=displayMaxScore-displayMinScore||1;
+const calcConfidence=score=>{const normalizedPct=80+(score-displayMinScore)/displayRange*18.5;return Number(Math.min(98.5,Math.max(80,normalizedPct)).toFixed(1));};
+Object.values(digitScores).forEach(item=>{item.displayConfidence=calcConfidence(item.displayScore);});
+const matrixSortedAll=Object.values(digitScores).sort((a,b)=>b.rankingScore-a.rankingScore||b.formulaScore-a.formulaScore||b.backendScore-a.backendScore||a.digit-b.digit);const matrixSorted=matrixSortedAll;
 mainEvaluated.forEach(model=>{
  const distinctDigits=[...new Set(model.set)];
  /* AI N1–N5 score uses only formula consensus, never Backend/Legacy scores. */
@@ -3884,17 +4297,9 @@ const top5PairRankedHTML=top5Pairs.map((item,index)=>{const rawRatio=item.votes/
 DEEP SCAN — 3 REAL TOP DIGIT SETS
 ========================================================= */
 function findPairsForDigit(digit){
-  const target=String(digit);
-  const candidates=mainEvaluated.filter(model=>model.set.some(d=>String(d)===target)).sort((a,b)=>b.aiScore-a.aiScore||String(a.id).localeCompare(String(b.id)));
-  if(!candidates.length)return [];
-  const winner=candidates[0], seen=new Set(), result=[];
-  Object.values(winner.pairsMap||{}).forEach(list=>{(list||[]).forEach(pairStr=>{
-    const pair=String(pairStr||'');
-    if(!/^\d{2}$/.test(pair)||pair[0]===pair[1]||(pair[0]!==target&&pair[1]!==target))return;
-    const other=pair[0]===target?pair[1]:pair[0], normalized=`${target}${other}`;
-    if(!seen.has(normalized)){seen.add(normalized);result.push(normalized);}
-  });});
-  return result.sort((a,b)=>Number(a[1])-Number(b[1])||a.localeCompare(b)).slice(0,5);
+ const target=String(digit),pairMap=new Map();
+ mainEvaluated.filter(model=>model.set.some(d=>String(d)===target)).forEach(model=>{const modelWeight=Math.max(model.aiScore||0,50)/100;Object.values(model.pairsMap||{}).forEach(list=>(list||[]).forEach(pairStr=>{const pair=String(pairStr||'');if(!/^\d{2}$/.test(pair)||pair[0]===pair[1]||(pair[0]!==target&&pair[1]!==target))return;const other=pair[0]===target?pair[1]:pair[0],normalized=`${target}${other}`;const item=pairMap.get(normalized)||{pair:normalized,support:0,models:0};item.support+=modelWeight;item.models+=1;pairMap.set(normalized,item);}));});
+ return [...pairMap.values()].sort((a,b)=>b.support-a.support||b.models-a.models||Number(a.pair[1])-Number(b.pair[1])||a.pair.localeCompare(b.pair)).slice(0,5).map(x=>x.pair);
 }
 const deepSets=
 top3Digits.map(
@@ -4027,43 +4432,12 @@ const bestJueCandidates=Object.values(bestJuePairMap).filter(item=>Object.keys(i
 }).sort((a,b)=>b.quality-a.quality||b.total-a.total||a.displayPair.localeCompare(b.displayPair)).slice(0,5);
 /* =========================================================
 AUDITED 3-DIGIT SET ENGINE
-Uses existing signals only:
-Digit Strength + N1–N5 Consensus + Pair Support + existing TOP 3 focus support,
-then selects a diverse Top 5. No formula generation rules are changed.
+Win Set 6 is a hard candidate boundary. Ranking still uses digit strength, model support, pair support, TOP-5 focus support and Win Set overlap.
 ========================================================= */
-const threeDigitPool=matrixSorted.filter(item=>item.digit!==5).map(item=>item.digit);
-const modelDigitSupport=new Map();
-mainEvaluated.forEach(model=>{[...new Set(model.set)].forEach(digit=>{if(digit!==5)modelDigitSupport.set(digit,(modelDigitSupport.get(digit)||0)+1);});});
-const pairSupport=new Map();
-mainEvaluated.forEach(model=>{Object.values(model.pairsMap||{}).forEach(list=>{(list||[]).forEach(pairStr=>{
-  const pair=String(pairStr||''); if(!/^\d{2}$/.test(pair)||pair[0]===pair[1]||pair.includes('5'))return;
-  const key=[Number(pair[0]),Number(pair[1])].sort((a,b)=>a-b).join(''); pairSupport.set(key,(pairSupport.get(key)||0)+1);
-});});});
-const matrixArr3d=[];
-for(let i=0;i<threeDigitPool.length-2;i++)for(let j=i+1;j<threeDigitPool.length-1;j++)for(let k=j+1;k<threeDigitPool.length;k++){
-  const digits=[threeDigitPool[i],threeDigitPool[j],threeDigitPool[k]]; if(new Set(digits).size!==3||digits.includes(5))continue;
-  const digitStrength=digits.reduce((sum,digit)=>sum+(digitScores[digit]?.totalScore||0),0);
-  const modelSupport=digits.reduce((sum,digit)=>sum+(modelDigitSupport.get(digit)||0),0);
-  const pairScore=[[digits[0],digits[1]],[digits[0],digits[2]],[digits[1],digits[2]]].reduce((sum,pair)=>sum+(pairSupport.get([...pair].sort((a,b)=>a-b).join(''))||0),0);
-  const focusSupport=digits.reduce((sum,digit)=>sum+(top3FocusWeight.get(digit)||0),0); const canonicalDigits=[...digits].sort((a,b)=>a-b);
-  matrixArr3d.push({digits:canonicalDigits,key:canonicalDigits.join(''),score:digitStrength+(modelSupport*.35)+(pairScore*.55)+(focusSupport*.35),digitStrength,modelSupport,pairScore,focusSupport});
-}
-matrixArr3d.sort((a,b)=>b.score-a.score||b.digitStrength-a.digitStrength||b.modelSupport-a.modelSupport||b.pairScore-a.pairScore||b.focusSupport-a.focusSupport||a.key.localeCompare(b.key));
-const uniqueThreeSets=[],seenThreeKeys=new Set();
-for(const item of matrixArr3d){
-  if(item.digits.length!==3||new Set(item.digits).size!==3||item.digits.includes(5))continue;
-  if(seenThreeKeys.has(item.key))continue;
-  seenThreeKeys.add(item.key); uniqueThreeSets.push(item);
-  if(uniqueThreeSets.length>=5)break;
-}
-matrixArr3d.splice(0,matrixArr3d.length,...uniqueThreeSets);
-const minThreeScore=Math.min(...matrixArr3d.map(item=>item.score),0);
-const maxThreeScore=Math.max(...matrixArr3d.map(item=>item.score),1);
-const threeScorePct=score=>{
-  const range=maxThreeScore-minThreeScore||1;
-  return Number((80+((score-minThreeScore)/range)*18.5).toFixed(1));
-};
-const cScore3=matrixArr3d.length?threeScorePct(matrixArr3d[0].score):80;
+const modelDigitSupport=new Map();mainEvaluated.forEach(model=>{[...new Set(model.set)].forEach(digit=>{modelDigitSupport.set(digit,(modelDigitSupport.get(digit)||0)+1);});});
+const pairSupport=new Map();mainEvaluated.forEach(model=>{Object.values(model.pairsMap||{}).forEach(list=>(list||[]).forEach(pairStr=>{const pair=String(pairStr||'');if(!/^\d{2}$/.test(pair)||pair[0]===pair[1])return;const key=[Number(pair[0]),Number(pair[1])].sort((a,b)=>a-b).join('');pairSupport.set(key,(pairSupport.get(key)||0)+1);}));});
+let matrixArr3d=[],minThreeScore=0,maxThreeScore=1,threeScorePct=score=>80,cScore3=80;
+const buildThreeDigitSets=winSet=>{const pool=[...new Set(winSet.map(Number))].filter(Number.isInteger),winSetTop5=new Set(top5Digits),candidates=[];for(let i=0;i<pool.length-2;i++)for(let j=i+1;j<pool.length-1;j++)for(let k=j+1;k<pool.length;k++){const digits=[pool[i],pool[j],pool[k]];if(new Set(digits).size!==3)continue;const digitStrength=digits.reduce((sum,d)=>sum+(digitScores[d]?.totalScore||0),0),modelSupport=digits.reduce((sum,d)=>sum+(modelDigitSupport.get(d)||0),0),pairScore=digits[0],digits[1,[digits[0],digits[2]],[digits[1],digits[2]]].reduce((sum,pair)=>sum+(pairSupport.get([...pair].sort((a,b)=>a-b).join(''))||0),0),focusSupport=digits.reduce((sum,d)=>sum+(top3FocusWeight.get(d)||0),0),top5Overlap=digits.reduce((sum,d)=>sum+(winSetTop5.has(d)?1:0),0),canonicalDigits=[...digits].sort((a,b)=>a-b),score=digitStrength+(modelSupport*.35)+(pairScore*.55)+(focusSupport*.35)+(top5Overlap*.45);candidates.push({digits:canonicalDigits,key:canonicalDigits.join(''),score,digitStrength,modelSupport,pairScore,focusSupport,top5Overlap,winSetCoverage:3});}candidates.sort((a,b)=>b.score-a.score||b.digitStrength-a.digitStrength||b.modelSupport-a.modelSupport||b.pairScore-a.pairScore||b.focusSupport-a.focusSupport||b.top5Overlap-a.top5Overlap||a.key.localeCompare(b.key));return candidates.slice(0,5);};
 let top5Digits=
 matrixSorted
 .slice(0,5)
@@ -4157,6 +4531,7 @@ const winSet=
 currentSet.sort(
 (a,b)=>a-b
 );
+matrixArr3d=buildThreeDigitSets(winSet);minThreeScore=Math.min(...matrixArr3d.map(item=>item.score),0);maxThreeScore=Math.max(...matrixArr3d.map(item=>item.score),1);threeScorePct=score=>{const range=maxThreeScore-minThreeScore||1;return Number((80+((score-minThreeScore)/range)*18.5).toFixed(1));};cScore3=matrixArr3d.length?threeScorePct(matrixArr3d[0].score):80;
 const combinedAnalysisPool=[
 ...matrixSorted
 .slice(0,5)
