@@ -5078,7 +5078,7 @@ DEEP SCAN — 3 REAL TOP DIGIT SETS
 function findPairsForDigit(digit){
  const target=String(digit),pairMap=new Map();
  mainEvaluated.filter(model=>model.set.some(d=>String(d)===target)).forEach(model=>{const modelWeight=Math.max(model.aiScore||0,50)/100;Object.values(model.pairsMap||{}).forEach(list=>(list||[]).forEach(pairStr=>{const pair=String(pairStr||'');if(!/^\d{2}$/.test(pair)||pair[0]===pair[1]||(pair[0]!==target&&pair[1]!==target))return;const other=pair[0]===target?pair[1]:pair[0],normalized=`${target}${other}`;const item=pairMap.get(normalized)||{pair:normalized,support:0,models:0};item.support+=modelWeight;item.models+=1;pairMap.set(normalized,item);}));});
- return [...pairMap.values()].sort((a,b)=>b.support-a.support||b.models-a.models||Number(a.pair[1])-Number(b.pair[1])||a.pair.localeCompare(b.pair)).slice(0,5).map(x=>x.pair);
+ return [...pairMap.values()].sort((a,b)=>Number(a.pair)-Number(b.pair)||a.pair.localeCompare(b.pair)).slice(0,5).map(x=>x.pair);
 }
 const deepSets=
 top3Digits.map(
