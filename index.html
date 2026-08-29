@@ -13,7 +13,15 @@
 
 
 
+
+
+
+
 <title>Mester Lotto VIP+ — Premium Quant Intelligence</title>
+
+
+
+
 
 
 
@@ -21,6 +29,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
 
 
 
@@ -62,6 +74,10 @@
 
 
 
+
+
+
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -72,9 +88,17 @@ padding:0;
 
 
 
+
+
+
+
 html{
 scroll-behavior:smooth;
 }
+
+
+
+
 
 
 
@@ -93,10 +117,18 @@ linear-gradient(135deg,#fff,#F0FAF5 58%,#E5F3ED);
 
 
 
+
+
+
+
 button,
 input{
 font-family:'Prompt',sans-serif;
 }
+
+
+
+
 
 
 
@@ -109,10 +141,18 @@ user-select:none;
 
 
 
+
+
+
+
 ::selection{
 background:rgba(10,102,71,.18);
 color:var(--text);
 }
+
+
+
+
 
 
 
@@ -130,6 +170,10 @@ mix-blend-mode:normal;
 
 
 
+
+
+
+
 .ambient{
 position:fixed;
 inset:0;
@@ -137,6 +181,10 @@ pointer-events:none;
 z-index:0;
 overflow:hidden;
 }
+
+
+
+
 
 
 
@@ -153,6 +201,10 @@ opacity:.34;
 
 
 
+
+
+
+
 .ambient::before{
 width:320px;
 height:320px;
@@ -160,6 +212,10 @@ top:-80px;
 left:-90px;
 background:rgba(16,185,129,.34);
 }
+
+
+
+
 
 
 
@@ -175,6 +231,10 @@ background:rgba(234,179,8,.20);
 
 
 
+
+
+
+
 .grid-overlay{
 position:absolute;
 inset:0;
@@ -185,6 +245,10 @@ linear-gradient(90deg,rgba(10,102,71,.12) 1px,transparent 1px);
 background-size:34px 34px;
 mask-image:linear-gradient(to bottom,#000,transparent 88%);
 }
+
+
+
+
 
 
 
@@ -205,6 +269,10 @@ z-index:2;
 
 
 
+
+
+
+
 .app-card{
 position:relative;
 overflow:hidden;
@@ -218,6 +286,10 @@ inset 0 1px 0 #fff;
 backdrop-filter:blur(24px);
 -webkit-backdrop-filter:blur(24px);
 }
+
+
+
+
 
 
 
@@ -245,10 +317,18 @@ animation:spectrumFlow 7s ease-in-out infinite;
 
 
 
+
+
+
+
 @keyframes spectrumFlow{
 0%,100%{background-position:0 50%}
 50%{background-position:100% 50%}
 }
+
+
+
+
 
 
 
@@ -259,6 +339,10 @@ clamp(14px,3vw,18px)
 clamp(12px,3vw,16px)
 22px;
 }
+
+
+
+
 
 
 
@@ -274,12 +358,20 @@ margin-bottom:14px;
 
 
 
+
+
+
+
 .brand-mini{
 display:flex;
 align-items:center;
 gap:9px;
 min-width:0;
 }
+
+
+
+
 
 
 
@@ -305,6 +397,10 @@ position:relative;
 
 
 
+
+
+
+
 .brand-mark::after{
 content:"";
 position:absolute;
@@ -312,6 +408,10 @@ inset:2px;
 border-radius:8px;
 border:1px solid rgba(255,255,255,.32);
 }
+
+
+
+
 
 
 
@@ -325,12 +425,20 @@ letter-spacing:.2px;
 
 
 
+
+
+
+
 .brand-sub{
 margin-top:1px;
 font-size:.55rem;
 font-weight:600;
 color:var(--muted);
 }
+
+
+
+
 
 
 
@@ -352,6 +460,10 @@ white-space:nowrap;
 
 
 
+
+
+
+
 .live-dot{
 width:6px;
 height:6px;
@@ -365,10 +477,18 @@ animation:livePulse 1.8s ease-in-out infinite;
 
 
 
+
+
+
+
 @keyframes livePulse{
 0%,100%{transform:scale(1);opacity:1}
 50%{transform:scale(.72);opacity:.45}
 }
+
+
+
+
 
 
 
@@ -391,6 +511,10 @@ box-shadow:var(--shadowSoft);
 
 
 
+
+
+
+
 .hero,
 .login-panel,
 .command-center,
@@ -405,6 +529,10 @@ linear-gradient(135deg,#fff,#F2F9F5);
 
 
 
+
+
+
+
 .hero{
 padding:16px 14px 14px;
 margin-bottom:10px;
@@ -413,6 +541,10 @@ radial-gradient(circle at 95% 5%,rgba(16,185,129,.18),transparent 42%),
 radial-gradient(circle at 5% 95%,rgba(234,179,8,.12),transparent 38%),
 linear-gradient(135deg,#fff,#EEF9F2);
 }
+
+
+
+
 
 
 
@@ -431,6 +563,10 @@ box-shadow:
 0 0 0 38px rgba(16,185,129,.025);
 pointer-events:none;
 }
+
+
+
+
 
 
 
@@ -455,6 +591,10 @@ letter-spacing:.8px;
 
 
 
+
+
+
+
 .hero-kicker span{
 width:5px;
 height:5px;
@@ -462,6 +602,10 @@ border-radius:50%;
 background:var(--green);
 box-shadow:0 0 6px rgba(16,185,129,.75);
 }
+
+
+
+
 
 
 
@@ -474,6 +618,10 @@ line-height:1.15;
 letter-spacing:-.4px;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -498,10 +646,18 @@ animation:titleGradient 7s ease-in-out infinite;
 
 
 
+
+
+
+
 @keyframes titleGradient{
 0%,100%{background-position:0 50%}
 50%{background-position:100% 50%}
 }
+
+
+
+
 
 
 
@@ -518,9 +674,17 @@ color:var(--muted);
 
 
 
+
+
+
+
 .hero p b{
 color:var(--text2);
 }
+
+
+
+
 
 
 
@@ -533,6 +697,10 @@ flex-wrap:wrap;
 gap:5px;
 margin-top:10px;
 }
+
+
+
+
 
 
 
@@ -551,12 +719,20 @@ box-shadow:0 2px 6px rgba(10,102,71,.04);
 
 
 
+
+
+
+
 .login-dashboard{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:7px;
 margin-bottom:10px;
 }
+
+
+
+
 
 
 
@@ -572,11 +748,19 @@ box-shadow:var(--shadowSoft);
 
 
 
+
+
+
+
 .mini-stat-label{
 color:var(--muted);
 font-size:.50rem;
 font-weight:700;
 }
+
+
+
+
 
 
 
@@ -591,9 +775,17 @@ font-weight:700;
 
 
 
+
+
+
+
 .mini-stat-value.green{
 color:var(--emerald);
 }
+
+
+
+
 
 
 
@@ -604,6 +796,10 @@ grid-template-columns:repeat(2,1fr);
 gap:7px;
 margin-bottom:10px;
 }
+
+
+
+
 
 
 
@@ -626,11 +822,19 @@ border-color .22s ease;
 
 
 
+
+
+
+
 .package:hover{
 transform:translateY(-1px);
 box-shadow:0 9px 22px rgba(10,102,71,.08);
 border-color:rgba(10,102,71,.24);
 }
+
+
+
+
 
 
 
@@ -644,6 +848,10 @@ right:0;
 height:2px;
 background:var(--emerald);
 }
+
+
+
+
 
 
 
@@ -662,9 +870,17 @@ background:rgba(16,185,129,.055);
 
 
 
+
+
+
+
 .package:nth-child(2)::before{background:var(--cyan)}
 .package:nth-child(3)::before{background:var(--gold2)}
 .package:nth-child(4)::before{background:var(--purple)}
+
+
+
+
 
 
 
@@ -676,6 +892,10 @@ font-size:.53rem;
 font-weight:700;
 color:var(--muted);
 }
+
+
+
+
 
 
 
@@ -692,6 +912,10 @@ font-weight:700;
 
 
 
+
+
+
+
 .package-desc{
 position:relative;
 z-index:1;
@@ -699,6 +923,10 @@ margin-top:2px;
 font-size:.47rem;
 color:var(--muted2);
 }
+
+
+
+
 
 
 
@@ -734,6 +962,10 @@ background-position .35s ease;
 
 
 
+
+
+
+
 .contact-btn:hover{
 transform:translateY(-1px);
 background-position:100% 50%;
@@ -743,9 +975,17 @@ box-shadow:0 9px 22px rgba(10,102,71,.23);
 
 
 
+
+
+
+
 .login-panel{
 padding:14px;
 }
+
+
+
+
 
 
 
@@ -761,12 +1001,20 @@ text-align:center;
 
 
 
+
+
+
+
 .login-heading{
 margin-top:3px;
 font-size:.95rem;
 font-weight:800;
 text-align:center;
 }
+
+
+
+
 
 
 
@@ -778,6 +1026,10 @@ color:var(--muted);
 font-size:.55rem;
 text-align:center;
 }
+
+
+
+
 
 
 
@@ -799,9 +1051,17 @@ transition:.2s ease;
 
 
 
+
+
+
+
 input::placeholder{
 color:var(--muted2);
 }
+
+
+
+
 
 
 
@@ -811,6 +1071,10 @@ background:#fff;
 border-color:rgba(10,102,71,.55);
 box-shadow:0 0 0 3px rgba(10,102,71,.10);
 }
+
+
+
+
 
 
 
@@ -847,6 +1111,10 @@ background-position .35s ease;
 
 
 
+
+
+
+
 .primary-btn::after,
 .calculate-btn::after{
 content:"";
@@ -870,6 +1138,10 @@ pointer-events:none;
 
 
 
+
+
+
+
 .primary-btn:hover::after,
 .calculate-btn:hover:not(:disabled)::after{
 left:130%;
@@ -878,9 +1150,17 @@ left:130%;
 
 
 
+
+
+
+
 .primary-btn{
 margin-top:8px;
 }
+
+
+
+
 
 
 
@@ -897,10 +1177,18 @@ background-position:100% 50%;
 
 
 
+
+
+
+
 .primary-btn:active,
 .calculate-btn:active:not(:disabled){
 transform:translateY(0);
 }
+
+
+
+
 
 
 
@@ -917,9 +1205,17 @@ font-weight:700;
 
 
 
+
+
+
+
 #calculatorView{
 display:none;
 }
+
+
+
+
 
 
 
@@ -930,6 +1226,10 @@ grid-template-columns:1fr 1fr 1fr;
 gap:6px;
 margin-bottom:10px;
 }
+
+
+
+
 
 
 
@@ -947,6 +1247,10 @@ box-shadow:var(--shadowSoft);
 
 
 
+
+
+
+
 .engine-card::before{
 content:"";
 position:absolute;
@@ -960,6 +1264,10 @@ background:linear-gradient(180deg,#0A6647,#10B981);
 
 
 
+
+
+
+
 .engine-card:nth-child(2)::before{
 background:linear-gradient(180deg,#0D7A55,#14B8A6);
 }
@@ -967,9 +1275,17 @@ background:linear-gradient(180deg,#0D7A55,#14B8A6);
 
 
 
+
+
+
+
 .engine-card:nth-child(3)::before{
 background:linear-gradient(180deg,#9E6C02,#EAB308);
 }
+
+
+
+
 
 
 
@@ -989,6 +1305,10 @@ text-overflow:ellipsis;
 
 
 
+
+
+
+
 .engine-value{
 display:flex;
 align-items:center;
@@ -1002,9 +1322,17 @@ font-weight:700;
 
 
 
+
+
+
+
 .engine-value.cyan{color:var(--cyan)}
 .engine-value.green{color:var(--emerald)}
 .engine-value.gold{color:var(--gold)}
+
+
+
+
 
 
 
@@ -1020,12 +1348,20 @@ height:8px;
 
 
 
+
+
+
+
 .total-dot{
 width:4px;
 height:4px;
 border-radius:50%;
 background:var(--green);
 }
+
+
+
+
 
 
 
@@ -1037,10 +1373,18 @@ animation:microRipple .85s ease-out;
 
 
 
+
+
+
+
 @keyframes microRipple{
 0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}
 100%{box-shadow:0 0 0 9px rgba(16,185,129,0)}
 }
+
+
+
+
 
 
 
@@ -1062,6 +1406,10 @@ font-size:.53rem;
 
 
 
+
+
+
+
 .last-session strong{
 color:var(--gold);
 font-family:'IBM Plex Mono',monospace;
@@ -1071,10 +1419,18 @@ font-size:.61rem;
 
 
 
+
+
+
+
 .command-center{
 padding:12px;
 margin-bottom:10px;
 }
+
+
+
+
 
 
 
@@ -1090,10 +1446,18 @@ margin-bottom:10px;
 
 
 
+
+
+
+
 .command-title{
 font-size:.87rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -1103,6 +1467,10 @@ margin-top:1px;
 color:var(--muted);
 font-size:.51rem;
 }
+
+
+
+
 
 
 
@@ -1121,11 +1489,19 @@ font-weight:700;
 
 
 
+
+
+
+
 .input-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:7px;
 }
+
+
+
+
 
 
 
@@ -1136,6 +1512,10 @@ border-radius:12px;
 background:var(--surface2);
 border:1px solid rgba(10,102,71,.15);
 }
+
+
+
+
 
 
 
@@ -1155,6 +1535,10 @@ text-overflow:ellipsis;
 
 
 
+
+
+
+
 .field-card input{
 height:42px;
 background:#fff;
@@ -1167,12 +1551,20 @@ letter-spacing:2px;
 
 
 
+
+
+
+
 .action-row{
 display:grid;
 grid-template-columns:1fr 82px;
 gap:7px;
 margin-top:8px;
 }
+
+
+
+
 
 
 
@@ -1194,6 +1586,10 @@ border-color .2s ease;
 
 
 
+
+
+
+
 .clear-btn:hover{
 transform:translateY(-1px);
 background:#fff;
@@ -1203,10 +1599,18 @@ border-color:rgba(10,102,71,.28);
 
 
 
+
+
+
+
 .calculate-btn:disabled{
 opacity:.55;
 cursor:not-allowed;
 }
+
+
+
+
 
 
 
@@ -1228,6 +1632,10 @@ border:1px solid rgba(10,102,71,.18);
 
 
 
+
+
+
+
 .scanner-ring{
 position:relative;
 width:52px;
@@ -1236,6 +1644,10 @@ margin:0 auto 10px;
 border-radius:50%;
 border:1px solid rgba(10,102,71,.20);
 }
+
+
+
+
 
 
 
@@ -1254,6 +1666,10 @@ animation:spin 1s linear infinite;
 
 
 
+
+
+
+
 .scanner-ring::after{
 content:"";
 position:absolute;
@@ -1266,9 +1682,17 @@ animation:scannerPulse .9s ease-in-out infinite;
 
 
 
+
+
+
+
 @keyframes spin{
 to{transform:rotate(360deg)}
 }
+
+
+
+
 
 
 
@@ -1277,6 +1701,10 @@ to{transform:rotate(360deg)}
 0%,100%{transform:scale(.7);opacity:.5}
 50%{transform:scale(1);opacity:1}
 }
+
+
+
+
 
 
 
@@ -1291,9 +1719,17 @@ font-weight:700;
 
 
 
+
+
+
+
 .result-shell{
 animation:resultIn .5s var(--ease);
 }
+
+
+
+
 
 
 
@@ -1312,6 +1748,10 @@ transform:none;
 
 
 
+
+
+
+
 .result-head{
 display:flex;
 justify-content:space-between;
@@ -1319,6 +1759,10 @@ align-items:flex-end;
 gap:8px;
 margin:2px 2px 8px;
 }
+
+
+
+
 
 
 
@@ -1334,6 +1778,10 @@ letter-spacing:.8px;
 
 
 
+
+
+
+
 .result-title{
 margin-top:1px;
 font-size:1.08rem;
@@ -1343,10 +1791,18 @@ font-weight:800;
 
 
 
+
+
+
+
 .result-note{
 color:var(--muted);
 font-size:.49rem;
 }
+
+
+
+
 
 
 
@@ -1368,6 +1824,10 @@ linear-gradient(
 );
 border-color:rgba(10,102,71,.19);
 }
+
+
+
+
 
 
 
@@ -1395,6 +1855,10 @@ animation:top3Flow 5s ease-in-out infinite;
 
 
 
+
+
+
+
 @keyframes top3Flow{
 0%,100%{
 background-position:0 50%;
@@ -1405,6 +1869,10 @@ background-position:100% 50%;
 opacity:1;
 }
 }
+
+
+
+
 
 
 
@@ -1422,6 +1890,10 @@ margin-bottom:9px;
 
 
 
+
+
+
+
 .top3-kicker{
 color:var(--emerald);
 font-family:'IBM Plex Mono',monospace;
@@ -1429,6 +1901,10 @@ font-size:.46rem;
 font-weight:800;
 letter-spacing:1px;
 }
+
+
+
+
 
 
 
@@ -1442,11 +1918,19 @@ font-weight:800;
 
 
 
+
+
+
+
 .top3-sub{
 margin-top:1px;
 color:var(--muted);
 font-size:.45rem;
 }
+
+
+
+
 
 
 
@@ -1466,6 +1950,10 @@ white-space:nowrap;
 
 
 
+
+
+
+
 .top3-list{
 position:relative;
 z-index:2;
@@ -1473,6 +1961,10 @@ display:flex;
 flex-direction:column;
 gap:5px;
 }
+
+
+
+
 
 
 
@@ -1498,11 +1990,19 @@ border-color .25s ease;
 
 
 
+
+
+
+
 .top3-row:hover{
 transform:translateY(-1px);
 border-color:rgba(16,185,129,.34);
 box-shadow:0 6px 16px rgba(10,102,71,.07);
 }
+
+
+
+
 
 
 
@@ -1529,6 +2029,10 @@ pointer-events:none;
 
 
 
+
+
+
+
 .top3-row:nth-child(2)::before{
 animation-delay:1.2s;
 }
@@ -1536,9 +2040,17 @@ animation-delay:1.2s;
 
 
 
+
+
+
+
 .top3-row:nth-child(3)::before{
 animation-delay:2.4s;
 }
+
+
+
+
 
 
 
@@ -1560,6 +2072,10 @@ opacity:0;
 
 
 
+
+
+
+
 .top3-row.rank-one{
 background:
 linear-gradient(
@@ -1573,12 +2089,24 @@ border-color:rgba(158,108,2,.24);
 
 
 
+
+
+
+
 .top3-row.rank-two{background:linear-gradient(90deg,rgba(235,239,238,.92),rgba(247,252,249,.97));border-color:rgba(83,100,94,.24);}
 
 
 
 
+
+
+
+
 .top3-row.rank-three{background:linear-gradient(90deg,rgba(252,232,220,.72),rgba(247,252,249,.97));border-color:rgba(180,105,58,.22);}
+
+
+
+
 
 
 
@@ -1598,9 +2126,17 @@ color:var(--muted2);
 
 
 
+
+
+
+
 .top3-row.rank-one .top3-position{
 color:var(--gold);
 }
+
+
+
+
 
 
 
@@ -1610,7 +2146,15 @@ color:var(--gold);
 
 
 
+
+
+
+
 .top3-row.rank-three .top3-position{color:#9A5730;}
+
+
+
+
 
 
 
@@ -1643,6 +2187,10 @@ font-weight:800;
 
 
 
+
+
+
+
 .top3-row.rank-one .top3-digit{
 color:#5F4300;
 background:
@@ -1657,7 +2205,15 @@ border-color:rgba(158,108,2,.34);
 
 
 
+
+
+
+
 .top3-row.rank-two .top3-digit{color:#43514D;background:linear-gradient(135deg,#EEF1F0,#C9D1CE);border-color:rgba(83,100,94,.34);}
+
+
+
+
 
 
 
@@ -1667,11 +2223,19 @@ border-color:rgba(158,108,2,.34);
 
 
 
+
+
+
+
 .top3-info{
 position:relative;
 z-index:2;
 min-width:0;
 }
+
+
+
+
 
 
 
@@ -1688,11 +2252,19 @@ font-weight:800;
 
 
 
+
+
+
+
 .top3-label span{
 color:var(--muted);
 font-size:.41rem;
 font-weight:600;
 }
+
+
+
+
 
 
 
@@ -1706,6 +2278,10 @@ border-radius:99px;
 background:#DDEDE5;
 overflow:hidden;
 }
+
+
+
+
 
 
 
@@ -1727,15 +2303,15 @@ transition:width .7s var(--ease);
 
 
 
-.top3-row.rank-one .top3-bar-fill{
-background:
-linear-gradient(
-90deg,
-#9E6C02,
-#EAB308,
-#10B981
-);
-}
+
+
+
+
+.top3-row.rank-one .top3-bar-fill{background:linear-gradient(90deg,#9E6C02,#EAB308,#F7D774,#C99508);background-size:220% 100%;animation:alphaRankOneGoldSweep 8.5s ease-in-out infinite;}
+
+
+
+
 
 
 
@@ -1745,7 +2321,15 @@ linear-gradient(
 
 
 
+
+
+
+
 .top3-row.rank-three .top3-bar-fill{background:linear-gradient(90deg,#9A5730,#D79A76,#B86F49);}
+
+
+
+
 
 
 
@@ -1763,6 +2347,10 @@ color:var(--emerald);
 
 
 
+
+
+
+
 .top3-row.rank-one .top3-score{
 color:var(--gold);
 }
@@ -1770,7 +2358,15 @@ color:var(--gold);
 
 
 
+
+
+
+
 .top3-row.rank-three .top3-score{color:#9A5730;}
+
+
+
+
 
 
 
@@ -1793,9 +2389,17 @@ text-align:center;
 
 
 
+
+
+
+
 .top3-footnote strong{
 color:var(--text2);
 }
+
+
+
+
 
 
 
@@ -1812,10 +2416,18 @@ animation:livePulse 1.8s ease-in-out infinite;
 
 
 
+
+
+
+
 .stats-analytics-card{
 padding:11px 12px;
 margin-bottom:9px;
 }
+
+
+
+
 
 
 
@@ -1830,10 +2442,18 @@ margin-bottom:8px;
 
 
 
+
+
+
+
 .stats-title{
 font-size:.75rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -1852,6 +2472,10 @@ font-weight:700;
 
 
 
+
+
+
+
 .ratio-bar-container{
 display:flex;
 width:100%;
@@ -1866,6 +2490,10 @@ border:1px solid rgba(10,102,71,.10);
 
 
 
+
+
+
+
 .ratio-even{
 height:100%;
 background:linear-gradient(90deg,#0A6647,#10B981);
@@ -1875,11 +2503,19 @@ transition:width .4s var(--ease);
 
 
 
+
+
+
+
 .ratio-odd{
 height:100%;
 background:linear-gradient(90deg,#9E6C02,#EAB308);
 transition:width .4s var(--ease);
 }
+
+
+
+
 
 
 
@@ -1896,6 +2532,10 @@ font-weight:700;
 
 
 
+
+
+
+
 .section-marker{
 display:flex;
 align-items:center;
@@ -1906,6 +2546,10 @@ font-size:.46rem;
 font-weight:800;
 letter-spacing:.8px;
 }
+
+
+
+
 
 
 
@@ -1925,10 +2569,18 @@ transparent
 
 
 
+
+
+
+
 .overview-panel{
 padding:12px;
 margin-bottom:9px;
 }
+
+
+
+
 
 
 
@@ -1944,10 +2596,18 @@ margin-bottom:9px;
 
 
 
+
+
+
+
 .overview-title{
 font-size:.80rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -1957,6 +2617,10 @@ margin-top:2px;
 color:var(--muted);
 font-size:.46rem;
 }
+
+
+
+
 
 
 
@@ -1975,6 +2639,10 @@ font-weight:700;
 
 
 
+
+
+
+
 .overview-bars{
 display:grid;
 grid-template-columns:repeat(10,1fr);
@@ -1982,6 +2650,10 @@ gap:4px;
 align-items:end;
 padding:4px 2px 0;
 }
+
+
+
+
 
 
 
@@ -2010,11 +2682,19 @@ box-shadow .22s ease;
 
 
 
+
+
+
+
 .overview-bar:hover{
 transform:translateY(-2px);
 border-color:rgba(10,102,71,.28);
 box-shadow:0 6px 14px rgba(10,102,71,.07);
 }
+
+
+
+
 
 
 
@@ -2041,6 +2721,10 @@ transition:height .7s var(--ease);
 
 
 
+
+
+
+
 .overview-bar::after{
 content:"";
 position:absolute;
@@ -2050,6 +2734,10 @@ bottom:0;
 height:1px;
 background:rgba(10,102,71,.13);
 }
+
+
+
+
 
 
 
@@ -2069,6 +2757,10 @@ box-shadow:
 
 
 
+
+
+
+
 .overview-bar.rank-2{
 border-color:rgba(10,102,71,.27);
 }
@@ -2076,9 +2768,17 @@ border-color:rgba(10,102,71,.27);
 
 
 
+
+
+
+
 .overview-bar.rank-3{
 border-color:rgba(8,115,128,.28);
 }
+
+
+
+
 
 
 
@@ -2103,11 +2803,19 @@ white-space:nowrap;
 
 
 
+
+
+
+
 .overview-bar.rank-1 .overview-rank{
 color:var(--gold);
 border-color:rgba(158,108,2,.20);
 background:rgba(254,249,195,.88);
 }
+
+
+
+
 
 
 
@@ -2121,11 +2829,19 @@ background:rgba(227,248,238,.90);
 
 
 
+
+
+
+
 .overview-bar.rank-3 .overview-rank{
 color:var(--cyan);
 border-color:rgba(8,115,128,.18);
 background:rgba(224,249,247,.90);
 }
+
+
+
+
 
 
 
@@ -2145,9 +2861,17 @@ font-weight:800;
 
 
 
+
+
+
+
 .overview-bar.rank-1 .overview-digit{
 color:#5F4300;
 }
+
+
+
+
 
 
 
@@ -2159,9 +2883,17 @@ color:var(--emerald);
 
 
 
+
+
+
+
 .overview-bar.rank-3 .overview-digit{
 color:var(--cyan);
 }
+
+
+
+
 
 
 
@@ -2182,9 +2914,17 @@ white-space:nowrap;
 
 
 
+
+
+
+
 .overview-bar.rank-1 .overview-score{
 color:var(--gold);
 }
+
+
+
+
 
 
 
@@ -2196,9 +2936,17 @@ color:var(--emerald);
 
 
 
+
+
+
+
 .overview-bar.rank-3 .overview-score{
 color:var(--cyan);
 }
+
+
+
+
 
 
 
@@ -2211,6 +2959,10 @@ color:var(--muted2);
 font-family:'IBM Plex Mono',monospace;
 font-size:.41rem;
 }
+
+
+
+
 
 
 
@@ -2232,6 +2984,10 @@ linear-gradient(
 );
 border-color:rgba(10,102,71,.19);
 }
+
+
+
+
 
 
 
@@ -2258,6 +3014,10 @@ opacity:.75;
 
 
 
+
+
+
+
 .deep-scan-head{
 display:flex;
 justify-content:space-between;
@@ -2265,6 +3025,10 @@ align-items:flex-start;
 gap:8px;
 margin-bottom:9px;
 }
+
+
+
+
 
 
 
@@ -2280,11 +3044,19 @@ letter-spacing:1px;
 
 
 
+
+
+
+
 .deep-scan-title{
 margin-top:2px;
 font-size:.83rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -2298,11 +3070,19 @@ font-size:.45rem;
 
 
 
+
+
+
+
 .deep-scan-grid{
 display:grid;
 grid-template-columns:1fr;
 gap:6px;
 }
+
+
+
+
 
 
 
@@ -2327,10 +3107,18 @@ box-shadow .22s ease;
 
 
 
+
+
+
+
 .deep-scan-card:hover{
 transform:translateY(-1px);
 box-shadow:0 7px 16px rgba(10,102,71,.065);
 }
+
+
+
+
 
 
 
@@ -2344,6 +3132,10 @@ bottom:0;
 width:3px;
 background:linear-gradient(180deg,#9E6C02,#EAB308);
 }
+
+
+
+
 
 
 
@@ -2363,7 +3155,15 @@ pointer-events:none;
 
 
 
+
+
+
+
 .deep-scan-card.rank-two::before{background:linear-gradient(180deg,#697873,#AAB5B0,#596761);}
+
+
+
+
 
 
 
@@ -2373,12 +3173,24 @@ pointer-events:none;
 
 
 
+
+
+
+
 .deep-scan-card.rank-three::before{background:linear-gradient(180deg,#9A5730,#D79A76,#B86F49);}
 
 
 
 
+
+
+
+
 .deep-scan-card.rank-three::after{background:rgba(180,105,58,.055);}
+
+
+
+
 
 
 
@@ -2396,6 +3208,10 @@ margin-bottom:7px;
 
 
 
+
+
+
+
 .deep-scan-name{
 display:flex;
 align-items:center;
@@ -2403,6 +3219,10 @@ gap:7px;
 font-size:.55rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -2416,6 +3236,10 @@ font-weight:800;
 letter-spacing:.5px;
 color:var(--muted);
 }
+
+
+
+
 
 
 
@@ -2446,6 +3270,10 @@ font-weight:800;
 
 
 
+
+
+
+
 .deep-scan-card.rank-two .deep-scan-digit{
 color:#43514D;
 background:linear-gradient(135deg,#EEF1F0,#C9D1CE);
@@ -2458,6 +3286,10 @@ inset 0 1px 0 rgba(255,255,255,.25);
 
 
 
+
+
+
+
 .deep-scan-card.rank-three .deep-scan-digit{
 color:#7C4325;
 background:linear-gradient(135deg,#F8D9C5,#E9B394);
@@ -2466,6 +3298,10 @@ box-shadow:
 0 4px 10px rgba(8,115,128,.10),
 inset 0 1px 0 rgba(255,255,255,.25);
 }
+
+
+
+
 
 
 
@@ -2484,12 +3320,24 @@ border:1px solid rgba(158,108,2,.18);
 
 
 
+
+
+
+
 .deep-scan-card.rank-two .deep-scan-rank{color:#53645E;background:rgba(238,241,240,.92);border-color:rgba(83,100,94,.22);}
 
 
 
 
+
+
+
+
 .deep-scan-card.rank-three .deep-scan-rank{color:#9A5730;background:rgba(252,232,220,.88);border-color:rgba(180,105,58,.22);}
+
+
+
+
 
 
 
@@ -2504,12 +3352,24 @@ font-weight:800;
 
 
 
+
+
+
+
 .deep-scan-card.rank-two .deep-scan-score{color:#53645E;}
 
 
 
 
+
+
+
+
 .deep-scan-card.rank-three .deep-scan-score{color:#9A5730;}
+
+
+
+
 
 
 
@@ -2521,6 +3381,10 @@ display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:4px;
 }
+
+
+
+
 
 
 
@@ -2543,10 +3407,18 @@ border-color .2s ease;
 
 
 
+
+
+
+
 .deep-pair:hover{
 transform:translateY(-1px);
 box-shadow:0 4px 10px rgba(10,102,71,.06);
 }
+
+
+
+
 
 
 
@@ -2561,6 +3433,10 @@ color:var(--gold);
 
 
 
+
+
+
+
 .deep-scan-card.rank-two .deep-pair{
 border-color:rgba(10,102,71,.13);
 }
@@ -2568,7 +3444,15 @@ border-color:rgba(10,102,71,.13);
 
 
 
+
+
+
+
 .deep-scan-card.rank-two .deep-pair strong{color:#53645E;}
+
+
+
+
 
 
 
@@ -2580,7 +3464,15 @@ border-color:rgba(8,115,128,.13);
 
 
 
+
+
+
+
 .deep-scan-card.rank-three .deep-pair strong{color:#9A5730;}
+
+
+
+
 
 
 
@@ -2596,11 +3488,19 @@ color:var(--muted);
 
 
 
+
+
+
+
 .three-d-scan{
 margin-top:7px;
 padding-top:8px;
 border-top:1px solid rgba(10,102,71,.09);
 }
+
+
+
+
 
 
 
@@ -2615,10 +3515,18 @@ margin-bottom:5px;
 
 
 
+
+
+
+
 .three-d-title{
 font-size:.55rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -2637,11 +3545,19 @@ font-weight:800;
 
 
 
+
+
+
+
 .three-d-grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:4px;
 }
+
+
+
+
 
 
 
@@ -2669,10 +3585,18 @@ border-color .2s ease;
 
 
 
+
+
+
+
 .three-d-item:hover{
 transform:translateY(-1px);
 box-shadow:0 4px 10px rgba(158,108,2,.06);
 }
+
+
+
+
 
 
 
@@ -2683,6 +3607,10 @@ font-family:'IBM Plex Mono',monospace;
 font-size:.63rem;
 color:var(--gold);
 }
+
+
+
+
 
 
 
@@ -2702,6 +3630,14 @@ color:var(--muted);
 
 
 
+
+
+
+
+
+
+
+
 .ind-win-set{
 border-radius:19px;
 background:
@@ -2711,10 +3647,18 @@ linear-gradient(135deg,#fff,#F2F9F5);
 
 
 
+
+
+
+
 .ind-win-set{
 padding:10px 12px;
 margin-bottom:9px;
 }
+
+
+
+
 
 
 
@@ -2730,10 +3674,18 @@ margin-bottom:7px;
 
 
 
+
+
+
+
 .ind-win-title{
 font-size:.76rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -2746,6 +3698,10 @@ font-size:.41rem;
 font-weight:600;
 letter-spacing:.2px;
 }
+
+
+
+
 
 
 
@@ -2764,11 +3720,19 @@ font-weight:700;
 
 
 
+
+
+
+
 .ind-win-grid{
 display:grid;
 grid-template-columns:repeat(6,1fr);
 gap:4px;
 }
+
+
+
+
 
 
 
@@ -2796,11 +3760,19 @@ border-color .2s ease;
 
 
 
+
+
+
+
 .ind-win-item:hover{
 transform:translateY(-1px);
 box-shadow:0 5px 12px rgba(10,102,71,.07);
 border-color:rgba(16,185,129,.28);
 }
+
+
+
+
 
 
 
@@ -2816,6 +3788,10 @@ font-weight:800;
 
 
 
+
+
+
+
 .ind-win-item span{
 display:block;
 margin-top:1px;
@@ -2827,9 +3803,17 @@ font-weight:700;
 
 
 
+
+
+
+
 .formula-section{
 margin-top:2px;
 }
+
+
+
+
 
 
 
@@ -2852,11 +3836,19 @@ font-weight:800;
 
 
 
+
+
+
+
 .formula-toggle span:last-child{
 color:var(--emerald);
 font-family:'IBM Plex Mono',monospace;
 font-size:.49rem;
 }
+
+
+
+
 
 
 
@@ -2867,6 +3859,10 @@ margin-bottom:6px;
 border-radius:14px;
 background:#fff;
 }
+
+
+
+
 
 
 
@@ -2884,12 +3880,20 @@ background:linear-gradient(180deg,#0A6647,#087380);
 
 
 
+
+
+
+
 .formula-head{
 display:flex;
 justify-content:space-between;
 align-items:center;
 gap:6px;
 }
+
+
+
+
 
 
 
@@ -2905,6 +3909,10 @@ font-weight:800;
 
 
 
+
+
+
+
 .compact-badge{
 padding:2px 6px;
 border-radius:6px;
@@ -2914,6 +3922,10 @@ border:1px solid rgba(158,108,2,.20);
 font-size:.40rem;
 font-weight:700;
 }
+
+
+
+
 
 
 
@@ -2932,6 +3944,10 @@ font-weight:700;
 
 
 
+
+
+
+
 .formula-sub{
 margin-top:5px;
 padding-bottom:5px;
@@ -2939,6 +3955,10 @@ border-bottom:1px solid rgba(10,102,71,.12);
 color:var(--muted);
 font-size:.47rem;
 }
+
+
+
+
 
 
 
@@ -2951,12 +3971,20 @@ font-family:'IBM Plex Mono',monospace;
 
 
 
+
+
+
+
 .formula-pairs{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:4px;
 margin-top:6px;
 }
+
+
+
+
 
 
 
@@ -2973,6 +4001,10 @@ cursor:pointer;
 
 
 
+
+
+
+
 .formula-pair strong{
 display:block;
 font-family:'IBM Plex Mono',monospace;
@@ -2983,11 +4015,19 @@ font-size:.61rem;
 
 
 
+
+
+
+
 .formula-pair small{
 color:var(--muted);
 font-family:'IBM Plex Mono',monospace;
 font-size:.37rem;
 }
+
+
+
+
 
 
 
@@ -3007,9 +4047,17 @@ line-height:1.45;
 
 
 
+
+
+
+
 .disclaimer strong{
 color:var(--text2);
 }
+
+
+
+
 
 
 
@@ -3034,11 +4082,19 @@ background .2s ease;
 
 
 
+
+
+
+
 .logout-btn:hover{
 transform:translateY(-1px);
 background:var(--bg2);
 border-color:rgba(10,102,71,.28);
 }
+
+
+
+
 
 
 
@@ -3066,10 +4122,18 @@ transition:.25s;
 
 
 
+
+
+
+
 #toast.show{
 opacity:1;
 transform:translate(-50%,0);
 }
+
+
+
+
 
 
 
@@ -3088,7 +4152,15 @@ transform:translate(-50%,0);
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -3101,6 +4173,10 @@ scroll-behavior:auto!important;
 transition:none!important;
 }
 }
+
+
+
+
 
 
 
@@ -3119,10 +4195,18 @@ color:var(--text2);
 
 
 
+
+
+
+
 .deep-scan-card.rank-one .deep-scan-model-name{
 color:#8A6200;
 text-shadow:0 0 10px rgba(234,179,8,.16);
 }
+
+
+
+
 
 
 
@@ -3134,9 +4218,17 @@ color:#3F6B5A;
 
 
 
+
+
+
+
 .deep-scan-card.rank-three .deep-scan-model-name{
 color:#087380;
 }
+
+
+
+
 
 
 
@@ -3156,9 +4248,17 @@ text-shadow:0 0 8px rgba(234,179,8,.18);
 
 
 
+
+
+
+
 .deep-scan-card .deep-pair.jue-rank-2{background:linear-gradient(135deg,rgba(238,241,240,.98),rgba(255,255,255,.98));border-color:rgba(83,100,94,.34);box-shadow:0 4px 11px rgba(83,100,94,.10);}
 .deep-scan-card .deep-pair.jue-rank-2 strong{color:#53645E;}
 .deep-scan-card .deep-pair.jue-rank-2 small{color:#687A73;}
+
+
+
+
 
 
 
@@ -3174,6 +4274,10 @@ box-shadow:0 4px 11px rgba(180,105,58,.10);
 
 
 
+
+
+
+
 .deep-scan-card .deep-pair.jue-rank-4{
 background:linear-gradient(135deg,rgba(224,249,247,.92),rgba(255,255,255,.98));
 border-color:rgba(8,115,128,.30);
@@ -3185,6 +4289,10 @@ box-shadow:0 4px 11px rgba(8,115,128,.08);
 
 
 
+
+
+
+
 .deep-scan-card .deep-pair.jue-rank-5{
 background:linear-gradient(135deg,rgba(243,237,255,.92),rgba(255,255,255,.98));
 border-color:rgba(109,40,217,.25);
@@ -3192,6 +4300,10 @@ box-shadow:0 4px 11px rgba(109,40,217,.07);
 }
 .deep-scan-card .deep-pair.jue-rank-5 strong{color:#6D28D9;}
 .deep-scan-card .deep-pair.jue-rank-5 small{color:#7651C7;}
+
+
+
+
 
 
 
@@ -3209,11 +4321,19 @@ pointer-events:none;
 
 
 
+
+
+
+
 @keyframes jueBestShine{
 0%,62%{transform:translateX(-120%);opacity:0}
 72%{opacity:.8}
 86%,100%{transform:translateX(120%);opacity:0}
 }
+
+
+
+
 
 
 
@@ -3236,6 +4356,10 @@ box-shadow:var(--shadowSoft);
 
 
 
+
+
+
+
 .ind-win-set::before{
 content:"";
 position:absolute;
@@ -3250,6 +4374,10 @@ opacity:.82;
 
 
 
+
+
+
+
 .ind-win-header{
 position:relative;
 z-index:2;
@@ -3259,10 +4387,18 @@ margin-bottom:8px;
 
 
 
+
+
+
+
 .ind-win-title{
 font-size:.78rem;
 font-weight:800;
 }
+
+
+
+
 
 
 
@@ -3276,6 +4412,10 @@ font-size:.38rem;
 font-weight:700;
 letter-spacing:.35px;
 }
+
+
+
+
 
 
 
@@ -3294,11 +4434,19 @@ box-shadow:0 3px 9px rgba(158,108,2,.06);
 
 
 
+
+
+
+
 .ind-win-grid{
 position:relative;
 z-index:2;
 gap:5px;
 }
+
+
+
+
 
 
 
@@ -3309,6 +4457,10 @@ border-radius:11px;
 background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(241,248,244,.98));
 box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 3px 9px rgba(10,102,71,.035);
 }
+
+
+
+
 
 
 
@@ -3328,10 +4480,18 @@ opacity:.52;
 
 
 
+
+
+
+
 .ind-win-item:nth-child(1)::before{opacity:.95;}
 .ind-win-item:nth-child(2)::before{opacity:.80;}
 .ind-win-item:nth-child(3)::before{opacity:.70;}
 .ind-win-item:nth-child(n+4)::before{opacity:.50;}
+
+
+
+
 
 
 
@@ -3344,10 +4504,18 @@ box-shadow:0 7px 15px rgba(10,102,71,.075),inset 0 1px 0 rgba(255,255,255,.9);
 
 
 
+
+
+
+
 .ind-win-item strong{
 font-size:.86rem;
 letter-spacing:.5px;
 }
+
+
+
+
 
 
 
@@ -3366,12 +4534,22 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
+
+
+
+
 /* =========================================================
  PREMIUM CYBER-LUXURY FINISHING — AUDITED ROUND 2
  ========================================================= */
 :root{
   --lux-shadow:0 10px 30px rgba(10,102,71,.075),0 1px 0 rgba(255,255,255,.9) inset;
 }
+
+
 
 
 .package,.formula-card,.ind-win-set,.top3-row,.deep-scan-card{
@@ -3410,9 +4588,13 @@ letter-spacing:.25px;
 @keyframes winSetSweep{0%,58%{transform:translateX(-130%);opacity:0}68%{opacity:.55}82%,100%{transform:translateX(130%);opacity:0}}
 
 
+
+
 /* Premium silver for Rank 2 in all audited ranking surfaces */
 .top3-row.rank-two .top3-position,.top3-row.rank-two .top3-score,
 .deep-scan-card.rank-two .deep-scan-model-name,.deep-scan-card.rank-two .deep-scan-score{color:#53645E;}
+
+
 
 
 /* Premium rose-gold for Rank 3 */
@@ -3420,12 +4602,16 @@ letter-spacing:.25px;
 .deep-scan-card.rank-three .deep-scan-model-name,.deep-scan-card.rank-three .deep-scan-score{color:#9A5730;}
 
 
+
+
 /* Premium percentage rails */
 .top3-bar{box-shadow:inset 0 1px 1px rgba(255,255,255,.75),0 1px 0 rgba(10,102,71,.035);}
-.top3-row.rank-one .top3-bar-fill{background:linear-gradient(90deg,#9E6C02,#EAB308,#F7D774,#10B981);background-size:180% 100%;animation:railGlow 7s ease-in-out infinite;}
+.top3-row.rank-one .top3-bar-fill{background:linear-gradient(90deg,#9E6C02,#EAB308,#F7D774,#C99508);background-size:180% 100%;animation:railGlow 8.5s ease-in-out infinite;}
 .top3-row.rank-two .top3-bar-fill{background:linear-gradient(90deg,#68756F,#AEB8B3,#DCE1DF,#7B8983);background-size:180% 100%;animation:railGlow 8.5s ease-in-out infinite;}
 .top3-row.rank-three .top3-bar-fill{background:linear-gradient(90deg,#99562F,#D79A76,#F0C5AE,#B86F49);background-size:180% 100%;animation:railGlow 9s ease-in-out infinite;}
 @keyframes railGlow{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+
+
 
 
 /* Package conversion area: richer without changing the original palette */
@@ -3434,14 +4620,22 @@ letter-spacing:.25px;
 @keyframes packageFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
 
 
+
+
 /* Five-model table/card surfaces: subtle depth only */
 .formula-card .formula-head{position:relative;}
 .formula-card .formula-head::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:linear-gradient(90deg,transparent,rgba(10,102,71,.10),transparent);}
 
 
+
+
 @media(prefers-reduced-motion:reduce){
   .package,.top3-row::before,.ind-win-item::after,.package::before,.package::after,.top3-row.rank-one .top3-bar-fill,.top3-row.rank-two .top3-bar-fill,.top3-row.rank-three .top3-bar-fill{animation:none!important;}
 }
+
+
+
+
 
 
 
@@ -3470,6 +4664,7 @@ letter-spacing:.25px;
 .clear-btn{height:44px;background:linear-gradient(145deg,#fff,#F1F7F4);box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(10,102,71,.035);}
 .ratio-bar-container{height:7px;}
 
+
 /* Rank identity: thin illuminated full-outline instead of a colored side tab. */
 .deep-scan-card{border:1px solid rgba(10,102,71,.12);}
 .deep-scan-card::before{display:none;}
@@ -3482,10 +4677,12 @@ letter-spacing:.25px;
 .deep-scan-card.rank-two .deep-scan-digit{border-color:rgba(105,120,115,.42);box-shadow:0 4px 10px rgba(83,100,94,.08),inset 0 1px 0 rgba(255,255,255,.55);}
 .deep-scan-card.rank-three .deep-scan-digit{border-color:rgba(180,105,58,.42);box-shadow:0 4px 10px rgba(180,105,58,.08),inset 0 1px 0 rgba(255,255,255,.55);}
 
+
 /* Keep Top 3 rank colors consistent across the whole card surface. */
 .top3-row.rank-one{border-color:rgba(158,108,2,.38);box-shadow:inset 0 0 0 1px rgba(234,179,8,.09),0 6px 16px rgba(158,108,2,.045);}
 .top3-row.rank-two{border-color:rgba(105,120,115,.38);box-shadow:inset 0 0 0 1px rgba(192,202,198,.12),0 6px 16px rgba(83,100,94,.04);}
 .top3-row.rank-three{border-color:rgba(180,105,58,.38);box-shadow:inset 0 0 0 1px rgba(215,154,118,.12),0 6px 16px rgba(180,105,58,.04);}
+
 
 /* 3-digit top module gets its own visual identity, separate from Rank 3. */
 .three-d-scan{position:relative;margin-top:10px;padding:10px;border-radius:15px;background:linear-gradient(145deg,rgba(248,252,255,.98),rgba(238,247,249,.94));border:1px solid rgba(8,115,128,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 8px 22px rgba(8,115,128,.045);}
@@ -3496,6 +4693,7 @@ letter-spacing:.25px;
 .three-d-item strong{color:#075D68;}
 .three-d-item:hover{box-shadow:0 5px 12px rgba(8,115,128,.07);}
 
+
 /* Curated 6-number set: restrained luxury treatment. */
 .ind-win-set{position:relative;overflow:hidden;border:1px solid rgba(158,108,2,.16);box-shadow:0 12px 28px rgba(10,102,71,.055),inset 0 1px 0 #fff;background:linear-gradient(145deg,#fff,#F5FAF7 72%,#FFFBE9);}
 .ind-win-set::after{content:"";position:absolute;right:-25px;top:-35px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(234,179,8,.10),transparent 70%);pointer-events:none;}
@@ -3503,11 +4701,246 @@ letter-spacing:.25px;
 .ind-win-item strong{position:relative;z-index:2;color:#765000;text-shadow:0 1px 0 #fff;}
 .ind-win-item:hover{border-color:rgba(158,108,2,.34);box-shadow:0 8px 16px rgba(158,108,2,.07),inset 0 1px 0 #fff;}
 
+
 /* Slightly calmer overall motion for a premium dashboard feel. */
 @media (prefers-reduced-motion:reduce){.top3-row::before,.ind-win-item::after,.package::before,.package::after{animation:none!important}.deep-scan-card,.ind-win-item,.calculate-btn,.field-card input{transition:none!important}}
 
+
+
+/* =========================================================
+ MANUAL AUDIT — FINAL PREMIUM BALANCE PASS
+ ========================================================= */
+/* 1) Consistent vertical rhythm between the main result cards. */
+.top3-signal-board{margin-bottom:10px;}
+.three-d-scan{margin-top:0;margin-bottom:10px;}
+.ind-win-set{margin-top:0;}
+
+/* 2) Hero cleanup is structural; retain only the approved title/subtitle. */
+.hero-kicker{display:none!important;}
+.hero-meta{display:none!important;}
+
+/* 4/10/13) Compact, equal engine cards; labels and values stay balanced. */
+.engine-strip{gap:8px;margin-bottom:10px;}
+.engine-card{min-height:70px;height:70px;padding:8px 8px;display:flex;flex-direction:column;justify-content:center;}
+.engine-label{font-size:.46rem;line-height:1.2;min-height:1.2em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.engine-value{margin-top:4px;font-size:.62rem;line-height:1.15;gap:3px;white-space:nowrap;}
+.engine-value .total-dot-wrap{flex:0 0 8px;}
+
+/* 6/12) Premium buttons: restrained luxury, thin fitted outline, clean hierarchy. */
+.calculate-btn{
+  height:44px;
+  border:1px solid rgba(234,179,8,.34);
+  border-radius:12px;
+  background:linear-gradient(135deg,#07140F 0%,#0A6647 48%,#0F8A61 100%);
+  box-shadow:0 7px 18px rgba(10,102,71,.16),inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.calculate-btn:hover:not(:disabled){
+  border-color:rgba(234,179,8,.46);
+  box-shadow:0 10px 22px rgba(10,102,71,.20),0 0 14px rgba(234,179,8,.07),inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.clear-btn{
+  height:44px;
+  border:1px solid rgba(158,108,2,.20);
+  border-radius:12px;
+  color:#5D5140;
+  background:linear-gradient(145deg,#FFFFFF 0%,#FBF8EF 100%);
+  box-shadow:inset 0 1px 0 #fff,0 4px 11px rgba(158,108,2,.045);
+}
+.clear-btn:hover{
+  color:#765000;
+  border-color:rgba(158,108,2,.34);
+  background:linear-gradient(145deg,#FFFFFF 0%,#F8F0D9 100%);
+  box-shadow:0 7px 15px rgba(158,108,2,.08),inset 0 1px 0 #fff;
+}
+
+/* 7) Rank-1 Alpha Top 3 rail must remain gold throughout; no green segment. */
+.top3-row.rank-one .top3-bar-fill{
+  background:linear-gradient(90deg,#8F6505 0%,#C99508 32%,#EAB308 62%,#F7D774 82%,#B88716 100%) !important;
+  background-size:180% 100%;
+  animation:railGlow 7s ease-in-out infinite;
+}
+
+/* 8/15) Three-digit top title is black. */
+.three-d-title{color:#111111!important;}
+
+/* 14) Badges become integrated premium accents for their own cards. */
+.stats-badge{
+  color:#765000;
+  background:linear-gradient(135deg,rgba(255,250,220,.92),rgba(255,255,255,.98));
+  border:1px solid rgba(158,108,2,.25);
+  box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(158,108,2,.045);
+}
+.overview-badge{
+  color:#075D68;
+  background:linear-gradient(135deg,rgba(238,251,248,.96),rgba(255,255,255,.98));
+  border:1px solid rgba(8,115,128,.20);
+  box-shadow:inset 0 1px 0 #fff,0 4px 10px rgba(8,115,128,.04);
+}
+.ind-win-badge{
+  color:#765000;
+  background:linear-gradient(135deg,#FFF7D6,#FFFFFF);
+  border:1px solid rgba(158,108,2,.27);
+  box-shadow:inset 0 1px 0 #fff,0 4px 11px rgba(158,108,2,.055);
+}
+
+/* 16) Prevent the first engine label from moving/disappearing on interaction. */
+.engine-card,.engine-label,.engine-value{transform:none!important;}
+.engine-label{position:relative;z-index:2;overflow:visible;text-overflow:clip;}
+.engine-card:focus,.engine-card:active,.engine-card:hover{transform:none!important;}
+
+/* Responsive guard: preserve the one-line labels and equal card height. */
+@media(max-width:380px){
+  .engine-label{font-size:.41rem;}
+  .engine-value{font-size:.57rem;}
+  .engine-card{padding-left:6px;padding-right:6px;}
+}
+
+/* =========================================================
+   MANUAL AUDIT — ROUND 3 PREMIUM BALANCE
+   ========================================================= */
+/* 1) Engine cards: compress vertical whitespace without crowding. */
+.engine-strip{margin-bottom:8px;}
+.engine-card{min-height:62px!important;height:62px!important;padding:6px 8px!important;border-radius:12px;}
+.engine-card::before{display:none!important;}
+.engine-card::after{inset:auto -18px -24px auto;width:72px;height:52px;}
+.engine-label{font-size:.44rem;line-height:1.12;min-height:auto;}
+.engine-value{margin-top:3px;font-size:.57rem;line-height:1.08;}
+
+/* 2) Action buttons: thinner fitted outline + premium red/black Clear. */
+.calculate-btn{border-width:1px!important;box-shadow:0 6px 16px rgba(10,102,71,.15),inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.06)!important;}
+.clear-btn{color:#fff!important;border:1px solid rgba(248,113,113,.42)!important;background:linear-gradient(135deg,#170909 0%,#5F1111 52%,#9F1D1D 100%)!important;box-shadow:0 6px 15px rgba(127,29,29,.16),inset 0 1px 0 rgba(255,255,255,.16)!important;}
+.clear-btn:hover{color:#fff!important;border-color:rgba(248,113,113,.62)!important;background:linear-gradient(135deg,#220909 0%,#741313 52%,#B42323 100%)!important;box-shadow:0 9px 19px rgba(127,29,29,.22),0 0 12px rgba(239,68,68,.10),inset 0 1px 0 rgba(255,255,255,.18)!important;}
+
+/* 3) Alpha Top 3: Rank 1 gets the same moving gradient treatment as 2/3, but gold-only. */
+.top3-row.rank-one .top3-bar-fill{
+  background:linear-gradient(90deg,#8F6505 0%,#C99508 28%,#EAB308 52%,#F7D774 72%,#B88716 100%)!important;
+  background-size:180% 100%!important;
+  animation:railGlow 8.5s ease-in-out infinite!important;
+  will-change:background-position;
+}
+
+/* 4) Keep engine labels stable on touch/focus; no shifting or clipping. */
+.engine-card,.engine-label,.engine-value{transform:none!important;}
+.engine-card:focus,.engine-card:active,.engine-card:hover{transform:none!important;}
+
+/* 5) Removed presentation-only labels requested by the audit. */
+.compact-badge,.formula-badge{display:none!important;}
+
+
+/* =========================================================
+   MANUAL AUDIT — ROUND 4 / USER REQUESTED FINAL TUNING
+   ========================================================= */
+/* Engine cards: compress top/bottom only; preserve horizontal footprint. */
+.engine-card{
+  min-height:48px!important;
+  height:48px!important;
+  padding:3px 8px!important;
+  border-radius:11px!important;
+}
+.engine-strip{gap:8px!important;margin-bottom:8px!important;}
+.engine-label{font-size:.43rem!important;line-height:1.02!important;}
+.engine-value{margin-top:1px!important;font-size:.56rem!important;line-height:1.0!important;}
+
+/* Main action: clean emerald luxury, no black/graphite, fitted 1px outline. */
+.calculate-btn{
+  border:1px solid rgba(16,185,129,.42)!important;
+  background:linear-gradient(135deg,#0B8F68 0%,#12A879 48%,#0A7A5A 100%)!important;
+  box-shadow:0 6px 16px rgba(10,122,90,.16),inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(255,255,255,.045) inset!important;
+}
+.calculate-btn:hover:not(:disabled){
+  border-color:rgba(52,211,153,.58)!important;
+  box-shadow:0 9px 20px rgba(10,122,90,.20),0 0 13px rgba(16,185,129,.10),inset 0 1px 0 rgba(255,255,255,.25)!important;
+}
+
+/* Clear: refined ruby/burgundy luxury, no black/graphite. */
+.clear-btn{
+  border:1px solid rgba(244,114,112,.40)!important;
+  color:#FFF7F5!important;
+  background:linear-gradient(135deg,#A83A42 0%,#C24A50 50%,#96313A 100%)!important;
+  box-shadow:0 5px 13px rgba(150,49,58,.15),inset 0 1px 0 rgba(255,255,255,.20)!important;
+}
+.clear-btn:hover{
+  border-color:rgba(252,165,165,.58)!important;
+  color:#FFFFFF!important;
+  background:linear-gradient(135deg,#B8444C 0%,#D2585D 50%,#A83A42 100%)!important;
+  box-shadow:0 8px 17px rgba(150,49,58,.20),0 0 11px rgba(244,114,112,.10),inset 0 1px 0 rgba(255,255,255,.23)!important;
+}
+
+/* Alpha Top 3 Rank 1: exact same rail motion as Rank 2/3, gold palette only. */
+.top3-row.rank-one .top3-bar-fill{
+  background:linear-gradient(90deg,#8F6505 0%,#B8860B 20%,#EAB308 42%,#FFE08A 58%,#C99508 78%,#8F6505 100%)!important;
+  background-size:180% 100%!important;
+  animation:railGlow 8.5s ease-in-out infinite!important;
+  will-change:background-position;
+}
+
+</style>
+
+<style id="alpha-rank1-motion-final">
+/* FINAL FIX v8: Rank 1 percentage rail — smooth left↔right gold sweep. */
+.top3-row.rank-one .top3-bar-fill{
+  background:linear-gradient(
+    90deg,
+    #8F6505 0%,
+    #B8860B 18%,
+    #EAB308 36%,
+    #FFE08A 50%,
+    #EAB308 64%,
+    #B8860B 82%,
+    #8F6505 100%
+  ) !important;
+  background-size:220% 100% !important;
+  animation:alphaRankOneGoldSweep 8.5s ease-in-out infinite !important;
+  will-change:background-position;
+  overflow:hidden;
+}
+
+/* A visible moving highlight makes the sweep unmistakable on a nearly full rail. */
+.top3-row.rank-one .top3-bar-fill::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:-45%;
+  width:45%;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,.05) 18%,
+    rgba(255,244,180,.46) 50%,
+    rgba(255,255,255,.08) 82%,
+    transparent 100%
+  );
+  transform:translateX(-15%);
+  animation:alphaRankOneGoldHighlight 4.8s ease-in-out infinite;
+  will-change:transform,opacity;
+}
+
+@keyframes alphaRankOneGoldSweep{
+  0%,100%{background-position:0% 0;}
+  50%{background-position:100% 0;}
+}
+@keyframes alphaRankOneGoldHighlight{
+  0%,12%{transform:translateX(-15%);opacity:0;}
+  20%{opacity:.35;}
+  50%{transform:translateX(285%);opacity:.9;}
+  80%,100%{transform:translateX(585%);opacity:0;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .top3-row.rank-one .top3-bar-fill,
+  .top3-row.rank-one .top3-bar-fill::after{
+    animation:none !important;
+  }
+}
 </style>
 </head>
+
+
+
+
 
 
 
@@ -3517,7 +4950,15 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
 <canvas id="snowCanvas"></canvas>
+
+
+
+
 
 
 
@@ -3529,6 +4970,10 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
 <div class="app-shell">
 <div class="app-card">
 <div class="app-inner">
@@ -3536,7 +4981,15 @@ letter-spacing:.25px;
 
 
 
+
+
+
+
 <div id="loginView">
+
+
+
+
 
 
 
@@ -3549,15 +5002,11 @@ letter-spacing:.25px;
 <div class="brand-sub">Predictive Data Engine</div>
 </div>
 </div>
-
-
-
-
-<div class="system-pill">
-<span class="live-dot"></span>
-SYSTEM READY
 </div>
-</div>
+
+
+
+
 
 
 
@@ -3571,6 +5020,10 @@ QUANT ANALYSIS ENGINE
 
 
 
+
+
+
+
 <h1>
 Master Lotto <em>VIP+</em>
 </h1>
@@ -3578,10 +5031,18 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 <p>
 ระบบคำนวณและวิเคราะห์ข้อมูล AI อัจฉริยะ<br>
-<b>Predictive Data Engine</b>
+<b>Multi-Layer AI Processing</b>
 </p>
+
+
+
+
 
 
 
@@ -3597,11 +5058,19 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 <div class="login-dashboard">
 <div class="mini-stat">
 <div class="mini-stat-label">ผู้ใช้งานระบบ / MEMBERS</div>
 <div class="mini-stat-value" id="totalUsersStat">2,637</div>
 </div>
+
+
+
+
 
 
 
@@ -3615,7 +5084,15 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 <div class="packages">
+
+
+
+
 
 
 
@@ -3629,11 +5106,19 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 <div class="package">
 <div class="package-title">15 วัน / 15 DAYS</div>
 <div class="package-price">199 ฿</div>
 <div class="package-desc">รายงวด / Period</div>
 </div>
+
+
+
+
 
 
 
@@ -3647,6 +5132,10 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 <div class="package">
 <div class="package-title">1 ปี / 1 YEAR</div>
 <div class="package-price">1,890 ฿</div>
@@ -3656,7 +5145,15 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -3672,7 +5169,15 @@ onclick="_app._audio('click')">
 
 
 
+
+
+
+
 <section class="login-panel">
+
+
+
+
 
 
 
@@ -3684,6 +5189,10 @@ SECURE ACCESS / ระบบสมาชิก
 
 
 
+
+
+
+
 <div class="login-heading">
 เชื่อมต่อ Master Engine
 </div>
@@ -3691,9 +5200,17 @@ SECURE ACCESS / ระบบสมาชิก
 
 
 
+
+
+
+
 <div class="login-description">
 กรุณากรอกรหัสผ่านเพื่อเข้าสู่ระบบ
 </div>
+
+
+
+
 
 
 
@@ -3709,12 +5226,20 @@ spellcheck="false"
 
 
 
+
+
+
+
 <button
 class="primary-btn"
 id="loginButton"
 type="button">
 🔐 CONNECT TO ENGINE / เข้าสู่ระบบ
 </button>
+
+
+
+
 
 
 
@@ -3726,8 +5251,20 @@ type="button">
 
 
 
+
+
+
+
 </section>
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -3741,13 +5278,25 @@ type="button">
 
 
 
+
+
+
+
 <div class="top-nav">
+
+
+
+
 
 
 
 
 <div class="brand-mini">
 <div class="brand-mark">AI</div>
+
+
+
+
 
 
 
@@ -3761,15 +5310,28 @@ type="button">
 
 
 
-<div class="system-pill">
-<span class="live-dot"></span>
-ENGINE ONLINE
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
 
 
-</div>
+
+
+
+
 
 
 
@@ -3783,10 +5345,15 @@ ENGINE ONLINE
 
 
 
-<div class="hero-kicker">
-<span></span>
-PREMIUM ANALYSIS CONSOLE
-</div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3794,6 +5361,10 @@ PREMIUM ANALYSIS CONSOLE
 <h1>
 Master Lotto <em>VIP+</em>
 </h1>
+
+
+
+
 
 
 
@@ -3806,12 +5377,15 @@ Master Lotto <em>VIP+</em>
 
 
 
-<div class="hero-meta">
-<div class="meta-chip">ชุดเด่น</div>
-<div class="meta-chip">ชุดรอง</div>
-<div class="meta-chip">ชุดวิน 6 ตัว</div>
-<div class="meta-chip">AI Score</div>
-</div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3825,15 +5399,31 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
+
+
+
+
 <div class="engine-strip">
+
+
+
+
 
 
 
 
 <div class="engine-card">
 <div class="engine-label">
-ประมวลผลทั้งหมดในระบบ
+ประมวลผลทั้งหมด
 </div>
+
+
+
+
 
 
 
@@ -3842,6 +5432,10 @@ Master Lotto <em>VIP+</em>
 <span class="total-dot-wrap">
 <span class="total-dot" id="totalDot"></span>
 </span>
+
+
+
+
 
 
 
@@ -3858,7 +5452,19 @@ Master Lotto <em>VIP+</em>
 
 
 
+
+
+
+
+
+
+
+
 <div class="engine-card">
+
+
+
+
 
 
 
@@ -3867,6 +5473,10 @@ Master Lotto <em>VIP+</em>
 <span>👤</span>
 สมาชิกออนไลน์
 </div>
+
+
+
+
 
 
 
@@ -3880,7 +5490,19 @@ id="onlineUsersCount">
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -3894,10 +5516,18 @@ id="onlineUsersCount">
 
 
 
+
+
+
+
 <div class="engine-label">
 <span>🖥️</span>
 ความเร็วเซิร์ฟเวอร์
 </div>
+
+
+
+
 
 
 
@@ -3911,12 +5541,28 @@ id="serverLatencyCount">
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -3930,6 +5576,10 @@ id="serverLatencyCount">
 
 
 
+
+
+
+
 <span>อ้างอิงจากผลล่าสุด:</span>
 <strong id="lbl3"></strong>
 <span>•</span>
@@ -3938,7 +5588,19 @@ id="serverLatencyCount">
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -3952,7 +5614,15 @@ id="serverLatencyCount">
 
 
 
+
+
+
+
 <div class="command-header">
+
+
+
+
 
 
 
@@ -3965,10 +5635,18 @@ Analysis Input
 
 
 
+
+
+
+
 <div class="command-sub">
 กรอกข้อมูลล่าสุด เพื่อเริ่มประมวลผล
 </div>
 </div>
+
+
+
+
 
 
 
@@ -3980,7 +5658,19 @@ INPUT READY
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -3994,7 +5684,15 @@ INPUT READY
 
 
 
+
+
+
+
 <div class="field-card">
+
+
+
+
 
 
 
@@ -4004,6 +5702,10 @@ class="field-label"
 for="num3top">
 เลข 3 ตัวบน
 </label>
+
+
+
+
 
 
 
@@ -4022,7 +5724,19 @@ spellcheck="false"
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -4036,11 +5750,19 @@ spellcheck="false"
 
 
 
+
+
+
+
 <label
 class="field-label"
 for="num2bottom">
 เลข 2 ตัวล่าง
 </label>
+
+
+
+
 
 
 
@@ -4059,12 +5781,28 @@ spellcheck="false"
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -4074,6 +5812,10 @@ spellcheck="false"
 
 
 <div class="action-row">
+
+
+
+
 
 
 
@@ -4088,6 +5830,10 @@ type="button">
 
 
 
+
+
+
+
 <button
 class="clear-btn"
 id="clearButton"
@@ -4098,7 +5844,15 @@ type="button">
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -4112,12 +5866,28 @@ type="button">
 
 
 
+
+
+
+
+
+
+
+
 <div id="aiScannerBox">
 
 
 
 
+
+
+
+
 <div class="scanner-ring"></div>
+
+
+
+
 
 
 
@@ -4129,6 +5899,10 @@ INITIALIZING QUANT ANALYSIS...
 
 
 
+
+
+
+
 </div>
 
 
@@ -4138,7 +5912,23 @@ INITIALIZING QUANT ANALYSIS...
 
 
 
+
+
+
+
+
+
+
+
 <div id="resultContainer"></div>
+
+
+
+
+
+
+
+
 
 
 
@@ -4157,7 +5947,15 @@ type="button">
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -4165,6 +5963,14 @@ type="button">
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -4184,7 +5990,19 @@ type="button">
 
 
 
+
+
+
+
+
+
+
+
 <script>
+
+
+
+
 
 
 
@@ -4247,6 +6065,8 @@ resize();seed();window.addEventListener("resize",()=>{resize();seed();});render(
 })();
 
 
+
+
 let totalProcessed=50150n;
 try{
   const stored=localStorage.getItem("ml_total_processed_v2");
@@ -4257,13 +6077,22 @@ if(totalProcessed<50150n){
   localStorage.setItem("ml_total_processed_v2",String(totalProcessed));
 }
 
+
 function updateProcessedUI(triggerRipple=true){
+
+
+
+
 
 
 
 
 const el=
 document.getElementById("totalProcessedCount");
+
+
+
+
 
 
 
@@ -4275,7 +6104,15 @@ totalProcessed.toLocaleString();
 
 
 
+
+
+
+
 if(triggerRipple){
+
+
+
+
 
 
 
@@ -4286,7 +6123,15 @@ document.getElementById("totalDot");
 
 
 
+
+
+
+
 if(dot){
+
+
+
+
 
 
 
@@ -4296,7 +6141,15 @@ dot.classList.remove("ripple");
 
 
 
+
+
+
+
 void dot.offsetWidth;
+
+
+
+
 
 
 
@@ -4306,7 +6159,6 @@ dot.classList.add("ripple");
 
 
 
-}
 
 
 
@@ -4316,7 +6168,28 @@ dot.classList.add("ripple");
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -4330,8 +6203,16 @@ function scheduleProcessedIncrements(){
 
 
 
+
+
+
+
 const count=
 Math.floor(Math.random()*3)+5;
+
+
+
+
 
 
 
@@ -4341,7 +6222,15 @@ const intervals=[];
 
 
 
+
+
+
+
 for(let i=0;i<count;i++){
+
+
+
+
 
 
 
@@ -4353,7 +6242,15 @@ Math.floor(Math.random()*58000)+1000
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -4363,7 +6260,15 @@ intervals.sort((a,b)=>a-b);
 
 
 
+
+
+
+
 intervals.forEach(delay=>{
+
+
+
+
 
 
 
@@ -4373,7 +6278,15 @@ setTimeout(()=>{
 
 
 
+
+
+
+
 totalProcessed+=1n;
+
+
+
+
 
 
 
@@ -4386,7 +6299,15 @@ totalProcessed
 
 
 
+
+
+
+
 updateProcessedUI(true);
+
+
+
+
 
 
 
@@ -4396,7 +6317,15 @@ updateProcessedUI(true);
 
 
 
+
+
+
+
 });
+
+
+
+
 
 
 
@@ -4409,7 +6338,19 @@ scheduleProcessedIncrements,
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -4424,10 +6365,12 @@ localStorage.getItem("ml_online_users_v2"),
 10
 );
 
+
 if(!Number.isFinite(currentOnline) || currentOnline<1400 || currentOnline>1700){
   currentOnline=1515;
   localStorage.setItem("ml_online_users_v2",String(currentOnline));
 }
+
 
 function updateOnlineUsers(){
   const change=Math.floor(Math.random()*100)+1;
@@ -4440,9 +6383,12 @@ function updateOnlineUsers(){
 }
 
 
+
+
 let currentLatency=
 parseFloat(localStorage.getItem("ml_server_latency_v2"));
 if(!Number.isFinite(currentLatency)) currentLatency=21.5;
+
 
 function updateServerLatency(){
   const drift=(Math.random()-.5)*2.4;
@@ -4456,9 +6402,15 @@ function updateServerLatency(){
 }
 
 
+
+
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
+
+
+
+
 
 
 
@@ -4468,12 +6420,24 @@ updateProcessedUI(false);
 
 
 
+
+
+
+
 scheduleProcessedIncrements();
 
 
 
 
+
+
+
+
 updateOnlineUsers();
+
+
+
+
 
 
 
@@ -4486,7 +6450,15 @@ updateOnlineUsers,
 
 
 
+
+
+
+
 updateServerLatency();
+
+
+
+
 
 
 
@@ -4495,6 +6467,10 @@ setInterval(
 updateServerLatency,
 2500
 );
+
+
+
+
 
 
 
@@ -4509,7 +6485,16 @@ updateServerLatency,
 
 
 
+
+
+
+
+
+
+
+
 const _secEnc={
+
 
 // Access credentials are represented only as SHA-256 digests in this client build.
 // For production security, move authentication to a server-side endpoint.
@@ -4527,10 +6512,17 @@ async _checkMatch(inputVal){
   return this._hashes.includes(hash);
 }
 
+
 };
 
 
+
+
 const _app={
+
+
+
+
 
 
 
@@ -4540,7 +6532,15 @@ _toastTimer:null,
 
 
 
+
+
+
+
 async _verify(p){
+
+
+
+
 
 
 
@@ -4550,7 +6550,19 @@ return await _secEnc._checkMatch(p);
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -4564,7 +6576,15 @@ _audio(type="click"){
 
 
 
+
+
+
+
 try{
+
+
+
+
 
 
 
@@ -4576,12 +6596,24 @@ window.webkitAudioContext;
 
 
 
+
+
+
+
 if(!AC)return;
 
 
 
 
+
+
+
+
 const c=new AC();
+
+
+
+
 
 
 
@@ -4592,7 +6624,15 @@ const g=c.createGain();
 
 
 
+
+
+
+
 const now=c.currentTime;
+
+
+
+
 
 
 
@@ -4605,10 +6645,18 @@ type==="error"
 
 
 
+
+
+
+
 o.frequency.setValueAtTime(
 type==="error"?190:520,
 now
 );
+
+
+
+
 
 
 
@@ -4621,10 +6669,18 @@ now+.08
 
 
 
+
+
+
+
 g.gain.setValueAtTime(
 type==="error"?.035:.025,
 now
 );
+
+
+
+
 
 
 
@@ -4637,8 +6693,16 @@ now+.12
 
 
 
+
+
+
+
 o.connect(g);
 g.connect(c.destination);
+
+
+
+
 
 
 
@@ -4649,7 +6713,15 @@ o.stop(now+.13);
 
 
 
+
+
+
+
 }catch(e){}
+
+
+
+
 
 
 
@@ -4663,7 +6735,19 @@ o.stop(now+.13);
 
 
 
+
+
+
+
+
+
+
+
 _esc(s){
+
+
+
+
 
 
 
@@ -4678,7 +6762,19 @@ return String(s)
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -4692,7 +6788,15 @@ async login(){
 
 
 
+
+
+
+
 this._audio("click");
+
+
+
+
 
 
 
@@ -4705,10 +6809,18 @@ document.getElementById(
 
 
 
+
+
+
+
 const error=
 document.getElementById(
 "errorMsg"
 );
+
+
+
+
 
 
 
@@ -4718,8 +6830,16 @@ if(!input||!error)return;
 
 
 
+
+
+
+
 const value=
 input.value.trim();
+
+
+
+
 
 
 
@@ -4732,7 +6852,15 @@ if(
 
 
 
+
+
+
+
 this._audio("error");
+
+
+
+
 
 
 
@@ -4742,7 +6870,15 @@ error.style.display="block";
 
 
 
+
+
+
+
 input.focus();
+
+
+
+
 
 
 
@@ -4752,12 +6888,24 @@ return;
 
 
 
+
+
+
+
 }
 
 
 
 
+
+
+
+
 error.style.display="none";
+
+
+
+
 
 
 
@@ -4770,9 +6918,17 @@ localStorage.setItem(
 
 
 
+
+
+
+
 document.getElementById(
 "loginView"
 ).style.display="none";
+
+
+
+
 
 
 
@@ -4784,7 +6940,15 @@ document.getElementById(
 
 
 
+
+
+
+
 this.checkSessionBadge();
+
+
+
+
 
 
 
@@ -4797,13 +6961,29 @@ document.getElementById(
 
 
 
+
+
+
+
 if(num3)
 num3.focus();
 
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -4817,7 +6997,15 @@ logout(){
 
 
 
+
+
+
+
 this._audio("click");
+
+
+
+
 
 
 
@@ -4829,6 +7017,10 @@ localStorage.removeItem(
 
 
 
+
+
+
+
 document.getElementById(
 "calculatorView"
 ).style.display="none";
@@ -4836,9 +7028,17 @@ document.getElementById(
 
 
 
+
+
+
+
 document.getElementById(
 "loginView"
 ).style.display="block";
+
+
+
+
 
 
 
@@ -4852,8 +7052,16 @@ document.getElementById(
 
 
 
+
+
+
+
 const el=
 document.getElementById(id);
+
+
+
+
 
 
 
@@ -4863,7 +7071,15 @@ if(el)el.value="";
 
 
 
+
+
+
+
 });
+
+
+
+
 
 
 
@@ -4875,6 +7091,10 @@ document.getElementById(
 
 
 
+
+
+
+
 document.getElementById(
 "errorMsg"
 ).style.display="none";
@@ -4882,7 +7102,19 @@ document.getElementById(
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -4896,7 +7128,15 @@ clearCalc(){
 
 
 
+
+
+
+
 this._audio("click");
+
+
+
+
 
 
 
@@ -4908,9 +7148,17 @@ document.getElementById(
 
 
 
+
+
+
+
 document.getElementById(
 "num3top"
 ).value="";
+
+
+
+
 
 
 
@@ -4922,6 +7170,10 @@ document.getElementById(
 
 
 
+
+
+
+
 document.getElementById(
 "num3top"
 ).focus();
@@ -4929,7 +7181,19 @@ document.getElementById(
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -4943,10 +7207,18 @@ checkSessionBadge(){
 
 
 
+
+
+
+
 const n3=
 localStorage.getItem(
 "ml_l_n3_v3"
 );
+
+
+
+
 
 
 
@@ -4959,10 +7231,18 @@ localStorage.getItem(
 
 
 
+
+
+
+
 const badge=
 document.getElementById(
 "lastSessionBadge"
 );
+
+
+
+
 
 
 
@@ -4972,7 +7252,15 @@ if(!badge)return;
 
 
 
+
+
+
+
 if(n3&&n2){
+
+
+
+
 
 
 
@@ -4984,9 +7272,17 @@ document.getElementById(
 
 
 
+
+
+
+
 document.getElementById(
 "lbl2"
 ).innerText=n2;
+
+
+
+
 
 
 
@@ -4996,7 +7292,15 @@ badge.style.display="flex";
 
 
 
+
+
+
+
 }else{
+
+
+
+
 
 
 
@@ -5006,7 +7310,15 @@ badge.style.display="none";
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -5020,12 +7332,28 @@ badge.style.display="none";
 
 
 
+
+
+
+
+
+
+
+
 calculate(){
 
 
 
 
+
+
+
+
 this._audio("click");
+
+
+
+
 
 
 
@@ -5038,10 +7366,18 @@ document.getElementById(
 
 
 
+
+
+
+
 const n2=
 document.getElementById(
 "num2bottom"
 ).value.trim();
+
+
+
+
 
 
 
@@ -5054,7 +7390,15 @@ if(
 
 
 
+
+
+
+
 this._audio("error");
+
+
+
+
 
 
 
@@ -5066,12 +7410,24 @@ alert(
 
 
 
+
+
+
+
 return;
 
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -5084,6 +7440,10 @@ n3
 
 
 
+
+
+
+
 localStorage.setItem(
 "ml_l_n2_v3",
 n2
@@ -5092,7 +7452,19 @@ n2
 
 
 
+
+
+
+
 this.checkSessionBadge();
+
+
+
+
+
+
+
+
 
 
 
@@ -5109,6 +7481,10 @@ document.getElementById(
 
 
 
+
+
+
+
 const btn=
 document.getElementById(
 "calculateButton"
@@ -5117,7 +7493,15 @@ document.getElementById(
 
 
 
+
+
+
+
 btn.disabled=true;
+
+
+
+
 
 
 
@@ -5131,7 +7515,19 @@ scan.style.display="block";
 
 
 
+
+
+
+
+
+
+
+
 const messages=[
+
+
+
+
 
 
 
@@ -5141,7 +7537,15 @@ const messages=[
 
 
 
+
+
+
+
 "CALCULATING DIGIT MOMENTUM...",
+
+
+
+
 
 
 
@@ -5151,7 +7555,15 @@ const messages=[
 
 
 
+
+
+
+
 "EVALUATING 5 MATHEMATICAL MODELS...",
+
+
+
+
 
 
 
@@ -5161,7 +7573,15 @@ const messages=[
 
 
 
+
+
+
+
 "MAPPING DIGIT DISTRIBUTION...",
+
+
+
+
 
 
 
@@ -5171,7 +7591,15 @@ const messages=[
 
 
 
+
+
+
+
 "FINALIZING ANALYSIS..."
+
+
+
+
 
 
 
@@ -5185,7 +7613,19 @@ const messages=[
 
 
 
+
+
+
+
+
+
+
+
 let index=0;
+
+
+
+
 
 
 
@@ -5194,6 +7634,10 @@ const scannerText=
 document.getElementById(
 "aiScannerText"
 );
+
+
+
+
 
 
 
@@ -5208,8 +7652,20 @@ messages[0];
 
 
 
+
+
+
+
+
+
+
+
 const timer=
 setInterval(()=>{
+
+
+
+
 
 
 
@@ -5219,7 +7675,15 @@ index++;
 
 
 
+
+
+
+
 if(index<messages.length){
+
+
+
+
 
 
 
@@ -5230,7 +7694,15 @@ messages[index];
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -5244,7 +7716,19 @@ messages[index];
 
 
 
+
+
+
+
+
+
+
+
 setTimeout(()=>{
+
+
+
+
 
 
 
@@ -5254,7 +7738,15 @@ clearInterval(timer);
 
 
 
+
+
+
+
 scan.style.display="none";
+
+
+
+
 
 
 
@@ -5264,10 +7756,18 @@ btn.disabled=false;
 
 
 
+
+
+
+
 this.runAnalysis(
 n3,
 n2
 );
+
+
+
+
 
 
 
@@ -5282,7 +7782,15 @@ block:"start"
 
 
 
+
+
+
+
 totalProcessed+=1n;
+
+
+
+
 
 
 
@@ -5295,7 +7803,15 @@ totalProcessed
 
 
 
+
+
+
+
 updateProcessedUI(true);
+
+
+
+
 
 
 
@@ -5305,7 +7821,19 @@ updateProcessedUI(true);
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -5319,12 +7847,28 @@ _normalize(x){
 
 
 
+
+
+
+
 return(x%10+10)%10;
 
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -5347,7 +7891,15 @@ totalSum
 
 
 
+
+
+
+
 const rawFormulas=[
+
+
+
+
 
 
 
@@ -5366,6 +7918,10 @@ T_bot+U_bot,
 
 
 
+
+
+
+
 sumTop+T_bot,
 sumTop+U_bot,
 sumTop+H,
@@ -5375,11 +7931,19 @@ sumTop+U_top,
 
 
 
+
+
+
+
 10-H,
 10-T_top,
 10-U_top,
 10-T_bot,
 10-U_bot,
+
+
+
+
 
 
 
@@ -5394,10 +7958,18 @@ T_top+T_bot+U_bot,
 
 
 
+
+
+
+
 sumTop-T_bot,
 sumTop-U_bot,
 sumTop+sumBot,
 sumTop-sumBot,
+
+
+
+
 
 
 
@@ -5409,8 +7981,16 @@ H+U_top-T_bot,
 
 
 
+
+
+
+
 20-(T_top+T_bot),
 20-(U_top+U_bot),
+
+
+
+
 
 
 
@@ -5421,13 +8001,25 @@ H+T_top+U_top-U_bot,
 
 
 
+
+
+
+
 10+T_top-U_bot,
 10+U_top-T_bot,
 
 
 
 
+
+
+
+
 sumTop+10-U_bot,
+
+
+
+
 
 
 
@@ -5439,8 +8031,16 @@ U_top+T_bot-H,
 
 
 
+
+
+
+
 sumBot+H-T_top,
 sumBot+H-U_top,
+
+
+
+
 
 
 
@@ -5451,14 +8051,26 @@ H+sumBot-U_top,
 
 
 
+
+
+
+
 T_top+sumBot-H,
 T_top+sumBot-U_top,
 
 
 
 
+
+
+
+
 U_top+sumBot-H,
 U_top+sumBot-T_top,
+
+
+
+
 
 
 
@@ -5471,6 +8083,10 @@ U_top+sumBot-T_top,
 
 
 
+
+
+
+
 H+T_top+T_bot-U_bot,
 H+U_top+U_bot-T_bot,
 T_top+U_top+T_bot-H,
@@ -5478,8 +8094,16 @@ T_top+U_top+T_bot-H,
 
 
 
+
+
+
+
 sumTop+T_bot-U_bot,
 sumTop+U_bot-T_bot,
+
+
+
+
 
 
 
@@ -5491,6 +8115,10 @@ T_top+U_top+sumBot,
 
 
 
+
+
+
+
 H+T_bot+sumTop,
 H+U_bot+sumTop,
 T_top+T_bot+sumTop,
@@ -5498,6 +8126,10 @@ T_top+U_bot+sumTop,
 U_top+T_bot+sumTop,
 U_top+U_bot+sumTop,
 T_bot+U_bot+sumTop,
+
+
+
+
 
 
 
@@ -5516,6 +8148,10 @@ T_bot+U_bot+sumTop,
 
 
 
+
+
+
+
 H-T_top+U_bot,
 H-U_top+T_bot,
 T_top-U_top+U_bot,
@@ -5523,9 +8159,17 @@ T_top-U_top+U_bot,
 
 
 
+
+
+
+
 T_bot-U_bot+H,
 T_bot-U_bot+T_top,
 T_bot-U_bot+U_top,
+
+
+
+
 
 
 
@@ -5544,10 +8188,18 @@ T_bot-U_bot+U_top,
 
 
 
+
+
+
+
 totalSum,
 2*totalSum,
 totalSum+H,
 totalSum+T_bot
+
+
+
+
 
 
 
@@ -5561,7 +8213,19 @@ totalSum+T_bot
 
 
 
+
+
+
+
+
+
+
+
 const countedDigits={};
+
+
+
+
 
 
 
@@ -5576,7 +8240,19 @@ countedDigits[d]=0;
 
 
 
+
+
+
+
+
+
+
+
 rawFormulas.forEach(rawVal=>{
+
+
+
+
 
 
 
@@ -5587,13 +8263,29 @@ const unit=
 
 
 
+
+
+
+
 countedDigits[unit]=
 (countedDigits[unit]||0)+1;
 
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -5618,10 +8310,22 @@ b-a
 
 
 
+
+
+
+
+
+
+
+
 return{
 ranking:sortedByCount.slice(0,10),
 counts:countedDigits
 };
+
+
+
+
 
 
 
@@ -5635,7 +8339,19 @@ counts:countedDigits
 
 
 
+
+
+
+
+
+
+
+
 runAnalysis(n3,n2){
+
+
+
+
 
 
 
@@ -5646,8 +8362,16 @@ n3.split("").map(Number);
 
 
 
+
+
+
+
 const inputDigits2=
 n2.split("").map(Number);
+
+
+
+
 
 
 
@@ -5661,10 +8385,18 @@ U_top
 
 
 
+
+
+
+
 const[
 T_bot,
 U_bot
 ]=inputDigits2;
+
+
+
+
 
 
 
@@ -5675,14 +8407,30 @@ H+T_top+U_top;
 
 
 
+
+
+
+
 const sumBot=
 T_bot+U_bot;
 
 
 
 
+
+
+
+
 const totalSum=
 sumTop+sumBot;
+
+
+
+
+
+
+
+
 
 
 
@@ -5710,12 +8458,28 @@ totalSum
 
 
 
+
+
+
+
+
+
+
+
 const getUnitDirect=v=>{
 
 
 
 
+
+
+
+
 const str=String(v);
+
+
+
+
 
 
 
@@ -5729,10 +8493,18 @@ str.slice(-1),
 
 
 
+
+
+
+
 return[
 first,
 (first+1)%10
 ];
+
+
+
+
 
 
 
@@ -5746,13 +8518,29 @@ first,
 
 
 
+
+
+
+
+
+
+
+
 const fixedBase=7;
+
+
+
+
 
 
 
 
 const anchorRaw=
 fixedBase-H;
+
+
+
+
 
 
 
@@ -5767,8 +8555,20 @@ const anchor=
 
 
 
+
+
+
+
+
+
+
+
 let rawM1=
 (T_top+T_bot)%10;
+
+
+
+
 
 
 
@@ -5779,8 +8579,16 @@ sumTop%10;
 
 
 
+
+
+
+
 let rawM3=
 (H+T_bot)%10;
+
+
+
+
 
 
 
@@ -5791,8 +8599,20 @@ let rawM4=
 
 
 
+
+
+
+
 let rawM5=
 (10-U_bot)%10;
+
+
+
+
+
+
+
+
 
 
 
@@ -5812,6 +8632,10 @@ rawM5
 
 
 
+
+
+
+
 let uniqueModelDigits=
 new Set(modelRawValues);
 
@@ -5822,7 +8646,19 @@ new Set(modelRawValues);
 
 
 
+
+
+
+
+
+
+
+
 if(uniqueModelDigits.size<4){
+
+
+
+
 
 
 
@@ -5838,6 +8674,10 @@ totalSum%10
 
 
 
+
+
+
+
 for(
 let fbVal of fallbackFormulas
 ){
@@ -5845,8 +8685,16 @@ let fbVal of fallbackFormulas
 
 
 
+
+
+
+
 const normFb=
 (fbVal%10+10)%10;
+
+
+
+
 
 
 
@@ -5858,18 +8706,38 @@ normFb
 
 
 
+
+
+
+
 if(uniqueModelDigits.size>=6)
 break;
 
 
 
 
-}
 
 
 
 
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -5879,6 +8747,10 @@ break;
 
 
 const fList=[
+
+
+
+
 
 
 
@@ -5893,12 +8765,20 @@ set:getUnitDirect(rawM1)
 
 
 
+
+
+
+
 {
 id:2,
 name:"AI โมเดล 02",
 subName:"A + B + C",
 set:getUnitDirect(rawM2)
 },
+
+
+
+
 
 
 
@@ -5913,12 +8793,20 @@ set:getUnitDirect(rawM3)
 
 
 
+
+
+
+
 {
 id:4,
 name:"AI โมเดล 04",
 subName:"C + R2",
 set:getUnitDirect(rawM4)
 },
+
+
+
+
 
 
 
@@ -5933,7 +8821,19 @@ set:getUnitDirect(rawM5)
 
 
 
+
+
+
+
 ];
+
+
+
+
+
+
+
+
 
 
 
@@ -5944,6 +8844,10 @@ set:getUnitDirect(rawM5)
 
 const allowedModelDigits=
 new Set();
+
+
+
+
 
 
 
@@ -5961,8 +8865,20 @@ allowedModelDigits.add(d);
 
 
 
+
+
+
+
+
+
+
+
 const evaluated=
 fList.map(model=>{
+
+
+
+
 
 
 
@@ -5973,12 +8889,24 @@ model.set;
 
 
 
+
+
+
+
 let rawRange=[];
 
 
 
 
+
+
+
+
 let hasCollision=false;
+
+
+
+
 
 
 
@@ -5992,10 +8920,18 @@ offset++
 
 
 
+
+
+
+
 const val=
 this._normalize(
 anchor+offset
 );
+
+
+
+
 
 
 
@@ -6007,7 +8943,15 @@ formulaSet.includes(val)
 
 
 
+
+
+
+
 hasCollision=true;
+
+
+
+
 
 
 
@@ -6017,12 +8961,28 @@ break;
 
 
 
-}
 
 
 
 
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -6036,11 +8996,19 @@ if(hasCollision){
 
 
 
+
+
+
+
 for(
 let offset=-3;
 offset<=3;
 offset++
 ){
+
+
+
+
 
 
 
@@ -6054,12 +9022,24 @@ anchor+offset
 
 
 
+
+
+
+
 }
 
 
 
 
+
+
+
+
 }else{
+
+
+
+
 
 
 
@@ -6073,6 +9053,10 @@ offset++
 
 
 
+
+
+
+
 rawRange.push(
 this._normalize(
 anchor+offset
@@ -6082,12 +9066,28 @@ anchor+offset
 
 
 
-}
 
 
 
 
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -6100,6 +9100,14 @@ const excludedDigits=
 [
 ...new Set(formulaSet)
 ];
+
+
+
+
+
+
+
+
 
 
 
@@ -6121,7 +9129,23 @@ dg=>
 
 
 
+
+
+
+
+
+
+
+
 const generatedPairs=[];
+
+
+
+
+
+
+
+
 
 
 
@@ -6136,8 +9160,16 @@ sourceDigit=>{
 
 
 
+
+
+
+
 cleanedPool.forEach(
 poolDigit=>{
+
+
+
+
 
 
 
@@ -6148,7 +9180,15 @@ return;
 
 
 
+
+
+
+
 generatedPairs.push({
+
+
+
+
 
 
 
@@ -6158,7 +9198,15 @@ digitA:sourceDigit,
 
 
 
+
+
+
+
 digitB:poolDigit,
+
+
+
+
 
 
 
@@ -6169,18 +9217,38 @@ pairStr:
 
 
 
-});
 
 
 
 
 });
+
+
+
+
+
+
+
+
+});
+
+
+
+
 
 
 
 
 }
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -6198,8 +9266,20 @@ const pMap={};
 
 
 
+
+
+
+
+
+
+
+
 formulaSet.forEach(
 sourceDigit=>{
+
+
+
+
 
 
 
@@ -6220,8 +9300,24 @@ p=>p.pairStr
 
 
 
+
+
+
+
+
+
+
+
 let nextFill=
 (sourceDigit+1)%10;
+
+
+
+
+
+
+
+
 
 
 
@@ -6233,6 +9329,10 @@ let nextFill=
 while(
 pairsForDigit.length<5
 ){
+
+
+
+
 
 
 
@@ -6250,6 +9350,10 @@ nextFill
 
 
 
+
+
+
+
 pairsForDigit.push(
 `${sourceDigit}${nextFill}`
 );
@@ -6257,7 +9361,15 @@ pairsForDigit.push(
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -6268,7 +9380,19 @@ nextFill=
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -6292,11 +9416,27 @@ p=>p[0]!==p[1]
 
 
 
+
+
+
+
+
+
+
+
 if(
 pairsForDigit.length>5
 )
 pairsForDigit=
 pairsForDigit.slice(0,5);
+
+
+
+
+
+
+
+
 
 
 
@@ -6311,7 +9451,19 @@ pairsForDigit;
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -6325,6 +9477,10 @@ return{
 
 
 
+
+
+
+
 id:model.id,
 name:model.name,
 subName:model.subName,
@@ -6334,12 +9490,28 @@ pairsMap:pMap
 
 
 
+
+
+
+
 };
 
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -6357,7 +9529,19 @@ const digitScores={};
 
 
 
+
+
+
+
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
+
+
 
 
 
@@ -6367,7 +9551,15 @@ digitScores[d]={
 
 
 
+
+
+
+
 digit:d,
+
+
+
+
 
 
 
@@ -6377,7 +9569,15 @@ modelScore:0,
 
 
 
+
+
+
+
 formula100Score:0,
+
+
+
+
 
 
 
@@ -6387,7 +9587,15 @@ radarScore:0,
 
 
 
+
+
+
+
 backendScore:0,
+
+
+
+
 
 
 
@@ -6397,12 +9605,24 @@ winSetScore:0,
 
 
 
+
+
+
+
 totalScore:0
 
 
 
 
+
+
+
+
 };
+
+
+
+
 
 
 
@@ -6416,7 +9636,19 @@ totalScore:0
 
 
 
+
+
+
+
+
+
+
+
 evaluated.forEach(model=>{
+
+
+
+
 
 
 
@@ -6431,7 +9663,19 @@ digitScores[dig]
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -6455,7 +9699,19 @@ formula100Engine.counts
 
 
 
+
+
+
+
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
+
+
 
 
 
@@ -6464,6 +9720,10 @@ digitScores[d]
 .formula100Score=
 (formula100Engine.counts[d]||0)/
 maxFormCount;
+
+
+
+
 
 
 
@@ -6477,8 +9737,20 @@ maxFormCount;
 
 
 
+
+
+
+
+
+
+
+
 const X_val=
 (T_bot+U_bot)%10;
+
+
+
+
 
 
 
@@ -6496,8 +9768,20 @@ X_val,
 
 
 
+
+
+
+
+
+
+
+
 const Y_val=
 (H+T_top+U_top)%10;
+
+
+
+
 
 
 
@@ -6515,8 +9799,20 @@ Y_val,
 
 
 
+
+
+
+
+
+
+
+
 const Z_val=
 (H+T_top+U_top+T_bot+U_bot)%10;
+
+
+
+
 
 
 
@@ -6534,12 +9830,28 @@ Z_val,
 
 
 
+
+
+
+
+
+
+
+
 for(let d=0;d<=9;d++){
 
 
 
 
+
+
+
+
 let rHits=0;
+
+
+
+
 
 
 
@@ -6552,10 +9864,18 @@ rHits++;
 
 
 
+
+
+
+
 if(
 radar2Range.includes(d)
 )
 rHits++;
+
+
+
+
 
 
 
@@ -6568,6 +9888,10 @@ rHits++;
 
 
 
+
+
+
+
 digitScores[d]
 .radarScore=
 rHits/3;
@@ -6575,7 +9899,19 @@ rHits/3;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -6600,7 +9936,19 @@ totalSum%10
 
 
 
+
+
+
+
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
+
+
 
 
 
@@ -6614,7 +9962,19 @@ digitScores[d]
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -6633,7 +9993,19 @@ const winCandidate=
 
 
 
+
+
+
+
+
+
+
+
 for(let d=0;d<=9;d++){
+
+
+
+
 
 
 
@@ -6648,7 +10020,19 @@ digitScores[d]
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -6662,8 +10046,16 @@ for(let d=0;d<=9;d++){
 
 
 
+
+
+
+
 const item=
 digitScores[d];
+
+
+
+
 
 
 
@@ -6684,7 +10076,25 @@ item.totalScore=
 
 
 
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -6708,8 +10118,24 @@ b.digit-a.digit
 
 
 
+
+
+
+
+
+
+
+
 const matrixSorted=
 matrixSortedAll;
+
+
+
+
+
+
+
+
 
 
 
@@ -6726,14 +10152,26 @@ s=>s.totalScore
 
 
 
+
+
+
+
 const minScore=
 Math.min(...allScores);
 
 
 
 
+
+
+
+
 const maxScore=
 Math.max(...allScores);
+
+
+
+
 
 
 
@@ -6748,7 +10186,19 @@ maxScore-minScore||1;
 
 
 
+
+
+
+
+
+
+
+
 const calcConfidence=score=>{
+
+
+
+
 
 
 
@@ -6758,6 +10208,10 @@ const normalizedPct=
 (score-minScore)/
 scoreRange*
 18.5;
+
+
+
+
 
 
 
@@ -6775,6 +10229,10 @@ normalizedPct
 
 
 
+
+
+
+
 };
 
 
@@ -6784,7 +10242,19 @@ normalizedPct
 
 
 
+
+
+
+
+
+
+
+
 evaluated.forEach(model=>{
+
+
+
+
 
 
 
@@ -6808,10 +10278,18 @@ digitScores[dig]
 
 
 
+
+
+
+
 model.aiScore=
 calcConfidence(
 modelScoreSum/2
 );
+
+
+
+
 
 
 
@@ -6825,10 +10303,22 @@ modelScoreSum/2
 
 
 
+
+
+
+
+
+
+
+
 evaluated.sort(
 (a,b)=>
 b.aiScore-a.aiScore
 );
+
+
+
+
 
 
 
@@ -6847,8 +10337,20 @@ idx<2;
 
 
 
+
+
+
+
+
+
+
+
 const top3Digits=
 matrixSorted.slice(0,3);
+
+
+
+
 
 
 
@@ -6863,14 +10365,30 @@ null;
 
 
 
+
+
+
+
 const d1=
 top3Digits[0].digit;
 
 
 
 
+
+
+
+
 const d2_dig=
 top3Digits[1].digit;
+
+
+
+
+
+
+
+
 
 
 
@@ -6886,7 +10404,19 @@ EXISTING TOP 5 FOCUS — PAIR RANKING
 
 
 
+
+
+
+
 const pairVotesMap={};
+
+
+
+
+
+
+
+
 
 
 
@@ -6901,8 +10431,16 @@ model=>{
 
 
 
+
+
+
+
 const modelVotedPairsThisModel=
 new Set();
+
+
+
+
 
 
 
@@ -6915,8 +10453,16 @@ pairList=>{
 
 
 
+
+
+
+
 pairList.forEach(
 pStr=>{
+
+
+
+
 
 
 
@@ -6927,8 +10473,16 @@ pStr[0];
 
 
 
+
+
+
+
 const d2_char=
 pStr[1];
+
+
+
+
 
 
 
@@ -6937,6 +10491,10 @@ if(
 d1_char===d2_char
 )
 return;
+
+
+
+
 
 
 
@@ -6956,6 +10514,14 @@ d2_char
 
 
 
+
+
+
+
+
+
+
+
 if(
 !modelVotedPairsThisModel
 .has(canonicalKey)
@@ -6964,8 +10530,16 @@ if(
 
 
 
+
+
+
+
 modelVotedPairsThisModel
 .add(canonicalKey);
+
+
+
+
 
 
 
@@ -6977,7 +10551,15 @@ if(
 
 
 
+
+
+
+
 pairVotesMap[canonicalKey]={
+
+
+
+
 
 
 
@@ -6988,8 +10570,16 @@ canonicalKey,
 
 
 
+
+
+
+
 displayPair:
 pStr,
+
+
+
+
 
 
 
@@ -6999,7 +10589,15 @@ votes:0,
 
 
 
+
+
+
+
 digitScoreSum:0
+
+
+
+
 
 
 
@@ -7009,7 +10607,15 @@ digitScoreSum:0
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -7021,12 +10627,15 @@ canonicalKey
 
 
 
+
+
+
+
 }
 
 
 
 
-});
 
 
 
@@ -7036,7 +10645,28 @@ canonicalKey
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 
 
@@ -7053,6 +10683,10 @@ item=>{
 
 
 
+
+
+
+
 const dX=
 parseInt(
 item.canonical[0],
@@ -7062,11 +10696,19 @@ item.canonical[0],
 
 
 
+
+
+
+
 const dY=
 parseInt(
 item.canonical[1],
 10
 );
+
+
+
+
 
 
 
@@ -7082,7 +10724,19 @@ digitScores[dY]?.totalScore||0
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -7101,10 +10755,18 @@ pairVotesMap
 
 
 
+
+
+
+
 if(
 b.votes!==a.votes
 )
 return b.votes-a.votes;
+
+
+
+
 
 
 
@@ -7115,8 +10777,20 @@ a.digitScoreSum;
 
 
 
+
+
+
+
 }
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -7135,6 +10809,14 @@ sortedPairsAll.slice(0,5);
 
 
 
+
+
+
+
+
+
+
+
 while(
 top5Pairs.length<5&&
 sortedPairsAll.length>
@@ -7144,10 +10826,18 @@ top5Pairs.length
 
 
 
+
+
+
+
 const nextCandidate=
 sortedPairsAll[
 top5Pairs.length
 ];
+
+
+
+
 
 
 
@@ -7162,9 +10852,17 @@ nextCandidate
 
 
 
+
+
+
+
 top5Pairs.push(
 nextCandidate
 );
+
+
+
+
 
 
 
@@ -7174,17 +10872,37 @@ nextCandidate
 
 
 
+
+
+
+
 break;
 
 
 
 
-}
 
 
 
 
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -7203,6 +10921,14 @@ top5Pairs[0]?.votes||5;
 
 
 
+
+
+
+
+
+
+
+
 const top5PairRankedHTML=
 top5Pairs.map(
 (item,index)=>{
@@ -7210,9 +10936,17 @@ top5Pairs.map(
 
 
 
+
+
+
+
 const rawRatio=
 item.votes/
 top5MaxVotes;
+
+
+
+
 
 
 
@@ -7229,8 +10963,20 @@ index*.4
 
 
 
+
+
+
+
 const secureDisplayPair=
 item.displayPair;
+
+
+
+
+
+
+
+
 
 
 
@@ -7244,11 +10990,19 @@ return`
 
 
 
+
+
+
+
 <div
 class="deep-pair"
 data-copy="${this._esc(
 secureDisplayPair
 )}">
+
+
+
+
 
 
 
@@ -7262,9 +11016,17 @@ secureDisplayPair
 
 
 
+
+
+
+
 <small>
 ${computedPct}%
 </small>
+
+
+
+
 
 
 
@@ -7274,7 +11036,15 @@ ${computedPct}%
 
 
 
+
+
+
+
 `;
+
+
+
+
 
 
 
@@ -7302,6 +11072,14 @@ font-size:.46rem;
 
 
 
+
+
+
+
+
+
+
+
 /* =========================================================
 DEEP SCAN — 3 REAL TOP DIGIT SETS
 ========================================================= */
@@ -7309,7 +11087,15 @@ DEEP SCAN — 3 REAL TOP DIGIT SETS
 
 
 
+
+
+
+
 function findPairsForDigit(digit){
+
+
+
+
 
 
 
@@ -7321,7 +11107,19 @@ m=>m.pairsMap[digit]
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -7337,7 +11135,15 @@ item=>({
 
 
 
+
+
+
+
 digit:item.digit,
+
+
+
+
 
 
 
@@ -7350,6 +11156,10 @@ item.totalScore
 
 
 
+
+
+
+
 pairs:
 findPairsForDigit(
 item.digit
@@ -7358,8 +11168,20 @@ item.digit
 
 
 
+
+
+
+
 })
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -7375,6 +11197,10 @@ deepSets.map(
 
 
 
+
+
+
+
 const rankNames=[
 "AI ALPHA SCAN",
 "AI BETA SCAN",
@@ -7384,11 +11210,19 @@ const rankNames=[
 
 
 
+
+
+
+
 const rankClasses=[
 "rank-one",
 "rank-two",
 "rank-three"
 ];
+
+
+
+
 
 
 
@@ -7406,11 +11240,23 @@ const rankNumbers=[
 
 
 
+
+
+
+
+
+
+
+
 const pairHTML=
 set.pairs.length
 ?
 set.pairs.map(
 (p,pIndex)=>{
+
+
+
+
 
 
 
@@ -7426,7 +11272,15 @@ set.score-
 
 
 
+
+
+
+
 return`
+
+
+
+
 
 
 
@@ -7438,9 +11292,17 @@ data-copy="${this._esc(p)}">
 
 
 
+
+
+
+
 <strong>
 ${this._esc(p)}
 </strong>
+
+
+
+
 
 
 
@@ -7452,12 +11314,24 @@ ${pct}%
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 `;
+
+
+
+
 
 
 
@@ -7485,7 +11359,19 @@ font-size:.46rem;
 
 
 
+
+
+
+
+
+
+
+
 return`
+
+
+
+
 
 
 
@@ -7496,12 +11382,24 @@ class="deep-scan-card ${rankClasses[index]}">
 
 
 
+
+
+
+
 <div class="deep-scan-top">
 
 
 
 
+
+
+
+
 <div class="deep-scan-name">
+
+
+
+
 
 
 
@@ -7513,7 +11411,15 @@ ${set.digit}
 
 
 
+
+
+
+
 <div>
+
+
+
+
 
 
 
@@ -7528,17 +11434,33 @@ ${rankNames[index]}
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 
 
 <div>
+
+
+
+
 
 
 
@@ -7550,12 +11472,24 @@ ${set.score.toFixed(1)}%
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 
@@ -7567,7 +11501,15 @@ ${pairHTML}
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -7577,8 +11519,20 @@ ${pairHTML}
 
 
 
+
+
+
+
 }
 ).join("");
+
+
+
+
+
+
+
+
 
 
 
@@ -7594,7 +11548,15 @@ NEW BEST JUE PAIR RANKING ENGINE
 
 
 
+
+
+
+
 Rules:
+
+
+
+
 
 
 
@@ -7618,12 +11580,28 @@ more frequently. If tied, lexical order is used.
 
 
 
+
+
+
+
+
+
+
+
 const top3SingleDigitSet=
 new Set(
 top3Digits.map(
 item=>String(item.digit)
 )
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -7642,8 +11620,20 @@ new Set();
 
 
 
+
+
+
+
+
+
+
+
 deepSets.forEach(
 set=>{
+
+
+
+
 
 
 
@@ -7654,8 +11644,16 @@ pairStr=>{
 
 
 
+
+
+
+
 const cleanPair=
 String(pairStr||"");
+
+
+
+
 
 
 
@@ -7665,6 +11663,14 @@ if(
 cleanPair[0]===cleanPair[1]
 )
 return;
+
+
+
+
+
+
+
+
 
 
 
@@ -7688,6 +11694,14 @@ cleanPair[1]
 
 
 
+
+
+
+
+
+
+
+
 top3DeepPairCanonicalSet.add(
 canonical
 );
@@ -7695,12 +11709,28 @@ canonical
 
 
 
-});
 
 
 
 
 });
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 
 
@@ -7718,8 +11748,20 @@ const bestJuePairMap={};
 
 
 
+
+
+
+
+
+
+
+
 evaluated.forEach(
 model=>{
+
+
+
+
 
 
 
@@ -7732,8 +11774,16 @@ model.pairsMap||{}
 
 
 
+
+
+
+
 (pairList||[]).forEach(
 pairStr=>{
+
+
+
+
 
 
 
@@ -7744,11 +11794,23 @@ String(pairStr||"");
 
 
 
+
+
+
+
 if(
 !/^\d{2}$/.test(pair)||
 pair[0]===pair[1]
 )
 return;
+
+
+
+
+
+
+
+
 
 
 
@@ -7772,9 +11834,21 @@ pair[1]
 
 
 
+
+
+
+
+
+
+
+
 if(
 !bestJuePairMap[canonical]
 ){
+
+
+
+
 
 
 
@@ -7784,7 +11858,15 @@ bestJuePairMap[canonical]={
 
 
 
+
+
+
+
 canonical,
+
+
+
+
 
 
 
@@ -7794,7 +11876,15 @@ total:0,
 
 
 
+
+
+
+
 orientationCounts:{},
+
+
+
+
 
 
 
@@ -7804,12 +11894,28 @@ sourceCounts:{}
 
 
 
+
+
+
+
 };
 
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -7830,7 +11936,23 @@ canonical
 
 
 
+
+
+
+
+
+
+
+
 item.total+=1;
+
+
+
+
+
+
+
+
 
 
 
@@ -7851,6 +11973,14 @@ item.orientationCounts[pair]||0
 
 
 
+
+
+
+
+
+
+
+
 item.sourceCounts[
 String(sourceDigit)
 ]=
@@ -7863,7 +11993,6 @@ String(sourceDigit)
 
 
 
-});
 
 
 
@@ -7873,7 +12002,28 @@ String(sourceDigit)
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 
 
@@ -7890,8 +12040,16 @@ bestJuePairMap
 
 
 
+
+
+
+
 .filter(
 item=>{
+
+
+
+
 
 
 
@@ -7910,10 +12068,18 @@ digit
 
 
 
+
+
+
+
 const isInsideTop3Jue=
 top3DeepPairCanonicalSet.has(
 item.canonical
 );
+
+
+
+
 
 
 
@@ -7926,14 +12092,26 @@ isInsideTop3Jue
 
 
 
+
+
+
+
 }
 )
 
 
 
 
+
+
+
+
 .map(
 item=>{
+
+
+
+
 
 
 
@@ -7948,10 +12126,18 @@ item.orientationCounts
 
 
 
+
+
+
+
 if(
 b[1]!==a[1]
 )
 return b[1]-a[1];
+
+
+
+
 
 
 
@@ -7963,8 +12149,16 @@ b[0]
 
 
 
+
+
+
+
 }
 );
+
+
+
+
 
 
 
@@ -7974,7 +12168,15 @@ return{
 
 
 
+
+
+
+
 ...item,
+
+
+
+
 
 
 
@@ -7986,7 +12188,15 @@ item.canonical
 
 
 
+
+
+
+
 };
+
+
+
+
 
 
 
@@ -7997,8 +12207,16 @@ item.canonical
 
 
 
+
+
+
+
 .sort(
 (a,b)=>{
+
+
+
+
 
 
 
@@ -8015,6 +12233,14 @@ return b.total-a.total;
 
 
 
+
+
+
+
+
+
+
+
 const aDirect=
 a.orientationCounts[
 a.displayPair
@@ -8023,10 +12249,22 @@ a.displayPair
 
 
 
+
+
+
+
 const bDirect=
 b.orientationCounts[
 b.displayPair
 ]||0;
+
+
+
+
+
+
+
+
 
 
 
@@ -8047,9 +12285,21 @@ return bDirect-aDirect;
 
 
 
+
+
+
+
+
+
+
+
 return a.displayPair.localeCompare(
 b.displayPair
 );
+
+
+
+
 
 
 
@@ -8060,7 +12310,19 @@ b.displayPair
 
 
 
+
+
+
+
 .slice(0,5);
+
+
+
+
+
+
+
+
 
 
 
@@ -8075,8 +12337,20 @@ findPairsForDigit(d1);
 
 
 
+
+
+
+
 const arr2=
 findPairsForDigit(d2_dig);
+
+
+
+
+
+
+
+
 
 
 
@@ -8091,6 +12365,14 @@ arr1.slice(0,5)
 p=>
 `${p.slice(-1)}${d1}${d2_dig}`
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -8114,12 +12396,28 @@ Number(
 
 
 
+
+
+
+
+
+
+
+
 let top5Digits=
 matrixSorted
 .slice(0,5)
 .map(
 item=>item.digit
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -8146,7 +12444,19 @@ item.digit
 
 
 
+
+
+
+
+
+
+
+
 if(!wildcardCandidate){
+
+
+
+
 
 
 
@@ -8162,7 +12472,19 @@ item.digit
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -8187,8 +12509,20 @@ matrixSorted[5].digit
 
 
 
+
+
+
+
+
+
+
+
 const checkBalance=
 digits=>{
+
+
+
+
 
 
 
@@ -8201,8 +12535,16 @@ d=>d%2===0
 
 
 
+
+
+
+
 const oddCount=
 digits.length-evenCount;
+
+
+
+
 
 
 
@@ -8215,13 +12557,25 @@ d=>d>=0&&d<=4
 
 
 
+
+
+
+
 const highCount=
 digits.length-lowCount;
 
 
 
 
+
+
+
+
 return{
+
+
+
+
 
 
 
@@ -8235,12 +12589,28 @@ highCount>=2
 
 
 
-};
 
 
 
 
 };
+
+
+
+
+
+
+
+
+};
+
+
+
+
+
+
+
+
 
 
 
@@ -8257,9 +12627,17 @@ if(
 
 
 
+
+
+
+
 const candidatesIndex=[
 6,7,8,9
 ];
+
+
+
+
 
 
 
@@ -8271,7 +12649,19 @@ let bestSet=[
 
 
 
+
+
+
+
 let foundReplacement=false;
+
+
+
+
+
+
+
+
 
 
 
@@ -8287,9 +12677,17 @@ let idx of candidatesIndex
 
 
 
+
+
+
+
 if(
 idx<matrixSorted.length
 ){
+
+
+
+
 
 
 
@@ -8302,10 +12700,18 @@ matrixSorted[idx].digit
 
 
 
+
+
+
+
 if(
 checkBalance(testSet)
 .isBalanced
 ){
+
+
+
+
 
 
 
@@ -8315,7 +12721,15 @@ bestSet=testSet;
 
 
 
+
+
+
+
 foundReplacement=true;
+
+
+
+
 
 
 
@@ -8325,7 +12739,6 @@ break;
 
 
 
-}
 
 
 
@@ -8335,7 +12748,28 @@ break;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -8350,7 +12784,19 @@ currentSet=bestSet;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -8363,6 +12809,14 @@ const winSet=
 currentSet.sort(
 (a,b)=>a-b
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -8385,10 +12839,26 @@ const combinedAnalysisPool=[
 
 
 
+
+
+
+
+
+
+
+
 const evenCountTotal=
 combinedAnalysisPool.filter(
 d=>d%2===0
 ).length;
+
+
+
+
+
+
+
+
 
 
 
@@ -8413,12 +12883,28 @@ combinedAnalysisPool.length*
 
 
 
+
+
+
+
+
+
+
+
 const oddPct=
 Number(
 (
 100-evenPct
 ).toFixed(1)
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -8442,6 +12928,14 @@ s=>s.totalScore
 
 
 
+
+
+
+
+
+
+
+
 const distributionHTML=
 matrixSorted.map(
 (item,index)=>{
@@ -8449,8 +12943,16 @@ matrixSorted.map(
 
 
 
+
+
+
+
 const digit=
 item.digit;
+
+
+
+
 
 
 
@@ -8476,8 +12978,20 @@ maxScoreVal*
 
 
 
+
+
+
+
+
+
+
+
 let barColor=
 "#0A6647";
+
+
+
+
 
 
 
@@ -8488,13 +13002,25 @@ let barTop=
 
 
 
+
+
+
+
 let glow=
 "rgba(16,185,129,.12)";
 
 
 
 
+
+
+
+
 let rankClass="";
+
+
+
+
 
 
 
@@ -8509,7 +13035,19 @@ let rankLabel=
 
 
 
+
+
+
+
+
+
+
+
 if(index===0){
+
+
+
+
 
 
 
@@ -8522,12 +13060,24 @@ rankClass="rank-1";
 
 
 
+
+
+
+
 }
 
 
 
 
+
+
+
+
 else if(index===1){
+
+
+
+
 
 
 
@@ -8540,12 +13090,24 @@ rankClass="rank-2";
 
 
 
+
+
+
+
 }
 
 
 
 
+
+
+
+
 else if(index===2){
+
+
+
+
 
 
 
@@ -8558,7 +13120,15 @@ rankClass="rank-3";
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -8571,6 +13141,10 @@ index===4
 
 
 
+
+
+
+
 barColor="#0A6647";
 barTop="#A7F3D0";
 glow="rgba(10,102,71,.12)";
@@ -8578,7 +13152,15 @@ glow="rgba(10,102,71,.12)";
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -8591,6 +13173,10 @@ index===6
 
 
 
+
+
+
+
 barColor="#9E6C02";
 barTop="#FEF3C7";
 glow="rgba(158,108,2,.10)";
@@ -8598,7 +13184,15 @@ glow="rgba(158,108,2,.10)";
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -8611,9 +13205,17 @@ index===8
 
 
 
+
+
+
+
 barColor="#087380";
 barTop="#CCFBF1";
 glow="rgba(8,115,128,.10)";
+
+
+
+
 
 
 
@@ -8623,7 +13225,15 @@ glow="rgba(8,115,128,.10)";
 
 
 
+
+
+
+
 else{
+
+
+
+
 
 
 
@@ -8635,7 +13245,19 @@ glow="rgba(190,18,60,.08)";
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -8656,7 +13278,19 @@ item.totalScore
 
 
 
+
+
+
+
+
+
+
+
 return`
+
+
+
+
 
 
 
@@ -8681,9 +13315,17 @@ ${scorePct.toFixed(1)}%
 
 
 
+
+
+
+
 <span class="overview-rank">
 ${rankLabel}
 </span>
+
+
+
+
 
 
 
@@ -8695,9 +13337,17 @@ ${scorePct.toFixed(1)}%
 
 
 
+
+
+
+
 <span class="overview-digit">
 ${digit}
 </span>
+
+
+
+
 
 
 
@@ -8707,13 +13357,29 @@ ${digit}
 
 
 
+
+
+
+
 `;
+
+
+
+
 
 
 
 
 }
 ).join("");
+
+
+
+
+
+
+
+
 
 
 
@@ -8729,9 +13395,17 @@ winSet.map(
 
 
 
+
+
+
+
 <div
 class="ind-win-item"
 data-copy="${digit}">
+
+
+
+
 
 
 
@@ -8743,6 +13417,10 @@ ${digit}
 
 
 
+
+
+
+
 <span>
 POS ${index+1}
 </span>
@@ -8750,7 +13428,15 @@ POS ${index+1}
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -8765,8 +13451,20 @@ POS ${index+1}
 
 
 
+
+
+
+
+
+
+
+
 const threeHTML=
 matrixArr3d.length
+
+
+
+
 
 
 
@@ -8776,8 +13474,16 @@ matrixArr3d.length
 
 
 
+
+
+
+
 matrixArr3d.map(
 (p,index)=>{
+
+
+
+
 
 
 
@@ -8797,7 +13503,19 @@ cScore3-
 
 
 
+
+
+
+
+
+
+
+
 return`
+
+
+
+
 
 
 
@@ -8809,9 +13527,17 @@ data-copy="${this._esc(p)}">
 
 
 
+
+
+
+
 <strong>
 ${this._esc(p)}
 </strong>
+
+
+
+
 
 
 
@@ -8823,12 +13549,24 @@ ${pct}%
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 `;
+
+
+
+
 
 
 
@@ -8839,7 +13577,15 @@ ${pct}%
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -8863,11 +13609,23 @@ text-align:center;
 
 
 
+
+
+
+
+
+
+
+
 const top3Class=[
 "rank-one",
 "rank-two",
 "rank-three"
 ];
+
+
+
+
 
 
 
@@ -8885,9 +13643,21 @@ const top3Names=[
 
 
 
+
+
+
+
+
+
+
+
 const top3HTML=
 top3Digits.map(
 (item,index)=>{
+
+
+
+
 
 
 
@@ -8904,7 +13674,19 @@ item.totalScore
 
 
 
+
+
+
+
+
+
+
+
 return`
+
+
+
+
 
 
 
@@ -8916,9 +13698,17 @@ data-copy="${item.digit}">
 
 
 
+
+
+
+
 <div class="top3-position">
 #${index+1}
 </div>
+
+
+
+
 
 
 
@@ -8930,7 +13720,15 @@ ${item.digit}
 
 
 
+
+
+
+
 <div class="top3-info">
+
+
+
+
 
 
 
@@ -8945,7 +13743,15 @@ RANK ${index+1}
 
 
 
+
+
+
+
 <div class="top3-bar">
+
+
+
+
 
 
 
@@ -8958,12 +13764,24 @@ style="width:${pct}%;">
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 
@@ -8975,7 +13793,15 @@ ${pct.toFixed(1)}%
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -8985,8 +13811,20 @@ ${pct.toFixed(1)}%
 
 
 
+
+
+
+
 }
 ).join("");
+
+
+
+
+
+
+
+
 
 
 
@@ -9004,8 +13842,20 @@ let allFormulasHTML="";
 
 
 
+
+
+
+
+
+
+
+
 evaluated.forEach(
 item=>{
+
+
+
+
 
 
 
@@ -9019,8 +13869,20 @@ let pairs=[];
 
 
 
+
+
+
+
+
+
+
+
 item.set.forEach(
 digit=>{
+
+
+
+
 
 
 
@@ -9039,7 +13901,19 @@ pair:p
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -9051,6 +13925,10 @@ pair:p
 const pairCards=
 pairs.map(
 (obj,idx)=>{
+
+
+
+
 
 
 
@@ -9070,7 +13948,19 @@ item.aiScore-
 
 
 
+
+
+
+
+
+
+
+
 return`
+
+
+
+
 
 
 
@@ -9082,9 +13972,17 @@ data-copy="${this._esc(obj.pair)}">
 
 
 
+
+
+
+
 <strong>
 ${this._esc(obj.pair)}
 </strong>
+
+
+
+
 
 
 
@@ -9096,12 +13994,24 @@ ${subPct}%
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 `;
+
+
+
+
 
 
 
@@ -9116,12 +14026,23 @@ ${subPct}%
 
 
 
-const badgeHtml=
-item.isRecommended
-?
-'<span class="compact-badge">สูตรแนะนำ</span>'
-:
-"";
+
+
+
+
+
+
+
+
+const badgeHtml="";
+
+
+
+
+
+
+
+
 
 
 
@@ -9135,7 +14056,15 @@ allFormulasHTML+=`
 
 
 
+
+
+
+
 <div class="formula-card">
+
+
+
+
 
 
 
@@ -9145,7 +14074,15 @@ allFormulasHTML+=`
 
 
 
+
+
+
+
 <div class="formula-name">
+
+
+
+
 
 
 
@@ -9155,7 +14092,33 @@ ${this._esc(item.name)}
 
 
 
-${badgeHtml}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9165,14 +14128,6 @@ ${badgeHtml}
 
 
 
-<div class="formula-badge">
-AI Score ${item.aiScore}%
-</div>
-
-
-
-
-</div>
 
 
 
@@ -9182,7 +14137,15 @@ AI Score ${item.aiScore}%
 
 
 
+
+
+
+
 เลขเด่น:
+
+
+
+
 
 
 
@@ -9194,7 +14157,15 @@ ${item.set.join(" - ")}
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -9204,22 +14175,42 @@ ${item.set.join(" - ")}
 
 
 
+
+
+
+
 ${pairCards}
 
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 
 
 `;
+
+
+
+
 
 
 
@@ -9233,7 +14224,19 @@ ${pairCards}
 
 
 
+
+
+
+
+
+
+
+
 const html=`
+
+
+
+
 
 
 
@@ -9247,12 +14250,28 @@ const html=`
 
 
 
+
+
+
+
+
+
+
+
 <div class="result-head">
 
 
 
 
+
+
+
+
 <div>
+
+
+
+
 
 
 
@@ -9264,6 +14283,10 @@ SCAN COMPLETE
 
 
 
+
+
+
+
 <div class="result-title">
 AI PROCESSING COMPLETE
 </div>
@@ -9271,7 +14294,15 @@ AI PROCESSING COMPLETE
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -9283,7 +14314,19 @@ ${new Date().toLocaleTimeString("th-TH")}
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -9297,12 +14340,24 @@ ${new Date().toLocaleTimeString("th-TH")}
 
 
 
+
+
+
+
 <div class="top3-head">
 
 
 
 
+
+
+
+
 <div>
+
+
+
+
 
 
 
@@ -9314,9 +14369,17 @@ DIGIT PRIORITY MATRIX
 
 
 
+
+
+
+
 <div class="top3-title">
 🏆 ALPHA TOP 3 SIGNALS
 </div>
+
+
+
+
 
 
 
@@ -9326,6 +14389,27 @@ DIGIT PRIORITY MATRIX
 
 
 
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
@@ -9335,7 +14419,6 @@ DIGIT PRIORITY MATRIX
 
 
 
-</div>
 
 
 
@@ -9355,12 +14438,28 @@ ${top3HTML}
 
 
 
+
+
+
+
+
+
+
+
 <div class="top3-footnote">
 
 
 
 
+
+
+
+
 <span class="mini-live"></span>
+
+
+
+
 
 
 
@@ -9375,12 +14474,28 @@ AI Real-Time Score
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -9394,7 +14509,15 @@ AI Real-Time Score
 
 
 
+
+
+
+
 <div class="stats-flex">
+
+
+
+
 
 
 
@@ -9406,6 +14529,10 @@ AI Real-Time Score
 
 
 
+
+
+
+
 <div class="stats-badge">
 AI BALANCE
 </div>
@@ -9413,7 +14540,19 @@ AI BALANCE
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -9427,10 +14566,18 @@ AI BALANCE
 
 
 
+
+
+
+
 <div
 class="ratio-even"
 style="width:${evenPct}%">
 </div>
+
+
+
+
 
 
 
@@ -9443,7 +14590,19 @@ style="width:${oddPct}%">
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -9457,9 +14616,17 @@ style="width:${oddPct}%">
 
 
 
+
+
+
+
 <span>
 เลขคู่: ${evenPct}%
 </span>
+
+
+
+
 
 
 
@@ -9471,12 +14638,28 @@ style="width:${oddPct}%">
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -9496,7 +14679,19 @@ DIGIT OVERVIEW
 
 
 
+
+
+
+
+
+
+
+
 <section class="overview-panel">
+
+
+
+
 
 
 
@@ -9506,7 +14701,15 @@ DIGIT OVERVIEW
 
 
 
+
+
+
+
 <div>
+
+
+
+
 
 
 
@@ -9518,6 +14721,10 @@ AI PROBABILITY RANKING
 
 
 
+
+
+
+
 <div class="overview-sub">
 อันดับคะแนนเลข 0-9
 </div>
@@ -9525,7 +14732,15 @@ AI PROBABILITY RANKING
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -9537,7 +14752,19 @@ AI PROBABILITY RANKING
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -9557,7 +14784,19 @@ ${distributionHTML}
 
 
 
+
+
+
+
+
+
+
+
 <div class="overview-axis">
+
+
+
+
 
 
 
@@ -9569,9 +14808,17 @@ ${distributionHTML}
 
 
 
+
+
+
+
 <span>
 DIGIT SCORE
 </span>
+
+
+
+
 
 
 
@@ -9583,12 +14830,28 @@ DIGIT SCORE
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -9608,7 +14871,19 @@ ALPHA DEEP SCAN
 
 
 
+
+
+
+
+
+
+
+
 <section class="deep-scan-board">
+
+
+
+
 
 
 
@@ -9618,7 +14893,15 @@ ALPHA DEEP SCAN
 
 
 
+
+
+
+
 <div>
+
+
+
+
 
 
 
@@ -9630,9 +14913,17 @@ TOP 3 MATRIX SIGNALS
 
 
 
+
+
+
+
 <div class="deep-scan-title">
 🎯 ชุดเจาะ TOP 3
 </div>
+
+
+
+
 
 
 
@@ -9642,6 +14933,27 @@ TOP 3 MATRIX SIGNALS
 
 
 
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
@@ -9651,7 +14963,6 @@ TOP 3 MATRIX SIGNALS
 
 
 
-</div>
 
 
 
@@ -9671,14 +14982,31 @@ ${deepScanHTML}
 
 
 
+
+
+
+
+
+
+
+
 </section>
+
 
 <section class="three-d-scan">
 
 
 
 
+
+
+
+
 <div class="three-d-head">
+
+
+
+
 
 
 
@@ -9690,6 +15018,10 @@ ${deepScanHTML}
 
 
 
+
+
+
+
 <div class="three-d-score">
 ACCURACY ${cScore3.toFixed(1)}%
 </div>
@@ -9697,7 +15029,15 @@ ACCURACY ${cScore3.toFixed(1)}%
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -9709,12 +15049,28 @@ ${threeHTML}
 
 
 
+
+
+
+
 </div>
 
 
 
 
+
+
+
+
 </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -9728,27 +15084,33 @@ ${threeHTML}
 
 
 
+
+
+
+
 <div class="ind-win-header">
 
 
 
 
-<div class="ind-win-title">
 
 
 
 
-🧩 ชุดวิน 6 ตัว
+<div class="ind-win-title"><small>CURATED WIN SET • 6 PICKS</small>
 
 
 
 
-<small>CURATED WIN SET • 6 PICKS</small>
 
 
 
 
 </div>
+
+
+
+
 
 
 
@@ -9760,7 +15122,19 @@ ${threeHTML}
 
 
 
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -9776,7 +15150,19 @@ ${indWinSetHTML}
 
 
 
+
+
+
+
 </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -9790,10 +15176,18 @@ ${indWinSetHTML}
 
 
 
+
+
+
+
 <button
 class="formula-toggle"
 id="toggleMainFormulasBtn"
 type="button">
+
+
+
+
 
 
 
@@ -9805,6 +15199,10 @@ type="button">
 
 
 
+
+
+
+
 <span>
 ▼
 </span>
@@ -9812,7 +15210,19 @@ type="button">
 
 
 
+
+
+
+
 </button>
+
+
+
+
+
+
+
+
 
 
 
@@ -9831,12 +15241,24 @@ margin-top:6px;
 
 
 
+
+
+
+
 ${allFormulasHTML}
 
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -9850,7 +15272,19 @@ ${allFormulasHTML}
 
 
 
+
+
+
+
+
+
+
+
 <div class="disclaimer">
+
+
+
+
 
 
 
@@ -9862,27 +15296,55 @@ ${allFormulasHTML}
 
 
 
+
+
+
+
 ข้อมูลวิเคราะห์เชิงสถิติเพื่อเป็นแนวทางเท่านั้น
 โปรดใช้วิจารณญาณในการตัดสินใจ
 
 
 
 
-</div>
-
-
-
-
 
 
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 
 
 `;
+
+
+
+
+
+
+
+
 
 
 
@@ -9898,6 +15360,10 @@ document.getElementById(
 
 
 
+
+
+
+
 /* =========================================================
  APPLY BEST JUE TOP 5 COLORS TO MATCHING TOP 3 PAIRS
  The ranking engine remains active; only the presentation moves
@@ -9909,6 +15375,10 @@ bestJueCandidates.forEach(
 bestJueRankLookup[item.canonical]=index+1;
 }
 );
+
+
+
+
 
 
 
@@ -9936,10 +15406,22 @@ node.dataset.jueRank=String(rank);
 
 
 
+
+
+
+
+
+
+
+
 document.querySelectorAll(
 "[data-copy]"
 ).forEach(
 node=>{
+
+
+
+
 
 
 
@@ -9950,10 +15432,18 @@ node.cloneNode(true);
 
 
 
+
+
+
+
 node.parentNode.replaceChild(
 clone,
 node
 );
+
+
+
+
 
 
 
@@ -9970,7 +15460,19 @@ clone.dataset.copy
 
 
 
+
+
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -9987,10 +15489,22 @@ document.getElementById(
 
 
 
+
+
+
+
 const allWrapper=
 document.getElementById(
 "allFormulasWrapper"
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -10007,6 +15521,10 @@ allWrapper
 
 
 
+
+
+
+
 toggleMainBtn.addEventListener(
 "click",
 ()=>{
@@ -10014,7 +15532,15 @@ toggleMainBtn.addEventListener(
 
 
 
+
+
+
+
 this._audio("click");
+
+
+
+
 
 
 
@@ -10025,12 +15551,20 @@ allWrapper.style.display==="block";
 
 
 
+
+
+
+
 allWrapper.style.display=
 isOpen
 ?
 "none"
 :
 "block";
+
+
+
+
 
 
 
@@ -10049,13 +15583,25 @@ isOpen
 
 
 
+
+
+
+
 }
 );
 
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -10069,7 +15615,19 @@ isOpen
 
 
 
+
+
+
+
+
+
+
+
 copyText(text){
+
+
+
+
 
 
 
@@ -10079,10 +15637,18 @@ this._audio("click");
 
 
 
+
+
+
+
 if(
 navigator.clipboard&&
 navigator.clipboard.writeText
 ){
+
+
+
+
 
 
 
@@ -10099,7 +15665,15 @@ navigator.clipboard
 
 
 
+
+
+
+
 }else{
+
+
+
+
 
 
 
@@ -10109,12 +15683,28 @@ this.fallbackCopyText(text);
 
 
 
+
+
+
+
 }
 
 
 
 
+
+
+
+
 },
+
+
+
+
+
+
+
+
 
 
 
@@ -10128,6 +15718,10 @@ fallbackCopyText(text){
 
 
 
+
+
+
+
 const ta=
 document.createElement(
 "textarea"
@@ -10136,7 +15730,15 @@ document.createElement(
 
 
 
+
+
+
+
 ta.value=text;
+
+
+
+
 
 
 
@@ -10147,7 +15749,15 @@ ta.style.opacity="0";
 
 
 
+
+
+
+
 document.body.appendChild(ta);
+
+
+
+
 
 
 
@@ -10158,7 +15768,15 @@ ta.select();
 
 
 
+
+
+
+
 try{
+
+
+
+
 
 
 
@@ -10168,7 +15786,15 @@ document.execCommand("copy");
 
 
 
+
+
+
+
 this.showToast();
+
+
+
+
 
 
 
@@ -10178,7 +15804,15 @@ this.showToast();
 
 
 
+
+
+
+
 document.body.removeChild(ta);
+
+
+
+
 
 
 
@@ -10192,7 +15826,19 @@ document.body.removeChild(ta);
 
 
 
+
+
+
+
+
+
+
+
 showToast(){
+
+
+
+
 
 
 
@@ -10200,6 +15846,10 @@ showToast(){
 clearTimeout(
 this._toastTimer
 );
+
+
+
+
 
 
 
@@ -10212,7 +15862,15 @@ document.getElementById(
 
 
 
+
+
+
+
 t.classList.add("show");
+
+
+
+
 
 
 
@@ -10228,12 +15886,28 @@ t.classList.remove("show");
 
 
 
+
+
+
+
 }
 
 
 
 
+
+
+
+
 };
+
+
+
+
+
+
+
+
 
 
 
@@ -10250,10 +15924,18 @@ document.getElementById(
 
 
 
+
+
+
+
 const passwordInput=
 document.getElementById(
 "passwordInput"
 );
+
+
+
+
 
 
 
@@ -10266,10 +15948,18 @@ document.getElementById(
 
 
 
+
+
+
+
 const clearButton=
 document.getElementById(
 "clearButton"
 );
+
+
+
+
 
 
 
@@ -10286,7 +15976,19 @@ document.getElementById(
 
 
 
+
+
+
+
+
+
+
+
 if(loginButton){
+
+
+
+
 
 
 
@@ -10299,7 +16001,19 @@ loginButton.addEventListener(
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10313,9 +16027,17 @@ if(passwordInput){
 
 
 
+
+
+
+
 passwordInput.addEventListener(
 "keyup",
 e=>{
+
+
+
+
 
 
 
@@ -10326,13 +16048,29 @@ _app.login();
 
 
 
+
+
+
+
 }
 );
 
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10346,6 +16084,10 @@ if(calculateButton){
 
 
 
+
+
+
+
 calculateButton.addEventListener(
 "click",
 ()=>_app.calculate()
@@ -10354,7 +16096,19 @@ calculateButton.addEventListener(
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10368,6 +16122,10 @@ if(clearButton){
 
 
 
+
+
+
+
 clearButton.addEventListener(
 "click",
 ()=>_app.clearCalc()
@@ -10376,7 +16134,19 @@ clearButton.addEventListener(
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10390,6 +16160,10 @@ if(logoutButton){
 
 
 
+
+
+
+
 logoutButton.addEventListener(
 "click",
 ()=>_app.logout()
@@ -10398,7 +16172,19 @@ logoutButton.addEventListener(
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10415,10 +16201,22 @@ document.getElementById(
 
 
 
+
+
+
+
 const n2Input=
 document.getElementById(
 "num2bottom"
 );
+
+
+
+
+
+
+
+
 
 
 
@@ -10432,9 +16230,17 @@ if(n3Input){
 
 
 
+
+
+
+
 n3Input.addEventListener(
 "input",
 ()=>{
+
+
+
+
 
 
 
@@ -10448,11 +16254,19 @@ n3Input.value.replace(
 
 
 
+
+
+
+
 if(
 n3Input.value.length>=3&&
 n2Input
 )
 n2Input.focus();
+
+
+
+
 
 
 
@@ -10463,7 +16277,19 @@ n2Input.focus();
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10477,9 +16303,17 @@ if(n2Input){
 
 
 
+
+
+
+
 n2Input.addEventListener(
 "input",
 ()=>{
+
+
+
+
 
 
 
@@ -10493,13 +16327,29 @@ n2Input.value.replace(
 
 
 
+
+
+
+
 }
 );
 
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -10517,13 +16367,25 @@ id=>{
 
 
 
+
+
+
+
 const el=
 document.getElementById(id);
 
 
 
 
+
+
+
+
 if(el){
+
+
+
+
 
 
 
@@ -10535,8 +16397,16 @@ e=>{
 
 
 
+
+
+
+
 if(e.key==="Enter")
 _app.calculate();
+
+
+
+
 
 
 
@@ -10547,7 +16417,15 @@ _app.calculate();
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -10561,12 +16439,28 @@ _app.calculate();
 
 
 
+
+
+
+
+
+
+
+
 (function initApp(){
 
 
 
 
+
+
+
+
 try{
+
+
+
+
 
 
 
@@ -10579,7 +16473,15 @@ localStorage.getItem(
 
 
 
+
+
+
+
 if(active==="active"){
+
+
+
+
 
 
 
@@ -10592,10 +16494,18 @@ document.getElementById(
 
 
 
+
+
+
+
 const calculatorView=
 document.getElementById(
 "calculatorView"
 );
+
+
+
+
 
 
 
@@ -10606,8 +16516,16 @@ loginView.style.display="none";
 
 
 
+
+
+
+
 if(calculatorView)
 calculatorView.style.display="block";
+
+
+
+
 
 
 
@@ -10617,7 +16535,15 @@ _app.checkSessionBadge();
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -10627,12 +16553,24 @@ _app.checkSessionBadge();
 
 
 
+
+
+
+
 })();
 
 
 
 
+
+
+
+
 </script>
+
+
+
+
 
 
 
